@@ -12,6 +12,7 @@ dependencies = [
     "pydantic>=2.13.4",
     "pydantic-settings>=2.14.1",
     "python-dotenv>=1.2.2",
+    "transformers>=5.9.0",
 ]
 
 [tool.ruff]
