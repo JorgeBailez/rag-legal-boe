@@ -1,0 +1,342 @@
+[
+  {
+    "norm_id": "BOE-A-2015-10565",
+    "exists": true,
+    "title": "Ley 39/2015, de 1 de octubre, del Procedimiento Administrativo Común de las Administraciones Públicas.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2016-10-02",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 195,
+    "chunks_count": 250
+  },
+  {
+    "norm_id": "BOE-A-2015-10566",
+    "exists": true,
+    "title": "Ley 40/2015, de 1 de octubre, de Régimen Jurídico del Sector Público.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2016-10-02",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 267,
+    "chunks_count": 429
+  },
+  {
+    "norm_id": "BOE-A-1985-5392",
+    "exists": true,
+    "title": "Ley 7/1985, de 2 de abril, Reguladora de las Bases del Régimen Local",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "1985-04-23",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 231,
+    "chunks_count": 332
+  },
+  {
+    "norm_id": "BOE-A-2004-4214",
+    "exists": true,
+    "title": "Real Decreto Legislativo 2/2004, de 5 de marzo, por el que se aprueba el texto refundido de la Ley Reguladora de las Haciendas Locales.",
+    "rank": {
+      "code": "1310",
+      "label": "Real Decreto Legislativo"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2004-03-10",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 368,
+    "chunks_count": 404
+  },
+  {
+    "norm_id": "BOE-A-2013-12887",
+    "exists": true,
+    "title": "Ley 19/2013, de 9 de diciembre, de transparencia, acceso a la información pública y buen gobierno.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2014-12-10",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 70,
+    "chunks_count": 103
+  },
+  {
+    "norm_id": "BOE-A-2021-5032",
+    "exists": true,
+    "title": "Real Decreto 203/2021, de 30 de marzo, por el que se aprueba el Reglamento de actuación y funcionamiento del sector público por medios electrónicos.",
+    "rank": {
+      "code": "1340",
+      "label": "Real Decreto"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2021-04-02",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 106,
+    "chunks_count": 176
+  },
+  {
+    "norm_id": "BOE-A-2003-20977",
+    "exists": true,
+    "title": "Ley 38/2003, de 17 de noviembre, General de Subvenciones.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2004-02-18",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 122,
+    "chunks_count": 190
+  },
+  {
+    "norm_id": "BOE-A-2006-13371",
+    "exists": true,
+    "title": "Real Decreto 887/2006, de 21 de julio, por el que se aprueba el Reglamento de la Ley 38/2003, de 17 de noviembre, General de Subvenciones.",
+    "rank": {
+      "code": "1340",
+      "label": "Real Decreto"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2006-10-25",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 171,
+    "chunks_count": 188
+  },
+  {
+    "norm_id": "BOE-A-2017-12902",
+    "exists": true,
+    "title": "Ley 9/2017, de 8 de noviembre, de Contratos del Sector Público, por la que se transponen al ordenamiento jurídico español las Directivas del Parlamento Europeo y del Consejo 2014/23/UE y 2014/24/UE, de 26 de febrero de 2014.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2018-03-09",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 557,
+    "chunks_count": 931
+  },
+  {
+    "norm_id": "BOE-A-2018-16673",
+    "exists": true,
+    "title": "Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y garantía de los derechos digitales.",
+    "rank": {
+      "code": "1290",
+      "label": "Ley Orgánica"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2018-12-07",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 169,
+    "chunks_count": 228
+  }
+]

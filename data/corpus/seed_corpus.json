@@ -1,0 +1,56 @@
+{
+  "name": "mvp_seed_corpus",
+  "description": "Corpus semilla para el MVP del recuperador. Normas estatales consolidadas relacionadas (administrativo, sector público, local, transparencia, subvenciones, contratos, protección de datos).",
+  "norms": [
+    {
+      "norm_id": "BOE-A-2015-10565",
+      "label": "Ley 39/2015, Procedimiento Administrativo Común",
+      "expected_rank": "Ley"
+    },
+    {
+      "norm_id": "BOE-A-2015-10566",
+      "label": "Ley 40/2015, Régimen Jurídico del Sector Público",
+      "expected_rank": "Ley"
+    },
+    {
+      "norm_id": "BOE-A-1985-5392",
+      "label": "Ley 7/1985, Bases del Régimen Local",
+      "expected_rank": "Ley"
+    },
+    {
+      "norm_id": "BOE-A-2004-4214",
+      "label": "Real Decreto Legislativo 2/2004, Haciendas Locales",
+      "expected_rank": "Real Decreto Legislativo"
+    },
+    {
+      "norm_id": "BOE-A-2013-12887",
+      "label": "Ley 19/2013, Transparencia",
+      "expected_rank": "Ley"
+    },
+    {
+      "norm_id": "BOE-A-2021-5032",
+      "label": "Real Decreto 203/2021, funcionamiento electrónico del sector público",
+      "expected_rank": "Real Decreto"
+    },
+    {
+      "norm_id": "BOE-A-2003-20977",
+      "label": "Ley 38/2003, General de Subvenciones",
+      "expected_rank": "Ley"
+    },
+    {
+      "norm_id": "BOE-A-2006-13371",
+      "label": "Real Decreto 887/2006, Reglamento de la Ley General de Subvenciones",
+      "expected_rank": "Real Decreto"
+    },
+    {
+      "norm_id": "BOE-A-2017-12902",
+      "label": "Ley 9/2017, Contratos del Sector Público",
+      "expected_rank": "Ley"
+    },
+    {
+      "norm_id": "BOE-A-2018-16673",
+      "label": "Ley Orgánica 3/2018, Protección de Datos y derechos digitales",
+      "expected_rank": "Ley Orgánica"
+    }
+  ]
+}

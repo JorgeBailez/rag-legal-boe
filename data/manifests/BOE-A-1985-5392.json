@@ -1,0 +1,44 @@
+{
+  "norm_id": "BOE-A-1985-5392",
+  "source": "BOE legislación consolidada",
+  "base_url": "https://www.boe.es/datosabiertos/api",
+  "downloaded_at": "2026-05-30T13:26:46.533616+00:00",
+  "files": [
+    {
+      "endpoint_name": "full",
+      "path": "data/raw/boe/BOE-A-1985-5392/full.xml",
+      "sha256": "d98a8a64739840485301e56b6eb499040b73e9f19ebd2235006544e5373759cf",
+      "size_bytes": 1345155
+    },
+    {
+      "endpoint_name": "metadatos",
+      "path": "data/raw/boe/BOE-A-1985-5392/metadatos.xml",
+      "sha256": "c569ced5aba947e9668e99b6d9259a89ad61441104e548281073320c22683919",
+      "size_bytes": 1217
+    },
+    {
+      "endpoint_name": "analisis",
+      "path": "data/raw/boe/BOE-A-1985-5392/analisis.xml",
+      "sha256": "7bc449dccb9e88d3ae5c0ef15df285c92359e6761ca958a982204b83abd253a6",
+      "size_bytes": 35009
+    },
+    {
+      "endpoint_name": "metadata_eli",
+      "path": "data/raw/boe/BOE-A-1985-5392/metadata_eli.xml",
+      "sha256": "3f10dc2efad60105bc4b694fc764267fb2a434e303b8056a362148ad16bdb3e7",
+      "size_bytes": 309601
+    },
+    {
+      "endpoint_name": "texto",
+      "path": "data/raw/boe/BOE-A-1985-5392/texto.xml",
+      "sha256": "116039c337a9f05c4c23faa6902c48cc289431efbcfec2c71ebe4ad9848fae49",
+      "size_bytes": 999763
+    },
+    {
+      "endpoint_name": "indice",
+      "path": "data/raw/boe/BOE-A-1985-5392/indice.xml",
+      "sha256": "c55bcd4a9cd3330a1823ab1b97257d1166a488057a17d5ef6f1ade4849a0cd4c",
+      "size_bytes": 60076
+    }
+  ]
+}

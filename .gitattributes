@@ -1,0 +1,9 @@
+# Normaliza finales de línea (repo trabajado en Windows): LF en el repositorio.
+* text=auto eol=lf
+*.ipynb text eol=lf
+
+# Binarios de la memoria del TFG y recursos.
+*.pdf binary
+*.docx binary
+*.png binary
+*.jpg binary

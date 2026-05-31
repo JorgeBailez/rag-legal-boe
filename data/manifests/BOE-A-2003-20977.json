@@ -1,0 +1,44 @@
+{
+  "norm_id": "BOE-A-2003-20977",
+  "source": "BOE legislación consolidada",
+  "base_url": "https://www.boe.es/datosabiertos/api",
+  "downloaded_at": "2026-05-30T13:26:50.315002+00:00",
+  "files": [
+    {
+      "endpoint_name": "full",
+      "path": "data/raw/boe/BOE-A-2003-20977/full.xml",
+      "sha256": "65f1ca76f4145f58067728780e20503dafa78b55dadbdb1c3a6783fc00fc1336",
+      "size_bytes": 711265
+    },
+    {
+      "endpoint_name": "metadatos",
+      "path": "data/raw/boe/BOE-A-2003-20977/metadatos.xml",
+      "sha256": "4ddea0090ea635c983b7a6b4b7c690fe6a49177818e916399aa1163442107528",
+      "size_bytes": 1210
+    },
+    {
+      "endpoint_name": "analisis",
+      "path": "data/raw/boe/BOE-A-2003-20977/analisis.xml",
+      "sha256": "85f3f1478b9f04f05b072a08a97268deed0c7e376556dd52473df062528e97e9",
+      "size_bytes": 14067
+    },
+    {
+      "endpoint_name": "metadata_eli",
+      "path": "data/raw/boe/BOE-A-2003-20977/metadata_eli.xml",
+      "sha256": "1b194d639ff0ecf2dba759833b76bc2746a5fd46394982a02be3f25fc01276a9",
+      "size_bytes": 167711
+    },
+    {
+      "endpoint_name": "texto",
+      "path": "data/raw/boe/BOE-A-2003-20977/texto.xml",
+      "sha256": "b4e7eca441b568d2c8005bc46f24468839573ae26f40d4e3702251ec2c57fafa",
+      "size_bytes": 528712
+    },
+    {
+      "endpoint_name": "indice",
+      "path": "data/raw/boe/BOE-A-2003-20977/indice.xml",
+      "sha256": "f1c3dc3cec24e78615097b97dfa45f5f73b59ed0ba48cbb259a5ffbd4ac255b1",
+      "size_bytes": 32475
+    }
+  ]
+}

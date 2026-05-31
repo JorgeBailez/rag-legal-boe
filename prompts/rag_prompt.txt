@@ -1,0 +1,11 @@
+[PLACEHOLDER — fase scaffold, sin uso aún]
+
+Contexto recuperado:
+{context}
+
+Pregunta del usuario:
+{question}
+
+Responde con la estructura: Resumen · Fundamento · Citas · Aviso.
+Usa únicamente la información del contexto. Si el contexto no permite responder,
+indícalo explícitamente y abstente.

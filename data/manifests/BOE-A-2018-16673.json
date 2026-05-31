@@ -1,0 +1,44 @@
+{
+  "norm_id": "BOE-A-2018-16673",
+  "source": "BOE legislación consolidada",
+  "base_url": "https://www.boe.es/datosabiertos/api",
+  "downloaded_at": "2026-05-30T13:26:58.562455+00:00",
+  "files": [
+    {
+      "endpoint_name": "full",
+      "path": "data/raw/boe/BOE-A-2018-16673/full.xml",
+      "sha256": "7fa2ff024b932dcf6cf6c1feaa9dfc31db4cd3336d5d109bc4062a26f561dbba",
+      "size_bytes": 410096
+    },
+    {
+      "endpoint_name": "metadatos",
+      "path": "data/raw/boe/BOE-A-2018-16673/metadatos.xml",
+      "sha256": "96c0b461972a5552bcecfe1daccf9d93e52995573fd1fd05e7feef9d49124573",
+      "size_bytes": 1276
+    },
+    {
+      "endpoint_name": "analisis",
+      "path": "data/raw/boe/BOE-A-2018-16673/analisis.xml",
+      "sha256": "260c094379f22044860af80f5d304e508749fcfcc6e6ef1360abce4e3af55cea",
+      "size_bytes": 8091
+    },
+    {
+      "endpoint_name": "metadata_eli",
+      "path": "data/raw/boe/BOE-A-2018-16673/metadata_eli.xml",
+      "sha256": "e346bd425206aa67f6ffefe2e9e8929944009b99047d4e97b3461ef57db5c613",
+      "size_bytes": 52540
+    },
+    {
+      "endpoint_name": "texto",
+      "path": "data/raw/boe/BOE-A-2018-16673/texto.xml",
+      "sha256": "18144157087656060bd9210224675d22f3c77c3e180d57ea66436fc195ef54a7",
+      "size_bytes": 348624
+    },
+    {
+      "endpoint_name": "indice",
+      "path": "data/raw/boe/BOE-A-2018-16673/indice.xml",
+      "sha256": "ac3eba3878922fe521a6f635fc09c08355a5e276e7e01fce8e8fc93fcc5e3725",
+      "size_bytes": 44385
+    }
+  ]
+}

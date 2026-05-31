@@ -1,0 +1,48 @@
+# Entorno y secretos
+.venv/
+.env
+.env.*
+!.env.example
+
+# Cachés de Python y herramientas
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+*.egg-info/
+build/
+dist/
+
+# Notebooks (salidas temporales)
+.ipynb_checkpoints/
+*.executed.ipynb
+*.nbconvert.ipynb
+
+# Sistema operativo / IDE
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+
+# Documentación/andamiaje para IA — NO publicar (se elimina del trabajo final; queda en local)
+.claude/
+CLAUDE.md
+ARCHITECTURE.md
+docs/
+
+# Datos reales: no versionar contenido crudo ni artefactos generados; conservar los .gitkeep
+data/raw/boe/*
+!data/raw/boe/.gitkeep
+data/processed/documents/*
+!data/processed/documents/.gitkeep
+data/processed/chunks/*
+!data/processed/chunks/.gitkeep
+data/processed/reports/*
+!data/processed/reports/.gitkeep
+
+# Índices locales (se generan en runtime)
+data/indexes/

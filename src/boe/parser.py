@@ -1,0 +1,820 @@
+"""Parser BOE v0: XML raw del BOE -> modelo documental propio (JSON).
+
+Convierte los XML raw ya descargados de una norma (metadatos, analisis, indice, texto)
+en el contrato `boe_legal_document_v1` definido en `docs/modelo_documental.md`.
+
+Capa de independencia: aísla al resto del sistema de la forma exacta del XML del BOE.
+No usa red, no toca el raw, no usa `full.xml` como fuente y no parsea `metadata_eli.xml`.
+"""
+
+from __future__ import annotations
+
+import json
+import re
+from pathlib import Path
+
+from lxml import etree
+
+from src.core.exceptions import ParsingError
+
+SCHEMA_VERSION = "boe_legal_document_v1"
+SOURCE_NAME = "BOE legislación consolidada"
+LEGAL_STATUS_NOTICE = (
+    "Texto consolidado de carácter informativo, sin valor jurídico oficial. "
+    "Remitir a la publicación oficial en el BOE."
+)
+
+# Ficheros raw que consume el parser v0 (excluye full.xml y metadata_eli.xml).
+# Ficheros raw que conoce el parser. `analisis.xml` es opcional (puede no existir para
+# algunas normas); el resto son obligatorios para producir el documento.
+REQUIRED_RAW_FILES = ("metadatos.xml", "analisis.xml", "indice.xml", "texto.xml")
+MANDATORY_RAW_FILES = ("metadatos.xml", "indice.xml", "texto.xml")
+
+# Clases de párrafo que son notas editoriales (no texto normativo).
+NOTE_CLASSES = {"nota_pie", "nota_pie_2"}
+
+# Tipos que NUNCA son indexables aunque tengan cuerpo (cierre / nota editorial inicial).
+EXCLUDED_TYPES = {"firma", "nota_inicial"}
+
+# Clases de encabezado/rótulo estructural (no cuentan como cuerpo recuperable).
+STRUCTURAL_LABEL_CLASSES = {
+    "libro_num",
+    "libro_tit",
+    "libro",
+    "titulo_num",
+    "titulo_tit",
+    "titulo",
+    "capitulo_num",
+    "capitulo_tit",
+    "capitulo",
+    "seccion",
+    "subseccion",
+    "anexo_num",
+    "anexo_tit",
+    "anexo",
+}
+
+_NORM_ID_RE = re.compile(r"BOE-[A-Z]-\d{4}-\d+")
+
+# Cuerpo normativo cuya única redacción vigente es «(Sin contenido)» (artículo vaciado).
+_WITHOUT_CONTENT_RE = re.compile(r"^sin\s+contenido$", re.IGNORECASE)
+
+# Estados posibles de la resolución temporal de la versión vigente de un bloque.
+# Solo `resolved` es indexable; el resto van a cuarentena (sin `latest_version`, sin chunks).
+TEMPORAL_STATUSES = (
+    "resolved",
+    "unresolved",
+    "ambiguous",
+    "missing_index_date",
+    "invalid_date",
+    "index_not_max",
+)
+
+
+def is_table_class(css: str) -> bool:
+    """True si la clase de párrafo representa una celda/cabecera de tabla."""
+    return css == "cabeza_tabla" or css.startswith("cuerpo_tabla_")
+
+
+def heading_has_retrievable_body(paragraphs: list[dict]) -> bool:
+    """True si el bloque tiene cuerpo recuperable (algún párrafo no estructural).
+
+    Las celdas de tabla cuentan como cuerpo. No depende de `block_id`, de la palabra
+    ANEXO ni de listas manuales de normas. Las imágenes no cuentan (sin texto asociado).
+    """
+    return any(p.get("class") not in STRUCTURAL_LABEL_CLASSES for p in paragraphs)
+
+
+def is_without_content(paragraphs: list[dict]) -> bool:
+    """True si la redacción vigente del bloque es únicamente «(Sin contenido)».
+
+    Detección conservadora: el cuerpo (párrafos no estructurales y distintos del rótulo
+    `articulo`) se reduce exactamente a «sin contenido». No infiere causa ni norma; eso
+    queda para `analysis`/`modification_notes` si hay evidencia trazable.
+    """
+    body = [
+        p.get("text") or ""
+        for p in paragraphs
+        if p.get("class") not in STRUCTURAL_LABEL_CLASSES and p.get("class") != "articulo"
+    ]
+    if not body:
+        return False
+    stripped = re.sub(r"[^0-9a-záéíóúñü ]", "", clean_text(" ".join(body)).lower()).strip()
+    return bool(_WITHOUT_CONTENT_RE.match(stripped))
+
+
+def resolve_current_version(versions: list[dict], index_date: str | None) -> dict:
+    """Resuelve la versión vigente de un bloque a partir de la fecha del índice.
+
+    Política estricta (sin fallback): la única selección válida para retrieval es la versión
+    cuya `publication_date` coincide de forma **exacta y única** con `index_date` y que además
+    es la **máxima** `publication_date` normalizable. Cualquier otro caso devuelve un estado de
+    cuarentena (`unresolved`/`ambiguous`/`missing_index_date`/`index_not_max`); el orden XML
+    nunca decide la vigencia. `max(publication_date)` se calcula solo como diagnóstico.
+    """
+    pubs = [v.get("publication_date") for v in versions]
+    norm_pubs = [p for p in pubs if p]
+    max_pub = max(norm_pubs) if norm_pubs else None
+    candidate_versions = [
+        {
+            "version_index": i,
+            "publication_date": pubs[i],
+            "source_norm_id": versions[i].get("source_norm_id"),
+        }
+        for i in range(len(versions))
+    ]
+    result = {
+        "status": None,
+        "selection_method": None,
+        "index_last_update_date": index_date,
+        "selected_version_index": None,
+        "selected_publication_date": None,
+        "selected_source_norm_id": None,
+        "candidate_versions": candidate_versions,
+        "max_publication_date": max_pub,
+        "warnings": [],
+    }
+    if not versions:
+        result["status"] = "unresolved"
+        result["warnings"] = ["no_versions"]
+        return result
+    if not index_date:
+        result["status"] = "missing_index_date"
+        result["warnings"] = ["missing_index_date"]
+        return result
+
+    matches = [i for i, p in enumerate(pubs) if p and p == index_date]
+    if len(matches) == 0:
+        result["status"] = "unresolved"
+        result["warnings"] = ["index_no_match"]
+        return result
+    if len(matches) > 1:
+        result["status"] = "ambiguous"
+        result["warnings"] = ["index_multiple_match"]
+        return result
+
+    sel = matches[0]
+    if max_pub is None or pubs[sel] != max_pub:
+        result["status"] = "index_not_max"
+        result["warnings"] = ["index_not_max"]
+        return result
+
+    result.update(
+        status="resolved",
+        selection_method="index_date_exact_unique_match",
+        selected_version_index=sel,
+        selected_publication_date=pubs[sel],
+        selected_source_norm_id=versions[sel].get("source_norm_id"),
+    )
+    return result
+
+
+# --------------------------------------------------------------------------- #
+# Infraestructura / utilidades
+# --------------------------------------------------------------------------- #
+
+
+def load_xml(path: Path) -> etree._Element:
+    """Carga un XML desde disco y devuelve su elemento raíz."""
+    try:
+        data = Path(path).read_bytes()
+    except FileNotFoundError as exc:
+        raise ParsingError(f"No existe el fichero XML: {path}") from exc
+    try:
+        return etree.fromstring(data)
+    except etree.XMLSyntaxError as exc:
+        raise ParsingError(f"XML inválido en {path}: {exc}") from exc
+
+
+def validate_response(root: etree._Element, source_path: Path) -> etree._Element:
+    """Valida el envoltorio `response` y devuelve el elemento `data`.
+
+    Exige raíz `response`, `status/code == "200"` y la presencia de `data`.
+    """
+    if root.tag != "response":
+        raise ParsingError(f"Raíz inesperada {root.tag!r} (esperado 'response') en {source_path}")
+
+    code = root.findtext("status/code")
+    if code is None:
+        raise ParsingError(f"Falta status/code en {source_path}")
+    if code.strip() != "200":
+        raise ParsingError(f"status/code={code!r} (esperado '200') en {source_path}")
+
+    data = root.find("data")
+    if data is None:
+        raise ParsingError(f"Falta el nodo 'data' en {source_path}")
+    return data
+
+
+def normalize_date(value: str | None) -> str | None:
+    """`YYYYMMDD` -> `YYYY-MM-DD`. Devuelve None si está vacío o no encaja."""
+    if not value:
+        return None
+    value = value.strip()
+    match = re.fullmatch(r"(\d{4})(\d{2})(\d{2})", value)
+    if not match:
+        return None
+    return "-".join(match.groups())
+
+
+def normalize_datetime(value: str | None) -> str | None:
+    """`YYYYMMDDThhmmssZ` -> `YYYY-MM-DDTHH:MM:SSZ`. None si vacío o no encaja."""
+    if not value:
+        return None
+    value = value.strip()
+    match = re.fullmatch(r"(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})Z", value)
+    if not match:
+        return None
+    y, mo, d, h, mi, s = match.groups()
+    return f"{y}-{mo}-{d}T{h}:{mi}:{s}Z"
+
+
+def clean_text(value: str | None) -> str:
+    """Normaliza espacios internos sin alterar el contenido textual."""
+    if not value:
+        return ""
+    return re.sub(r"\s+", " ", value).strip()
+
+
+def _element_text(element: etree._Element) -> str:
+    """Texto limpio de un elemento, conservando el texto de etiquetas inline."""
+    return clean_text("".join(element.itertext()))
+
+
+def _coded(element: etree._Element | None) -> dict | None:
+    """Convierte un elemento con atributo `codigo` en `{code, label}`."""
+    if element is None:
+        return None
+    return {"code": element.get("codigo"), "label": clean_text(element.text)}
+
+
+def _extract_norm_id(text: str) -> str | None:
+    """Primer identificador BOE-A-... encontrado en un texto, o None."""
+    match = _NORM_ID_RE.search(text or "")
+    return match.group(0) if match else None
+
+
+# --------------------------------------------------------------------------- #
+# Metadatos
+# --------------------------------------------------------------------------- #
+
+
+def parse_metadata(data: etree._Element) -> dict:
+    """Mapea `data/metadatos` al bloque `metadata` del contrato."""
+    meta = data.find("metadatos")
+    if meta is None:
+        raise ParsingError("Falta el nodo 'metadatos' en el XML de metadatos")
+
+    def text(tag: str) -> str | None:
+        value = meta.findtext(tag)
+        return clean_text(value) if value else None
+
+    rank = _coded(meta.find("rango"))
+    official_number = text("numero_oficial")
+    short_title = None
+    if rank and rank.get("label") and official_number:
+        short_title = f"{rank['label']} {official_number}"
+
+    return {
+        "title": text("titulo"),
+        "short_title": short_title,
+        "identifier": text("identificador"),
+        "eli_url": text("url_eli"),
+        "html_url": text("url_html_consolidada"),
+        "scope": _coded(meta.find("ambito")),
+        "department": _coded(meta.find("departamento")),
+        "rank": rank,
+        "official_number": official_number,
+        "publication_date": normalize_date(meta.findtext("fecha_publicacion")),
+        "document_date": normalize_date(meta.findtext("fecha_disposicion")),
+        "effective_date": normalize_date(meta.findtext("fecha_vigencia")),
+        "last_update_datetime": normalize_datetime(meta.findtext("fecha_actualizacion")),
+        "consolidation_status": _coded(meta.find("estado_consolidacion")),
+        "derogation_status": text("estatus_derogacion"),
+        "annulment_status": text("estatus_anulacion"),
+        "expired_validity": text("vigencia_agotada"),
+        "legal_status_notice": LEGAL_STATUS_NOTICE,
+    }
+
+
+# --------------------------------------------------------------------------- #
+# Análisis
+# --------------------------------------------------------------------------- #
+
+
+def _parse_references(parent: etree._Element | None, child_tag: str) -> list[dict]:
+    if parent is None:
+        return []
+    references = []
+    for ref in parent.findall(child_tag):
+        references.append(
+            {
+                "target_norm_id": clean_text(ref.findtext("id_norma")) or None,
+                "relation": _coded(ref.find("relacion")),
+                "text": clean_text(ref.findtext("texto")),
+            }
+        )
+    return references
+
+
+def parse_analysis(data: etree._Element) -> dict:
+    """Mapea `data/analisis` al bloque `analysis` del contrato."""
+    analysis = data.find("analisis")
+    if analysis is None:
+        return {"subjects": [], "notes": [], "references": {"previous": [], "next": []}}
+
+    subjects = [
+        {"code": m.get("codigo"), "label": clean_text(m.text)}
+        for m in analysis.findall("materias/materia")
+    ]
+    notes = [{"text": clean_text(n.text)} for n in analysis.findall("notas/nota")]
+
+    references = analysis.find("referencias")
+    previous = next_refs = []
+    if references is not None:
+        previous = _parse_references(references.find("anteriores"), "anterior")
+        next_refs = _parse_references(references.find("posteriores"), "posterior")
+
+    return {
+        "subjects": subjects,
+        "notes": notes,
+        "references": {"previous": previous, "next": next_refs},
+    }
+
+
+# --------------------------------------------------------------------------- #
+# Índice
+# --------------------------------------------------------------------------- #
+
+
+def parse_index(data: etree._Element) -> list[dict]:
+    """Mapea los `bloque` de `indice.xml` a una lista ordenada."""
+    blocks = []
+    for order, bloque in enumerate(data.findall("bloque")):
+        raw_update = clean_text(bloque.findtext("fecha_actualizacion")) or None
+        blocks.append(
+            {
+                "block_id": clean_text(bloque.findtext("id")),
+                "index_title": clean_text(bloque.findtext("titulo")) or None,
+                "index_last_update_date": normalize_date(bloque.findtext("fecha_actualizacion")),
+                "index_last_update_date_raw": raw_update,
+                "index_url": clean_text(bloque.findtext("url")) or None,
+                "order": order,
+            }
+        )
+    return blocks
+
+
+# --------------------------------------------------------------------------- #
+# Texto / bloques
+# --------------------------------------------------------------------------- #
+
+
+def _parse_version_paragraphs(version: etree._Element) -> tuple[list[dict], list[dict]]:
+    """Separa los `<p>` de una versión en párrafos normativos y notas de modificación."""
+    paragraphs: list[dict] = []
+    notes: list[dict] = []
+    for p in version.iter("p"):
+        css = p.get("class") or ""
+        text = _element_text(p)
+        if not text:
+            continue
+        if css in NOTE_CLASSES:
+            notes.append({"text": text, "target_norm_id": _extract_norm_id(text)})
+        else:
+            paragraphs.append({"order": len(paragraphs) + 1, "class": css, "text": text})
+    return paragraphs, notes
+
+
+def _full_title(block_type: str, paragraphs: list[dict]) -> str | None:
+    """Cabecera legible, acotada al prefijo estructural inicial del bloque.
+
+    Si el primer párrafo es `articulo`, se devuelve (preceptos y disposiciones). Si no,
+    solo para `encabezado` se compone desde el run inicial de párrafos estructurales
+    (nunca desde el cuerpo del bloque).
+    """
+    if not paragraphs:
+        return None
+    if paragraphs[0].get("class") == "articulo":
+        return paragraphs[0]["text"]
+    if block_type != "encabezado":
+        return None
+
+    prefix: dict[str, str] = {}
+    for p in paragraphs:
+        if p.get("class") in STRUCTURAL_LABEL_CLASSES:
+            prefix.setdefault(p["class"], p["text"])
+        else:
+            break
+    for num, tit in (
+        ("libro_num", "libro_tit"),
+        ("titulo_num", "titulo_tit"),
+        ("capitulo_num", "capitulo_tit"),
+        ("anexo_num", "anexo_tit"),
+    ):
+        if num in prefix:
+            parts = [prefix[num], prefix.get(tit, "")]
+            return clean_text(". ".join(x for x in parts if x))
+    for single in ("seccion", "subseccion", "libro", "titulo", "capitulo", "anexo"):
+        if single in prefix:
+            return prefix[single]
+    return None
+
+
+def _block_semantics(
+    block_type: str,
+    paragraphs: list[dict],
+    contains_image: bool,
+    raw_has_table: bool,
+) -> dict:
+    """Calcula rol semántico, indexabilidad de cuerpo y flags de contenido del bloque."""
+    table_classes = any(is_table_class(p.get("class") or "") for p in paragraphs)
+    contains_table = raw_has_table or table_classes
+    table_text_available = table_classes  # celdas linealizadas a <p>
+
+    has_anexo_num = any(p.get("class") == "anexo_num" for p in paragraphs)
+    singular_annex = any(
+        p.get("class") == "anexo" and (p.get("text") or "").strip().upper().startswith("ANEXO")
+        for p in paragraphs
+    )
+    is_annex = has_anexo_num or singular_annex
+    annex_is_local = singular_annex and not has_anexo_num
+    has_body = heading_has_retrievable_body(paragraphs)
+
+    if block_type == "precepto":
+        role = "precept"
+    elif block_type == "preambulo":
+        role = "preamble"
+    elif block_type == "firma":
+        role = "signature"
+    elif block_type == "nota_inicial":
+        role = "initial_note"
+    elif block_type == "encabezado":
+        if has_body and is_annex:
+            role = "annex"
+        elif has_body:
+            role = "content_heading"
+        else:
+            role = "structural_heading"
+    else:
+        role = block_type
+
+    return {
+        "semantic_role": role,
+        "has_retrievable_body": has_body,
+        "is_annex": is_annex,
+        "contains_table": contains_table,
+        "table_text_available": table_text_available,
+        "contains_image": contains_image,
+        "_annex_is_local": annex_is_local,
+    }
+
+
+def parse_text_blocks(
+    data: etree._Element,
+    index_dates: dict[str, str | None] | None = None,
+    index_dates_invalid: set[str] | None = None,
+) -> tuple[dict[str, dict], list[str], list[str]]:
+    """Mapea `data/texto/bloque[]`. Devuelve (bloques_por_id, orden_ids, warnings).
+
+    `index_dates` mapea `block_id -> fecha_actualizacion` (ISO) de `indice.xml`; es el único
+    criterio de vigencia. Los bloques cuya versión vigente no se resuelve de forma exacta y
+    única pasan a **cuarentena** (`latest_version=null`, sin párrafos), conservando `versions[]`
+    para diagnóstico. `index_dates_invalid` lista bloques cuya fecha de índice venía pero no era
+    normalizable (estado `invalid_date`).
+    """
+    texto = data.find("texto")
+    if texto is None:
+        raise ParsingError("Falta el nodo 'texto' en el XML de texto")
+
+    index_dates = index_dates or {}
+    index_dates_invalid = index_dates_invalid or set()
+
+    blocks: dict[str, dict] = {}
+    order_ids: list[str] = []
+    warnings: list[str] = []
+
+    for bloque in texto.findall("bloque"):
+        block_id = bloque.get("id")
+        block_type = bloque.get("tipo")
+        title_attr = bloque.get("titulo")
+        block_title = clean_text(title_attr) if title_attr else None
+        version_elements = bloque.findall("version")
+
+        versions = []
+        for v in version_elements:
+            versions.append(
+                {
+                    "source_norm_id": v.get("id_norma"),
+                    "publication_date": normalize_date(v.get("fecha_publicacion")),
+                    "validity_date": normalize_date(v.get("fecha_vigencia")),
+                    "is_latest": False,
+                }
+            )
+
+        # Resolución temporal estricta: la vigencia la decide el índice, no el orden XML.
+        temporal = resolve_current_version(versions, index_dates.get(block_id))
+        status = temporal["status"]
+        if status == "missing_index_date" and block_id in index_dates_invalid:
+            temporal["status"] = status = "invalid_date"
+            temporal["warnings"] = ["invalid_index_date"]
+        raw_pubs = [v.get("fecha_publicacion") for v in version_elements]
+        if status != "resolved" and any(rp and normalize_date(rp) is None for rp in raw_pubs):
+            temporal["warnings"] = [*temporal["warnings"], "invalid_publication_date"]
+        if version_elements and any(not rp for rp in raw_pubs):
+            temporal["warnings"] = [*temporal["warnings"], "missing_publication_date"]
+
+        # Aviso informativo de orden XML no cronológico (no es criterio de vigencia).
+        pub_dates = [v["publication_date"] for v in versions]
+        if version_elements and all(pub_dates) and pub_dates != sorted(pub_dates):
+            warnings.append(f"{block_id}: orden XML de versiones no cronológico")
+        if status != "resolved":
+            warnings.append(f"{block_id}: cuarentena temporal ({status})")
+
+        sel = temporal["selected_version_index"]
+        paragraphs: list[dict] = []
+        notes: list[dict] = []
+        latest_version = None
+        if sel is not None:
+            versions[sel]["is_latest"] = True
+            paragraphs, notes = _parse_version_paragraphs(version_elements[sel])
+            chosen = versions[sel]
+            latest_version = {
+                "source_norm_id": chosen["source_norm_id"],
+                "publication_date": chosen["publication_date"],
+                "validity_date": chosen["validity_date"],
+                "text": "\n".join(p["text"] for p in paragraphs),
+                "paragraphs": paragraphs,
+                "modification_notes": notes,
+            }
+
+        semantics = _block_semantics(
+            block_type,
+            paragraphs,
+            contains_image=bloque.find(".//img") is not None,
+            raw_has_table=bloque.find(".//table") is not None,
+        )
+        without_content = is_without_content(paragraphs)
+        blocks[block_id] = {
+            "block_id": block_id,
+            "block_type": block_type,
+            "block_title": block_title,
+            "full_title": _full_title(block_type, paragraphs),
+            "versions": versions,
+            "latest_version": latest_version,
+            "temporal_resolution": temporal,
+            "temporal_quarantined": sel is None,
+            "content_status": "without_content" if without_content else "present",
+            "is_without_content": without_content,
+            **semantics,
+        }
+        order_ids.append(block_id)
+
+    return blocks, order_ids, warnings
+
+
+# --------------------------------------------------------------------------- #
+# Jerarquía y retrieval
+# --------------------------------------------------------------------------- #
+
+
+def _update_hierarchy(state: dict, text_block: dict) -> None:
+    """Actualiza el estado jerárquico (6 niveles) con un bloque `encabezado`.
+
+    Solo usa clases inequívocas (`*_num`, `seccion`, `subseccion`). Cada nivel reinicia los
+    inferiores y `annex`; un `anexo_num` reinicia toda la parte articulada (mutuamente
+    excluyentes).
+    """
+    if not text_block or text_block.get("block_type") != "encabezado":
+        return
+    latest = text_block.get("latest_version")
+    if not latest:  # bloque en cuarentena temporal: no aporta jerarquía
+        return
+    classes = {p["class"]: p["text"] for p in latest["paragraphs"]}
+    if "libro_num" in classes:
+        state.update(
+            book=classes["libro_num"],
+            title=None,
+            chapter=None,
+            section=None,
+            subsection=None,
+            annex=None,
+        )
+    elif "titulo_num" in classes:
+        state.update(
+            title=classes["titulo_num"], chapter=None, section=None, subsection=None, annex=None
+        )
+    elif "capitulo_num" in classes:
+        state.update(chapter=classes["capitulo_num"], section=None, subsection=None, annex=None)
+    elif "seccion" in classes:
+        state.update(section=classes["seccion"], subsection=None, annex=None)
+    elif "subseccion" in classes:
+        state.update(subsection=classes["subseccion"], annex=None)
+    elif "anexo_num" in classes:
+        state.update(
+            annex=classes["anexo_num"],
+            book=None,
+            title=None,
+            chapter=None,
+            section=None,
+            subsection=None,
+        )
+
+
+def _lower_first(value: str) -> str:
+    """Minúscula la inicial solo si la palabra es title-case (evita TÍTULO/CAPÍTULO)."""
+    if len(value) >= 2 and value[1].islower():
+        return value[0].lower() + value[1:]
+    return value
+
+
+def build_retrieval(
+    document_id: str,
+    html_url: str | None,
+    short_title: str | None,
+    block: dict,
+) -> dict:
+    """Construye el sub-objeto `retrieval` de un bloque."""
+    block_id = block["block_id"]
+    block_title = block.get("block_title")
+    latest = block.get("latest_version") or {}
+    text = latest.get("text") or ""
+    label_base = short_title or document_id
+
+    if block_title:
+        citation_label = f"{label_base}, {_lower_first(block_title)}"
+    else:
+        citation_label = label_base
+
+    source_url = f"{html_url}#{block_id}" if html_url else None
+    quarantined = block.get("temporal_quarantined", False)
+    indexable = (
+        block.get("has_retrievable_body", False)
+        and block.get("block_type") not in EXCLUDED_TYPES
+        and bool(text)
+        and not quarantined
+    )
+    retrieval_text = clean_text(f"{label_base}. {text}") if text else label_base
+
+    excluded_reason = None
+    if quarantined:
+        status = (block.get("temporal_resolution") or {}).get("status")
+        excluded_reason = f"temporal_quarantine:{status}"
+    elif not indexable:
+        if block.get("block_type") in EXCLUDED_TYPES:
+            excluded_reason = f"excluded_type:{block.get('block_type')}"
+        elif not block.get("has_retrievable_body", False):
+            excluded_reason = "no_retrievable_body"
+
+    return {
+        "indexable": indexable,
+        "retrieval_text": retrieval_text,
+        "citation_label": citation_label,
+        "source_url": source_url,
+        "excluded_reason": excluded_reason,
+    }
+
+
+# --------------------------------------------------------------------------- #
+# Ensamblado
+# --------------------------------------------------------------------------- #
+
+
+def parse_boe_document(norm_id: str, raw_dir: Path, manifest_path: Path) -> dict:
+    """Parsea los XML raw locales de una norma al contrato `boe_legal_document_v1`."""
+    raw_dir = Path(raw_dir)
+    manifest_path = Path(manifest_path)
+    norm_dir = raw_dir / norm_id
+
+    paths = {name: norm_dir / name for name in REQUIRED_RAW_FILES}
+    raw_files_present = (
+        all(paths[name].is_file() for name in MANDATORY_RAW_FILES) and manifest_path.is_file()
+    )
+
+    data_metadatos = validate_response(load_xml(paths["metadatos.xml"]), paths["metadatos.xml"])
+    data_indice = validate_response(load_xml(paths["indice.xml"]), paths["indice.xml"])
+    data_texto = validate_response(load_xml(paths["texto.xml"]), paths["texto.xml"])
+
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+
+    metadata = parse_metadata(data_metadatos)
+    # `analisis.xml` es opcional: si no está, el análisis queda vacío.
+    if paths["analisis.xml"].is_file():
+        data_analisis = validate_response(load_xml(paths["analisis.xml"]), paths["analisis.xml"])
+        analysis = parse_analysis(data_analisis)
+    else:
+        analysis = {"subjects": [], "notes": [], "references": {"previous": [], "next": []}}
+    index_blocks = parse_index(data_indice)
+    index_dates = {b["block_id"]: b["index_last_update_date"] for b in index_blocks}
+    index_dates_invalid = {
+        b["block_id"]
+        for b in index_blocks
+        if b["index_last_update_date"] is None and b.get("index_last_update_date_raw")
+    }
+    text_blocks, text_order, warnings = parse_text_blocks(
+        data_texto, index_dates, index_dates_invalid
+    )
+
+    document_id = metadata.get("identifier") or norm_id
+    html_url = metadata.get("html_url")
+    short_title = metadata.get("short_title")
+
+    index_ids = [b["block_id"] for b in index_blocks]
+    index_id_set = set(index_ids)
+    text_id_set = set(text_blocks)
+    unmatched_index_blocks = [bid for bid in index_ids if bid not in text_id_set]
+    unmatched_text_blocks = [bid for bid in text_order if bid not in index_id_set]
+
+    # Orden documental: primero el índice; al final, bloques de texto sin entrada en índice.
+    ordered_index = list(index_blocks)
+    next_order = len(ordered_index)
+    for bid in unmatched_text_blocks:
+        ordered_index.append({"block_id": bid, "order": next_order})
+        next_order += 1
+
+    hierarchy_state = {
+        "book": None,
+        "title": None,
+        "chapter": None,
+        "section": None,
+        "subsection": None,
+        "annex": None,
+    }
+    blocks: list[dict] = []
+    for index_entry in ordered_index:
+        block_id = index_entry["block_id"]
+        text_block = text_blocks.get(block_id)
+        _update_hierarchy(hierarchy_state, text_block)
+
+        hierarchy = dict(hierarchy_state)
+        # Anexo singular (clase `anexo`, no `anexo_num`): contexto local no propagado.
+        if text_block and text_block.get("_annex_is_local"):
+            hierarchy["annex"] = text_block.get("full_title") or text_block.get("block_title")
+
+        block = {
+            "block_id": block_id,
+            "parent_id": f"{document_id}__{block_id}",
+            "order": index_entry["order"],
+            "block_type": text_block["block_type"] if text_block else None,
+            "block_title": text_block["block_title"] if text_block else None,
+            "full_title": text_block["full_title"] if text_block else None,
+            "semantic_role": text_block["semantic_role"] if text_block else None,
+            "has_retrievable_body": text_block["has_retrievable_body"] if text_block else False,
+            "is_annex": text_block["is_annex"] if text_block else False,
+            "contains_table": text_block["contains_table"] if text_block else False,
+            "table_text_available": text_block["table_text_available"] if text_block else False,
+            "contains_image": text_block["contains_image"] if text_block else False,
+            "content_status": text_block["content_status"] if text_block else "present",
+            "is_without_content": text_block["is_without_content"] if text_block else False,
+            "temporal_resolution": text_block["temporal_resolution"] if text_block else None,
+            "temporal_quarantined": text_block["temporal_quarantined"] if text_block else False,
+            "index_title": index_entry.get("index_title"),
+            "index_url": index_entry.get("index_url"),
+            "index_last_update_date": index_entry.get("index_last_update_date"),
+            "hierarchy": hierarchy,
+            "versions": text_block["versions"] if text_block else [],
+            "latest_version": text_block["latest_version"] if text_block else None,
+        }
+        block["retrieval"] = build_retrieval(document_id, html_url, short_title, block)
+        blocks.append(block)
+
+    temporal_quarantine_blocks = [
+        bid for bid, tb in text_blocks.items() if tb.get("temporal_quarantined")
+    ]
+    quality_checks = {
+        "raw_files_present": raw_files_present,
+        "metadata_ok": bool(metadata.get("title") and metadata.get("identifier")),
+        "index_blocks_count": len(index_blocks),
+        "text_blocks_count": len(text_blocks),
+        "unmatched_index_blocks": unmatched_index_blocks,
+        "unmatched_text_blocks": unmatched_text_blocks,
+        "temporal_quarantine_blocks": temporal_quarantine_blocks,
+        "warnings": warnings,
+    }
+
+    return {
+        "schema_version": SCHEMA_VERSION,
+        "document_id": document_id,
+        "source": {
+            "name": SOURCE_NAME,
+            "base_url": manifest.get("base_url"),
+            "downloaded_at": manifest.get("downloaded_at"),
+            "raw_manifest_path": manifest_path.as_posix(),
+        },
+        "metadata": metadata,
+        "analysis": analysis,
+        "blocks": blocks,
+        "quality_checks": quality_checks,
+    }
+
+
+def save_processed_document(document: dict, output_dir: Path) -> Path:
+    """Persiste el documento procesado como `{document_id}.json`."""
+    output_dir = Path(output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
+    out_path = output_dir / f"{document['document_id']}.json"
+    out_path.write_text(
+        json.dumps(document, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+    return out_path

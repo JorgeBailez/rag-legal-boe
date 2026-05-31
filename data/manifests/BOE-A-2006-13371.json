@@ -1,0 +1,44 @@
+{
+  "norm_id": "BOE-A-2006-13371",
+  "source": "BOE legislación consolidada",
+  "base_url": "https://www.boe.es/datosabiertos/api",
+  "downloaded_at": "2026-05-30T13:26:51.039579+00:00",
+  "files": [
+    {
+      "endpoint_name": "full",
+      "path": "data/raw/boe/BOE-A-2006-13371/full.xml",
+      "sha256": "9ee27190c42d740e17137322970f6af54ebe0bd3ce4e9b6fef43df2edb62b7a5",
+      "size_bytes": 319166
+    },
+    {
+      "endpoint_name": "metadatos",
+      "path": "data/raw/boe/BOE-A-2006-13371/metadatos.xml",
+      "sha256": "8909539691b70a50bcfca44a996d99bd21b22780e06d3490dfdfec66964aee0e",
+      "size_bytes": 1318
+    },
+    {
+      "endpoint_name": "analisis",
+      "path": "data/raw/boe/BOE-A-2006-13371/analisis.xml",
+      "sha256": "16b9872570332f594afd10ed2c494bef6548bb37172d3c3d858c4060ef1871b9",
+      "size_bytes": 6788
+    },
+    {
+      "endpoint_name": "metadata_eli",
+      "path": "data/raw/boe/BOE-A-2006-13371/metadata_eli.xml",
+      "sha256": "8f383fdfc9fd443c01fd8f4880380e402cec4222a3309ade144bb585c1fb5665",
+      "size_bytes": 22821
+    },
+    {
+      "endpoint_name": "texto",
+      "path": "data/raw/boe/BOE-A-2006-13371/texto.xml",
+      "sha256": "25d9f1254097abd7bb37bf50ac48779e08b7549138f1a61cdc56e52fbba9198f",
+      "size_bytes": 288674
+    },
+    {
+      "endpoint_name": "indice",
+      "path": "data/raw/boe/BOE-A-2006-13371/indice.xml",
+      "sha256": "a1a7ec842f19b7c165cb1a2afbf4890dcb489467b4c83f13cc6b156509a2f8cf",
+      "size_bytes": 44383
+    }
+  ]
+}
