@@ -28,7 +28,9 @@ Desktop.ini
 .idea/
 .vscode/
 
-# Documentación/andamiaje para IA — NO publicar (se elimina del trabajo final; queda en local)
+# Documentación interna/operativa — decisión del autor: NO versionar (se mantiene en local).
+# CLAUDE.md y ARCHITECTURE.md son guías operativas; docs/ es documentación técnica detallada.
+# Se conservan en el disco de trabajo pero no se publican en GitHub.
 .claude/
 CLAUDE.md
 ARCHITECTURE.md
@@ -39,6 +41,10 @@ data/raw/boe/*
 !data/raw/boe/.gitkeep
 data/processed/documents/*
 !data/processed/documents/.gitkeep
+data/processed/histories/*
+!data/processed/histories/.gitkeep
+data/processed/parents/*
+!data/processed/parents/.gitkeep
 data/processed/chunks/*
 !data/processed/chunks/.gitkeep
 data/processed/reports/*

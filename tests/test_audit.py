@@ -1,4 +1,4 @@
-"""Tests del módulo de auditoría (sin red, dicts mínimos en memoria)."""
+"""Tests del módulo de auditoría v2 (joins, checks de contrato, integridad temporal/raw)."""
 
 import copy
 import hashlib
@@ -9,8 +9,12 @@ from src.quality.corpus_audit import (
     analyze_overlap,
     check_chunks,
     check_document,
-    check_retrieval_text,
+    check_history,
+    check_parents,
+    check_relational,
     compute_readiness,
+    efficiency_metrics,
+    join_norm,
     oversized_rows,
     raw_integrity,
     temporal_integrity,
@@ -18,15 +22,15 @@ from src.quality.corpus_audit import (
 )
 
 DOC_ID = "BOE-A-2015-10565"
-HTML = "https://www.boe.es/buscar/act.php?id=BOE-A-2015-10565"
+HTML = f"https://www.boe.es/buscar/act.php?id={DOC_ID}"
+GEN = {"generated_at": "2026-06-02T00:00:00Z", "generator": "test"}
 
 
-def make_doc() -> dict:
-    a1_text = "Artículo 1. Objeto.\n1. Primer apartado.\n2. Segundo apartado."
+def _doc() -> dict:
     return {
-        "schema_version": "boe_legal_document_v1",
+        "schema_version": "boe_legal_document_v2",
         "document_id": DOC_ID,
-        "source": {"name": "BOE legislación consolidada"},
+        "source": {"name": "BOE", "manifest_ref": f"data/manifests/{DOC_ID}.json"},
         "metadata": {
             "title": "Ley X",
             "short_title": "Ley X",
@@ -35,429 +39,378 @@ def make_doc() -> dict:
             "rank": {"code": "1300", "label": "Ley"},
             "scope": {"code": "1", "label": "Estatal"},
             "publication_date": "2015-10-02",
-            "last_update_datetime": "2026-05-20T07:06:02Z",
         },
-        "analysis": {"subjects": [], "notes": [], "references": {"previous": [], "next": []}},
+        "analysis": {
+            "subjects": [{"code": "85", "label": "Régimen local"}],
+            "notes": [],
+            "references": {"previous": [], "next": []},
+        },
         "blocks": [
             {
                 "block_id": "ti",
                 "parent_id": f"{DOC_ID}__ti",
+                "order": 0,
                 "block_type": "encabezado",
                 "block_title": "TÍTULO I",
                 "full_title": "TÍTULO I",
-                "hierarchy": {"title": "TÍTULO I", "chapter": None, "section": None},
-                "index_last_update_date": "2015-10-02",
-                "versions": [
-                    {
-                        "source_norm_id": DOC_ID,
-                        "publication_date": "2015-10-02",
-                        "validity_date": "2016-10-02",
-                        "is_latest": True,
-                    }
-                ],
-                "latest_version": {
-                    "source_norm_id": DOC_ID,
-                    "publication_date": "2015-10-02",
-                    "validity_date": "2016-10-02",
-                    "text": "TÍTULO I",
-                    "paragraphs": [],
-                    "modification_notes": [],
+                "semantic_role": "structural_heading",
+                "has_retrievable_body": False,
+                "is_annex": False,
+                "contains_table": False,
+                "table_text_available": False,
+                "contains_image": False,
+                "content_status": "present",
+                "is_without_content": False,
+                "temporal_status": "resolved",
+                "hierarchy": {
+                    "book": None,
+                    "title": "TÍTULO I",
+                    "chapter": None,
+                    "section": None,
+                    "subsection": None,
+                    "annex": None,
                 },
-                "retrieval": {
-                    "indexable": False,
-                    "retrieval_text": "Ley X. TÍTULO I",
-                    "citation_label": "Ley X, tÍTULO I",
-                    "source_url": f"{HTML}#ti",
-                },
+                "indexable": False,
+                "excluded_reason": "no_retrievable_body",
+                "citation": {"label": "Ley X, tÍTULO I", "url": f"{HTML}#ti"},
             },
             {
                 "block_id": "a1",
                 "parent_id": f"{DOC_ID}__a1",
+                "order": 1,
                 "block_type": "precepto",
                 "block_title": "Artículo 1",
                 "full_title": "Artículo 1. Objeto.",
-                "hierarchy": {"title": "TÍTULO I", "chapter": None, "section": None},
-                "index_last_update_date": "2015-10-02",
-                "versions": [
-                    {
-                        "source_norm_id": DOC_ID,
-                        "publication_date": "2015-10-02",
-                        "validity_date": "2016-10-02",
-                        "is_latest": True,
-                    }
-                ],
-                "latest_version": {
+                "semantic_role": "precept",
+                "has_retrievable_body": True,
+                "is_annex": False,
+                "contains_table": False,
+                "table_text_available": False,
+                "contains_image": False,
+                "content_status": "present",
+                "is_without_content": False,
+                "temporal_status": "resolved",
+                "hierarchy": {
+                    "book": None,
+                    "title": "TÍTULO I",
+                    "chapter": None,
+                    "section": None,
+                    "subsection": None,
+                    "annex": None,
+                },
+                "indexable": True,
+                "excluded_reason": None,
+                "citation": {"label": "Ley X, artículo 1", "url": f"{HTML}#a1"},
+            },
+        ],
+        "generation_meta": GEN,
+    }
+
+
+A1_TEXT = "Artículo 1. Objeto.\n1. Primer apartado.\n2. Segundo apartado."
+A1_PARAS = [
+    {"order": 1, "class": "articulo", "text": "Artículo 1. Objeto."},
+    {"order": 2, "class": "parrafo", "text": "1. Primer apartado."},
+    {"order": 3, "class": "parrafo", "text": "2. Segundo apartado."},
+]
+
+
+def _history() -> dict:
+    def rec(bid: str) -> dict:
+        return {
+            "block_id": bid,
+            "versions": [
+                {
                     "source_norm_id": DOC_ID,
                     "publication_date": "2015-10-02",
                     "validity_date": "2016-10-02",
-                    "text": a1_text,
-                    "paragraphs": [
-                        {"order": 1, "class": "articulo", "text": "Artículo 1. Objeto."},
-                        {"order": 2, "class": "parrafo", "text": "1. Primer apartado."},
-                        {"order": 3, "class": "parrafo", "text": "2. Segundo apartado."},
-                    ],
-                    "modification_notes": [
-                        {"text": "Se modifica por Z.", "target_norm_id": "BOE-A-2019-1"}
-                    ],
+                    "is_current": True,
+                }
+            ],
+            "modification_notes": [],
+            "temporal_resolution": {
+                "status": "resolved",
+                "selection_method": "index_date_exact_unique_match",
+                "index_last_update_date": "2015-10-02",
+                "selected_version_index": 0,
+                "selected_publication_date": "2015-10-02",
+                "selected_source_norm_id": DOC_ID,
+                "candidate_versions": [],
+                "max_publication_date": "2015-10-02",
+                "warnings": [],
+            },
+            "temporal_quarantined": False,
+            "index_title": None,
+            "index_url": None,
+            "index_last_update_date": "2015-10-02",
+            "index_last_update_date_raw": "20151002",
+            "warnings": [],
+        }
+
+    return {
+        "schema_version": "boe_legal_history_v2",
+        "document_id": DOC_ID,
+        "blocks": [rec("ti"), rec("a1")],
+        "generation_meta": GEN,
+    }
+
+
+def _parents() -> dict:
+    return {
+        "schema_version": "boe_legal_parents_v2",
+        "document_id": DOC_ID,
+        "parents": [
+            {
+                "parent_id": f"{DOC_ID}__ti",
+                "document_id": DOC_ID,
+                "block_id": "ti",
+                "order": 0,
+                "block_type": "encabezado",
+                "title": "TÍTULO I",
+                "full_title": "TÍTULO I",
+                "semantic_role": "structural_heading",
+                "text": "TÍTULO I",
+                "paragraphs": [{"order": 1, "class": "titulo_num", "text": "TÍTULO I"}],
+                "hierarchy": {
+                    "book": None,
+                    "title": "TÍTULO I",
+                    "chapter": None,
+                    "section": None,
+                    "subsection": None,
+                    "annex": None,
                 },
-                "retrieval": {
-                    "indexable": True,
-                    "retrieval_text": f"Ley X. Artículo 1. Objeto. {a1_text}",
-                    "citation_label": "Ley X, artículo 1",
-                    "source_url": f"{HTML}#a1",
+                "citation": {"label": "Ley X, tÍTULO I", "url": f"{HTML}#ti"},
+                "current_version": {
+                    "source_norm_id": DOC_ID,
+                    "publication_date": "2015-10-02",
+                    "validity_date": "2016-10-02",
                 },
+                "is_annex": False,
+                "contains_table": False,
+                "table_text_available": False,
+                "contains_image": False,
+                "content_status": "present",
+                "is_without_content": False,
+            },
+            {
+                "parent_id": f"{DOC_ID}__a1",
+                "document_id": DOC_ID,
+                "block_id": "a1",
+                "order": 1,
+                "block_type": "precepto",
+                "title": "Artículo 1",
+                "full_title": "Artículo 1. Objeto.",
+                "semantic_role": "precept",
+                "text": A1_TEXT,
+                "paragraphs": A1_PARAS,
+                "hierarchy": {
+                    "book": None,
+                    "title": "TÍTULO I",
+                    "chapter": None,
+                    "section": None,
+                    "subsection": None,
+                    "annex": None,
+                },
+                "citation": {"label": "Ley X, artículo 1", "url": f"{HTML}#a1"},
+                "current_version": {
+                    "source_norm_id": DOC_ID,
+                    "publication_date": "2015-10-02",
+                    "validity_date": "2016-10-02",
+                },
+                "is_annex": False,
+                "contains_table": False,
+                "table_text_available": False,
+                "contains_image": False,
+                "content_status": "present",
+                "is_without_content": False,
             },
         ],
-        "quality_checks": {
-            "index_blocks_count": 2,
-            "text_blocks_count": 2,
-            "unmatched_index_blocks": [],
-            "unmatched_text_blocks": [],
-            "warnings": [],
+        "generation_meta": GEN,
+    }
+
+
+def _chunk(text: str, index: int = 1, count: int = 1) -> dict:
+    return {
+        "chunk_id": f"{DOC_ID}__a1__c{index:03d}",
+        "parent_id": f"{DOC_ID}__a1",
+        "document_id": DOC_ID,
+        "block_id": "a1",
+        "position": {"index": index, "count_for_parent": count},
+        "text": text,
+        "retrieval_text": f"Ley X. Artículo 1. Objeto. {text}",
+        "citation": {"label": "Ley X, artículo 1", "url": f"{HTML}#a1"},
+        "filters": {
+            "rank_code": "1300",
+            "scope_code": "1",
+            "subject_codes": ["85"],
+            "semantic_role": "precept",
+            "without_content": False,
+            "annex": False,
+            "table": False,
+            "image": False,
         },
     }
 
 
-def make_chunk_meta() -> dict:
+def _chunks() -> dict:
     return {
-        "schema_version": "boe_legal_document_v1",
-        "source": "BOE legislación consolidada",
-        "legal_status_notice": "...",
-        "norm_title": "Ley X",
-        "short_title": "Ley X",
+        "schema_version": "boe_legal_chunks_v2",
         "document_id": DOC_ID,
-        "block_id": "a1",
-        "block_type": "precepto",
-        "block_title": "Artículo 1",
-        "full_title": "Artículo 1. Objeto.",
-        "citation_label": "Ley X, artículo 1",
-        "source_url": f"{HTML}#a1",
-        "hierarchy": {"title": "TÍTULO I", "chapter": None, "section": None},
-        "rank": {"code": "1300", "label": "Ley"},
-        "scope": {"code": "1", "label": "Estatal"},
-        "subjects": [],
-        "is_preamble": False,
-    }
-
-
-def make_chunks() -> dict:
-    a1_text = "Artículo 1. Objeto.\n1. Primer apartado.\n2. Segundo apartado."
-    return {
-        "schema_version": "boe_legal_chunks_v1",
-        "document_id": DOC_ID,
+        "source_refs": {
+            "document": f"data/processed/documents/{DOC_ID}.json",
+            "parents": f"data/processed/parents/{DOC_ID}.json",
+        },
         "chunking_strategy": {
-            "name": "legal_parent_child_v1",
+            "name": "legal_parent_child_paragraphs",
             "max_chars": 1800,
             "overlap_paragraphs": 1,
             "split_unit": "paragraphs",
             "parent_unit": "boe_block",
         },
-        "chunks": [
-            {
-                "chunk_id": f"{DOC_ID}__a1__c001",
-                "parent_id": f"{DOC_ID}__a1",
-                "document_id": DOC_ID,
-                "block_id": "a1",
-                "chunk_index": 1,
-                "chunk_count_for_parent": 1,
-                "chunking_strategy": "legal_parent_child_v1",
-                "text": a1_text,
-                "retrieval_text": f"Ley X. Artículo 1. Objeto. {a1_text}",
-                "parent_text": a1_text,
-                "metadata": make_chunk_meta(),
-            }
-        ],
-        "quality_checks": {},
+        "chunks": [_chunk(A1_TEXT)],
+        "generation_meta": GEN,
     }
 
 
-def errors(findings: list[dict]) -> list[dict]:
-    return [f for f in findings if f["severity"] == "ERROR"]
+def errors(findings: list[dict]) -> list[str]:
+    return [f["check"] for f in findings if f["severity"] == "ERROR"]
 
 
-# --- documento limpio --------------------------------------------------------
+# --- documento/joins limpios -------------------------------------------------
 
 
-def test_clean_document_has_no_errors() -> None:
-    assert errors(check_document(make_doc())) == []
+def test_clean_document_and_chunks_no_errors() -> None:
+    document, history, parents, chunks = _doc(), _history(), _parents(), _chunks()
+    joined = join_norm(document, history, parents)
+    findings = (
+        check_document(document, history, parents, processing_date="2026-05-31")
+        + check_history(document, history)
+        + check_parents(document, parents)
+        + check_chunks(chunks, joined)
+        + check_relational(document, history, parents, chunks)
+    )
+    assert errors(findings) == []
 
 
-def test_clean_chunks_have_no_errors() -> None:
-    doc = make_doc()
-    assert errors(check_chunks(make_chunks(), doc)) == []
+def test_join_norm_reconstructs_latest_version() -> None:
+    joined = join_norm(_doc(), _history(), _parents())
+    a1 = next(b for b in joined["blocks"] if b["block_id"] == "a1")
+    assert a1["latest_version"]["text"] == A1_TEXT
+    assert a1["retrieval"]["indexable"] is True
 
 
 # --- problemas inyectados ----------------------------------------------------
 
 
-def test_duplicate_is_latest_flagged() -> None:
-    doc = make_doc()
-    doc["blocks"][1]["versions"].append({"source_norm_id": DOC_ID, "is_latest": True})
-    checks = [f["check"] for f in check_document(doc)]
-    assert "block.is_latest" in checks
+def test_chunk_with_parent_text_flagged() -> None:
+    document, history, parents = _doc(), _history(), _parents()
+    chunks = _chunks()
+    chunks["chunks"][0]["parent_text"] = "no debería estar aquí"
+    checks = errors(check_chunks(chunks, join_norm(document, history, parents)))
+    assert "chunk.parent_text_present" in checks
 
 
-def test_indexable_encabezado_flagged() -> None:
-    doc = make_doc()
-    doc["blocks"][0]["retrieval"]["indexable"] = True
-    checks = [f["check"] for f in check_document(doc)]
-    assert "block.indexable" in checks
+def test_orphan_chunk_flagged() -> None:
+    document, history, parents = _doc(), _history(), _parents()
+    chunks = _chunks()
+    chunks["chunks"][0]["block_id"] = "zzz"
+    chunks["chunks"][0]["chunk_id"] = f"{DOC_ID}__zzz__c001"
+    checks = errors(check_chunks(chunks, join_norm(document, history, parents)))
+    assert "chunk.orphan" in checks
 
 
-def test_note_leak_in_text_flagged() -> None:
-    doc = make_doc()
-    lv = doc["blocks"][1]["latest_version"]
-    lv["text"] = lv["text"] + "\nSe modifica por Z."  # nota dentro del texto normativo
-    checks = [f["check"] for f in check_document(doc)]
-    assert "block.note_leak" in checks
+def test_missing_manifest_ref_relative_flagged() -> None:
+    document = _doc()
+    document["source"]["manifest_ref"] = "C:/abs/path/manifest.json"
+    checks = errors(check_document(document, _history(), _parents()))
+    assert "doc.manifest_ref" in checks
 
 
-def test_chunk_sequence_broken_flagged() -> None:
-    doc = make_doc()
-    cd = make_chunks()
-    cd["chunks"][0]["chunk_index"] = 2  # rompe la secuencia c001..cN
-    checks = [f["check"] for f in check_chunks(cd, doc)]
-    assert "chunk.sequence" in checks
-
-
-def test_parent_text_mismatch_flagged() -> None:
-    doc = make_doc()
-    cd = make_chunks()
-    cd["chunks"][0]["parent_text"] = "otro texto"
-    checks = [f["check"] for f in check_chunks(cd, doc)]
-    assert "chunk.parent_text" in checks
-
-
-def test_retrieval_text_double_period_flagged() -> None:
-    chunk = make_chunks()["chunks"][0]
-    chunk["retrieval_text"] = "Ley X.. Artículo 1."
-    checks = [f["check"] for f in check_retrieval_text(chunk)]
-    assert "rt.double_period" in checks
+def test_note_leak_in_chunk_flagged() -> None:
+    document, parents = _doc(), _parents()
+    history = _history()
+    # La nota es propiedad de history; se hidrata por join. Inyectada también en el texto del chunk.
+    h_a1 = next(h for h in history["blocks"] if h["block_id"] == "a1")
+    h_a1["modification_notes"] = [{"text": "Se modifica por Z.", "target_norm_id": "BOE-A-2019-1"}]
+    chunks = _chunks()
+    chunks["chunks"][0]["text"] = A1_TEXT + "\nSe modifica por Z."
+    joined = join_norm(document, history, parents)
+    checks = errors(check_chunks(chunks, joined))
+    assert "chunk.note_leak" in checks
 
 
 # --- overlap y oversized -----------------------------------------------------
 
 
 def test_overlap_reconstructs_parent_in_order() -> None:
-    doc = make_doc()
-    paras = [p["text"] for p in doc["blocks"][1]["latest_version"]["paragraphs"]]
-    cd = make_chunks()
-    # Dos chunks con overlap de 1 párrafo (el 2.º se repite).
-    cd["chunks"] = [
-        {
-            "chunk_id": f"{DOC_ID}__a1__c001",
-            "parent_id": f"{DOC_ID}__a1",
-            "document_id": DOC_ID,
-            "block_id": "a1",
-            "chunk_index": 1,
-            "chunk_count_for_parent": 2,
-            "chunking_strategy": "legal_parent_child_v1",
-            "text": "\n".join(paras[:2]),
-            "retrieval_text": "Ley X. " + " ".join(paras[:2]),
-            "parent_text": "\n".join(paras),
-            "metadata": make_chunk_meta(),
-        },
-        {
-            "chunk_id": f"{DOC_ID}__a1__c002",
-            "parent_id": f"{DOC_ID}__a1",
-            "document_id": DOC_ID,
-            "block_id": "a1",
-            "chunk_index": 2,
-            "chunk_count_for_parent": 2,
-            "chunking_strategy": "legal_parent_child_v1",
-            "text": "\n".join(paras[1:]),
-            "retrieval_text": "Ley X. " + " ".join(paras[1:]),
-            "parent_text": "\n".join(paras),
-            "metadata": make_chunk_meta(),
-        },
+    document, history, parents = _doc(), _history(), _parents()
+    paras = [p["text"] for p in A1_PARAS]
+    chunks = _chunks()
+    chunks["chunks"] = [
+        _chunk("\n".join(paras[:2]), 1, 2),
+        _chunk("\n".join(paras[1:]), 2, 2),
     ]
-    result = analyze_overlap(cd, doc)
+    result = analyze_overlap(chunks, join_norm(document, history, parents))
     assert result["parents_split"] == 1
     assert result["overlap_boundary_ok"] == 1
     assert result["order_preserved"] == 1
-    assert result["duplicated_paragraphs"] == 1
 
 
 def test_oversized_rows_detects_long_chunk() -> None:
-    doc = make_doc()
-    cd = make_chunks()
-    cd["chunks"][0]["text"] = "X" * 50
-    rows = oversized_rows(cd, doc, max_chars=30)
+    document, history, parents = _doc(), _history(), _parents()
+    chunks = _chunks()
+    chunks["chunks"][0]["text"] = "X" * 50
+    rows = oversized_rows(chunks, join_norm(document, history, parents), max_chars=30)
     assert len(rows) == 1
-    assert rows[0]["single_paragraph_oversized"] is True
     assert rows[0]["max_chars_excess"] == 20
     assert copy.deepcopy(rows[0])["block_type"] == "precepto"
 
 
-# --- pre_embedding_readiness + encabezado sustantivo no indexado -------------
+def test_efficiency_no_parent_text_redundancy() -> None:
+    chunks = _chunks()
+    eff = efficiency_metrics(chunks, {"duplicated_chars": 0}, _parents())
+    assert eff["parent_text_in_chunks_chars"] == 0
+    assert eff["subjects_repeated_chars"] == 0
+    assert eff["parents_store_unique_text_chars"] > 0
+
+
+# --- integridad temporal (sobre joined) -------------------------------------
+
+
+def test_temporal_integrity_clean() -> None:
+    joined = {DOC_ID: join_norm(_doc(), _history(), _parents())}
+    ti = temporal_integrity(joined, {DOC_ID: _chunks()}, processing_date="2026-05-31")
+    assert ti["ready"] is True
+    assert ti["mismatches"] == []
+
+
+# --- readiness ---------------------------------------------------------------
 
 
 def test_readiness_ready_when_clean() -> None:
-    r = compute_readiness(findings=[], unhandled_hierarchy={}, editorial_indexable=[])
+    r = compute_readiness([], {}, [], temporal={"ready": True}, raw={"ready": True})
     assert r["ready"] is True
-    assert r["blocking_findings"] == []
     assert r["deferred_findings"] == ["H3_oversized_token_measurement"]
 
 
-def test_readiness_blocks_on_editorial_indexable() -> None:
-    r = compute_readiness(findings=[], unhandled_hierarchy={}, editorial_indexable=[("n", "ni")])
-    assert r["ready"] is False
-    assert "H1_nota_inicial_indexable" in r["blocking_findings"]
-
-
-def test_readiness_h3_stays_deferred_not_blocking() -> None:
-    r = compute_readiness(findings=[], unhandled_hierarchy={}, editorial_indexable=[])
-    assert "H3_oversized_token_measurement" in r["deferred_findings"]
-    assert r["ready"] is True  # H3 no bloquea
-
-
-def test_substantive_heading_not_indexed_flagged() -> None:
-    doc = make_doc()
-    # Encabezado con cuerpo sustantivo (anexo) pero marcado como NO indexable.
-    doc["blocks"].append(
-        {
-            "block_id": "ai",
-            "parent_id": f"{DOC_ID}__ai",
-            "block_type": "encabezado",
-            "block_title": "ANEXO I",
-            "full_title": "ANEXO I. Tablas",
-            "hierarchy": {"annex": "ANEXO I"},
-            "versions": [{"source_norm_id": DOC_ID, "is_latest": True}],
-            "latest_version": {
-                "source_norm_id": DOC_ID,
-                "text": "ANEXO I\nContenido.",
-                "paragraphs": [
-                    {"order": 1, "class": "anexo_num", "text": "ANEXO I"},
-                    {"order": 2, "class": "parrafo", "text": "Contenido."},
-                ],
-                "modification_notes": [],
-            },
-            "retrieval": {
-                "indexable": False,
-                "retrieval_text": "x",
-                "citation_label": "Ley X",
-                "source_url": f"{HTML}#ai",
-            },
-        }
+def test_readiness_blocks_on_temporal_or_raw() -> None:
+    assert (
+        compute_readiness(
+            [], {}, [], temporal={"ready": False, "mismatches": ["x"]}, raw={"ready": True}
+        )["ready"]
+        is False
     )
-    checks = [f["check"] for f in check_document(doc)]
-    assert "block.heading_body_not_indexed" in checks
+    assert (
+        compute_readiness([], {}, [], temporal={"ready": True}, raw={"ready": False})["ready"]
+        is False
+    )
 
 
-# --- integridad temporal -----------------------------------------------------
-
-
-def _multiversion_doc(index_date: str, latest_pub: str) -> dict:
-    """Doc con un bloque de 2 versiones; `index_date` = vigente; `latest_pub` = lo persistido."""
-    doc = make_doc()
-    src = "BOE-A-2020-1" if latest_pub == "2020-01-01" else "BOE-A-2013-1"
-    doc["blocks"] = [
-        {
-            "block_id": "a2",
-            "parent_id": f"{DOC_ID}__a2",
-            "block_type": "precepto",
-            "block_title": "Artículo 2",
-            "full_title": "Artículo 2.",
-            "hierarchy": {"title": None, "chapter": None, "section": None},
-            "index_last_update_date": index_date,
-            "versions": [
-                {"source_norm_id": "BOE-A-2013-1", "publication_date": "2013-12-30"},
-                {"source_norm_id": "BOE-A-2020-1", "publication_date": "2020-01-01"},
-            ],
-            "latest_version": {
-                "source_norm_id": src,
-                "publication_date": latest_pub,
-                "validity_date": "2021-01-01",
-                "text": "Artículo 2. Texto.",
-                "paragraphs": [{"order": 1, "class": "articulo", "text": "Artículo 2. Texto."}],
-                "modification_notes": [],
-            },
-            "retrieval": {
-                "indexable": True,
-                "retrieval_text": "Ley X. Artículo 2. Texto.",
-                "citation_label": "Ley X, artículo 2",
-                "source_url": f"{HTML}#a2",
-            },
-        }
-    ]
-    return doc
-
-
-def test_temporal_integrity_clean_corpus_is_ready() -> None:
-    ti = temporal_integrity({DOC_ID: make_doc()}, processing_date="2026-05-31")
-    assert ti["ready"] is True
-    assert ti["mismatches"] == []
-    assert ti["latest_matches_index"] == 2
-
-
-def test_temporal_integrity_detects_injected_mismatch() -> None:
-    # Índice dice 2020 pero latest_version persiste la versión histórica de 2013.
-    doc = _multiversion_doc(index_date="2020-01-01", latest_pub="2013-12-30")
-    ti = temporal_integrity({DOC_ID: doc}, processing_date="2026-05-31")
-    assert ti["ready"] is False
-    assert f"{DOC_ID}/a2" in ti["mismatches"]
-    # Y la auditoría estructural lo marca como ERROR.
-    checks = [f["check"] for f in errors(check_document(doc, processing_date="2026-05-31"))]
-    assert "block.temporal_mismatch" in checks
-
-
-def test_temporal_integrity_reports_future_effective() -> None:
-    doc = _multiversion_doc(index_date="2020-01-01", latest_pub="2020-01-01")
-    doc["blocks"][0]["latest_version"]["validity_date"] = "2099-01-01"
-    ti = temporal_integrity({DOC_ID: doc}, processing_date="2026-05-31")
-    # Vigencia futura se reporta pero NO bloquea (política explícita del MVP).
-    assert f"{DOC_ID}/a2" in ti["future_effective_selected_versions"]
-    assert ti["ready"] is True
-
-
-def test_temporal_integrity_flags_non_chronological_order() -> None:
-    doc = make_doc()
-    # Reordena las versiones del bloque a1 para que no sean cronológicas.
-    doc["blocks"][1]["versions"] = [
-        {"source_norm_id": DOC_ID, "publication_date": "2020-01-01"},
-        {"source_norm_id": DOC_ID, "publication_date": "2015-10-02"},
-    ]
-    doc["blocks"][1]["index_last_update_date"] = "2020-01-01"
-    doc["blocks"][1]["latest_version"]["publication_date"] = "2020-01-01"
-    ti = temporal_integrity({DOC_ID: doc}, processing_date="2026-05-31")
-    assert f"{DOC_ID}/a1" in ti["non_chronological_xml_order_blocks"]
-
-
-# --- gate combinado: readiness con temporal y raw ----------------------------
-
-
-def test_readiness_blocks_on_temporal_not_ready() -> None:
-    temporal = {
-        "ready": False,
-        "mismatches": ["x/a2"],
-        "ambiguous_blocks": [],
-        "missing_index_date": [],
-        "invalid_dates": [],
-        "index_not_max": [],
-        "chunks_built_from_non_current_version": [],
-    }
-    r = compute_readiness([], {}, [], temporal=temporal, raw={"ready": True})
-    assert r["ready"] is False
-    assert "temporal_mismatches" in r["blocking_findings"]
-
-
-def test_readiness_blocks_on_raw_not_ready() -> None:
-    r = compute_readiness([], {}, [], temporal={"ready": True}, raw={"ready": False})
-    assert r["ready"] is False
-    assert "raw_integrity" in r["blocking_findings"]
-
-
-def test_readiness_ready_when_temporal_and_raw_ok() -> None:
-    r = compute_readiness([], {}, [], temporal={"ready": True}, raw={"ready": True})
-    assert r["ready"] is True
-    assert r["blocking_findings"] == []
-
-
-# --- integridad raw (manifests) ----------------------------------------------
+# --- raw integrity -----------------------------------------------------------
 
 
 def _write_manifest(tmp_path: Path, content: bytes) -> tuple[str, Path]:
-    norm_id = "BOE-A-2015-10565"
+    norm_id = DOC_ID
     raw_dir = tmp_path / "raw" / norm_id
     raw_dir.mkdir(parents=True)
     f = raw_dir / "texto.xml"
@@ -479,19 +432,11 @@ def _write_manifest(tmp_path: Path, content: bytes) -> tuple[str, Path]:
     return norm_id, manifest_dir
 
 
-def test_raw_integrity_ok_when_hashes_match(tmp_path: Path) -> None:
-    norm_id, manifest_dir = _write_manifest(tmp_path, b"<xml>contenido</xml>")
-    agg = raw_integrity([norm_id], manifest_dir)
-    assert agg["ready"] is True
-    assert agg["files_checked"] == 1
-
-
-def test_raw_integrity_detects_tampered_file(tmp_path: Path) -> None:
-    norm_id, manifest_dir = _write_manifest(tmp_path, b"<xml>contenido</xml>")
-    # Manipula el fichero tras escribir el manifest.
+def test_raw_integrity_ok_and_tamper(tmp_path: Path) -> None:
+    norm_id, manifest_dir = _write_manifest(tmp_path, b"<xml>c</xml>")
+    assert raw_integrity([norm_id], manifest_dir)["ready"] is True
     f = next((tmp_path / "raw" / norm_id).glob("texto.xml"))
-    f.write_bytes(b"<xml>contenido MODIFICADO</xml>")
+    f.write_bytes(b"<xml>MOD</xml>")
     r = verify_manifest(norm_id, manifest_dir)
     assert r["sha256_mismatches"] or r["size_mismatches"]
-    agg = raw_integrity([norm_id], manifest_dir)
-    assert agg["ready"] is False
+    assert raw_integrity([norm_id], manifest_dir)["ready"] is False

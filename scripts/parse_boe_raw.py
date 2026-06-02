@@ -16,12 +16,14 @@ from pathlib import Path
 # Permite `import src...` al ejecutar el script directamente.
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from src.boe.parser import parse_boe_document, save_processed_document  # noqa: E402
+from src.boe.parser import build_processed_bundle, save_processed_bundle  # noqa: E402
 from src.core.exceptions import ParsingError  # noqa: E402
 
 RAW_DIR = Path("data/raw/boe")
 MANIFEST_DIR = Path("data/manifests")
-OUTPUT_DIR = Path("data/processed/documents")
+DOCUMENTS_DIR = Path("data/processed/documents")
+HISTORIES_DIR = Path("data/processed/histories")
+PARENTS_DIR = Path("data/processed/parents")
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -38,17 +40,16 @@ def main(argv: list[str] | None = None) -> int:
     manifest_path = MANIFEST_DIR / f"{norm_id}.json"
 
     try:
-        document = parse_boe_document(norm_id, RAW_DIR, manifest_path)
-        out_path = save_processed_document(document, OUTPUT_DIR)
+        bundle = build_processed_bundle(norm_id, RAW_DIR, manifest_path)
+        paths = save_processed_bundle(bundle, DOCUMENTS_DIR, HISTORIES_DIR, PARENTS_DIR)
     except (ParsingError, FileNotFoundError) as exc:
         print(f"Error: {exc}", file=sys.stderr)
         return 1
 
-    checks = document["quality_checks"]
-    print(f"Documento procesado: {out_path}")
+    print(f"Documento procesado: {paths['document']}")
     print(
-        f"  bloques: {len(document['blocks'])} | índice: {checks['index_blocks_count']} | "
-        f"texto: {checks['text_blocks_count']} | warnings: {len(checks['warnings'])}"
+        f"  bloques: {len(bundle.document['blocks'])} | "
+        f"history: {len(bundle.history['blocks'])} | parents: {len(bundle.parents['parents'])}"
     )
     return 0
 

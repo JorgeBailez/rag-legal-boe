@@ -1,0 +1,764 @@
+{
+  "$defs": {
+    "Analysis": {
+      "additionalProperties": false,
+      "description": "Análisis: materias (propietario único), notas y referencias jurídicas.",
+      "properties": {
+        "notes": {
+          "items": {
+            "$ref": "#/$defs/AnalysisNote"
+          },
+          "title": "Notes",
+          "type": "array"
+        },
+        "references": {
+          "$ref": "#/$defs/References"
+        },
+        "subjects": {
+          "items": {
+            "$ref": "#/$defs/Subject"
+          },
+          "title": "Subjects",
+          "type": "array"
+        }
+      },
+      "title": "Analysis",
+      "type": "object"
+    },
+    "AnalysisNote": {
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Text"
+        }
+      },
+      "title": "AnalysisNote",
+      "type": "object"
+    },
+    "BlockDescriptor": {
+      "additionalProperties": false,
+      "description": "Descriptor de bloque: identidad, flags, jerarquía, cita e indexabilidad.\n\nNO contiene texto vigente, párrafos, versiones ni resolución temporal completa (esos viven\nen parents/histories). Propietario de `indexable`/`excluded_reason` y de los flags de filtro.",
+      "properties": {
+        "block_id": {
+          "title": "Block Id",
+          "type": "string"
+        },
+        "block_title": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Block Title"
+        },
+        "block_type": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Block Type"
+        },
+        "citation": {
+          "$ref": "#/$defs/Citation"
+        },
+        "contains_image": {
+          "default": false,
+          "title": "Contains Image",
+          "type": "boolean"
+        },
+        "contains_table": {
+          "default": false,
+          "title": "Contains Table",
+          "type": "boolean"
+        },
+        "content_status": {
+          "default": "present",
+          "title": "Content Status",
+          "type": "string"
+        },
+        "excluded_reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Excluded Reason"
+        },
+        "full_title": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Full Title"
+        },
+        "has_retrievable_body": {
+          "default": false,
+          "title": "Has Retrievable Body",
+          "type": "boolean"
+        },
+        "hierarchy": {
+          "$ref": "#/$defs/Hierarchy"
+        },
+        "indexable": {
+          "default": false,
+          "title": "Indexable",
+          "type": "boolean"
+        },
+        "is_annex": {
+          "default": false,
+          "title": "Is Annex",
+          "type": "boolean"
+        },
+        "is_without_content": {
+          "default": false,
+          "title": "Is Without Content",
+          "type": "boolean"
+        },
+        "order": {
+          "title": "Order",
+          "type": "integer"
+        },
+        "parent_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ref. al registro en parents/; null si no hay texto vigente.",
+          "title": "Parent Id"
+        },
+        "semantic_role": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Semantic Role"
+        },
+        "table_text_available": {
+          "default": false,
+          "title": "Table Text Available",
+          "type": "boolean"
+        },
+        "temporal_status": {
+          "description": "Estado mínimo operativo: resolved|unresolved|ambiguous|...",
+          "title": "Temporal Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "block_id",
+        "order",
+        "temporal_status",
+        "citation"
+      ],
+      "title": "BlockDescriptor",
+      "type": "object"
+    },
+    "Citation": {
+      "additionalProperties": false,
+      "description": "Cita humana + URL oficial con ancla de bloque.",
+      "properties": {
+        "label": {
+          "examples": [
+            "Ley 7/1985, artículo 2"
+          ],
+          "title": "Label",
+          "type": "string"
+        },
+        "url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "examples": [
+            "https://www.boe.es/buscar/act.php?id=BOE-A-1985-5392#a2"
+          ],
+          "title": "Url"
+        }
+      },
+      "required": [
+        "label"
+      ],
+      "title": "Citation",
+      "type": "object"
+    },
+    "Coded": {
+      "additionalProperties": false,
+      "description": "Valor codificado del BOE (`{code, label}`).",
+      "properties": {
+        "code": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Code"
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Label"
+        }
+      },
+      "title": "Coded",
+      "type": "object"
+    },
+    "DocumentMetadata": {
+      "additionalProperties": false,
+      "description": "Metadatos documentales de la norma (idénticos a los del parser).",
+      "properties": {
+        "annulment_status": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Annulment Status"
+        },
+        "consolidation_status": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Coded"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "department": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Coded"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "derogation_status": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Derogation Status"
+        },
+        "document_date": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Document Date"
+        },
+        "effective_date": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Effective Date"
+        },
+        "eli_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Eli Url"
+        },
+        "expired_validity": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Expired Validity"
+        },
+        "html_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Html Url"
+        },
+        "identifier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Identifier"
+        },
+        "last_update_datetime": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Last Update Datetime"
+        },
+        "legal_status_notice": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Legal Status Notice"
+        },
+        "official_number": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Official Number"
+        },
+        "publication_date": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Publication Date"
+        },
+        "rank": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Coded"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "scope": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Coded"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "short_title": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Short Title"
+        },
+        "title": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Title"
+        }
+      },
+      "title": "DocumentMetadata",
+      "type": "object"
+    },
+    "DocumentSource": {
+      "additionalProperties": false,
+      "description": "Procedencia: ruta RELATIVA y estable al manifest (nunca absoluta).",
+      "properties": {
+        "base_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Base Url"
+        },
+        "downloaded_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Downloaded At"
+        },
+        "manifest_ref": {
+          "description": "Ruta relativa al manifest, p. ej. data/manifests/<id>.json",
+          "title": "Manifest Ref",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "manifest_ref"
+      ],
+      "title": "DocumentSource",
+      "type": "object"
+    },
+    "GenerationMeta": {
+      "additionalProperties": false,
+      "description": "Metadatos mínimos de generación (trazabilidad de quién/cuándo).",
+      "properties": {
+        "generated_at": {
+          "description": "ISO-8601 UTC del momento de generación.",
+          "title": "Generated At",
+          "type": "string"
+        },
+        "generator": {
+          "description": "Componente/versión que generó el artefacto.",
+          "title": "Generator",
+          "type": "string"
+        }
+      },
+      "required": [
+        "generated_at",
+        "generator"
+      ],
+      "title": "GenerationMeta",
+      "type": "object"
+    },
+    "Hierarchy": {
+      "additionalProperties": false,
+      "description": "Jerarquía jurídica a 6 niveles (mutuamente excluyentes cuerpo/anexo).",
+      "properties": {
+        "annex": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Annex"
+        },
+        "book": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Book"
+        },
+        "chapter": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Chapter"
+        },
+        "section": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Section"
+        },
+        "subsection": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Subsection"
+        },
+        "title": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Title"
+        }
+      },
+      "title": "Hierarchy",
+      "type": "object"
+    },
+    "Reference": {
+      "additionalProperties": false,
+      "properties": {
+        "relation": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Coded"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "target_norm_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Target Norm Id"
+        },
+        "text": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Text"
+        }
+      },
+      "title": "Reference",
+      "type": "object"
+    },
+    "References": {
+      "additionalProperties": false,
+      "properties": {
+        "next": {
+          "items": {
+            "$ref": "#/$defs/Reference"
+          },
+          "title": "Next",
+          "type": "array"
+        },
+        "previous": {
+          "items": {
+            "$ref": "#/$defs/Reference"
+          },
+          "title": "Previous",
+          "type": "array"
+        }
+      },
+      "title": "References",
+      "type": "object"
+    },
+    "Subject": {
+      "additionalProperties": false,
+      "description": "Materia (subject) del análisis del BOE.",
+      "properties": {
+        "code": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Code"
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Label"
+        }
+      },
+      "title": "Subject",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Descriptor legible de una norma (`boe_legal_document_v2`).",
+  "properties": {
+    "analysis": {
+      "$ref": "#/$defs/Analysis"
+    },
+    "blocks": {
+      "items": {
+        "$ref": "#/$defs/BlockDescriptor"
+      },
+      "title": "Blocks",
+      "type": "array"
+    },
+    "document_id": {
+      "title": "Document Id",
+      "type": "string"
+    },
+    "generation_meta": {
+      "$ref": "#/$defs/GenerationMeta"
+    },
+    "metadata": {
+      "$ref": "#/$defs/DocumentMetadata"
+    },
+    "schema_version": {
+      "const": "boe_legal_document_v2",
+      "default": "boe_legal_document_v2",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "source": {
+      "$ref": "#/$defs/DocumentSource"
+    }
+  },
+  "required": [
+    "document_id",
+    "source",
+    "metadata",
+    "analysis",
+    "blocks",
+    "generation_meta"
+  ],
+  "title": "DocumentV2",
+  "type": "object"
+}

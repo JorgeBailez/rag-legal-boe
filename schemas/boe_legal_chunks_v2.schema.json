@@ -1,0 +1,294 @@
+{
+  "$defs": {
+    "Chunk": {
+      "additionalProperties": false,
+      "description": "Child chunk mínimo destinado al índice vectorial (sin parent_text ni metadatos doc.).",
+      "properties": {
+        "block_id": {
+          "title": "Block Id",
+          "type": "string"
+        },
+        "chunk_id": {
+          "title": "Chunk Id",
+          "type": "string"
+        },
+        "citation": {
+          "$ref": "#/$defs/Citation"
+        },
+        "document_id": {
+          "title": "Document Id",
+          "type": "string"
+        },
+        "filters": {
+          "$ref": "#/$defs/ChunkFilters"
+        },
+        "parent_id": {
+          "title": "Parent Id",
+          "type": "string"
+        },
+        "position": {
+          "$ref": "#/$defs/ChunkPosition"
+        },
+        "retrieval_text": {
+          "title": "Retrieval Text",
+          "type": "string"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "chunk_id",
+        "parent_id",
+        "document_id",
+        "block_id",
+        "position",
+        "text",
+        "retrieval_text",
+        "citation",
+        "filters"
+      ],
+      "title": "Chunk",
+      "type": "object"
+    },
+    "ChunkFilters": {
+      "additionalProperties": false,
+      "description": "Proyección compacta de flags para filtrado en retrieval.",
+      "properties": {
+        "annex": {
+          "default": false,
+          "title": "Annex",
+          "type": "boolean"
+        },
+        "image": {
+          "default": false,
+          "title": "Image",
+          "type": "boolean"
+        },
+        "rank_code": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rank Code"
+        },
+        "scope_code": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Scope Code"
+        },
+        "semantic_role": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Semantic Role"
+        },
+        "subject_codes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Subject Codes",
+          "type": "array"
+        },
+        "table": {
+          "default": false,
+          "title": "Table",
+          "type": "boolean"
+        },
+        "without_content": {
+          "default": false,
+          "title": "Without Content",
+          "type": "boolean"
+        }
+      },
+      "title": "ChunkFilters",
+      "type": "object"
+    },
+    "ChunkPosition": {
+      "additionalProperties": false,
+      "properties": {
+        "count_for_parent": {
+          "title": "Count For Parent",
+          "type": "integer"
+        },
+        "index": {
+          "title": "Index",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "index",
+        "count_for_parent"
+      ],
+      "title": "ChunkPosition",
+      "type": "object"
+    },
+    "ChunkingStrategy": {
+      "additionalProperties": false,
+      "properties": {
+        "max_chars": {
+          "title": "Max Chars",
+          "type": "integer"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "overlap_paragraphs": {
+          "title": "Overlap Paragraphs",
+          "type": "integer"
+        },
+        "parent_unit": {
+          "title": "Parent Unit",
+          "type": "string"
+        },
+        "split_unit": {
+          "title": "Split Unit",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "max_chars",
+        "overlap_paragraphs",
+        "split_unit",
+        "parent_unit"
+      ],
+      "title": "ChunkingStrategy",
+      "type": "object"
+    },
+    "Citation": {
+      "additionalProperties": false,
+      "description": "Cita humana + URL oficial con ancla de bloque.",
+      "properties": {
+        "label": {
+          "examples": [
+            "Ley 7/1985, artículo 2"
+          ],
+          "title": "Label",
+          "type": "string"
+        },
+        "url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "examples": [
+            "https://www.boe.es/buscar/act.php?id=BOE-A-1985-5392#a2"
+          ],
+          "title": "Url"
+        }
+      },
+      "required": [
+        "label"
+      ],
+      "title": "Citation",
+      "type": "object"
+    },
+    "GenerationMeta": {
+      "additionalProperties": false,
+      "description": "Metadatos mínimos de generación (trazabilidad de quién/cuándo).",
+      "properties": {
+        "generated_at": {
+          "description": "ISO-8601 UTC del momento de generación.",
+          "title": "Generated At",
+          "type": "string"
+        },
+        "generator": {
+          "description": "Componente/versión que generó el artefacto.",
+          "title": "Generator",
+          "type": "string"
+        }
+      },
+      "required": [
+        "generated_at",
+        "generator"
+      ],
+      "title": "GenerationMeta",
+      "type": "object"
+    },
+    "SourceRefs": {
+      "additionalProperties": false,
+      "description": "Referencias relativas a los artefactos fuente del flujo normal (sin history).",
+      "properties": {
+        "document": {
+          "title": "Document",
+          "type": "string"
+        },
+        "parents": {
+          "title": "Parents",
+          "type": "string"
+        }
+      },
+      "required": [
+        "document",
+        "parents"
+      ],
+      "title": "SourceRefs",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Documento de chunks vector-ready de una norma (`boe_legal_chunks_v2`).",
+  "properties": {
+    "chunking_strategy": {
+      "$ref": "#/$defs/ChunkingStrategy"
+    },
+    "chunks": {
+      "items": {
+        "$ref": "#/$defs/Chunk"
+      },
+      "title": "Chunks",
+      "type": "array"
+    },
+    "document_id": {
+      "title": "Document Id",
+      "type": "string"
+    },
+    "generation_meta": {
+      "$ref": "#/$defs/GenerationMeta"
+    },
+    "schema_version": {
+      "const": "boe_legal_chunks_v2",
+      "default": "boe_legal_chunks_v2",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "source_refs": {
+      "$ref": "#/$defs/SourceRefs"
+    }
+  },
+  "required": [
+    "document_id",
+    "source_refs",
+    "chunking_strategy",
+    "chunks",
+    "generation_meta"
+  ],
+  "title": "ChunksV2",
+  "type": "object"
+}

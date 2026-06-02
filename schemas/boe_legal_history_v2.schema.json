@@ -1,0 +1,362 @@
+{
+  "$defs": {
+    "BlockHistory": {
+      "additionalProperties": false,
+      "description": "Provenance temporal de un bloque (existe para CADA block_id, incl. monoversión).",
+      "properties": {
+        "block_id": {
+          "title": "Block Id",
+          "type": "string"
+        },
+        "index_last_update_date": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Index Last Update Date"
+        },
+        "index_last_update_date_raw": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Index Last Update Date Raw"
+        },
+        "index_title": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Index Title"
+        },
+        "index_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Index Url"
+        },
+        "modification_notes": {
+          "items": {
+            "$ref": "#/$defs/ModificationNote"
+          },
+          "title": "Modification Notes",
+          "type": "array"
+        },
+        "temporal_quarantined": {
+          "default": false,
+          "title": "Temporal Quarantined",
+          "type": "boolean"
+        },
+        "temporal_resolution": {
+          "$ref": "#/$defs/TemporalResolution"
+        },
+        "versions": {
+          "items": {
+            "$ref": "#/$defs/Version"
+          },
+          "title": "Versions",
+          "type": "array"
+        }
+      },
+      "required": [
+        "block_id",
+        "temporal_resolution"
+      ],
+      "title": "BlockHistory",
+      "type": "object"
+    },
+    "CandidateVersion": {
+      "additionalProperties": false,
+      "properties": {
+        "publication_date": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Publication Date"
+        },
+        "source_norm_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Norm Id"
+        },
+        "version_index": {
+          "title": "Version Index",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "version_index"
+      ],
+      "title": "CandidateVersion",
+      "type": "object"
+    },
+    "GenerationMeta": {
+      "additionalProperties": false,
+      "description": "Metadatos mínimos de generación (trazabilidad de quién/cuándo).",
+      "properties": {
+        "generated_at": {
+          "description": "ISO-8601 UTC del momento de generación.",
+          "title": "Generated At",
+          "type": "string"
+        },
+        "generator": {
+          "description": "Componente/versión que generó el artefacto.",
+          "title": "Generator",
+          "type": "string"
+        }
+      },
+      "required": [
+        "generated_at",
+        "generator"
+      ],
+      "title": "GenerationMeta",
+      "type": "object"
+    },
+    "ModificationNote": {
+      "additionalProperties": false,
+      "properties": {
+        "target_norm_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Target Norm Id"
+        },
+        "text": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Text"
+        }
+      },
+      "title": "ModificationNote",
+      "type": "object"
+    },
+    "TemporalResolution": {
+      "additionalProperties": false,
+      "description": "Resolución temporal completa (diagnóstico local del bloque).",
+      "properties": {
+        "candidate_versions": {
+          "items": {
+            "$ref": "#/$defs/CandidateVersion"
+          },
+          "title": "Candidate Versions",
+          "type": "array"
+        },
+        "index_last_update_date": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Index Last Update Date"
+        },
+        "max_publication_date": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Max Publication Date"
+        },
+        "selected_publication_date": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Selected Publication Date"
+        },
+        "selected_source_norm_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Selected Source Norm Id"
+        },
+        "selected_version_index": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Selected Version Index"
+        },
+        "selection_method": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Selection Method"
+        },
+        "status": {
+          "title": "Status",
+          "type": "string"
+        },
+        "warnings": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Warnings",
+          "type": "array"
+        }
+      },
+      "required": [
+        "status"
+      ],
+      "title": "TemporalResolution",
+      "type": "object"
+    },
+    "Version": {
+      "additionalProperties": false,
+      "description": "Versión de un bloque (solo metadatos).",
+      "properties": {
+        "is_current": {
+          "default": false,
+          "title": "Is Current",
+          "type": "boolean"
+        },
+        "publication_date": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Publication Date"
+        },
+        "source_norm_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Norm Id"
+        },
+        "validity_date": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Validity Date"
+        }
+      },
+      "title": "Version",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Historial temporal de una norma (`boe_legal_history_v2`).",
+  "properties": {
+    "blocks": {
+      "items": {
+        "$ref": "#/$defs/BlockHistory"
+      },
+      "title": "Blocks",
+      "type": "array"
+    },
+    "document_id": {
+      "title": "Document Id",
+      "type": "string"
+    },
+    "generation_meta": {
+      "$ref": "#/$defs/GenerationMeta"
+    },
+    "schema_version": {
+      "const": "boe_legal_history_v2",
+      "default": "boe_legal_history_v2",
+      "title": "Schema Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "document_id",
+    "blocks",
+    "generation_meta"
+  ],
+  "title": "HistoryV2",
+  "type": "object"
+}

@@ -62,12 +62,21 @@ def profile_text(tokenizer: TokenizerLike, text: str, effective_max: int) -> dic
 
 
 def profile_chunk(
-    contract: ModelContract, tokenizer: TokenizerLike, chunk: dict, effective_max: int
+    contract: ModelContract,
+    tokenizer: TokenizerLike,
+    chunk: dict,
+    effective_max: int,
+    parent_text: str = "",
+    block_type: str | None = None,
 ) -> dict:
-    """Perfila un chunk separando el input de embedding del contexto del padre (H3 vs LLM)."""
+    """Perfila un chunk separando el input de embedding del contexto del padre (H3 vs LLM).
+
+    `parent_text` se resuelve por **join** al parent store (chunks v2 no lo llevan). `block_type`
+    procede del descriptor del documento. Ambos son informativos: NO afectan al riesgo de truncado
+    del embedding (que depende solo de `retrieval_text` formateado).
+    """
     retrieval_text = chunk.get("retrieval_text", "") or ""
     formatted = contract.format_document(retrieval_text)
-    block_type = (chunk.get("metadata") or {}).get("block_type")
     return {
         "chunk_id": chunk.get("chunk_id"),
         "block_id": chunk.get("block_id"),
@@ -77,9 +86,7 @@ def profile_chunk(
         # Solo informativo; NO se mezcla con el riesgo de truncado del embedding.
         "parent_context": {
             "text": profile_text(tokenizer, chunk.get("text", "") or "", effective_max),
-            "parent_text": profile_text(
-                tokenizer, chunk.get("parent_text", "") or "", effective_max
-            ),
+            "parent_text": profile_text(tokenizer, parent_text or "", effective_max),
         },
     }
 
@@ -154,13 +161,31 @@ def profile_model(
     tokenizer: TokenizerLike,
     chunks: list[dict],
     *,
+    parent_text_by_id: dict[str, str] | None = None,
+    block_type_by_id: dict[str, str] | None = None,
     keep_per_chunk: bool = False,
 ) -> dict:
-    """Perfila todos los chunks para un modelo y devuelve su sección del informe."""
+    """Perfila todos los chunks para un modelo y devuelve su sección del informe.
+
+    `parent_text_by_id` (parent_id → texto del parent) y `block_type_by_id` (block_id → tipo)
+    resuelven por join el contexto informativo; si no se pasan, se usan valores vacíos.
+    """
+    parent_text_by_id = parent_text_by_id or {}
+    block_type_by_id = block_type_by_id or {}
     effective_max, source = resolve_effective_max(
         contract.declared_max_tokens, getattr(tokenizer, "model_max_length", None)
     )
-    chunk_profiles = [profile_chunk(contract, tokenizer, ch, effective_max) for ch in chunks]
+    chunk_profiles = [
+        profile_chunk(
+            contract,
+            tokenizer,
+            ch,
+            effective_max,
+            parent_text=parent_text_by_id.get(ch.get("parent_id"), ""),
+            block_type=block_type_by_id.get(ch.get("block_id")),
+        )
+        for ch in chunks
+    ]
     result = {
         "model_id": contract.model_id,
         "revision": contract.revision,

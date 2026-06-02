@@ -1,9 +1,15 @@
-"""Auditoría de calidad del corpus (parser + chunker), de solo lectura.
+"""Auditoría de calidad del corpus (contratos v2), de solo lectura.
 
-Contrasta los artefactos generados (`boe_legal_document_v1`, `boe_legal_chunks_v1`) contra
-el contrato esperado y produce hallazgos clasificados + métricas. No modifica nada del
-pipeline: todas las funciones reciben dicts ya cargados (o rutas de raw para trazabilidad)
-y devuelven estructuras de datos.
+Contrasta los artefactos persistidos v2 (`boe_legal_document_v2` + `boe_legal_history_v2` +
+`boe_legal_parents_v2` + `boe_legal_chunks_v2`) contra el contrato esperado y produce hallazgos
+clasificados + métricas. La **representación procesada autoritativa es compuesta**
+(`documents + histories + parents`); `join_norm` la reconstruye en una vista rica para reutilizar
+las comprobaciones jurídicas/temporales sobre la unidad de bloque.
+
+Separación (precisión de diseño):
+- Validación **local** por artefacto → modelos Pydantic (`src.contracts`).
+- Validación **relacional** (joins, cobertura, ownership) → este módulo (`check_relational`,
+  `check_parents`, `check_history`).
 
 Clasificación: Correcto · Aceptable MVP · Revisar antes de embeddings · Mejora posterior.
 Severidad: ERROR (viola el contrato) · WARN (incompleto/dudoso) · INFO (observación).
@@ -21,14 +27,83 @@ from lxml import etree
 
 from src.boe.parser import (
     EXCLUDED_TYPES,
-    SCHEMA_VERSION,
     clean_text,
     heading_has_retrievable_body,
     load_xml,
     resolve_current_version,
     validate_response,
 )
-from src.preprocessing.chunker import CHUNKS_SCHEMA_VERSION
+
+SCHEMA_VERSION = "boe_legal_document_v2"
+HISTORY_SCHEMA_VERSION = "boe_legal_history_v2"
+PARENTS_SCHEMA_VERSION = "boe_legal_parents_v2"
+CHUNKS_SCHEMA_VERSION = "boe_legal_chunks_v2"
+
+
+def join_norm(document: dict, history: dict, parents: dict) -> dict:
+    """Reconstruye la vista rica por bloque desde los 3 artefactos v2 (composite autoritativo).
+
+    Devuelve una estructura equivalente a la interna del parser (con `latest_version`,
+    `versions`, `temporal_resolution`, `retrieval`, `index_*`), para que las comprobaciones
+    jurídicas y temporales operen sobre la unidad de bloque sin duplicar lógica.
+    """
+    hist_by_block = {h["block_id"]: h for h in history.get("blocks", [])}
+    parent_by_block = {p["block_id"]: p for p in parents.get("parents", [])}
+    blocks = []
+    for desc in document.get("blocks", []):
+        bid = desc["block_id"]
+        h = hist_by_block.get(bid, {})
+        p = parent_by_block.get(bid)
+        tr = h.get("temporal_resolution") or {}
+        versions = [
+            {
+                "source_norm_id": v.get("source_norm_id"),
+                "publication_date": v.get("publication_date"),
+                "validity_date": v.get("validity_date"),
+                "is_latest": bool(v.get("is_current")),
+            }
+            for v in h.get("versions", [])
+        ]
+        latest_version = None
+        if p is not None:
+            latest_version = {
+                "source_norm_id": (p.get("current_version") or {}).get("source_norm_id"),
+                "publication_date": (p.get("current_version") or {}).get("publication_date"),
+                "validity_date": (p.get("current_version") or {}).get("validity_date"),
+                "text": p.get("text", ""),
+                "paragraphs": p.get("paragraphs", []),
+                # Las notas de modificación son propiedad de history: se hidratan por join.
+                "modification_notes": h.get("modification_notes", []),
+            }
+        blocks.append(
+            {
+                **desc,
+                "versions": versions,
+                "latest_version": latest_version,
+                "temporal_resolution": tr,
+                "temporal_quarantined": h.get("temporal_quarantined", False),
+                "index_title": h.get("index_title"),
+                "index_url": h.get("index_url"),
+                "index_last_update_date": h.get("index_last_update_date"),
+                "retrieval": {
+                    "indexable": desc.get("indexable", False),
+                    "retrieval_text": None,
+                    "citation_label": (desc.get("citation") or {}).get("label"),
+                    "source_url": (desc.get("citation") or {}).get("url"),
+                    "excluded_reason": desc.get("excluded_reason"),
+                },
+            }
+        )
+    return {
+        "schema_version": SCHEMA_VERSION,
+        "document_id": document.get("document_id"),
+        "source": document.get("source", {}),
+        "metadata": document.get("metadata", {}),
+        "analysis": document.get("analysis", {}),
+        "blocks": blocks,
+        "quality_checks": {},
+    }
+
 
 # Universo esperado de tipos de bloque (observado en el corpus); otros se reportan como nuevos.
 EXPECTED_BLOCK_TYPES = {"nota_inicial", "preambulo", "encabezado", "precepto", "firma"}
@@ -79,24 +154,7 @@ REQUIRED_DOC_KEYS = (
     "metadata",
     "analysis",
     "blocks",
-    "quality_checks",
-)
-REQUIRED_CHUNK_META = (
-    "schema_version",
-    "source",
-    "legal_status_notice",
-    "norm_title",
-    "short_title",
-    "document_id",
-    "block_id",
-    "block_type",
-    "citation_label",
-    "source_url",
-    "hierarchy",
-    "rank",
-    "scope",
-    "subjects",
-    "is_preamble",
+    "generation_meta",
 )
 
 
@@ -118,14 +176,23 @@ def finding(check, severity, classification, document_id, ref, message, evidence
 # --------------------------------------------------------------------------- #
 
 
-def check_document(doc: dict, processing_date: str | None = None) -> list[dict]:
-    """Verifica el contrato del documento `boe_legal_document_v1`."""
+def check_document(
+    document: dict,
+    history: dict | None = None,
+    parents: dict | None = None,
+    processing_date: str | None = None,
+) -> list[dict]:
+    """Verifica el contrato `boe_legal_document_v2` + las comprobaciones de bloque (joined).
+
+    Si se pasan `history` y `parents`, los bloques se comprueban sobre la vista compuesta
+    (texto/versiones/temporal reales). Sin ellos, solo se valida el descriptor de alto nivel.
+    """
     out: list[dict] = []
-    did = doc.get("document_id")
+    did = document.get("document_id")
     if processing_date is None:
         processing_date = datetime.date.today().isoformat()
 
-    if doc.get("schema_version") != SCHEMA_VERSION:
+    if document.get("schema_version") != SCHEMA_VERSION:
         out.append(
             finding(
                 "doc.schema",
@@ -133,11 +200,11 @@ def check_document(doc: dict, processing_date: str | None = None) -> list[dict]:
                 "Revisar antes de embeddings",
                 did,
                 None,
-                f"schema_version inesperado: {doc.get('schema_version')!r}",
+                f"schema_version inesperado: {document.get('schema_version')!r}",
             )
         )
     for k in REQUIRED_DOC_KEYS:
-        if k not in doc:
+        if k not in document:
             out.append(
                 finding(
                     "doc.keys",
@@ -149,7 +216,7 @@ def check_document(doc: dict, processing_date: str | None = None) -> list[dict]:
                 )
             )
 
-    meta = doc.get("metadata", {})
+    meta = document.get("metadata", {})
     if meta.get("identifier") and meta["identifier"] != did:
         out.append(
             finding(
@@ -187,32 +254,262 @@ def check_document(doc: dict, processing_date: str | None = None) -> list[dict]:
             )
         )
 
-    qc = doc.get("quality_checks", {})
-    ib, tb = qc.get("index_blocks_count"), qc.get("text_blocks_count")
-    if ib != tb:
+    # `source.manifest_ref` debe ser ruta RELATIVA y estable (no absoluta).
+    manifest_ref = (document.get("source") or {}).get("manifest_ref")
+    if manifest_ref and (Path(manifest_ref).is_absolute() or ":" in manifest_ref):
         out.append(
             finding(
-                "doc.counts",
+                "doc.manifest_ref",
                 "ERROR",
                 "Revisar antes de embeddings",
                 did,
                 None,
-                f"index != text blocks ({ib}/{tb})",
-            )
-        )
-    if qc.get("unmatched_index_blocks") or qc.get("unmatched_text_blocks"):
-        out.append(
-            finding(
-                "doc.counts",
-                "ERROR",
-                "Revisar antes de embeddings",
-                did,
-                None,
-                "hay bloques sin emparejar índice/texto",
+                f"manifest_ref no es ruta relativa estable: {manifest_ref!r}",
             )
         )
 
-    out.extend(_check_blocks(doc, did, processing_date))
+    # Comprobaciones de bloque sobre la vista compuesta (si hay history+parents).
+    if history is not None and parents is not None:
+        joined = join_norm(document, history, parents)
+        out.extend(_check_blocks(joined, did, processing_date))
+    return out
+
+
+def check_parents(document: dict, parents: dict) -> list[dict]:
+    """Verifica el contrato `parents_v1` y su cobertura/propiedad del texto vigente."""
+    out: list[dict] = []
+    did = parents.get("document_id")
+    if parents.get("schema_version") != PARENTS_SCHEMA_VERSION:
+        out.append(
+            finding(
+                "parents.schema",
+                "ERROR",
+                "Revisar antes de embeddings",
+                did,
+                None,
+                f"schema_version inesperado: {parents.get('schema_version')!r}",
+            )
+        )
+    records = parents.get("parents", [])
+    seen: set[str] = set()
+    for p in records:
+        pid = p.get("parent_id")
+        if pid in seen:
+            out.append(
+                finding(
+                    "parents.duplicate",
+                    "ERROR",
+                    "Revisar antes de embeddings",
+                    did,
+                    pid,
+                    "parent_id duplicado en el parent store",
+                )
+            )
+        seen.add(pid)
+        if not (p.get("text") or "").strip():
+            out.append(
+                finding(
+                    "parents.empty_text",
+                    "ERROR",
+                    "Revisar antes de embeddings",
+                    did,
+                    pid,
+                    "parent sin texto vigente (no debería existir)",
+                )
+            )
+        if "indexable" in p:
+            out.append(
+                finding(
+                    "parents.indexable_present",
+                    "ERROR",
+                    "Revisar antes de embeddings",
+                    did,
+                    pid,
+                    "parent contiene 'indexable' (propietario es document.blocks[])",
+                )
+            )
+        if "modification_notes" in p:
+            out.append(
+                finding(
+                    "parents.modification_notes_present",
+                    "ERROR",
+                    "Revisar antes de embeddings",
+                    did,
+                    pid,
+                    "parent contiene 'modification_notes' (propietario es history)",
+                )
+            )
+    return out
+
+
+def check_history(document: dict, history: dict) -> list[dict]:
+    """Verifica el contrato `history_v2` y que cubre TODOS los block_id del documento."""
+    out: list[dict] = []
+    did = history.get("document_id")
+    if history.get("schema_version") != HISTORY_SCHEMA_VERSION:
+        out.append(
+            finding(
+                "history.schema",
+                "ERROR",
+                "Revisar antes de embeddings",
+                did,
+                None,
+                f"schema_version inesperado: {history.get('schema_version')!r}",
+            )
+        )
+    doc_ids = [b["block_id"] for b in document.get("blocks", [])]
+    hist_ids = {h["block_id"] for h in history.get("blocks", [])}
+    for bid in doc_ids:
+        if bid not in hist_ids:
+            out.append(
+                finding(
+                    "history.coverage",
+                    "ERROR",
+                    "Revisar antes de embeddings",
+                    did,
+                    bid,
+                    "block_id sin registro en history (debe existir para todos)",
+                )
+            )
+    return out
+
+
+def check_relational(document: dict, history: dict, parents: dict, chunks_doc: dict) -> list[dict]:
+    """Comprobaciones relacionales entre los 4 artefactos (joins, ownership, cobertura)."""
+    out: list[dict] = []
+    did = document.get("document_id")
+    desc_ids = {b["block_id"] for b in document.get("blocks", [])}
+    parent_ids = {p["parent_id"] for p in parents.get("parents", [])}
+    parent_block_ids = {p["block_id"] for p in parents.get("parents", [])}
+    subject_codes = {
+        s.get("code") for s in (document.get("analysis") or {}).get("subjects", []) if s.get("code")
+    }
+
+    # Cada parent pertenece a un descriptor y su block_id existe.
+    for p in parents.get("parents", []):
+        if p.get("block_id") not in desc_ids:
+            out.append(
+                finding(
+                    "rel.parent_block_missing",
+                    "ERROR",
+                    "Revisar antes de embeddings",
+                    did,
+                    p.get("parent_id"),
+                    "parent.block_id no existe en document",
+                )
+            )
+
+    # Cada history.block_id existe en document.
+    for h in history.get("blocks", []):
+        if h.get("block_id") not in desc_ids:
+            out.append(
+                finding(
+                    "rel.history_block_missing",
+                    "ERROR",
+                    "Revisar antes de embeddings",
+                    did,
+                    h.get("block_id"),
+                    "history.block_id no existe en document",
+                )
+            )
+
+    # Cada descriptor con parent_id apunta a un parent existente; y todo bloque resuelto con
+    # texto debe tener parent (no se pierde texto vigente).
+    for b in document.get("blocks", []):
+        pid = b.get("parent_id")
+        if pid is not None and pid not in parent_ids:
+            out.append(
+                finding(
+                    "rel.parent_id_dangling",
+                    "ERROR",
+                    "Revisar antes de embeddings",
+                    did,
+                    b["block_id"],
+                    f"parent_id {pid} sin registro en parents",
+                )
+            )
+
+    # Cada chunk referencia un parent existente y un subject_code resoluble.
+    for ch in chunks_doc.get("chunks", []):
+        if ch.get("parent_id") not in parent_ids:
+            out.append(
+                finding(
+                    "rel.chunk_parent_missing",
+                    "ERROR",
+                    "Revisar antes de embeddings",
+                    did,
+                    ch.get("chunk_id"),
+                    "chunk.parent_id sin registro en parents",
+                )
+            )
+        for code in (ch.get("filters") or {}).get("subject_codes", []):
+            if code not in subject_codes:
+                out.append(
+                    finding(
+                        "rel.subject_code_unknown",
+                        "ERROR",
+                        "Revisar antes de embeddings",
+                        did,
+                        ch.get("chunk_id"),
+                        f"subject_code {code!r} no resuelve en document",
+                    )
+                )
+                break
+
+    # current_version del parent coincide con la versión vigente del history.
+    hist_by_id = {h["block_id"]: h for h in history.get("blocks", [])}
+    for p in parents.get("parents", []):
+        h = hist_by_id.get(p.get("block_id"))
+        if not h:
+            continue
+        current = next((v for v in h.get("versions", []) if v.get("is_current")), None)
+        cv = p.get("current_version") or {}
+        if current and (
+            current.get("publication_date") != cv.get("publication_date")
+            or current.get("source_norm_id") != cv.get("source_norm_id")
+        ):
+            out.append(
+                finding(
+                    "rel.current_version_mismatch",
+                    "ERROR",
+                    "Revisar antes de embeddings",
+                    did,
+                    p.get("parent_id"),
+                    "parent.current_version != versión is_current de history",
+                )
+            )
+
+    # parent_id null ⇒ no debe existir parent para ese bloque.
+    for b in document.get("blocks", []):
+        if b.get("parent_id") is None and b["block_id"] in parent_block_ids:
+            out.append(
+                finding(
+                    "rel.null_parent_but_present",
+                    "ERROR",
+                    "Revisar antes de embeddings",
+                    did,
+                    b["block_id"],
+                    "parent_id null pero existe parent para el bloque",
+                )
+            )
+
+    # Ningún texto vigente completo fuera de parents: el chunk.text debe ser substring del
+    # texto del parent correspondiente (no copia del bloque completo salvo que sea su único chunk).
+    parents_text = {p["parent_id"]: p.get("text", "") for p in parents.get("parents", [])}
+    for ch in chunks_doc.get("chunks", []):
+        ptext = parents_text.get(ch.get("parent_id"))
+        if ptext is not None and ch.get("text", "") not in ptext:
+            # los chunks se forman de párrafos del parent; su texto siempre está contenido.
+            out.append(
+                finding(
+                    "rel.chunk_text_not_in_parent",
+                    "ERROR",
+                    "Revisar antes de embeddings",
+                    did,
+                    ch.get("chunk_id"),
+                    "chunk.text no está contenido en el texto del parent",
+                )
+            )
     return out
 
 
@@ -498,8 +795,13 @@ def _check_semantics(
 # --------------------------------------------------------------------------- #
 
 
-def check_chunks(chunks_doc: dict, doc: dict) -> list[dict]:
-    """Verifica el contrato de los chunks y su coherencia con el documento."""
+def check_chunks(chunks_doc: dict, joined_doc: dict) -> list[dict]:
+    """Verifica el contrato `boe_legal_chunks_v2` y su coherencia con la vista compuesta.
+
+    `joined_doc` es la vista de `join_norm` (document+history+parents): aporta `latest_version`,
+    `versions`, `index_*` y `retrieval.indexable` por bloque. Los chunks v2 no llevan
+    `parent_text` ni metadatos documentales; el texto del padre se resuelve por join.
+    """
     out: list[dict] = []
     did = chunks_doc.get("document_id")
     if chunks_doc.get("schema_version") != CHUNKS_SCHEMA_VERSION:
@@ -514,7 +816,7 @@ def check_chunks(chunks_doc: dict, doc: dict) -> list[dict]:
             )
         )
 
-    blocks = {b["block_id"]: b for b in doc.get("blocks", [])}
+    blocks = {b["block_id"]: b for b in joined_doc.get("blocks", [])}
     indexable_ids = {
         bid for bid, b in blocks.items() if (b.get("retrieval") or {}).get("indexable")
     }
@@ -547,6 +849,19 @@ def check_chunks(chunks_doc: dict, doc: dict) -> list[dict]:
                 )
             )
         seen_ids.add(cid)
+
+        # Eficiencia: ningún chunk debe arrastrar parent_text ni metadatos documentales.
+        if "parent_text" in ch:
+            out.append(
+                finding(
+                    "chunk.parent_text_present",
+                    "ERROR",
+                    "Revisar antes de embeddings",
+                    did,
+                    cid,
+                    "el chunk contiene parent_text (debe resolverse por join a parents)",
+                )
+            )
 
         b = blocks.get(bid)
         if b is None:
@@ -583,22 +898,12 @@ def check_chunks(chunks_doc: dict, doc: dict) -> list[dict]:
                     "parent_id no coincide",
                 )
             )
-        if ch.get("parent_text") != (b.get("latest_version") or {}).get("text", ""):
-            out.append(
-                finding(
-                    "chunk.parent_text",
-                    "ERROR",
-                    "Revisar antes de embeddings",
-                    did,
-                    cid,
-                    "parent_text != texto del bloque padre",
-                )
-            )
         # Vigencia: el chunk no debe proceder de una versión histórica.
         res = resolve_current_version(b.get("versions") or [], b.get("index_last_update_date"))
         if res["status"] == "resolved":
-            cpub = (ch.get("metadata") or {}).get("publication_date")
-            if cpub and cpub != res["selected_publication_date"]:
+            cpub = (b.get("latest_version") or {}).get("publication_date")
+            sel = res["selected_publication_date"]
+            if cpub and sel and cpub != sel:
                 out.append(
                     finding(
                         "chunk.temporal_stale",
@@ -607,7 +912,7 @@ def check_chunks(chunks_doc: dict, doc: dict) -> list[dict]:
                         did,
                         cid,
                         "chunk construido desde una versión no vigente",
-                        evidence=f"{cpub} != {res['selected_publication_date']}",
+                        evidence=f"{cpub} != {sel}",
                     )
                 )
         if XML_TAG.search(ch.get("text", "") or ""):
@@ -621,31 +926,20 @@ def check_chunks(chunks_doc: dict, doc: dict) -> list[dict]:
                     "el texto del chunk contiene etiquetas",
                 )
             )
-        meta = ch.get("metadata", {})
-        for mk in REQUIRED_CHUNK_META:
-            if mk not in meta:
-                out.append(
-                    finding(
-                        "chunk.meta_keys",
-                        "ERROR",
-                        "Revisar antes de embeddings",
-                        did,
-                        cid,
-                        f"falta metadata.{mk}",
-                    )
-                )
-        if b.get("block_type") == "preambulo" and not meta.get("is_preamble"):
+        # Cita preservada en el payload (label + url oficial con ancla).
+        cit = ch.get("citation") or {}
+        if not cit.get("label"):
             out.append(
                 finding(
-                    "chunk.is_preamble",
-                    "WARN",
-                    "Aceptable MVP",
+                    "chunk.citation",
+                    "ERROR",
+                    "Revisar antes de embeddings",
                     did,
                     cid,
-                    "chunk de preámbulo sin is_preamble=true",
+                    "falta citation.label en el chunk",
                 )
             )
-        # nota / redacción histórica dentro del texto del chunk
+        # nota / redacción histórica dentro del texto del chunk (join a parents).
         for n in (b.get("latest_version") or {}).get("modification_notes", []):
             nt = (n.get("text") or "").strip()
             if nt and nt in (ch.get("text", "") or ""):
@@ -659,7 +953,7 @@ def check_chunks(chunks_doc: dict, doc: dict) -> list[dict]:
                         "nota de modificación dentro del texto del chunk",
                     )
                 )
-        out.extend(check_retrieval_text(ch))
+        out.extend(check_retrieval_text(ch, b))
         by_parent.setdefault(bid, []).append(ch)
 
     # cobertura + secuencia
@@ -675,8 +969,8 @@ def check_chunks(chunks_doc: dict, doc: dict) -> list[dict]:
             )
         )
     for bid, chs in by_parent.items():
-        chs_sorted = sorted(chs, key=lambda c: c.get("chunk_index", 0))
-        idxs = [c.get("chunk_index") for c in chs_sorted]
+        chs_sorted = sorted(chs, key=lambda c: (c.get("position") or {}).get("index", 0))
+        idxs = [(c.get("position") or {}).get("index") for c in chs_sorted]
         if idxs != list(range(1, len(chs_sorted) + 1)):
             out.append(
                 finding(
@@ -685,10 +979,12 @@ def check_chunks(chunks_doc: dict, doc: dict) -> list[dict]:
                     "Revisar antes de embeddings",
                     did,
                     bid,
-                    f"chunk_index no secuencial: {idxs}",
+                    f"position.index no secuencial: {idxs}",
                 )
             )
-        if any(c.get("chunk_count_for_parent") != len(chs_sorted) for c in chs_sorted):
+        if any(
+            (c.get("position") or {}).get("count_for_parent") != len(chs_sorted) for c in chs_sorted
+        ):
             out.append(
                 finding(
                     "chunk.count",
@@ -696,23 +992,21 @@ def check_chunks(chunks_doc: dict, doc: dict) -> list[dict]:
                     "Revisar antes de embeddings",
                     did,
                     bid,
-                    "chunk_count_for_parent incoherente",
+                    "position.count_for_parent incoherente",
                 )
             )
     return out
 
 
-def check_retrieval_text(chunk: dict) -> list[dict]:
-    """Audita la calidad del `retrieval_text` de un chunk."""
+def check_retrieval_text(chunk: dict, block: dict) -> list[dict]:
+    """Audita la calidad del `retrieval_text` de un chunk v2 (contexto desde el bloque joined)."""
     out: list[dict] = []
     did = chunk.get("document_id")
     cid = chunk.get("chunk_id")
     rt = chunk.get("retrieval_text", "") or ""
-    meta = chunk.get("metadata", {})
-    st = meta.get("short_title")
-    ft = meta.get("full_title")
+    ft = block.get("full_title")
+    hier = block.get("hierarchy") or {}
 
-    # `..` artificial del prefijo: dos puntos (no elipsis `...`) que NO vienen del texto legal.
     body = clean_text(chunk.get("text", "") or "")
     if _ARTIFICIAL_DOUBLE_DOT.search(rt) and not _ARTIFICIAL_DOUBLE_DOT.search(body):
         out.append(
@@ -725,18 +1019,6 @@ def check_retrieval_text(chunk: dict) -> list[dict]:
                 "retrieval_text contiene '..' artificial del prefijo de contexto",
             )
         )
-    if st and not rt.startswith(st):
-        out.append(
-            finding(
-                "rt.prefix",
-                "WARN",
-                "Aceptable MVP",
-                did,
-                cid,
-                "retrieval_text no empieza por short_title",
-            )
-        )
-    # Duplicación REAL: la cabecera aparece más de una vez en retrieval_text.
     if ft and rt.count(clean_text(ft)) > 1:
         out.append(
             finding(
@@ -748,8 +1030,6 @@ def check_retrieval_text(chunk: dict) -> list[dict]:
                 "el full_title aparece más de una vez en retrieval_text",
             )
         )
-    # jerarquía repetida dentro del retrieval_text
-    hier = meta.get("hierarchy") or {}
     for label in (hier.get("title"), hier.get("chapter"), hier.get("section")):
         if label and rt.count(label) > 1:
             out.append(
@@ -932,29 +1212,30 @@ def hierarchy_stats(docs: dict[str, dict]) -> dict:
 # --------------------------------------------------------------------------- #
 
 
-def efficiency_metrics(chunks_doc: dict, overlap: dict) -> dict:
-    """Tamaños y redundancia del JSON de chunks de una norma."""
+def efficiency_metrics(chunks_doc: dict, overlap: dict, parents_doc: dict | None = None) -> dict:
+    """Tamaños y redundancia del payload v2 (chunks vector-ready + parent store)."""
     chunks = chunks_doc.get("chunks", [])
     json_bytes = len(json.dumps(chunks_doc, ensure_ascii=False).encode("utf-8"))
     by_parent: dict[str, list[dict]] = {}
     for ch in chunks:
         by_parent.setdefault(ch["block_id"], []).append(ch)
     childs = [len(v) for v in by_parent.values()]
-    parent_text_total = sum(len(ch.get("parent_text", "") or "") for ch in chunks)
-    parent_text_unique = sum(len(v[0].get("parent_text") or "") for v in by_parent.values())
-    subjects_repeat = sum(
-        len(json.dumps(ch["metadata"].get("subjects", []), ensure_ascii=False)) for ch in chunks
-    )
+    # v2: el chunk NO lleva parent_text ni subjects -> redundancia 0 por diseño.
+    parent_text_in_chunks = sum(len(ch.get("parent_text", "") or "") for ch in chunks)
+    parents_unique_chars = 0
+    if parents_doc is not None:
+        parents_unique_chars = sum(
+            len(p.get("text", "") or "") for p in parents_doc.get("parents", [])
+        )
     return {
         "json_bytes": json_bytes,
         "n_chunks": len(chunks),
         "n_parents": len(by_parent),
         "childs_mean": round(sum(childs) / len(childs), 2) if childs else 0,
         "childs_max": max(childs) if childs else 0,
-        "parent_text_total_chars": parent_text_total,
-        "parent_text_unique_chars": parent_text_unique,
-        "parent_text_redundant_chars": parent_text_total - parent_text_unique,
-        "subjects_repeated_chars": subjects_repeat,
+        "parent_text_in_chunks_chars": parent_text_in_chunks,
+        "parents_store_unique_text_chars": parents_unique_chars,
+        "subjects_repeated_chars": 0,
         "overlap_duplicated_chars": overlap.get("duplicated_chars", 0),
     }
 
@@ -1046,8 +1327,8 @@ def trace_block(raw_dir: Path, norm_id: str, block_id: str, doc: dict, chunks_do
             {
                 "chunk_id": c["chunk_id"],
                 "text_chars": len(c["text"]),
-                "chunk_index": c["chunk_index"],
-                "chunk_count_for_parent": c["chunk_count_for_parent"],
+                "chunk_index": (c.get("position") or {}).get("index"),
+                "chunk_count_for_parent": (c.get("position") or {}).get("count_for_parent"),
             }
             for c in chunks
         ],
@@ -1160,7 +1441,8 @@ def temporal_integrity(
             res = resolve_current_version(b.get("versions") or [], b.get("index_last_update_date"))
             if res["status"] != "resolved":
                 continue
-            cpub = (ch.get("metadata") or {}).get("publication_date")
+            # v2: el chunk no lleva fecha; su vigencia se hereda del parent (joined latest_version).
+            cpub = (b.get("latest_version") or {}).get("publication_date")
             if cpub and cpub != res["selected_publication_date"]:
                 chunks_non_current.append(ch.get("chunk_id"))
 

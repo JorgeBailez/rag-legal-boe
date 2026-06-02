@@ -5,9 +5,10 @@ ciudadanos no expertos. **No** es asesoramiento jurídico vinculante: los textos
 consolidados del BOE tienen carácter informativo y no valor jurídico oficial.
 
 > **Estado: corpus MVP listo para indexar.** Cerrado el flujo local sobre 10 normas:
-> descarga raw → manifest → parser (`boe_legal_document_v1`) → chunking jurídico
-> (`boe_legal_chunks_v1`) → auditoría con *gate* previo a embeddings (integridad estructural,
-> **temporal** y de *raw*). Todavía no hay embeddings, retrieval, generación ni API.
+> raw XML inmutable → manifest → parser → representación intermedia neutral →
+> `documents + histories + parents` → chunks vector-ready → auditoría con *gate* previo a
+> embeddings (integridad estructural, **temporal** y de *raw*). Todavía no hay embeddings,
+> retrieval, generación ni API.
 >
 > La **vigencia** de cada bloque se decide por la `fecha_actualizacion` de `indice.xml`
 > (coincidencia exacta y única con una versión, que además es la de fecha máxima); el orden de
@@ -83,33 +84,44 @@ El contenido XML descargado **no se versiona** (ver `.gitignore`); el manifest s
 evidencia de reproducibilidad. La base de la API se configura con `BOE_API_BASE`
 (ver `.env.example`). Llama a la API externa del BOE.
 
-## Parseo BOE (raw → JSON)
+## Parseo BOE (raw → artefactos v2)
 
-Convierte el raw local de una norma ya descargada en el modelo documental
-`boe_legal_document_v1`. No llama a internet:
+Convierte el raw local de una norma ya descargada en una representación intermedia neutral y
+deriva los **tres artefactos** persistidos. No llama a internet:
 
 ```bash
 uv run python scripts/parse_boe_raw.py BOE-A-2015-10565
 ```
 
 Lee `data/raw/boe/<norm_id>/{metadatos,analisis,indice,texto}.xml` +
-`data/manifests/<norm_id>.json` y escribe `data/processed/documents/<norm_id>.json`
-(tampoco se versiona). No usa `full.xml` como fuente ni parsea `metadata_eli.xml`.
+`data/manifests/<norm_id>.json` y escribe `data/processed/documents/<id>.json`
+(descriptor `boe_legal_document_v2`), `data/processed/histories/<id>.json`
+(`boe_legal_history_v2`) y `data/processed/parents/<id>.json` (`boe_legal_parents_v2`,
+propietario único del texto vigente). No usa `full.xml` como fuente ni parsea `metadata_eli.xml`.
+
+## Contratos de datos v2
+
+La representación procesada **autoritativa es compuesta**: `documents` (descriptor legible) +
+`histories` (versiones, notas de modificación, resolución temporal) + `parents` (texto vigente y
+párrafos, una sola vez). `chunks` es una **proyección vector-ready mínima** y `reports` una
+proyección de auditoría. Modelos Pydantic en `src/contracts/` (fuente única) → JSON Schema en
+`schemas/`, validados en runtime al persistir y por `validate_mvp_corpus.py`.
+Vista humana por joins: `uv run python scripts/inspect_processed_norm.py <id> [--block <bid>]`.
 
 ## Chunking jurídico
 
-Convierte el documento procesado en chunks recuperables `boe_legal_chunks_v1`
+Convierte el descriptor + parents en chunks recuperables `boe_legal_chunks_v2`
 (parent-child: el bloque jurídico es el padre). Chunking por párrafos, sin red:
 
 ```bash
 uv run python scripts/chunk_boe_document.py BOE-A-2015-10565
 ```
 
-Lee `data/processed/documents/<norm_id>.json` y escribe
-`data/processed/chunks/<norm_id>.json` (no se versiona). Solo genera chunks de bloques
-indexables (artículos/disposiciones/preámbulo); excluye encabezados y firma. Cada chunk
-conserva `parent_id`, `parent_text`, `citation_label` y `source_url`, y un `retrieval_text`
-con contexto jurídico. Aún no hace embeddings ni indexación.
+Lee `documents/<id>.json` + `parents/<id>.json` y escribe `chunks/<id>.json` (no se versiona).
+Solo genera chunks de bloques **indexables**; los bloques resueltos no indexables (encabezados
+con texto, firmas, notas iniciales) conservan **parent** pero no generan chunks. Cada chunk
+lleva `parent_id`, `citation`, `filters` mínimos y `retrieval_text` con contexto jurídico —
+**sin** `parent_text` ni metadatos documentales (se resuelven por join). Aún no hace embeddings.
 
 ## Corpus MVP (10 normas)
 
@@ -138,9 +150,9 @@ uv run python scripts/audit_corpus.py
 Reproceso local del corpus (parser + chunker desde el raw, **sin red**) y validación:
 
 ```bash
-uv run python scripts/process_mvp_corpus.py        # regenera documents/ y chunks/ de las 10
+uv run python scripts/process_mvp_corpus.py        # regenera documents/histories/parents/chunks
 uv run python scripts/validate_raw_integrity.py    # sha256/size del raw vs manifests
-uv run python scripts/validate_mvp_corpus.py --strict  # 0 ERROR (y 0 WARN en estricto)
+uv run python scripts/validate_mvp_corpus.py --strict  # contratos Pydantic + auditoría relacional
 uv run python scripts/audit_corpus.py --strict     # exit≠0 si readiness no está lista
 ```
 

@@ -24,7 +24,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from src.boe.client import BoeClient  # noqa: E402
 from src.boe.corpus import load_seed_corpus, verify_norm  # noqa: E402
-from src.boe.parser import parse_boe_document, save_processed_document  # noqa: E402
+from src.boe.parser import build_processed_bundle, save_processed_bundle  # noqa: E402
 from src.config.settings import get_settings  # noqa: E402
 from src.core.exceptions import BoeApiError, ParsingError  # noqa: E402
 from src.preprocessing.chunker import create_chunks, save_chunks  # noqa: E402
@@ -32,6 +32,8 @@ from src.preprocessing.chunker import create_chunks, save_chunks  # noqa: E402
 RAW_DIR = Path("data/raw/boe")
 MANIFEST_DIR = Path("data/manifests")
 DOCUMENTS_DIR = Path("data/processed/documents")
+HISTORIES_DIR = Path("data/processed/histories")
+PARENTS_DIR = Path("data/processed/parents")
 CHUNKS_DIR = Path("data/processed/chunks")
 REPORT_PATH = Path("data/corpus/verification_report.json")
 
@@ -57,11 +59,11 @@ def _acquire_and_verify(client: BoeClient, norm_id: str) -> dict:
 
 def _process(norm_id: str) -> tuple[int, int]:
     """Parsea y chunkea una norma ya descargada. Devuelve (n_bloques, n_chunks)."""
-    document = parse_boe_document(norm_id, RAW_DIR, MANIFEST_DIR / f"{norm_id}.json")
-    save_processed_document(document, DOCUMENTS_DIR)
-    chunks_document = create_chunks(document)
+    bundle = build_processed_bundle(norm_id, RAW_DIR, MANIFEST_DIR / f"{norm_id}.json")
+    save_processed_bundle(bundle, DOCUMENTS_DIR, HISTORIES_DIR, PARENTS_DIR)
+    chunks_document = create_chunks(bundle.document, bundle.parents)
     save_chunks(chunks_document, CHUNKS_DIR)
-    return len(document["blocks"]), chunks_document["quality_checks"]["chunks_count"]
+    return len(bundle.document["blocks"]), len(chunks_document["chunks"])
 
 
 def _format_row(row: dict) -> str:

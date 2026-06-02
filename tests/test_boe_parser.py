@@ -1,7 +1,7 @@
 """Tests unitarios del parser BOE v0 (sin red, con XML mínimos en tmp_path).
 
 No se usa la norma completa como fixture: cada test escribe XML mínimos que ejercitan
-una característica concreta del contrato `boe_legal_document_v1`.
+una característica concreta del parser y de los contratos v2.
 """
 
 import json
@@ -11,21 +11,21 @@ import pytest
 from lxml import etree
 
 from src.boe.parser import (
-    SCHEMA_VERSION,
+    DOCUMENT_SCHEMA_VERSION,
     _block_semantics,
     _full_title,
     _update_hierarchy,
-    build_retrieval,
+    build_block_descriptor_fields,
+    build_processed_bundle,
     is_without_content,
     load_xml,
     normalize_date,
     normalize_datetime,
-    parse_boe_document,
     parse_index,
     parse_metadata,
     parse_text_blocks,
     resolve_current_version,
-    save_processed_document,
+    save_processed_bundle,
     validate_response,
 )
 from src.core.exceptions import ParsingError
@@ -256,94 +256,100 @@ def test_parse_text_blocks_versions_and_notes() -> None:
     assert warnings == []
 
 
-def test_build_retrieval_excludes_notes_and_sets_indexable() -> None:
+def test_descriptor_fields_indexable_and_citation() -> None:
     data = validate_response(etree.fromstring(TEXTO_XML.encode()), Path("texto.xml"))
     blocks, _, _ = parse_text_blocks(data, INDEX_DATES)
 
     a9 = blocks["a9"]
     a9["block_id"] = "a9"
     html_url = "https://www.boe.es/buscar/act.php?id=BOE-A-2015-10565"
-    retrieval = build_retrieval(NORM_ID, html_url, "Ley 39/2015", a9)
-    assert retrieval["indexable"] is True
-    assert retrieval["source_url"].endswith("#a9")
-    assert retrieval["citation_label"] == "Ley 39/2015, artículo 9"
-    assert "Se modifica" not in retrieval["retrieval_text"]
+    fields = build_block_descriptor_fields(NORM_ID, html_url, "Ley 39/2015", a9)
+    assert fields["indexable"] is True
+    assert fields["source_url"].endswith("#a9")
+    assert fields["citation_label"] == "Ley 39/2015, artículo 9"
+    # build_block_descriptor_fields NO construye retrieval_text (responsabilidad del chunker).
+    assert "retrieval_text" not in fields
 
     ti = blocks["ti"]
     ti["block_id"] = "ti"
-    retrieval_ti = build_retrieval(NORM_ID, "https://x", "Ley 39/2015", ti)
-    assert retrieval_ti["indexable"] is False  # encabezado no indexable
+    fields_ti = build_block_descriptor_fields(NORM_ID, "https://x", "Ley 39/2015", ti)
+    assert fields_ti["indexable"] is False  # encabezado sin cuerpo no indexable
 
 
-# --- 8. quality_checks: conteos y unmatched ---------------------------------
+# --- 8. bundle v2: cobertura índice/texto -----------------------------------
 
 
-def test_quality_checks_counts_and_unmatched(tmp_path: Path) -> None:
-    # Índice con un id extra ('zzz') que no existe en texto.
+def test_bundle_unmatched_index_block_has_null_parent(tmp_path: Path) -> None:
+    # Un id en índice que no existe en texto entra como descriptor sin texto vigente.
     indice_extra = INDICE_XML.replace(
         "</data>",
         "<bloque><id>zzz</id><titulo>Extra</titulo>"
         "<fecha_actualizacion>20151002</fecha_actualizacion><url>http://x</url></bloque></data>",
     )
     raw_dir, manifest_path = write_raw(tmp_path, indice=indice_extra)
-    document = parse_boe_document(NORM_ID, raw_dir, manifest_path)
-
-    checks = document["quality_checks"]
-    assert checks["index_blocks_count"] == 3
-    assert checks["text_blocks_count"] == 2
-    assert checks["unmatched_index_blocks"] == ["zzz"]
-    assert checks["unmatched_text_blocks"] == []
+    bundle = build_processed_bundle(NORM_ID, raw_dir, manifest_path)
+    by_id = {b["block_id"]: b for b in bundle.document["blocks"]}
+    assert "zzz" in by_id
+    assert by_id["zzz"]["parent_id"] is None  # sin texto vigente → sin parent
+    assert all(p["block_id"] != "zzz" for p in bundle.parents["parents"])
 
 
-# --- 9. persistencia ---------------------------------------------------------
+# --- 9. persistencia (bundle v2) ---------------------------------------------
 
 
-def test_save_processed_document_writes_valid_json(tmp_path: Path) -> None:
-    document = {"document_id": NORM_ID, "schema_version": SCHEMA_VERSION, "blocks": []}
-    out_path = save_processed_document(document, tmp_path / "processed")
-    assert out_path.name == f"{NORM_ID}.json"
-    loaded = json.loads(out_path.read_text(encoding="utf-8"))
-    assert loaded["document_id"] == NORM_ID
-
-
-# --- 10. integración local ---------------------------------------------------
-
-
-def test_parse_boe_document_integration(tmp_path: Path) -> None:
+def test_save_processed_bundle_writes_three_artifacts(tmp_path: Path) -> None:
     raw_dir, manifest_path = write_raw(tmp_path)
-    document = parse_boe_document(NORM_ID, raw_dir, manifest_path)
+    bundle = build_processed_bundle(NORM_ID, raw_dir, manifest_path)
+    paths = save_processed_bundle(
+        bundle, tmp_path / "documents", tmp_path / "histories", tmp_path / "parents"
+    )
+    assert paths["document"].name == f"{NORM_ID}.json"
+    doc = json.loads(paths["document"].read_text(encoding="utf-8"))
+    assert doc["schema_version"] == DOCUMENT_SCHEMA_VERSION
+    assert doc["document_id"] == NORM_ID
+    hist = json.loads(paths["history"].read_text(encoding="utf-8"))
+    parents = json.loads(paths["parents"].read_text(encoding="utf-8"))
+    assert hist["schema_version"] == "boe_legal_history_v2"
+    assert parents["schema_version"] == "boe_legal_parents_v2"
+    # history cubre todos los bloques; parents = bloques con texto vigente.
+    assert len(hist["blocks"]) == len(doc["blocks"])
 
-    assert document["schema_version"] == SCHEMA_VERSION
-    assert document["document_id"] == NORM_ID
-    assert document["source"]["raw_manifest_path"].endswith(f"{NORM_ID}.json")
-    assert document["quality_checks"]["raw_files_present"] is True
-    assert document["quality_checks"]["metadata_ok"] is True
 
-    blocks_by_id = {b["block_id"]: b for b in document["blocks"]}
+# --- 10. integración local (bundle v2) --------------------------------------
+
+
+def test_build_processed_bundle_integration(tmp_path: Path) -> None:
+    raw_dir, manifest_path = write_raw(tmp_path)
+    bundle = build_processed_bundle(NORM_ID, raw_dir, manifest_path)
+
+    assert bundle.document["schema_version"] == DOCUMENT_SCHEMA_VERSION
+    assert bundle.document["document_id"] == NORM_ID
+    assert bundle.document["source"]["manifest_ref"].endswith(f"{NORM_ID}.json")
+
+    blocks_by_id = {b["block_id"]: b for b in bundle.document["blocks"]}
     # Jerarquía: el artículo hereda el TÍTULO I del encabezado previo.
     assert blocks_by_id["a9"]["hierarchy"]["title"] == "TÍTULO I"
     assert blocks_by_id["a9"]["parent_id"] == f"{NORM_ID}__a9"
-    # Hay un bloque con múltiples versiones.
-    assert any(len(b["versions"]) > 1 for b in document["blocks"])
+    # Hay un bloque con múltiples versiones (en history).
+    assert any(len(h["versions"]) > 1 for h in bundle.history["blocks"])
     # analysis parseado.
-    assert document["analysis"]["references"]["previous"][0]["relation"]["label"] == "DEROGA"
+    refs = bundle.document["analysis"]["references"]["previous"]
+    assert refs[0]["relation"]["label"] == "DEROGA"
 
 
-def test_parse_boe_document_without_analisis(tmp_path: Path) -> None:
+def test_build_processed_bundle_without_analisis(tmp_path: Path) -> None:
     # `analisis.xml` es opcional: si falta, el documento se parsea con analysis vacío.
     raw_dir, manifest_path = write_raw(tmp_path)
     (raw_dir / NORM_ID / "analisis.xml").unlink()
 
-    document = parse_boe_document(NORM_ID, raw_dir, manifest_path)
+    bundle = build_processed_bundle(NORM_ID, raw_dir, manifest_path)
 
-    assert document["analysis"] == {
+    assert bundle.document["analysis"] == {
         "subjects": [],
         "notes": [],
         "references": {"previous": [], "next": []},
     }
-    # Sigue habiendo bloques y los obligatorios presentes.
-    assert document["quality_checks"]["raw_files_present"] is True
-    assert len(document["blocks"]) > 0
+    assert len(bundle.document["blocks"]) > 0
 
 
 # --- correcciones pre-embeddings: indexabilidad por contenido y jerarquía -----
@@ -370,7 +376,9 @@ def _block(block_type: str, paragraphs: list[dict]) -> dict:
 
 def _indexable(block_type: str, paragraphs: list[dict]) -> bool:
     block = _block(block_type, paragraphs)
-    return build_retrieval("BOE-A-2015-10565", "http://x", "Ley X", block)["indexable"]
+    return build_block_descriptor_fields("BOE-A-2015-10565", "http://x", "Ley X", block)[
+        "indexable"
+    ]
 
 
 def _enc(*pairs: tuple[str, str]) -> dict:
@@ -643,9 +651,9 @@ def test_quarantine_block_not_indexable_with_reason() -> None:
     blocks, _, _ = parse_text_blocks(data, {"aX": None})
     b = blocks["aX"]
     b["block_id"] = "aX"
-    retrieval = build_retrieval(NORM_ID, "http://x", "Ley X", b)
-    assert retrieval["indexable"] is False
-    assert retrieval["excluded_reason"] == "temporal_quarantine:missing_index_date"
+    fields = build_block_descriptor_fields(NORM_ID, "http://x", "Ley X", b)
+    assert fields["indexable"] is False
+    assert fields["excluded_reason"] == "temporal_quarantine:missing_index_date"
 
 
 def test_invalid_index_date_is_quarantine() -> None:
@@ -715,7 +723,7 @@ def test_without_content_block_is_indexable_with_neutral_flag() -> None:
     assert b["content_status"] == "without_content"
     assert b["is_without_content"] is True
     b["block_id"] = "a45"
-    assert build_retrieval(NORM_ID, "http://x", "Ley X", b)["indexable"] is True
+    assert build_block_descriptor_fields(NORM_ID, "http://x", "Ley X", b)["indexable"] is True
 
 
 def test_nota_inicial_stays_in_document_blocks() -> None:

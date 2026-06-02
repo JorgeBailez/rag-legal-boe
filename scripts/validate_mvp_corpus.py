@@ -17,11 +17,42 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
+from pydantic import ValidationError  # noqa: E402
+
 from src.boe.corpus import load_seed_corpus  # noqa: E402
-from src.quality.corpus_audit import check_chunks, check_document  # noqa: E402
+from src.contracts.models import ChunksV2, DocumentV2, HistoryV2, ParentsV2  # noqa: E402
+from src.quality.corpus_audit import (  # noqa: E402
+    check_chunks,
+    check_document,
+    check_history,
+    check_parents,
+    check_relational,
+    join_norm,
+)
 
 DOCUMENTS_DIR = Path("data/processed/documents")
+HISTORIES_DIR = Path("data/processed/histories")
+PARENTS_DIR = Path("data/processed/parents")
 CHUNKS_DIR = Path("data/processed/chunks")
+
+# Validación local por artefacto (contratos Pydantic = fuente única).
+_CONTRACTS = {
+    "document": DocumentV2,
+    "history": HistoryV2,
+    "parents": ParentsV2,
+    "chunks": ChunksV2,
+}
+
+
+def _validate_contracts(norm_id: str, artifacts: dict) -> list[str]:
+    """Valida cada artefacto contra su modelo Pydantic. Devuelve mensajes de error legibles."""
+    errs: list[str] = []
+    for name, model in _CONTRACTS.items():
+        try:
+            model.model_validate(artifacts[name])
+        except ValidationError as exc:
+            errs.append(f"{norm_id}/{name}: contrato inválido — {exc.error_count()} error(es)")
+    return errs
 
 
 def main(strict: bool = False) -> int:
@@ -30,18 +61,40 @@ def main(strict: bool = False) -> int:
     total_warnings = 0
     for norm in norms:
         norm_id = norm["norm_id"]
-        doc_path = DOCUMENTS_DIR / f"{norm_id}.json"
-        chunks_path = CHUNKS_DIR / f"{norm_id}.json"
-        if not doc_path.is_file() or not chunks_path.is_file():
+        paths = {
+            "document": DOCUMENTS_DIR / f"{norm_id}.json",
+            "history": HISTORIES_DIR / f"{norm_id}.json",
+            "parents": PARENTS_DIR / f"{norm_id}.json",
+            "chunks": CHUNKS_DIR / f"{norm_id}.json",
+        }
+        if not all(p.is_file() for p in paths.values()):
             print(
                 f"  ⚠ {norm_id}: faltan artefactos (ejecuta process_mvp_corpus.py)", file=sys.stderr
             )
             total_errors += 1
             continue
-        doc = json.loads(doc_path.read_text(encoding="utf-8"))
-        chunks_doc = json.loads(chunks_path.read_text(encoding="utf-8"))
-        findings = check_document(doc) + check_chunks(chunks_doc, doc)
+        document = json.loads(paths["document"].read_text(encoding="utf-8"))
+        history = json.loads(paths["history"].read_text(encoding="utf-8"))
+        parents = json.loads(paths["parents"].read_text(encoding="utf-8"))
+        chunks_doc = json.loads(paths["chunks"].read_text(encoding="utf-8"))
+
+        # 1) Validación local de contratos (Pydantic); 2) auditoría relacional.
+        contract_errs = _validate_contracts(
+            norm_id,
+            {"document": document, "history": history, "parents": parents, "chunks": chunks_doc},
+        )
+        joined = join_norm(document, history, parents)
+        findings = (
+            check_document(document, history, parents)
+            + check_history(document, history)
+            + check_parents(document, parents)
+            + check_chunks(chunks_doc, joined)
+            + check_relational(document, history, parents, chunks_doc)
+        )
         errors = [f for f in findings if f["severity"] == "ERROR"]
+        for ce in contract_errs:
+            print(f"      - contract: {ce}", file=sys.stderr)
+        total_errors += len(contract_errs)
         warns = [f for f in findings if f["severity"] == "WARN"]
         total_errors += len(errors)
         total_warnings += len(warns)

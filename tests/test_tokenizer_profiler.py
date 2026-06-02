@@ -29,15 +29,29 @@ class FakeTokenizer:
         return list(range(n))
 
 
-def _chunk(chunk_id: str, retrieval_text: str, block_type: str = "precepto") -> dict:
-    return {
+def _chunk(chunk_id: str, retrieval_text: str, block_type: str = "precepto") -> tuple[dict, str]:
+    """Devuelve (chunk_v2, block_type) — el block_type se resuelve por join, no va en el chunk."""
+    bid = chunk_id.split("__")[1] if "__" in chunk_id else chunk_id
+    chunk = {
         "chunk_id": chunk_id,
-        "block_id": chunk_id.split("__")[1] if "__" in chunk_id else chunk_id,
+        "parent_id": f"D__{bid}",
+        "block_id": bid,
         "text": retrieval_text,
         "retrieval_text": retrieval_text,
-        "parent_text": retrieval_text + " contexto del bloque padre completo",
-        "metadata": {"block_type": block_type},
     }
+    return chunk, block_type
+
+
+def _profile(contract, tok, chunk_bt: tuple[dict, str], effective_max: int) -> dict:
+    chunk, bt = chunk_bt
+    return profile_chunk(
+        contract,
+        tok,
+        chunk,
+        effective_max,
+        parent_text=chunk["text"] + " contexto del bloque padre completo",
+        block_type=bt,
+    )
 
 
 # --- contratos de modelo ----------------------------------------------------
@@ -128,7 +142,7 @@ def test_profile_text_within_limit() -> None:
 def test_profile_chunk_separates_embedding_and_parent() -> None:
     c = get_contract("intfloat/multilingual-e5-base")  # añade "passage: "
     tok = FakeTokenizer(model_max_length=512, special=0)
-    prof = profile_chunk(c, tok, _chunk("D__a1__c001", "Artículo uno dos"), effective_max=512)
+    prof = _profile(c, tok, _chunk("D__a1__c001", "Artículo uno dos"), 512)
     # embedding input añade el prefijo "passage:" -> 1 token más que el texto crudo.
     assert prof["embedding_input"]["n_tokens"] == 4  # passage: + Artículo + uno + dos
     assert "text" in prof["parent_context"] and "parent_text" in prof["parent_context"]
@@ -141,12 +155,12 @@ def test_profile_chunk_separates_embedding_and_parent() -> None:
 def test_aggregate_counts_truncations_and_by_type() -> None:
     c = get_contract("BAAI/bge-m3")  # sin prefijo
     tok = FakeTokenizer(model_max_length=5, special=0)
-    chunks = [
+    cases = [
         _chunk("D__a1__c001", "una dos tres", "precepto"),  # 3 tokens, ok
         _chunk("D__a2__c001", "una dos tres cuatro cinco seis", "precepto"),  # 6 -> truncado
         _chunk("D__pr__c001", "uno", "preambulo"),  # 1 token, ok
     ]
-    profiles = [profile_chunk(c, tok, ch, 5) for ch in chunks]
+    profiles = [_profile(c, tok, cb, 5) for cb in cases]
     agg = aggregate_embedding_inputs(profiles)
     assert agg["overall"]["n_items"] == 3
     assert agg["overall"]["n_truncated"] == 1
@@ -159,8 +173,8 @@ def test_profile_model_end_to_end_records_limit_metadata() -> None:
     # Tokenizer con sentinel -> usa declared (512) del contrato e5-large.
     contract = get_contract("intfloat/multilingual-e5-large")
     tok = FakeTokenizer(model_max_length=int(1e30), special=2)
-    chunks = [_chunk("D__a1__c001", "uno dos tres", "precepto")]
-    rep = profile_model(contract, tok, chunks)
+    chunk, bt = _chunk("D__a1__c001", "uno dos tres", "precepto")
+    rep = profile_model(contract, tok, [chunk], block_type_by_id={"a1": bt})
     assert rep["model_id"] == "intfloat/multilingual-e5-large"
     assert rep["declared_max_tokens"] == 512
     assert rep["effective_max_tokens"] == 512
@@ -174,7 +188,7 @@ def test_profile_model_long_context_no_truncation() -> None:
         model_id="fake/long", declared_max_tokens=8192, expected_embedding_dimension=1024
     )
     tok = FakeTokenizer(model_max_length=8192, special=2)
-    chunks = [_chunk(f"D__a{i}__c001", "palabra " * 50) for i in range(5)]
+    chunks = [_chunk(f"D__a{i}__c001", "palabra " * 50)[0] for i in range(5)]
     rep = profile_model(contract, tok, chunks)
     assert rep["embedding_input_profile"]["overall"]["n_truncated"] == 0
     assert rep["source_of_effective_limit"] == "tokenizer"

@@ -17,12 +17,14 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from src.preprocessing.chunker import (  # noqa: E402
+    chunking_diagnostics,
     create_chunks,
-    load_processed_document,
+    load_json,
     save_chunks,
 )
 
 DOCUMENTS_DIR = Path("data/processed/documents")
+PARENTS_DIR = Path("data/processed/parents")
 OUTPUT_DIR = Path("data/processed/chunks")
 
 
@@ -38,22 +40,23 @@ def main(argv: list[str] | None = None) -> int:
 
     norm_id = argv[0]
     document_path = DOCUMENTS_DIR / f"{norm_id}.json"
+    parents_path = PARENTS_DIR / f"{norm_id}.json"
 
     try:
-        document = load_processed_document(document_path)
-        chunks_document = create_chunks(document)
+        document = load_json(document_path)
+        parents = load_json(parents_path)
+        chunks_document = create_chunks(document, parents)
         out_path = save_chunks(chunks_document, OUTPUT_DIR)
     except (FileNotFoundError, json.JSONDecodeError) as exc:
         print(f"Error: {exc}", file=sys.stderr)
         return 1
 
-    checks = chunks_document["quality_checks"]
+    diag = chunking_diagnostics(document, parents, chunks_document)
     print(f"Chunks generados: {out_path}")
     print(
-        f"  bloques fuente: {checks['source_blocks_count']} | "
-        f"indexables: {checks['indexable_blocks_count']} | "
-        f"chunks: {checks['chunks_count']} | "
-        f"oversized: {len(checks['oversized_chunks'])}"
+        f"  bloques fuente: {diag['source_blocks_count']} | "
+        f"indexables: {diag['indexable_blocks_count']} | "
+        f"chunks: {diag['chunks_count']} | oversized: {len(diag['oversized_chunks'])}"
     )
     return 0
 

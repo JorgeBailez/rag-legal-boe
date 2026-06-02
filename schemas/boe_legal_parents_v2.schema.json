@@ -1,0 +1,369 @@
+{
+  "$defs": {
+    "Citation": {
+      "additionalProperties": false,
+      "description": "Cita humana + URL oficial con ancla de bloque.",
+      "properties": {
+        "label": {
+          "examples": [
+            "Ley 7/1985, artículo 2"
+          ],
+          "title": "Label",
+          "type": "string"
+        },
+        "url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "examples": [
+            "https://www.boe.es/buscar/act.php?id=BOE-A-1985-5392#a2"
+          ],
+          "title": "Url"
+        }
+      },
+      "required": [
+        "label"
+      ],
+      "title": "Citation",
+      "type": "object"
+    },
+    "CurrentVersion": {
+      "additionalProperties": false,
+      "description": "Resumen ligero de la versión vigente seleccionada (espejo de history.is_current).",
+      "properties": {
+        "publication_date": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Publication Date"
+        },
+        "source_norm_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Norm Id"
+        },
+        "validity_date": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Validity Date"
+        }
+      },
+      "title": "CurrentVersion",
+      "type": "object"
+    },
+    "GenerationMeta": {
+      "additionalProperties": false,
+      "description": "Metadatos mínimos de generación (trazabilidad de quién/cuándo).",
+      "properties": {
+        "generated_at": {
+          "description": "ISO-8601 UTC del momento de generación.",
+          "title": "Generated At",
+          "type": "string"
+        },
+        "generator": {
+          "description": "Componente/versión que generó el artefacto.",
+          "title": "Generator",
+          "type": "string"
+        }
+      },
+      "required": [
+        "generated_at",
+        "generator"
+      ],
+      "title": "GenerationMeta",
+      "type": "object"
+    },
+    "Hierarchy": {
+      "additionalProperties": false,
+      "description": "Jerarquía jurídica a 6 niveles (mutuamente excluyentes cuerpo/anexo).",
+      "properties": {
+        "annex": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Annex"
+        },
+        "book": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Book"
+        },
+        "chapter": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Chapter"
+        },
+        "section": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Section"
+        },
+        "subsection": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Subsection"
+        },
+        "title": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Title"
+        }
+      },
+      "title": "Hierarchy",
+      "type": "object"
+    },
+    "Paragraph": {
+      "additionalProperties": false,
+      "properties": {
+        "class": {
+          "title": "Class",
+          "type": "string"
+        },
+        "order": {
+          "title": "Order",
+          "type": "integer"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "order",
+        "class",
+        "text"
+      ],
+      "title": "Paragraph",
+      "type": "object"
+    },
+    "ParentRecord": {
+      "additionalProperties": false,
+      "description": "Bloque jurídico padre: dueño del texto vigente y los párrafos. SIN `indexable`.",
+      "properties": {
+        "block_id": {
+          "title": "Block Id",
+          "type": "string"
+        },
+        "block_type": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Block Type"
+        },
+        "citation": {
+          "$ref": "#/$defs/Citation"
+        },
+        "contains_image": {
+          "default": false,
+          "title": "Contains Image",
+          "type": "boolean"
+        },
+        "contains_table": {
+          "default": false,
+          "title": "Contains Table",
+          "type": "boolean"
+        },
+        "content_status": {
+          "default": "present",
+          "title": "Content Status",
+          "type": "string"
+        },
+        "current_version": {
+          "$ref": "#/$defs/CurrentVersion"
+        },
+        "document_id": {
+          "title": "Document Id",
+          "type": "string"
+        },
+        "full_title": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Full Title"
+        },
+        "hierarchy": {
+          "$ref": "#/$defs/Hierarchy"
+        },
+        "is_annex": {
+          "default": false,
+          "title": "Is Annex",
+          "type": "boolean"
+        },
+        "is_without_content": {
+          "default": false,
+          "title": "Is Without Content",
+          "type": "boolean"
+        },
+        "order": {
+          "title": "Order",
+          "type": "integer"
+        },
+        "paragraphs": {
+          "items": {
+            "$ref": "#/$defs/Paragraph"
+          },
+          "title": "Paragraphs",
+          "type": "array"
+        },
+        "parent_id": {
+          "title": "Parent Id",
+          "type": "string"
+        },
+        "semantic_role": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Semantic Role"
+        },
+        "table_text_available": {
+          "default": false,
+          "title": "Table Text Available",
+          "type": "boolean"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "title": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Title"
+        }
+      },
+      "required": [
+        "parent_id",
+        "document_id",
+        "block_id",
+        "order",
+        "text",
+        "citation",
+        "current_version"
+      ],
+      "title": "ParentRecord",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Almacén de bloques padre de una norma (`boe_legal_parents_v2`).",
+  "properties": {
+    "document_id": {
+      "title": "Document Id",
+      "type": "string"
+    },
+    "generation_meta": {
+      "$ref": "#/$defs/GenerationMeta"
+    },
+    "parents": {
+      "items": {
+        "$ref": "#/$defs/ParentRecord"
+      },
+      "title": "Parents",
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "boe_legal_parents_v2",
+      "default": "boe_legal_parents_v2",
+      "title": "Schema Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "document_id",
+    "parents",
+    "generation_meta"
+  ],
+  "title": "ParentsV2",
+  "type": "object"
+}

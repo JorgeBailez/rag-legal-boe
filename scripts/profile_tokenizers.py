@@ -30,14 +30,25 @@ from src.embeddings import model_registry as reg  # noqa: E402
 from src.embeddings.tokenizer_profiler import profile_model  # noqa: E402
 
 CHUNKS_DIR = Path("data/processed/chunks")
+DOCS_DIR = Path("data/processed/documents")
+PARENTS_DIR = Path("data/processed/parents")
 REPORTS_DIR = Path("data/processed/reports")
 
 
-def _load_chunks(chunks_dir: Path) -> list[dict]:
+def _load_corpus() -> tuple[list[dict], dict[str, str], dict[str, str]]:
+    """Carga chunks v2 + mapas de join (parent_id→texto, block_id→block_type)."""
     chunks: list[dict] = []
-    for f in sorted(glob.glob(str(chunks_dir / "*.json"))):
+    for f in sorted(glob.glob(str(CHUNKS_DIR / "*.json"))):
         chunks.extend(json.loads(Path(f).read_text(encoding="utf-8")).get("chunks", []))
-    return chunks
+    parent_text_by_id: dict[str, str] = {}
+    for f in sorted(glob.glob(str(PARENTS_DIR / "*.json"))):
+        for p in json.loads(Path(f).read_text(encoding="utf-8")).get("parents", []):
+            parent_text_by_id[p["parent_id"]] = p.get("text", "")
+    block_type_by_id: dict[str, str] = {}
+    for f in sorted(glob.glob(str(DOCS_DIR / "*.json"))):
+        for b in json.loads(Path(f).read_text(encoding="utf-8")).get("blocks", []):
+            block_type_by_id[b["block_id"]] = b.get("block_type")
+    return chunks, parent_text_by_id, block_type_by_id
 
 
 def _load_tokenizer(model_id: str, revision: str | None):
@@ -77,16 +88,18 @@ def _csv_rows(report: dict) -> list[dict]:
 def main() -> int:
     parser = argparse.ArgumentParser(description="Perfilado de tokenizadores (resuelve H3).")
     parser.add_argument("--models", nargs="*", default=reg.all_model_ids())
-    parser.add_argument("--input", default=str(CHUNKS_DIR))
     parser.add_argument("--out", default=str(REPORTS_DIR))
     parser.add_argument(
         "--keep-per-chunk", action="store_true", help="incluye el detalle por chunk en el JSON."
     )
     args = parser.parse_args()
 
-    chunks = _load_chunks(Path(args.input))
+    chunks, parent_text_by_id, block_type_by_id = _load_corpus()
     if not chunks:
-        print(f"No hay chunks en {args.input} (ejecuta process_mvp_corpus.py).", file=sys.stderr)
+        print(
+            "No hay chunks en data/processed/chunks (ejecuta process_mvp_corpus.py).",
+            file=sys.stderr,
+        )
         return 1
     print(f"Chunks cargados: {len(chunks)}")
 
@@ -96,7 +109,14 @@ def main() -> int:
         print(f"  perfilando {model_id} …")
         tokenizer = _load_tokenizer(model_id, contract.revision)
         models.append(
-            profile_model(contract, tokenizer, chunks, keep_per_chunk=args.keep_per_chunk)
+            profile_model(
+                contract,
+                tokenizer,
+                chunks,
+                parent_text_by_id=parent_text_by_id,
+                block_type_by_id=block_type_by_id,
+                keep_per_chunk=args.keep_per_chunk,
+            )
         )
 
     report = {"n_chunks": len(chunks), "n_models": len(models), "models": models}

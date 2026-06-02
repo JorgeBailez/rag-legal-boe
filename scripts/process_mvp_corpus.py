@@ -16,33 +16,36 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from src.boe.corpus import load_seed_corpus  # noqa: E402
-from src.boe.parser import parse_boe_document, save_processed_document  # noqa: E402
+from src.boe.parser import build_processed_bundle, save_processed_bundle  # noqa: E402
 from src.core.exceptions import ParsingError  # noqa: E402
 from src.preprocessing.chunker import create_chunks, save_chunks  # noqa: E402
 
 RAW_DIR = Path("data/raw/boe")
 MANIFEST_DIR = Path("data/manifests")
 DOCUMENTS_DIR = Path("data/processed/documents")
+HISTORIES_DIR = Path("data/processed/histories")
+PARENTS_DIR = Path("data/processed/parents")
 CHUNKS_DIR = Path("data/processed/chunks")
 
 
 def main() -> int:
+    """Regenera offline el corpus MVP a los contratos v2 (document + history + parents + chunks)."""
     norms = load_seed_corpus()
     failures = 0
     for norm in norms:
         norm_id = norm["norm_id"]
         try:
-            document = parse_boe_document(norm_id, RAW_DIR, MANIFEST_DIR / f"{norm_id}.json")
-            save_processed_document(document, DOCUMENTS_DIR)
-            chunks_document = create_chunks(document)
+            bundle = build_processed_bundle(norm_id, RAW_DIR, MANIFEST_DIR / f"{norm_id}.json")
+            save_processed_bundle(bundle, DOCUMENTS_DIR, HISTORIES_DIR, PARENTS_DIR)
+            chunks_document = create_chunks(bundle.document, bundle.parents)
             save_chunks(chunks_document, CHUNKS_DIR)
         except (ParsingError, FileNotFoundError) as exc:
             failures += 1
             print(f"  ⚠ {norm_id}: {exc}", file=sys.stderr)
             continue
         print(
-            f"  {norm_id}: bloques={len(document['blocks'])} "
-            f"chunks={chunks_document['quality_checks']['chunks_count']}"
+            f"  {norm_id}: bloques={len(bundle.document['blocks'])} "
+            f"parents={len(bundle.parents['parents'])} chunks={len(chunks_document['chunks'])}"
         )
 
     print(f"\nNormas reprocesadas: {len(norms) - failures}/{len(norms)} (sin red)")

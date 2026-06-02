@@ -24,6 +24,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from src.quality import corpus_audit as ca  # noqa: E402
 
 DOCS_DIR = Path("data/processed/documents")
+HISTORIES_DIR = Path("data/processed/histories")
+PARENTS_DIR = Path("data/processed/parents")
 CHUNKS_DIR = Path("data/processed/chunks")
 RAW_DIR = Path("data/raw/boe")
 MANIFEST_DIR = Path("data/manifests")
@@ -31,16 +33,32 @@ REPORTS_DIR = Path("data/processed/reports")
 TABLE_CLASSES = ("cuerpo_tabla", "cabeza_tabla")
 
 
-def _load_all() -> tuple[dict, dict]:
-    docs = {}
+def _load_all() -> tuple[dict, dict, dict, dict, dict]:
+    """Carga los 4 artefactos v2 + la vista compuesta (joined) por norma.
+
+    Devuelve (joined_docs, raw_documents, histories, parents, chunks). `joined_docs` es la vista
+    autoritativa (document+history+parents) con `latest_version`/`versions`/`retrieval` por bloque.
+    """
+    documents, histories, parents, chunks = {}, {}, {}, {}
     for f in sorted(glob.glob(str(DOCS_DIR / "*.json"))):
         d = json.loads(Path(f).read_text(encoding="utf-8"))
-        docs[d["document_id"]] = d
-    chunks = {}
+        documents[d["document_id"]] = d
+    for f in sorted(glob.glob(str(HISTORIES_DIR / "*.json"))):
+        h = json.loads(Path(f).read_text(encoding="utf-8"))
+        histories[h["document_id"]] = h
+    for f in sorted(glob.glob(str(PARENTS_DIR / "*.json"))):
+        p = json.loads(Path(f).read_text(encoding="utf-8"))
+        parents[p["document_id"]] = p
     for f in sorted(glob.glob(str(CHUNKS_DIR / "*.json"))):
         c = json.loads(Path(f).read_text(encoding="utf-8"))
         chunks[c["document_id"]] = c
-    return docs, chunks
+    joined = {
+        did: ca.join_norm(
+            documents[did], histories.get(did, {"blocks": []}), parents.get(did, {"parents": []})
+        )
+        for did in documents
+    }
+    return joined, documents, histories, parents, chunks
 
 
 def _has_table(block: dict) -> bool:
@@ -62,7 +80,7 @@ def _select_examples(docs: dict, chunks: dict) -> list[tuple[str, str]]:
         cd = chunks.get(nid, {})
         counts = {}
         for ch in cd.get("chunks", []):
-            counts[ch["block_id"]] = ch["chunk_count_for_parent"]
+            counts[ch["block_id"]] = (ch.get("position") or {}).get("count_for_parent")
         for b in doc["blocks"]:
             bid = b["block_id"]
             bt = b["block_type"]
@@ -100,7 +118,7 @@ def _select_examples(docs: dict, chunks: dict) -> list[tuple[str, str]]:
 
 
 def main(strict: bool = False) -> int:
-    docs, chunks = _load_all()
+    docs, documents, histories, parents, chunks = _load_all()
     if not docs:
         print("No hay documentos procesados en data/processed/documents/.", file=sys.stderr)
         return 1
@@ -111,8 +129,15 @@ def main(strict: bool = False) -> int:
 
     for nid, doc in docs.items():
         cd = chunks.get(nid, {})
+        pj = parents.get(nid, {"parents": []})
         max_chars = cd.get("chunking_strategy", {}).get("max_chars", 1800)
-        findings = ca.check_document(doc) + ca.check_chunks(cd, doc)
+        findings = (
+            ca.check_document(documents[nid], histories.get(nid), parents.get(nid))
+            + ca.check_history(documents[nid], histories.get(nid, {"blocks": []}))
+            + ca.check_parents(documents[nid], pj)
+            + ca.check_chunks(cd, doc)
+            + ca.check_relational(documents[nid], histories.get(nid, {"blocks": []}), pj, cd)
+        )
         all_findings.extend(findings)
         overlap = ca.analyze_overlap(cd, doc)
         oversized = ca.oversized_rows(cd, doc, max_chars)
@@ -123,7 +148,7 @@ def main(strict: bool = False) -> int:
             "findings": len(findings),
             "overlap": overlap,
             "oversized": len(oversized),
-            "efficiency": ca.efficiency_metrics(cd, overlap),
+            "efficiency": ca.efficiency_metrics(cd, overlap, pj),
         }
 
     # Hipótesis H1–H5

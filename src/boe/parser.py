@@ -1,7 +1,9 @@
-"""Parser BOE v0: XML raw del BOE -> modelo documental propio (JSON).
+"""Parser BOE: XML raw del BOE -> representación intermedia neutral -> contratos v2.
 
-Convierte los XML raw ya descargados de una norma (metadatos, analisis, indice, texto)
-en el contrato `boe_legal_document_v1` definido en `docs/modelo_documental.md`.
+Convierte los XML raw ya descargados de una norma (metadatos, analisis, indice, texto) en una
+**representación intermedia privada** (no persistida) y deriva de ella los tres contratos
+persistidos: `boe_legal_document_v2` (descriptor), `boe_legal_history_v2` y
+`boe_legal_parents_v2`. Ver `docs/modelo_documental.md`.
 
 Capa de independencia: aísla al resto del sistema de la forma exacta del XML del BOE.
 No usa red, no toca el raw, no usa `full.xml` como fuente y no parsea `metadata_eli.xml`.
@@ -11,13 +13,19 @@ from __future__ import annotations
 
 import json
 import re
+from dataclasses import dataclass
+from datetime import UTC, datetime
 from pathlib import Path
 
 from lxml import etree
 
+from src.contracts.models import DocumentV2, HistoryV2, ParentsV2
 from src.core.exceptions import ParsingError
 
-SCHEMA_VERSION = "boe_legal_document_v1"
+DOCUMENT_SCHEMA_VERSION = "boe_legal_document_v2"
+HISTORY_SCHEMA_VERSION = "boe_legal_history_v2"
+PARENTS_SCHEMA_VERSION = "boe_legal_parents_v2"
+GENERATOR = "src.boe.parser"
 SOURCE_NAME = "BOE legislación consolidada"
 LEGAL_STATUS_NOTICE = (
     "Texto consolidado de carácter informativo, sin valor jurídico oficial. "
@@ -628,13 +636,18 @@ def _lower_first(value: str) -> str:
     return value
 
 
-def build_retrieval(
+def build_block_descriptor_fields(
     document_id: str,
     html_url: str | None,
     short_title: str | None,
     block: dict,
 ) -> dict:
-    """Construye el sub-objeto `retrieval` de un bloque."""
+    """Proyección de descriptor de un bloque: indexabilidad y cita.
+
+    Responsabilidad exacta: decide `indexable`/`excluded_reason` (por contenido + tipo +
+    cuarentena) y compone `citation_label`/`source_url`. **No** construye `retrieval_text`: ese
+    campo lo genera y persiste exclusivamente el chunker (`src/preprocessing/chunker.py`).
+    """
     block_id = block["block_id"]
     block_title = block.get("block_title")
     latest = block.get("latest_version") or {}
@@ -654,7 +667,6 @@ def build_retrieval(
         and bool(text)
         and not quarantined
     )
-    retrieval_text = clean_text(f"{label_base}. {text}") if text else label_base
 
     excluded_reason = None
     if quarantined:
@@ -668,7 +680,6 @@ def build_retrieval(
 
     return {
         "indexable": indexable,
-        "retrieval_text": retrieval_text,
         "citation_label": citation_label,
         "source_url": source_url,
         "excluded_reason": excluded_reason,
@@ -680,16 +691,18 @@ def build_retrieval(
 # --------------------------------------------------------------------------- #
 
 
-def parse_boe_document(norm_id: str, raw_dir: Path, manifest_path: Path) -> dict:
-    """Parsea los XML raw locales de una norma al contrato `boe_legal_document_v1`."""
+def _build_normalized_intermediate(norm_id: str, raw_dir: Path, manifest_path: Path) -> dict:
+    """Representación intermedia **privada y neutral** de una norma (no se persiste).
+
+    Estructura rica por bloque (texto vigente, versiones, resolución temporal, descriptor) de la
+    que `build_processed_bundle` deriva los contratos persistidos v2 (document + history +
+    parents). No es un contrato: es el modelo de trabajo del parser.
+    """
     raw_dir = Path(raw_dir)
     manifest_path = Path(manifest_path)
     norm_dir = raw_dir / norm_id
 
     paths = {name: norm_dir / name for name in REQUIRED_RAW_FILES}
-    raw_files_present = (
-        all(paths[name].is_file() for name in MANDATORY_RAW_FILES) and manifest_path.is_file()
-    )
 
     data_metadatos = validate_response(load_xml(paths["metadatos.xml"]), paths["metadatos.xml"])
     data_indice = validate_response(load_xml(paths["indice.xml"]), paths["indice.xml"])
@@ -721,8 +734,6 @@ def parse_boe_document(norm_id: str, raw_dir: Path, manifest_path: Path) -> dict
 
     index_ids = [b["block_id"] for b in index_blocks]
     index_id_set = set(index_ids)
-    text_id_set = set(text_blocks)
-    unmatched_index_blocks = [bid for bid in index_ids if bid not in text_id_set]
     unmatched_text_blocks = [bid for bid in text_order if bid not in index_id_set]
 
     # Orden documental: primero el índice; al final, bloques de texto sin entrada en índice.
@@ -766,8 +777,13 @@ def parse_boe_document(norm_id: str, raw_dir: Path, manifest_path: Path) -> dict
             "contains_image": text_block["contains_image"] if text_block else False,
             "content_status": text_block["content_status"] if text_block else "present",
             "is_without_content": text_block["is_without_content"] if text_block else False,
-            "temporal_resolution": text_block["temporal_resolution"] if text_block else None,
-            "temporal_quarantined": text_block["temporal_quarantined"] if text_block else False,
+            # Bloque presente en índice pero ausente en texto: sin versiones → unresolved.
+            "temporal_resolution": (
+                text_block["temporal_resolution"]
+                if text_block
+                else {"status": "unresolved", "warnings": ["block_in_index_only"]}
+            ),
+            "temporal_quarantined": text_block["temporal_quarantined"] if text_block else True,
             "index_title": index_entry.get("index_title"),
             "index_url": index_entry.get("index_url"),
             "index_last_update_date": index_entry.get("index_last_update_date"),
@@ -775,46 +791,237 @@ def parse_boe_document(norm_id: str, raw_dir: Path, manifest_path: Path) -> dict
             "versions": text_block["versions"] if text_block else [],
             "latest_version": text_block["latest_version"] if text_block else None,
         }
-        block["retrieval"] = build_retrieval(document_id, html_url, short_title, block)
+        block["descriptor_fields"] = build_block_descriptor_fields(
+            document_id, html_url, short_title, block
+        )
         blocks.append(block)
 
-    temporal_quarantine_blocks = [
-        bid for bid, tb in text_blocks.items() if tb.get("temporal_quarantined")
-    ]
-    quality_checks = {
-        "raw_files_present": raw_files_present,
-        "metadata_ok": bool(metadata.get("title") and metadata.get("identifier")),
-        "index_blocks_count": len(index_blocks),
-        "text_blocks_count": len(text_blocks),
-        "unmatched_index_blocks": unmatched_index_blocks,
-        "unmatched_text_blocks": unmatched_text_blocks,
-        "temporal_quarantine_blocks": temporal_quarantine_blocks,
-        "warnings": warnings,
-    }
-
     return {
-        "schema_version": SCHEMA_VERSION,
         "document_id": document_id,
         "source": {
             "name": SOURCE_NAME,
             "base_url": manifest.get("base_url"),
             "downloaded_at": manifest.get("downloaded_at"),
-            "raw_manifest_path": manifest_path.as_posix(),
+            "manifest_ref": _relative_manifest_ref(manifest_path),
         },
         "metadata": metadata,
         "analysis": analysis,
         "blocks": blocks,
-        "quality_checks": quality_checks,
     }
 
 
-def save_processed_document(document: dict, output_dir: Path) -> Path:
-    """Persiste el documento procesado como `{document_id}.json`."""
-    output_dir = Path(output_dir)
-    output_dir.mkdir(parents=True, exist_ok=True)
-    out_path = output_dir / f"{document['document_id']}.json"
-    out_path.write_text(
-        json.dumps(document, ensure_ascii=False, indent=2),
-        encoding="utf-8",
-    )
-    return out_path
+def _relative_manifest_ref(manifest_path: Path) -> str:
+    """Ruta relativa y estable al manifest (independiente del equipo)."""
+    manifest_path = Path(manifest_path)
+    try:
+        return manifest_path.relative_to(Path.cwd()).as_posix()
+    except ValueError:
+        return f"data/manifests/{manifest_path.name}"
+
+
+def _generation_meta() -> dict:
+    """Metadatos mínimos de generación (sin conteos derivados ni readiness)."""
+    return {"generated_at": datetime.now(UTC).isoformat(), "generator": GENERATOR}
+
+
+# --------------------------------------------------------------------------- #
+# Contratos v2: descriptor + history + parents (derivados del ensamblado)
+# --------------------------------------------------------------------------- #
+
+
+@dataclass(frozen=True)
+class ProcessedNormBundle:
+    """Bundle tipado en memoria de los tres artefactos persistidos de una norma."""
+
+    document: dict  # boe_legal_document_v2 (descriptor)
+    history: dict  # boe_legal_history_v2
+    parents: dict  # boe_legal_parents_v2
+
+
+def _has_current_text(block: dict) -> bool:
+    """True si el bloque está resuelto y tiene texto vigente no vacío (→ tiene parent)."""
+    lv = block.get("latest_version") or {}
+    return not block.get("temporal_quarantined", False) and bool((lv.get("text") or "").strip())
+
+
+def _build_document_v2(intermediate: dict) -> dict:
+    """Descriptor legible: bloques sin texto pesado; propietario de indexable/flags/cita."""
+    blocks = []
+    for b in intermediate["blocks"]:
+        desc = b.get("descriptor_fields") or {}
+        temporal = b.get("temporal_resolution") or {}
+        blocks.append(
+            {
+                "block_id": b["block_id"],
+                "parent_id": b["parent_id"] if _has_current_text(b) else None,
+                "order": b["order"],
+                "block_type": b.get("block_type"),
+                "block_title": b.get("block_title"),
+                "full_title": b.get("full_title"),
+                "semantic_role": b.get("semantic_role"),
+                "has_retrievable_body": b.get("has_retrievable_body", False),
+                "is_annex": b.get("is_annex", False),
+                "contains_table": b.get("contains_table", False),
+                "table_text_available": b.get("table_text_available", False),
+                "contains_image": b.get("contains_image", False),
+                "content_status": b.get("content_status", "present"),
+                "is_without_content": b.get("is_without_content", False),
+                "temporal_status": (temporal.get("status") if temporal else None) or "unknown",
+                "hierarchy": b.get("hierarchy") or {},
+                "indexable": desc.get("indexable", False),
+                "excluded_reason": desc.get("excluded_reason"),
+                "citation": {
+                    "label": desc.get("citation_label"),
+                    "url": desc.get("source_url"),
+                },
+            }
+        )
+    return {
+        "schema_version": DOCUMENT_SCHEMA_VERSION,
+        "document_id": intermediate["document_id"],
+        "source": {
+            "name": intermediate["source"]["name"],
+            "base_url": intermediate["source"].get("base_url"),
+            "downloaded_at": intermediate["source"].get("downloaded_at"),
+            "manifest_ref": intermediate["source"]["manifest_ref"],
+        },
+        "metadata": intermediate["metadata"],
+        "analysis": intermediate["analysis"],
+        "blocks": blocks,
+        "generation_meta": _generation_meta(),
+    }
+
+
+def _build_history(intermediate: dict) -> dict:
+    """Historial temporal: un registro por CADA block_id (incl. monoversión y cuarentena).
+
+    Propietario único de versiones, notas de modificación y resolución temporal. Los warnings
+    temporales viven en `temporal_resolution.warnings` (no se duplican a nivel de bloque).
+    """
+    records = []
+    for b in intermediate["blocks"]:
+        temporal = b.get("temporal_resolution") or {}
+        lv = b.get("latest_version") or {}
+        sel_pub = temporal.get("selected_publication_date")
+        versions = [
+            {
+                "source_norm_id": v.get("source_norm_id"),
+                "publication_date": v.get("publication_date"),
+                "validity_date": v.get("validity_date"),
+                "is_current": bool(v.get("is_latest")),
+            }
+            for v in (b.get("versions") or [])
+        ]
+        records.append(
+            {
+                "block_id": b["block_id"],
+                "versions": versions,
+                "modification_notes": lv.get("modification_notes", []),
+                "temporal_resolution": {
+                    "status": temporal.get("status"),
+                    "selection_method": temporal.get("selection_method"),
+                    "index_last_update_date": temporal.get("index_last_update_date"),
+                    "selected_version_index": temporal.get("selected_version_index"),
+                    "selected_publication_date": sel_pub,
+                    "selected_source_norm_id": temporal.get("selected_source_norm_id"),
+                    "candidate_versions": temporal.get("candidate_versions", []),
+                    "max_publication_date": temporal.get("max_publication_date"),
+                    "warnings": temporal.get("warnings", []),
+                },
+                "temporal_quarantined": b.get("temporal_quarantined", False),
+                "index_title": b.get("index_title"),
+                "index_url": b.get("index_url"),
+                "index_last_update_date": b.get("index_last_update_date"),
+                "index_last_update_date_raw": b.get("index_last_update_date_raw"),
+            }
+        )
+    return {
+        "schema_version": HISTORY_SCHEMA_VERSION,
+        "document_id": intermediate["document_id"],
+        "blocks": records,
+        "generation_meta": _generation_meta(),
+    }
+
+
+def _build_parents(intermediate: dict) -> dict:
+    """Propietario único del texto vigente: un registro por bloque resuelto con texto no vacío."""
+    records = []
+    for b in intermediate["blocks"]:
+        if not _has_current_text(b):
+            continue
+        lv = b.get("latest_version") or {}
+        desc = b.get("descriptor_fields") or {}
+        records.append(
+            {
+                "parent_id": b["parent_id"],
+                "document_id": intermediate["document_id"],
+                "block_id": b["block_id"],
+                "order": b["order"],
+                "block_type": b.get("block_type"),
+                "title": b.get("block_title"),
+                "full_title": b.get("full_title"),
+                "semantic_role": b.get("semantic_role"),
+                "text": lv.get("text", ""),
+                "paragraphs": lv.get("paragraphs", []),
+                "hierarchy": b.get("hierarchy") or {},
+                "citation": {
+                    "label": desc.get("citation_label"),
+                    "url": desc.get("source_url"),
+                },
+                "current_version": {
+                    "source_norm_id": lv.get("source_norm_id"),
+                    "publication_date": lv.get("publication_date"),
+                    "validity_date": lv.get("validity_date"),
+                },
+                "is_annex": b.get("is_annex", False),
+                "contains_table": b.get("contains_table", False),
+                "table_text_available": b.get("table_text_available", False),
+                "contains_image": b.get("contains_image", False),
+                "content_status": b.get("content_status", "present"),
+                "is_without_content": b.get("is_without_content", False),
+                # `modification_notes` NO se duplican aquí: viven en history (se hidratan por join).
+            }
+        )
+    return {
+        "schema_version": PARENTS_SCHEMA_VERSION,
+        "document_id": intermediate["document_id"],
+        "parents": records,
+        "generation_meta": _generation_meta(),
+    }
+
+
+def build_processed_bundle(norm_id: str, raw_dir: Path, manifest_path: Path) -> ProcessedNormBundle:
+    """Ensambla la norma y deriva los tres contratos persistidos v2 (en memoria, sin escribir).
+
+    Valida cada artefacto contra su modelo Pydantic antes de devolverlo (fail-fast).
+    """
+    intermediate = _build_normalized_intermediate(norm_id, raw_dir, manifest_path)
+    document = _build_document_v2(intermediate)
+    history = _build_history(intermediate)
+    parents = _build_parents(intermediate)
+    # Validación local por artefacto (contratos = fuente única de verdad).
+    DocumentV2.model_validate(document)
+    HistoryV2.model_validate(history)
+    ParentsV2.model_validate(parents)
+    return ProcessedNormBundle(document=document, history=history, parents=parents)
+
+
+def _dump_json(obj: dict, path: Path) -> Path:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(obj, ensure_ascii=False, indent=2), encoding="utf-8")
+    return path
+
+
+def save_processed_bundle(
+    bundle: ProcessedNormBundle,
+    documents_dir: Path,
+    histories_dir: Path,
+    parents_dir: Path,
+) -> dict[str, Path]:
+    """Persiste el bundle: document_v2, history_v2 y parents_v2 (capa de persistencia separada)."""
+    did = bundle.document["document_id"]
+    return {
+        "document": _dump_json(bundle.document, Path(documents_dir) / f"{did}.json"),
+        "history": _dump_json(bundle.history, Path(histories_dir) / f"{did}.json"),
+        "parents": _dump_json(bundle.parents, Path(parents_dir) / f"{did}.json"),
+    }
