@@ -26,6 +26,7 @@ EXPECTED_DIRS = [
     "data/processed/parents",
     "data/processed/chunks",
     "data/evaluation",
+    "data/evaluation/dense_retrieval_v1",
     "data/manifests",
     "schemas",
     "docs",
@@ -55,13 +56,42 @@ EXPECTED_FILES = [
     "src/config/settings.py",
     "src/contracts/models.py",
     "src/contracts/export_schemas.py",
+    "src/contracts/embedding_models.py",
     "src/embeddings/tokenizer_profiler.py",
+    "src/embeddings/model_registry.py",
+    "src/embeddings/input_preparation.py",
+    "src/embeddings/encoder.py",
+    "src/embeddings/fingerprints.py",
+    "src/embeddings/corpus_loader.py",
+    "src/embeddings/bundle.py",
+    "src/embeddings/validation.py",
+    "src/retrieval/context_assembler.py",
+    "src/evaluation/dataset.py",
+    "src/evaluation/reports.py",
+    "scripts/generate_dense_index.py",
+    "scripts/validate_dense_index.py",
+    "scripts/query_dense_index.py",
+    "scripts/benchmark_dense_models.py",
+    "scripts/validate_evaluation_dataset.py",
     "schemas/boe_legal_document_v2.schema.json",
     "schemas/boe_legal_chunks_v2.schema.json",
+    "schemas/dense_embedding_bundle_v1.schema.json",
+    "schemas/dense_embedding_row_v1.schema.json",
+    "schemas/dense_embedding_validation_report_v1.schema.json",
+    "data/evaluation/dense_retrieval_v1/README.md",
+    "data/evaluation/dense_retrieval_v1/questions.jsonl",
+    "data/evaluation/dense_retrieval_v1/judgments.jsonl",
     "docs/decisiones_tecnicas.md",
     "docs/fuentes_y_licencias.md",
     "docs/evaluacion.md",
     "docs/known_issues.md",
+    "docs/fase2_dense_baseline.md",
+    "docs/run_dense_embeddings_server.md",
+    "notebooks/README.md",
+    "notebooks/02_perfilado_tokenizacion.ipynb",
+    "notebooks/03_benchmark_modelos_densos.ipynb",
+    "notebooks/04_ablaciones_chunking_y_contexto.ipynb",
+    "notebooks/05_seleccion_baseline_dense.ipynb",
     "prompts/system_prompt.txt",
     "prompts/rag_prompt.txt",
 ]
@@ -85,7 +115,12 @@ def test_settings_import_and_defaults() -> None:
 
     assert dumped, "Settings.model_dump() no debe estar vacío"
     assert dumped["boe_api_base"].startswith("http")
-    assert dumped["vector_store_provider"] == "chroma"
+    # Fase 2: defaults de índice denso (sin Chroma/Qdrant; el modelo se pasa con --model).
+    assert dumped["dense_index_root"] == "data/indexes/dense"
+    assert dumped["default_cpu_threads"] == 8
+    assert dumped["max_cpu_threads"] == 16
+    assert "vector_store_provider" not in dumped
+    assert "embedding_model" not in dumped
 
 
 def test_core_exceptions_hierarchy() -> None:

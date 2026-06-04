@@ -171,10 +171,29 @@ modelo documental → parser → chunking → corpus). Requiere las dependencias
 uv run jupyter notebook notebooks/01_exploracion_api_boe.ipynb
 ```
 
-## Siguiente tarea
+## Fase 2 — Índice denso (dense-only)
 
-Implementar la **indexación** (`src/indexing/`): embeddings + búsqueda semántica (y BM25),
-partiendo de `data/processed/chunks/<norm_id>.json`.
+Embeddings densos reproducibles + índice exacto + consulta + evaluación, partiendo de
+`data/processed/chunks/<norm_id>.json`. **Dense-only**: BM25, híbrido y reranking quedan para fases
+posteriores (no son parte de esta fase). El modelo de embeddings **no** es un default global: se
+elige con `--model`.
+
+```bash
+uv run python scripts/generate_dense_index.py --list-models        # aliases disponibles
+uv run python scripts/generate_dense_index.py --model bge-m3 --preflight-only
+uv run python scripts/generate_dense_index.py --model bge-m3       # genera el bundle (barra de progreso)
+uv run python scripts/validate_dense_index.py --bundle data/indexes/dense/<bundle_id>
+uv run python scripts/query_dense_index.py --bundle data/indexes/dense/<bundle_id> \
+  --query "¿Cuánto tiempo tiene la Administración para responder a mi solicitud?"
+```
+
+Las **cargas pesadas** (descarga de modelos + codificación) se ejecutan en un servidor CPU; el
+código se valida offline con fixtures. Los bundles publicados son inmutables y requieren revisiones
+exactas de modelo/tokenizer; `--allow-unpinned-revision` queda solo para exploración sin
+publicación. Guía operativa completa:
+[`docs/run_dense_embeddings_server.md`](docs/run_dense_embeddings_server.md). Diseño y decisiones:
+[`docs/fase2_dense_baseline.md`](docs/fase2_dense_baseline.md). Autenticación opcional de Hugging
+Face mediante la variable de entorno `HF_TOKEN` (nunca se versiona).
 
 ---
 
