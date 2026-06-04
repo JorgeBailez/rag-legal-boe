@@ -1,0 +1,189 @@
+{
+  "$defs": {
+    "ChunkFieldSource": {
+      "additionalProperties": false,
+      "description": "El input proviene de un campo existente de un chunk de Fase 1 (referencia, no se duplica).",
+      "properties": {
+        "chunk_id": {
+          "title": "Chunk Id",
+          "type": "string"
+        },
+        "field": {
+          "enum": [
+            "retrieval_text",
+            "text"
+          ],
+          "title": "Field",
+          "type": "string"
+        },
+        "kind": {
+          "const": "chunk_field",
+          "default": "chunk_field",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "chunk_id",
+        "field"
+      ],
+      "title": "ChunkFieldSource",
+      "type": "object"
+    },
+    "ContextAnchor": {
+      "additionalProperties": false,
+      "description": "Rango de párrafos del parent cubierto por el input (1-based, inclusivo).\n\nSe resuelve para inputs basados en párrafos (J1/J2), para ventanas C1 por solape token-aware y\npara overflow heredando/refinando el chunk origen.",
+      "properties": {
+        "paragraph_end": {
+          "title": "Paragraph End",
+          "type": "integer"
+        },
+        "paragraph_start": {
+          "title": "Paragraph Start",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "paragraph_start",
+        "paragraph_end"
+      ],
+      "title": "ContextAnchor",
+      "type": "object"
+    },
+    "DerivedTextSource": {
+      "additionalProperties": false,
+      "description": "El input es texto NUEVO derivado en Fase 2 (se persiste aquí, con trazabilidad token-aware).\n\n`origin`:\n- `fixed_token_window`: ventana token-aware dentro de un parent (vista C1); `chunk_id` es None.\n- `overflow_repair`: subdivisión de un chunk que excedía el límite del modelo; `chunk_id` es el\n  chunk origen.\n`segment_index`/`segment_count` posicionan el segmento dentro de su división (para overflow\nrepair equivalen al overflow_index/overflow_count del encargo).",
+      "properties": {
+        "chunk_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Chunk Id"
+        },
+        "kind": {
+          "const": "derived_text",
+          "default": "derived_text",
+          "title": "Kind",
+          "type": "string"
+        },
+        "origin": {
+          "enum": [
+            "fixed_token_window",
+            "overflow_repair"
+          ],
+          "title": "Origin",
+          "type": "string"
+        },
+        "segment_count": {
+          "title": "Segment Count",
+          "type": "integer"
+        },
+        "segment_index": {
+          "title": "Segment Index",
+          "type": "integer"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "token_end": {
+          "title": "Token End",
+          "type": "integer"
+        },
+        "token_start": {
+          "title": "Token Start",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "origin",
+        "text",
+        "token_start",
+        "token_end",
+        "segment_index",
+        "segment_count"
+      ],
+      "title": "DerivedTextSource",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Fila de `rows.jsonl`: un input de embedding con trazabilidad (sin texto pesado de Fase 1).",
+  "properties": {
+    "block_id": {
+      "title": "Block Id",
+      "type": "string"
+    },
+    "context_anchor": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ContextAnchor"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "document_id": {
+      "title": "Document Id",
+      "type": "string"
+    },
+    "embedding_input_id": {
+      "title": "Embedding Input Id",
+      "type": "string"
+    },
+    "formatted_input_sha256": {
+      "title": "Formatted Input Sha256",
+      "type": "string"
+    },
+    "parent_id": {
+      "title": "Parent Id",
+      "type": "string"
+    },
+    "row_index": {
+      "title": "Row Index",
+      "type": "integer"
+    },
+    "source": {
+      "discriminator": {
+        "mapping": {
+          "chunk_field": "#/$defs/ChunkFieldSource",
+          "derived_text": "#/$defs/DerivedTextSource"
+        },
+        "propertyName": "kind"
+      },
+      "oneOf": [
+        {
+          "$ref": "#/$defs/ChunkFieldSource"
+        },
+        {
+          "$ref": "#/$defs/DerivedTextSource"
+        }
+      ],
+      "title": "Source"
+    },
+    "token_count": {
+      "title": "Token Count",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "row_index",
+    "embedding_input_id",
+    "document_id",
+    "block_id",
+    "parent_id",
+    "source",
+    "token_count",
+    "formatted_input_sha256"
+  ],
+  "title": "DenseEmbeddingRowV1",
+  "type": "object"
+}

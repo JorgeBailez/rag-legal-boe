@@ -57,9 +57,11 @@ def _profile(contract, tok, chunk_bt: tuple[dict, str], effective_max: int) -> d
 # --- contratos de modelo ----------------------------------------------------
 
 
-def test_registry_has_five_candidates() -> None:
-    assert len(CANDIDATES) == 5
-    assert "intfloat/multilingual-e5-large" in CANDIDATES  # baseline histórico
+def test_registry_has_six_candidates() -> None:
+    assert len(CANDIDATES) == 6
+    assert "e5-large" in CANDIDATES  # baseline histórico (clave = alias corto)
+    # get_contract resuelve tanto por alias como por model_id.
+    assert get_contract("intfloat/multilingual-e5-large").alias == "e5-large"
 
 
 def test_e5_document_and_query_formatters() -> None:
@@ -185,7 +187,10 @@ def test_profile_model_end_to_end_records_limit_metadata() -> None:
 
 def test_profile_model_long_context_no_truncation() -> None:
     contract = ModelContract(
-        model_id="fake/long", declared_max_tokens=8192, expected_embedding_dimension=1024
+        alias="fake-long",
+        model_id="fake/long",
+        declared_max_tokens=8192,
+        expected_embedding_dimension=1024,
     )
     tok = FakeTokenizer(model_max_length=8192, special=2)
     chunks = [_chunk(f"D__a{i}__c001", "palabra " * 50)[0] for i in range(5)]

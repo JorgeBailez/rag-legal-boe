@@ -1,0 +1,369 @@
+{
+  "$defs": {
+    "ArtifactRef": {
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "title": "Path",
+          "type": "string"
+        },
+        "sha256": {
+          "title": "Sha256",
+          "type": "string"
+        },
+        "size_bytes": {
+          "title": "Size Bytes",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "path",
+        "sha256",
+        "size_bytes"
+      ],
+      "title": "ArtifactRef",
+      "type": "object"
+    },
+    "ArtifactsSection": {
+      "additionalProperties": false,
+      "properties": {
+        "dtype": {
+          "title": "Dtype",
+          "type": "string"
+        },
+        "embedding_dimension": {
+          "title": "Embedding Dimension",
+          "type": "integer"
+        },
+        "embeddings": {
+          "$ref": "#/$defs/ArtifactRef"
+        },
+        "n_rows": {
+          "title": "N Rows",
+          "type": "integer"
+        },
+        "rows": {
+          "$ref": "#/$defs/ArtifactRef"
+        },
+        "validation_report": {
+          "$ref": "#/$defs/ArtifactRef"
+        }
+      },
+      "required": [
+        "embeddings",
+        "rows",
+        "validation_report",
+        "n_rows",
+        "embedding_dimension",
+        "dtype"
+      ],
+      "title": "ArtifactsSection",
+      "type": "object"
+    },
+    "BundleSection": {
+      "additionalProperties": false,
+      "properties": {
+        "bundle_id": {
+          "title": "Bundle Id",
+          "type": "string"
+        },
+        "created_at": {
+          "title": "Created At",
+          "type": "string"
+        },
+        "model_alias": {
+          "title": "Model Alias",
+          "type": "string"
+        },
+        "model_id": {
+          "title": "Model Id",
+          "type": "string"
+        },
+        "overflow_policy": {
+          "title": "Overflow Policy",
+          "type": "string"
+        },
+        "view": {
+          "enum": [
+            "J1",
+            "J2",
+            "C1"
+          ],
+          "title": "View",
+          "type": "string"
+        }
+      },
+      "required": [
+        "bundle_id",
+        "model_alias",
+        "model_id",
+        "view",
+        "created_at",
+        "overflow_policy"
+      ],
+      "title": "BundleSection",
+      "type": "object"
+    },
+    "CorpusSection": {
+      "additionalProperties": false,
+      "properties": {
+        "embedding_inputs_fingerprint": {
+          "title": "Embedding Inputs Fingerprint",
+          "type": "string"
+        },
+        "n_norms": {
+          "title": "N Norms",
+          "type": "integer"
+        },
+        "n_rows": {
+          "title": "N Rows",
+          "type": "integer"
+        },
+        "n_source_chunks": {
+          "title": "N Source Chunks",
+          "type": "integer"
+        },
+        "source_corpus_fingerprint": {
+          "title": "Source Corpus Fingerprint",
+          "type": "string"
+        }
+      },
+      "required": [
+        "n_norms",
+        "n_source_chunks",
+        "n_rows",
+        "source_corpus_fingerprint",
+        "embedding_inputs_fingerprint"
+      ],
+      "title": "CorpusSection",
+      "type": "object"
+    },
+    "DocumentEmbeddingContractSection": {
+      "additionalProperties": false,
+      "properties": {
+        "declared_max_tokens": {
+          "title": "Declared Max Tokens",
+          "type": "integer"
+        },
+        "document_contract_fingerprint": {
+          "title": "Document Contract Fingerprint",
+          "type": "string"
+        },
+        "document_template": {
+          "title": "Document Template",
+          "type": "string"
+        },
+        "effective_max_tokens": {
+          "title": "Effective Max Tokens",
+          "type": "integer"
+        },
+        "embedding_dimension": {
+          "title": "Embedding Dimension",
+          "type": "integer"
+        },
+        "expected_embedding_dimension": {
+          "title": "Expected Embedding Dimension",
+          "type": "integer"
+        },
+        "model_id": {
+          "title": "Model Id",
+          "type": "string"
+        },
+        "model_revision": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Model Revision"
+        },
+        "normalize_embeddings": {
+          "title": "Normalize Embeddings",
+          "type": "boolean"
+        },
+        "overlap_tokens": {
+          "title": "Overlap Tokens",
+          "type": "integer"
+        },
+        "pooling": {
+          "title": "Pooling",
+          "type": "string"
+        },
+        "remote_code_reviewed": {
+          "title": "Remote Code Reviewed",
+          "type": "boolean"
+        },
+        "revision_pinned": {
+          "title": "Revision Pinned",
+          "type": "boolean"
+        },
+        "tokenizer_id": {
+          "title": "Tokenizer Id",
+          "type": "string"
+        },
+        "tokenizer_revision": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Tokenizer Revision"
+        },
+        "trust_remote_code": {
+          "title": "Trust Remote Code",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "model_id",
+        "model_revision",
+        "tokenizer_id",
+        "tokenizer_revision",
+        "declared_max_tokens",
+        "effective_max_tokens",
+        "expected_embedding_dimension",
+        "embedding_dimension",
+        "document_template",
+        "pooling",
+        "normalize_embeddings",
+        "trust_remote_code",
+        "remote_code_reviewed",
+        "revision_pinned",
+        "document_contract_fingerprint",
+        "overlap_tokens"
+      ],
+      "title": "DocumentEmbeddingContractSection",
+      "type": "object"
+    },
+    "ExecutionSection": {
+      "additionalProperties": false,
+      "properties": {
+        "allow_unpinned_revision": {
+          "title": "Allow Unpinned Revision",
+          "type": "boolean"
+        },
+        "batch_size": {
+          "title": "Batch Size",
+          "type": "integer"
+        },
+        "device": {
+          "title": "Device",
+          "type": "string"
+        },
+        "duration_seconds": {
+          "title": "Duration Seconds",
+          "type": "number"
+        },
+        "encoder_backend": {
+          "title": "Encoder Backend",
+          "type": "string"
+        },
+        "library_versions": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "Library Versions",
+          "type": "object"
+        },
+        "threads": {
+          "title": "Threads",
+          "type": "integer"
+        },
+        "throughput_inputs_per_second": {
+          "title": "Throughput Inputs Per Second",
+          "type": "number"
+        }
+      },
+      "required": [
+        "device",
+        "threads",
+        "batch_size",
+        "duration_seconds",
+        "throughput_inputs_per_second",
+        "encoder_backend",
+        "library_versions",
+        "allow_unpinned_revision"
+      ],
+      "title": "ExecutionSection",
+      "type": "object"
+    },
+    "ValidationSummarySection": {
+      "additionalProperties": false,
+      "properties": {
+        "gate_a_passed": {
+          "title": "Gate A Passed",
+          "type": "boolean"
+        },
+        "gate_b_passed": {
+          "title": "Gate B Passed",
+          "type": "boolean"
+        },
+        "n_errors": {
+          "title": "N Errors",
+          "type": "integer"
+        },
+        "n_info": {
+          "title": "N Info",
+          "type": "integer"
+        },
+        "n_warnings": {
+          "title": "N Warnings",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "gate_a_passed",
+        "gate_b_passed",
+        "n_errors",
+        "n_warnings",
+        "n_info"
+      ],
+      "title": "ValidationSummarySection",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "`manifest.json` de un bundle denso publicado (legible, secciones anidadas).",
+  "properties": {
+    "artifacts": {
+      "$ref": "#/$defs/ArtifactsSection"
+    },
+    "bundle": {
+      "$ref": "#/$defs/BundleSection"
+    },
+    "corpus": {
+      "$ref": "#/$defs/CorpusSection"
+    },
+    "document_embedding_contract": {
+      "$ref": "#/$defs/DocumentEmbeddingContractSection"
+    },
+    "execution": {
+      "$ref": "#/$defs/ExecutionSection"
+    },
+    "schema_version": {
+      "const": "dense_embedding_bundle_v1",
+      "default": "dense_embedding_bundle_v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "validation": {
+      "$ref": "#/$defs/ValidationSummarySection"
+    }
+  },
+  "required": [
+    "bundle",
+    "corpus",
+    "document_embedding_contract",
+    "execution",
+    "artifacts",
+    "validation"
+  ],
+  "title": "DenseEmbeddingBundleV1",
+  "type": "object"
+}

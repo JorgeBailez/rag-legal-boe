@@ -27,6 +27,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from src.embeddings import model_registry as reg  # noqa: E402
+from src.embeddings.encoder import load_tokenizer  # noqa: E402
 from src.embeddings.tokenizer_profiler import profile_model  # noqa: E402
 
 CHUNKS_DIR = Path("data/processed/chunks")
@@ -49,17 +50,6 @@ def _load_corpus() -> tuple[list[dict], dict[str, str], dict[str, str]]:
         for b in json.loads(Path(f).read_text(encoding="utf-8")).get("blocks", []):
             block_type_by_id[b["block_id"]] = b.get("block_type")
     return chunks, parent_text_by_id, block_type_by_id
-
-
-def _load_tokenizer(model_id: str, revision: str | None):
-    """Carga el tokenizer real (import perezoso de transformers; puede requerir red)."""
-    try:
-        from transformers import AutoTokenizer
-    except ImportError as exc:  # pragma: no cover - depende del entorno
-        raise SystemExit(
-            "Falta 'transformers'. Autoriza e instala con: uv add transformers"
-        ) from exc
-    return AutoTokenizer.from_pretrained(model_id, revision=revision, trust_remote_code=True)
 
 
 def _csv_rows(report: dict) -> list[dict]:
@@ -87,10 +77,17 @@ def _csv_rows(report: dict) -> list[dict]:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Perfilado de tokenizadores (resuelve H3).")
-    parser.add_argument("--models", nargs="*", default=reg.all_model_ids())
+    parser.add_argument(
+        "--models", nargs="*", default=reg.all_aliases(), help="aliases o model_ids a perfilar."
+    )
     parser.add_argument("--out", default=str(REPORTS_DIR))
     parser.add_argument(
         "--keep-per-chunk", action="store_true", help="incluye el detalle por chunk en el JSON."
+    )
+    parser.add_argument(
+        "--allow-unpinned-revision",
+        action="store_true",
+        help="permite cargar tokenizers sin commit hash fijado (acepta 'main'). No reproducible.",
     )
     args = parser.parse_args()
 
@@ -104,10 +101,10 @@ def main() -> int:
     print(f"Chunks cargados: {len(chunks)}")
 
     models = []
-    for model_id in args.models:
-        contract = reg.get_contract(model_id)
-        print(f"  perfilando {model_id} …")
-        tokenizer = _load_tokenizer(model_id, contract.revision)
+    for name in args.models:
+        contract = reg.get_contract(name)
+        print(f"  perfilando {contract.alias} ({contract.model_id}) …")
+        tokenizer = load_tokenizer(contract, allow_unpinned_revision=args.allow_unpinned_revision)
         models.append(
             profile_model(
                 contract,

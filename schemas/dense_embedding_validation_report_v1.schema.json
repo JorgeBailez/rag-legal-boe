@@ -1,0 +1,145 @@
+{
+  "$defs": {
+    "SeveritySummary": {
+      "additionalProperties": false,
+      "properties": {
+        "error": {
+          "default": 0,
+          "title": "Error",
+          "type": "integer"
+        },
+        "info": {
+          "default": 0,
+          "title": "Info",
+          "type": "integer"
+        },
+        "warning": {
+          "default": 0,
+          "title": "Warning",
+          "type": "integer"
+        }
+      },
+      "title": "SeveritySummary",
+      "type": "object"
+    },
+    "ValidationFinding": {
+      "additionalProperties": false,
+      "properties": {
+        "check": {
+          "title": "Check",
+          "type": "string"
+        },
+        "evidence": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Evidence"
+        },
+        "gate": {
+          "enum": [
+            "A",
+            "B"
+          ],
+          "title": "Gate",
+          "type": "string"
+        },
+        "message": {
+          "title": "Message",
+          "type": "string"
+        },
+        "severity": {
+          "enum": [
+            "ERROR",
+            "WARNING",
+            "INFO"
+          ],
+          "title": "Severity",
+          "type": "string"
+        }
+      },
+      "required": [
+        "gate",
+        "check",
+        "severity",
+        "message"
+      ],
+      "title": "ValidationFinding",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "`validation_report.json`: resultado de Gate A/B con severidades y hallazgos.",
+  "properties": {
+    "bootstrap_seed": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Bootstrap Seed"
+    },
+    "bundle_id": {
+      "title": "Bundle Id",
+      "type": "string"
+    },
+    "checks_run": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Checks Run",
+      "type": "array"
+    },
+    "embedding_dimension": {
+      "title": "Embedding Dimension",
+      "type": "integer"
+    },
+    "findings": {
+      "items": {
+        "$ref": "#/$defs/ValidationFinding"
+      },
+      "title": "Findings",
+      "type": "array"
+    },
+    "gate_a_passed": {
+      "title": "Gate A Passed",
+      "type": "boolean"
+    },
+    "gate_b_passed": {
+      "title": "Gate B Passed",
+      "type": "boolean"
+    },
+    "n_rows": {
+      "title": "N Rows",
+      "type": "integer"
+    },
+    "schema_version": {
+      "const": "dense_embedding_validation_report_v1",
+      "default": "dense_embedding_validation_report_v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "summary": {
+      "$ref": "#/$defs/SeveritySummary"
+    }
+  },
+  "required": [
+    "bundle_id",
+    "gate_a_passed",
+    "gate_b_passed",
+    "n_rows",
+    "embedding_dimension",
+    "summary"
+  ],
+  "title": "DenseEmbeddingValidationReportV1",
+  "type": "object"
+}

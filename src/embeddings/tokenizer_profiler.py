@@ -188,7 +188,8 @@ def profile_model(
     ]
     result = {
         "model_id": contract.model_id,
-        "revision": contract.revision,
+        "model_revision": contract.model_revision,
+        "tokenizer_revision": contract.tokenizer_revision,
         "expected_embedding_dimension": contract.expected_embedding_dimension,
         "declared_max_tokens": contract.declared_max_tokens,
         "tokenizer_model_max_length": getattr(tokenizer, "model_max_length", None),

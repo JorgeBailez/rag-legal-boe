@@ -15,9 +15,13 @@ import json
 import sys
 from pathlib import Path
 
+from src.contracts.embedding_models import EMBEDDING_ROOT_MODELS
 from src.contracts.models import ROOT_MODELS
 
 SCHEMAS_DIR = Path("schemas")
+
+# Conjunto completo de contratos raíz exportables: jurídicos (Fase 1) + densos (Fase 2).
+ALL_ROOT_MODELS = {**ROOT_MODELS, **EMBEDDING_ROOT_MODELS}
 
 
 def schema_json(model) -> str:
@@ -30,7 +34,7 @@ def export(out_dir: Path = SCHEMAS_DIR) -> dict[str, Path]:
     """Escribe `<name>.schema.json` por cada contrato raíz. Devuelve las rutas escritas."""
     out_dir.mkdir(parents=True, exist_ok=True)
     written: dict[str, Path] = {}
-    for name, model in ROOT_MODELS.items():
+    for name, model in ALL_ROOT_MODELS.items():
         path = out_dir / f"{name}.schema.json"
         path.write_text(schema_json(model), encoding="utf-8")
         written[name] = path
@@ -40,7 +44,7 @@ def export(out_dir: Path = SCHEMAS_DIR) -> dict[str, Path]:
 def check(out_dir: Path = SCHEMAS_DIR) -> list[str]:
     """Devuelve la lista de contratos cuyo schema en disco difiere del regenerado (drift)."""
     drifted: list[str] = []
-    for name, model in ROOT_MODELS.items():
+    for name, model in ALL_ROOT_MODELS.items():
         path = out_dir / f"{name}.schema.json"
         current = path.read_text(encoding="utf-8") if path.is_file() else None
         if current != schema_json(model):
