@@ -29,14 +29,10 @@ class Settings(BaseSettings):
     ollama_base_url: str = "http://localhost:11434"
     ollama_model: str = "mistral"
 
-    # Embeddings
-    embedding_model: str = "intfloat/multilingual-e5-large"
-
-    # Vector store
-    vector_store_provider: str = "chroma"
-    chroma_persist_dir: str = "data/indexes/chroma"
-    qdrant_url: str = "http://localhost:6333"
-    qdrant_collection: str = "boe_consolidado"
+    # Índice denso (el modelo se elige por CLI, no por default global)
+    dense_index_root: str = "data/indexes/dense"
+    default_cpu_threads: int = 8
+    max_cpu_threads: int = 16
 
 
 @lru_cache
