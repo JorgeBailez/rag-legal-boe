@@ -2,42 +2,42 @@
   "norm_id": "BOE-A-1985-5392",
   "source": "BOE legislación consolidada",
   "base_url": "https://www.boe.es/datosabiertos/api",
-  "downloaded_at": "2026-05-30T13:26:46.533616+00:00",
+  "downloaded_at": "2026-06-04T22:24:11.975853+00:00",
   "files": [
     {
       "endpoint_name": "full",
       "path": "data/raw/boe/BOE-A-1985-5392/full.xml",
-      "sha256": "d98a8a64739840485301e56b6eb499040b73e9f19ebd2235006544e5373759cf",
-      "size_bytes": 1345155
+      "sha256": "8eec294dd4486f0190e6bf2a751f33e9713d227b0332a0f2645253d276f02aa8",
+      "size_bytes": 1363410
     },
     {
       "endpoint_name": "metadatos",
       "path": "data/raw/boe/BOE-A-1985-5392/metadatos.xml",
-      "sha256": "c569ced5aba947e9668e99b6d9259a89ad61441104e548281073320c22683919",
+      "sha256": "00d6ba066d998e147f54b461f1f2049a6f8c0ebf70477275bad821103e859fdf",
       "size_bytes": 1217
     },
     {
       "endpoint_name": "analisis",
       "path": "data/raw/boe/BOE-A-1985-5392/analisis.xml",
-      "sha256": "7bc449dccb9e88d3ae5c0ef15df285c92359e6761ca958a982204b83abd253a6",
-      "size_bytes": 35009
+      "sha256": "c2e36fa4110f879b374204995474638607b77b43723b123abe2636d01a764159",
+      "size_bytes": 35582
     },
     {
       "endpoint_name": "metadata_eli",
       "path": "data/raw/boe/BOE-A-1985-5392/metadata_eli.xml",
-      "sha256": "3f10dc2efad60105bc4b694fc764267fb2a434e303b8056a362148ad16bdb3e7",
-      "size_bytes": 309601
+      "sha256": "b77aff53f85c52581300c0dd4bdf3500a058f0903eec7d5e32843bacbad3fa41",
+      "size_bytes": 316041
     },
     {
       "endpoint_name": "texto",
       "path": "data/raw/boe/BOE-A-1985-5392/texto.xml",
-      "sha256": "116039c337a9f05c4c23faa6902c48cc289431efbcfec2c71ebe4ad9848fae49",
-      "size_bytes": 999763
+      "sha256": "3ae6eb41aebb780b300086f802c4972cee70cd63dd0929b1e2fef870c0671d0c",
+      "size_bytes": 1011005
     },
     {
       "endpoint_name": "indice",
       "path": "data/raw/boe/BOE-A-1985-5392/indice.xml",
-      "sha256": "c55bcd4a9cd3330a1823ab1b97257d1166a488057a17d5ef6f1ade4849a0cd4c",
+      "sha256": "59e4f0f44171eba065930bcf1ebdf295f8533a0f2202212b004df95bc9ede143",
       "size_bytes": 60076
     }
   ]

@@ -2,18 +2,18 @@
   "norm_id": "BOE-A-2015-10566",
   "source": "BOE legislación consolidada",
   "base_url": "https://www.boe.es/datosabiertos/api",
-  "downloaded_at": "2026-05-30T13:26:45.603402+00:00",
+  "downloaded_at": "2026-06-04T22:24:11.247556+00:00",
   "files": [
     {
       "endpoint_name": "full",
       "path": "data/raw/boe/BOE-A-2015-10566/full.xml",
-      "sha256": "1d6defaa79e8f100d27160df890096530acfeb149cac4e92277e519dcd42a13c",
+      "sha256": "eabb2e38210066e952717a6dee25fd3d4a0cba2f8d95ee1d3b85d91f9fe44319",
       "size_bytes": 843327
     },
     {
       "endpoint_name": "metadatos",
       "path": "data/raw/boe/BOE-A-2015-10566/metadatos.xml",
-      "sha256": "7b26bae8686eee4fc7dcb682f3211040d241c8a7602677048fa7816c8342f4a6",
+      "sha256": "dbb4033f789d3d3f8656872e53deb1fece85fb2aa5c3a575d6490ed3570dca1d",
       "size_bytes": 1225
     },
     {

@@ -266,6 +266,8 @@ CANDIDATES: dict[str, ModelContract] = {
     "e5-base": ModelContract(
         alias="e5-base",
         model_id="intfloat/multilingual-e5-base",
+        model_revision="d128750597153bb5987e10b1c3493a34e5a4502a",
+        tokenizer_revision="d128750597153bb5987e10b1c3493a34e5a4502a",
         declared_max_tokens=512,
         expected_embedding_dimension=768,
         document_template="passage: {text}",
@@ -276,6 +278,8 @@ CANDIDATES: dict[str, ModelContract] = {
     "e5-large": ModelContract(
         alias="e5-large",
         model_id="intfloat/multilingual-e5-large",
+        model_revision="3d7cfbdacd47fdda877c5cd8a79fbcc4f2a574f3",
+        tokenizer_revision="3d7cfbdacd47fdda877c5cd8a79fbcc4f2a574f3",
         declared_max_tokens=512,
         expected_embedding_dimension=1024,
         document_template="passage: {text}",
@@ -286,6 +290,8 @@ CANDIDATES: dict[str, ModelContract] = {
     "e5-large-instruct": ModelContract(
         alias="e5-large-instruct",
         model_id="intfloat/multilingual-e5-large-instruct",
+        model_revision="274baa43b0e13e37fafa6428dbc7938e62e5c439",
+        tokenizer_revision="274baa43b0e13e37fafa6428dbc7938e62e5c439",  
         declared_max_tokens=512,
         expected_embedding_dimension=1024,
         document_template="{text}",
@@ -299,6 +305,8 @@ CANDIDATES: dict[str, ModelContract] = {
     "bge-m3": ModelContract(
         alias="bge-m3",
         model_id="BAAI/bge-m3",
+        model_revision="5617a9f61b028005a4858fdac845db406aefb181",
+        tokenizer_revision="5617a9f61b028005a4858fdac845db406aefb181",
         declared_max_tokens=8192,
         expected_embedding_dimension=1024,
         document_template="{text}",
@@ -309,6 +317,8 @@ CANDIDATES: dict[str, ModelContract] = {
     "qwen3-0.6b": ModelContract(
         alias="qwen3-0.6b",
         model_id="Qwen/Qwen3-Embedding-0.6B",
+        model_revision="97b0c614be4d77ee51c0cef4e5f07c00f9eb65b",
+        tokenizer_revision="97b0c614be4d77ee51c0cef4e5f07c00f9eb65b",
         declared_max_tokens=32768,
         expected_embedding_dimension=1024,
         document_template="{text}",
