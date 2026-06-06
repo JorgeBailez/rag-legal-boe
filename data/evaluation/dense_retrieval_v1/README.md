@@ -59,3 +59,8 @@ uv run python scripts/validate_evaluation_dataset.py --gate-c-level checkpoint
 3. Juzga cada parent relevante en `judgments.jsonl` (2/1/0) con su `evidence`.
 4. Marca `review_status: "reviewed"` cuando el juicio esté revisado jurídicamente.
 5. Valida con el comando de arriba antes de lanzar el benchmark formal.
+
+## Resultados de checkpoint
+
+- [`checkpoint_baseline_dense.md`](checkpoint_baseline_dense.md) — selección
+  provisional del baseline denso y ablación de vistas documentales.
