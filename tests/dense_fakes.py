@@ -6,6 +6,8 @@ import hashlib
 
 import numpy as np
 
+from src.embeddings.model_registry import format_query_with_profile
+
 
 class FakeWordTokenizer:
     """Tokenizador reversible por palabras: 1 token/palabra + `special` tokens; decode invertible.
@@ -69,12 +71,16 @@ class FakeEncoder:
         self,
         queries: list[str],
         *,
-        task: str | None = None,
+        query_profile_id: str | None = None,
         batch_size: int | None = None,
         show_progress: bool = False,
     ) -> np.ndarray:
+        """Misma firma que `DenseEncoder.encode_queries` (perfil de query reproducible)."""
         formatted = [
-            self.contract.format_query(q, task) if self.contract is not None else q for q in queries
+            format_query_with_profile(self.contract, q, query_profile_id)
+            if self.contract is not None
+            else q
+            for q in queries
         ]
         if not formatted:
             return np.zeros((0, self.dimension), dtype=np.float32)

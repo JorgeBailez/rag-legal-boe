@@ -1,0 +1,33 @@
+{
+  "additionalProperties": false,
+  "description": "Salida estructurada del LLM: solo IDs compactos de evidencia, sin etiquetas ni URL.\n\nTodos los campos son obligatorios para que el JSON Schema enviado a Ollama (`format`) los\nexija explícitamente y el modelo no pueda omitirlos. Las invariantes se validan tras construir\nel objeto: si no se cumplen, es una violación de contrato (la captura el orquestador).",
+  "properties": {
+    "abstention_reason": {
+      "title": "Abstention Reason",
+      "type": "string"
+    },
+    "answer": {
+      "title": "Answer",
+      "type": "string"
+    },
+    "answered": {
+      "title": "Answered",
+      "type": "boolean"
+    },
+    "citation_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Citation Ids",
+      "type": "array"
+    }
+  },
+  "required": [
+    "answered",
+    "answer",
+    "citation_ids",
+    "abstention_reason"
+  ],
+  "title": "RagLlmAnswerV1",
+  "type": "object"
+}

@@ -8,6 +8,9 @@ Uso habitual (limpio):
 Carga el bundle, construye el encoder del modelo registrado en el manifest, codifica la query,
 recupera el top-k por producto escalar y muestra cita + contexto. Requiere los pesos del modelo
 (se descargan la primera vez) y el corpus procesado de Fase 1 para resolver citas/contexto.
+
+La lógica reutilizable vive en `src.retrieval.dense_retriever` (compartida con la generación de
+Fase 3); este script es una capa delgada de presentación.
 """
 
 from __future__ import annotations
@@ -19,53 +22,61 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from src.embeddings.corpus_loader import load_processed_corpus  # noqa: E402
-from src.embeddings.encoder import DenseEncoder  # noqa: E402
-from src.embeddings.model_registry import (  # noqa: E402
-    assert_bundle_compatible,
-    get_contract,
-    query_profile_metadata,
+from src.embeddings.model_registry import query_profile_metadata  # noqa: E402
+from src.retrieval.dense_retriever import (  # noqa: E402
+    DenseRetriever,
+    RetrievalFilters,
+    resolve_hit_text_and_citation,
 )
-from src.indexing.vector_index import ExactDenseIndex, build_filter_mask  # noqa: E402
-
-
-def _build_filters(args: argparse.Namespace) -> dict:
-    filters: dict = {}
-    if args.rank_code:
-        filters["rank_code"] = args.rank_code
-    if args.scope_code:
-        filters["scope_code"] = args.scope_code
-    if args.semantic_role:
-        filters["semantic_role"] = args.semantic_role
-    if args.subject_code:
-        filters["subject_codes"] = args.subject_code
-    for flag in ("annex", "table", "image", "without_content"):
-        if getattr(args, flag):
-            filters[flag] = True
-    return filters
 
 
 def _resolve(hit: dict, corpus: dict) -> tuple[str, dict]:
-    """Devuelve (texto K_ONLY, citation) de un hit por join al chunk o al parent."""
-    source = hit["source"]
-    chunk_id = source.get("chunk_id")
-    if source.get("kind") == "derived_text" and source.get("text") is not None:
-        if chunk_id:
-            chunk = {c["chunk_id"]: c for c in corpus["chunks"]}.get(chunk_id, {})
-            return source["text"], chunk.get("citation", {})
-        parent = corpus["parents_by_id"].get(hit["parent_id"], {})
-        return source["text"], parent.get("citation", {})
-    if chunk_id:
-        chunk = {c["chunk_id"]: c for c in corpus["chunks"]}.get(chunk_id, {})
-        return chunk.get("text", ""), chunk.get("citation", {})
-    parent = corpus["parents_by_id"].get(hit["parent_id"], {})
-    return source.get("text", parent.get("text", "")), parent.get("citation", {})
+    """Shim de compatibilidad: resuelve (texto, cita) de un hit por join al chunk o al parent."""
+    chunks_by_id = {c["chunk_id"]: c for c in corpus.get("chunks", [])}
+    return resolve_hit_text_and_citation(
+        hit, chunks_by_id=chunks_by_id, parents_by_id=corpus.get("parents_by_id", {})
+    )
+
+
+def _positive_int(value: str) -> int:
+    """Tipo argparse: entero estrictamente positivo (falla en el parseo del CLI, no más tarde)."""
+    try:
+        ivalue = int(value)
+    except ValueError:
+        raise argparse.ArgumentTypeError(f"valor entero inválido: {value!r}") from None
+    if ivalue <= 0:
+        raise argparse.ArgumentTypeError(f"debe ser un entero > 0 (recibido {ivalue}).")
+    return ivalue
+
+
+def _non_blank(value: str) -> str:
+    if not value.strip():
+        raise argparse.ArgumentTypeError(
+            "la pregunta no puede estar vacía ni contener solo espacios."
+        )
+    return value
+
+
+def _build_filters(args: argparse.Namespace) -> RetrievalFilters:
+    return RetrievalFilters(
+        rank_code=args.rank_code,
+        scope_code=args.scope_code,
+        semantic_role=args.semantic_role,
+        subject_codes=list(args.subject_code or []),
+        annex=args.annex,
+        table=args.table,
+        image=args.image,
+        without_content=args.without_content,
+    )
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Consulta un bundle de índice denso.")
     parser.add_argument("--bundle", required=True, help="ruta al directorio del bundle publicado.")
-    parser.add_argument("--query", required=True, help="pregunta en lenguaje natural.")
-    parser.add_argument("--top-k", type=int, default=5)
+    parser.add_argument(
+        "--query", required=True, type=_non_blank, help="pregunta en lenguaje natural."
+    )
+    parser.add_argument("--top-k", type=_positive_int, default=5)
     parser.add_argument(
         "--query-profile-id",
         default=None,
@@ -88,34 +99,28 @@ def main() -> int:
     args = parser.parse_args()
 
     corpus = load_processed_corpus()
-    index = ExactDenseIndex.from_bundle(args.bundle, corpus=corpus)
-    contract = get_contract(index.manifest["bundle"]["model_alias"])
-    assert_bundle_compatible(contract, index.manifest)
+    retriever = DenseRetriever.from_bundle(args.bundle, corpus=corpus)
 
-    encoder = DenseEncoder(contract)
-    q = encoder.encode_queries(
-        [args.query],
+    filters = _build_filters(args).as_filter_dict()
+    hits = retriever.retrieve(
+        args.query,
         query_profile_id=args.query_profile_id,
-        show_progress=False,
-    )[0]
+        top_k=args.top_k,
+        filters=filters or None,
+    )
 
-    filters = _build_filters(args)
-    mask = build_filter_mask(index.rows, corpus, filters) if filters else None
-    hits = index.search(q, k=args.top_k, mask=mask)
-
-    print(f"bundle: {index.manifest['bundle']['bundle_id']}")
-    qp = query_profile_metadata(contract, args.query_profile_id)
+    print(f"bundle: {retriever.bundle_id}")
+    qp = query_profile_metadata(retriever.contract, args.query_profile_id)
     print(f"query_profile: {qp['query_profile_id']} ({qp['query_profile_fingerprint'][:12]})")
     print(f"query : {args.query}")
     if filters:
         print(f"filtros: {filters}")
     print(f"top-{args.top_k} (estrategia de contexto: {args.context_strategy}):\n")
     for hit in hits:
-        text, citation = _resolve(hit, corpus)
+        text = hit.retrieval_text
         snippet = (text[:280] + " …") if len(text) > 280 else text
-        label = citation.get("label", hit["parent_id"])
-        print(f"#{hit['rank']}  score={hit['score']:.4f}  {label}")
-        print(f"    {citation.get('url', '')}")
+        print(f"#{hit.rank}  score={hit.score:.4f}  {hit.citation_label}")
+        print(f"    {hit.citation_url or ''}")
         print(f"    {snippet}\n")
     if not hits:
         print("Sin resultados (revisa filtros o corpus).")

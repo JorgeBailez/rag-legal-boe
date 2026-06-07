@@ -1,0 +1,307 @@
+{
+  "$defs": {
+    "AnswerCitationV1": {
+      "additionalProperties": false,
+      "description": "Cita autoritativa resuelta por la aplicación desde el corpus (nunca desde texto libre).",
+      "properties": {
+        "block_id": {
+          "title": "Block Id",
+          "type": "string"
+        },
+        "document_id": {
+          "title": "Document Id",
+          "type": "string"
+        },
+        "evidence_id": {
+          "examples": [
+            "E1"
+          ],
+          "title": "Evidence Id",
+          "type": "string"
+        },
+        "label": {
+          "examples": [
+            "Ley 39/2015, artículo 122"
+          ],
+          "title": "Label",
+          "type": "string"
+        },
+        "parent_id": {
+          "title": "Parent Id",
+          "type": "string"
+        },
+        "url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "examples": [
+            "https://www.boe.es/buscar/act.php?id=BOE-A-2015-10565#a122"
+          ],
+          "title": "Url"
+        }
+      },
+      "required": [
+        "evidence_id",
+        "parent_id",
+        "document_id",
+        "block_id",
+        "label"
+      ],
+      "title": "AnswerCitationV1",
+      "type": "object"
+    },
+    "EvidenceOmissionTraceV1": {
+      "additionalProperties": false,
+      "description": "Diagnóstico compacto de un hit candidato descartado al construir evidencias (sin texto).",
+      "properties": {
+        "char_count": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Char Count"
+        },
+        "parent_id": {
+          "title": "Parent Id",
+          "type": "string"
+        },
+        "reason": {
+          "title": "Reason",
+          "type": "string"
+        },
+        "retrieval_rank": {
+          "title": "Retrieval Rank",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "parent_id",
+        "retrieval_rank",
+        "reason"
+      ],
+      "title": "EvidenceOmissionTraceV1",
+      "type": "object"
+    },
+    "OllamaMetricsV1": {
+      "additionalProperties": false,
+      "description": "Métricas crudas de una llamada a Ollama (nanosegundos y conteos de tokens).\n\nLas propiedades calculadas (segundos, tokens/s) NO se persisten: son ayudas de lectura.",
+      "properties": {
+        "eval_count": {
+          "default": 0,
+          "title": "Eval Count",
+          "type": "integer"
+        },
+        "eval_duration_ns": {
+          "default": 0,
+          "title": "Eval Duration Ns",
+          "type": "integer"
+        },
+        "load_duration_ns": {
+          "default": 0,
+          "title": "Load Duration Ns",
+          "type": "integer"
+        },
+        "prompt_eval_count": {
+          "default": 0,
+          "title": "Prompt Eval Count",
+          "type": "integer"
+        },
+        "prompt_eval_duration_ns": {
+          "default": 0,
+          "title": "Prompt Eval Duration Ns",
+          "type": "integer"
+        },
+        "total_duration_ns": {
+          "default": 0,
+          "title": "Total Duration Ns",
+          "type": "integer"
+        }
+      },
+      "title": "OllamaMetricsV1",
+      "type": "object"
+    },
+    "RetrievalHitTraceV1": {
+      "additionalProperties": false,
+      "description": "Traza compacta de un hit (sin texto jurídico): score + relaciones + flag de selección.",
+      "properties": {
+        "block_id": {
+          "title": "Block Id",
+          "type": "string"
+        },
+        "document_id": {
+          "title": "Document Id",
+          "type": "string"
+        },
+        "evidence_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Evidence Id"
+        },
+        "parent_id": {
+          "title": "Parent Id",
+          "type": "string"
+        },
+        "rank": {
+          "title": "Rank",
+          "type": "integer"
+        },
+        "score": {
+          "title": "Score",
+          "type": "number"
+        },
+        "selected": {
+          "default": false,
+          "title": "Selected",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "rank",
+        "score",
+        "document_id",
+        "block_id",
+        "parent_id"
+      ],
+      "title": "RetrievalHitTraceV1",
+      "type": "object"
+    },
+    "RetrievalTraceV1": {
+      "additionalProperties": false,
+      "description": "Traza del retrieval: bundle/modelo/perfil + recuento, hits y diagnóstico de omisiones.",
+      "properties": {
+        "bundle_id": {
+          "title": "Bundle Id",
+          "type": "string"
+        },
+        "duplicate_parents_removed": {
+          "default": 0,
+          "title": "Duplicate Parents Removed",
+          "type": "integer"
+        },
+        "hits": {
+          "items": {
+            "$ref": "#/$defs/RetrievalHitTraceV1"
+          },
+          "title": "Hits",
+          "type": "array"
+        },
+        "model_alias": {
+          "title": "Model Alias",
+          "type": "string"
+        },
+        "omitted_evidences": {
+          "items": {
+            "$ref": "#/$defs/EvidenceOmissionTraceV1"
+          },
+          "title": "Omitted Evidences",
+          "type": "array"
+        },
+        "query_profile_id": {
+          "title": "Query Profile Id",
+          "type": "string"
+        },
+        "returned_hits": {
+          "title": "Returned Hits",
+          "type": "integer"
+        },
+        "selected_evidences": {
+          "title": "Selected Evidences",
+          "type": "integer"
+        },
+        "top_k": {
+          "title": "Top K",
+          "type": "integer"
+        },
+        "total_context_chars": {
+          "default": 0,
+          "title": "Total Context Chars",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "bundle_id",
+        "model_alias",
+        "query_profile_id",
+        "top_k",
+        "returned_hits",
+        "selected_evidences"
+      ],
+      "title": "RetrievalTraceV1",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Respuesta final auditable: respuesta/abstención + citas autoritativas + aviso + trazas.",
+  "properties": {
+    "abstention_reason": {
+      "default": "",
+      "title": "Abstention Reason",
+      "type": "string"
+    },
+    "answer": {
+      "title": "Answer",
+      "type": "string"
+    },
+    "answered": {
+      "title": "Answered",
+      "type": "boolean"
+    },
+    "citations": {
+      "items": {
+        "$ref": "#/$defs/AnswerCitationV1"
+      },
+      "title": "Citations",
+      "type": "array"
+    },
+    "disclaimer": {
+      "title": "Disclaimer",
+      "type": "string"
+    },
+    "generation_metrics": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/OllamaMetricsV1"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "retrieval_trace": {
+      "$ref": "#/$defs/RetrievalTraceV1"
+    },
+    "schema_version": {
+      "const": "rag_answer_v1",
+      "default": "rag_answer_v1",
+      "title": "Schema Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "answered",
+    "answer",
+    "disclaimer",
+    "retrieval_trace"
+  ],
+  "title": "RagAnswerV1",
+  "type": "object"
+}

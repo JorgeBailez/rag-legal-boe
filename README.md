@@ -4,11 +4,17 @@ Sistema RAG para consulta **informativa** de legislación consolidada del BOE, o
 ciudadanos no expertos. **No** es asesoramiento jurídico vinculante: los textos
 consolidados del BOE tienen carácter informativo y no valor jurídico oficial.
 
-> **Estado: corpus MVP listo para indexar.** Cerrado el flujo local sobre 10 normas:
-> raw XML inmutable → manifest → parser → representación intermedia neutral →
-> `documents + histories + parents` → chunks vector-ready → auditoría con *gate* previo a
-> embeddings (integridad estructural, **temporal** y de *raw*). Todavía no hay embeddings,
-> retrieval, generación ni API.
+> **Estado: Fase 2 densa cerrada a checkpoint · Fase 3 (generación MVP) implementada.**
+> Flujo extremo a extremo sobre 10 normas: raw XML inmutable → manifest → parser →
+> `documents + histories + parents` → chunks vector-ready → auditoría con *gate* →
+> **embeddings densos reproducibles → bundle inmutable → índice exacto (numpy + mmap) →
+> retrieval dense-only evaluado** → **generación fundamentada con LLM local (Ollama) → JSON
+> estructurado validado con citas oficiales o abstención**. Falta la API (FastAPI), prevista
+> para una fase posterior.
+>
+> El baseline denso seleccionado (checkpoint) es `e5-large-instruct · vista J1 ·
+> I2_CITIZEN_LEGISLATION`. Los bundles densos y los pesos de los modelos **no se versionan**
+> (ver `.gitignore`): se generan en un servidor CPU.
 >
 > La **vigencia** de cada bloque se decide por la `fecha_actualizacion` de `indice.xml`
 > (coincidencia exacta y única con una versión, que además es la de fecha máxima); el orden de
@@ -194,6 +200,43 @@ publicación. Guía operativa completa:
 [`docs/run_dense_embeddings_server.md`](docs/run_dense_embeddings_server.md). Diseño y decisiones:
 [`docs/fase2_dense_baseline.md`](docs/fase2_dense_baseline.md). Autenticación opcional de Hugging
 Face mediante la variable de entorno `HF_TOKEN` (nunca se versiona).
+
+## Fase 3 — Generación fundamentada (MVP)
+
+Cierra el primer ciclo extremo a extremo: pregunta → retrieval denso → evidencias acotadas →
+prompt restrictivo → **LLM local (Ollama)** → JSON estructurado validado → respuesta ciudadana con
+citas oficiales **o abstención**. Las URL y etiquetas finales provienen del corpus (datos
+autoritativos), nunca del texto generado; el aviso jurídico se añade de forma estática.
+
+**Dependencia externa (solo en ejecución real):** un Ollama local en `127.0.0.1:11434` con el
+modelo configurado (por defecto `qwen3:4b-instruct`). No hace falta para los tests (offline).
+
+Configuración en `.env` (ver `.env.example`): `OLLAMA_*` (URL loopback por defecto, modelo,
+timeout, `keep_alive`, `num_ctx`, etc.) y `GENERATION_*` (bundle denso, perfil de consulta,
+`top_k`, nº de evidencias, estrategia y presupuestos de contexto). El **bundle no es un default
+global**: se indica con `--bundle` o `GENERATION_DENSE_BUNDLE`.
+
+```bash
+uv run python scripts/answer_question.py \
+  --bundle data/indexes/dense/<bundle_id> \
+  --query "¿Qué plazo tengo para interponer un recurso de alzada?"
+
+# salida JSON completa y descarga del modelo de RAM al terminar
+uv run python scripts/answer_question.py --bundle data/indexes/dense/<bundle_id> \
+  --query "..." --json --unload-model
+```
+
+Sin evidencia suficiente, el sistema **se abstiene** en lugar de inventar. El exit code es ≠0 solo
+ante fallo técnico (bundle inválido, Ollama caído, contrato del LLM incumplido); una abstención
+válida no es un error.
+
+**Tests:** la suite normal (`uv run pytest`) corre **offline**: sin red, sin Ollama, sin pesos
+reales y sin bundle real (usa fakes y un bundle temporal sintético). La prueba **real** contra
+Ollama está desactivada por defecto y se ejecuta en el servidor:
+
+```bash
+RUN_OLLAMA_INTEGRATION=1 uv run --locked pytest tests/test_integration_ollama.py -q -s
+```
 
 ---
 

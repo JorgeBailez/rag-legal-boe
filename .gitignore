@@ -28,6 +28,9 @@ Desktop.ini
 .idea/
 .vscode/
 
+# Archivos comprimidos (entregables/empaquetados; no se versionan)
+*.zip
+
 # Documentación interna/operativa — decisión del autor: NO versionar (se mantiene en local).
 # CLAUDE.md y ARCHITECTURE.md son guías operativas; docs/ es documentación técnica detallada.
 # Se conservan en el disco de trabajo pero no se publican en GitHub.

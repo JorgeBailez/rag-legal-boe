@@ -16,12 +16,14 @@ import sys
 from pathlib import Path
 
 from src.contracts.embedding_models import EMBEDDING_ROOT_MODELS
+from src.contracts.generation_models import GENERATION_ROOT_MODELS
 from src.contracts.models import ROOT_MODELS
 
 SCHEMAS_DIR = Path("schemas")
 
-# Conjunto completo de contratos raíz exportables: jurídicos (Fase 1) + densos (Fase 2).
-ALL_ROOT_MODELS = {**ROOT_MODELS, **EMBEDDING_ROOT_MODELS}
+# Conjunto completo de contratos raíz exportables: jurídicos (Fase 1) + densos (Fase 2) +
+# generación fundamentada (Fase 3).
+ALL_ROOT_MODELS = {**ROOT_MODELS, **EMBEDDING_ROOT_MODELS, **GENERATION_ROOT_MODELS}
 
 
 def schema_json(model) -> str:

@@ -23,3 +23,15 @@ class BoeApiError(ExternalServiceError):
 
 class ParsingError(RagLegalBoeError):
     """Error al parsear XML/HTML del BOE al modelo documental propio."""
+
+
+class OllamaApiError(ExternalServiceError):
+    """Fallo al comunicarse con Ollama (red, HTTP, timeout, envoltorio no válido)."""
+
+
+class GenerationError(RagLegalBoeError):
+    """Error del flujo de generación fundamentada (Fase 3)."""
+
+
+class GenerationContractError(GenerationError):
+    """La salida del LLM no cumple el contrato (schema o citas a IDs no entregados)."""
