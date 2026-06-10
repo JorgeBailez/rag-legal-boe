@@ -129,3 +129,81 @@ def test_empty_query_and_family_are_errors() -> None:
     report = validate_dataset([q], [])
     assert any("query vacía" in e for e in report["errors"])
     assert any("issue_family_id vacío" in e for e in report["errors"])
+
+
+# -- Honestidad: completitud solo en reviewed/final ------------------------------
+
+
+def _draft_judgment(qid, parent="BOE-A-0001__a1", rel=2):
+    # Borrador SIN evidencia ni cita: válido por ser draft (la revisión la completa después).
+    return {"query_id": qid, "parent_id": parent, "relevance": rel, "review_status": "draft"}
+
+
+def test_draft_judgment_without_evidence_is_not_error() -> None:
+    q = _q("q1", status="draft")
+    report = validate_dataset([q], [_draft_judgment("q1")], corpus=synthetic_corpus())
+    assert report["errors"] == []
+
+
+def test_reviewed_judgment_without_evidence_is_error() -> None:
+    j = {
+        "query_id": "q1",
+        "parent_id": "BOE-A-0001__a1",
+        "relevance": 2,
+        "review_status": "reviewed",
+    }
+    report = validate_dataset([_q("q1")], [j], corpus=synthetic_corpus())
+    assert any("evidence obligatoria" in e for e in report["errors"])
+
+
+# -- answer_keys (gold de generación) -------------------------------------------
+
+
+def _ak(qid, answerable=True, status="reviewed", **kw):
+    row = {"query_id": qid, "answerable": answerable, "review_status": status}
+    if answerable:
+        row.setdefault("reference_answer", "respuesta de referencia")
+        row.setdefault("expected_citation_parents", ["BOE-A-0001__a1"])
+    row.update(kw)
+    return row
+
+
+def test_answer_key_dangling_query_is_error() -> None:
+    report = validate_dataset([_q("q1")], [_j("q1")], answer_keys=[_ak("qZZ")])
+    assert any("answer_key.query_id sin pregunta" in e for e in report["errors"])
+
+
+def test_answer_key_answerable_in_out_of_corpus_is_error() -> None:
+    q = _q("q1", "out_of_corpus", "fam_ooc", scope="none")
+    report = validate_dataset([q], [], answer_keys=[_ak("q1", answerable=True)])
+    assert any("answerable=true en out_of_corpus" in e for e in report["errors"])
+
+
+def test_answer_key_expected_parent_must_exist_in_corpus() -> None:
+    ak = _ak("q1", expected_citation_parents=["BOE-A-9999__zz"])
+    report = validate_dataset([_q("q1")], [_j("q1")], answer_keys=[ak], corpus=synthetic_corpus())
+    assert any("expected_citation_parents inexistentes" in e for e in report["errors"])
+
+
+def test_draft_answer_key_incomplete_is_not_error() -> None:
+    ak = {"query_id": "q1", "answerable": True, "review_status": "draft"}
+    report = validate_dataset([_q("q1", status="draft")], [_draft_judgment("q1")], answer_keys=[ak])
+    assert report["errors"] == []
+
+
+def test_generation_ready_requires_reviewed_answer_keys() -> None:
+    questions, judgments = _formal_ready_dataset()
+    answer_keys = []
+    for q in questions:
+        if q["split"] == "out_of_corpus":
+            answer_keys.append(_ak(q["query_id"], answerable=False))
+        else:
+            answer_keys.append(_ak(q["query_id"]))
+    corpus = synthetic_corpus()
+    # Sin answer_keys: retrieval listo pero generación NO.
+    no_ak = validate_dataset(questions, judgments, corpus=corpus)
+    assert no_ak["gate_c"]["ready"] is True
+    assert no_ak["gate_c"]["generation_ready"] is False
+    # Con answer_keys revisadas suficientes: generación lista.
+    with_ak = validate_dataset(questions, judgments, answer_keys=answer_keys, corpus=corpus)
+    assert with_ak["gate_c"]["generation_ready"] is True

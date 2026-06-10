@@ -20,6 +20,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 REPORTS_ROOT = Path("data/processed/reports/dense")
+GENERATION_REPORTS_ROOT = Path("data/processed/reports/generation")
 
 
 def new_run_id(prefix: str, fingerprint: str = "") -> str:
@@ -84,4 +85,36 @@ def write_benchmark_report(
     _write_csv(out_dir / "metrics.csv", metrics_rows)
     _write_jsonl(out_dir / "query_results.jsonl", query_results)
     _write_jsonl(out_dir / "context_results.jsonl", context_results)
+    return out_dir
+
+
+def write_generation_report(
+    run_id: str,
+    *,
+    summary: dict,
+    config: dict,
+    per_query: list[dict],
+    metrics_rows: list[dict],
+    aggregate: dict,
+    judge_agreement: dict | None = None,
+    reports_root: Path = GENERATION_REPORTS_ROOT,
+) -> Path:
+    """Escribe el report de evaluación de generación bajo `<reports_root>/<run_id>/`.
+
+    Ficheros: report.json (resumen+agregado), config.json (config canónica + fingerprint para
+    auditoría), per_query.jsonl (detalle), metrics.csv (escalares por query), aggregate.json y
+    judge_agreement.json (si se validó el juez contra humano).
+    """
+    out_dir = Path(reports_root) / run_id
+    out_dir.mkdir(parents=True, exist_ok=True)
+    _write_json(
+        out_dir / "report.json",
+        {"generation_run_id": run_id, "kind": "generation", **summary, "aggregate": aggregate},
+    )
+    _write_json(out_dir / "config.json", config)
+    _write_json(out_dir / "aggregate.json", aggregate)
+    _write_jsonl(out_dir / "per_query.jsonl", per_query)
+    _write_csv(out_dir / "metrics.csv", metrics_rows)
+    if judge_agreement is not None:
+        _write_json(out_dir / "judge_agreement.json", judge_agreement)
     return out_dir

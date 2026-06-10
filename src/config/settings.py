@@ -18,6 +18,36 @@ from src.retrieval.context_assembler import STRATEGIES
 _LOOPBACK_HOSTS = {"127.0.0.1", "localhost", "::1"}
 
 
+def _validate_loopback_url(var_name: str, url: str, allow_remote: bool) -> None:
+    """Valida la forma de una URL de servicio local y exige loopback salvo opt-in explícito."""
+    parsed = urlparse(url)
+    if parsed.scheme not in {"http", "https"}:
+        raise ConfigurationError(
+            f"{var_name} debe usar esquema http/https (recibido {parsed.scheme!r})."
+        )
+    if not parsed.hostname:
+        raise ConfigurationError(f"{var_name} no contiene un host válido.")
+    try:
+        port = parsed.port
+    except ValueError as exc:
+        raise ConfigurationError(f"{var_name} contiene un puerto inválido: {url!r}.") from exc
+    if port is not None and port <= 0:
+        raise ConfigurationError(f"{var_name} contiene un puerto no utilizable: {port}.")
+    if parsed.username or parsed.password:
+        raise ConfigurationError(f"{var_name} no debe incluir credenciales (user:pass).")
+    if parsed.query or parsed.fragment:
+        raise ConfigurationError(f"{var_name} no debe incluir query ni fragment.")
+    if parsed.path not in ("", "/"):
+        raise ConfigurationError(
+            f"{var_name} debe tener path vacío o '/' (recibido {parsed.path!r})."
+        )
+    if parsed.hostname.lower() not in _LOOPBACK_HOSTS and not allow_remote:
+        raise ConfigurationError(
+            f"{var_name} apunta a un host no local ({parsed.hostname!r}). El MVP usa loopback; "
+            "para un host remoto define OLLAMA_ALLOW_REMOTE=true."
+        )
+
+
 class Settings(BaseSettings):
     """Configuración tipada del sistema RAG Legal BOE."""
 
@@ -55,42 +85,27 @@ class Settings(BaseSettings):
     generation_context_budget_chars: int = 4000
     generation_max_total_context_chars: int = 8000
 
+    # Juez LLM de evaluación (L3/L5). Modelo CONFIGURABLE y distinto del generador (anti
+    # auto-preferencia); NO tiene default global (se indica por entorno o CLI, como el bundle).
+    judge_base_url: str = "http://127.0.0.1:11434"
+    judge_model: str = ""
+    judge_timeout_seconds: float = 900.0
+    judge_num_ctx: int = 8192
+    judge_num_predict: int = 512
+    judge_temperature: float = 0.0
+    judge_seed: int = 42
+    judge_keep_alive: str = "5m"
+
     # Índice denso (el modelo se elige por CLI, no por default global)
     dense_index_root: str = "data/indexes/dense"
     default_cpu_threads: int = 8
     max_cpu_threads: int = 16
 
     @model_validator(mode="after")
-    def _validate_ollama_base_url(self) -> "Settings":
-        """Valida la forma de OLLAMA_BASE_URL y exige loopback salvo opt-in explícito."""
-        parsed = urlparse(self.ollama_base_url)
-        if parsed.scheme not in {"http", "https"}:
-            raise ConfigurationError(
-                f"OLLAMA_BASE_URL debe usar esquema http/https (recibido {parsed.scheme!r})."
-            )
-        if not parsed.hostname:
-            raise ConfigurationError("OLLAMA_BASE_URL no contiene un host válido.")
-        try:
-            port = parsed.port
-        except ValueError as exc:
-            raise ConfigurationError(
-                f"OLLAMA_BASE_URL contiene un puerto inválido: {self.ollama_base_url!r}."
-            ) from exc
-        if port is not None and port <= 0:
-            raise ConfigurationError(f"OLLAMA_BASE_URL contiene un puerto no utilizable: {port}.")
-        if parsed.username or parsed.password:
-            raise ConfigurationError("OLLAMA_BASE_URL no debe incluir credenciales (user:pass).")
-        if parsed.query or parsed.fragment:
-            raise ConfigurationError("OLLAMA_BASE_URL no debe incluir query ni fragment.")
-        if parsed.path not in ("", "/"):
-            raise ConfigurationError(
-                f"OLLAMA_BASE_URL debe tener path vacío o '/' (recibido {parsed.path!r})."
-            )
-        if parsed.hostname.lower() not in _LOOPBACK_HOSTS and not self.ollama_allow_remote:
-            raise ConfigurationError(
-                f"OLLAMA_BASE_URL apunta a un host no local ({parsed.hostname!r}). El MVP usa "
-                "loopback; para un host remoto define OLLAMA_ALLOW_REMOTE=true."
-            )
+    def _validate_loopback_urls(self) -> "Settings":
+        """Valida la forma de OLLAMA_BASE_URL y JUDGE_BASE_URL y exige loopback salvo opt-in."""
+        _validate_loopback_url("OLLAMA_BASE_URL", self.ollama_base_url, self.ollama_allow_remote)
+        _validate_loopback_url("JUDGE_BASE_URL", self.judge_base_url, self.ollama_allow_remote)
         return self
 
     @model_validator(mode="after")
@@ -104,6 +119,9 @@ class Settings(BaseSettings):
             "ollama_timeout_seconds": self.ollama_timeout_seconds,
             "ollama_num_ctx": self.ollama_num_ctx,
             "ollama_num_predict": self.ollama_num_predict,
+            "judge_timeout_seconds": self.judge_timeout_seconds,
+            "judge_num_ctx": self.judge_num_ctx,
+            "judge_num_predict": self.judge_num_predict,
         }
         for name, value in positive.items():
             if value <= 0:

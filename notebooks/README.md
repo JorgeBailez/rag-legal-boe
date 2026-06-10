@@ -11,6 +11,7 @@ embeddings ni publican bundles (eso lo hacen los scripts, normalmente en el serv
 | `03_benchmark_modelos_densos.ipynb` | Calidad frente a coste CPU: smoke tests, latencia, RAM, throughput, instrucciones. |
 | `04_ablaciones_chunking_y_contexto.ipynb` | J1 vs J2 vs C1; K_ONLY vs P_EXPAND_*; B4K/B8K/B12K; barrido de k. |
 | `05_seleccion_baseline_dense.ipynb` | Síntesis final, tabla comparativa, figuras, decisión y limitaciones. |
+| `06_evaluacion_generacion.ipynb` | Resultados de la generación (L3–L6): fidelidad, citas, corrección, abstención, taxonomía de error. Modo DEMO si aún no hay report. |
 
 ## Cómo ejecutarlos
 
@@ -39,3 +40,6 @@ thesis/figures/                           # figuras finales seleccionadas para l
 - `02`: `data/processed/reports/tokenizer_profile.json` (de `scripts/profile_tokenizers.py`).
 - `03`: `data/processed/reports/dense/smoke_tests/<id>/` (de `scripts/benchmark_dense_models.py --smoke-test`).
 - `04` y `05`: `data/processed/reports/dense/benchmarks/<id>/` (de `scripts/benchmark_dense_models.py`).
+- `06`: `data/processed/reports/generation/<run_id>/` (de `scripts/run_generation_eval.py`). Si no
+  existe ningún report, el notebook entra en **modo DEMO** (datos ilustrativos sobre la taxonomía
+  real de preguntas) y lo indica de forma visible.

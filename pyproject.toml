@@ -37,6 +37,7 @@ ignore_missing_imports = true
 [dependency-groups]
 dev = [
     "ipykernel>=6.31.1",
+    "matplotlib>=3.9.0",
     "mypy>=2.1.0",
     "nbconvert>=7.16.6",
     "pandas>=2.3.3",

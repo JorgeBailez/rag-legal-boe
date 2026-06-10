@@ -121,23 +121,22 @@ class OllamaClient:
         """Devuelve los modelos cargados en memoria (inspección)."""
         return self._get("/api/ps")
 
-    def chat(
+    def _chat_content(
         self,
         messages: list[dict[str, str]],
         *,
-        response_format: dict | None = None,
-        temperature: float = 0.0,
-        seed: int = 42,
-        num_predict: int = 256,
-        num_ctx: int = 4096,
-        keep_alive: str | int | None = None,
-    ) -> tuple[RagLlmAnswerV1, OllamaMetricsV1]:
-        """Llama a `/api/chat` con salida estructurada y devuelve (respuesta tipada, métricas)."""
-        fmt = response_format if response_format is not None else RagLlmAnswerV1.model_json_schema()
+        response_format: dict,
+        temperature: float,
+        seed: int,
+        num_predict: int,
+        num_ctx: int,
+        keep_alive: str | int | None,
+    ) -> tuple[str, OllamaMetricsV1]:
+        """Llama a `/api/chat` con salida estructurada y devuelve (contenido crudo, métricas)."""
         body: dict = {
             "model": self.model,
             "messages": messages,
-            "format": fmt,
+            "format": response_format,
             "stream": False,
             "think": self.think,
             "options": {
@@ -157,11 +156,68 @@ class OllamaClient:
         message = data.get("message")
         if not isinstance(message, dict) or "content" not in message:
             raise OllamaApiError("respuesta de Ollama sin 'message.content'")
+        return message["content"], self._metrics_from(data)
+
+    def chat(
+        self,
+        messages: list[dict[str, str]],
+        *,
+        response_format: dict | None = None,
+        temperature: float = 0.0,
+        seed: int = 42,
+        num_predict: int = 256,
+        num_ctx: int = 4096,
+        keep_alive: str | int | None = None,
+    ) -> tuple[RagLlmAnswerV1, OllamaMetricsV1]:
+        """Llama a `/api/chat` y valida la salida contra `rag_llm_answer_v1`."""
+        fmt = response_format if response_format is not None else RagLlmAnswerV1.model_json_schema()
+        content, metrics = self._chat_content(
+            messages,
+            response_format=fmt,
+            temperature=temperature,
+            seed=seed,
+            num_predict=num_predict,
+            num_ctx=num_ctx,
+            keep_alive=keep_alive,
+        )
         try:
-            answer = RagLlmAnswerV1.model_validate_json(message["content"])
+            answer = RagLlmAnswerV1.model_validate_json(content)
         except ValidationError as exc:
             raise GenerationContractError("la salida del LLM no cumple rag_llm_answer_v1") from exc
-        return answer, self._metrics_from(data)
+        return answer, metrics
+
+    def chat_json(
+        self,
+        messages: list[dict[str, str]],
+        *,
+        response_format: dict,
+        temperature: float = 0.0,
+        seed: int = 42,
+        num_predict: int = 256,
+        num_ctx: int = 4096,
+        keep_alive: str | int | None = None,
+    ) -> tuple[dict, OllamaMetricsV1]:
+        """Variante genérica: devuelve el JSON crudo (dict) para esquemas distintos (p. ej. juez).
+
+        No valida contra `rag_llm_answer_v1`: el llamante valida contra su propio contrato. Usa el
+        mismo transporte que `chat()` sin duplicar lógica.
+        """
+        content, metrics = self._chat_content(
+            messages,
+            response_format=response_format,
+            temperature=temperature,
+            seed=seed,
+            num_predict=num_predict,
+            num_ctx=num_ctx,
+            keep_alive=keep_alive,
+        )
+        try:
+            data = json.loads(content)
+        except (json.JSONDecodeError, ValueError) as exc:
+            raise OllamaApiError("la salida del juez no es JSON válido") from exc
+        if not isinstance(data, dict):
+            raise OllamaApiError("la salida del juez no es un objeto JSON")
+        return data, metrics
 
     def unload(self) -> dict:
         """Descarga el modelo de memoria (`keep_alive=0` vía `/api/generate`)."""

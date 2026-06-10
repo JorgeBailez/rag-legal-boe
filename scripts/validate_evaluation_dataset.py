@@ -41,9 +41,13 @@ def main() -> int:
         Path(args.dataset_dir), corpus=corpus, gate_c_level=args.gate_c_level
     )
     print(f"dataset: {report['dataset_dir']}")
-    print(f"questions: {report['n_questions']} | judgments: {report['n_judgments']}")
+    print(
+        f"questions: {report['n_questions']} | judgments: {report['n_judgments']} "
+        f"| answer_keys: {report['n_answer_keys']}"
+    )
     print(f"por split: {report['by_split']}")
     print(f"queries revisadas con juicio relevante: {report['n_reviewed_relevant_queries']}")
+    print(f"answer_keys revisadas: {report['n_reviewed_answer_keys']}")
     if report["errors"]:
         print(f"\nERRORES ({len(report['errors'])}):")
         for e in report["errors"]:
@@ -54,10 +58,13 @@ def main() -> int:
             print(f"  - {w}")
     gate = report["gate_c"]
     print(
-        f"\nGate C ({gate['level']}): {'LISTO' if gate['ready'] else 'NO LISTO'} "
+        f"\nGate C retrieval ({gate['level']}): {'LISTO' if gate['ready'] else 'NO LISTO'} "
         f"| mínimos: {gate['minimums']}"
     )
     for r in gate["reasons"]:
+        print(f"  - {r}")
+    print(f"Gate C generación: {'LISTO' if gate['generation_ready'] else 'NO LISTO'}")
+    for r in gate["generation_reasons"]:
         print(f"  - {r}")
 
     if args.strict and report["errors"]:

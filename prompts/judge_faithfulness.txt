@@ -1,0 +1,17 @@
+Tarea: evaluar la FIDELIDAD de una respuesta respecto a la EVIDENCIA entregada.
+
+Procedimiento:
+1. Descompón la RESPUESTA en afirmaciones atómicas (una idea verificable por afirmación).
+2. Para cada afirmación, decide si está SOPORTADA por la EVIDENCIA (supported=true) o si NO se
+   deduce de ella —aunque pudiera ser cierta en el mundo real— (supported=false).
+3. Solo cuenta la EVIDENCIA de abajo. No uses conocimiento externo. Cifras, plazos, importes y
+   excepciones deben aparecer en la evidencia para considerarse soportados.
+
+EVIDENCIA:
+{evidences}
+
+RESPUESTA A EVALUAR:
+{answer}
+
+Devuelve EXCLUSIVAMENTE el objeto JSON del esquema: una lista "claims", cada una con "claim"
+(la afirmación) y "supported" (true/false).

@@ -108,3 +108,35 @@ def test_malformed_urls_rejected_even_with_optin(url: str) -> None:
     # Aunque se permita host remoto, una URL malformada se rechaza igualmente.
     with pytest.raises(ConfigurationError):
         Settings(ollama_base_url=url, ollama_allow_remote=True)
+
+
+# -- Juez de evaluación (JUDGE_*) ------------------------------------------------
+
+
+def test_judge_defaults_are_valid() -> None:
+    s = Settings()
+    assert s.judge_base_url.startswith("http://127.0.0.1")
+    assert s.judge_model == ""  # sin default global: se indica por entorno/CLI
+    assert s.judge_num_ctx > 0
+
+
+def test_remote_judge_url_rejected_without_optin() -> None:
+    with pytest.raises(ConfigurationError):
+        Settings(judge_base_url="http://10.0.0.5:11434")
+
+
+def test_remote_judge_url_allowed_with_optin() -> None:
+    s = Settings(judge_base_url="http://10.0.0.5:11434", ollama_allow_remote=True)
+    assert s.judge_base_url.endswith(":11434")
+
+
+@pytest.mark.parametrize("field", ["judge_timeout_seconds", "judge_num_ctx", "judge_num_predict"])
+def test_non_positive_judge_numeric_settings_rejected(field: str) -> None:
+    with pytest.raises(ConfigurationError):
+        Settings(**{field: 0})
+
+
+@pytest.mark.parametrize("url", ["http://127.0.0.1:11434/api", "http://127.0.0.1:0"])
+def test_malformed_judge_urls_rejected(url: str) -> None:
+    with pytest.raises(ConfigurationError):
+        Settings(judge_base_url=url)

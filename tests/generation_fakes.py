@@ -9,7 +9,46 @@ Reutiliza el corpus sintético y los fakes densos de `tests/dense_fakes.py`. Añ
 from __future__ import annotations
 
 from src.contracts.generation_models import OllamaMetricsV1, RagLlmAnswerV1
+from src.evaluation.judge import (
+    ClaimVerdictV1,
+    CorrectnessVerdictV1,
+    FaithfulnessVerdictV1,
+)
 from src.retrieval.dense_retriever import DenseHit, DenseRetriever
+
+
+class FakeJudge:
+    """Juez falso con la interfaz que consume `evaluate_generation` (offline, sin LLM).
+
+    `faithfulness_claims` es una lista de bools (supported) y `correctness` una etiqueta. Registra
+    las llamadas para inspección en los tests.
+    """
+
+    def __init__(
+        self,
+        *,
+        faithfulness_claims: list[bool] | None = None,
+        correctness: str = "correct",
+        model_label: str = "fake-judge",
+    ) -> None:
+        self._claims = [True] if faithfulness_claims is None else faithfulness_claims
+        self._correctness = correctness
+        self.model_label = model_label
+        self.faithfulness_calls: list[dict] = []
+        self.correctness_calls: list[dict] = []
+
+    def judge_faithfulness(self, *, answer: str, evidences_block: str):
+        self.faithfulness_calls.append({"answer": answer, "evidences_block": evidences_block})
+        verdict = FaithfulnessVerdictV1(
+            claims=[ClaimVerdictV1(claim=f"c{i}", supported=s) for i, s in enumerate(self._claims)]
+        )
+        return verdict, OllamaMetricsV1(eval_count=5)
+
+    def judge_correctness(self, *, question: str, answer: str, reference: str):
+        self.correctness_calls.append(
+            {"question": question, "answer": answer, "reference": reference}
+        )
+        return CorrectnessVerdictV1(verdict=self._correctness), OllamaMetricsV1(eval_count=5)
 
 
 class FakeLlmClient:

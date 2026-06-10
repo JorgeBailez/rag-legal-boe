@@ -51,6 +51,9 @@ EXPECTED_FILES = [
     "src/generation/prompt.py",
     "src/generation/answer_generator.py",
     "src/evaluation/metrics.py",
+    "src/evaluation/generation_metrics.py",
+    "src/evaluation/judge.py",
+    "src/evaluation/generation_eval.py",
     "src/app/api.py",
     "src/core/exceptions.py",
     "src/config/settings.py",
@@ -78,6 +81,8 @@ EXPECTED_FILES = [
     "scripts/benchmark_dense_models.py",
     "scripts/validate_evaluation_dataset.py",
     "scripts/answer_question.py",
+    "scripts/run_generation_eval.py",
+    "scripts/audit_eval_dataset.py",
     "schemas/boe_legal_document_v2.schema.json",
     "schemas/boe_legal_chunks_v2.schema.json",
     "schemas/dense_embedding_bundle_v1.schema.json",
@@ -88,6 +93,7 @@ EXPECTED_FILES = [
     "data/evaluation/dense_retrieval_v1/README.md",
     "data/evaluation/dense_retrieval_v1/questions.jsonl",
     "data/evaluation/dense_retrieval_v1/judgments.jsonl",
+    "data/evaluation/dense_retrieval_v1/answer_keys.jsonl",
     "docs/decisiones_tecnicas.md",
     "docs/fuentes_y_licencias.md",
     "docs/evaluacion.md",
@@ -99,8 +105,11 @@ EXPECTED_FILES = [
     "notebooks/03_benchmark_modelos_densos.ipynb",
     "notebooks/04_ablaciones_chunking_y_contexto.ipynb",
     "notebooks/05_seleccion_baseline_dense.ipynb",
+    "notebooks/06_evaluacion_generacion.ipynb",
     "prompts/system_prompt.txt",
     "prompts/rag_prompt.txt",
+    "prompts/judge_faithfulness.txt",
+    "prompts/judge_correctness.txt",
 ]
 
 

@@ -1,0 +1,23 @@
+Tarea: evaluar la CORRECCIÓN de una respuesta candidata frente a una respuesta de REFERENCIA.
+
+Criterio:
+- "correct": la candidata coincide en lo esencial con la referencia (mismos hechos, plazos, cifras
+  o condiciones), aunque la redacción difiera.
+- "partial": acierta parte pero omite un elemento esencial, añade un matiz incorrecto, o es
+  incompleta.
+- "incorrect": contradice la referencia, da un dato esencial equivocado o no responde a la pregunta.
+
+No penalices diferencias de estilo ni de longitud. Juzga el contenido, no la forma. No uses
+conocimiento externo: la REFERENCIA es la verdad.
+
+PREGUNTA:
+{question}
+
+RESPUESTA DE REFERENCIA (verdad):
+{reference}
+
+RESPUESTA CANDIDATA A EVALUAR:
+{answer}
+
+Devuelve EXCLUSIVAMENTE el objeto JSON del esquema: "verdict" (correct|partial|incorrect) y
+"rationale" (una frase breve que justifique el veredicto).
