@@ -91,8 +91,10 @@ def main() -> int:  # noqa: C901 - auditoría lineal con varias comprobaciones
     # 2) Por pregunta: citas esperadas + key_facts respaldados por el texto.
     for qid, q in sorted(questions.items()):
         ak = answer_keys.get(qid)
-        answerable = ak.get("answerable", q["split"] != "out_of_corpus") if ak else (
-            q["split"] != "out_of_corpus"
+        answerable = (
+            ak.get("answerable", q["split"] != "out_of_corpus")
+            if ak
+            else (q["split"] != "out_of_corpus")
         )
         line_flags: list[str] = []
         expected = (ak or {}).get("expected_citation_parents", []) if ak else []
