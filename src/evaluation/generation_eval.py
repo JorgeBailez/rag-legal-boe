@@ -178,6 +178,7 @@ def evaluate_generation(
                 "retrieved_parents": retrieved_parents,
                 "omitted_evidences": omitted_evidences,
                 "expected_citation_parents": expected_parents,
+                "answer_text": answer.answer,
                 "abstention_reason": answer.abstention_reason,
             }
         )

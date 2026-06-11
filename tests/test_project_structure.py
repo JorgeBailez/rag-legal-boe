@@ -83,6 +83,7 @@ EXPECTED_FILES = [
     "scripts/answer_question.py",
     "scripts/run_generation_eval.py",
     "scripts/audit_eval_dataset.py",
+    "scripts/validate_judge.py",
     "schemas/boe_legal_document_v2.schema.json",
     "schemas/boe_legal_chunks_v2.schema.json",
     "schemas/dense_embedding_bundle_v1.schema.json",

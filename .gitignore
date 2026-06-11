@@ -37,6 +37,8 @@ Desktop.ini
 .claude/
 CLAUDE.md
 ARCHITECTURE.md
+PROGRESO.md
+sessions/
 docs/
 
 # Datos reales: no versionar contenido crudo ni artefactos generados; conservar los .gitkeep
