@@ -23,6 +23,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
+from tqdm import tqdm  # noqa: E402
+
 from src.config.settings import get_settings  # noqa: E402
 from src.core.exceptions import RagLegalBoeError  # noqa: E402
 from src.embeddings.corpus_loader import load_processed_corpus  # noqa: E402
@@ -175,16 +177,41 @@ def main() -> int:  # noqa: C901 - orquestación lineal del CLI
     elif not args.no_judge:
         print("Aviso: sin JUDGE_MODEL/--judge-model; se omiten las métricas con juez (L3/L5).")
 
+    total = len(questions) if args.limit is None else min(args.limit, len(questions))
+    bar = tqdm(total=total, desc="generación", unit="q")
+
+    def on_progress(ev: dict) -> None:
+        event = ev.get("event")
+        if event == "start":
+            bar.set_description(str(ev["query_id"]))
+            bar.set_postfix_str("generando…")
+        elif event == "judging":
+            bar.set_postfix_str(f"juez:{ev['phase']}…")
+        elif event == "done":
+            mark = "✓ resp" if ev["answered"] else "○ abst"
+            lat = f" {ev['latency_s']:.0f}s" if ev.get("latency_s") else ""
+            tag = ev.get("failure_mode") or ev.get("query_style") or ""
+            tqdm.write(
+                f"  [{ev['i']}/{ev['total']}] {ev['query_id']} {tag}: "
+                f"{mark} · {ev['abstention_outcome']}{lat}"
+            )
+            bar.set_postfix_str("")
+            bar.update(1)
+
     exit_code = 0
     try:
-        per_query, metrics_rows, aggregate = evaluate_generation(
-            questions=questions,
-            answer_keys=answer_keys,
-            generator=generator,
-            judge=judge,
-            query_profile_id=config.query_profile_id,
-            limit=args.limit,
-        )
+        try:
+            per_query, metrics_rows, aggregate = evaluate_generation(
+                questions=questions,
+                answer_keys=answer_keys,
+                generator=generator,
+                judge=judge,
+                query_profile_id=config.query_profile_id,
+                limit=args.limit,
+                on_progress=on_progress,
+            )
+        finally:
+            bar.close()
         run_config = {
             "split": args.split,
             "dataset_dir": str(dataset_dir),

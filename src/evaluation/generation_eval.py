@@ -12,6 +12,7 @@ exactamente el contexto entregado al modelo.
 
 from __future__ import annotations
 
+from collections.abc import Callable
 from typing import Protocol
 
 from src.contracts.generation_models import RagAnswerV1
@@ -91,15 +92,25 @@ def evaluate_generation(
     judge: Judge | None = None,
     query_profile_id: str | None = None,
     limit: int | None = None,
+    on_progress: Callable[[dict], None] | None = None,
 ) -> tuple[list[dict], list[dict], dict]:
-    """Evalúa la generación de un split. Devuelve (per_query, metrics_rows, aggregate)."""
+    """Evalúa la generación de un split. Devuelve (per_query, metrics_rows, aggregate).
+
+    `on_progress` (opcional) recibe eventos de avance por pregunta y sub-fase
+    (`start` → `judging` → `done`) para pintar una barra de progreso o trazas; si es None, no hay
+    salida (los tests corren mudos).
+    """
     q_models = [EvalQuestion.model_validate(q) for q in questions]
     ak_by_qid = {a["query_id"]: EvalAnswerKey.model_validate(a) for a in answer_keys}
     selected = q_models if limit is None else q_models[:limit]
+    total = len(selected)
+    notify = on_progress or (lambda _info: None)
 
     per_query: list[dict] = []
     metrics_rows: list[dict] = []
-    for q in selected:
+    for idx, q in enumerate(selected, start=1):
+        notify({"event": "start", "i": idx, "total": total, "query_id": q.query_id,
+                "failure_mode": q.failure_mode, "query_style": q.query_style})
         answer: RagAnswerV1 = generator.answer(q.query, query_profile_id=query_profile_id)
         cited_parents = [c.parent_id for c in answer.citations]
         ak = ak_by_qid.get(q.query_id)
@@ -112,10 +123,14 @@ def evaluate_generation(
         faithfulness_claims: list[bool] | None = None
         correctness_label: str | None = None
         if judge is not None and answer.answered and answerable:
+            notify({"event": "judging", "phase": "fidelidad", "i": idx, "total": total,
+                    "query_id": q.query_id})
             block = _evidences_block_for(generator, q.query, query_profile_id)
             faith_verdict, _ = judge.judge_faithfulness(answer=answer.answer, evidences_block=block)
             faithfulness_claims = [c.supported for c in faith_verdict.claims]
             if reference.strip():
+                notify({"event": "judging", "phase": "corrección", "i": idx, "total": total,
+                        "query_id": q.query_id})
                 corr_verdict, _ = judge.judge_correctness(
                     question=q.query, answer=answer.answer, reference=reference
                 )
@@ -167,6 +182,10 @@ def evaluate_generation(
             }
         )
         metrics_rows.append(_scalar_row(q, metrics, latency_s=latency_s))
+        notify({"event": "done", "i": idx, "total": total, "query_id": q.query_id,
+                "answered": answer.answered, "answerable": answerable, "latency_s": latency_s,
+                "abstention_outcome": metrics["abstention_outcome"],
+                "failure_mode": q.failure_mode, "query_style": q.query_style})
 
     aggregate = aggregate_generation_metrics(per_query)
     return per_query, metrics_rows, aggregate
