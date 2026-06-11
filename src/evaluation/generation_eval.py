@@ -125,6 +125,17 @@ def evaluate_generation(
         latency_s = gen_metrics.total_duration_s if gen_metrics is not None else None
         eval_count = gen_metrics.eval_count if gen_metrics is not None else None
 
+        # Traza de retrieval para atribuir fallos: ¿el parent correcto se recuperó? ¿se entregó al
+        # LLM o se omitió (p. ej. por presupuesto de contexto)? Permite distinguir fallo de
+        # recuperación vs de ensamblado vs de generación en el análisis de error.
+        trace = answer.retrieval_trace
+        retrieved_parents = [h.parent_id for h in trace.hits]
+        delivered_parents = [h.parent_id for h in trace.hits if h.selected]
+        omitted_evidences = [
+            {"parent_id": o.parent_id, "retrieval_rank": o.retrieval_rank, "reason": o.reason}
+            for o in trace.omitted_evidences
+        ]
+
         metrics = compute_query_generation_metrics(
             answered=answer.answered,
             answer_text=answer.answer,
@@ -148,6 +159,9 @@ def evaluate_generation(
                 "latency_s": latency_s,
                 "eval_count": eval_count,
                 "cited_parents": cited_parents,
+                "delivered_parents": delivered_parents,
+                "retrieved_parents": retrieved_parents,
+                "omitted_evidences": omitted_evidences,
                 "expected_citation_parents": expected_parents,
                 "abstention_reason": answer.abstention_reason,
             }
