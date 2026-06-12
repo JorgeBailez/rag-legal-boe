@@ -91,7 +91,9 @@ class Settings(BaseSettings):
     judge_model: str = ""
     judge_timeout_seconds: float = 900.0
     judge_num_ctx: int = 8192
-    judge_num_predict: int = 512
+    # Tope alto: el veredicto de fidelidad enumera las afirmaciones de la respuesta; con respuestas
+    # largas, 512 truncaba el JSON. Es un tope (no objetivo): no ralentiza los casos normales.
+    judge_num_predict: int = 2048
     judge_temperature: float = 0.0
     judge_seed: int = 42
     judge_keep_alive: str = "5m"

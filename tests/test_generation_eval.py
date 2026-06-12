@@ -1,6 +1,7 @@
 """Test de orquestación del bucle de evaluación de generación (offline, con fakes)."""
 
 from src.contracts.generation_models import RagLlmAnswerV1
+from src.core.exceptions import OllamaApiError
 from src.evaluation.generation_eval import evaluate_generation
 from src.generation.answer_generator import AnswerGenerator
 from tests.generation_fakes import (
@@ -94,6 +95,31 @@ def test_evaluate_correct_abstention_on_out_of_corpus() -> None:
     assert per_query[0]["abstention_point"] == "llm_decided"
     assert len(judge.faithfulness_calls) == 0  # no se juzga una abstención
     assert agg["abstention"]["abstention_rate_on_unanswerable"] == 1.0
+
+
+class _RaisingJudge:
+    """Juez que falla (p. ej. JSON truncado): no debe abortar la corrida."""
+
+    model_label = "raising"
+
+    def judge_faithfulness(self, *, answer, evidences_block):  # noqa: ANN001, ANN204
+        raise OllamaApiError("la salida del juez no es JSON válido")
+
+    def judge_correctness(self, *, question, answer, reference):  # noqa: ANN001, ANN204
+        raise OllamaApiError("boom")
+
+
+def test_evaluate_judge_error_does_not_abort() -> None:
+    generator = _generator(_ANSWERED)
+    questions = [_question()]
+    answer_keys = [{"query_id": "q1", "answerable": True, "key_facts": ["dato clave"]}]
+    per_query, _, agg = evaluate_generation(
+        questions=questions, answer_keys=answer_keys, generator=generator, judge=_RaisingJudge()
+    )
+    assert per_query[0]["judge_error"]  # se registró el fallo del juez
+    assert per_query[0].get("faithfulness") is None  # no se calculó L3
+    assert per_query[0]["key_fact_recall"] == 1.0  # las métricas sin juez SÍ se calcularon
+    assert agg["n_queries"] == 1  # la corrida NO abortó
 
 
 def test_evaluate_limit_truncates() -> None:

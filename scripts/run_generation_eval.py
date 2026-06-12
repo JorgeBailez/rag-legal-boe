@@ -44,6 +44,11 @@ from src.evaluation.judge import LlmJudge  # noqa: E402
 from src.evaluation.reports import new_run_id, write_generation_report  # noqa: E402
 from src.generation.answer_generator import AnswerGenerator, GenerationConfig  # noqa: E402
 from src.generation.ollama_client import OllamaClient  # noqa: E402
+from src.generation.prompt import (  # noqa: E402
+    RAG_PROMPT_FILE,
+    SYSTEM_PROMPT_FILE,
+    load_template,
+)
 from src.retrieval.dense_retriever import DenseRetriever  # noqa: E402
 
 
@@ -72,6 +77,12 @@ def _parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--no-judge", action="store_true", help="omite las métricas con juez (L3/L5)."
     )
+    parser.add_argument(
+        "--prompts-dir",
+        default=None,
+        help="directorio de prompts (system_prompt.txt + rag_prompt.txt); por defecto prompts/. "
+        "Úsalo para A/B de prompts, p. ej. --prompts-dir prompts/v2.",
+    )
     parser.add_argument("--query-profile-id", default=None)
     parser.add_argument("--top-k", type=_positive_int, default=None)
     parser.add_argument("--max-evidences", type=_positive_int, default=None)
@@ -89,6 +100,18 @@ def _parse_args() -> argparse.Namespace:
 
 def _override(value, default):  # noqa: ANN001, ANN202
     return value if value is not None else default
+
+
+def _prompt_fingerprint(prompts_dir):  # noqa: ANN001, ANN202
+    """Huella corta del contenido de los prompts (system+rag) para trazar el A/B."""
+    try:
+        text = (
+            load_template(SYSTEM_PROMPT_FILE, prompts_dir)
+            + load_template(RAG_PROMPT_FILE, prompts_dir)
+        )
+    except OSError:
+        return "missing"
+    return fingerprint(text)[:12]
 
 
 def main() -> int:  # noqa: C901 - orquestación lineal del CLI
@@ -154,7 +177,9 @@ def main() -> int:  # noqa: C901 - orquestación lineal del CLI
         think=settings.ollama_think,
         keep_alive=settings.ollama_keep_alive,
     )
-    generator = AnswerGenerator(retriever=retriever, llm_client=gen_client, config=config)
+    generator = AnswerGenerator(
+        retriever=retriever, llm_client=gen_client, config=config, prompts_dir=args.prompts_dir
+    )
 
     judge = None
     judge_client = None
@@ -191,9 +216,10 @@ def main() -> int:  # noqa: C901 - orquestación lineal del CLI
             mark = "✓ resp" if ev["answered"] else "○ abst"
             lat = f" {ev['latency_s']:.0f}s" if ev.get("latency_s") else ""
             tag = ev.get("failure_mode") or ev.get("query_style") or ""
+            jerr = " ⚠ juez falló" if ev.get("judge_error") else ""
             tqdm.write(
                 f"  [{ev['i']}/{ev['total']}] {ev['query_id']} {tag}: "
-                f"{mark} · {ev['abstention_outcome']}{lat}"
+                f"{mark} · {ev['abstention_outcome']}{lat}{jerr}"
             )
             bar.set_postfix_str("")
             bar.update(1)
@@ -227,6 +253,8 @@ def main() -> int:  # noqa: C901 - orquestación lineal del CLI
             "max_total_context_chars": config.max_total_context_chars,
             "temperature": config.temperature,
             "seed": config.seed,
+            "prompts_dir": args.prompts_dir or "(default)",
+            "prompt_fingerprint": _prompt_fingerprint(args.prompts_dir),
             "gate_c_generation_ready": report["gate_c"]["generation_ready"],
             "n_questions": len(per_query),
         }
@@ -244,6 +272,12 @@ def main() -> int:  # noqa: C901 - orquestación lineal del CLI
             **write_kwargs,
         )
         _print_summary(out_dir, aggregate)
+        n_judge_err = sum(1 for r in per_query if r.get("judge_error"))
+        if n_judge_err:
+            print(
+                f"⚠ {n_judge_err} pregunta(s) con veredicto del juez fallido (no juzgadas; "
+                "ver judge_error en per_query.jsonl). La corrida NO se abortó."
+            )
     except RagLegalBoeError as exc:
         print(f"Fallo de evaluación: {exc}", file=sys.stderr)
         exit_code = 1

@@ -111,6 +111,8 @@ EXPECTED_FILES = [
     "prompts/rag_prompt.txt",
     "prompts/judge_faithfulness.txt",
     "prompts/judge_correctness.txt",
+    "prompts/v2/system_prompt.txt",
+    "prompts/v2/rag_prompt.txt",
 ]
 
 

@@ -16,6 +16,7 @@ from collections.abc import Callable
 from typing import Protocol
 
 from src.contracts.generation_models import RagAnswerV1
+from src.core.exceptions import RagLegalBoeError
 from src.evaluation.dataset import EvalAnswerKey, EvalQuestion
 from src.evaluation.generation_metrics import (
     aggregate_generation_metrics,
@@ -122,19 +123,29 @@ def evaluate_generation(
 
         faithfulness_claims: list[bool] | None = None
         correctness_label: str | None = None
+        judge_error: str | None = None
         if judge is not None and answer.answered and answerable:
-            notify({"event": "judging", "phase": "fidelidad", "i": idx, "total": total,
-                    "query_id": q.query_id})
-            block = _evidences_block_for(generator, q.query, query_profile_id)
-            faith_verdict, _ = judge.judge_faithfulness(answer=answer.answer, evidences_block=block)
-            faithfulness_claims = [c.supported for c in faith_verdict.claims]
-            if reference.strip():
-                notify({"event": "judging", "phase": "corrección", "i": idx, "total": total,
+            try:
+                notify({"event": "judging", "phase": "fidelidad", "i": idx, "total": total,
                         "query_id": q.query_id})
-                corr_verdict, _ = judge.judge_correctness(
-                    question=q.query, answer=answer.answer, reference=reference
+                block = _evidences_block_for(generator, q.query, query_profile_id)
+                faith_verdict, _ = judge.judge_faithfulness(
+                    answer=answer.answer, evidences_block=block
                 )
-                correctness_label = corr_verdict.verdict
+                faithfulness_claims = [c.supported for c in faith_verdict.claims]
+                if reference.strip():
+                    notify({"event": "judging", "phase": "corrección", "i": idx, "total": total,
+                            "query_id": q.query_id})
+                    corr_verdict, _ = judge.judge_correctness(
+                        question=q.query, answer=answer.answer, reference=reference
+                    )
+                    correctness_label = corr_verdict.verdict
+            except RagLegalBoeError as exc:
+                # Un veredicto malformado/cortado del juez NO debe abortar la corrida (horas en
+                # CPU): se marca la pregunta como no juzgada (L3/L5=None) y se continúa.
+                judge_error = str(exc)
+                faithfulness_claims = None
+                correctness_label = None
 
         gen_metrics = answer.generation_metrics
         latency_s = gen_metrics.total_duration_s if gen_metrics is not None else None
@@ -180,12 +191,13 @@ def evaluate_generation(
                 "expected_citation_parents": expected_parents,
                 "answer_text": answer.answer,
                 "abstention_reason": answer.abstention_reason,
+                "judge_error": judge_error,
             }
         )
         metrics_rows.append(_scalar_row(q, metrics, latency_s=latency_s))
         notify({"event": "done", "i": idx, "total": total, "query_id": q.query_id,
                 "answered": answer.answered, "answerable": answerable, "latency_s": latency_s,
-                "abstention_outcome": metrics["abstention_outcome"],
+                "abstention_outcome": metrics["abstention_outcome"], "judge_error": judge_error,
                 "failure_mode": q.failure_mode, "query_style": q.query_style})
 
     aggregate = aggregate_generation_metrics(per_query)
