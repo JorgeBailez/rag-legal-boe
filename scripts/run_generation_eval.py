@@ -86,6 +86,18 @@ def _parse_args() -> argparse.Namespace:
     parser.add_argument("--query-profile-id", default=None)
     parser.add_argument("--top-k", type=_positive_int, default=None)
     parser.add_argument("--max-evidences", type=_positive_int, default=None)
+    parser.add_argument(
+        "--context-strategy",
+        default=None,
+        choices=["K_ONLY", "P_EXPAND_FULL", "P_EXPAND_BOUNDED"],
+    )
+    parser.add_argument("--context-budget-chars", type=_positive_int, default=None)
+    parser.add_argument("--max-total-context-chars", type=_positive_int, default=None)
+    parser.add_argument(
+        "--query-ids",
+        default=None,
+        help="comas; reevalúa solo esos query_id del split (p. ej. q0001,q0013,q0038).",
+    )
     parser.add_argument("--threads", type=_positive_int, default=None)
     parser.add_argument("--batch-size", type=_positive_int, default=32)
     parser.add_argument(
@@ -144,19 +156,29 @@ def main() -> int:  # noqa: C901 - orquestación lineal del CLI
 
     all_questions = load_jsonl(dataset_dir / QUESTIONS_FILE)
     questions = [q for q in all_questions if q.get("split") == args.split]
+    if args.query_ids:
+        wanted = {x.strip() for x in args.query_ids.split(",") if x.strip()}
+        questions = [q for q in questions if q.get("query_id") in wanted]
     answer_keys = load_jsonl(dataset_dir / ANSWER_KEYS_FILE)
     _ = load_jsonl(dataset_dir / JUDGMENTS_FILE)  # cargados/validados arriba; retrieval gold aparte
     if not questions:
-        print(f"No hay preguntas en el split {args.split!r}.", file=sys.stderr)
+        print(
+            f"No hay preguntas en el split {args.split!r} (¿--query-ids correctos?).",
+            file=sys.stderr,
+        )
         return 1
 
     config = GenerationConfig(
         query_profile_id=_override(args.query_profile_id, settings.generation_query_profile_id),
         top_k=_override(args.top_k, settings.generation_top_k),
         max_evidences=_override(args.max_evidences, settings.generation_max_evidences),
-        context_strategy=settings.generation_context_strategy,
-        context_budget_chars=settings.generation_context_budget_chars,
-        max_total_context_chars=settings.generation_max_total_context_chars,
+        context_strategy=_override(args.context_strategy, settings.generation_context_strategy),
+        context_budget_chars=_override(
+            args.context_budget_chars, settings.generation_context_budget_chars
+        ),
+        max_total_context_chars=_override(
+            args.max_total_context_chars, settings.generation_max_total_context_chars
+        ),
         temperature=settings.ollama_temperature,
         seed=settings.ollama_seed,
         num_predict=settings.ollama_num_predict,
