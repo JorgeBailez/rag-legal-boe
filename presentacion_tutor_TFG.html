@@ -137,8 +137,20 @@
   <a class="sub" href="#rag-generacion">3.8 Generación</a>
   <a href="#claves">4 · Decisiones de diseño clave</a>
   <a href="#evaluacion">5 · Evaluación (el corazón del TFG)</a>
-  <a href="#futuro">6 · Futuro del trabajo</a>
-  <a href="#cierre">7 · Cómo me gustaría que termine</a>
+  <a href="#experimentos">6 · Experimentos ya hechos ⭐</a>
+  <a class="sub" href="#exp-modelos">6.1 Comparativa de modelos</a>
+  <a class="sub" href="#exp-vistas">6.2 Ablaciones de chunking</a>
+  <a class="sub" href="#exp-query">6.3 Ablaciones de consulta</a>
+  <a class="sub" href="#exp-contexto">6.4 Ensamblado de contexto</a>
+  <a class="sub" href="#exp-generacion">6.5 Generación y juez</a>
+  <a href="#futuro">7 · Futuro: RAG avanzado</a>
+  <a class="sub" href="#fut-inmediato">7.1 Pasos inmediatos</a>
+  <a class="sub" href="#fut-filtros">7.2 Filtros en respuestas</a>
+  <a class="sub" href="#fut-agentic">7.3 Agentic RAG</a>
+  <a class="sub" href="#fut-graph">7.4 Graph RAG</a>
+  <a class="sub" href="#fut-comparativa">7.5 Estudio comparativo</a>
+  <a class="sub" href="#fut-api">7.6 API final</a>
+  <a href="#cierre">8 · Cómo me gustaría que termine</a>
 </nav>
 
 <main>
@@ -871,47 +883,296 @@ prudente»</b>:</p>
 <b>aguas abajo</b> (ruido en el top-k, ensamblado, prompt). Eso marca hacia dónde dirigir las mejoras.</p>
 </section>
 
-<!-- ===================== 6 FUTURO ===================== -->
-<section id="futuro">
-<h2 class="sec"><span class="n">6</span>El futuro del trabajo: próximos pasos</h2>
-<p>Estos son los pasos siguientes, en orden. Marco con 🤝 los que requieren tu participación como tutor.</p>
+<!-- ===================== 6 EXPERIMENTOS ===================== -->
+<section id="experimentos">
+<h2 class="sec"><span class="n">6</span>Experimentos que ya hemos hecho ⭐</h2>
+<p class="lead">El TFG no es «monté un RAG y ya»: cada decisión de diseño se ha tomado <b>comparando
+alternativas con métricas</b>, no a ojo. Estos son los experimentos ya ejecutados, sobre todo en la
+parte de recuperación, que es donde más opciones había que decidir.</p>
 
+<div class="box term">
+  <p class="h">📖 Tecnicismo: «ablación»</p>
+  <p>Una <b>ablación</b> es quitar o cambiar <b>una sola pieza</b> del sistema, dejando todo lo demás
+  igual, para ver cuánto aporta esa pieza. Es el método limpio para saber «¿esto que añadí sirve de
+  algo, o da igual?». Lo uso mucho.</p>
+</div>
+
+<!-- 6.1 -->
+<h3 id="exp-modelos">6.1 ¿Qué modelo de embeddings recupera mejor? (comparativa)</h3>
+<p>El embedding es el cerebro de la búsqueda, así que no me quedé con el primero que vi: comparé
+<b>6 modelos</b> sobre el mismo corpus y las mismas preguntas.</p>
+
+<table>
+<tr><th>Modelo</th><th>Dimensión</th><th>Contexto máx.</th><th>Particularidad</th></tr>
+<tr><td>e5-base</td><td>768</td><td>512 tokens</td><td>Pequeño y rápido.</td></tr>
+<tr><td>e5-large</td><td>1024</td><td>512 tokens</td><td>Baseline histórico.</td></tr>
+<tr><td><b>e5-large-instruct</b> ✅</td><td>1024</td><td>512 tokens</td><td>Acepta instrucción en la consulta. <b>El elegido.</b></td></tr>
+<tr><td>bge-m3</td><td>1024</td><td>8.192 tokens</td><td>Contexto largo (casi nunca recorta).</td></tr>
+<tr><td>qwen3-0.6b</td><td>1024</td><td>32.768 tokens</td><td>Contexto enorme.</td></tr>
+<tr><td>gte-multilingual-base</td><td>768</td><td>8.192 tokens</td><td>Requiere «código remoto» (a revisar).</td></tr>
+</table>
+
+<p>Claves metodológicas de esta comparativa:</p>
+<ul>
+  <li><b>Cada modelo juega con sus reglas.</b> No uso un formato común: cada uno aplica su propio
+   «contrato» (unos exigen prefijos como <code>passage:</code>/<code>query:</code>, otros no; cada uno
+   con su forma de resumir el texto en un vector). Compararlos con un formato común sería injusto.</li>
+  <li><b>Identidad congelada.</b> Cada modelo se fija a su versión exacta (su <i>commit hash</i>), para
+   que el experimento sea reproducible al 100 %.</li>
+  <li><b>Métrica principal: <code>nDCG@10</code></b> (mide si los artículos relevantes salen y salen
+   arriba), con métricas de control (Recall@5, acierto en el primer puesto) y <b>coste en CPU</b>
+   (tiempo y memoria), porque el servidor no tiene GPU.</li>
+  <li><b>Significancia estadística.</b> Uso <i>bootstrap pareado</i> con intervalos de confianza del
+   95 %: así sé si la diferencia entre dos modelos es real o es ruido del azar.</li>
+</ul>
+
+<div class="box term">
+  <p class="h">📖 Tecnicismo: «nDCG@10» y «bootstrap»</p>
+  <p><b>nDCG@10</b>: nota de 0 a 1 que premia traer los documentos relevantes y, además, ponerlos en
+  las primeras posiciones. <b>Bootstrap pareado</b>: una técnica para decir «el modelo A es mejor que
+  el B con un 95 % de confianza, no por suerte». Es lo que separa «me parece mejor» de «es mejor».</p>
+</div>
+
+<div class="box info">
+  <p class="h">ℹ️ Resultado</p>
+  <p>El baseline seleccionado es <b>e5-large-instruct</b>, con la vista J1 y el perfil de consulta
+  ciudadano (lo explico abajo). Quedó congelado en el bundle
+  <code>e5-large-instruct__j1__bc11142bdcc5</code>. La lectura general: la recuperación densa
+  <b>funciona bien</b> sobre este corpus.</p>
+</div>
+
+<!-- 6.2 -->
+<h3 id="exp-vistas">6.2 ¿Ayuda añadir contexto legal al fragmento? (vistas J1 / J2 / C1)</h3>
+<p>Recordemos que cada chunk guarda su texto puro y un <code>retrieval_text</code> con contexto
+añadido (ley + jerarquía + título). ¿Eso ayuda de verdad a buscar mejor, o es adorno? Lo medí con
+tres «vistas» del mismo corpus:</p>
+
+<table>
+<tr><th>Vista</th><th>Qué se indexa</th><th>Qué prueba</th></tr>
+<tr><td><b>J1</b> ✅</td><td>Texto + contexto legal (<code>retrieval_text</code>)</td><td>Mi propuesta.</td></tr>
+<tr><td><b>J2</b></td><td>Solo el texto puro del fragmento</td><td>Aísla el efecto de añadir contexto.</td></tr>
+<tr><td><b>C1</b></td><td>Troceado «clásico»: ventanas de tamaño fijo por tokens</td><td>Compara mi troceado por párrafos contra el método estándar de la literatura.</td></tr>
+</table>
+
+<div class="box plain">
+  <p class="h">💡 En cristiano</p>
+  <p>J1 vs J2 responde: «¿sirve la pegatina de contexto que le pongo a cada fragmento?». J1 vs C1
+  responde: «¿es mejor mi forma de trocear (por párrafos, respetando la estructura legal) que la forma
+  típica (cortar cada X tokens)?». <b>Ganó J1</b>: el contexto legal sí ayuda y trocear por párrafos
+  es mejor que cortar a ciegas.</p>
+</div>
+
+<!-- 6.3 -->
+<h3 id="exp-query">6.3 ¿Cómo conviene formular la consulta? (perfiles I0 / I1 / I2)</h3>
+<p>El modelo elegido permite anteponer una <b>instrucción</b> a la pregunta. Probé tres formas:</p>
+<ul>
+  <li><b>I0 (genérica):</b> «dada una consulta, recupera pasajes relevantes» — instrucción de buscador
+   general, sin nada legal.</li>
+  <li><b>I1 (jurídica):</b> «dada una pregunta sobre legislación, recupera los pasajes legales…».</li>
+  <li><b>I2 (ciudadana sobre legislación):</b> «dada una pregunta de un ciudadano sobre legislación,
+   recupera los pasajes que la responden» — <b>la elegida</b>.</li>
+</ul>
+<p>Lo bueno de este experimento: cambiar la instrucción de la consulta <b>no obliga a recalcular los
+vectores de los documentos</b> (solo afecta a cómo se codifica la pregunta), así que es muy barato de
+probar. Adaptar la instrucción al usuario real (un ciudadano) dio el mejor resultado.</p>
+
+<!-- 6.4 -->
+<h3 id="exp-contexto">6.4 ¿Cuánto contexto darle al modelo? (estrategias de ensamblado)</h3>
+<p>También dejé preparado y medible el experimento sobre cuánto texto entregar por evidencia:</p>
+<ul>
+  <li><b>Solo el fragmento</b> (K_ONLY) — lo mínimo.</li>
+  <li><b>El artículo entero</b> (P_EXPAND_FULL) — lo máximo.</li>
+  <li><b>Expandir-acotado</b> (P_EXPAND_BOUNDED) — partir del fragmento y crecer hasta un presupuesto.</li>
+</ul>
+<p>Con presupuestos de 4.000 / 8.000 / 12.000 caracteres. Es justo la palanca que el «caso estrella»
+(q0001) señaló como problemática: demasiado contexto ruidoso puede expulsar al artículo bueno. Por eso
+es un experimento clave para la siguiente fase.</p>
+
+<!-- 6.5 -->
+<h3 id="exp-generacion">6.5 Experimentos de generación y validación del juez</h3>
+<p>Ya en la parte de respuestas (Fase 3 + evaluación), he ejecutado en el servidor:</p>
+<table>
+<tr><th>Experimento</th><th>Resultado</th></tr>
+<tr><td>Smoke de 8 preguntas (sin juez)</td><td>Pipeline OK, JSON válido, <b>0 errores de contrato</b> con qwen2.5:7b.</td></tr>
+<tr><td>Smoke de 5 preguntas fuera del corpus</td><td><b>Abstención perfecta 5/5</b> (no inventa cuando no sabe).</td></tr>
+<tr><td>Smoke de 8 preguntas <b>con juez</b> (gemma3:12b)</td><td>Fidelidad 1,0; corrección 0,79; el juez <b>discrimina</b> (no aprueba todo: dio 0,0 al caso q0001).</td></tr>
+<tr><td>Corrida completa de 40 preguntas (sin juez, ~59 min)</td><td><b>Seguro pero conservador</b>: 0 respuestas falsas; ~18 % de abstención de más; cuando responde, citation_recall 0,94 y key-fact recall 0,90.</td></tr>
+</table>
+
+<div class="box plain">
+  <p class="h">💡 Lo importante de estos experimentos</p>
+  <p>No solo dicen «funciona», sino que <b>el juez ya demostró que sabe distinguir</b> una respuesta
+  buena de una mala (no aprueba todo), y la corrida completa <b>localizó el punto débil</b> (es
+  demasiado prudente, por culpa del prompt). Eso es exactamente lo que da pie a los siguientes
+  experimentos: ya sé qué tocar.</p>
+</div>
+
+<p>Además dejé <b>preparado un experimento A/B del prompt</b> (versión actual vs. una versión menos
+literal), con trazabilidad para comparar las dos de forma justa.</p>
+</section>
+
+<!-- ===================== 7 FUTURO ===================== -->
+<section id="futuro">
+<h2 class="sec"><span class="n">7</span>El futuro del trabajo: hacia un RAG avanzado</h2>
+<p class="lead">El plan tiene dos horizontes. Primero <b>cerrar y afinar lo básico</b> (lo inmediato).
+Después, lo ambicioso: <b>probar arquitecturas de RAG más complejas y compararlas</b>, y rematar con
+una API. Lo bonito es que muchas de esas ideas avanzadas <b>se apoyan en piezas que ya están
+construidas</b>.</p>
+
+<!-- 7.1 -->
+<h3 id="fut-inmediato">7.1 Horizonte inmediato: cerrar la base</h3>
+<p>Pasos en orden. Marco con 🤝 los que necesitan tu participación como tutor.</p>
 <ol>
-  <li><b>Terminar la corrida completa con juez</b> (en marcha, en el servidor, varias horas). Da las
-   notas de fidelidad (L3) y corrección (L5) sobre las 40 preguntas.</li>
-  <li><b>Validar al juez con Cohen's κ.</b> Anotaré a mano ~30-50 casos y compararé con el juez. Si el
-   acuerdo es alto, puedo fiarme de L3/L5; si no, quedan como provisionales. <b>La herramienta ya está
-   programada.</b></li>
-  <li>🤝 <b>Anotación jurídica del dataset gold (contigo).</b> Promover las preguntas de «borrador» a
-   «revisado»: confirmar qué artículos son realmente relevantes, ajustar las respuestas de referencia
-   y marcar los casos que necesitan varios artículos. <b>Aquí tu criterio jurídico es clave.</b></li>
-  <li><b>Fase P2 — comparar estrategias de retrieval</b> sobre el mismo dataset ya validado:
-   <ul>
-     <li><b>Reranker</b> (reordenador): un segundo modelo que reordena los fragmentos recuperados para
-      poner el bueno arriba y echar el ruido. Es la mejora que más promete según los fallos detectados.</li>
-     <li><b>Búsqueda híbrida</b>: combinar la búsqueda por significado (densa) con la búsqueda por
-      palabras exactas (BM25), útil para términos legales literales.</li>
-     <li><b>Reescritura de la pregunta</b> y <b>ajuste del presupuesto de contexto</b>.</li>
-     <li><b>Calibrar el umbral de abstención</b>: encontrar el equilibrio entre «prudente» y «útil».</li>
-   </ul>
-  </li>
-  <li><b>Mejorar el prompt</b> (experimento ya preparado): una versión menos literal que responda
-   cuando la evidencia lo sustenta aunque haya que relacionar artículos, manteniendo la prudencia ante
-   info ausente. Probaré <b>A/B</b> (versión actual vs. nueva) y mediré la mejora.</li>
-  <li><b>Ampliar el corpus</b> de 10 a más normas, una vez la metodología esté sólida.</li>
+  <li><b>Terminar la corrida completa con juez</b> (en marcha, varias horas en el servidor): notas de
+   fidelidad (L3) y corrección (L5) sobre las 40 preguntas.</li>
+  <li><b>Validar al juez con Cohen's κ</b> (herramienta ya programada): anotar a mano ~30-50 casos y
+   medir el acuerdo. Si es alto, me puedo fiar de L3/L5.</li>
+  <li>🤝 <b>Anotación jurídica del dataset gold (contigo):</b> pasar las preguntas de «borrador» a
+   «revisado», confirmar artículos relevantes y respuestas de referencia. <b>Tu criterio jurídico es
+   clave aquí.</b></li>
+  <li><b>Mejorar el prompt</b> (experimento A/B ya preparado): una versión menos literal que responda
+   cuando la evidencia lo sustenta, sin perder la prudencia.</li>
+  <li><b>Fase P2 — comparar estrategias de retrieval</b> sobre el dataset ya validado:
+   <span class="pill">Reranker</span> (reordenar lo recuperado para subir el bueno y echar el ruido)
+   <span class="pill">Híbrido / BM25</span> (combinar significado + palabras exactas)
+   <span class="pill">Reescritura de la consulta</span>
+   <span class="pill">Ajuste del presupuesto de contexto</span>
+   <span class="pill">Calibrar el umbral de abstención</span></li>
 </ol>
 
 <div class="box plain">
   <p class="h">💡 La filosofía del orden</p>
   <p>Primero la <b>regla de medir</b> (evaluación + dataset validado), después <b>las mejoras</b>.
-  Comparar «denso vs. híbrido vs. reranker» no significa nada si no tengo una forma fiable de decir
-  cuál es mejor. Por eso la evaluación va antes que seguir añadiendo técnicas.</p>
+  Comparar arquitecturas no significa nada si no tengo una forma fiable de decir cuál es mejor. Por eso
+  la evaluación va antes que seguir añadiendo técnicas.</p>
+</div>
+
+<!-- 7.2 -->
+<h3 id="fut-filtros">7.2 Filtros en las respuestas (búsqueda acotada)</h3>
+<p>La idea: que el usuario (o el propio sistema) pueda <b>acotar</b> dónde busca. Por ejemplo «solo en
+la Ley 39/2015», «solo en leyes orgánicas», «solo sobre la materia protección de datos», «sin anexos».</p>
+
+<div class="box info">
+  <p class="h">ℹ️ Esto ya está medio construido</p>
+  <p>Desde la Fase 1, cada fragmento lleva <b>etiquetas de filtrado</b>: rango de la norma, ámbito,
+  materias, rol (artículo / preámbulo / anexo), si tiene tabla o imagen… Y el índice ya sabe aplicar
+  una <b>máscara</b> para buscar solo entre los que cumplen el filtro. Falta exponerlo bien y estudiar
+  cómo afecta a la calidad: ¿filtrar mejora la precisión o se pierde contexto útil? Eso se mide.</p>
+</div>
+
+<!-- 7.3 -->
+<h3 id="fut-agentic">7.3 Agentic RAG (un asistente que decide y actúa por pasos)</h3>
+<p>El RAG actual es <b>una sola pasada</b>: busca una vez y responde. Un <b>RAG agéntico</b> añade un
+«cerebro coordinador» (un <b>agente</b>) que <b>razona y decide</b> qué hacer en cada momento, con
+varias herramientas a su disposición.</p>
+
+<div class="box term">
+  <p class="h">📖 Tecnicismo: «agente»</p>
+  <p>Un <b>agente</b> es un LLM al que se le da la capacidad de <b>elegir acciones</b> (no solo
+  responder): «¿busco?», «¿reformulo la pregunta?», «¿necesito mirar otra ley?», «¿ya tengo bastante
+  para responder?». Decide en bucle hasta resolver la tarea.</p>
+</div>
+
+<p>Funciones que podría tener el agente en este proyecto:</p>
+<ul>
+  <li><b>Reformular</b> una pregunta vaga antes de buscar.</li>
+  <li><b>Elegir filtros</b> por sí mismo (detectar «esto va de subvenciones» y acotar).</li>
+  <li><b>Búsqueda en varios saltos</b> (<i>multi-hop</i>): si el artículo A remite al artículo B de
+   otra ley, ir a buscar B también.</li>
+  <li><b>Decidir cuándo abstenerse</b> o cuándo volver a buscar con otra formulación.</li>
+</ul>
+
+<div class="box plain">
+  <p class="h">💡 Por qué encaja bien aquí</p>
+  <p>Mis componentes ya están separados y son «enchufables» (buscador, constructor de evidencias,
+  generador). Un agente sería el director de orquesta que los llama en el orden que decida. El reto —y
+  parte de la investigación— es que un agente que da varios pasos <b>no sacrifique la seguridad</b>
+  (sigue sin poder inventar) y que su coste en CPU sea asumible.</p>
+</div>
+
+<!-- 7.4 -->
+<h3 id="fut-graph">7.4 Graph RAG (aprovechar cómo se relacionan las leyes)</h3>
+<p>Las leyes <b>no son islas</b>: se citan, se modifican y se desarrollan unas a otras. Un Real Decreto
+desarrolla una Ley; una reforma modifica un artículo concreto. Un <b>Graph RAG</b> construye un
+<b>grafo</b> (un mapa de nodos y conexiones) con esas relaciones y lo usa para buscar siguiendo los
+vínculos, no solo por parecido de texto.</p>
+
+<div class="box term">
+  <p class="h">📖 Tecnicismo: «grafo de conocimiento»</p>
+  <p>Un <b>grafo</b> es un mapa de puntos (nodos: normas, artículos) unidos por flechas (relaciones:
+  «desarrolla a», «modifica a», «deroga a»). Buscar sobre un grafo permite responder preguntas que
+  cruzan varias normas siguiendo esas flechas, algo que la búsqueda por parecido sola hace peor.</p>
+</div>
+
+<div class="box info">
+  <p class="h">ℹ️ Esto también tiene base ya construida</p>
+  <p>El parser, al leer <code>analisis.xml</code>, ya extrae las <b>referencias entre normas</b>
+  (anteriores y posteriores, con el id de la norma referida y el tipo de relación). Esos son justo los
+  <b>cimientos del grafo</b>. Y el corpus está elegido a propósito con 10 normas <b>muy
+  interconectadas</b> (administrativo, sector público, subvenciones, contratos…), que es el escenario
+  donde un Graph RAG debería lucirse frente a la búsqueda plana.</p>
+</div>
+
+<!-- 7.5 -->
+<h3 id="fut-comparativa">7.5 El estudio comparativo (la aportación académica)</h3>
+<p>Aquí está, en mi opinión, el <b>corazón científico</b> del TFG. No se trata de elegir una de esas
+arquitecturas «porque mola», sino de <b>compararlas con la misma vara de medir</b>:</p>
+
+<div class="flow"><div class="row">
+  <span class="node soft">RAG denso (base)</span>
+  <span class="node soft">+ Reranker / Híbrido</span>
+  <span class="node soft">Agentic RAG</span>
+  <span class="node soft">Graph RAG</span>
+  <span class="arr">→</span>
+  <span class="node alt">Misma evaluación (6 capas + juez)</span>
+</div></div>
+
+<p>Para cada arquitectura mediría: ¿acierta más? ¿inventa menos? ¿es más prudente? ¿a qué <b>coste</b>
+(tiempo en CPU, complejidad)? Y respondería <b>con evidencia</b>: «el Graph RAG mejora las preguntas
+que cruzan varias leyes en X, pero cuesta Y; el agéntico ayuda en preguntas vagas pero es más lento».</p>
+
+<div class="box plain">
+  <p class="h">💡 Esto solo es posible gracias a la evaluación</p>
+  <p>Todo el trabajo de la sección 5 (las 6 capas, el juez, el dataset gold) es lo que hace que esta
+  comparación sea creíble. Sin esa «regla de medir», comparar arquitecturas sería dar opiniones. Por
+  eso he invertido tanto en evaluación <b>antes</b> de lanzarme a las arquitecturas complejas.</p>
+</div>
+
+<!-- 7.6 -->
+<h3 id="fut-api">7.6 Rematar con una API</h3>
+<p>El objetivo final de producto es exponer todo esto como una <b>API</b>: un servicio al que se le
+manda una pregunta y devuelve la respuesta con sus citas, su aviso legal y su traza. Eso permitiría
+conectar el sistema a una interfaz web o a otras aplicaciones.</p>
+
+<div class="box term">
+  <p class="h">📖 Tecnicismo: «API»</p>
+  <p>Una <b>API</b> es un «enchufe» estándar para que otros programas usen tu sistema sin saber cómo
+  funciona por dentro: le mandan una pregunta por internet y reciben la respuesta estructurada. La haré
+  con <b>FastAPI</b> (una herramienta de Python para construir APIs). <b>Ya existe el esqueleto</b> del
+  fichero, reservado para cuando el ciclo esté validado.</p>
+</div>
+
+<div class="box info">
+  <p class="h">ℹ️ Orden lógico</p>
+  <p>La API va <b>al final</b> a propósito: tiene poco sentido «enchufar» el sistema antes de saber qué
+  arquitectura interna es la mejor. Primero decidir el motor (con el estudio comparativo), luego ponerle
+  el enchufe.</p>
+</div>
+
+<h4>Resumen visual de la hoja de ruta</h4>
+<div class="pipe">
+  <div class="step"><span class="num">✓</span><h5>Base construida</h5><p>Ingesta → parser → chunking → embedding → retrieval → generación.</p></div>
+  <div class="step"><span class="num">▶</span><h5>Evaluación</h5><p>Validar juez + anotar gold (en curso).</p></div>
+  <div class="step"><span class="num">→</span><h5>Afinar retrieval</h5><p>Reranker, híbrido, prompt, umbral.</p></div>
+  <div class="step"><span class="num">→</span><h5>Arquitecturas</h5><p>Filtros, Agentic, Graph RAG.</p></div>
+  <div class="step"><span class="num">→</span><h5>Comparar</h5><p>Estudio con la misma evaluación.</p></div>
+  <div class="step"><span class="num">→</span><h5>API</h5><p>Exponer el sistema final.</p></div>
 </div>
 </section>
 
 <!-- ===================== 7 CIERRE ===================== -->
 <section id="cierre">
-<h2 class="sec"><span class="n">7</span>Cómo me gustaría que terminase el TFG</h2>
+<h2 class="sec"><span class="n">8</span>Cómo me gustaría que terminase el TFG</h2>
 
 <p>Mi idea de un buen cierre no es «un RAG que funciona», sino un trabajo que <b>demuestre con datos</b>
 qué decisiones de diseño importan en un RAG legal. En concreto, me gustaría llegar a:</p>
@@ -919,13 +1180,16 @@ qué decisiones de diseño importan en un RAG legal. En concreto, me gustaría l
 <ul>
   <li>Una <b>evaluación validada</b> (juez con κ aceptable, dataset gold revisado jurídicamente) que
    dé credibilidad a todas las métricas.</li>
-  <li>Una <b>comparativa por fases</b> con conclusiones claras: «la búsqueda densa sola da X; añadir
-   reranker mejora la corrección en Y puntos; el híbrido ayuda en consultas literales pero no en
-   conceptuales», etc. — es decir, <b>evidencia, no opiniones</b>.</li>
+  <li>Un <b>estudio comparativo de arquitecturas de RAG</b> con conclusiones claras: «la búsqueda densa
+   sola da X; el reranker mejora la corrección en Y; el <b>Graph RAG</b> ayuda en preguntas que cruzan
+   varias leyes pero cuesta Z; el <b>agéntico</b> ayuda en preguntas vagas a cambio de más tiempo» —
+   es decir, <b>evidencia, no opiniones</b>.</li>
   <li>Una <b>curva de prudencia</b> (acierto frente a cobertura) que muestre el equilibrio elegido
    entre responder y abstenerse, y por qué es el adecuado para lo legal.</li>
   <li>Una <b>discusión honesta de límites</b>: qué tipos de pregunta falla, dónde, y qué haría falta
    para resolverlo (más corpus, mejor anotación, modelos mayores…).</li>
+  <li>Un sistema <b>usable a través de una API</b>, montado sobre la arquitectura que el estudio haya
+   demostrado mejor.</li>
   <li>Que todo sea <b>reproducible</b>: cualquiera pueda repetir mis experimentos y obtener los mismos
    números.</li>
 </ul>
@@ -937,15 +1201,17 @@ qué decisiones de diseño importan en un RAG legal. En concreto, me gustaría l
 </div>
 
 <hr>
-<h4>Resumen para llevar a la reunión (3 frases)</h4>
+<h4>Resumen para llevar a la reunión (4 frases)</h4>
 <ol>
   <li>El RAG completo está <b>construido y funcionando</b> de extremo a extremo (ingesta → parser →
    chunking → embedding → retrieval → aumento → generación), con foco en <b>seguridad y trazabilidad</b>.</li>
-  <li>Estoy en la fase de <b>evaluación</b>, que es el verdadero valor del TFG: 6 capas + juez LLM +
-   dataset gold; los primeros resultados muestran un sistema <b>seguro pero demasiado prudente</b>, y
-   las métricas ya localizan <b>dónde</b> falla.</li>
-  <li>Lo siguiente es <b>validar el juez</b>, <b>revisar el dataset gold contigo</b> y <b>comparar
-   estrategias de retrieval</b> (reranker, híbrido…) con evidencia.</li>
+  <li>Cada decisión se ha tomado <b>comparando alternativas con métricas</b>: 6 modelos de embeddings,
+   ablaciones de chunking (J1/J2/C1) y de consulta, estrategias de contexto y corridas de generación
+   con juez.</li>
+  <li>Estoy en la fase de <b>evaluación</b>, el verdadero valor del TFG: 6 capas + juez LLM + dataset
+   gold; el sistema es <b>seguro pero demasiado prudente</b> y las métricas ya localizan <b>dónde</b> falla.</li>
+  <li>El final es <b>ambicioso</b>: tras afinar la base, probar y <b>comparar arquitecturas avanzadas</b>
+   (filtros, <b>Agentic RAG</b>, <b>Graph RAG</b>) con la misma evaluación, y rematar con una <b>API</b>.</li>
 </ol>
 </section>
 
