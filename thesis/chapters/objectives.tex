@@ -11,9 +11,11 @@ Este capítulo define el resultado que se pretende alcanzar con el Trabajo Fin d
 \section{Objetivo general}
 \label{sec:objetivo-general}
 
-El objetivo general del proyecto consiste en \textbf{diseñar, implementar y evaluar una aplicación web local basada en una arquitectura de generación aumentada mediante recuperación} (\emph{Retrieval-Augmented Generation}, RAG) para facilitar la consulta de normativa consolidada procedente del \emph{Boletín Oficial del Estado} (BOE).
+El objetivo general del proyecto consiste en \textbf{diseñar, implementar y evaluar de forma rigurosa un sistema basado en una arquitectura de generación aumentada mediante recuperación} (\emph{Retrieval-Augmented Generation}, RAG) para facilitar la consulta de normativa consolidada procedente del \emph{Boletín Oficial del Estado} (BOE), poniendo el énfasis en \textbf{medir con evidencia qué decisiones de diseño producen respuestas más fiables}.
 
-La aplicación debe permitir que una persona formule preguntas en lenguaje natural y reciba una respuesta comprensible, fundamentada en evidencias documentales recuperadas a partir del corpus indexado. Además, la salida debe incorporar referencias verificables que permitan inspeccionar la procedencia de la información y acceder a las fuentes oficiales relacionadas con la respuesta. El propósito del sistema no es sustituir la publicación oficial ni prestar asesoramiento jurídico profesional, sino facilitar una primera aproximación informativa y trazable a la normativa incluida en el corpus.
+El sistema debe permitir que una persona formule preguntas en lenguaje natural y reciba una respuesta comprensible, fundamentada en evidencias documentales recuperadas a partir del corpus indexado. Además, la salida debe incorporar referencias verificables que permitan inspeccionar la procedencia de la información y acceder a las fuentes oficiales relacionadas con la respuesta. El propósito del sistema no es sustituir la publicación oficial ni prestar asesoramiento jurídico profesional, sino facilitar una primera aproximación informativa y trazable a la normativa incluida en el corpus.
+
+El entregable de este Trabajo Fin de Grado se materializa en un sistema ejecutable de extremo a extremo y en un marco de evaluación reproducible. Una interfaz web de cara al usuario y una API de servicio quedan planteadas como líneas de trabajo futuro, ya que su utilidad depende de haber determinado antes, con evidencia, qué configuración interna del sistema es la más fiable.
 
 La elección de normativa consolidada resulta adecuada para esta finalidad porque la Agencia Estatal Boletín Oficial del Estado (AEBOE) ofrece interfaces de programación que permiten reutilizar normas consolidadas, recuperar sus metadatos, consultar el texto completo de sus distintas versiones y acceder a los bloques que reflejan su estructura interna \cite{boeApiConsolidada}. No obstante, estos textos consolidados tienen carácter meramente informativo y carecen de valor jurídico propio; para fines jurídicos debe consultarse la publicación oficial correspondiente \cite{boeLegislacionActualizada}.
 
@@ -27,17 +29,17 @@ El objetivo general se concreta en los siguientes objetivos específicos:
 
     \item[\textbf{OE-02}] \textbf{Definir una representación documental adecuada para recuperación.} Diseñar una estrategia de estructuración y fragmentación que permita recuperar pasajes relevantes sin perder su relación con el contexto normativo de origen.
 
-    \item[\textbf{OE-03}] \textbf{Implementar estrategias de recuperación complementarias.} Desarrollar mecanismos de recuperación léxica, semántica e híbrida capaces de seleccionar evidencias relevantes ante consultas formuladas en lenguaje natural.
+    \item[\textbf{OE-03}] \textbf{Implementar estrategias de recuperación complementarias.} Desarrollar mecanismos de recuperación léxica, semántica e híbrida, así como la reordenación (\emph{reranking}) de resultados, capaces de seleccionar evidencias relevantes ante consultas formuladas en lenguaje natural.
 
     \item[\textbf{OE-04}] \textbf{Comparar las estrategias de recuperación.} Evaluar los recuperadores mediante consultas anotadas y métricas reproducibles, con el fin de seleccionar una configuración adecuada para el sistema final y analizar sus limitaciones.
 
     \item[\textbf{OE-05}] \textbf{Generar respuestas fundamentadas y prudentes.} Integrar un mecanismo de generación condicionado por las evidencias recuperadas que produzca respuestas trazables y que indique de forma explícita cuándo el corpus no contiene información suficiente para responder de manera fundamentada.
 
-    \item[\textbf{OE-06}] \textbf{Desarrollar una aplicación web local demostrable.} Implementar una interfaz accesible desde un navegador mediante una dirección local que permita formular preguntas, visualizar respuestas y consultar enlaces oficiales del BOE asociados a las evidencias utilizadas.
+    \item[\textbf{OE-06}] \textbf{Diseñar un marco de evaluación modular y fiable.} Definir un conjunto de métricas que midan por separado la recuperación, la construcción de contexto, la fidelidad a las evidencias, la corrección de las citas, el acierto de la respuesta y la abstención, apoyado en un conjunto de consultas anotadas. El marco debe incluir la validación de un modelo de lenguaje como juez (\emph{LLM-as-judge}) frente a anotación humana antes de confiar en sus veredictos.
 
-    \item[\textbf{OE-07}] \textbf{Diseñar y ejecutar una evaluación integral.} Preparar una metodología de evaluación que incluya consultas ciudadanas, formulaciones técnico-jurídicas, reformulaciones de una misma necesidad informativa, preguntas fuera del corpus y análisis cualitativo de errores.
+    \item[\textbf{OE-07}] \textbf{Ejecutar la evaluación y analizar los errores con evidencia.} Aplicar el marco anterior para medir la calidad de las respuestas generadas, estudiar el equilibrio entre responder y abstenerse, y analizar de forma cualitativa dónde y por qué falla el sistema, contemplando consultas ciudadanas, formulaciones técnico-jurídicas, reformulaciones de una misma necesidad informativa y preguntas fuera del corpus.
 
-    \item[\textbf{OE-08}] \textbf{Favorecer la reproducibilidad, la extensibilidad y el uso responsable.} Documentar la arquitectura, la configuración y los procedimientos de ejecución; facilitar la ampliación posterior del corpus; y analizar las limitaciones técnicas y jurídicas del prototipo.
+    \item[\textbf{OE-08}] \textbf{Favorecer la reproducibilidad, la extensibilidad y el uso responsable.} Documentar la arquitectura, la configuración y los procedimientos de ejecución; sostener el sistema íntegramente sobre modelos y herramientas de código abierto ejecutados en local, sin servicios externos de pago; facilitar la ampliación posterior del corpus; y analizar las limitaciones técnicas y jurídicas del prototipo.
 \end{enumerate}
 
 Los objetivos se han formulado de manera que puedan revisarse al final del trabajo. Cada uno deberá corresponderse con una parte de la implementación, una evidencia experimental o documental y una valoración explícita en el capítulo de conclusiones.
@@ -77,7 +79,7 @@ Las Tablas~\ref{tab:requisitos-funcionales-1} y~\ref{tab:requisitos-funcionales-
         \hline
         RF-07 & El sistema deberá permitir comparar las estrategias de recuperación mediante un proceso experimental reproducible. & Esencial \\
         \hline
-        RF-08 & La aplicación deberá aceptar preguntas formuladas en lenguaje natural. & Esencial \\
+        RF-08 & El sistema deberá aceptar preguntas formuladas en lenguaje natural. & Esencial \\
         \hline
     \end{tabular}%
     }
@@ -100,13 +102,13 @@ Las Tablas~\ref{tab:requisitos-funcionales-1} y~\ref{tab:requisitos-funcionales-
         \hline
         RF-11 & El sistema deberá asociar cada respuesta con referencias verificables a las evidencias utilizadas. & Esencial \\
         \hline
-        RF-12 & La aplicación deberá mostrar enlaces oficiales del BOE asociados a las fuentes empleadas en la respuesta. & Esencial \\
+        RF-12 & El sistema deberá asociar a cada respuesta los enlaces oficiales del BOE correspondientes a las fuentes empleadas. & Esencial \\
         \hline
         RF-13 & El sistema deberá impedir que una respuesta cite evidencias no proporcionadas al componente generativo. & Esencial \\
         \hline
         RF-14 & El sistema deberá indicar que no dispone de información suficiente cuando el corpus no permita responder de forma fundamentada. & Esencial \\
         \hline
-        RF-15 & El usuario deberá poder formular una consulta y visualizar la respuesta desde una interfaz web local. & Esencial \\
+        RF-15 & El sistema deberá ofrecer un demostrador ejecutable (línea de comandos o cuaderno) que permita formular una consulta y obtener la respuesta fundamentada con sus citas. & Esencial \\
         \hline
         RF-16 & El proceso documental deberá permitir ampliar posteriormente el corpus sin rediseñar la arquitectura completa. & Importante \\
         \hline
@@ -159,7 +161,7 @@ Los requisitos no funcionales se recogen en las Tablas~\ref{tab:requisitos-no-fu
         \hline
         \textbf{Código} & \textbf{Propiedad} & \textbf{Requisito no funcional} \\
         \hline
-        RNF-06 & Ejecución local & El sistema deberá poder ejecutarse en el servidor universitario sin depender de servicios externos de pago. \\
+        RNF-06 & Ejecución local y abierta & El sistema deberá ejecutarse íntegramente con modelos y herramientas de código abierto en el servidor universitario, sin depender de servicios externos de pago. \\
         \hline
         RNF-07 & Comprensibilidad & Las respuestas deberán utilizar un lenguaje accesible para usuarios no especializados, sin ocultar su fundamentación documental. \\
         \hline
@@ -266,7 +268,7 @@ La planificación se organiza en ocho fases. Varias de ellas se solapan porque e
         \hline
         F4 & Generación fundamentada & Construcción de contexto, prompts, generación local, citas y validación de salidas. & MVP completado; en mejora \\
         \hline
-        F5 & Aplicación demostrable & Interfaz web local, visualización de respuestas y enlaces oficiales del BOE. & Pendiente \\
+        F5 & Demostrador de extremo a extremo & Ejecución completa del flujo pregunta--respuesta con citas mediante línea de comandos y cuadernos reproducibles. La interfaz web se pospone a trabajo futuro. & Completada para el MVP \\
         \hline
         F6 & Evaluación integral & Batería de preguntas, métricas, análisis cualitativo, abstención y estudio de errores. & En curso \\
         \hline
@@ -275,3 +277,5 @@ La planificación se organiza en ocho fases. Varias de ellas se solapan porque e
     \end{tabular}%
     }
 \end{table}
+
+El ritmo de trabajo se ha ajustado al calendario de convocatorias de defensa de Trabajo Fin de Grado de la Escuela de Ingeniería de Fuenlabrada para el curso 2025--2026 \cite{urjcConvocatoriasTFGEIF2025_2026}. Asimismo, la elaboración de esta memoria sigue los requisitos de estructura, formato y contenido establecidos en el reglamento específico de Trabajo Fin de Grado de la Escuela \cite{urjcReglamentoTFGEIF2025}, que condiciona tanto la organización de los capítulos como la extensión máxima del documento.
