@@ -1,0 +1,160 @@
+{
+  "n": 32,
+  "percent_agreement": 0.8125,
+  "cohens_kappa": 0.446685878962536,
+  "weighted_kappa": 0.5471698113207547,
+  "cohens_kappa_ci": {
+    "lo": 0.04761904761904767,
+    "hi": 0.7697841726618705,
+    "n_boot": 2000,
+    "level": 0.95
+  },
+  "weighted_kappa_ci": {
+    "lo": 0.11111111111111116,
+    "hi": 0.8260869565217391,
+    "n_boot": 2000,
+    "level": 0.95
+  },
+  "confusion_matrix": [
+    [
+      1,
+      1,
+      0
+    ],
+    [
+      0,
+      2,
+      3
+    ],
+    [
+      0,
+      2,
+      23
+    ]
+  ],
+  "labels": [
+    "incorrect",
+    "partial",
+    "correct"
+  ],
+  "primary_dimension": "correctness",
+  "primary_kappa": "weighted_kappa",
+  "by_dimension": {
+    "correctness": {
+      "n": 32,
+      "percent_agreement": 0.8125,
+      "cohens_kappa": 0.446685878962536,
+      "weighted_kappa": 0.5471698113207547,
+      "labels": [
+        "incorrect",
+        "partial",
+        "correct"
+      ],
+      "confusion_matrix": [
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          2,
+          3
+        ],
+        [
+          0,
+          2,
+          23
+        ]
+      ],
+      "cohens_kappa_ci": {
+        "lo": 0.04761904761904767,
+        "hi": 0.7697841726618705,
+        "n_boot": 2000,
+        "level": 0.95
+      },
+      "weighted_kappa_ci": {
+        "lo": 0.11111111111111116,
+        "hi": 0.8260869565217391,
+        "n_boot": 2000,
+        "level": 0.95
+      },
+      "disagreements": [
+        {
+          "query_id": "q0010",
+          "human": "partial",
+          "judge": "correct"
+        },
+        {
+          "query_id": "q0011",
+          "human": "correct",
+          "judge": "partial"
+        },
+        {
+          "query_id": "q0012",
+          "human": "partial",
+          "judge": "correct"
+        },
+        {
+          "query_id": "q0023",
+          "human": "correct",
+          "judge": "partial"
+        },
+        {
+          "query_id": "q0034",
+          "human": "incorrect",
+          "judge": "partial"
+        },
+        {
+          "query_id": "q0036",
+          "human": "partial",
+          "judge": "correct"
+        }
+      ]
+    },
+    "faithfulness": {
+      "n": 3,
+      "percent_agreement": 0.3333333333333333,
+      "cohens_kappa": 0.0,
+      "weighted_kappa": 0.0,
+      "labels": [
+        "unfaithful",
+        "faithful"
+      ],
+      "confusion_matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "cohens_kappa_ci": {
+        "lo": 0.0,
+        "hi": 1.0,
+        "n_boot": 2000,
+        "level": 0.95
+      },
+      "weighted_kappa_ci": {
+        "lo": 0.0,
+        "hi": 1.0,
+        "n_boot": 2000,
+        "level": 0.95
+      },
+      "disagreements": [
+        {
+          "query_id": "q0001",
+          "human": "unfaithful",
+          "judge": "faithful"
+        },
+        {
+          "query_id": "q0034",
+          "human": "unfaithful",
+          "judge": "faithful"
+        }
+      ]
+    }
+  }
+}

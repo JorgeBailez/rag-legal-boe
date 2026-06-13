@@ -1,0 +1,161 @@
+{
+  "benchmark_id": "bench_20260606T111800Z",
+  "kind": "benchmark",
+  "split": "development",
+  "primary_metric": "ParentnDCG@10",
+  "seed": 12345,
+  "gate_c_ready": true,
+  "bundles": [
+    {
+      "run_key": "bge-m3__j1__363275fa4acd::BASELINE",
+      "bundle_id": "bge-m3__j1__363275fa4acd",
+      "query_profile_id": "BASELINE",
+      "n_queries": 40,
+      "primary_metric": "ParentnDCG@10",
+      "primary_ci": {
+        "mean": 0.8391842743410367,
+        "ci_low": 0.7488425006422089,
+        "ci_high": 0.9238710034094844,
+        "seed": 12345,
+        "n_resamples": 1000
+      }
+    },
+    {
+      "run_key": "e5-base__j1__f41de526bafe::BASELINE",
+      "bundle_id": "e5-base__j1__f41de526bafe",
+      "query_profile_id": "BASELINE",
+      "n_queries": 40,
+      "primary_metric": "ParentnDCG@10",
+      "primary_ci": {
+        "mean": 0.7857088595581592,
+        "ci_low": 0.6800292717188788,
+        "ci_high": 0.8760412496607206,
+        "seed": 12345,
+        "n_resamples": 1000
+      }
+    },
+    {
+      "run_key": "e5-large__j1__653c21c72911::BASELINE",
+      "bundle_id": "e5-large__j1__653c21c72911",
+      "query_profile_id": "BASELINE",
+      "n_queries": 40,
+      "primary_metric": "ParentnDCG@10",
+      "primary_ci": {
+        "mean": 0.8450840270558686,
+        "ci_low": 0.7708099361250151,
+        "ci_high": 0.9135412496607207,
+        "seed": 12345,
+        "n_resamples": 1000
+      }
+    },
+    {
+      "run_key": "e5-large-instruct__j1__bc11142bdcc5::I0_GENERIC",
+      "bundle_id": "e5-large-instruct__j1__bc11142bdcc5",
+      "query_profile_id": "I0_GENERIC",
+      "n_queries": 40,
+      "primary_metric": "ParentnDCG@10",
+      "primary_ci": {
+        "mean": 0.8356320947209177,
+        "ci_low": 0.7507242578656791,
+        "ci_high": 0.9154670636799811,
+        "seed": 12345,
+        "n_resamples": 1000
+      }
+    },
+    {
+      "run_key": "e5-large-instruct__j1__bc11142bdcc5::I1_LEGAL",
+      "bundle_id": "e5-large-instruct__j1__bc11142bdcc5",
+      "query_profile_id": "I1_LEGAL",
+      "n_queries": 40,
+      "primary_metric": "ParentnDCG@10",
+      "primary_ci": {
+        "mean": 0.8661732909393883,
+        "ci_low": 0.7917205837112788,
+        "ci_high": 0.9321631425965681,
+        "seed": 12345,
+        "n_resamples": 1000
+      }
+    },
+    {
+      "run_key": "e5-large-instruct__j1__bc11142bdcc5::I2_CITIZEN_LEGISLATION",
+      "bundle_id": "e5-large-instruct__j1__bc11142bdcc5",
+      "query_profile_id": "I2_CITIZEN_LEGISLATION",
+      "n_queries": 40,
+      "primary_metric": "ParentnDCG@10",
+      "primary_ci": {
+        "mean": 0.8694465347786748,
+        "ci_low": 0.7927086255240834,
+        "ci_high": 0.9354127068750049,
+        "seed": 12345,
+        "n_resamples": 1000
+      }
+    },
+    {
+      "run_key": "qwen3-0.6b__j1__bb59bd135c40::I0_GENERIC",
+      "bundle_id": "qwen3-0.6b__j1__bb59bd135c40",
+      "query_profile_id": "I0_GENERIC",
+      "n_queries": 40,
+      "primary_metric": "ParentnDCG@10",
+      "primary_ci": {
+        "mean": 0.827577697168417,
+        "ci_low": 0.7315863388302117,
+        "ci_high": 0.9054459938553328,
+        "seed": 12345,
+        "n_resamples": 1000
+      }
+    },
+    {
+      "run_key": "qwen3-0.6b__j1__bb59bd135c40::I1_LEGAL",
+      "bundle_id": "qwen3-0.6b__j1__bb59bd135c40",
+      "query_profile_id": "I1_LEGAL",
+      "n_queries": 40,
+      "primary_metric": "ParentnDCG@10",
+      "primary_ci": {
+        "mean": 0.8205364678608138,
+        "ci_low": 0.7294416475385144,
+        "ci_high": 0.8985768167707455,
+        "seed": 12345,
+        "n_resamples": 1000
+      }
+    },
+    {
+      "run_key": "qwen3-0.6b__j1__bb59bd135c40::I2_CITIZEN_LEGISLATION",
+      "bundle_id": "qwen3-0.6b__j1__bb59bd135c40",
+      "query_profile_id": "I2_CITIZEN_LEGISLATION",
+      "n_queries": 40,
+      "primary_metric": "ParentnDCG@10",
+      "primary_ci": {
+        "mean": 0.8010643977813295,
+        "ci_low": 0.7122902895852242,
+        "ci_high": 0.8814061599174661,
+        "seed": 12345,
+        "n_resamples": 1000
+      }
+    },
+    {
+      "run_key": "qwen3-0.6b__j1__bb59bd135c40::I_MINUS_NONE",
+      "bundle_id": "qwen3-0.6b__j1__bb59bd135c40",
+      "query_profile_id": "I_MINUS_NONE",
+      "n_queries": 40,
+      "primary_metric": "ParentnDCG@10",
+      "primary_ci": {
+        "mean": 0.8411732909393883,
+        "ci_low": 0.7524946763035908,
+        "ci_high": 0.9188732070118838,
+        "seed": 12345,
+        "n_resamples": 1000
+      }
+    }
+  ],
+  "paired_bootstrap_finalists": {
+    "a": "e5-large-instruct__j1__bc11142bdcc5::I2_CITIZEN_LEGISLATION",
+    "b": "e5-large-instruct__j1__bc11142bdcc5::I1_LEGAL",
+    "ParentnDCG@10": {
+      "mean_diff": 0.0032732438392864354,
+      "ci_low": -0.03363378080356782,
+      "ci_high": 0.03692184902678289,
+      "seed": 12345,
+      "n_resamples": 1000
+    }
+  }
+}

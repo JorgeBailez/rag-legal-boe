@@ -1,0 +1,20 @@
+{
+  "split": "development",
+  "dataset_dir": "data/evaluation/dense_retrieval_v1",
+  "bundle_id": "e5-large-instruct__j1__bc11142bdcc5",
+  "model_alias": "e5-large-instruct",
+  "generator_model": "qwen2.5:7b-instruct",
+  "judge_model": "gemma3:12b",
+  "query_profile_id": "I2_CITIZEN_LEGISLATION",
+  "top_k": 5,
+  "max_evidences": 3,
+  "context_strategy": "P_EXPAND_BOUNDED",
+  "context_budget_chars": 4000,
+  "max_total_context_chars": 8000,
+  "temperature": 0.0,
+  "seed": 42,
+  "prompts_dir": "(default)",
+  "prompt_fingerprint": "4d85b5f5f509",
+  "gate_c_generation_ready": false,
+  "n_questions": 40
+}

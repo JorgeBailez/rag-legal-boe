@@ -1,0 +1,30 @@
+{
+  "smoke_test_id": "smoke_20260605T230038Z",
+  "kind": "smoke_test",
+  "device": "cpu",
+  "threads": 16,
+  "batch_size": 8,
+  "exploratory_unpinned": false,
+  "n_docs_requested": 64,
+  "models": [
+    {
+      "model_alias": "qwen3-0.6b",
+      "model_id": "Qwen/Qwen3-Embedding-0.6B",
+      "model_revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b",
+      "tokenizer_revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b",
+      "exploratory_unpinned": false,
+      "embedding_dimension": 1024,
+      "observed_dimension": 1024,
+      "n_source_chunks": 64,
+      "n_docs": 64,
+      "doc_encode_seconds": 210.614,
+      "doc_throughput_per_s": 0.3,
+      "query_latency_p50_s": 0.4171,
+      "query_latency_p95_s": 0.4344,
+      "peak_ram_mb": 3209.3,
+      "download_size_bytes": null,
+      "cache_size_bytes": null,
+      "warning": ""
+    }
+  ]
+}

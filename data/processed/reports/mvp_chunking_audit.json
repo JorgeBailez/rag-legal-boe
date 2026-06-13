@@ -1,0 +1,1582 @@
+{
+  "corpus": {
+    "n_norms": 10,
+    "total_blocks": 2256,
+    "total_chunks": 3274
+  },
+  "summary": {
+    "total": 2,
+    "by_severity": {
+      "INFO": 2
+    },
+    "by_classification": {
+      "Aceptable MVP": 2
+    },
+    "by_check": {
+      "rt.hierarchy_dup": 1,
+      "rt.full_title_dup": 1
+    }
+  },
+  "block_type_stats": {
+    "counts": {
+      "nota_inicial": 5,
+      "preambulo": 10,
+      "encabezado": 440,
+      "precepto": 1791,
+      "firma": 10
+    },
+    "indexable_counts": {
+      "preambulo": 10,
+      "precepto": 1784,
+      "encabezado": 10
+    }
+  },
+  "hierarchy_stats": {
+    "handled_classes": [
+      "anexo_num",
+      "capitulo_num",
+      "libro_num",
+      "seccion",
+      "subseccion",
+      "titulo_num"
+    ],
+    "heading_class_counts": {
+      "titulo_tit": 67,
+      "titulo_num": 67,
+      "capitulo_num": 158,
+      "capitulo_tit": 158,
+      "anexo": 2,
+      "seccion": 143,
+      "subseccion": 55,
+      "libro": 1,
+      "titulo": 1,
+      "libro_num": 4,
+      "libro_tit": 4,
+      "anexo_num": 7,
+      "anexo_tit": 7
+    },
+    "norms_with_unhandled_hierarchy": {},
+    "norms_with_singular_labels": {
+      "BOE-A-2004-4214": [
+        "anexo"
+      ],
+      "BOE-A-2006-13371": [
+        "libro"
+      ],
+      "BOE-A-2013-12887": [
+        "titulo"
+      ],
+      "BOE-A-2021-5032": [
+        "anexo"
+      ]
+    },
+    "headings_without_full_title": 0
+  },
+  "hypotheses": {
+    "H1_nota_inicial_indexable": {
+      "verdict": "DESCARTADO",
+      "affected": [],
+      "severity": "WARN",
+      "classification": "Revisar antes de embeddings"
+    },
+    "H2_hierarchy_incompleta": {
+      "verdict": "DESCARTADO",
+      "norms_bloqueantes": {},
+      "norms_singular_label": {
+        "BOE-A-2004-4214": [
+          "anexo"
+        ],
+        "BOE-A-2006-13371": [
+          "libro"
+        ],
+        "BOE-A-2013-12887": [
+          "titulo"
+        ],
+        "BOE-A-2021-5032": [
+          "anexo"
+        ]
+      },
+      "headings_without_full_title": 0,
+      "severity": "WARN",
+      "classification": "Revisar antes de embeddings"
+    },
+    "H3_oversized": {
+      "verdict": "CONFIRMADO",
+      "total": 89,
+      "single_paragraph": 0,
+      "max_text_chars": 3550,
+      "severity": "WARN",
+      "classification": "Revisar antes de embeddings (decisión por tokens en indexación)"
+    },
+    "H4_note_leak": {
+      "verdict": "DESCARTADO (falso positivo)",
+      "exact_leaks": 0,
+      "severity": "INFO",
+      "classification": "Correcto"
+    },
+    "H5_tablas_linealizadas": {
+      "verdict": "CONFIRMADO",
+      "n_blocks": 8,
+      "severity": "INFO",
+      "classification": "Aceptable MVP"
+    }
+  },
+  "metadata_classification": [
+    {
+      "field": "citation_label",
+      "category": "cita",
+      "note": "etiqueta humana de la cita"
+    },
+    {
+      "field": "source_url",
+      "category": "cita",
+      "note": "enlace oficial con ancla #block_id"
+    },
+    {
+      "field": "document_id",
+      "category": "cita+filtro",
+      "note": "identidad de la norma"
+    },
+    {
+      "field": "block_id",
+      "category": "cita+trazabilidad",
+      "note": "ancla del bloque"
+    },
+    {
+      "field": "parent_id",
+      "category": "trazabilidad",
+      "note": "join al bloque padre (parent-child)"
+    },
+    {
+      "field": "source_norm_id",
+      "category": "trazabilidad",
+      "note": "norma que fijó la versión vigente"
+    },
+    {
+      "field": "hierarchy",
+      "category": "filtro",
+      "note": "título/capítulo/sección (incompleta: ver H2)"
+    },
+    {
+      "field": "rank",
+      "category": "filtro",
+      "note": "rango de la norma"
+    },
+    {
+      "field": "scope",
+      "category": "filtro",
+      "note": "ámbito"
+    },
+    {
+      "field": "subjects",
+      "category": "filtro",
+      "note": "materias; voluminoso si se repite por vector"
+    },
+    {
+      "field": "norm_title",
+      "category": "no_repetir_por_vector",
+      "note": "constante por norma"
+    },
+    {
+      "field": "legal_status_notice",
+      "category": "no_repetir_por_vector",
+      "note": "constante global"
+    }
+  ],
+  "oversized_summary": {
+    "total": 89,
+    "by_norm": {
+      "BOE-A-1985-5392": 18,
+      "BOE-A-2006-13371": 7,
+      "BOE-A-2013-12887": 6,
+      "BOE-A-2015-10565": 5,
+      "BOE-A-2015-10566": 8,
+      "BOE-A-2017-12902": 19,
+      "BOE-A-2018-16673": 14,
+      "BOE-A-2021-5032": 12
+    },
+    "by_block_type": {
+      "preambulo": 76,
+      "precepto": 13
+    }
+  },
+  "per_norm": {
+    "BOE-A-1985-5392": {
+      "blocks": 231,
+      "chunks": 327,
+      "findings": 1,
+      "overlap": {
+        "parents_split": 47,
+        "overlap_boundary_ok": 47,
+        "overlap_violations": [],
+        "order_preserved": 47,
+        "order_violations": [],
+        "near_identical_pairs": [],
+        "duplicated_paragraphs": 132,
+        "duplicated_chars": 62370
+      },
+      "oversized": 18,
+      "efficiency": {
+        "json_bytes": 1075534,
+        "n_chunks": 327,
+        "n_parents": 195,
+        "childs_mean": 1.68,
+        "childs_max": 37,
+        "parent_text_in_chunks_chars": 0,
+        "parents_store_unique_text_chars": 320583,
+        "subjects_repeated_chars": 0,
+        "overlap_duplicated_chars": 62370
+      }
+    },
+    "BOE-A-2003-20977": {
+      "blocks": 122,
+      "chunks": 191,
+      "findings": 0,
+      "overlap": {
+        "parents_split": 33,
+        "overlap_boundary_ok": 33,
+        "overlap_violations": [],
+        "order_preserved": 33,
+        "order_violations": [],
+        "near_identical_pairs": [],
+        "duplicated_paragraphs": 86,
+        "duplicated_chars": 27556
+      },
+      "oversized": 0,
+      "efficiency": {
+        "json_bytes": 648010,
+        "n_chunks": 191,
+        "n_parents": 105,
+        "childs_mean": 1.82,
+        "childs_max": 23,
+        "parent_text_in_chunks_chars": 0,
+        "parents_store_unique_text_chars": 211352,
+        "subjects_repeated_chars": 0,
+        "overlap_duplicated_chars": 27556
+      }
+    },
+    "BOE-A-2004-4214": {
+      "blocks": 368,
+      "chunks": 405,
+      "findings": 0,
+      "overlap": {
+        "parents_split": 63,
+        "overlap_boundary_ok": 63,
+        "overlap_violations": [],
+        "order_preserved": 63,
+        "order_violations": [],
+        "near_identical_pairs": [],
+        "duplicated_paragraphs": 131,
+        "duplicated_chars": 41373
+      },
+      "oversized": 0,
+      "efficiency": {
+        "json_bytes": 1208349,
+        "n_chunks": 405,
+        "n_parents": 274,
+        "childs_mean": 1.48,
+        "childs_max": 8,
+        "parent_text_in_chunks_chars": 0,
+        "parents_store_unique_text_chars": 383846,
+        "subjects_repeated_chars": 0,
+        "overlap_duplicated_chars": 41373
+      }
+    },
+    "BOE-A-2006-13371": {
+      "blocks": 171,
+      "chunks": 188,
+      "findings": 0,
+      "overlap": {
+        "parents_split": 33,
+        "overlap_boundary_ok": 33,
+        "overlap_violations": [],
+        "order_preserved": 33,
+        "order_violations": [],
+        "near_identical_pairs": [],
+        "duplicated_paragraphs": 59,
+        "duplicated_chars": 25268
+      },
+      "oversized": 7,
+      "efficiency": {
+        "json_bytes": 582716,
+        "n_chunks": 188,
+        "n_parents": 129,
+        "childs_mean": 1.46,
+        "childs_max": 19,
+        "parent_text_in_chunks_chars": 0,
+        "parents_store_unique_text_chars": 190331,
+        "subjects_repeated_chars": 0,
+        "overlap_duplicated_chars": 25268
+      }
+    },
+    "BOE-A-2013-12887": {
+      "blocks": 70,
+      "chunks": 103,
+      "findings": 0,
+      "overlap": {
+        "parents_split": 14,
+        "overlap_boundary_ok": 14,
+        "overlap_violations": [],
+        "order_preserved": 14,
+        "order_violations": [],
+        "near_identical_pairs": [],
+        "duplicated_paragraphs": 44,
+        "duplicated_chars": 19128
+      },
+      "oversized": 6,
+      "efficiency": {
+        "json_bytes": 320834,
+        "n_chunks": 103,
+        "n_parents": 59,
+        "childs_mean": 1.75,
+        "childs_max": 20,
+        "parent_text_in_chunks_chars": 0,
+        "parents_store_unique_text_chars": 103053,
+        "subjects_repeated_chars": 0,
+        "overlap_duplicated_chars": 19128
+      }
+    },
+    "BOE-A-2015-10565": {
+      "blocks": 195,
+      "chunks": 249,
+      "findings": 0,
+      "overlap": {
+        "parents_split": 38,
+        "overlap_boundary_ok": 38,
+        "overlap_violations": [],
+        "order_preserved": 38,
+        "order_violations": [],
+        "near_identical_pairs": [],
+        "duplicated_paragraphs": 93,
+        "duplicated_chars": 36813
+      },
+      "oversized": 5,
+      "efficiency": {
+        "json_bytes": 785756,
+        "n_chunks": 249,
+        "n_parents": 156,
+        "childs_mean": 1.6,
+        "childs_max": 31,
+        "parent_text_in_chunks_chars": 0,
+        "parents_store_unique_text_chars": 249424,
+        "subjects_repeated_chars": 0,
+        "overlap_duplicated_chars": 36813
+      }
+    },
+    "BOE-A-2015-10566": {
+      "blocks": 267,
+      "chunks": 428,
+      "findings": 1,
+      "overlap": {
+        "parents_split": 65,
+        "overlap_boundary_ok": 65,
+        "overlap_violations": [],
+        "order_preserved": 65,
+        "order_violations": [],
+        "near_identical_pairs": [],
+        "duplicated_paragraphs": 208,
+        "duplicated_chars": 79207
+      },
+      "oversized": 8,
+      "efficiency": {
+        "json_bytes": 1535726,
+        "n_chunks": 428,
+        "n_parents": 220,
+        "childs_mean": 1.95,
+        "childs_max": 51,
+        "parent_text_in_chunks_chars": 0,
+        "parents_store_unique_text_chars": 461779,
+        "subjects_repeated_chars": 0,
+        "overlap_duplicated_chars": 79207
+      }
+    },
+    "BOE-A-2017-12902": {
+      "blocks": 557,
+      "chunks": 967,
+      "findings": 0,
+      "overlap": {
+        "parents_split": 185,
+        "overlap_boundary_ok": 185,
+        "overlap_violations": [],
+        "order_preserved": 185,
+        "order_violations": [],
+        "near_identical_pairs": [
+          "BOE-A-2017-12902__a7-9__c003~BOE-A-2017-12902__a7-9__c004",
+          "BOE-A-2017-12902__a1-62__c004~BOE-A-2017-12902__a1-62__c005"
+        ],
+        "duplicated_paragraphs": 532,
+        "duplicated_chars": 207805
+      },
+      "oversized": 19,
+      "efficiency": {
+        "json_bytes": 3585837,
+        "n_chunks": 967,
+        "n_parents": 435,
+        "childs_mean": 2.22,
+        "childs_max": 53,
+        "parent_text_in_chunks_chars": 0,
+        "parents_store_unique_text_chars": 1083589,
+        "subjects_repeated_chars": 0,
+        "overlap_duplicated_chars": 207805
+      }
+    },
+    "BOE-A-2018-16673": {
+      "blocks": 169,
+      "chunks": 228,
+      "findings": 0,
+      "overlap": {
+        "parents_split": 32,
+        "overlap_boundary_ok": 32,
+        "overlap_violations": [],
+        "order_preserved": 32,
+        "order_violations": [],
+        "near_identical_pairs": [],
+        "duplicated_paragraphs": 83,
+        "duplicated_chars": 41583
+      },
+      "oversized": 14,
+      "efficiency": {
+        "json_bytes": 758415,
+        "n_chunks": 228,
+        "n_parents": 145,
+        "childs_mean": 1.57,
+        "childs_max": 31,
+        "parent_text_in_chunks_chars": 0,
+        "parents_store_unique_text_chars": 235525,
+        "subjects_repeated_chars": 0,
+        "overlap_duplicated_chars": 41583
+      }
+    },
+    "BOE-A-2021-5032": {
+      "blocks": 106,
+      "chunks": 188,
+      "findings": 0,
+      "overlap": {
+        "parents_split": 37,
+        "overlap_boundary_ok": 37,
+        "overlap_violations": [],
+        "order_preserved": 37,
+        "order_violations": [],
+        "near_identical_pairs": [
+          "BOE-A-2021-5032__pr__c011~BOE-A-2021-5032__pr__c012",
+          "BOE-A-2021-5032__pr__c014~BOE-A-2021-5032__pr__c015"
+        ],
+        "duplicated_paragraphs": 102,
+        "duplicated_chars": 48246
+      },
+      "oversized": 12,
+      "efficiency": {
+        "json_bytes": 675767,
+        "n_chunks": 188,
+        "n_parents": 86,
+        "childs_mean": 2.19,
+        "childs_max": 27,
+        "parent_text_in_chunks_chars": 0,
+        "parents_store_unique_text_chars": 210534,
+        "subjects_repeated_chars": 0,
+        "overlap_duplicated_chars": 48246
+      }
+    }
+  },
+  "representative_examples": [
+    {
+      "categoria": "nota_inicial",
+      "norma": "BOE-A-1985-5392",
+      "block_id": "co",
+      "xml": {
+        "n_versions": 1,
+        "snippet": "<bloque id=\"co\" tipo=\"nota_inicial\">\n        <version id_norma=\"BOE-A-1985-5392\" fecha_publicacion=\"19850403\" fecha_vigencia=\"19850423\">\n          <p class=\"textoCompleto\">Incluye la corrección de errores publicada en BOE núm. 139, de 11 de junio de 1985. <a class=\"refPost\">Ref. BOE-A-1985-10629</a></p>\n        </version>\n      </bloque>\n      "
+      },
+      "documento": {
+        "block_type": "nota_inicial",
+        "block_title": null,
+        "full_title": null,
+        "hierarchy": {
+          "book": null,
+          "title": null,
+          "chapter": null,
+          "section": null,
+          "subsection": null,
+          "annex": null
+        },
+        "n_versions": 1,
+        "latest_source_norm_id": "BOE-A-1985-5392",
+        "n_paragraphs": 1,
+        "n_modification_notes": 0,
+        "text_chars": 105,
+        "indexable": false
+      },
+      "chunks": []
+    },
+    {
+      "categoria": "preambulo",
+      "norma": "BOE-A-1985-5392",
+      "block_id": "preambulo",
+      "xml": {
+        "n_versions": 1,
+        "snippet": "<bloque id=\"preambulo\" tipo=\"preambulo\">\n        <version id_norma=\"BOE-A-1985-5392\" fecha_publicacion=\"19850403\" fecha_vigencia=\"19850423\">\n          <p class=\"centro_redonda\">JUAN CARLOS I</p>\n          <p class=\"centro_redonda\">REY DE ESPAÑA</p>\n          <p class=\"parrafo\">A todos los que la presente vieren y entendieren, sabed:</p>\n          <p class=\"parrafo\">Que las Cortes Generales han aprobado y Yo vengo en sancionar la siguiente Ley:</p>\n          <p class=\"centro_negrita\">PREÁMBULO</p>\n          <p class=\"centro_redonda\">I</p>\n          <p class=\"parrafo\">La organización democrática …"
+      },
+      "documento": {
+        "block_type": "preambulo",
+        "block_title": null,
+        "full_title": null,
+        "hierarchy": {
+          "book": null,
+          "title": null,
+          "chapter": null,
+          "section": null,
+          "subsection": null,
+          "annex": null
+        },
+        "n_versions": 1,
+        "latest_source_norm_id": "BOE-A-1985-5392",
+        "n_paragraphs": 52,
+        "n_modification_notes": 0,
+        "text_chars": 39379,
+        "indexable": true
+      },
+      "chunks": [
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c001",
+          "text_chars": 1386,
+          "chunk_index": 1,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c002",
+          "text_chars": 1701,
+          "chunk_index": 2,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c003",
+          "text_chars": 1701,
+          "chunk_index": 3,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c004",
+          "text_chars": 1840,
+          "chunk_index": 4,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c005",
+          "text_chars": 2431,
+          "chunk_index": 5,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c006",
+          "text_chars": 2456,
+          "chunk_index": 6,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c007",
+          "text_chars": 1974,
+          "chunk_index": 7,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c008",
+          "text_chars": 1481,
+          "chunk_index": 8,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c009",
+          "text_chars": 2164,
+          "chunk_index": 9,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c010",
+          "text_chars": 2893,
+          "chunk_index": 10,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c011",
+          "text_chars": 2114,
+          "chunk_index": 11,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c012",
+          "text_chars": 1792,
+          "chunk_index": 12,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c013",
+          "text_chars": 1280,
+          "chunk_index": 13,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c014",
+          "text_chars": 1708,
+          "chunk_index": 14,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c015",
+          "text_chars": 2132,
+          "chunk_index": 15,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c016",
+          "text_chars": 2100,
+          "chunk_index": 16,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c017",
+          "text_chars": 1710,
+          "chunk_index": 17,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c018",
+          "text_chars": 2556,
+          "chunk_index": 18,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c019",
+          "text_chars": 3156,
+          "chunk_index": 19,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c020",
+          "text_chars": 2956,
+          "chunk_index": 20,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c021",
+          "text_chars": 1438,
+          "chunk_index": 21,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c022",
+          "text_chars": 1023,
+          "chunk_index": 22,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c023",
+          "text_chars": 2317,
+          "chunk_index": 23,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c024",
+          "text_chars": 2594,
+          "chunk_index": 24,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c025",
+          "text_chars": 1784,
+          "chunk_index": 25,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c026",
+          "text_chars": 664,
+          "chunk_index": 26,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c027",
+          "text_chars": 1386,
+          "chunk_index": 27,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c028",
+          "text_chars": 2433,
+          "chunk_index": 28,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c029",
+          "text_chars": 1539,
+          "chunk_index": 29,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c030",
+          "text_chars": 1720,
+          "chunk_index": 30,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c031",
+          "text_chars": 2119,
+          "chunk_index": 31,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c032",
+          "text_chars": 1732,
+          "chunk_index": 32,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c033",
+          "text_chars": 904,
+          "chunk_index": 33,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c034",
+          "text_chars": 1606,
+          "chunk_index": 34,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c035",
+          "text_chars": 1592,
+          "chunk_index": 35,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c036",
+          "text_chars": 3129,
+          "chunk_index": 36,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c037",
+          "text_chars": 3550,
+          "chunk_index": 37,
+          "chunk_count_for_parent": 37
+        }
+      ]
+    },
+    {
+      "categoria": "dividido",
+      "norma": "BOE-A-1985-5392",
+      "block_id": "preambulo",
+      "xml": {
+        "n_versions": 1,
+        "snippet": "<bloque id=\"preambulo\" tipo=\"preambulo\">\n        <version id_norma=\"BOE-A-1985-5392\" fecha_publicacion=\"19850403\" fecha_vigencia=\"19850423\">\n          <p class=\"centro_redonda\">JUAN CARLOS I</p>\n          <p class=\"centro_redonda\">REY DE ESPAÑA</p>\n          <p class=\"parrafo\">A todos los que la presente vieren y entendieren, sabed:</p>\n          <p class=\"parrafo\">Que las Cortes Generales han aprobado y Yo vengo en sancionar la siguiente Ley:</p>\n          <p class=\"centro_negrita\">PREÁMBULO</p>\n          <p class=\"centro_redonda\">I</p>\n          <p class=\"parrafo\">La organización democrática …"
+      },
+      "documento": {
+        "block_type": "preambulo",
+        "block_title": null,
+        "full_title": null,
+        "hierarchy": {
+          "book": null,
+          "title": null,
+          "chapter": null,
+          "section": null,
+          "subsection": null,
+          "annex": null
+        },
+        "n_versions": 1,
+        "latest_source_norm_id": "BOE-A-1985-5392",
+        "n_paragraphs": 52,
+        "n_modification_notes": 0,
+        "text_chars": 39379,
+        "indexable": true
+      },
+      "chunks": [
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c001",
+          "text_chars": 1386,
+          "chunk_index": 1,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c002",
+          "text_chars": 1701,
+          "chunk_index": 2,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c003",
+          "text_chars": 1701,
+          "chunk_index": 3,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c004",
+          "text_chars": 1840,
+          "chunk_index": 4,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c005",
+          "text_chars": 2431,
+          "chunk_index": 5,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c006",
+          "text_chars": 2456,
+          "chunk_index": 6,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c007",
+          "text_chars": 1974,
+          "chunk_index": 7,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c008",
+          "text_chars": 1481,
+          "chunk_index": 8,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c009",
+          "text_chars": 2164,
+          "chunk_index": 9,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c010",
+          "text_chars": 2893,
+          "chunk_index": 10,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c011",
+          "text_chars": 2114,
+          "chunk_index": 11,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c012",
+          "text_chars": 1792,
+          "chunk_index": 12,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c013",
+          "text_chars": 1280,
+          "chunk_index": 13,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c014",
+          "text_chars": 1708,
+          "chunk_index": 14,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c015",
+          "text_chars": 2132,
+          "chunk_index": 15,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c016",
+          "text_chars": 2100,
+          "chunk_index": 16,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c017",
+          "text_chars": 1710,
+          "chunk_index": 17,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c018",
+          "text_chars": 2556,
+          "chunk_index": 18,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c019",
+          "text_chars": 3156,
+          "chunk_index": 19,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c020",
+          "text_chars": 2956,
+          "chunk_index": 20,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c021",
+          "text_chars": 1438,
+          "chunk_index": 21,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c022",
+          "text_chars": 1023,
+          "chunk_index": 22,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c023",
+          "text_chars": 2317,
+          "chunk_index": 23,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c024",
+          "text_chars": 2594,
+          "chunk_index": 24,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c025",
+          "text_chars": 1784,
+          "chunk_index": 25,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c026",
+          "text_chars": 664,
+          "chunk_index": 26,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c027",
+          "text_chars": 1386,
+          "chunk_index": 27,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c028",
+          "text_chars": 2433,
+          "chunk_index": 28,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c029",
+          "text_chars": 1539,
+          "chunk_index": 29,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c030",
+          "text_chars": 1720,
+          "chunk_index": 30,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c031",
+          "text_chars": 2119,
+          "chunk_index": 31,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c032",
+          "text_chars": 1732,
+          "chunk_index": 32,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c033",
+          "text_chars": 904,
+          "chunk_index": 33,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c034",
+          "text_chars": 1606,
+          "chunk_index": 34,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c035",
+          "text_chars": 1592,
+          "chunk_index": 35,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c036",
+          "text_chars": 3129,
+          "chunk_index": 36,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c037",
+          "text_chars": 3550,
+          "chunk_index": 37,
+          "chunk_count_for_parent": 37
+        }
+      ]
+    },
+    {
+      "categoria": "oversized",
+      "norma": "BOE-A-1985-5392",
+      "block_id": "preambulo",
+      "xml": {
+        "n_versions": 1,
+        "snippet": "<bloque id=\"preambulo\" tipo=\"preambulo\">\n        <version id_norma=\"BOE-A-1985-5392\" fecha_publicacion=\"19850403\" fecha_vigencia=\"19850423\">\n          <p class=\"centro_redonda\">JUAN CARLOS I</p>\n          <p class=\"centro_redonda\">REY DE ESPAÑA</p>\n          <p class=\"parrafo\">A todos los que la presente vieren y entendieren, sabed:</p>\n          <p class=\"parrafo\">Que las Cortes Generales han aprobado y Yo vengo en sancionar la siguiente Ley:</p>\n          <p class=\"centro_negrita\">PREÁMBULO</p>\n          <p class=\"centro_redonda\">I</p>\n          <p class=\"parrafo\">La organización democrática …"
+      },
+      "documento": {
+        "block_type": "preambulo",
+        "block_title": null,
+        "full_title": null,
+        "hierarchy": {
+          "book": null,
+          "title": null,
+          "chapter": null,
+          "section": null,
+          "subsection": null,
+          "annex": null
+        },
+        "n_versions": 1,
+        "latest_source_norm_id": "BOE-A-1985-5392",
+        "n_paragraphs": 52,
+        "n_modification_notes": 0,
+        "text_chars": 39379,
+        "indexable": true
+      },
+      "chunks": [
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c001",
+          "text_chars": 1386,
+          "chunk_index": 1,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c002",
+          "text_chars": 1701,
+          "chunk_index": 2,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c003",
+          "text_chars": 1701,
+          "chunk_index": 3,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c004",
+          "text_chars": 1840,
+          "chunk_index": 4,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c005",
+          "text_chars": 2431,
+          "chunk_index": 5,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c006",
+          "text_chars": 2456,
+          "chunk_index": 6,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c007",
+          "text_chars": 1974,
+          "chunk_index": 7,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c008",
+          "text_chars": 1481,
+          "chunk_index": 8,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c009",
+          "text_chars": 2164,
+          "chunk_index": 9,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c010",
+          "text_chars": 2893,
+          "chunk_index": 10,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c011",
+          "text_chars": 2114,
+          "chunk_index": 11,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c012",
+          "text_chars": 1792,
+          "chunk_index": 12,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c013",
+          "text_chars": 1280,
+          "chunk_index": 13,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c014",
+          "text_chars": 1708,
+          "chunk_index": 14,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c015",
+          "text_chars": 2132,
+          "chunk_index": 15,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c016",
+          "text_chars": 2100,
+          "chunk_index": 16,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c017",
+          "text_chars": 1710,
+          "chunk_index": 17,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c018",
+          "text_chars": 2556,
+          "chunk_index": 18,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c019",
+          "text_chars": 3156,
+          "chunk_index": 19,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c020",
+          "text_chars": 2956,
+          "chunk_index": 20,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c021",
+          "text_chars": 1438,
+          "chunk_index": 21,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c022",
+          "text_chars": 1023,
+          "chunk_index": 22,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c023",
+          "text_chars": 2317,
+          "chunk_index": 23,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c024",
+          "text_chars": 2594,
+          "chunk_index": 24,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c025",
+          "text_chars": 1784,
+          "chunk_index": 25,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c026",
+          "text_chars": 664,
+          "chunk_index": 26,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c027",
+          "text_chars": 1386,
+          "chunk_index": 27,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c028",
+          "text_chars": 2433,
+          "chunk_index": 28,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c029",
+          "text_chars": 1539,
+          "chunk_index": 29,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c030",
+          "text_chars": 1720,
+          "chunk_index": 30,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c031",
+          "text_chars": 2119,
+          "chunk_index": 31,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c032",
+          "text_chars": 1732,
+          "chunk_index": 32,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c033",
+          "text_chars": 904,
+          "chunk_index": 33,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c034",
+          "text_chars": 1606,
+          "chunk_index": 34,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c035",
+          "text_chars": 1592,
+          "chunk_index": 35,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c036",
+          "text_chars": 3129,
+          "chunk_index": 36,
+          "chunk_count_for_parent": 37
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__preambulo__c037",
+          "text_chars": 3550,
+          "chunk_index": 37,
+          "chunk_count_for_parent": 37
+        }
+      ]
+    },
+    {
+      "categoria": "corto",
+      "norma": "BOE-A-1985-5392",
+      "block_id": "a1",
+      "xml": {
+        "n_versions": 1,
+        "snippet": "<bloque id=\"a1\" tipo=\"precepto\" titulo=\"Artículo 1\">\n        <version id_norma=\"BOE-A-1985-5392\" fecha_publicacion=\"19850403\" fecha_vigencia=\"19850423\">\n          <p class=\"articulo\">Artículo 1.</p>\n          <p class=\"parrafo\">1. Los Municipios son entidades básicas de la organización territorial del Estado y cauces inmediatos de participación ciudadana en los asuntos públicos, que institucionalizan y gestionan con autonomía los intereses propios de las correspondientes colectividades.</p>\n          <p class=\"parrafo\">2. La Provincia y, en su caso, la Isla gozan, asimismo, de idéntica autonom …"
+      },
+      "documento": {
+        "block_type": "precepto",
+        "block_title": "Artículo 1",
+        "full_title": "Artículo 1.",
+        "hierarchy": {
+          "book": null,
+          "title": "TÍTULO I",
+          "chapter": null,
+          "section": null,
+          "subsection": null,
+          "annex": null
+        },
+        "n_versions": 1,
+        "latest_source_norm_id": "BOE-A-1985-5392",
+        "n_paragraphs": 3,
+        "n_modification_notes": 0,
+        "text_chars": 399,
+        "indexable": true
+      },
+      "chunks": [
+        {
+          "chunk_id": "BOE-A-1985-5392__a1__c001",
+          "text_chars": 399,
+          "chunk_index": 1,
+          "chunk_count_for_parent": 1
+        }
+      ]
+    },
+    {
+      "categoria": "multiversion",
+      "norma": "BOE-A-1985-5392",
+      "block_id": "a2",
+      "xml": {
+        "n_versions": 3,
+        "snippet": "<bloque id=\"a2\" tipo=\"precepto\" titulo=\"Artículo 2\">\n        <version id_norma=\"BOE-A-1985-5392\" fecha_publicacion=\"19850403\" fecha_vigencia=\"19850423\">\n          <p class=\"articulo\">Artículo 2.</p>\n          <p class=\"parrafo\">1. Para la efectividad de la autonomía garantizada constitucionalmente a las entidades locales, la legislación del Estado y la de las Comunidades Autónomas, reguladora de los distintos sectores de acción pública, según la distribución constitucional de competencias, deberá asegurar a los Municipios, las Provincias y las Islas su derecho a intervenir en cuantos asuntos a …"
+      },
+      "documento": {
+        "block_type": "precepto",
+        "block_title": "Artículo 2",
+        "full_title": "Artículo 2.",
+        "hierarchy": {
+          "book": null,
+          "title": "TÍTULO I",
+          "chapter": null,
+          "section": null,
+          "subsection": null,
+          "annex": null
+        },
+        "n_versions": 3,
+        "latest_source_norm_id": "BOE-A-2013-13756",
+        "n_paragraphs": 3,
+        "n_modification_notes": 2,
+        "text_chars": 1002,
+        "indexable": true
+      },
+      "chunks": [
+        {
+          "chunk_id": "BOE-A-1985-5392__a2__c001",
+          "text_chars": 1002,
+          "chunk_index": 1,
+          "chunk_count_for_parent": 1
+        }
+      ]
+    },
+    {
+      "categoria": "nota_editorial",
+      "norma": "BOE-A-1985-5392",
+      "block_id": "a2",
+      "xml": {
+        "n_versions": 3,
+        "snippet": "<bloque id=\"a2\" tipo=\"precepto\" titulo=\"Artículo 2\">\n        <version id_norma=\"BOE-A-1985-5392\" fecha_publicacion=\"19850403\" fecha_vigencia=\"19850423\">\n          <p class=\"articulo\">Artículo 2.</p>\n          <p class=\"parrafo\">1. Para la efectividad de la autonomía garantizada constitucionalmente a las entidades locales, la legislación del Estado y la de las Comunidades Autónomas, reguladora de los distintos sectores de acción pública, según la distribución constitucional de competencias, deberá asegurar a los Municipios, las Provincias y las Islas su derecho a intervenir en cuantos asuntos a …"
+      },
+      "documento": {
+        "block_type": "precepto",
+        "block_title": "Artículo 2",
+        "full_title": "Artículo 2.",
+        "hierarchy": {
+          "book": null,
+          "title": "TÍTULO I",
+          "chapter": null,
+          "section": null,
+          "subsection": null,
+          "annex": null
+        },
+        "n_versions": 3,
+        "latest_source_norm_id": "BOE-A-2013-13756",
+        "n_paragraphs": 3,
+        "n_modification_notes": 2,
+        "text_chars": 1002,
+        "indexable": true
+      },
+      "chunks": [
+        {
+          "chunk_id": "BOE-A-1985-5392__a2__c001",
+          "text_chars": 1002,
+          "chunk_index": 1,
+          "chunk_count_for_parent": 1
+        }
+      ]
+    },
+    {
+      "categoria": "tabla",
+      "norma": "BOE-A-1985-5392",
+      "block_id": "a75bis",
+      "xml": {
+        "n_versions": 1,
+        "snippet": "<bloque id=\"a75bis\" tipo=\"precepto\" titulo=\"Artículo 75 bis\">\n        <version id_norma=\"BOE-A-2013-13756\" fecha_publicacion=\"20131230\" fecha_vigencia=\"20131231\">\n          <p class=\"articulo\">Artículo 75 bis. Régimen retributivo de los miembros de las Corporaciones Locales y del personal al servicio de las Entidades Locales.</p>\n          <p class=\"parrafo\">1. Los miembros de las Corporaciones Locales serán retribuidos por el ejercicio de su cargo en los términos establecidos en el artículo anterior. Los Presupuestos Generales del Estado determinarán, anualmente, el límite máximo total que pu …"
+      },
+      "documento": {
+        "block_type": "precepto",
+        "block_title": "Artículo 75 bis",
+        "full_title": "Artículo 75 bis. Régimen retributivo de los miembros de las Corporaciones Locales y del personal al servicio de las Entidades Locales.",
+        "hierarchy": {
+          "book": null,
+          "title": "TÍTULO V",
+          "chapter": "CAPÍTULO V",
+          "section": null,
+          "subsection": null,
+          "annex": null
+        },
+        "n_versions": 1,
+        "latest_source_norm_id": "BOE-A-2013-13756",
+        "n_paragraphs": 36,
+        "n_modification_notes": 2,
+        "text_chars": 3620,
+        "indexable": true
+      },
+      "chunks": [
+        {
+          "chunk_id": "BOE-A-1985-5392__a75bis__c001",
+          "text_chars": 1461,
+          "chunk_index": 1,
+          "chunk_count_for_parent": 3
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__a75bis__c002",
+          "text_chars": 1565,
+          "chunk_index": 2,
+          "chunk_count_for_parent": 3
+        },
+        {
+          "chunk_id": "BOE-A-1985-5392__a75bis__c003",
+          "text_chars": 1140,
+          "chunk_index": 3,
+          "chunk_count_for_parent": 3
+        }
+      ]
+    },
+    {
+      "categoria": "encabezado_contenido",
+      "norma": "BOE-A-1985-5392",
+      "block_id": "ciii-5",
+      "xml": {
+        "n_versions": 3,
+        "snippet": "<bloque id=\"ciii-5\" tipo=\"encabezado\" titulo=\"CAPÍTULO III\">\n        <version id_norma=\"BOE-A-1985-5392\" fecha_publicacion=\"19850403\" fecha_vigencia=\"19850423\">\n          <p class=\"capitulo_num\">CAPÍTULO III</p>\n          <p class=\"capitulo_tit\">Selección y formación de los funcionarios con habilitación de carácter nacional y sistema de provisión de plazas</p>\n        </version>\n        <version id_norma=\"BOE-A-2007-7788\" fecha_publicacion=\"20070413\" fecha_vigencia=\"20070513\">\n          <p class=\"capitulo_num\">CAPÍTULO III</p>\n          <p class=\"capitulo_tit\">Selección y formación de los func …"
+      },
+      "documento": {
+        "block_type": "encabezado",
+        "block_title": "CAPÍTULO III",
+        "full_title": "CAPÍTULO III. Selección y formación de los funcionarios con habilitación de carácter nacional y sistema de provisión de plazas",
+        "hierarchy": {
+          "book": null,
+          "title": "TÍTULO VII",
+          "chapter": "CAPÍTULO III",
+          "section": null,
+          "subsection": null,
+          "annex": null
+        },
+        "n_versions": 3,
+        "latest_source_norm_id": "BOE-A-2015-11719",
+        "n_paragraphs": 3,
+        "n_modification_notes": 3,
+        "text_chars": 582,
+        "indexable": true
+      },
+      "chunks": [
+        {
+          "chunk_id": "BOE-A-1985-5392__ciii-5__c001",
+          "text_chars": 582,
+          "chunk_index": 1,
+          "chunk_count_for_parent": 1
+        }
+      ]
+    },
+    {
+      "categoria": "anexo",
+      "norma": "BOE-A-2017-12902",
+      "block_id": "ai",
+      "xml": {
+        "n_versions": 1,
+        "snippet": "<bloque id=\"ai\" tipo=\"encabezado\" titulo=\"ANEXO I\">\n        <version id_norma=\"BOE-A-2017-12902\" fecha_publicacion=\"20171109\" fecha_vigencia=\"20180309\">\n          <p class=\"anexo_num\">ANEXO I</p>\n          <p class=\"anexo_tit\">Trabajos contemplados en el artículo 13</p>\n          <p class=\"parrafo_2\">En caso de diferentes interpretaciones entre CPV y NACE, se aplicará la nomenclatura CPV.</p>\n          <table class=\"tabla_ancha\">\n            <colgroup>\n              <col class=\"row_column_1\"/>\n              <col class=\"row_column_2\"/>\n              <col class=\"row_column_3\"/>\n              <co …"
+      },
+      "documento": {
+        "block_type": "encabezado",
+        "block_title": "ANEXO I",
+        "full_title": "ANEXO I. Trabajos contemplados en el artículo 13",
+        "hierarchy": {
+          "book": null,
+          "title": null,
+          "chapter": null,
+          "section": null,
+          "subsection": null,
+          "annex": "ANEXO I"
+        },
+        "n_versions": 1,
+        "latest_source_norm_id": "BOE-A-2017-12902",
+        "n_paragraphs": 212,
+        "n_modification_notes": 0,
+        "text_chars": 8330,
+        "indexable": true
+      },
+      "chunks": [
+        {
+          "chunk_id": "BOE-A-2017-12902__ai__c001",
+          "text_chars": 1772,
+          "chunk_index": 1,
+          "chunk_count_for_parent": 5
+        },
+        {
+          "chunk_id": "BOE-A-2017-12902__ai__c002",
+          "text_chars": 1780,
+          "chunk_index": 2,
+          "chunk_count_for_parent": 5
+        },
+        {
+          "chunk_id": "BOE-A-2017-12902__ai__c003",
+          "text_chars": 1785,
+          "chunk_index": 3,
+          "chunk_count_for_parent": 5
+        },
+        {
+          "chunk_id": "BOE-A-2017-12902__ai__c004",
+          "text_chars": 1742,
+          "chunk_index": 4,
+          "chunk_count_for_parent": 5
+        },
+        {
+          "chunk_id": "BOE-A-2017-12902__ai__c005",
+          "text_chars": 1526,
+          "chunk_index": 5,
+          "chunk_count_for_parent": 5
+        }
+      ]
+    }
+  ],
+  "raw_integrity": {
+    "ready": true,
+    "files_checked": 60,
+    "missing_files": [],
+    "size_mismatches": [],
+    "sha256_mismatches": []
+  },
+  "temporal_integrity": {
+    "ready": true,
+    "processing_date": "2026-06-04",
+    "blocks_checked": 2256,
+    "versioned_blocks": 2256,
+    "non_chronological_xml_order_blocks": [
+      "BOE-A-1985-5392/a2",
+      "BOE-A-1985-5392/a25",
+      "BOE-A-1985-5392/a45",
+      "BOE-A-1985-5392/segunda",
+      "BOE-A-2003-20977/a7",
+      "BOE-A-2003-20977/a45",
+      "BOE-A-2004-4214/a72"
+    ],
+    "latest_matches_index": 2256,
+    "mismatches": [],
+    "ambiguous_blocks": [],
+    "missing_index_date": [],
+    "missing_publication_date": [],
+    "invalid_dates": [],
+    "index_not_max": [],
+    "future_effective_selected_versions": [],
+    "chunks_built_from_non_current_version": [],
+    "warnings": []
+  },
+  "pre_embedding_readiness": {
+    "ready": true,
+    "blocking_findings": [],
+    "deferred_findings": [
+      "H3_oversized_token_measurement"
+    ],
+    "corpus_catalogs": [
+      "data/corpus/seed_corpus.json"
+    ]
+  },
+  "findings": [
+    {
+      "check": "rt.hierarchy_dup",
+      "severity": "INFO",
+      "classification": "Aceptable MVP",
+      "document_id": "BOE-A-1985-5392",
+      "ref": "BOE-A-1985-5392__ciii-5__c001",
+      "message": "etiqueta de jerarquía repetida: 'CAPÍTULO III'",
+      "evidence": null
+    },
+    {
+      "check": "rt.full_title_dup",
+      "severity": "INFO",
+      "classification": "Aceptable MVP",
+      "document_id": "BOE-A-2015-10566",
+      "ref": "BOE-A-2015-10566__dfquinta__c001",
+      "message": "el full_title aparece más de una vez en retrieval_text",
+      "evidence": null
+    }
+  ]
+}

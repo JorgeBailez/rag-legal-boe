@@ -1,0 +1,45 @@
+{
+  "generation_run_id": "gen_20260610T232233Z_464e15b4",
+  "kind": "generation",
+  "split": "out_of_corpus",
+  "bundle_id": "e5-large-instruct__j1__bc11142bdcc5",
+  "generator_model": "qwen2.5:7b-instruct",
+  "judge_model": null,
+  "n_questions": 5,
+  "aggregate": {
+    "n_queries": 5,
+    "key_fact_recall_mean": null,
+    "key_fact_recall_n": 0,
+    "citation_precision_mean": null,
+    "citation_precision_n": 0,
+    "citation_recall_mean": null,
+    "citation_recall_n": 0,
+    "citation_f1_mean": null,
+    "citation_f1_n": 0,
+    "faithfulness_mean": null,
+    "faithfulness_n": 0,
+    "correctness_mean": null,
+    "correctness_n": 0,
+    "abstention": {
+      "counts": {
+        "answered": 0,
+        "correct_abstention": 5,
+        "over_abstention": 0,
+        "false_answer": 0
+      },
+      "answerable_total": 0,
+      "unanswerable_total": 5,
+      "answer_rate_on_answerable": null,
+      "abstention_rate_on_unanswerable": 1.0,
+      "over_abstention_rate": null,
+      "false_answer_rate": 0.0,
+      "balanced_accuracy": 1.0,
+      "hallucinated_forbidden_count": 0,
+      "abstention_points": {
+        "answered": 0,
+        "pre_llm": 0,
+        "llm_decided": 5
+      }
+    }
+  }
+}

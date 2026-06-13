@@ -1,0 +1,6 @@
+abstention_outcome,abstention_point,answerable,answered,citation_f1,citation_precision,citation_recall,correctness,difficulty,failure_mode,faithfulness,hallucinated_forbidden,key_fact_recall,latency_s,query_id,query_style,split
+correct_abstention,llm_decided,False,False,,,,,facil,out_of_corpus,,False,,69.388659547,q0061,sin_respuesta,out_of_corpus
+correct_abstention,llm_decided,False,False,,,,,facil,out_of_corpus,,False,,56.692098704,q0062,sin_respuesta,out_of_corpus
+correct_abstention,llm_decided,False,False,,,,,media,out_of_corpus,,False,,54.537632646,q0063,sin_respuesta,out_of_corpus
+correct_abstention,llm_decided,False,False,,,,,facil,out_of_corpus,,False,,45.856278152,q0064,sin_respuesta,out_of_corpus
+correct_abstention,llm_decided,False,False,,,,,media,out_of_corpus,,False,,57.067638017,q0065,sin_respuesta,out_of_corpus

@@ -1,0 +1,2 @@
+cache_size_bytes,doc_encode_seconds,doc_throughput_per_s,download_size_bytes,embedding_dimension,exploratory_unpinned,model_alias,model_id,model_revision,n_docs,n_source_chunks,observed_dimension,peak_ram_mb,query_latency_p50_s,query_latency_p95_s,tokenizer_revision,warning
+,73.001,0.88,,1024,False,qwen3-0.6b,Qwen/Qwen3-Embedding-0.6B,97b0c614be4d77ee51c0cef4e5f07c00f9eb65b,64,64,1024,2239.4,0.4128,0.4363,97b0c614be4d77ee51c0cef4e5f07c00f9eb65b,

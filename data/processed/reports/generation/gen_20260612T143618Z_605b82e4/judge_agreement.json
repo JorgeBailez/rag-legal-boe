@@ -1,0 +1,92 @@
+{
+  "n": 32,
+  "percent_agreement": 0.625,
+  "cohens_kappa": 0.3018181818181818,
+  "primary_dimension": "correctness",
+  "by_dimension": {
+    "correctness": {
+      "n": 32,
+      "percent_agreement": 0.625,
+      "cohens_kappa": 0.3018181818181818,
+      "disagreements": [
+        {
+          "query_id": "q0006",
+          "human": "correct",
+          "judge": "partial"
+        },
+        {
+          "query_id": "q0009",
+          "human": "correct",
+          "judge": "partial"
+        },
+        {
+          "query_id": "q0012",
+          "human": "partial",
+          "judge": "correct"
+        },
+        {
+          "query_id": "q0018",
+          "human": "correct",
+          "judge": "incorrect"
+        },
+        {
+          "query_id": "q0022",
+          "human": "correct",
+          "judge": "partial"
+        },
+        {
+          "query_id": "q0023",
+          "human": "correct",
+          "judge": "partial"
+        },
+        {
+          "query_id": "q0025",
+          "human": "correct",
+          "judge": "partial"
+        },
+        {
+          "query_id": "q0028",
+          "human": "correct",
+          "judge": "partial"
+        },
+        {
+          "query_id": "q0029",
+          "human": "correct",
+          "judge": "partial"
+        },
+        {
+          "query_id": "q0031",
+          "human": "correct",
+          "judge": "partial"
+        },
+        {
+          "query_id": "q0034",
+          "human": "incorrect",
+          "judge": "partial"
+        },
+        {
+          "query_id": "q0040",
+          "human": "correct",
+          "judge": "partial"
+        }
+      ]
+    },
+    "faithfulness": {
+      "n": 3,
+      "percent_agreement": 0.3333333333333333,
+      "cohens_kappa": 0.0,
+      "disagreements": [
+        {
+          "query_id": "q0001",
+          "human": "unfaithful",
+          "judge": "faithful"
+        },
+        {
+          "query_id": "q0034",
+          "human": "unfaithful",
+          "judge": "faithful"
+        }
+      ]
+    }
+  }
+}

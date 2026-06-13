@@ -1,0 +1,36 @@
+{
+  "n_queries": 8,
+  "key_fact_recall_mean": 0.6666666666666666,
+  "key_fact_recall_n": 3,
+  "citation_precision_mean": 0.5714285714285714,
+  "citation_precision_n": 7,
+  "citation_recall_mean": 0.8571428571428571,
+  "citation_recall_n": 7,
+  "citation_f1_mean": 0.6666666666666666,
+  "citation_f1_n": 7,
+  "faithfulness_mean": null,
+  "faithfulness_n": 0,
+  "correctness_mean": null,
+  "correctness_n": 0,
+  "abstention": {
+    "counts": {
+      "answered": 7,
+      "correct_abstention": 0,
+      "over_abstention": 1,
+      "false_answer": 0
+    },
+    "answerable_total": 8,
+    "unanswerable_total": 0,
+    "answer_rate_on_answerable": 0.875,
+    "abstention_rate_on_unanswerable": null,
+    "over_abstention_rate": 0.125,
+    "false_answer_rate": null,
+    "balanced_accuracy": 0.875,
+    "hallucinated_forbidden_count": 0,
+    "abstention_points": {
+      "answered": 7,
+      "pre_llm": 0,
+      "llm_decided": 1
+    }
+  }
+}

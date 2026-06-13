@@ -1,0 +1,3 @@
+abstention_outcome,abstention_point,answerable,answered,citation_f1,citation_precision,citation_recall,correctness,difficulty,failure_mode,faithfulness,hallucinated_forbidden,key_fact_recall,latency_s,query_id,query_style,split
+answered,answered,True,True,0.0,0.0,0.0,0.0,media,numeric_threshold,1.0,False,0.0,108.694072607,q0001,ciudadana,development
+over_abstention,llm_decided,True,False,,,,,media,,,False,,61.048642989,q0002,ciudadana,development

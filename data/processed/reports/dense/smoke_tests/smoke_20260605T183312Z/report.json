@@ -1,0 +1,30 @@
+{
+  "smoke_test_id": "smoke_20260605T183312Z",
+  "kind": "smoke_test",
+  "device": "cpu",
+  "threads": 16,
+  "batch_size": 8,
+  "exploratory_unpinned": false,
+  "n_docs_requested": 64,
+  "models": [
+    {
+      "model_alias": "e5-large-instruct",
+      "model_id": "intfloat/multilingual-e5-large-instruct",
+      "model_revision": "274baa43b0e13e37fafa6428dbc7938e62e5c439",
+      "tokenizer_revision": "274baa43b0e13e37fafa6428dbc7938e62e5c439",
+      "exploratory_unpinned": false,
+      "embedding_dimension": 1024,
+      "observed_dimension": 1024,
+      "n_source_chunks": 64,
+      "n_docs": 66,
+      "doc_encode_seconds": 49.636,
+      "doc_throughput_per_s": 1.33,
+      "query_latency_p50_s": 0.2089,
+      "query_latency_p95_s": 0.2301,
+      "peak_ram_mb": 2213.9,
+      "download_size_bytes": null,
+      "cache_size_bytes": null,
+      "warning": ""
+    }
+  ]
+}

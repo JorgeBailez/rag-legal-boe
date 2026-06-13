@@ -1,0 +1,30 @@
+{
+  "smoke_test_id": "smoke_20260604T230411Z",
+  "kind": "smoke_test",
+  "device": "cpu",
+  "threads": 4,
+  "batch_size": 32,
+  "exploratory_unpinned": false,
+  "n_docs_requested": 64,
+  "models": [
+    {
+      "model_alias": "bge-m3",
+      "model_id": "BAAI/bge-m3",
+      "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+      "tokenizer_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+      "exploratory_unpinned": false,
+      "embedding_dimension": 1024,
+      "observed_dimension": 1024,
+      "n_source_chunks": 64,
+      "n_docs": 64,
+      "doc_encode_seconds": 157.164,
+      "doc_throughput_per_s": 0.41,
+      "query_latency_p50_s": 0.168,
+      "query_latency_p95_s": 0.191,
+      "peak_ram_mb": 3761.1,
+      "download_size_bytes": null,
+      "cache_size_bytes": null,
+      "warning": ""
+    }
+  ]
+}

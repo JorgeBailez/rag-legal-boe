@@ -1,0 +1,63 @@
+{
+  "benchmark_id": "bench_20260606T154601Z",
+  "kind": "benchmark",
+  "split": "development",
+  "primary_metric": "ParentnDCG@10",
+  "seed": 12345,
+  "gate_c_ready": true,
+  "bundles": [
+    {
+      "run_key": "e5-large__j1__653c21c72911::BASELINE",
+      "bundle_id": "e5-large__j1__653c21c72911",
+      "query_profile_id": "BASELINE",
+      "n_queries": 40,
+      "primary_metric": "ParentnDCG@10",
+      "primary_ci": {
+        "mean": 0.8450840270558686,
+        "ci_low": 0.7708099361250151,
+        "ci_high": 0.9135412496607207,
+        "seed": 12345,
+        "n_resamples": 1000
+      }
+    },
+    {
+      "run_key": "e5-large__j2__06e199cc3adb::BASELINE",
+      "bundle_id": "e5-large__j2__06e199cc3adb",
+      "query_profile_id": "BASELINE",
+      "n_queries": 40,
+      "primary_metric": "ParentnDCG@10",
+      "primary_ci": {
+        "mean": 0.83043471279429,
+        "ci_low": 0.7478751656817513,
+        "ci_high": 0.9128251584807281,
+        "seed": 12345,
+        "n_resamples": 1000
+      }
+    },
+    {
+      "run_key": "e5-large__c1__9e189ba8cfc9::BASELINE",
+      "bundle_id": "e5-large__c1__9e189ba8cfc9",
+      "query_profile_id": "BASELINE",
+      "n_queries": 40,
+      "primary_metric": "ParentnDCG@10",
+      "primary_ci": {
+        "mean": 0.729350509103406,
+        "ci_low": 0.631452313201768,
+        "ci_high": 0.8210892736514925,
+        "seed": 12345,
+        "n_resamples": 1000
+      }
+    }
+  ],
+  "paired_bootstrap_finalists": {
+    "a": "e5-large__j1__653c21c72911::BASELINE",
+    "b": "e5-large__j2__06e199cc3adb::BASELINE",
+    "ParentnDCG@10": {
+      "mean_diff": 0.014649314261578662,
+      "ci_low": -0.036121140038868425,
+      "ci_high": 0.06953756936826226,
+      "seed": 12345,
+      "n_resamples": 1000
+    }
+  }
+}

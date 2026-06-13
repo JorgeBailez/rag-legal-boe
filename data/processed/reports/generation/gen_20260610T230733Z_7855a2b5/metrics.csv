@@ -1,0 +1,9 @@
+abstention_outcome,abstention_point,answerable,answered,citation_f1,citation_precision,citation_recall,correctness,difficulty,failure_mode,faithfulness,hallucinated_forbidden,key_fact_recall,latency_s,query_id,query_style,split
+answered,answered,True,True,0.0,0.0,0.0,,media,numeric_threshold,,False,0.0,103.615757832,q0001,ciudadana,development
+over_abstention,llm_decided,True,False,,,,,media,,,False,,61.006797829,q0002,ciudadana,development
+answered,answered,True,True,1.0,1.0,1.0,,dificil,,,False,,113.163453351,q0003,conceptual,development
+answered,answered,True,True,0.6666666666666666,0.5,1.0,,facil,,,False,,93.971094322,q0004,ciudadana,development
+answered,answered,True,True,0.6666666666666666,0.5,1.0,,facil,,,False,,106.300714516,q0005,ciudadana,development
+answered,answered,True,True,0.6666666666666666,0.5,1.0,,media,negation_exception,,False,1.0,109.118169886,q0006,procedimental,development
+answered,answered,True,True,1.0,1.0,1.0,,facil,,,False,,93.692268982,q0007,procedimental,development
+answered,answered,True,True,0.6666666666666666,0.5,1.0,,facil,numeric_threshold,,False,1.0,55.545190846,q0008,ciudadana,development

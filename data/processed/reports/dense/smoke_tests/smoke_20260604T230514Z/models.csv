@@ -1,0 +1,2 @@
+cache_size_bytes,doc_encode_seconds,doc_throughput_per_s,download_size_bytes,embedding_dimension,exploratory_unpinned,model_alias,model_id,model_revision,n_docs,n_source_chunks,observed_dimension,peak_ram_mb,query_latency_p50_s,query_latency_p95_s,tokenizer_revision,warning
+,47.344,1.35,,1024,False,bge-m3,BAAI/bge-m3,5617a9f61b028005a4858fdac845db406aefb181,64,64,1024,3748.8,0.4376,0.4444,5617a9f61b028005a4858fdac845db406aefb181,

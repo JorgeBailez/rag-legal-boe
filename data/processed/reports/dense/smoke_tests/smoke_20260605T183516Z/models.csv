@@ -1,0 +1,2 @@
+cache_size_bytes,doc_encode_seconds,doc_throughput_per_s,download_size_bytes,embedding_dimension,exploratory_unpinned,model_alias,model_id,model_revision,n_docs,n_source_chunks,observed_dimension,peak_ram_mb,query_latency_p50_s,query_latency_p95_s,tokenizer_revision,warning
+,108.586,0.61,,1024,False,e5-large-instruct,intfloat/multilingual-e5-large-instruct,274baa43b0e13e37fafa6428dbc7938e62e5c439,66,64,1024,2357.8,0.2072,0.2274,274baa43b0e13e37fafa6428dbc7938e62e5c439,
