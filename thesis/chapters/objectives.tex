@@ -1,0 +1,277 @@
+% Capítulo 2 de la memoria del TFG.
+% Archivo previsto: chapters/objectives.tex
+% Requiere únicamente los paquetes habituales de la plantilla (graphicx para \resizebox).
+% Las referencias nuevas se incluyen en memoria_objectives_refs.bib.
+
+\chapter{Objetivos y planificación}
+\label{chap:objetivos}
+
+Este capítulo define el resultado que se pretende alcanzar con el Trabajo Fin de Grado, descompone dicho propósito en objetivos verificables y establece los requisitos y restricciones que guían el desarrollo. Asimismo, presenta la planificación temporal seguida y los ajustes introducidos durante la ejecución del proyecto. Esta separación permite relacionar posteriormente cada objetivo con las decisiones de diseño, los experimentos realizados y las conclusiones obtenidas.
+
+\section{Objetivo general}
+\label{sec:objetivo-general}
+
+El objetivo general del proyecto consiste en \textbf{diseñar, implementar y evaluar una aplicación web local basada en una arquitectura de generación aumentada mediante recuperación} (\emph{Retrieval-Augmented Generation}, RAG) para facilitar la consulta de normativa consolidada procedente del \emph{Boletín Oficial del Estado} (BOE).
+
+La aplicación debe permitir que una persona formule preguntas en lenguaje natural y reciba una respuesta comprensible, fundamentada en evidencias documentales recuperadas a partir del corpus indexado. Además, la salida debe incorporar referencias verificables que permitan inspeccionar la procedencia de la información y acceder a las fuentes oficiales relacionadas con la respuesta. El propósito del sistema no es sustituir la publicación oficial ni prestar asesoramiento jurídico profesional, sino facilitar una primera aproximación informativa y trazable a la normativa incluida en el corpus.
+
+La elección de normativa consolidada resulta adecuada para esta finalidad porque la Agencia Estatal Boletín Oficial del Estado (AEBOE) ofrece interfaces de programación que permiten reutilizar normas consolidadas, recuperar sus metadatos, consultar el texto completo de sus distintas versiones y acceder a los bloques que reflejan su estructura interna \cite{boeApiConsolidada}. No obstante, estos textos consolidados tienen carácter meramente informativo y carecen de valor jurídico propio; para fines jurídicos debe consultarse la publicación oficial correspondiente \cite{boeLegislacionActualizada}.
+
+\section{Objetivos específicos}
+\label{sec:objetivos-especificos}
+
+El objetivo general se concreta en los siguientes objetivos específicos:
+
+\begin{enumerate}
+    \item[\textbf{OE-01}] \textbf{Construir un corpus normativo reproducible y ampliable.} Diseñar un proceso para obtener, normalizar y almacenar normativa consolidada procedente del BOE, preservando los metadatos necesarios para identificar los documentos, sus versiones y su procedencia.
+
+    \item[\textbf{OE-02}] \textbf{Definir una representación documental adecuada para recuperación.} Diseñar una estrategia de estructuración y fragmentación que permita recuperar pasajes relevantes sin perder su relación con el contexto normativo de origen.
+
+    \item[\textbf{OE-03}] \textbf{Implementar estrategias de recuperación complementarias.} Desarrollar mecanismos de recuperación léxica, semántica e híbrida capaces de seleccionar evidencias relevantes ante consultas formuladas en lenguaje natural.
+
+    \item[\textbf{OE-04}] \textbf{Comparar las estrategias de recuperación.} Evaluar los recuperadores mediante consultas anotadas y métricas reproducibles, con el fin de seleccionar una configuración adecuada para el sistema final y analizar sus limitaciones.
+
+    \item[\textbf{OE-05}] \textbf{Generar respuestas fundamentadas y prudentes.} Integrar un mecanismo de generación condicionado por las evidencias recuperadas que produzca respuestas trazables y que indique de forma explícita cuándo el corpus no contiene información suficiente para responder de manera fundamentada.
+
+    \item[\textbf{OE-06}] \textbf{Desarrollar una aplicación web local demostrable.} Implementar una interfaz accesible desde un navegador mediante una dirección local que permita formular preguntas, visualizar respuestas y consultar enlaces oficiales del BOE asociados a las evidencias utilizadas.
+
+    \item[\textbf{OE-07}] \textbf{Diseñar y ejecutar una evaluación integral.} Preparar una metodología de evaluación que incluya consultas ciudadanas, formulaciones técnico-jurídicas, reformulaciones de una misma necesidad informativa, preguntas fuera del corpus y análisis cualitativo de errores.
+
+    \item[\textbf{OE-08}] \textbf{Favorecer la reproducibilidad, la extensibilidad y el uso responsable.} Documentar la arquitectura, la configuración y los procedimientos de ejecución; facilitar la ampliación posterior del corpus; y analizar las limitaciones técnicas y jurídicas del prototipo.
+\end{enumerate}
+
+Los objetivos se han formulado de manera que puedan revisarse al final del trabajo. Cada uno deberá corresponderse con una parte de la implementación, una evidencia experimental o documental y una valoración explícita en el capítulo de conclusiones.
+
+\section{Requisitos del sistema}
+\label{sec:requisitos}
+
+Los requisitos se dividen en requisitos funcionales y no funcionales. Los primeros describen las operaciones que debe realizar el sistema. Los segundos establecen propiedades transversales relacionadas con la trazabilidad, la reproducibilidad, la mantenibilidad y el uso responsable.
+
+\subsection{Requisitos funcionales}
+\label{subsec:requisitos-funcionales}
+
+Las Tablas~\ref{tab:requisitos-funcionales-1} y~\ref{tab:requisitos-funcionales-2} recogen los requisitos funcionales comprometidos para la versión demostrable del sistema.
+
+\begin{table}[H]
+    \centering
+    \small
+    \renewcommand{\arraystretch}{1.2}
+    \caption{Requisitos funcionales del sistema: adquisición, representación y recuperación.}
+    \label{tab:requisitos-funcionales-1}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|p{1.4cm}|p{11.8cm}|p{2.0cm}|}
+        \hline
+        \textbf{Código} & \textbf{Requisito funcional} & \textbf{Prioridad} \\
+        \hline
+        RF-01 & El sistema deberá permitir incorporar normativa consolidada procedente del BOE mediante un proceso administrativo reproducible. & Esencial \\
+        \hline
+        RF-02 & El sistema deberá conservar los metadatos necesarios para identificar la norma, la versión indexada y su procedencia. & Esencial \\
+        \hline
+        RF-03 & El sistema deberá transformar los documentos en unidades adecuadas para indexación y recuperación, preservando su relación con el contexto normativo. & Esencial \\
+        \hline
+        RF-04 & El sistema deberá implementar una estrategia de recuperación léxica. & Esencial \\
+        \hline
+        RF-05 & El sistema deberá implementar una estrategia de recuperación semántica. & Esencial \\
+        \hline
+        RF-06 & El sistema deberá implementar una estrategia de recuperación híbrida que combine señales léxicas y semánticas. & Esencial \\
+        \hline
+        RF-07 & El sistema deberá permitir comparar las estrategias de recuperación mediante un proceso experimental reproducible. & Esencial \\
+        \hline
+        RF-08 & La aplicación deberá aceptar preguntas formuladas en lenguaje natural. & Esencial \\
+        \hline
+    \end{tabular}%
+    }
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \small
+    \renewcommand{\arraystretch}{1.2}
+    \caption{Requisitos funcionales del sistema: generación, trazabilidad e interfaz.}
+    \label{tab:requisitos-funcionales-2}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|p{1.4cm}|p{11.8cm}|p{2.0cm}|}
+        \hline
+        \textbf{Código} & \textbf{Requisito funcional} & \textbf{Prioridad} \\
+        \hline
+        RF-09 & El sistema deberá construir un contexto limitado a partir de las evidencias recuperadas. & Esencial \\
+        \hline
+        RF-10 & El sistema deberá generar respuestas basadas en el contexto documental suministrado. & Esencial \\
+        \hline
+        RF-11 & El sistema deberá asociar cada respuesta con referencias verificables a las evidencias utilizadas. & Esencial \\
+        \hline
+        RF-12 & La aplicación deberá mostrar enlaces oficiales del BOE asociados a las fuentes empleadas en la respuesta. & Esencial \\
+        \hline
+        RF-13 & El sistema deberá impedir que una respuesta cite evidencias no proporcionadas al componente generativo. & Esencial \\
+        \hline
+        RF-14 & El sistema deberá indicar que no dispone de información suficiente cuando el corpus no permita responder de forma fundamentada. & Esencial \\
+        \hline
+        RF-15 & El usuario deberá poder formular una consulta y visualizar la respuesta desde una interfaz web local. & Esencial \\
+        \hline
+        RF-16 & El proceso documental deberá permitir ampliar posteriormente el corpus sin rediseñar la arquitectura completa. & Importante \\
+        \hline
+    \end{tabular}%
+    }
+\end{table}
+
+La API de legislación consolidada del BOE permite obtener una lista de normas mediante criterios de búsqueda, recuperar metadatos básicos y acceder a la URL de la versión HTML del texto consolidado. Para una norma concreta también ofrece el texto completo de sus versiones, el índice de bloques y las distintas versiones de un bloque determinado \cite{boeApiConsolidada}. Esta disponibilidad permite plantear la trazabilidad como una propiedad estructural del sistema: los fragmentos indexados deben conservar información suficiente para reconstruir su origen y enlazar la respuesta con la fuente oficial relacionada.
+
+El comportamiento previsto ante preguntas no cubiertas por el corpus merece una consideración específica. La aplicación no debe intentar completar automáticamente la respuesta mediante afirmaciones no respaldadas por las evidencias disponibles. Cuando la información recuperada sea insuficiente, el componente generativo deberá comunicar esta limitación de manera explícita. La definición exacta de los criterios de abstención y su evaluación se desarrollará en el capítulo de experimentos.
+
+\subsection{Requisitos no funcionales}
+\label{subsec:requisitos-no-funcionales}
+
+Los requisitos no funcionales se recogen en las Tablas~\ref{tab:requisitos-no-funcionales-1} y~\ref{tab:requisitos-no-funcionales-2}. No se fijan inicialmente umbrales arbitrarios de precisión o latencia: los valores observados deberán medirse en el entorno real y analizarse en el capítulo de experimentos.
+
+\begin{table}[H]
+    \centering
+    \small
+    \renewcommand{\arraystretch}{1.2}
+    \caption{Requisitos no funcionales del sistema: calidad técnica.}
+    \label{tab:requisitos-no-funcionales-1}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|p{1.5cm}|p{3.0cm}|p{10.7cm}|}
+        \hline
+        \textbf{Código} & \textbf{Propiedad} & \textbf{Requisito no funcional} \\
+        \hline
+        RNF-01 & Trazabilidad & Cada respuesta deberá permitir identificar las evidencias documentales utilizadas y su procedencia. \\
+        \hline
+        RNF-02 & Reproducibilidad & El corpus, los índices, las configuraciones y los experimentos deberán poder reconstruirse a partir de artefactos y parámetros registrados. \\
+        \hline
+        RNF-03 & Robustez & Las salidas generadas deberán validarse antes de mostrarse al usuario y deberán respetar el contrato de respuesta esperado. \\
+        \hline
+        RNF-04 & Mantenibilidad & La arquitectura deberá separar procesamiento documental, recuperación, ensamblado de contexto, generación, interfaz y evaluación. \\
+        \hline
+        RNF-05 & Extensibilidad & La ampliación del corpus o la incorporación de nuevos recuperadores no deberá exigir rehacer el sistema completo. \\
+        \hline
+    \end{tabular}%
+    }
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \small
+    \renewcommand{\arraystretch}{1.2}
+    \caption{Requisitos no funcionales del sistema: operación y uso responsable.}
+    \label{tab:requisitos-no-funcionales-2}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|p{1.5cm}|p{3.0cm}|p{10.7cm}|}
+        \hline
+        \textbf{Código} & \textbf{Propiedad} & \textbf{Requisito no funcional} \\
+        \hline
+        RNF-06 & Ejecución local & El sistema deberá poder ejecutarse en el servidor universitario sin depender de servicios externos de pago. \\
+        \hline
+        RNF-07 & Comprensibilidad & Las respuestas deberán utilizar un lenguaje accesible para usuarios no especializados, sin ocultar su fundamentación documental. \\
+        \hline
+        RNF-08 & Seguridad & El repositorio, la configuración y la documentación no deberán incluir credenciales, secretos ni información privada. \\
+        \hline
+        RNF-09 & Transparencia de alcance & La aplicación deberá informar de que no sustituye la publicación oficial ni el asesoramiento jurídico profesional. \\
+        \hline
+        RNF-10 & Observabilidad experimental & Las ejecuciones relevantes deberán registrar parámetros, resultados y diagnósticos suficientes para analizar errores. \\
+        \hline
+    \end{tabular}%
+    }
+\end{table}
+
+\section{Restricciones y supuestos}
+\label{sec:restricciones-supuestos}
+
+El proyecto se desarrolla bajo un conjunto de restricciones que delimitan la interpretación de los resultados. Estas restricciones no constituyen errores del prototipo, sino condiciones de partida que deben tenerse en cuenta al evaluar su utilidad.
+
+\begin{table}[H]
+    \centering
+    \small
+    \renewcommand{\arraystretch}{1.2}
+    \caption{Restricciones y supuestos iniciales del proyecto.}
+    \label{tab:restricciones-supuestos}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|p{3.3cm}|p{12.2cm}|}
+        \hline
+        \textbf{Ámbito} & \textbf{Restricción o supuesto} \\
+        \hline
+        Cobertura documental & El corpus inicial será seleccionado y ampliable. No pretende representar la totalidad del ordenamiento jurídico español. \\
+        \hline
+        Validez jurídica & Los textos consolidados del BOE tienen carácter informativo y no sustituyen la publicación oficial correspondiente \cite{boeLegislacionActualizada}. \\
+        \hline
+        Finalidad funcional & La aplicación facilitará una primera aproximación documental. No prestará asesoramiento jurídico profesional ni garantizará una interpretación definitiva de la normativa. \\
+        \hline
+        Incorporación documental & La ampliación del corpus será ejecutada inicialmente por el desarrollador mediante un proceso administrativo, no desde la interfaz de usuario. \\
+        \hline
+        Alcance experimental & Las conclusiones serán válidas para el corpus, las consultas y las configuraciones evaluadas. No deberán generalizarse automáticamente a cualquier norma o escenario de uso. \\
+        \hline
+    \end{tabular}%
+    }
+\end{table}
+
+%\subsection{Entorno computacional disponible}
+%\label{subsec:entorno-computacional-disponible}
+
+%El desarrollo y la ejecución local se realizan en un servidor universitario. La Tabla~\ref{tab:hardware-servidor} resume el inventario recogido durante el desarrollo. La descripción detallada del entorno experimental, incluyendo versiones de software y configuraciones de cada prueba, se incorporará en el capítulo de experimentos.
+
+%\begin{table}[H]
+    %\centering
+    %\small
+   % \renewcommand{\arraystretch}{1.2}
+ %   \caption{Resumen del hardware disponible en el servidor universitario.}
+  %  \label{tab:hardware-servidor}
+  %  \begin{tabular}{|p{4.4cm}|p{10.4cm}|}
+   %     \hline
+    %    \textbf{Elemento} & \textbf{Descripción} \\
+     %   \hline
+      %  Arquitectura & x86\_64 \\
+       % \hline
+        %Procesadores & Dos sockets con procesadores AMD EPYC 7451 de 24 núcleos; 48 núcleos físicos y 96 hilos lógicos en total \\
+ %       %\hline
+  %      Memoria principal & 125 GiB de memoria RAM \\
+   %     \hline
+    %    Memoria de intercambio & 72 GiB de \emph{swap} \\
+     %   \hline
+      %  Unidad raíz & 372 GiB de capacidad total; 255 GiB disponibles en el momento del inventario \\
+       % \hline
+ %       Aceleración gráfica & No se detectó una GPU NVIDIA disponible mediante \texttt{nvidia-smi} \\
+  %      \hline
+   %     Sistema operativo & Ubuntu 24.04.4 LTS \\
+    %    \hline
+    %\end{tabular}
+%\end{table}
+
+%La ausencia de una GPU NVIDIA accesible condiciona las decisiones de inferencia y obliga a prestar especial atención al coste computacional de los modelos utilizados. Este aspecto no impide construir un prototipo funcional, pero sí limita la selección de modelos y hace necesario analizar los tiempos de respuesta observados en el entorno real.
+
+\section{Planificación temporal}
+\label{sec:planificacion-temporal}
+
+\subsection{Fases del proyecto}
+\label{subsec:fases-proyecto}
+
+La planificación se organiza en ocho fases. Varias de ellas se solapan porque el desarrollo de un sistema RAG requiere revisar decisiones previas cuando se observan resultados experimentales o errores de integración.
+
+\begin{table}[H]
+    \centering
+    \small
+    \renewcommand{\arraystretch}{1.18}
+    \caption{Fases principales del proyecto.}
+    \label{tab:fases-proyecto}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|p{1.3cm}|p{4.0cm}|p{8.4cm}|p{2.0cm}|}
+        \hline
+        \textbf{Fase} & \textbf{Denominación} & \textbf{Contenido principal} & \textbf{Estado} \\
+        \hline
+        F0 & Definición del problema & Delimitación del dominio jurídico, usuarios, fuente documental, alcance y criterios iniciales de utilidad. & Completada \\
+        \hline
+        F1 & Obtención y estructuración documental & Descarga desde el BOE, normalización, validación, metadatos y construcción del corpus inicial. & Completada; ampliable \\
+        \hline
+        F2 & Fragmentación e indexación & Diseño de unidades documentales, textos padre, embeddings, contratos de compatibilidad e índices. & Completada para el MVP \\
+        \hline
+        F3 & Recuperación y evaluación del \emph{retriever} & Evaluación de recuperación semántica e incorporación de recuperación léxica e híbrida para su comparación. & En curso \\
+        \hline
+        F4 & Generación fundamentada & Construcción de contexto, prompts, generación local, citas y validación de salidas. & MVP completado; en mejora \\
+        \hline
+        F5 & Aplicación demostrable & Interfaz web local, visualización de respuestas y enlaces oficiales del BOE. & Pendiente \\
+        \hline
+        F6 & Evaluación integral & Batería de preguntas, métricas, análisis cualitativo, abstención y estudio de errores. & En curso \\
+        \hline
+        F7 & Documentación y cierre & Memoria, anexos, reproducibilidad, revisión formal y preparación de la defensa. & En curso \\
+        \hline
+    \end{tabular}%
+    }
+\end{table}
