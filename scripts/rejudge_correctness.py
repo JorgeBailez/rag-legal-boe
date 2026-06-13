@@ -16,7 +16,8 @@ Uso:
 
 Después: validar el juez sobre el NUEVO report con la anotación humana (las respuestas no han
 cambiado, así que la anotación se reutiliza):
-    uv run python scripts/validate_judge.py --report <nuevo_report> --annotations anotacion_juez.jsonl
+    uv run python scripts/validate_judge.py --report <nuevo_report> \
+      --annotations anotacion_juez.jsonl
 """
 
 from __future__ import annotations

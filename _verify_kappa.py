@@ -2,7 +2,6 @@
 
 import json
 import random
-from collections.abc import Sequence
 
 
 def confusion(human, judge, labels):
@@ -95,7 +94,10 @@ if faith:
           f"{ {fl[j]: sum(fm[i][j] for i in range(2)) for j in range(2)} }")
 
 # WHAT-IF: si al completar las referencias los 9 desacuerdos correct/partial pasan a correct/correct
-print("\nWHAT-IF (ilustrativo) — referencias completas resuelven los 9 'humano=correct/juez=partial':")
+print(
+    "\nWHAT-IF (ilustrativo) — referencias completas resuelven los 9 "
+    "'humano=correct/juez=partial':"
+)
 wif = []
 flipped = 0
 for h, j in corr:
