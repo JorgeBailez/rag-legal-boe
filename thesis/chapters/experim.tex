@@ -1,0 +1,180 @@
+\chapter{Experimentos y validación}
+\label{chap:experimentos}
+
+\textbf{Atención}: Este capítulo se introdujo como requisito en 2019.
+
+Describe los experimentos y casos de test que tuviste que implementar para validar tus resultados. 
+Incluye también los resultados de validación que permiten afirmar que tus resultados son correctos.
+
+\section{Incorporación de código en la memoria}
+
+Es bastante habitual que se reproduzcan fragmentos de código en la memoria de un TFG/TFM.
+Esto permite explicar detalladamente partes del desarrollo que se ha realizado que se consideren
+de especial interés. No obstante, tampoco es conveniente pasarse e incluir demasiado código en
+la memoria, puesto que se puede alargar mucho el documento. Un recurso muy habitual es subir
+todo el código a un repositorio de un servicio de control de versiones como GitHub o GitLab,
+y luego incluir en la memoria la URL que enlace a dicho repositorio.
+
+Para incluir fragmentos de código en un documento \LaTeX se pueden combinar varias
+herramientas:
+
+\begin{itemize}
+    \item El entorno \mintinline{latex}{\begin{listing}[]...\end{listing}} permite crear
+    un marco en el que situar el fragmento de código (parecido al generado cuando insertamos
+    una tabla o una figura). Podemos insertar también una descripción (\textit{caption})
+    y una etiqueta para referenciarlo luego en el texto.
+    
+    \item Dentro de este entorno, se puede utilizar el paquete 
+    \mintinline{latex}{minted}~\footnote{\url{https://es.overleaf.com/learn/latex/Code_Highlighting_with_minted}},
+    que utiliza el paquete Python Pygments para resaltado de sintaxis (coloreando el
+    código). Como se puede ver en el siguiente ejemplo, hay muchas opciones de configuración
+    que permiten controlar cómo se va a mostrar el código (incluir números de línea, saltos
+    de línea, tamaño y tipo de fuente, espaciado, código de colores para resaltado, etc.).
+\end{itemize}
+
+\begin{listing}[h!]
+    \caption{Lectura de un fichero *.csv y tipado de datos.}{}
+    \label{lst:1}
+    \begin{minted}[breaklines, fontsize=\footnotesize, baselinestretch=1]{python}
+        # A dictionary is built to define the data type contained by each column
+        dtype_scheme ={'budget': np.int64, 'genres': np.object, 'homepage': np.str, 'id': np.int64, 'keywords': np.object, 'original_language': np.str, 'original_title': np.str, 'overview': np.str, 'popularity': np.float64, 'production_companies': np.object, 'production_countries': np.object, 'release_date': np.object, 'revenue': np.int64, 'runtime': np.float64, 'spoken_languages': np.object,  'status': np.object, 'tagline': np.str, 'title': np.str, 'vote_average': np.float64, 'vote_count': np.int64}
+        
+        # When loading the data from the .csv file, we provide the scheme to be followed for data typing
+        df1 = dd.read_csv('tmdb_5000_movies.csv', dtype=dtype_scheme)
+    \end{minted}
+\end{listing}
+
+Otra ventaja del entorno \verb|listing| es que se puede generar automáticamente un índice
+(con entradas hiperenlazadas) de fragmentos de código, para incluirlo al comienzo del 
+documento junto con los índices de figuras, tablas, etc.
+
+\subsection{Fuentes monoespaciadas}
+
+A veces se incluyen nombres de archivos, paquetes, etc. como texto monoespaciado, utilizando
+el comando \LaTeX \mintinline{latex}{\texttt{}}. Sin embargo, esto puede generar un problema
+cuando las palabras en fuente monoespaciada alcanzan el final de una línea. En ese caso,
+el compilador rehusa muchas veces romper la palabra y deja la línea demasiado larga respecto
+al resto.
+
+Para evitar esto, especialmente en párrafos más cortos de lo habitual (como en una lista
+no numerada), se puede utilizar el entorno:
+
+\begin{minted}{latex}
+    \begin{sloppypar}
+        ...
+    \end{sloppypar}
+\end{minted}
+
+Se muestra a continuación con un ejemplo real.
+
+\begin{itemize}
+    
+    \begin{sloppypar} % Arregla longitud de línea en párrafos con fuente monoespaciada
+        \item Los valores contenidos en las columnas \texttt{genres}, \texttt{spoken\_languages}, \texttt{production\_companies} y \texttt{production\_countries}, clasificados originalmente como \texttt{np.objects}, se corresponden en realidad con listas de objetos \gls{json} que han sido almacenadas como cadenas de caracteres. A través de la función \texttt{get\_values(obj, key)} definida específicamente para ello, se transformará dicha cadena de caracteres en una lista de diccionarios a través de la función \texttt{json.loads(obj)} y se devolverá una  tupla que recopile los valores de los mismos para la clave indicada, un objeto de Python mucho más manejable de cara a realizar consultas sobre el \textit{dataset}.
+    \end{sloppypar}
+    
+\end{itemize}
+
+\section{Conteniodo matemático y ecuaciones}
+\label{sec:equations}
+
+El contenido matemático se puede escribir en línea utilizando los delimitadores
+\mintinline{latex}|\(...\)|, o bien delimitado por dos símbolos de \$. Actualmente, se prefiere
+la primera opción para favorecer la compatibilidad con otras herramientas como Pandoc, así como
+para aprovechar el código para escribir ecuaciones con motores de interpretación de contenido
+matemático en HTML.
+
+Si queremos que el contenido matemático se muestra en un bloque aparte, con una notación que ocupe
+más espacio vertical (para sumatorios, integrales, fracciones, etc.), entonces debemos usar el llamado
+\textit{display mode}, delimitado por \mintinline{latex}|\[...\]|, o bien por dos símbolos \$\$. 
+De nuevo, la primera opción es preferible.
+
+Por ejemplo, para mostrar en la misma línea una ecuación de segundo grado, escribimos \(3x^2 + 2x + 1 = 0\).
+Si preferimos el contenido en un bloque independiente:
+
+\[
+F(x)=\int^a_b \frac{1}{3}x^3
+\]
+
+\[\frac{1}{\sqrt{x}}\]
+
+\[\left(
+\begin{matrix}
+    1 & 0\\
+    0 & 1
+\end{matrix}
+\right)\]
+
+Ahora bien, en un documento en el que tenemos que hacer referencia a las ecuaciones dentro del
+texto de explicación, es conveniente otorgarle a cada bloque matemático un identificador numérico, similar
+al que usamos en figuras y tablas. Para ello, empleamos el bloque \mintinline{latex}|\begin{equation} contenidos... \end{equation}|.
+En esta ocasión ya no tenemos que incluir los delimitadores de contenido matemático en \textit{display mode}.
+
+\begin{equation}
+    \label{eq:fraction}
+    \frac{1}{\sqrt{x}}
+\end{equation}
+
+Si añadimos una etiqueta a la ecuación, entonces podemos referenciar la Ecuación \ref{eq:fraction} en el texto.
+Veamos más ejemplos con caracteres especiales.
+
+%% Testing math equations with tildes, hats, etc.
+
+\begin{equation}
+    \hat f(\omega)=\frac{1}{2\pi}
+    \sum_{-\infty}^\infty f(x)e^{-i\omega x}\,dx\,, 
+\end{equation}
+
+\begin{equation}
+    \tilde f(\omega)=\frac{1}{2\pi}
+    \int_{-\infty}^\infty f(x)e^{-i\omega x}\,dx\,, 
+\end{equation}
+
+\begin{equation}
+    \dot{\vec \omega}=\vec r\times\vec I\,.
+\end{equation}
+
+
+\subsection{Ecuaciones en múltiples líneas y elementos alineados}
+
+Algunos ejemplos que muestran alineamiento de ecuaciones en diferentes líneas con 
+el entorno \mintinline{latex}|\begin{align*} ... \end{align*}|.
+
+\begin{center}
+    \begin{align*}
+        x&=y           &  w &=z              &  a&=b+c\\
+        2x&=-y         &  3w&=\frac{1}{2}z   &  a&=b\\
+        -4 + 5x&=2+y   &  w+2&=-1+w          &  ab&=cb
+    \end{align*}
+\end{center}
+
+\textbf{Nota}: las ecuaciones anteriores en varias líneas tienen un modo de escritura matemática definido
+para cada línea, no globalmente (a nivel de ecuación).
+
+\begin{align*}
+    f(x) &= x^2\\
+    g(x) &= \frac{1}{x}\\
+    F(x) &= \int^a_b \frac{1}{3}x^3
+\end{align*}
+
+\subsection{Teoremas y conjuntos}
+
+\begin{theorem}
+    Para todo número entero no negativo $n$, tenemos:
+    \[ (1+x)^n = \sum_{i=0}^n {n \choose i} x^i. \]
+\end{theorem}
+
+La expansión en series de Taylor de la función $e^x$ viene dada por:
+
+\begin{equation}
+    e^x = 1 + x + \frac{x^2}{2} + \frac{x^3}{6} + \cdots = \sum_{n\geq 0} \frac{x^n}{n!}\,.
+\end{equation}
+
+\[ \forall x \in X, \quad \exists y \leq \epsilon\,, \]
+
+\[ \frac{n!}{k!(n-k)!} = \binom{n}{k}\,. \]
+
+\begin{theorem}
+    Para cualesquiera conjuntos $A$, $B$ y $C$, se cumple que:
+    \[ (A\cup B)-(C-A) = A \cup (B-C)\,. \]
+\end{theorem} 

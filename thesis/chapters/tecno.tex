@@ -1,0 +1,192 @@
+% Capítulo 3 de la memoria del TFG.
+% Archivo previsto: chapters/tecno.tex
+% Este capítulo desarrolla el estado del arte y los fundamentos técnicos
+% necesarios para comprender el diseño posterior del sistema.
+
+\chapter{Estado del arte}
+\label{chap:estado-arte}
+
+El capítulo anterior ha definido el objetivo general del Trabajo Fin de Grado: diseñar, implementar y evaluar una aplicación web local basada en una arquitectura de generación aumentada mediante recuperación para facilitar la consulta ciudadana de normativa consolidada. Para abordar ese objetivo no basta con seleccionar un modelo generativo y formular preguntas sobre los documentos. El sistema debe localizar información relevante, conservar la relación entre cada fragmento y su fuente normativa, construir un contexto útil para la generación, producir una respuesta comprensible y permitir que el usuario revise las evidencias utilizadas.
+
+Este capítulo revisa los fundamentos y trabajos relacionados necesarios para justificar ese enfoque. En primer lugar, se analizan las particularidades de la información normativa consolidada y su efecto sobre el diseño de sistemas de consulta. A continuación se presentan las principales familias de recuperación de información: recuperación léxica, recuperación semántica y recuperación híbrida. Después se introducen los modelos de lenguaje, sus limitaciones y el papel de la generación aumentada mediante recuperación, conocida habitualmente como \emph{Retrieval-Augmented Generation} (RAG). Finalmente, se revisan criterios de evaluación y se sitúa el proyecto dentro del dominio jurídico.
+
+La finalidad del capítulo no es describir todavía la arquitectura concreta desarrollada. Las decisiones específicas del sistema, como la estructura de los datos, la estrategia de fragmentación, los modelos seleccionados o los parámetros experimentales, se presentan en los capítulos de diseño, implementación y validación. Aquí se exponen los conceptos y alternativas existentes que permiten comprender esas decisiones.
+
+\section{Información jurídica y normativa consolidada}
+\label{sec:informacion-juridica}
+
+Los documentos jurídicos presentan características que los diferencian de otras colecciones textuales utilizadas habitualmente en sistemas de recuperación de información. Una norma no es solo una secuencia de párrafos: posee una estructura interna formada por títulos, capítulos, artículos, disposiciones, anexos y otros elementos que condicionan su interpretación. Además, cada documento se inserta en un contexto temporal y normativo determinado, por lo que resulta necesario conocer su versión, su vigencia y su procedencia.
+
+En el caso de este Trabajo Fin de Grado, la fuente documental principal es la colección de legislación consolidada del \emph{Boletín Oficial del Estado} (BOE). La Agencia Estatal BOE proporciona servicios de datos abiertos para consultar y reutilizar información normativa, incluyendo una API específica de legislación consolidada que permite acceder a metadatos, textos completos, versiones e índices de bloques documentales \cite{boeApiConsolidada}. Esta disponibilidad de datos estructurados resulta especialmente relevante para un sistema RAG, ya que permite preservar información de procedencia y construir enlaces verificables a la fuente oficial.
+
+La consolidación normativa consiste, de forma general, en integrar en un único texto las modificaciones y correcciones expresas que ha recibido una norma desde su publicación original. Su finalidad es facilitar la consulta de la redacción vigente o de versiones anteriores, evitando que el usuario deba reconstruir manualmente la evolución normativa a partir de múltiples disposiciones modificativas. Sin embargo, esta utilidad documental no debe confundirse con valor jurídico propio. El BOE advierte que los textos consolidados tienen carácter informativo y que, para fines jurídicos, debe acudirse a la publicación oficial correspondiente \cite{boeLegislacionActualizada}. EUR-Lex establece una cautela análoga para la legislación consolidada de la Unión Europea, al señalar que la consolidación facilita el acceso a los textos modificados, pero no tiene efectos jurídicos por sí misma \cite{eurlexConsolidation}.
+
+Esta distinción condiciona el alcance de cualquier aplicación basada en estos textos. Un sistema de consulta ciudadana puede ayudar a localizar información normativa, resumirla de forma comprensible y mostrar las fuentes utilizadas, pero no debe presentarse como sustituto de la publicación oficial ni como herramienta de asesoramiento jurídico profesional. En consecuencia, la trazabilidad no es un requisito accesorio: constituye una condición esencial para que el usuario pueda revisar el origen de la información.
+
+Otra dificultad específica del dominio normativo es la diferencia entre el lenguaje de la ciudadanía y la redacción formal de las normas. Una persona puede preguntar, por ejemplo, ``¿cuántos días tengo para recurrir una multa?'' o ``¿pueden despedirme durante una baja médica?'', mientras que los documentos normativos pueden emplear expresiones como ``plazo para interponer recurso'', ``procedimiento sancionador'', ``extinción del contrato de trabajo'' o ``incapacidad temporal''. Esta distancia lingüística justifica la necesidad de estudiar técnicas de recuperación que no dependan únicamente de coincidencias exactas entre las palabras de la consulta y las palabras del documento.
+
+\section{Recuperación de información}
+\label{sec:recuperacion-informacion}
+
+La recuperación de información estudia cómo seleccionar, de una colección documental, aquellos elementos que son relevantes para una necesidad de información expresada mediante una consulta. En un sistema de consulta normativa, la colección está formada por documentos legales o por fragmentos derivados de ellos; la consulta es una pregunta formulada por el usuario; y la salida del recuperador es una lista ordenada de evidencias candidatas.
+
+El concepto de relevancia es central. Un fragmento puede ser relevante porque contiene directamente la respuesta, porque aporta una definición necesaria, porque delimita una excepción o porque enlaza con otra parte de la norma. En sistemas RAG, la recuperación adquiere una importancia adicional: los documentos seleccionados no son el resultado final, sino la información que condicionará la respuesta generada por el modelo de lenguaje. Si el recuperador omite un fragmento esencial, la fase generativa puede responder de forma incompleta; si incluye demasiado ruido, el modelo puede apoyarse en información irrelevante o contradictoria.
+
+Los sistemas de recuperación suelen ordenar los resultados y devolver únicamente los primeros elementos, habitualmente denominados \emph{top-k}. Esta selección es necesaria por razones prácticas: los modelos generativos tienen una ventana de contexto limitada y no pueden recibir todo el corpus en cada consulta. Por tanto, el recuperador actúa como un filtro que determina qué partes del corpus estarán disponibles para la generación.
+
+La evaluación de la recuperación se apoya en métricas que comparan los documentos recuperados con un conjunto de referencias consideradas relevantes. Entre las más habituales se encuentran la precisión, la exhaustividad, \emph{Recall@k}, \emph{Mean Reciprocal Rank} (MRR) y \emph{Normalized Discounted Cumulative Gain} (nDCG). Cada una mide un aspecto diferente: si los resultados son relevantes, si aparecen suficientes evidencias, si la primera respuesta útil aparece pronto o si el orden de los documentos recuperados es adecuado. En el capítulo de experimentos se concretará qué métricas se utilizan y cómo se aplican al corpus del proyecto.
+
+El benchmark BEIR ilustra la diversidad de enfoques de recuperación y la necesidad de evaluar en condiciones heterogéneas. Sus autores comparan modelos léxicos, dispersos, densos, de interacción tardía y de reordenación sobre múltiples conjuntos de datos, y muestran que BM25 continúa siendo una línea base robusta, mientras que algunas técnicas de reordenación pueden mejorar resultados a costa de un mayor coste computacional \cite{thakur2021beir}. Esta observación es relevante para el presente TFG: la recuperación semántica puede resultar atractiva por su capacidad para capturar reformulaciones, pero debe compararse empíricamente con alternativas léxicas e híbridas.
+
+\section{Recuperación léxica}
+\label{sec:recuperacion-lexica}
+
+La recuperación léxica se basa en la coincidencia entre los términos de la consulta y los términos presentes en los documentos. Su enfoque parte de una intuición sencilla: un documento que contiene palabras relevantes de la consulta tiene más probabilidad de responder a la necesidad de información. Para que esta búsqueda sea eficiente, los sistemas suelen utilizar índices invertidos, estructuras que asocian cada término con los documentos o fragmentos en los que aparece.
+
+Uno de los modelos más utilizados en recuperación léxica es BM25. Este método procede del marco probabilístico de relevancia y combina varias señales: la presencia de términos de la consulta, la frecuencia con la que aparecen en un documento, la rareza de esos términos dentro de la colección y una normalización que evita favorecer de forma excesiva a los documentos más largos \cite{robertson2009bm25}. En términos prácticos, BM25 asigna una puntuación más alta a los documentos que contienen términos informativos de la consulta de manera significativa, pero controla el efecto de repeticiones excesivas y de diferencias de longitud.
+
+En el dominio jurídico, la recuperación léxica tiene ventajas claras. Muchos conceptos normativos poseen una denominación técnica relativamente estable: ``recurso de alzada'', ``despido disciplinario'', ``incapacidad temporal'', ``silencio administrativo'' o ``protección de datos''. Cuando el usuario emplea esos términos, un método léxico puede localizar con precisión los fragmentos que los contienen. Además, BM25 es interpretable, eficiente y puede ejecutarse adecuadamente en CPU, lo que encaja con entornos locales y reproducibles.
+
+No obstante, la recuperación léxica también presenta limitaciones. Su rendimiento depende del solapamiento superficial entre consulta y documento. Si una persona pregunta con vocabulario cotidiano y la norma utiliza términos técnicos diferentes, el sistema puede no recuperar el pasaje relevante. Por ejemplo, una consulta como ``¿qué pasa si la administración no me contesta?'' puede estar relacionada con el concepto jurídico de ``silencio administrativo'', aunque no contenga esa expresión. Este tipo de diferencia entre lenguaje ciudadano y lenguaje normativo justifica estudiar técnicas semánticas.
+
+En este TFG, la recuperación léxica no se tratará como una solución obsoleta ni como un mero trámite. Se considera una línea base necesaria y una estrategia potencialmente útil, especialmente en consultas con términos jurídicos precisos. Su rendimiento deberá compararse con el de la recuperación semántica y la recuperación híbrida en el capítulo experimental.
+
+\section{Representaciones vectoriales y recuperación semántica}
+\label{sec:recuperacion-semantica}
+
+La recuperación semántica busca superar la dependencia exclusiva de coincidencias léxicas. Para ello representa consultas y documentos mediante vectores numéricos, conocidos como \emph{embeddings}, que intentan capturar propiedades semánticas del texto. Si una consulta y un fragmento documental expresan ideas relacionadas, sus vectores deberían situarse cerca en el espacio de representación, aunque no compartan exactamente las mismas palabras.
+
+El uso de embeddings permite formular la recuperación como una búsqueda de vecinos cercanos. La consulta se transforma en un vector y se compara con los vectores de los fragmentos del corpus mediante una medida de similitud, como la similitud coseno o el producto escalar. Los fragmentos más próximos se devuelven como evidencias candidatas. Esta aproximación resulta especialmente útil cuando el usuario emplea expresiones aproximadas, sinónimos o formulaciones diferentes a las contenidas en la norma.
+
+Sentence-BERT introdujo una forma eficiente de obtener embeddings de frases y oraciones mediante arquitecturas siamesas y tripletas, haciendo posible comparar textos mediante similitud coseno con un coste mucho menor que el de comparar todos los pares con un modelo BERT completo \cite{reimers2019sbert}. En recuperación de pasajes, Dense Passage Retrieval (DPR) mostró que los recuperadores densos, basados en codificadores separados para preguntas y pasajes, podían ser competitivos frente a enfoques tradicionales en tareas de preguntas abiertas \cite{karpukhin2020dpr}. Aunque estos resultados proceden de contextos distintos al corpus normativo español, proporcionan el fundamento de la recuperación semántica utilizada en muchos sistemas RAG.
+
+La recuperación semántica presenta ventajas relevantes para una aplicación de consulta ciudadana. Puede recuperar fragmentos relacionados con la intención del usuario aunque la consulta no reproduzca literalmente la terminología jurídica. También permite trabajar con preguntas más naturales, lo que mejora la experiencia de personas no expertas. Sin embargo, no elimina la necesidad de evaluación. Los embeddings pueden recuperar documentos semánticamente cercanos pero insuficientes para responder, pueden confundir conceptos próximos y pueden depender del dominio y del idioma para el que el modelo ha sido entrenado.
+
+Cuando el corpus crece, la búsqueda exhaustiva sobre todos los vectores puede resultar costosa. Por ello suelen emplearse índices vectoriales o bases de datos vectoriales, diseñadas para almacenar embeddings y realizar búsquedas eficientes de similitud. Estas herramientas pueden incluir técnicas de búsqueda aproximada, filtrado por metadatos y persistencia de índices.
+
+\section{Recuperación híbrida}
+\label{sec:recuperacion-hibrida}
+
+La recuperación léxica y la recuperación semántica capturan señales diferentes. La primera es fuerte cuando existen coincidencias terminológicas precisas; la segunda es útil cuando la consulta y el documento expresan ideas similares con vocabularios distintos. En dominios especializados, como el jurídico, ambas señales pueden ser complementarias: una consulta puede contener términos técnicos que conviene preservar, pero también reformulaciones ciudadanas que requieren aproximación semántica.
+
+La recuperación híbrida agrupa estrategias que combinan resultados o puntuaciones procedentes de varios recuperadores. Existen distintas formas de realizar esta combinación. Una posibilidad consiste en normalizar las puntuaciones de cada recuperador y calcular una puntuación agregada. Otra consiste en unir las listas de resultados y eliminar duplicados, conservando los documentos mejor posicionados. También puede utilizarse una fusión basada en rankings, donde importa la posición relativa de cada documento en cada lista más que la escala concreta de sus puntuaciones.
+
+Un método conocido para combinar rankings es \emph{Reciprocal Rank Fusion} (RRF). Cormack, Clarke y Büttcher lo propusieron como un procedimiento simple para fusionar resultados de distintos sistemas de recuperación y observaron que podía superar a métodos individuales y a otras estrategias de combinación en los experimentos analizados \cite{cormack2009rrf}. La idea general es favorecer documentos que aparecen en posiciones altas en una o varias listas, sin requerir que las puntuaciones de los recuperadores sean directamente comparables.
+
+También existen enfoques híbridos más específicos. Algunos sistemas combinan BM25 con recuperación densa mediante pesos ajustables; otros utilizan recuperación léxica para obtener candidatos iniciales y recuperación semántica para ampliar la cobertura; otros aplican filtros por metadatos antes o después de la búsqueda. La elección depende del corpus, del tipo de consulta, de los recursos disponibles y de la métrica que se quiera optimizar.
+
+En este TFG, la recuperación híbrida se considera una estrategia que debe implementarse y evaluarse, pero el método concreto de combinación se decidirá en el capítulo de diseño y se justificará mediante experimentos. Esta separación es importante: el estado del arte describe alternativas; la implementación selecciona una o varias de ellas; y la validación determina su rendimiento real en el corpus normativo utilizado.
+
+\section{Modelos de lenguaje}
+\label{sec:modelos-lenguaje}
+
+Los modelos de lenguaje son sistemas capaces de estimar y generar secuencias de texto a partir de patrones aprendidos durante su entrenamiento. En las arquitecturas modernas, estos modelos suelen estar basados en Transformer, una arquitectura introducida por Vaswani et al. que sustituyó las estructuras recurrentes tradicionales por mecanismos de atención \cite{vaswani2017attention}. La atención permite que el modelo relacione diferentes posiciones de una secuencia y utilice información contextual para producir representaciones más ricas.
+
+Para comprender su papel en un sistema RAG no es necesario desarrollar toda la arquitectura interna del Transformer, pero sí conviene introducir algunos conceptos. En primer lugar, los modelos de lenguaje operan sobre unidades llamadas \emph{tokens}, que pueden corresponder a palabras, partes de palabras o signos. En segundo lugar, generan texto de forma condicionada: la salida depende del texto de entrada, de las instrucciones proporcionadas y del contexto disponible. En tercer lugar, cada modelo tiene una ventana de contexto limitada, lo que impide introducir documentos extensos completos en cada consulta.
+
+Los modelos de gran tamaño han demostrado capacidades notables para seguir instrucciones, resumir información y producir respuestas en lenguaje natural. Brown et al. mostraron que el aumento de escala podía mejorar el rendimiento en múltiples tareas mediante aprendizaje en contexto \cite{brown2020language}. Sin embargo, estas capacidades no implican que el modelo disponga de conocimiento actualizado ni que sus respuestas estén automáticamente fundamentadas en una fuente verificable.
+
+En una arquitectura RAG, el modelo de lenguaje no se utiliza como única fuente de conocimiento. Su función es generar una respuesta a partir de la pregunta del usuario y de las evidencias recuperadas. Esto desplaza parte del problema desde ``qué sabe el modelo'' hacia ``qué documentos se recuperan, cómo se presentan y cómo se controla que la respuesta se apoye en ellos''. Por tanto, el \emph{prompting} no se limita a escribir una pregunta: incluye instrucciones sobre el alcance de la respuesta, el uso de las evidencias, el formato esperado y el comportamiento ante información insuficiente.
+
+\section{Limitaciones de los modelos de lenguaje}
+\label{sec:limitaciones-llm}
+
+Los modelos de lenguaje presentan limitaciones relevantes para cualquier aplicación de consulta normativa. La primera es la falta de trazabilidad inherente. Una respuesta puede estar redactada de forma fluida y convincente sin indicar de qué fuente procede cada afirmación. En dominios generales esto ya supone un problema; en el dominio jurídico, donde la fuente y la versión del texto son esenciales, resulta crítico.
+
+La segunda limitación es la posibilidad de generar información incorrecta o no respaldada. La literatura suele referirse a este fenómeno como alucinación, aunque el término agrupa errores distintos: invención de hechos, citas inexistentes, referencias incorrectas, respuestas no fundamentadas o interpretación indebida de documentos. Bender et al. advierten de los riesgos de atribuir a los modelos de lenguaje capacidades de comprensión o veracidad que no se derivan necesariamente de su funcionamiento estadístico \cite{bender2021stochastic}.
+
+La tercera limitación es la actualización del conocimiento. Un modelo entrenado en una fecha determinada no incorpora automáticamente cambios normativos posteriores. Incluso cuando conoce cierta información jurídica, no puede garantizar que corresponda a la versión vigente ni que refleje modificaciones recientes. Esta limitación refuerza la necesidad de utilizar un corpus documental controlado, con fecha de captura y metadatos de procedencia.
+
+La cuarta limitación afecta a la abstención. Un sistema debería ser capaz de indicar que no dispone de información suficiente para responder, especialmente cuando la pregunta se refiere a materias no incluidas en el corpus. El benchmark RGB analiza capacidades relevantes para RAG, entre ellas robustez ante ruido, rechazo negativo, integración de información y robustez contrafactual, y muestra que estas capacidades no pueden asumirse como resueltas por defecto \cite{chen2024rgb}.
+
+En el dominio jurídico, estas limitaciones tienen consecuencias particulares. Dahl et al. analizan alucinaciones jurídicas en modelos de lenguaje y muestran que pueden producir respuestas legalmente incorrectas o referencias problemáticas \cite{dahl2024legalhallucinations}. Magesh et al. estudian herramientas comerciales de investigación jurídica basadas en IA y concluyen que, aunque los sistemas con recuperación pueden reducir ciertos errores frente a modelos generales, no eliminan completamente las alucinaciones ni la necesidad de supervisión y verificación \cite{magesh2025hallucinationfree}. Estas conclusiones no se trasladan directamente al corpus español utilizado en este TFG, pero justifican un diseño prudente: evidencias visibles, enlaces verificables y respuesta explícita cuando el corpus no permite contestar.
+
+\section{Retrieval-Augmented Generation}
+\label{sec:rag}
+
+Retrieval-Augmented Generation, o RAG, combina un modelo generativo con una memoria externa formada por documentos recuperables. Lewis et al. proponen esta arquitectura como una forma de combinar memoria paramétrica, contenida en los pesos del modelo, y memoria no paramétrica, representada por una colección documental accesible mediante recuperación \cite{lewis2020rag}. El objetivo es que el modelo no dependa únicamente de lo aprendido durante el entrenamiento, sino que pueda condicionar su respuesta a pasajes concretos recuperados en tiempo de consulta.
+
+Un flujo RAG típico consta de varias etapas. Primero, el sistema recibe una pregunta. Después, un recuperador selecciona documentos o fragmentos relevantes de la colección. A continuación, esos fragmentos se ensamblan en un contexto que se entrega al modelo de lenguaje junto con la pregunta y las instrucciones. Finalmente, el modelo genera una respuesta que debería estar fundamentada en el contexto suministrado.
+
+Esta arquitectura resulta adecuada para la consulta de normativa por varias razones. Permite actualizar el corpus sin reentrenar el modelo generativo, facilita mostrar las fuentes utilizadas y reduce la dependencia del conocimiento paramétrico del modelo. Además, permite separar responsabilidades: el recuperador localiza evidencias; el constructor de contexto selecciona y organiza la información; el modelo redacta la respuesta; y los mecanismos de validación comprueban que la salida respete el formato y las citas esperadas.
+
+Sin embargo, RAG no elimina automáticamente los problemas de los modelos de lenguaje. Si la recuperación falla, el modelo puede no disponer de la información necesaria. Si se recuperan fragmentos ruidosos, puede apoyarse en información irrelevante. Si el contexto es demasiado largo o está mal organizado, puede ignorar partes importantes. Si no se controla la salida, puede citar fuentes inexistentes o presentar afirmaciones no respaldadas. Por ello, los sistemas RAG modernos se estudian como arquitecturas modulares en las que recuperación, generación, reordenación, filtrado, evaluación y observabilidad pueden optimizarse de forma separada \cite{gao2023ragSurvey}.
+
+En este Trabajo Fin de Grado, la arquitectura RAG se adapta a un caso de uso concreto: consulta ciudadana de normativa consolidada. Esto implica tres exigencias adicionales. La primera es conservar la estructura normativa suficiente para que el fragmento recuperado no quede aislado de su artículo o disposición de origen. La segunda es mostrar referencias verificables, preferentemente mediante enlaces oficiales del BOE. La tercera es limitar el alcance de la respuesta, evitando presentar el sistema como una herramienta de asesoramiento jurídico.
+
+\section{Fragmentación documental y construcción de contexto}
+\label{sec:fragmentacion-contexto}
+
+Los documentos normativos suelen ser demasiado extensos para introducirse completos en la ventana de contexto de un modelo generativo. Por ello, una etapa habitual en sistemas RAG consiste en dividir los documentos en unidades recuperables. Esta operación, conocida como fragmentación o \emph{chunking}, afecta de forma directa al rendimiento del sistema.
+
+Si los fragmentos son demasiado pequeños, pueden perder información necesaria para interpretar correctamente una disposición. Por ejemplo, un apartado puede depender de una definición anterior, de una excepción o de una condición situada en otro párrafo. Si los fragmentos son demasiado grandes, la recuperación puede volverse menos precisa y el contexto entregado al modelo puede incluir información innecesaria. El equilibrio depende del tipo de documento, de la estructura disponible, del modelo utilizado y del presupuesto de contexto.
+
+En normativa consolidada, la fragmentación debería respetar, en la medida de lo posible, la estructura jurídica del texto. No es equivalente dividir cada cierto número fijo de palabras que utilizar artículos, apartados o bloques documentales identificados por la fuente. La API de legislación consolidada del BOE ofrece índices de bloques y acceso a textos estructurados, lo que permite diseñar estrategias que aprovechen esa organización documental \cite{boeApiConsolidada}.
+
+La construcción de contexto es la etapa posterior a la recuperación. Su objetivo es transformar los fragmentos recuperados en una entrada útil para el modelo generativo. Esta etapa puede incluir deduplicación, selección de las evidencias mejor posicionadas, expansión con contexto cercano, ordenación, limitación por presupuesto de tokens y asignación de identificadores de evidencia. En el dominio jurídico, esta etapa debe preservar la procedencia de cada fragmento para que la respuesta pueda citar evidencias revisables.
+
+La estrategia concreta de fragmentación y construcción de contexto desarrollada en este proyecto se presenta en el capítulo de diseño e implementación. En este capítulo basta con destacar que estas decisiones no son meramente técnicas: condicionan la cobertura, la precisión, la comprensibilidad de la respuesta y la posibilidad de verificar las fuentes.
+
+\section{Generación fundamentada y citas}
+\label{sec:generacion-fundamentada-citas}
+
+La generación fundamentada busca que la respuesta del modelo se apoye en evidencias explícitas. En un sistema RAG para normativa, no basta con que la respuesta parezca plausible: debe poder relacionarse con los fragmentos recuperados y con la fuente oficial de la que proceden. Esta exigencia es especialmente importante cuando el usuario no tiene conocimientos técnicos o jurídicos suficientes para detectar errores sutiles.
+
+Las citas cumplen varias funciones. En primer lugar, permiten comprobar la procedencia de una afirmación. En segundo lugar, hacen visible qué documentos han influido en la respuesta. En tercer lugar, ayudan a detectar respuestas incompletas o mal fundamentadas. En cuarto lugar, refuerzan la transparencia del sistema al separar la explicación generada por el modelo de los textos normativos originales.
+
+No obstante, las citas generadas automáticamente también pueden fallar. Un modelo puede citar un fragmento que no respalda realmente la afirmación, puede omitir una evidencia necesaria o incluso inventar identificadores si el sistema no lo impide. Por ello, en aplicaciones RAG no basta con pedir al modelo que cite: es necesario diseñar restricciones, validaciones y formatos de salida que reduzcan la posibilidad de citas no autorizadas.
+
+En este proyecto, la generación fundamentada se relaciona con dos requisitos definidos en el capítulo anterior: asociar las respuestas con referencias verificables a las evidencias utilizadas e impedir que la respuesta cite evidencias no proporcionadas al generador. La implementación concreta de esos mecanismos se explicará más adelante, pero su necesidad se deriva directamente de las limitaciones de los modelos de lenguaje y de las exigencias del dominio jurídico.
+
+\section{Evaluación de sistemas RAG}
+\label{sec:evaluacion-rag}
+
+La evaluación de un sistema RAG debe analizar varios componentes. Evaluar únicamente si una respuesta ``suena bien'' no es suficiente. Un sistema puede redactar con fluidez y, al mismo tiempo, recuperar documentos irrelevantes, omitir una norma esencial, citar incorrectamente o responder cuando debería abstenerse.
+
+Una primera dimensión es la calidad de la recuperación. Se pregunta si el sistema localiza evidencias relevantes y si las sitúa en posiciones suficientemente altas. Para ello pueden emplearse métricas de recuperación como \emph{Recall@k}, MRR o nDCG, siempre que exista un conjunto de consultas con evidencias esperadas o juicios de relevancia.
+
+Una segunda dimensión es la calidad de la respuesta. Aquí se analiza si la respuesta contesta a la pregunta, si es comprensible, si mantiene un alcance adecuado y si evita afirmaciones no respaldadas. En una aplicación orientada a ciudadanía, también importa que el lenguaje sea claro y no reproduzca sin más la complejidad de la norma.
+
+Una tercera dimensión es la fundamentación. Evalúa si las afirmaciones de la respuesta están apoyadas por las evidencias citadas. Esta dimensión es crítica en RAG porque la presencia de citas no garantiza por sí misma que las citas sean correctas. RAGAS propone evaluar sistemas RAG considerando aspectos como la relevancia del contexto, la fidelidad de la respuesta al contexto y la calidad de la respuesta generada \cite{es2024ragas}. ARES plantea una evaluación automatizada mediante dimensiones como relevancia del contexto, fidelidad de la respuesta y relevancia de la respuesta \cite{saadfalcon2024ares}.
+
+Estas propuestas son útiles como marco conceptual, pero no sustituyen necesariamente a una evaluación diseñada para el dominio concreto. En este TFG, la evaluación deberá combinar métricas reproducibles de recuperación, revisión cualitativa de respuestas, comprobación de citas y consultas fuera del corpus. Esta última categoría es especialmente importante porque el sistema debe indicar que no dispone de información suficiente cuando la pregunta no puede responderse con las evidencias disponibles.
+
+\section{Procesamiento del lenguaje natural en el dominio jurídico}
+\label{sec:nlp-juridico}
+
+El procesamiento del lenguaje natural aplicado al Derecho se ocupa de tareas como clasificación de documentos, extracción de información, recuperación jurídica, predicción de resultados, análisis de contratos y apoyo a la investigación legal. El dominio jurídico presenta dificultades propias: terminología especializada, textos largos, estructura formal, importancia de las referencias, cambios normativos y consecuencias potencialmente relevantes de los errores.
+
+LexGLUE es un benchmark de comprensión del lenguaje jurídico que reúne varios conjuntos de datos para evaluar modelos en tareas legales. Sus autores destacan que la utilidad de los modelos depende de su capacidad de generalizar en el dominio jurídico y muestran que los modelos adaptados al dominio pueden ofrecer mejoras frente a modelos generales en distintas tareas \cite{chalkidis2022lexglue}. LegalBench, por su parte, recopila tareas de razonamiento jurídico elaboradas de forma colaborativa con participación interdisciplinar, con el objetivo de evaluar qué tipos de razonamiento legal pueden realizar los modelos de lenguaje \cite{guha2023legalbench}.
+
+El presente TFG no pretende abordar el razonamiento jurídico general ni resolver tareas complejas como predicción judicial, interpretación doctrinal o análisis jurisprudencial. Su alcance es más delimitado: facilitar la consulta ciudadana de normativa consolidada procedente del BOE mediante recuperación documental y generación fundamentada. Por tanto, las referencias a benchmarks jurídicos sirven para contextualizar la especificidad del dominio, no para afirmar que el sistema resuelve el conjunto de tareas evaluadas en ellos.
+
+La orientación ciudadana introduce una dificultad adicional: el usuario puede no conocer la terminología normativa. La siguiente tabla muestra ejemplos simplificados de esta diferencia entre formulación ciudadana y posible redacción técnica.
+
+\begin{table}[htbp]
+\centering
+\caption{Ejemplos de distancia entre consulta ciudadana y terminología normativa}
+\label{tab:consulta-ciudadana-terminologia}
+\begin{tabular}{p{0.43\textwidth}p{0.47\textwidth}}
+\hline
+\textbf{Consulta ciudadana aproximada} & \textbf{Conceptos o formulaciones normativas relacionadas} \\
+\hline
+``¿Qué pasa si la administración no me contesta?'' & Silencio administrativo, plazo máximo de resolución, efectos estimatorios o desestimatorios. \\
+``¿Puedo reclamar si me cobran algo que no entiendo?'' & Derechos de consumidores y usuarios, información contractual, reclamación, cláusulas. \\
+``¿Cuántos días tengo para recurrir una multa?'' & Plazo de interposición de recurso, procedimiento sancionador, notificación administrativa. \\
+``¿Me pueden despedir estando de baja?'' & Extinción del contrato de trabajo, incapacidad temporal, causas de despido, protección frente a discriminación. \\
+\hline
+\end{tabular}
+\end{table}
+
+Estos ejemplos no constituyen respuestas jurídicas ni casos cerrados. Su función es mostrar por qué un sistema de consulta normativa debe manejar tanto expresiones comunes como terminología técnica, y por qué resulta razonable comparar recuperación léxica, semántica e híbrida.
+
+\section{Posicionamiento del proyecto}
+\label{sec:posicionamiento-proyecto}
+
+El proyecto se sitúa en la intersección entre recuperación de información, modelos de lenguaje y consulta ciudadana de normativa consolidada. Su objetivo no es construir un modelo jurídico general ni sustituir la revisión profesional de las fuentes, sino desarrollar una aplicación demostrable que recupere evidencias de un corpus normativo, genere respuestas comprensibles y permita verificar las fuentes utilizadas.
+
+Frente a una búsqueda léxica tradicional, el sistema pretende aceptar preguntas formuladas en lenguaje natural y producir una respuesta sintética. Frente a un uso directo de un modelo de lenguaje, incorpora una memoria documental externa, controlada y actualizable. Frente a una respuesta sin fuentes, exige referencias verificables asociadas a las evidencias recuperadas. Frente a un sistema opaco, plantea una evaluación separada de recuperación, generación, citas y comportamiento ante preguntas fuera del corpus.
+
+La comparación entre recuperación léxica, semántica e híbrida es una parte central del trabajo porque cada estrategia responde a una hipótesis distinta. La recuperación léxica puede funcionar bien cuando la consulta contiene términos jurídicos específicos. La recuperación semántica puede aportar valor cuando el usuario formula la pregunta con lenguaje cotidiano. La recuperación híbrida puede combinar ambas señales, aunque su superioridad debe demostrarse empíricamente. El \emph{reranking} se considera una alternativa relevante, pero su incorporación queda condicionada al coste y a la mejora observada.
+
+En síntesis, el estado del arte revisado justifica el enfoque adoptado en los capítulos siguientes. La normativa consolidada exige trazabilidad y prudencia; la recuperación de información proporciona técnicas para localizar evidencias; los modelos de lenguaje permiten redactar respuestas comprensibles; y RAG combina ambas capacidades, aunque requiere evaluación rigurosa para comprobar si el sistema responde de forma útil, fundamentada y limitada a la información realmente disponible.
