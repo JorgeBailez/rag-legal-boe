@@ -1,6 +1,6 @@
 {
   "name": "mvp_seed_corpus",
-  "description": "Corpus semilla para el MVP del recuperador. Normas estatales consolidadas relacionadas (administrativo, sector público, local, transparencia, subvenciones, contratos, protección de datos).",
+  "description": "Corpus consolidado del BOE. Base MVP (administrativo, sector público, local, transparencia, subvenciones, contratos, protección de datos) + Ola 1 shake-out (vivienda, consumo, tráfico, sanidad, extranjería, gobierno, civil/procesal, laboral, tributario). Ampliación por olas hacia ~100 normas; ids verificados contra la API del BOE.",
   "norms": [
     {
       "norm_id": "BOE-A-2015-10565",
@@ -51,6 +51,56 @@
       "norm_id": "BOE-A-2018-16673",
       "label": "Ley Orgánica 3/2018, Protección de Datos y derechos digitales",
       "expected_rank": "Ley Orgánica"
+    },
+    {
+      "norm_id": "BOE-A-1994-26003",
+      "label": "Ley 29/1994, de Arrendamientos Urbanos",
+      "expected_rank": "Ley"
+    },
+    {
+      "norm_id": "BOE-A-1960-10906",
+      "label": "Ley 49/1960, sobre Propiedad Horizontal",
+      "expected_rank": "Ley"
+    },
+    {
+      "norm_id": "BOE-A-2007-20555",
+      "label": "Real Decreto Legislativo 1/2007, Defensa de Consumidores y Usuarios",
+      "expected_rank": "Real Decreto Legislativo"
+    },
+    {
+      "norm_id": "BOE-A-2015-11722",
+      "label": "Real Decreto Legislativo 6/2015, Ley de Tráfico, Circulación y Seguridad Vial",
+      "expected_rank": "Real Decreto Legislativo"
+    },
+    {
+      "norm_id": "BOE-A-1986-10499",
+      "label": "Ley 14/1986, General de Sanidad",
+      "expected_rank": "Ley"
+    },
+    {
+      "norm_id": "BOE-A-2000-544",
+      "label": "Ley Orgánica 4/2000, derechos y libertades de los extranjeros en España",
+      "expected_rank": "Ley Orgánica"
+    },
+    {
+      "norm_id": "BOE-A-1997-25336",
+      "label": "Ley 50/1997, del Gobierno",
+      "expected_rank": "Ley"
+    },
+    {
+      "norm_id": "BOE-A-2015-7391",
+      "label": "Ley 15/2015, de la Jurisdicción Voluntaria",
+      "expected_rank": "Ley"
+    },
+    {
+      "norm_id": "BOE-A-2015-11430",
+      "label": "Real Decreto Legislativo 2/2015, Estatuto de los Trabajadores",
+      "expected_rank": "Real Decreto Legislativo"
+    },
+    {
+      "norm_id": "BOE-A-1992-28741",
+      "label": "Ley 38/1992, de Impuestos Especiales",
+      "expected_rank": "Ley"
     }
   ]
 }

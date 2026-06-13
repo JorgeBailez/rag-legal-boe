@@ -74,14 +74,34 @@ def _format_row(row: dict) -> str:
     return f"  [{flag}] {row['norm_id']:18} {rank:24} {status:12} {title}"
 
 
-def main(strict: bool = False) -> int:
+def main(strict: bool = False, only_new: bool = False) -> int:
     settings = get_settings()
     norms = load_seed_corpus()
+
+    # Con --only-new se conserva la fila previa de las normas ya descargadas (manifest presente) y
+    # solo se descargan/procesan las nuevas → añadir olas sin re-descargar el corpus previo.
+    previous: dict[str, dict] = {}
+    if only_new and REPORT_PATH.exists():
+        for prev in json.loads(REPORT_PATH.read_text(encoding="utf-8")):
+            previous[prev["norm_id"]] = prev
 
     report: list[dict] = []
     with BoeClient(base_url=settings.boe_api_base) as client:
         for norm in norms:
             norm_id = norm["norm_id"]
+            if only_new and (MANIFEST_DIR / f"{norm_id}.json").exists():
+                print(f"  · {norm_id} ya descargada (--only-new): se omite")
+                report.append(
+                    previous.get(norm_id)
+                    or {
+                        "norm_id": norm_id,
+                        "exists": True,
+                        "meets_criteria": True,
+                        "reasons": [],
+                        "skipped": True,
+                    }
+                )
+                continue
             print(f"Descargando y verificando {norm_id} ...")
             row = _acquire_and_verify(client, norm_id)
             if row["meets_criteria"]:
@@ -129,5 +149,10 @@ if __name__ == "__main__":
         action="store_true",
         help="exit != 0 si alguna norma no cumple criterios o falla el proceso.",
     )
+    parser.add_argument(
+        "--only-new",
+        action="store_true",
+        help="omite las normas con manifest ya presente; solo descarga/procesa las nuevas.",
+    )
     args = parser.parse_args()
-    raise SystemExit(main(strict=args.strict))
+    raise SystemExit(main(strict=args.strict, only_new=args.only_new))
