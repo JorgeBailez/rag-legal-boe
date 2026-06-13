@@ -53,8 +53,10 @@ data/processed/parents/*
 !data/processed/parents/.gitkeep
 data/processed/chunks/*
 !data/processed/chunks/.gitkeep
-data/processed/reports/*
-!data/processed/reports/.gitkeep
+
+# Reports de experimentos (retrieval/FAISS/generación/auditoría): SÍ se versionan — son evidencia
+# reproducible para la memoria y permiten compartir resultados servidor↔local con un push/pull.
+# (Antes estaban ignorados; conviene hacer `git add` selectivo de los runs que se quieran conservar.)
 
 # Índices locales (se generan en runtime)
 data/indexes/
