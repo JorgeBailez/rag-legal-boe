@@ -20,6 +20,9 @@
 /LICENSE
 /README.md
 
+## Documento interno de instrucciones (no se versiona ni se publica):
+/instrucciones_memoria_TFG_EIF_URJC.md
+
 ## Bibliography auxiliary files (bibtex/biblatex/biber):
 *.bbl
 *.bcf
