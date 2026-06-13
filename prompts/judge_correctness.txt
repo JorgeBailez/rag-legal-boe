@@ -1,14 +1,24 @@
 Tarea: evaluar la CORRECCIÓN de una respuesta candidata frente a una respuesta de REFERENCIA.
 
-Criterio:
-- "correct": la candidata coincide en lo esencial con la referencia (mismos hechos, plazos, cifras
-  o condiciones), aunque la redacción difiera.
-- "partial": acierta parte pero omite un elemento esencial, añade un matiz incorrecto, o es
-  incompleta.
-- "incorrect": contradice la referencia, da un dato esencial equivocado o no responde a la pregunta.
+La REFERENCIA es la verdad, pero puede ser **breve**: recoge lo esencial, no necesariamente todo el
+detalle. Juzga el CONTENIDO, no la forma ni la longitud.
 
-No penalices diferencias de estilo ni de longitud. Juzga el contenido, no la forma. No uses
-conocimiento externo: la REFERENCIA es la verdad.
+Criterios (elige uno):
+- "correct": la candidata incluye **todo lo esencial** de la referencia (mismos hechos, plazos,
+  cifras, condiciones) y **no la contradice**. Que la candidata aporte **más detalle correcto** que
+  la referencia (más casos, más matices, una lista más larga) NO la hace "partial": sigue siendo
+  "correct" mientras lo añadido sea coherente y no contradiga la referencia.
+- "partial": **omite un elemento esencial** que SÍ está en la referencia, o **añade un matiz
+  incorrecto** junto a lo acertado. (No uses "partial" solo porque la candidata sea más extensa o
+  más detallada que la referencia.)
+- "incorrect": **contradice** la referencia, da un **dato esencial equivocado** (un plazo, una
+  cifra, una condición incorrecta), o responde a **otra cosa distinta** de lo que se pregunta.
+
+Regla práctica: si un ciudadano que leyera solo la candidata quedaría **bien informado y sin error**,
+es "correct" aunque diga más que la referencia. Si le falta algo esencial o hay un dato equivocado,
+"partial"/"incorrect" según la gravedad.
+
+No uses conocimiento externo: compara la candidata con la REFERENCIA.
 
 PREGUNTA:
 {question}

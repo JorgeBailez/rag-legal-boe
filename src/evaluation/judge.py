@@ -12,6 +12,7 @@ inyectable, de modo que los tests corren offline con un juez fake.
 
 from __future__ import annotations
 
+import random
 import re
 from collections.abc import Sequence
 from typing import Literal, Protocol
@@ -159,22 +160,132 @@ class LlmJudge:
         return verdict, metrics  # type: ignore[return-value]
 
 
-def judge_agreement(human_labels: Sequence[str], judge_labels: Sequence[str]) -> dict:
-    """Acuerdo entre el juez y la anotación humana sobre un subconjunto (acuerdo % + Cohen's κ).
+def _confusion_counts(
+    human: Sequence[str], judge: Sequence[str], labels: Sequence[str]
+) -> list[list[int]]:
+    """Matriz de confusión (filas=humano, columnas=juez) en el orden dado por `labels`."""
+    idx = {lab: i for i, lab in enumerate(labels)}
+    k = len(labels)
+    matrix = [[0] * k for _ in range(k)]
+    for h, j in zip(human, judge, strict=True):
+        matrix[idx[h]][idx[j]] += 1
+    return matrix
 
-    Etiquetas categóricas alineadas posición a posición (mismo orden y longitud). κ corrige el
-    acuerdo esperado por azar; valores >0.6 se consideran sustanciales.
+
+def _kappa_from_matrix(matrix: list[list[int]], *, linear: bool) -> float | None:
+    """Cohen's κ a partir de la confusión; `linear=True` aplica pesos ordinales lineales.
+
+    Pesos de DESACUERDO normalizados: nominal = 1 fuera de la diagonal; lineal = |i-j|/(k-1) (un
+    desacuerdo adyacente correct↔partial pesa menos que uno extremo correct↔incorrect). Fórmula:
+    κ = 1 − desacuerdo_observado / desacuerdo_esperado (κ=1 si no hay desacuerdo esperado).
+    """
+    k = len(matrix)
+    n = sum(sum(row) for row in matrix)
+    if n == 0 or k == 0:
+        return None
+    rows = [sum(matrix[i]) for i in range(k)]
+    cols = [sum(matrix[i][j] for i in range(k)) for j in range(k)]
+    denom = (k - 1) or 1
+
+    def weight(i: int, j: int) -> float:
+        if i == j:
+            return 0.0
+        return abs(i - j) / denom if linear else 1.0
+
+    obs = sum(weight(i, j) * matrix[i][j] for i in range(k) for j in range(k)) / n
+    exp = sum(weight(i, j) * rows[i] * cols[j] for i in range(k) for j in range(k)) / (n * n)
+    if exp == 0:
+        return 1.0
+    return 1.0 - obs / exp
+
+
+def _kappa_ci(
+    pairs: list[tuple[str, str]],
+    labels: Sequence[str],
+    *,
+    linear: bool,
+    n_boot: int,
+    seed: int,
+    alpha: float,
+) -> dict | None:
+    """Intervalo de confianza del κ por bootstrap pareado (remuestreo de los pares con reemplazo).
+
+    El IC es ancho y aproximado con n pequeño (remuestreos degenerados → κ=1); interprétalo con
+    cautela por debajo de ~30–50 pares.
+    """
+    n = len(pairs)
+    if n < 2 or n_boot <= 0:
+        return None
+    rng = random.Random(seed)
+    stats: list[float] = []
+    for _ in range(n_boot):
+        sample = [pairs[rng.randrange(n)] for _ in range(n)]
+        matrix = _confusion_counts([h for h, _ in sample], [j for _, j in sample], labels)
+        kappa = _kappa_from_matrix(matrix, linear=linear)
+        if kappa is not None:
+            stats.append(kappa)
+    if not stats:
+        return None
+    stats.sort()
+    lo = stats[int((alpha / 2) * len(stats))]
+    hi = stats[min(len(stats) - 1, int((1 - alpha / 2) * len(stats)))]
+    return {"lo": lo, "hi": hi, "n_boot": n_boot, "level": round(1 - alpha, 2)}
+
+
+def judge_agreement(
+    human_labels: Sequence[str],
+    judge_labels: Sequence[str],
+    *,
+    ordered_labels: Sequence[str] | None = None,
+    n_boot: int = 2000,
+    seed: int = 42,
+    ci_alpha: float = 0.05,
+) -> dict:
+    """Acuerdo juez↔humano: % acuerdo, Cohen's κ nominal y, si es ordinal, κ lineal-ponderado.
+
+    Etiquetas alineadas posición a posición (misma longitud). κ corrige el acuerdo esperado por
+    azar; >0.6 ≈ sustancial. `ordered_labels` fija el orden de las categorías (p. ej. corrección
+    incorrect<partial<correct) y habilita el κ lineal-ponderado, el estadístico adecuado para una
+    escala ordinal de 3 niveles. Devuelve además la matriz de confusión e IC por bootstrap.
     """
     if len(human_labels) != len(judge_labels):
         raise ValueError("judge_agreement requiere secuencias de la misma longitud")
     n = len(human_labels)
+    out: dict = {
+        "n": n,
+        "percent_agreement": None,
+        "cohens_kappa": None,
+        "weighted_kappa": None,
+        "labels": None,
+        "confusion_matrix": None,
+        "cohens_kappa_ci": None,
+        "weighted_kappa_ci": None,
+    }
     if n == 0:
-        return {"n": 0, "percent_agreement": None, "cohens_kappa": None}
+        return out
+
+    if ordered_labels is not None:
+        labels = list(ordered_labels)
+        labels.extend(sorted((set(human_labels) | set(judge_labels)) - set(labels)))
+        ordinal = True
+    else:
+        labels = sorted(set(human_labels) | set(judge_labels))
+        ordinal = False
+
     agree = sum(1 for h, j in zip(human_labels, judge_labels, strict=True) if h == j)
-    po = agree / n
-    labels = set(human_labels) | set(judge_labels)
-    pe = sum(
-        (list(human_labels).count(lab) / n) * (list(judge_labels).count(lab) / n) for lab in labels
+    matrix = _confusion_counts(human_labels, judge_labels, labels)
+    pairs = list(zip(human_labels, judge_labels, strict=True))
+
+    out["percent_agreement"] = agree / n
+    out["cohens_kappa"] = _kappa_from_matrix(matrix, linear=False)
+    out["labels"] = labels
+    out["confusion_matrix"] = matrix
+    out["cohens_kappa_ci"] = _kappa_ci(
+        pairs, labels, linear=False, n_boot=n_boot, seed=seed, alpha=ci_alpha
     )
-    kappa = (po - pe) / (1 - pe) if (1 - pe) != 0 else 1.0
-    return {"n": n, "percent_agreement": po, "cohens_kappa": kappa}
+    if ordinal:
+        out["weighted_kappa"] = _kappa_from_matrix(matrix, linear=True)
+        out["weighted_kappa_ci"] = _kappa_ci(
+            pairs, labels, linear=True, n_boot=n_boot, seed=seed, alpha=ci_alpha
+        )
+    return out

@@ -202,3 +202,117 @@ def evaluate_generation(
 
     aggregate = aggregate_generation_metrics(per_query)
     return per_query, metrics_rows, aggregate
+
+
+def rejudge_correctness(
+    *,
+    prior_per_query: list[dict],
+    answer_keys: list[dict],
+    questions: list[dict],
+    judge: Judge | None = None,
+    limit: int | None = None,
+    on_progress: Callable[[dict], None] | None = None,
+) -> tuple[list[dict], list[dict], dict]:
+    """Recalcula las métricas reutilizando respuestas y fidelidad de un report previo.
+
+    Pensado para iterar sobre el gold/el prompt del juez **sin regenerar**: solo re-ejecuta el juez
+    de CORRECCIÓN (L5), que es lo único que depende de `reference_answer`. La fidelidad (L3) no mira
+    la referencia → se **reutiliza** el valor guardado en `prior_per_query`; el resto (key-facts,
+    citas, abstención, hechos prohibidos) se recalcula sobre la respuesta guardada y el answer_key
+    actual (funciones puras, sin LLM). No recupera ni genera: no necesita bundle ni encoder.
+
+    `prior_per_query` son las filas de un `per_query.jsonl` previo (deben traer al menos
+    `query_id`, `answered`, `answer_text`, `faithfulness` y `eval_count`). Devuelve la
+    misma tripleta que `evaluate_generation`.
+    """
+    q_by_qid = {q["query_id"]: EvalQuestion.model_validate(q) for q in questions}
+    ak_by_qid = {a["query_id"]: EvalAnswerKey.model_validate(a) for a in answer_keys}
+    selected = prior_per_query if limit is None else prior_per_query[:limit]
+
+    missing = [
+        r.get("query_id") for r in selected
+        if r.get("query_id") not in q_by_qid or r.get("query_id") not in ak_by_qid
+    ]
+    if missing:
+        raise RagLegalBoeError(
+            "el report previo y el dataset no casan; faltan en questions/answer_keys: "
+            + ", ".join(str(m) for m in missing[:10])
+        )
+
+    total = len(selected)
+    notify = on_progress or (lambda _info: None)
+
+    per_query: list[dict] = []
+    metrics_rows: list[dict] = []
+    for idx, pr in enumerate(selected, start=1):
+        qid = pr["query_id"]
+        q = q_by_qid[qid]
+        ak = ak_by_qid[qid]
+        answered = bool(pr.get("answered"))
+        answer_text = pr.get("answer_text", "")
+        cited_parents = pr.get("cited_parents", [])
+        has_gen_metrics = pr.get("eval_count") is not None
+        prior_faith = pr.get("faithfulness")
+        notify({"event": "start", "i": idx, "total": total, "query_id": qid,
+                "failure_mode": q.failure_mode, "query_style": q.query_style})
+
+        correctness_label: str | None = None
+        judge_error: str | None = None
+        if judge is not None and answered and ak.answerable and ak.reference_answer.strip():
+            try:
+                notify({"event": "judging", "phase": "corrección", "i": idx, "total": total,
+                        "query_id": qid})
+                corr_verdict, _ = judge.judge_correctness(
+                    question=q.query, answer=answer_text, reference=ak.reference_answer
+                )
+                correctness_label = corr_verdict.verdict
+            except RagLegalBoeError as exc:
+                judge_error = str(exc)
+                correctness_label = None
+
+        metrics = compute_query_generation_metrics(
+            answered=answered,
+            answer_text=answer_text,
+            has_generation_metrics=has_gen_metrics,
+            cited_parents=cited_parents,
+            answerable=ak.answerable,
+            key_facts=ak.key_facts,
+            forbidden_facts=ak.forbidden_facts,
+            expected_citation_parents=ak.expected_citation_parents,
+            faithfulness_claims=None,  # L3 reutilizada del report previo (no re-juzgada)
+            correctness_label=correctness_label,
+        )
+        if isinstance(prior_faith, int | float):
+            metrics["faithfulness"] = prior_faith
+
+        per_query.append(
+            {
+                "query_id": qid,
+                "split": pr.get("split", q.split),
+                "query_style": pr.get("query_style", q.query_style),
+                "failure_mode": pr.get("failure_mode", q.failure_mode),
+                "difficulty": pr.get("difficulty", q.difficulty),
+                **metrics,
+                "latency_s": pr.get("latency_s"),
+                "eval_count": pr.get("eval_count"),
+                "cited_parents": cited_parents,
+                "delivered_parents": pr.get("delivered_parents", []),
+                "retrieved_parents": pr.get("retrieved_parents", []),
+                "omitted_evidences": pr.get("omitted_evidences", []),
+                "expected_citation_parents": ak.expected_citation_parents,
+                "answer_text": answer_text,
+                "abstention_reason": pr.get("abstention_reason", ""),
+                "judge_error": judge_error,
+                "faithfulness_source": "reused" if isinstance(prior_faith, int | float) else "none",
+                "rejudged": True,
+            }
+        )
+        metrics_rows.append(_scalar_row(q, metrics, latency_s=pr.get("latency_s")))
+        notify({"event": "done", "i": idx, "total": total, "query_id": qid,
+                "answered": answered, "answerable": ak.answerable,
+                "latency_s": pr.get("latency_s"),
+                "abstention_outcome": metrics["abstention_outcome"], "judge_error": judge_error,
+                "failure_mode": q.failure_mode, "query_style": q.query_style})
+
+    aggregate = aggregate_generation_metrics(per_query)
+    return per_query, metrics_rows, aggregate

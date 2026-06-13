@@ -38,6 +38,9 @@ from src.evaluation.dataset import (  # noqa: E402
 from src.evaluation.judge import judge_agreement  # noqa: E402
 
 CORRECTNESS_LABELS = ("correct", "partial", "incorrect")
+# Orden ORDINAL (de menor a mayor) para el κ lineal-ponderado de corrección.
+CORRECTNESS_ORDER = ("incorrect", "partial", "correct")
+FAITHFULNESS_ORDER = ("unfaithful", "faithful")
 
 
 def correctness_label_from_score(score: float | None) -> str | None:
@@ -58,10 +61,12 @@ def is_faithful(faithfulness: float | None, threshold: float = 1.0) -> bool | No
     return faithfulness >= threshold
 
 
-def _agreement(pairs: list[tuple[str, str]]) -> dict:
+def _agreement(
+    pairs: list[tuple[str, str]], *, ordered_labels: tuple[str, ...] | None = None
+) -> dict:
     human = [h for h, _ in pairs]
     judge = [j for _, j in pairs]
-    out = judge_agreement(human, judge)
+    out = judge_agreement(human, judge, ordered_labels=ordered_labels)
     out["disagreements"] = [
         {"human": h, "judge": j} for h, j in pairs if h != j
     ]
@@ -103,8 +108,14 @@ def compute_agreement(
             if hl != jl:
                 faith_disagree.append({"query_id": qid, "human": hl, "judge": jl})
 
-    correctness = {**_agreement(corr_pairs), "disagreements": corr_disagree}
-    faithfulness = {**_agreement(faith_pairs), "disagreements": faith_disagree}
+    correctness = {
+        **_agreement(corr_pairs, ordered_labels=CORRECTNESS_ORDER),
+        "disagreements": corr_disagree,
+    }
+    faithfulness = {
+        **_agreement(faith_pairs, ordered_labels=FAITHFULNESS_ORDER),
+        "disagreements": faith_disagree,
+    }
     return {"correctness": correctness, "faithfulness": faithfulness}
 
 
@@ -137,6 +148,16 @@ def scaffold_rows(
     return rows
 
 
+def _fmt_kappa(value: float | None) -> str:
+    return f"{value:.3f}" if isinstance(value, int | float) else "n/a"
+
+
+def _fmt_ci(ci: dict | None) -> str:
+    if not ci:
+        return ""
+    return f" IC{int(ci['level'] * 100)}%=[{ci['lo']:.2f}, {ci['hi']:.2f}]"
+
+
 def _print_dim(name: str, dim: dict) -> None:
     n = dim.get("n", 0)
     if not n:
@@ -144,12 +165,28 @@ def _print_dim(name: str, dim: dict) -> None:
         return
     pa = dim.get("percent_agreement")
     k = dim.get("cohens_kappa")
-    print(f"  {name}: n={n} · acuerdo={pa:.0%} · Cohen's κ={k:.2f}")
+    wk = dim.get("weighted_kappa")
+    print(f"  {name}: n={n} · acuerdo={pa:.0%}")
+    print(f"      κ nominal={_fmt_kappa(k)}{_fmt_ci(dim.get('cohens_kappa_ci'))}")
+    if wk is not None:
+        print(f"      κ lineal-ponderado={_fmt_kappa(wk)}{_fmt_ci(dim.get('weighted_kappa_ci'))}")
+    labels = dim.get("labels")
+    matrix = dim.get("confusion_matrix")
+    if labels and matrix:
+        width = max(len(lab) for lab in labels)
+        print(f"      confusión (filas=humano, columnas=juez) · orden [{', '.join(labels)}]:")
+        for i, row in enumerate(matrix):
+            print(f"        {labels[i]:>{width}} | {row}")
     for d in dim.get("disagreements", []):
         print(f"      ✗ {d['query_id']}: humano={d['human']} vs juez={d['judge']}")
 
 
 def main() -> int:
+    # Consolas no-UTF8 (Windows cp1252) no pueden imprimir κ/✗/⚠; forzamos UTF-8 si se puede.
+    try:
+        sys.stdout.reconfigure(encoding="utf-8")
+    except (AttributeError, ValueError):
+        pass
     parser = argparse.ArgumentParser(description="Validación del LLM-juez (acuerdo + Cohen's κ).")
     parser.add_argument("--report", required=True, help="directorio del report con juez.")
     parser.add_argument("--dataset-dir", default=str(DATASET_DIR))
@@ -218,14 +255,23 @@ def main() -> int:
         "n": corr.get("n", 0),
         "percent_agreement": corr.get("percent_agreement"),
         "cohens_kappa": corr.get("cohens_kappa"),
+        "weighted_kappa": corr.get("weighted_kappa"),
+        "cohens_kappa_ci": corr.get("cohens_kappa_ci"),
+        "weighted_kappa_ci": corr.get("weighted_kappa_ci"),
+        "confusion_matrix": corr.get("confusion_matrix"),
+        "labels": corr.get("labels"),
         "primary_dimension": "correctness",
+        "primary_kappa": "weighted_kappa",
         "by_dimension": result,
     }
     (report_dir / "judge_agreement.json").write_text(
         json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
     print(f"\nEscrito {report_dir / 'judge_agreement.json'} (lo lee el notebook 06 §4).")
-    k = corr.get("cohens_kappa")
+    # En escala ordinal el κ de referencia es el ponderado; cae al nominal si no aplica.
+    k = corr.get("weighted_kappa")
+    if k is None:
+        k = corr.get("cohens_kappa")
     if k is not None and k < 0.6:
         print("⚠ κ < 0.6 en corrección: trata L3/L5 como PROVISIONALES o cambia de modelo juez.")
     return 0
