@@ -27,9 +27,12 @@ from lxml import etree
 
 from src.boe.parser import (
     EXCLUDED_TYPES,
+    classify_version_paragraphs,
     clean_text,
     heading_has_retrievable_body,
+    is_suspicious_blockquote_class,
     load_xml,
+    normalize_date,
     resolve_current_version,
     validate_response,
 )
@@ -143,6 +146,18 @@ SINGULAR_LABEL_CLASSES = {"libro", "titulo", "capitulo", "anexo"}
 ISO_DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 ISO_DATETIME = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$")
 XML_TAG = re.compile(r"<[a-zA-Z/]")
+# Fórmulas editoriales del BOE que NUNCA deben quedar en el texto normativo indexado (gate
+# anti-regresión del aparato editorial: avisos «Téngase…» y el marcador «Redacción anterior:»).
+# Se exige el ':' tras «anterior(es)» para no confundir con la prosa de disposiciones transitorias.
+# Es la red SECUNDARIA (por frases) frente a la invariante estructural de dos caras
+# (`verify_editorial_invariant`): la invariante cubre el aparato envuelto en <blockquote>; este
+# regex cubre el borde irreducible heurístico de las notas sueltas FUERA de blockquote.
+EDITORIAL_LEAK_RE = re.compile(
+    r"t[eé]ngase en cuenta|redacci[oó]n(es)?\s+anterior(es)?\s*:", re.IGNORECASE
+)
+# Umbral de anomalía: fracción de `<p>` de la versión vigente descartados como aparato editorial.
+# Por encima, el bloque es mayoritariamente cita editorial → aflora para inspección humana.
+EDITORIAL_DROP_FRACTION_WARN = 0.5
 CHUNK_ID = re.compile(r"^BOE-[A-Z]-\d{4}-\d+__.+__c\d{3}$")
 # `..` artificial: exactamente dos puntos, no parte de una elipsis legal `...`.
 _ARTIFICIAL_DOUBLE_DOT = re.compile(r"(?<!\.)\.\.(?!\.)")
@@ -722,6 +737,19 @@ def _check_blocks(doc: dict, did: str, processing_date: str) -> list[dict]:
                         evidence=nt[:80],
                     )
                 )
+        leak = EDITORIAL_LEAK_RE.search(lv.get("text") or "")
+        if leak:
+            out.append(
+                finding(
+                    "block.editorial_leak",
+                    "ERROR",
+                    "Revisar antes de embeddings",
+                    did,
+                    bid,
+                    "fórmula editorial (Téngase/Redacción anterior:) en el texto normativo",
+                    evidence=leak.group(0),
+                )
+            )
     return out
 
 
@@ -953,6 +981,19 @@ def check_chunks(chunks_doc: dict, joined_doc: dict) -> list[dict]:
                         "nota de modificación dentro del texto del chunk",
                     )
                 )
+        if EDITORIAL_LEAK_RE.search(ch.get("text", "") or "") or EDITORIAL_LEAK_RE.search(
+            ch.get("retrieval_text", "") or ""
+        ):
+            out.append(
+                finding(
+                    "chunk.editorial_leak",
+                    "ERROR",
+                    "Revisar antes de embeddings",
+                    did,
+                    cid,
+                    "fórmula editorial dentro del texto del chunk",
+                )
+            )
         out.extend(check_retrieval_text(ch, b))
         by_parent.setdefault(bid, []).append(ch)
 
@@ -1474,6 +1515,260 @@ def temporal_integrity(
 
 
 # --------------------------------------------------------------------------- #
+# Aparato editorial — invariante estructural de dos caras + observabilidad del drop
+# --------------------------------------------------------------------------- #
+
+
+def verify_editorial_invariant(
+    version_el: etree._Element,
+    persisted_paragraphs: list[dict],
+    did: str | None,
+    bid: str | None,
+) -> tuple[list[dict], dict]:
+    """Reaplica la regla canónica al raw vigente y la contrasta con el cuerpo persistido.
+
+    Núcleo PURO de la invariante estructural (sin disco). Reclasifica los `<p>` de la `<version>`
+    vigente raw con `classify_version_paragraphs` (la MISMA regla usada al persistir, recomputada
+    aparte — igual que `temporal_integrity` recomputa `resolve_current_version`) y compara el cuerpo
+    esperado contra el persistido por **pertenencia/orden** (igualdad de lista de textos), nunca por
+    containment de texto: el casi-duplicado redacción-derogada≈vigente daría falso positivo, como ya
+    ocurrió con los 89 FP de `note_leak`.
+
+    Doble cara: un `<p>` de más en `paragraphs` (fuga editorial) rompe la igualdad; uno de menos
+    (sobre-borrado de texto vigente) también. Devuelve `(findings, drop_record)`:
+    - `block.editorial_invariant` (ERROR) si difieren, con el primer `<p>` que diverge.
+    - `block.editorial_drop_structural` (WARN) si se descartó clase estructural/tabla/artículo.
+    - `block.editorial_drop_fraction` (WARN) si se descartó > `EDITORIAL_DROP_FRACTION_WARN`.
+    """
+    from collections import Counter
+
+    kept, notes, dropped = classify_version_paragraphs(version_el)
+    expected = [p["text"] for p in kept]
+    actual = [p.get("text") for p in persisted_paragraphs]
+    findings: list[dict] = []
+
+    if expected != actual:
+        i = next(
+            (
+                k
+                for k in range(max(len(expected), len(actual)))
+                if _at(expected, k) != _at(actual, k)
+            ),
+            0,
+        )
+        kind = "fuga" if len(actual) > len(expected) else "sobre-borrado"
+        findings.append(
+            finding(
+                "block.editorial_invariant",
+                "ERROR",
+                "Revisar antes de embeddings",
+                did,
+                bid,
+                f"cuerpo persistido != recomputado del raw ({kind}); "
+                f"primer <p> que difiere en posición {i}",
+                evidence=f"esperado={_at(expected, i)!r} | persistido={_at(actual, i)!r}",
+            )
+        )
+
+    dropped_classes = Counter(d["class"] for d in dropped)
+    suspicious = {c for c in dropped_classes if is_suspicious_blockquote_class(c)}
+    n_total = len(kept) + len(notes) + len(dropped)
+    fraction = len(dropped) / n_total if n_total else 0.0
+    sample = dropped[0]["text"][:80] if dropped else None
+
+    if suspicious:
+        findings.append(
+            finding(
+                "block.editorial_drop_structural",
+                "WARN",
+                "Revisar antes de embeddings",
+                did,
+                bid,
+                f"se descartó clase estructural/tabla en <blockquote>: {sorted(suspicious)} "
+                "(posible estructura vigente mal envuelta)",
+                evidence=sample,
+            )
+        )
+    if fraction > EDITORIAL_DROP_FRACTION_WARN:
+        findings.append(
+            finding(
+                "block.editorial_drop_fraction",
+                "WARN",
+                "Revisar antes de embeddings",
+                did,
+                bid,
+                f"se descartó {fraction:.0%} de los <p> de la versión vigente como editorial "
+                f"({len(dropped)}/{n_total})",
+                evidence=sample,
+            )
+        )
+
+    drop_record = {
+        "document_id": did,
+        "block_id": bid,
+        "n_kept": len(kept),
+        "n_notes": len(notes),
+        "n_dropped_blockquote": len(dropped),
+        "dropped_fraction": round(fraction, 3),
+        "dropped_classes": dict(dropped_classes),
+        "sample": sample,
+        "anomaly": sorted(
+            (["structural_class"] if suspicious else [])
+            + (["high_fraction"] if fraction > EDITORIAL_DROP_FRACTION_WARN else [])
+        ),
+    }
+    return findings, drop_record
+
+
+def _at(seq: list, i: int):
+    """Elemento `i` de la lista o `None` si fuera de rango (para diffs de longitud distinta)."""
+    return seq[i] if 0 <= i < len(seq) else None
+
+
+def _vigente_version_el(bloque: etree._Element, index_date, lv: dict) -> etree._Element | None:
+    """Devuelve la `<version>` raw que ambos lados reconocen como vigente, o None.
+
+    Recomputa `resolve_current_version` desde el raw (igual que `temporal_integrity`) y exige que
+    coincida con la versión persistida (`source_norm_id` + `publication_date`). None si hay
+    cuarentena o disputa de versión — lo cubre `temporal_integrity`, no estas comprobaciones.
+    """
+    version_elements = bloque.findall("version")
+    raw_versions = [
+        {
+            "publication_date": normalize_date(v.get("fecha_publicacion")),
+            "source_norm_id": v.get("id_norma"),
+        }
+        for v in version_elements
+    ]
+    res = resolve_current_version(raw_versions, index_date)
+    sel = res["selected_version_index"]
+    if res["status"] != "resolved" or sel is None:
+        return None
+    if res["selected_source_norm_id"] != lv.get("source_norm_id") or res[
+        "selected_publication_date"
+    ] != lv.get("publication_date"):
+        return None
+    return version_elements[sel]
+
+
+def check_editorial_drop(
+    joined_doc: dict, raw_dir: Path, did: str
+) -> tuple[list[dict], list[dict]]:
+    """Invariante estructural + observabilidad del drop editorial sobre una norma (lee `texto.xml`).
+
+    Para CADA bloque con versión vigente RESUELTA, localiza la `<version>` vigente en el raw
+    (recomputando `resolve_current_version` de forma independiente) y delega en
+    `verify_editorial_invariant`. Los bloques en cuarentena (sin `latest_version`) y los de versión
+    en disputa (lo cubre `temporal_integrity`) se omiten para no doblar hallazgos. Devuelve
+    `(findings, drop_records)`; solo se reportan `drop_records` de bloques con algún descarte.
+    """
+    texto_path = Path(raw_dir) / did / "texto.xml"
+    if not texto_path.is_file():
+        return [], []
+    data = validate_response(load_xml(texto_path), texto_path)
+    texto = data.find("texto")
+    if texto is None:
+        return [], []
+    bloque_by_id = {b.get("id"): b for b in texto.findall("bloque")}
+
+    findings: list[dict] = []
+    drop_records: list[dict] = []
+    for b in joined_doc.get("blocks", []):
+        lv = b.get("latest_version")
+        if not lv:  # cuarentena: el parser no produjo cuerpo, nada que verificar aquí.
+            continue
+        bid = b.get("block_id")
+        bloque = bloque_by_id.get(bid)
+        if bloque is None:
+            findings.append(
+                finding(
+                    "block.editorial_invariant",
+                    "ERROR",
+                    "Revisar antes de embeddings",
+                    did,
+                    bid,
+                    "bloque con versión vigente pero ausente en texto.xml raw",
+                )
+            )
+            continue
+        version_el = _vigente_version_el(bloque, b.get("index_last_update_date"), lv)
+        if version_el is None:
+            continue  # cuarentena/disputa de versión: lo cubre temporal_integrity.
+        block_findings, drop_record = verify_editorial_invariant(
+            version_el, lv.get("paragraphs", []), did, bid
+        )
+        findings.extend(block_findings)
+        if drop_record["n_dropped_blockquote"]:
+            drop_records.append(drop_record)
+    return findings, drop_records
+
+
+def _missing_raw_cells(version_el: etree._Element, body: str) -> list[str]:
+    """Celdas `<td>`/`<th>` de tabla forma B, vigentes (fuera de blockquote), ausentes del cuerpo.
+
+    Recorre las celdas con texto CRUDO (sin `<p>` dentro = forma B; la forma A vive en `<p>`, ya
+    en el cuerpo) fuera de `<blockquote>` y devuelve las distintivas (con letra, longitud ≥ 4) cuyo
+    texto no aparece en `body`. La longitud/letra evita falsos positivos de celdas numéricas o
+    vacías que colisionan por azar; una tabla entera omitida deja fuera sus celdas-concepto.
+    """
+    missing: list[str] = []
+    for cell in (*version_el.iter("td"), *version_el.iter("th")):
+        if next(cell.iterancestors("blockquote"), None) is not None:
+            continue  # editorial (derogada): NO debe estar en el cuerpo
+        if cell.find(".//p") is not None:
+            continue  # forma A: el texto vive en <p>, ya capturado en el cuerpo
+        text = clean_text("".join(cell.itertext()))
+        if len(text) >= 4 and any(ch.isalpha() for ch in text) and text not in body:
+            missing.append(text)
+    return missing
+
+
+def check_table_coverage(joined_doc: dict, raw_dir: Path, did: str) -> list[dict]:
+    """Cierra el punto ciego `<p>`-céntrico: tablas forma B vigentes ausentes del cuerpo persistido.
+
+    La invariante editorial compara listas de `<p>` y NO ve las tablas con texto crudo en `<td>`
+    (forma B). Aquí, re-leyendo el raw, se marca ERROR si una celda distintiva de tabla forma B,
+    FUERA de blockquote y en la versión vigente, no aparece en el cuerpo del bloque (ley vigente
+    perdida en silencio). Omite cuarentenas/disputas (las cubre `temporal_integrity`).
+    """
+    texto_path = Path(raw_dir) / did / "texto.xml"
+    if not texto_path.is_file():
+        return []
+    data = validate_response(load_xml(texto_path), texto_path)
+    texto = data.find("texto")
+    if texto is None:
+        return []
+    bloque_by_id = {b.get("id"): b for b in texto.findall("bloque")}
+
+    findings: list[dict] = []
+    for b in joined_doc.get("blocks", []):
+        lv = b.get("latest_version")
+        if not lv:
+            continue
+        bloque = bloque_by_id.get(b.get("block_id"))
+        if bloque is None:
+            continue
+        version_el = _vigente_version_el(bloque, b.get("index_last_update_date"), lv)
+        if version_el is None:
+            continue
+        missing = _missing_raw_cells(version_el, lv.get("text") or "")
+        if missing:
+            findings.append(
+                finding(
+                    "block.table_cell_dropped",
+                    "ERROR",
+                    "Revisar antes de embeddings",
+                    did,
+                    b.get("block_id"),
+                    f"{len(missing)} celda(s) de tabla forma B vigente ausentes del cuerpo "
+                    "(texto <td> crudo no capturado)",
+                    evidence=" | ".join(missing[:3])[:160],
+                )
+            )
+    return findings
+
+
+# --------------------------------------------------------------------------- #
 # Integridad raw (manifests)
 # --------------------------------------------------------------------------- #
 
@@ -1542,9 +1837,16 @@ def compute_readiness(
 ) -> dict:
     """`pre_embedding_readiness`: bloqueantes (corregir ahora) vs diferidos (a indexación)."""
     errors = [f for f in findings if f["severity"] == "ERROR"]
-    note_leaks = [f for f in errors if f["check"] in ("block.note_leak", "chunk.note_leak")]
+    note_leaks = [
+        f
+        for f in errors
+        if f["check"]
+        in ("block.note_leak", "chunk.note_leak", "block.editorial_leak", "chunk.editorial_leak")
+    ]
     heading_body_out = [f for f in errors if f["check"] == "block.heading_body_not_indexed"]
     rt_double = [f for f in findings if f["check"] == "rt.double_period"]
+    invariant = [f for f in errors if f["check"] == "block.editorial_invariant"]
+    table_drop = [f for f in errors if f["check"] == "block.table_cell_dropped"]
 
     blocking: list[str] = []
     if errors:
@@ -1559,6 +1861,10 @@ def compute_readiness(
         blocking.append("substantive_heading_not_indexed")
     if note_leaks:
         blocking.append("note_leak")
+    if invariant:
+        blocking.append("editorial_invariant")
+    if table_drop:
+        blocking.append("table_cell_dropped")
     if duplicate_catalog:
         blocking.append("duplicate_corpus_catalog")
 

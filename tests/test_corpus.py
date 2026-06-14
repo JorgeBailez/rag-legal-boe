@@ -127,7 +127,10 @@ def test_load_seed_corpus(tmp_path: Path) -> None:
     assert norms[0]["norm_id"] == NORM_ID
 
 
-def test_real_seed_corpus_has_ten_norms() -> None:
+def test_real_seed_corpus_is_well_formed() -> None:
     norms = load_seed_corpus()
-    assert len(norms) == 10
-    assert all(n["norm_id"].startswith("BOE-A-") for n in norms)
+    assert len(norms) >= 20  # base (10) + Ola 1 (10); el corpus crece por olas
+    ids = [n["norm_id"] for n in norms]
+    assert len(set(ids)) == len(ids)  # sin ids duplicados
+    assert all(i.startswith("BOE-A-") for i in ids)
+    assert all(n.get("label") and n.get("expected_rank") for n in norms)

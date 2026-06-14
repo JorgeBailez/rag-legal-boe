@@ -126,17 +126,26 @@ def main(strict: bool = False) -> int:
     all_findings: list[dict] = []
     per_norm: dict[str, dict] = {}
     oversized_all: list[dict] = []
+    editorial_drops: list[dict] = []
 
     for nid, doc in docs.items():
         cd = chunks.get(nid, {})
         pj = parents.get(nid, {"parents": []})
         max_chars = cd.get("chunking_strategy", {}).get("max_chars", 1800)
+        # Invariante estructural de dos caras + observabilidad del aparato editorial descartado:
+        # re-lee el raw y verifica, por pertenencia/orden, que el parser ni fuga ni sobre-borra.
+        ed_findings, ed_drops = ca.check_editorial_drop(doc, RAW_DIR, nid)
+        editorial_drops.extend(ed_drops)
+        # Cobertura de tablas forma B (texto <td> crudo): cierra el punto ciego <p>-céntrico.
+        table_findings = ca.check_table_coverage(doc, RAW_DIR, nid)
         findings = (
             ca.check_document(documents[nid], histories.get(nid), parents.get(nid))
             + ca.check_history(documents[nid], histories.get(nid, {"blocks": []}))
             + ca.check_parents(documents[nid], pj)
             + ca.check_chunks(cd, doc)
             + ca.check_relational(documents[nid], histories.get(nid, {"blocks": []}), pj, cd)
+            + ed_findings
+            + table_findings
         )
         all_findings.extend(findings)
         overlap = ca.analyze_overlap(cd, doc)
@@ -207,6 +216,7 @@ def main(strict: bool = False) -> int:
 
     temporal = ca.temporal_integrity(docs, chunks)
     raw = ca.raw_integrity(list(docs.keys()), MANIFEST_DIR)
+    editorial_drop = _editorial_drop_summary(editorial_drops)
     readiness = _readiness(all_findings, editorial_indexable, hier, temporal, raw)
 
     report = {
@@ -229,6 +239,7 @@ def main(strict: bool = False) -> int:
         "representative_examples": examples,
         "raw_integrity": raw,
         "temporal_integrity": temporal,
+        "editorial_drop": editorial_drop,
         "pre_embedding_readiness": readiness,
         "findings": all_findings,
     }
@@ -285,6 +296,27 @@ def _count_by(rows: list[dict], key: str) -> dict:
     return dict(c)
 
 
+def _editorial_drop_summary(drops: list[dict]) -> dict:
+    """Consolida la observabilidad del aparato editorial descartado en una sección del report.
+
+    Agrega los registros por bloque (solo los que descartan algo) en conteos por clase y separa las
+    anomalías (clase estructural/tabla descartada o fracción alta) para inspección humana: una norma
+    nueva con un patrón inesperado GRITA en vez de corromper el corpus en silencio.
+    """
+    from collections import Counter
+
+    classes: Counter = Counter()
+    for r in drops:
+        classes.update(r["dropped_classes"])
+    return {
+        "blocks_with_drop": len(drops),
+        "total_dropped_paragraphs": sum(r["n_dropped_blockquote"] for r in drops),
+        "dropped_classes": dict(classes),
+        "anomalies": [r for r in drops if r["anomaly"]],
+        "records": drops,
+    }
+
+
 def _write_csv(rows: list[dict], path: Path) -> None:
     cols = [
         "document_id",
@@ -336,6 +368,11 @@ def _print_summary(report: dict) -> None:
         f"mismatches={len(temp['mismatches'])}, cuarentena_irresoluble={quarantine}, "
         f"chunks_no_vigentes={len(temp['chunks_built_from_non_current_version'])}, "
         f"vigencia_futura={len(temp['future_effective_selected_versions'])})"
+    )
+    ed = report["editorial_drop"]
+    print(
+        f"\neditorial_drop: bloques_con_descarte={ed['blocks_with_drop']}, "
+        f"<p>_descartados={ed['total_dropped_paragraphs']}, anomalías={len(ed['anomalies'])}"
     )
     r = report["pre_embedding_readiness"]
     print(f"\npre_embedding_readiness.ready: {r['ready']}")
