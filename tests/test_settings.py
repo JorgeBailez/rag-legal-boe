@@ -113,8 +113,11 @@ def test_malformed_urls_rejected_even_with_optin(url: str) -> None:
 # -- Juez de evaluación (JUDGE_*) ------------------------------------------------
 
 
-def test_judge_defaults_are_valid() -> None:
-    s = Settings()
+def test_judge_defaults_are_valid(monkeypatch) -> None:
+    # Aísla el entorno: el servidor de evaluación exporta JUDGE_MODEL (gemma3:12b) y/o tiene .env.
+    # Aquí se comprueba el DEFAULT del CÓDIGO (sin config ambiental), no la config de la máquina.
+    monkeypatch.delenv("JUDGE_MODEL", raising=False)
+    s = Settings(_env_file=None)
     assert s.judge_base_url.startswith("http://127.0.0.1")
     assert s.judge_model == ""  # sin default global: se indica por entorno/CLI
     assert s.judge_num_ctx > 0

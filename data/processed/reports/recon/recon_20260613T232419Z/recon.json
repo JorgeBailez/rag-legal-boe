@@ -1,0 +1,199 @@
+{
+  "aggregate": {
+    "n_norms": 10,
+    "norms_with_error": [],
+    "total_invalid_dates": 0,
+    "norms_with_invalid_dates": [],
+    "unknown_structural_classes": {},
+    "classes_by_kind_total": {
+      "estructural": 720,
+      "cuerpo": 20868,
+      "nota": 4378,
+      "otra": 4116,
+      "vacia": 37,
+      "tabla": 615
+    }
+  },
+  "per_norm": [
+    {
+      "norm_id": "BOE-A-1994-26003",
+      "n_blocks": 0,
+      "block_types": {},
+      "classes_by_kind": {
+        "estructural": 29,
+        "cuerpo": 912,
+        "nota": 217,
+        "otra": 73,
+        "vacia": 2,
+        "tabla": 54
+      },
+      "unknown_structural_candidates": [],
+      "max_versions_per_block": 0,
+      "multiversion_blocks": 0,
+      "index_blocks": 76,
+      "invalid_date_count": 0,
+      "invalid_date_samples": []
+    },
+    {
+      "norm_id": "BOE-A-1960-10906",
+      "n_blocks": 0,
+      "block_types": {},
+      "classes_by_kind": {
+        "otra": 95,
+        "cuerpo": 849,
+        "estructural": 9,
+        "nota": 254,
+        "vacia": 3
+      },
+      "unknown_structural_candidates": [],
+      "max_versions_per_block": 0,
+      "multiversion_blocks": 0,
+      "index_blocks": 35,
+      "invalid_date_count": 0,
+      "invalid_date_samples": []
+    },
+    {
+      "norm_id": "BOE-A-2007-20555",
+      "n_blocks": 0,
+      "block_types": {},
+      "classes_by_kind": {
+        "otra": 562,
+        "vacia": 4,
+        "estructural": 177,
+        "cuerpo": 2905,
+        "nota": 509
+      },
+      "unknown_structural_candidates": [],
+      "max_versions_per_block": 0,
+      "multiversion_blocks": 0,
+      "index_blocks": 284,
+      "invalid_date_count": 0,
+      "invalid_date_samples": []
+    },
+    {
+      "norm_id": "BOE-A-2015-11722",
+      "n_blocks": 0,
+      "block_types": {},
+      "classes_by_kind": {
+        "cuerpo": 1647,
+        "otra": 309,
+        "nota": 80,
+        "estructural": 102,
+        "tabla": 266,
+        "vacia": 1
+      },
+      "unknown_structural_candidates": [],
+      "max_versions_per_block": 0,
+      "multiversion_blocks": 0,
+      "index_blocks": 196,
+      "invalid_date_count": 0,
+      "invalid_date_samples": []
+    },
+    {
+      "norm_id": "BOE-A-1986-10499",
+      "n_blocks": 0,
+      "block_types": {},
+      "classes_by_kind": {
+        "estructural": 76,
+        "cuerpo": 977,
+        "nota": 75,
+        "otra": 62
+      },
+      "unknown_structural_candidates": [],
+      "max_versions_per_block": 0,
+      "multiversion_blocks": 0,
+      "index_blocks": 196,
+      "invalid_date_count": 0,
+      "invalid_date_samples": []
+    },
+    {
+      "norm_id": "BOE-A-2000-544",
+      "n_blocks": 0,
+      "block_types": {},
+      "classes_by_kind": {
+        "otra": 101,
+        "estructural": 57,
+        "cuerpo": 1847,
+        "nota": 733,
+        "vacia": 6
+      },
+      "unknown_structural_candidates": [],
+      "max_versions_per_block": 0,
+      "multiversion_blocks": 0,
+      "index_blocks": 142,
+      "invalid_date_count": 0,
+      "invalid_date_samples": []
+    },
+    {
+      "norm_id": "BOE-A-1997-25336",
+      "n_blocks": 0,
+      "block_types": {},
+      "classes_by_kind": {
+        "estructural": 27,
+        "cuerpo": 613,
+        "otra": 125,
+        "nota": 45
+      },
+      "unknown_structural_candidates": [],
+      "max_versions_per_block": 0,
+      "multiversion_blocks": 0,
+      "index_blocks": 47,
+      "invalid_date_count": 0,
+      "invalid_date_samples": []
+    },
+    {
+      "norm_id": "BOE-A-2015-7391",
+      "n_blocks": 0,
+      "block_types": {},
+      "classes_by_kind": {
+        "otra": 1475,
+        "cuerpo": 1276,
+        "nota": 82,
+        "estructural": 133,
+        "vacia": 16
+      },
+      "unknown_structural_candidates": [],
+      "max_versions_per_block": 0,
+      "multiversion_blocks": 0,
+      "index_blocks": 251,
+      "invalid_date_count": 0,
+      "invalid_date_samples": []
+    },
+    {
+      "norm_id": "BOE-A-2015-11430",
+      "n_blocks": 0,
+      "block_types": {},
+      "classes_by_kind": {
+        "otra": 425,
+        "cuerpo": 3358,
+        "estructural": 47,
+        "nota": 398
+      },
+      "unknown_structural_candidates": [],
+      "max_versions_per_block": 0,
+      "multiversion_blocks": 0,
+      "index_blocks": 178,
+      "invalid_date_count": 0,
+      "invalid_date_samples": []
+    },
+    {
+      "norm_id": "BOE-A-1992-28741",
+      "n_blocks": 0,
+      "block_types": {},
+      "classes_by_kind": {
+        "otra": 889,
+        "vacia": 5,
+        "estructural": 63,
+        "cuerpo": 6484,
+        "nota": 1985,
+        "tabla": 295
+      },
+      "unknown_structural_candidates": [],
+      "max_versions_per_block": 0,
+      "multiversion_blocks": 0,
+      "index_blocks": 158,
+      "invalid_date_count": 0,
+      "invalid_date_samples": []
+    }
+  ]
+}
