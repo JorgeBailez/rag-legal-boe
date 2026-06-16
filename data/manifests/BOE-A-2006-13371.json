@@ -2,18 +2,18 @@
   "norm_id": "BOE-A-2006-13371",
   "source": "BOE legislación consolidada",
   "base_url": "https://www.boe.es/datosabiertos/api",
-  "downloaded_at": "2026-06-04T22:24:14.337873+00:00",
+  "downloaded_at": "2026-06-09T23:08:18.628930+00:00",
   "files": [
     {
       "endpoint_name": "full",
       "path": "data/raw/boe/BOE-A-2006-13371/full.xml",
-      "sha256": "aeb8e16ede72a6e7332b4765af009cd4fe734f14f437c7e2630cb0583a62a9ee",
+      "sha256": "968bbfa79a626ef3dc1e8d469adab84c81ffd2c5bbb5db39ddbde7a4e1a78aad",
       "size_bytes": 319166
     },
     {
       "endpoint_name": "metadatos",
       "path": "data/raw/boe/BOE-A-2006-13371/metadatos.xml",
-      "sha256": "bb6968a6d43ff5a1c2edaf8a00d17a5b7cd67ef4ff02648fae9e05b7e69e48f4",
+      "sha256": "4ba4d9a3fd33f6eae280428d58b5d5cdd4bbd99b4b1cdf3ec9d5f4e85657e482",
       "size_bytes": 1318
     },
     {

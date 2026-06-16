@@ -2,18 +2,18 @@
   "norm_id": "BOE-A-2003-20977",
   "source": "BOE legislación consolidada",
   "base_url": "https://www.boe.es/datosabiertos/api",
-  "downloaded_at": "2026-06-04T22:24:13.960662+00:00",
+  "downloaded_at": "2026-06-09T23:08:18.136059+00:00",
   "files": [
     {
       "endpoint_name": "full",
       "path": "data/raw/boe/BOE-A-2003-20977/full.xml",
-      "sha256": "65f1ca76f4145f58067728780e20503dafa78b55dadbdb1c3a6783fc00fc1336",
+      "sha256": "49aa9e8eaa24be7298d04f16b3233564343788fb83ed44858da1ebc9270507ed",
       "size_bytes": 711265
     },
     {
       "endpoint_name": "metadatos",
       "path": "data/raw/boe/BOE-A-2003-20977/metadatos.xml",
-      "sha256": "4ddea0090ea635c983b7a6b4b7c690fe6a49177818e916399aa1163442107528",
+      "sha256": "47f051e70be9cfa426ab76e410ce940d69002ecb2ed5b22f1da942b10bc306d4",
       "size_bytes": 1210
     },
     {

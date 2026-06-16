@@ -2,18 +2,18 @@
   "norm_id": "BOE-A-2004-4214",
   "source": "BOE legislación consolidada",
   "base_url": "https://www.boe.es/datosabiertos/api",
-  "downloaded_at": "2026-06-04T22:24:12.752076+00:00",
+  "downloaded_at": "2026-06-09T23:08:16.373409+00:00",
   "files": [
     {
       "endpoint_name": "full",
       "path": "data/raw/boe/BOE-A-2004-4214/full.xml",
-      "sha256": "30bf85a1cf69ee4b4b5751b6d5092c8fbf85649cf4dc0117415e72e1b5b3a27d",
-      "size_bytes": 1577593
+      "sha256": "7cb798ad5fe7b1461a44f3777ec46526305383f5220a65f4bdc7960e0e8b517c",
+      "size_bytes": 1579942
     },
     {
       "endpoint_name": "metadatos",
       "path": "data/raw/boe/BOE-A-2004-4214/metadatos.xml",
-      "sha256": "d4eb3606f01f0f5ef37dce238f40216522166809f81f1cfd3cffa70b9bc049fe",
+      "sha256": "3e7cbb0627e202b4f265d767fd21bcb82246f58df6a05acceaaa83dedfdebfd5",
       "size_bytes": 1310
     },
     {
@@ -25,14 +25,14 @@
     {
       "endpoint_name": "metadata_eli",
       "path": "data/raw/boe/BOE-A-2004-4214/metadata_eli.xml",
-      "sha256": "280ba9bf57a9ad796bbf390b735f5be70827780471d1578b15b426ea5ae5766f",
-      "size_bytes": 304788
+      "sha256": "7b1128b9793d1b12a69e1293d672331171f89990c2b401beeb903efa7f08aed2",
+      "size_bytes": 307132
     },
     {
       "endpoint_name": "texto",
       "path": "data/raw/boe/BOE-A-2004-4214/texto.xml",
-      "sha256": "22ba902fcba3c1cfd05f792de1094afff59786493c393acdfaa97f22ab80daba",
-      "size_bytes": 1243678
+      "sha256": "0f332b0b77709dc1ed10fecc7684b8f993ced038f3ba356033b0f570af766382",
+      "size_bytes": 1243683
     },
     {
       "endpoint_name": "indice",

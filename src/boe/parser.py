@@ -17,6 +17,7 @@ from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
 
+from loguru import logger
 from lxml import etree
 
 from src.contracts.models import DocumentV2, HistoryV2, ParentsV2
@@ -40,6 +41,10 @@ MANDATORY_RAW_FILES = ("metadatos.xml", "indice.xml", "texto.xml")
 
 # Clases de párrafo que son notas editoriales (no texto normativo).
 NOTE_CLASSES = {"nota_pie", "nota_pie_2"}
+
+# Aviso editorial del BOE («Téngase en cuenta que…») que a veces aparece como párrafo de cuerpo
+# FUERA de <blockquote>; red de seguridad por texto (lo demás va en blockquote).
+_EDITORIAL_NOTE_PREFIX = "téngase en cuenta"
 
 # Tipos que NUNCA son indexables aunque tengan cuerpo (cierre / nota editorial inicial).
 EXCLUDED_TYPES = {"firma", "nota_inicial"}
@@ -378,20 +383,117 @@ def parse_index(data: etree._Element) -> list[dict]:
 # --------------------------------------------------------------------------- #
 
 
-def _parse_version_paragraphs(version: etree._Element) -> tuple[list[dict], list[dict]]:
-    """Separa los `<p>` de una versión en párrafos normativos y notas de modificación."""
-    paragraphs: list[dict] = []
-    notes: list[dict] = []
-    for p in version.iter("p"):
-        css = p.get("class") or ""
-        text = _element_text(p)
-        if not text:
+def is_suspicious_blockquote_class(css: str) -> bool:
+    """True si una clase, descartada por estar DENTRO de `<blockquote>`, podría ser texto vigente.
+
+    Estructura, tabla o artículo citados en un blockquote son aparato editorial legítimo (un modelo
+    o redacción reproducidos), pero también podrían ser estructura/tabla VIGENTE mal envuelta: su
+    descarte debe **aflorar** (warning en el parser, anomalía en la auditoría), no en silencio.
+    """
+    return css == "articulo" or css in STRUCTURAL_LABEL_CLASSES or is_table_class(css)
+
+
+def _linearize_table_rows(table: etree._Element) -> list[tuple[str, str]]:
+    """Linealiza una tabla POR FILA (forma A o B): une las celdas no vacías de cada `<tr>`.
+
+    Por fila (no celda-a-celda suelta) para que el cuerpo quede legible para retrieval («concepto:
+    valor», p. ej. `Inferior a 1 año. | 0,14`). Devuelve `(clase, texto)` por fila con contenido;
+    clase `cabeza_tabla` si la fila trae `<th>` (cabecera de columnas), `cuerpo_tabla_fila` si no
+    (ambas reconocibles por `is_table_class`).
+    """
+    rows: list[tuple[str, str]] = []
+    for tr in table.iter("tr"):
+        cells = [c for c in tr if c.tag in ("td", "th")]
+        texts = [t for t in (_element_text(c) for c in cells) if t]
+        if not texts:
             continue
-        if css in NOTE_CLASSES:
-            notes.append({"text": text, "target_norm_id": _extract_norm_id(text)})
-        else:
-            paragraphs.append({"order": len(paragraphs) + 1, "class": css, "text": text})
-    return paragraphs, notes
+        css = "cabeza_tabla" if any(c.tag == "th" for c in cells) else "cuerpo_tabla_fila"
+        rows.append((css, " | ".join(texts)))
+    return rows
+
+
+def classify_version_paragraphs(
+    version: etree._Element,
+) -> tuple[list[dict], list[dict], list[dict]]:
+    """Regla CANÓNICA del cuerpo: clasifica el contenido de una versión en tres cubos.
+
+    El BOE envuelve TODO el aparato editorial en `<blockquote>`: notas de modificación, avisos
+    «Téngase en cuenta…», el marcador «Redacción anterior:» y la **redacción derogada citada**. El
+    texto VIGENTE vive FUERA del blockquote. Como `version.iter("p")` es recursivo, esos `<p>` se
+    colaban en el cuerpo (incl. ley no vigente). La clasificación es por **contenedor** (ancestro
+    `<blockquote>`, recursivo — anidan), no por clase: dentro de un blockquote hay `<p
+    class="parrafo">` idénticos al vigente (p. ej. `siempreSeVe`). Se mantiene `NOTE_CLASSES` y una
+    red para la nota «Téngase» suelta fuera de blockquote.
+
+    Recorre la versión en **orden de documento** capturando los `<p>` y linealizando **todas las
+    tablas POR FILA** (forma A `<td><p class="cuerpo_tabla">` y forma B `<td>` crudo): cada `<tr>`
+    queda en una línea "concepto | valor", emparejada. Los `<p>` **dentro de un `<table>`** se
+    saltan (su texto ya entra por la fila) para no duplicar. La regla de blockquote se respeta
+    también para las tablas (tabla dentro de blockquote = editorial → `dropped`; fuera = `kept`).
+
+    Devuelve `(kept, notes, dropped)`:
+    - `kept`: cuerpo normativo indexable (`<p>` + filas de tabla vigente).
+    - `notes`: provenance que NO solapa el cuerpo vigente (notas `nota_pie` + avisos «Téngase»).
+    - `dropped`: aparato editorial citado en blockquote (marcador + redacción/tabla DEROGADA) —
+      fuera del cuerpo y **fuera de notes** (solapa el vigente y dispararía falsos `note_leak`; el
+      cambio ya consta en las notas con su Ref. al BOE).
+
+    Función pura y sin efectos: el parser y la auditoría independiente la comparten (igual que
+    `resolve_current_version`), de modo que la invariante estructural de la auditoría reaplica
+    exactamente la misma regla sobre el raw que la usada al persistir.
+    """
+    kept: list[dict] = []
+    notes: list[dict] = []
+    dropped: list[dict] = []
+    for el in version.iter():
+        if el.tag == "p":
+            # Los <p> dentro de un <table> son celdas (forma A): su texto entra por la fila
+            # linealizada (rama `table`); se saltan aquí para no duplicarlos.
+            if next(el.iterancestors("table"), None) is not None:
+                continue
+            css = el.get("class") or ""
+            text = _element_text(el)
+            if not text:
+                continue
+            in_blockquote = next(el.iterancestors("blockquote"), None) is not None
+            # El aviso «Téngase…» puede venir como nota a pie con marcador inicial ("(*) ", "* "),
+            # así que se saltan esos prefijos antes de comparar (sigue siendo señal editorial).
+            stripped = text.lstrip("(*)[]·•—-. \t").lower()
+            if css in NOTE_CLASSES or stripped.startswith(_EDITORIAL_NOTE_PREFIX):
+                notes.append({"text": text, "target_norm_id": _extract_norm_id(text)})
+            elif in_blockquote:
+                dropped.append({"class": css, "text": text})
+            else:
+                kept.append({"order": len(kept) + 1, "class": css, "text": text})
+        elif el.tag == "table":
+            # Toda tabla (forma A o B) se linealiza por fila en su posición de documento: va a
+            # `dropped` si está en blockquote (editorial), si no a `kept`. Sus <p>/<td>/<th>
+            # internos se ignoran después (no duplican).
+            in_blockquote = next(el.iterancestors("blockquote"), None) is not None
+            for css, text in _linearize_table_rows(el):
+                if in_blockquote:
+                    dropped.append({"class": css, "text": text})
+                else:
+                    kept.append({"order": len(kept) + 1, "class": css, "text": text})
+    return kept, notes, dropped
+
+
+def _parse_version_paragraphs(version: etree._Element) -> tuple[list[dict], list[dict]]:
+    """Cuerpo normativo + notas de una versión (proyección de `classify_version_paragraphs`).
+
+    Descarta el aparato editorial citado en blockquote y **emite WARNING** si lo descartado incluye
+    clase estructural/tabla/artículo: posible texto vigente mal envuelto que, a escala, sería una
+    pérdida silenciosa difícil de detectar. La auditoría lo recoge además como anomalía durable.
+    """
+    kept, notes, dropped = classify_version_paragraphs(version)
+    for d in dropped:
+        if is_suspicious_blockquote_class(d["class"]):
+            logger.warning(
+                "<p> estructural/tabla {!r} dentro de <blockquote> (¿modelo citado?): {!r}",
+                d["class"],
+                d["text"][:60],
+            )
+    return kept, notes
 
 
 def _full_title(block_type: str, paragraphs: list[dict]) -> str | None:
@@ -438,7 +540,7 @@ def _block_semantics(
     """Calcula rol semántico, indexabilidad de cuerpo y flags de contenido del bloque."""
     table_classes = any(is_table_class(p.get("class") or "") for p in paragraphs)
     contains_table = raw_has_table or table_classes
-    table_text_available = table_classes  # celdas linealizadas a <p>
+    table_text_available = table_classes  # celdas linealizadas (forma A <p> o forma B por fila)
 
     has_anexo_num = any(p.get("class") == "anexo_num" for p in paragraphs)
     singular_annex = any(
