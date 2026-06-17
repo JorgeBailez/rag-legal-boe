@@ -24,6 +24,7 @@ from src.embeddings.encoder import DenseEncoder, load_tokenizer, set_cpu_threads
 from src.embeddings.input_preparation import prepare_inputs  # noqa: E402
 from src.embeddings.model_registry import (  # noqa: E402
     assert_bundle_compatible,
+    default_query_profile_id_for_contract,
     effective_query_profile_ids,
     query_profile_metadata,
 )
@@ -36,11 +37,15 @@ from src.evaluation.metrics import (  # noqa: E402
     CONTEXT_KS,
     PRIMARY_METRIC,
     RETRIEVAL_KS,
+    abstention_threshold_analysis,
+    aggregate_metric_groups,
     aggregate_metrics,
     bootstrap_ci,
     compute_query_retrieval_metrics,
     context_metrics,
     paired_bootstrap,
+    paired_vs_baseline,
+    pareto_front,
 )
 from src.evaluation.reports import (  # noqa: E402
     new_run_id,
@@ -295,6 +300,21 @@ def run_smoke(args: argparse.Namespace) -> int:
     return 0
 
 
+def _baseline_run_key(metrics_rows: list[dict], baseline_alias: str) -> str | None:
+    """run_key del baseline: su perfil por defecto, o el primero del modelo si no aparece."""
+    rows = [r for r in metrics_rows if r["model_alias"] == baseline_alias]
+    if not rows:
+        return None
+    try:
+        default_profile = default_query_profile_id_for_contract(reg.get_contract(baseline_alias))
+    except KeyError:
+        return rows[0]["run_key"]
+    for r in rows:
+        if r["query_profile_id"] == default_profile:
+            return r["run_key"]
+    return rows[0]["run_key"]
+
+
 def run_benchmark(args: argparse.Namespace) -> int:
     if args.allow_unpinned_revision:
         print("--allow-unpinned-revision solo se permite en smoke exploratorio.", file=sys.stderr)
@@ -314,6 +334,8 @@ def run_benchmark(args: argparse.Namespace) -> int:
     for j in judgments:
         by_q.setdefault(j["query_id"], []).append(j)
     split_qs = [q for q in questions if q["split"] == args.split]
+    ooc_qs = [q for q in questions if q["split"] == "out_of_corpus"]
+    run_abstention = bool(ooc_qs) and not args.skip_abstention
 
     bundle_dirs = (
         [Path(b) for b in args.bundle]
@@ -331,6 +353,8 @@ def run_benchmark(args: argparse.Namespace) -> int:
     context_results: list[dict] = []
     primary_values_by_run: dict[str, list[float]] = {}
     hits_by_run_query: dict[tuple[str, str], list[dict]] = {}
+    stratified_by_run: dict[str, dict] = {}
+    abstention_by_run: dict[str, dict] = {}
 
     for bundle_dir in bundle_dirs:
         index = ExactDenseIndex.from_bundle(bundle_dir, corpus=corpus)
@@ -353,6 +377,7 @@ def run_benchmark(args: argparse.Namespace) -> int:
             per_query: list[dict] = []
             query_latencies_ms: list[float] = []
             search_latencies_ms: list[float] = []
+            top1_scores: list[float] = []
             if split_qs:
                 warm_vec = enc.encode_queries(
                     [split_qs[0]["query"]],
@@ -372,6 +397,7 @@ def run_benchmark(args: argparse.Namespace) -> int:
                 hits = index.search(qv, k=max(RETRIEVAL_KS + CONTEXT_KS))
                 search_latencies_ms.append((time.perf_counter() - t1) * 1000.0)
                 hits_by_run_query[(run_key, q["query_id"])] = hits
+                top1_scores.append(hits[0]["score"] if hits else 0.0)
                 m = compute_query_retrieval_metrics(hits, by_q.get(q["query_id"], []))
                 per_query.append(m)
                 query_results.append(
@@ -410,6 +436,26 @@ def run_benchmark(args: argparse.Namespace) -> int:
                     "primary_ci": bootstrap_ci(primary_vals, seed=args.seed),
                 }
             )
+            # Cortes por tipo de pregunta y dificultad: dónde gana/pierde (no solo la media global).
+            style_groups: dict[str, list[dict]] = {}
+            diff_groups: dict[str, list[dict]] = {}
+            for q, m in zip(split_qs, per_query, strict=True):
+                style_groups.setdefault(q.get("query_style", "?"), []).append(m)
+                diff_groups.setdefault(q.get("difficulty", "?"), []).append(m)
+            stratified_by_run[run_key] = {
+                "by_query_style": aggregate_metric_groups(style_groups, seed=args.seed),
+                "by_difficulty": aggregate_metric_groups(diff_groups, seed=args.seed),
+            }
+            # Abstención (L6): ¿el score top-1 separa in-corpus de out_of_corpus?
+            if run_abstention:
+                ooc_scores: list[float] = []
+                for q in ooc_qs:
+                    qv_ooc = enc.encode_queries(
+                        [q["query"]], query_profile_id=profile_id, show_progress=False
+                    )[0]
+                    h = index.search(qv_ooc, k=1)
+                    ooc_scores.append(h[0]["score"] if h else 0.0)
+                abstention_by_run[run_key] = abstention_threshold_analysis(top1_scores, ooc_scores)
 
     ranked_runs = sorted(
         metrics_rows, key=lambda r: float(r.get(PRIMARY_METRIC, 0.0)), reverse=True
@@ -425,6 +471,33 @@ def run_benchmark(args: argparse.Namespace) -> int:
                 primary_values_by_run[a_key], primary_values_by_run[b_key], seed=args.seed
             ),
         }
+
+    # Pareado de CADA run contra el baseline (no solo top-1 vs top-2) → "¿X mejora al baseline?".
+    baseline_vs = None
+    base_key = _baseline_run_key(metrics_rows, args.baseline_alias)
+    if base_key and len(primary_values_by_run) >= 2:
+        baseline_vs = {
+            "baseline_run_key": base_key,
+            "diffs": paired_vs_baseline(primary_values_by_run, base_key, seed=args.seed),
+        }
+
+    # Frontera calidad/coste: ParentnDCG@10 vs latencia de embedding de query (despliegue CPU-only).
+    cost_key = "query_embedding_latency_p50_ms"
+    points = [
+        {
+            "run_key": r["run_key"],
+            "model_alias": r["model_alias"],
+            PRIMARY_METRIC: float(r.get(PRIMARY_METRIC, 0.0)),
+            cost_key: float(r.get(cost_key, 0.0)),
+        }
+        for r in metrics_rows
+    ]
+    front = pareto_front(points, quality_key=PRIMARY_METRIC, cost_key=cost_key)
+    efficiency = {
+        "cost_metric": cost_key,
+        "points": points,
+        "pareto_front_run_keys": [p["run_key"] for p in front],
+    }
 
     if args.context_ablations and ranked_runs:
         wanted_bundles = set(args.finalist_bundle or [])
@@ -495,6 +568,10 @@ def run_benchmark(args: argparse.Namespace) -> int:
             "gate_c_ready": ds["gate_c"]["ready"],
             "bundles": summary_bundles,
             "paired_bootstrap_finalists": paired,
+            "paired_vs_baseline": baseline_vs,
+            "stratified_by_run": stratified_by_run,
+            "abstention_by_run": abstention_by_run if run_abstention else None,
+            "efficiency_frontier": efficiency,
         },
         metrics_rows=metrics_rows,
         query_results=query_results,
@@ -535,6 +612,16 @@ def main() -> int:
         "--finalist-bundle", action="append", help="bundle_id finalista para contexto."
     )
     parser.add_argument("--context-ablations", action="store_true")
+    parser.add_argument(
+        "--baseline-alias",
+        default="e5-large-instruct",
+        help="modelo de referencia para el bootstrap pareado vs baseline.",
+    )
+    parser.add_argument(
+        "--skip-abstention",
+        action="store_true",
+        help="no calcular el experimento de abstención sobre el split out_of_corpus.",
+    )
     parser.add_argument("--no-progress", action="store_true")
     parser.add_argument("--allow-unpinned-revision", action="store_true")
     parser.add_argument(

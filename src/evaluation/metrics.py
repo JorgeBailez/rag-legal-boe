@@ -259,3 +259,127 @@ def paired_bootstrap(
         "seed": seed,
         "n_resamples": n_resamples,
     }
+
+
+# --------------------------------------------------------------------------- #
+# Estratificación, comparación vs baseline, abstención y frontera calidad/coste
+# --------------------------------------------------------------------------- #
+
+
+def aggregate_metric_groups(
+    groups: dict[str, list[dict]],
+    *,
+    primary: str = PRIMARY_METRIC,
+    seed: int = DEFAULT_BOOTSTRAP_SEED,
+) -> dict:
+    """Agrega métricas por grupo (p. ej. por `query_style` o `difficulty`).
+
+    `groups`: nombre de estrato → lista de métricas por query de ese estrato. Devuelve, por estrato,
+    el tamaño, las medias de cada métrica y el IC bootstrap de la primaria. Permite ver DÓNDE gana o
+    pierde un modelo (no solo la media global, que esconde el comportamiento por tipo de pregunta).
+    """
+    out: dict[str, dict] = {}
+    for name, rows in groups.items():
+        primary_vals = [r[primary] for r in rows if primary in r]
+        out[name] = {
+            "n": len(rows),
+            **aggregate_metrics(rows),
+            "primary_ci": bootstrap_ci(primary_vals, seed=seed),
+        }
+    return out
+
+
+def paired_vs_baseline(
+    primary_by_run: dict[str, list[float]],
+    baseline_key: str,
+    *,
+    seed: int = DEFAULT_BOOTSTRAP_SEED,
+) -> dict:
+    """Bootstrap pareado de cada run CONTRA el baseline (no solo top-1 vs top-2).
+
+    Para afirmar "el modelo X mejora al baseline con evidencia" hace falta el test pareado frente al
+    baseline concreto. La diferencia es (run − baseline): un IC que no cruza 0 ⇒ separación. Ojo a
+    las comparaciones múltiples: con muchos runs, interpreta los IC con cautela (Holm/Bonferroni).
+    """
+    if baseline_key not in primary_by_run:
+        raise KeyError(baseline_key)
+    base = primary_by_run[baseline_key]
+    return {
+        key: paired_bootstrap(vals, base, seed=seed)
+        for key, vals in primary_by_run.items()
+        if key != baseline_key
+    }
+
+
+def abstention_threshold_analysis(
+    answerable_scores: list[float], unanswerable_scores: list[float]
+) -> dict:
+    """¿Separa el score top-1 del retriever las preguntas respondibles de las no-respondibles?
+
+    Insumo: scores top-1 de preguntas in-corpus (`answerable`) y `out_of_corpus` (`unanswerable`).
+    Devuelve ROC-AUC (Mann-Whitney, puro), el mejor umbral por *balanced accuracy* y las tasas a ese
+    umbral. Base del experimento de abstención (L6): si hay un umbral que separa, el sistema puede
+    "saber cuándo callar" por confianza de recuperación. Sin sklearn.
+    """
+    pos = [float(s) for s in answerable_scores]
+    neg = [float(s) for s in unanswerable_scores]
+    n_pos, n_neg = len(pos), len(neg)
+    empty = {
+        "auc": 0.0,
+        "best_threshold": 0.0,
+        "balanced_accuracy": 0.0,
+        "tpr": 0.0,
+        "tnr": 0.0,
+        "n_answerable": n_pos,
+        "n_unanswerable": n_neg,
+    }
+    if not pos or not neg:
+        return empty
+    # AUC = P(score_pos > score_neg) + 0.5·P(empate), por conteo de pares (Mann-Whitney U).
+    wins = ties = 0
+    for p in pos:
+        for q in neg:
+            if p > q:
+                wins += 1
+            elif p == q:
+                ties += 1
+    auc = (wins + 0.5 * ties) / (n_pos * n_neg)
+    # Mejor umbral por balanced accuracy: se predice "answerable" si score >= thr.
+    best_thr, best_bacc, best_tpr, best_tnr = pos[0], -1.0, 0.0, 0.0
+    for thr in sorted(set(pos + neg)):
+        tpr = sum(1 for s in pos if s >= thr) / n_pos
+        tnr = sum(1 for s in neg if s < thr) / n_neg
+        bacc = 0.5 * (tpr + tnr)
+        if bacc > best_bacc:
+            best_thr, best_bacc, best_tpr, best_tnr = thr, bacc, tpr, tnr
+    return {
+        "auc": round(auc, 4),
+        "best_threshold": round(float(best_thr), 4),
+        "balanced_accuracy": round(float(best_bacc), 4),
+        "tpr": round(float(best_tpr), 4),
+        "tnr": round(float(best_tnr), 4),
+        "n_answerable": n_pos,
+        "n_unanswerable": n_neg,
+    }
+
+
+def pareto_front(points: list[dict], *, quality_key: str, cost_key: str) -> list[dict]:
+    """Devuelve los puntos NO dominados (máx calidad, mín coste): la frontera calidad/coste.
+
+    A domina a B si `calidad_A ≥ calidad_B` y `coste_A ≤ coste_B` con desigualdad estricta en al
+    menos uno. Para una tesis de despliegue CPU-only, el ganador defendible no es el de más calidad
+    bruta sino el de la frontera. No muta los puntos; devuelve el subconjunto de la frontera.
+    """
+    front: list[dict] = []
+    for a in points:
+        qa, ca = a.get(quality_key, 0.0), a.get(cost_key, 0.0)
+        dominated = any(
+            b is not a
+            and b.get(quality_key, 0.0) >= qa
+            and b.get(cost_key, 0.0) <= ca
+            and (b.get(quality_key, 0.0) > qa or b.get(cost_key, 0.0) < ca)
+            for b in points
+        )
+        if not dominated:
+            front.append(a)
+    return front
