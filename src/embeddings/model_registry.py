@@ -332,16 +332,21 @@ CANDIDATES: dict[str, ModelContract] = {
     "gte-multilingual-base": ModelContract(
         alias="gte-multilingual-base",
         model_id="Alibaba-NLP/gte-multilingual-base",
+        model_revision="9bbca17d9273fd0d03d5725c7a4b0f6b45142062",
+        tokenizer_revision="9bbca17d9273fd0d03d5725c7a4b0f6b45142062",
         declared_max_tokens=8192,
         expected_embedding_dimension=768,
         document_template="{text}",
         pooling="cls",
         default_query_template="{query}",
         trust_remote_code=True,
-        remote_code_reviewed=False,
+        remote_code_reviewed=True,
         notes=(
-            "Contexto largo (8192). Requiere trust_remote_code=True (modeling propio): revisar el "
-            "código remoto antes de considerarlo reproducible; queda registrado en el manifest."
+            "Contexto largo (8192, RoPE+NTK). trust_remote_code: el modeling vive en el repo "
+            "Alibaba-NLP/new-impl (sha 40ced75c, jul-2024), revisado 2026-06-16: solo define "
+            "nn.Module de torch; sin red, IO de ficheros, subprocess/exec/eval, env ni secretos. "
+            "Pesos+tokenizer fijados en 9bbca17d. Caveat reproducibilidad: el codigo remoto "
+            "resuelve new-impl@main salvo code_revision, que el encoder actual no fija."
         ),
     ),
 }

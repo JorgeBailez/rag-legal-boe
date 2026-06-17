@@ -7,10 +7,11 @@ from src.embeddings.encoder import (
     DenseEncoder,
     RemoteCodeNotReviewedError,
     RevisionUnpinnedError,
+    align_max_seq_length,
     load_tokenizer,
     read_hf_token,
 )
-from src.embeddings.model_registry import get_contract
+from src.embeddings.model_registry import ModelContract, get_contract
 
 
 class DummyModel:
@@ -35,14 +36,57 @@ def test_revision_unpinned_blocks_without_flag() -> None:
         DenseEncoder(get_contract("e5-base"), allow_unpinned_revision=False)
 
 
+# Contrato sintético de código remoto SIN revisar: aísla el guard del estado real del registry
+# (gte-multilingual-base ya está revisado y pinneado tras el cierre del MVP). Queda unpinned a
+# propósito para verificar que el guard de código remoto salta ANTES que el de revisión.
+_REMOTE_SIN_REVISAR = ModelContract(
+    alias="fake-remote-unreviewed",
+    model_id="fake/remote-code-model",
+    declared_max_tokens=512,
+    expected_embedding_dimension=768,
+    trust_remote_code=True,
+    remote_code_reviewed=False,
+)
+
+
 def test_remote_code_not_reviewed_blocks_tokenizer_even_when_unpinned_allowed() -> None:
     with pytest.raises(RemoteCodeNotReviewedError, match="remote_code_reviewed=True"):
-        load_tokenizer(get_contract("gte-multilingual-base"), allow_unpinned_revision=True)
+        load_tokenizer(_REMOTE_SIN_REVISAR, allow_unpinned_revision=True)
 
 
 def test_remote_code_not_reviewed_blocks_model_even_when_unpinned_allowed() -> None:
     with pytest.raises(RemoteCodeNotReviewedError, match="remote_code_reviewed=True"):
-        DenseEncoder(get_contract("gte-multilingual-base"), allow_unpinned_revision=True)
+        DenseEncoder(_REMOTE_SIN_REVISAR, allow_unpinned_revision=True)
+
+
+class _FakeSeqModel:
+    """Modelo ST falso: expone tokenizer.model_max_length y un max_seq_length ajustable."""
+
+    def __init__(self, tokenizer_max_length: int, max_seq_length: int) -> None:
+        self.tokenizer = type("_Tok", (), {"model_max_length": tokenizer_max_length})()
+        self.max_seq_length = max_seq_length
+
+
+def test_align_max_seq_length_corrige_limite_bajo_del_empaquetado() -> None:
+    # Footgun real: modelo de contexto largo cuyo ST viene con max_seq_length=512. El guard debe
+    # subirlo al effective_max derivado del tokenizer para no truncar en silencio.
+    bge = get_contract("bge-m3")  # declared 8192
+    model = _FakeSeqModel(tokenizer_max_length=8192, max_seq_length=512)
+    assert align_max_seq_length(model, bge) == 8192
+    assert model.max_seq_length == 8192
+
+
+def test_align_max_seq_length_usa_declarado_si_tokenizer_es_sentinel() -> None:
+    # Tokenizer sin límite real (HF reporta ~1e30): se cae al declared_max_tokens del contrato.
+    qwen = get_contract("qwen3-0.6b")  # declared 32768
+    model = _FakeSeqModel(tokenizer_max_length=10**30, max_seq_length=512)
+    assert align_max_seq_length(model, qwen) == 32768
+    assert model.max_seq_length == 32768
+
+
+def test_align_max_seq_length_sin_atributo_devuelve_menos_uno() -> None:
+    # Un objeto sin max_seq_length (p. ej. el DummyModel inyectado) no se toca.
+    assert align_max_seq_length(object(), get_contract("e5-base")) == -1
 
 
 def test_encode_documents_verbatim_float32_and_dim() -> None:

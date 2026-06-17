@@ -21,6 +21,7 @@ from src.embeddings.model_registry import (
     default_query_profile_id_for_contract,
     format_query_with_profile,
 )
+from src.embeddings.tokenizer_profiler import resolve_effective_max
 
 
 class RevisionUnpinnedError(RuntimeError):
@@ -89,6 +90,28 @@ def set_cpu_threads(threads: int) -> None:
     torch.set_num_threads(int(threads))
 
 
+def align_max_seq_length(model, contract: ModelContract) -> int:
+    """Iguala el límite de truncado del SentenceTransformer al `effective_max` del contrato.
+
+    POR QUÉ: `input_preparation` garantiza que ningún input supera el límite efectivo (parte en
+    ventanas token-aware antes de codificar), pero `model.encode` aplica su PROPIO `max_seq_length`
+    —fijado en el `sentence_bert_config.json` del modelo, a veces muy por debajo de su capacidad
+    real (p. ej. 512 en un modelo de contexto 8192)— y truncaría **en silencio** cualquier input por
+    encima de ese valor. Igualar ambos hace que la invariante "sin truncado silencioso" deje de
+    depender del empaquetado del modelo, sin tocar la lógica de preparación. `effective_max` se
+    deriva igual que en `input_preparation` (`resolve_effective_max`), así que nunca supera la
+    capacidad real del modelo. Devuelve el límite aplicado, o -1 si el objeto no expone
+    `max_seq_length` (p. ej. un modelo inyectado en tests).
+    """
+    tokenizer = getattr(model, "tokenizer", None)
+    tml = getattr(tokenizer, "model_max_length", None)
+    effective_max, _ = resolve_effective_max(contract.declared_max_tokens, tml)
+    if not hasattr(model, "max_seq_length"):
+        return -1
+    model.max_seq_length = effective_max
+    return effective_max
+
+
 class DenseEncoder:
     """Codificador denso CPU para un contrato de modelo concreto."""
 
@@ -134,13 +157,16 @@ class DenseEncoder:
         if token:
             kwargs["token"] = token
         try:
-            return SentenceTransformer(self.contract.model_id, **kwargs)
+            model = SentenceTransformer(self.contract.model_id, **kwargs)
         except Exception:  # noqa: BLE001 - se re-lanza un error accionable sin filtrar el token
             raise EncoderLoadError(
                 f"No se pudo descargar/cargar el modelo {self.contract.model_id!r}. Si el "
                 "repositorio requiere autenticación, exporta HF_TOKEN en la sesión actual y repite "
                 "el comando. No guardes el token dentro del repositorio."
             ) from None
+        # Cierra el hueco de truncado en la frontera de la librería (ver align_max_seq_length).
+        align_max_seq_length(model, self.contract)
+        return model
 
     def _validate_dim(self, emb) -> None:
         if emb.shape[1] != self.dimension:
