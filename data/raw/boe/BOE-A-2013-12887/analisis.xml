@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+  <status>
+    <code>200</code>
+    <text>ok</text>
+  </status>
+  <data>
+    <analisis>
+      <materias>
+        <materia codigo="35">Acceso a la información</materia>
+        <materia codigo="82">Administración General del Estado</materia>
+        <materia codigo="93">Administraciones Públicas</materia>
+        <materia codigo="217">Altos cargos</materia>
+        <materia codigo="1589">Consejos consultivos</materia>
+        <materia codigo="2407">Delitos monetarios</materia>
+        <materia codigo="2436">Derecho a la información</materia>
+        <materia codigo="2463">Derechos de los ciudadanos</materia>
+        <materia codigo="3927">Gestión presupuestaria</materia>
+        <materia codigo="4165">Información</materia>
+        <materia codigo="4166">Información administrativa</materia>
+        <materia codigo="9350">Ministerio de Hacienda y Administraciones Públicas</materia>
+        <materia codigo="5278">Organización de la Administración del Estado</materia>
+        <materia codigo="5703">Procedimiento administrativo</materia>
+        <materia codigo="7896">Sistema financiero</materia>
+      </materias>
+      <notas>
+        <nota>Entrada en vigor: de los títulos preliminar, I y III el 10 de diciembre de 2014, y el título II  lo hará el 11 de diciembre de 2013.</nota>
+      </notas>
+      <referencias>
+        <anteriores>
+          <anterior>
+            <id_norma>BOE-A-2010-6737</id_norma>
+            <relacion codigo="270">MODIFICA</relacion>
+            <texto>los arts. 2, 7, 9, 10, 14, 26.4, 42 y 52.1 de la Ley 10/2010, de 28 de abril</texto>
+          </anterior>
+          <anterior>
+            <id_norma>BOE-A-2006-6473</id_norma>
+            <relacion codigo="270">MODIFICA</relacion>
+            <texto>el art. 14.4 de la Ley 5/2006, de 10 de abril</texto>
+          </anterior>
+          <anterior>
+            <id_norma>BOE-A-2003-21614</id_norma>
+            <relacion codigo="270">MODIFICA</relacion>
+            <texto>el art. 136.4 de la Ley 47/2003, de 26 de noviembre</texto>
+          </anterior>
+          <anterior>
+            <id_norma>BOE-A-1997-7878</id_norma>
+            <relacion codigo="270">MODIFICA</relacion>
+            <texto>la disposición adicional 10.1 de la Ley 6/1997, de 14 de abril</texto>
+          </anterior>
+          <anterior>
+            <id_norma>BOE-A-1992-26318</id_norma>
+            <relacion codigo="270">MODIFICA</relacion>
+            <texto>los arts. 35.h) y 37 de la Ley 30/1992, de 26 de noviembre</texto>
+          </anterior>
+          <anterior>
+            <id_norma>BOE-A-1999-23750</id_norma>
+            <relacion codigo="330">CITA</relacion>
+            <texto>Ley Orgánica 15/1999, de 13 de diciembre</texto>
+          </anterior>
+        </anteriores>
+        <posteriores>
+          <posterior>
+            <id_norma>BOE-A-2022-11392</id_norma>
+            <relacion codigo="270">SE MODIFICA</relacion>
+            <texto>el art. 8.1.a), por Ley 14/2022, de 8 de julio</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2018-16673</id_norma>
+            <relacion codigo="270">SE MODIFICA</relacion>
+            <texto>el art. 15.1 y SE AÑADE el art. 6 bis, por Ley Orgánica 3/2018, de 5 de diciembre</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2013-13425</id_norma>
+            <relacion codigo="270">SE MODIFICA</relacion>
+            <texto>el art. 28.f) y n), por Ley Orgánica 9/2013, de 20 de diciembre</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2024-15944</id_norma>
+            <relacion codigo="440">SE DICTA DE CONFORMIDAD</relacion>
+            <texto>con el art. 39 y se aprueba el Estatuto del Consejo de Transparencia y Buen Gobierno: Real Decreto 615/2024, de 2 de julio</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2015-3444</id_norma>
+            <relacion codigo="440">SE DICTA DE CONFORMIDAD</relacion>
+            <texto>sobre el ejercicio del alto cargo en la Administración General del Estado: Ley 3/2015, de 30 de marzo</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2014-11410</id_norma>
+            <relacion codigo="440">SE DICTA DE CONFORMIDAD</relacion>
+            <texto>con el título III y se aprueba el estatuto del Consejo de Transparencia y Buen Gobierno: Real Decreto 919/2014, de 31 de octubre</texto>
+          </posterior>
+        </posteriores>
+      </referencias>
+    </analisis>
+  </data>
+</response>

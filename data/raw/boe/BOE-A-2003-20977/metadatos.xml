@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+  <status>
+    <code>200</code>
+    <text>ok</text>
+  </status>
+  <data>
+    <metadatos>
+      <fecha_actualizacion>20260608T081816Z</fecha_actualizacion>
+      <identificador>BOE-A-2003-20977</identificador>
+      <ambito codigo="1">Estatal</ambito>
+      <departamento codigo="7723">Jefatura del Estado</departamento>
+      <rango codigo="1300">Ley</rango>
+      <fecha_disposicion>20031117</fecha_disposicion>
+      <numero_oficial>38/2003</numero_oficial>
+      <titulo>Ley 38/2003, de 17 de noviembre, General de Subvenciones.</titulo>
+      <diario>Boletín Oficial del Estado</diario>
+      <fecha_publicacion>20031118</fecha_publicacion>
+      <diario_numero>276</diario_numero>
+      <fecha_vigencia>20040218</fecha_vigencia>
+      <estatus_derogacion>N</estatus_derogacion>
+      <estatus_anulacion>N</estatus_anulacion>
+      <vigencia_agotada>N</vigencia_agotada>
+      <estado_consolidacion codigo="3">Finalizado</estado_consolidacion>
+      <url_eli>https://www.boe.es/eli/es/l/2003/11/17/38</url_eli>
+      <url_html_consolidada>https://www.boe.es/buscar/act.php?id=BOE-A-2003-20977</url_html_consolidada>
+    </metadatos>
+  </data>
+</response>

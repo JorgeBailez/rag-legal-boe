@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+  <status>
+    <code>200</code>
+    <text>ok</text>
+  </status>
+  <data>
+    <metadata-eli xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:eli="http://data.europa.eu/eli/ontology#">
+      <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:eli="http://data.europa.eu/eli/ontology#">
+        <eli:LegalResource rdf:about="https://www.boe.es/eli/es/rd/2006/07/21/887">
+          <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+          <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/rd"/>
+          <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2006-13371</eli:id_local>
+          <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2006-07-21</eli:date_document>
+          <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">887</eli:number>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/82"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/85"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/93"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/473"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1262"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1320"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1677"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3762"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3887"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3927"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4165"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4510"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5278"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5415"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6015"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6800"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7001"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7872"/>
+          <eli:has_member>
+            <eli:LegalResource rdf:about="https://www.boe.es/eli/es/rd/2006/07/21/887/dof">
+              <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+              <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/rd"/>
+              <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2006-13371</eli:id_local>
+              <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2006-07-21</eli:date_document>
+              <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">887</eli:number>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/82"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/85"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/93"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/473"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1262"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1320"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1677"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3762"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3887"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3927"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4165"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4510"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5278"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5415"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6015"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6800"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7001"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7872"/>
+              <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/dof"/>
+              <eli:corrected_by rdf:resource="https://www.boe.es/eli/es/rd/2006/07/21/887/corrigendum/20061111/dof"/>
+              <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/rd/2006/07/21/887"/>
+              <eli:consolidated_by rdf:resource="https://www.boe.es/eli/es/rd/2006/07/21/887/con/20230629"/>
+              <eli:consolidated_by rdf:resource="https://www.boe.es/eli/es/rd/2006/07/21/887/con/20190330"/>
+              <eli:consolidated_by rdf:resource="https://www.boe.es/eli/es/rd/2006/07/21/887/con/20060725"/>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/rd/2006/07/21/887/dof/spa">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Real Decreto 887/2006, de 21 de julio, por el que se aprueba el Reglamento de la Ley 38/2003, de 17 de noviembre, General de Subvenciones.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:date_publication rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2006-07-25</eli:date_publication>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/rd/2006/07/21/887/dof"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/rd/2006/07/21/887/dof/spa/html">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/rd/2006/07/21/887/dof/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/rd/2006/07/21/887/dof/spa/pdf">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/application/pdf"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/rd/2006/07/21/887/dof/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/rd/2006/07/21/887/dof/spa/xml">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/application/xml"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/rd/2006/07/21/887/dof/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/rd/2006/07/21/887/dof/cat">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/cat"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Reial decret 887/2006, de 21 de juliol, pel qual s'aprova el Reglament de la Llei 38/2003, de 17 de novembre, general de subvencions.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:date_publication rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2006-08-01</eli:date_publication>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/rd/2006/07/21/887/dof"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/rd/2006/07/21/887/dof/cat/pdf">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/application/pdf"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/rd/2006/07/21/887/dof/cat"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/rd/2006/07/21/887/dof/glg">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/glg"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Real decreto 887/2006, do 21 de xullo, polo que se aproba o Regulamento da Lei 38/2003, do 17 de novembro, xeral de subvencións. («BOE» 176, do 25-7-2006.)</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:date_publication rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2006-08-01</eli:date_publication>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/rd/2006/07/21/887/dof"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/rd/2006/07/21/887/dof/glg/pdf">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/application/pdf"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/rd/2006/07/21/887/dof/glg"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+            </eli:LegalResource>
+          </eli:has_member>
+          <eli:has_member>
+            <eli:LegalResource rdf:about="https://www.boe.es/eli/es/rd/2006/07/21/887/con/20230629">
+              <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+              <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/rd"/>
+              <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2006-13371</eli:id_local>
+              <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2006-07-21</eli:date_document>
+              <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">887</eli:number>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/82"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/85"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/93"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/473"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1262"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1320"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1677"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3762"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3887"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3927"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4165"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4510"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5278"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5415"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6015"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6800"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7001"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7872"/>
+              <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/con"/>
+              <eli:version_date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-06-29</eli:version_date>
+              <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/rd/2006/07/21/887"/>
+              <eli:consolidates rdf:resource="https://www.boe.es/eli/es/rd/2006/07/21/887/dof"/>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/rd/2006/07/21/887/con/20230629/spa">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Real Decreto 887/2006, de 21 de julio, por el que se aprueba el Reglamento de la Ley 38/2003, de 17 de noviembre, General de Subvenciones.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/rd/2006/07/21/887/con/20230629"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/rd/2006/07/21/887/con/20230629/spa/html">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/rd/2006/07/21/887/con/20230629/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+            </eli:LegalResource>
+          </eli:has_member>
+          <eli:has_member>
+            <eli:LegalResource rdf:about="https://www.boe.es/eli/es/rd/2006/07/21/887/con/20190330">
+              <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+              <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/rd"/>
+              <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2006-13371</eli:id_local>
+              <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2006-07-21</eli:date_document>
+              <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">887</eli:number>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/82"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/85"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/93"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/473"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1262"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1320"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1677"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3762"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3887"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3927"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4165"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4510"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5278"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5415"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6015"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6800"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7001"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7872"/>
+              <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/con"/>
+              <eli:version_date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-03-30</eli:version_date>
+              <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/rd/2006/07/21/887"/>
+              <eli:consolidates rdf:resource="https://www.boe.es/eli/es/rd/2006/07/21/887/dof"/>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/rd/2006/07/21/887/con/20190330/spa">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Real Decreto 887/2006, de 21 de julio, por el que se aprueba el Reglamento de la Ley 38/2003, de 17 de noviembre, General de Subvenciones.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/rd/2006/07/21/887/con/20190330"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/rd/2006/07/21/887/con/20190330/spa/html">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/rd/2006/07/21/887/con/20190330/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+            </eli:LegalResource>
+          </eli:has_member>
+          <eli:has_member>
+            <eli:LegalResource rdf:about="https://www.boe.es/eli/es/rd/2006/07/21/887/con/20060725">
+              <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+              <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/rd"/>
+              <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2006-13371</eli:id_local>
+              <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2006-07-21</eli:date_document>
+              <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">887</eli:number>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/82"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/85"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/93"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/473"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1262"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1320"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1677"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3762"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3887"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3927"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4165"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4510"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5278"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5415"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6015"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6800"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7001"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7872"/>
+              <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/con"/>
+              <eli:version_date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2006-07-25</eli:version_date>
+              <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/rd/2006/07/21/887"/>
+              <eli:consolidates rdf:resource="https://www.boe.es/eli/es/rd/2006/07/21/887/dof"/>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/rd/2006/07/21/887/con/20060725/spa">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Real Decreto 887/2006, de 21 de julio, por el que se aprueba el Reglamento de la Ley 38/2003, de 17 de noviembre, General de Subvenciones.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/rd/2006/07/21/887/con/20060725"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/rd/2006/07/21/887/con/20060725/spa/html">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/rd/2006/07/21/887/con/20060725/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+            </eli:LegalResource>
+          </eli:has_member>
+        </eli:LegalResource>
+      </rdf:RDF>
+    </metadata-eli>
+  </data>
+</response>

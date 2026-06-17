@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+  <status>
+    <code>200</code>
+    <text>ok</text>
+  </status>
+  <data>
+    <metadata-eli xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:eli="http://data.europa.eu/eli/ontology#">
+      <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:eli="http://data.europa.eu/eli/ontology#">
+        <eli:LegalResource rdf:about="https://www.boe.es/eli/es/lo/2018/12/05/3">
+          <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+          <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/lo"/>
+          <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2018-16673</eli:id_local>
+          <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-12-05</eli:date_document>
+          <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3</eli:number>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/35"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/397"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/817"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1320"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1499"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1624"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1705"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/2282"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/2289"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/2463"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3079"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3114"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3159"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3202"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3214"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3254"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3857"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4506"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4521"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4701"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4711"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5163"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5706"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5923"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6015"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6058"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6278"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6909"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6980"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7854"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7894"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7908"/>
+          <eli:has_member>
+            <eli:LegalResource rdf:about="https://www.boe.es/eli/es/lo/2018/12/05/3/dof">
+              <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+              <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/lo"/>
+              <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2018-16673</eli:id_local>
+              <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-12-05</eli:date_document>
+              <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3</eli:number>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/35"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/397"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/817"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1320"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1499"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1624"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1705"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/2282"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/2289"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/2463"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3079"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3114"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3159"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3202"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3214"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3254"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3857"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4506"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4521"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4701"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4711"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5163"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5706"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5923"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6015"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6058"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6278"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6909"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6980"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7854"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7894"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7908"/>
+              <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/dof"/>
+              <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3"/>
+              <eli:consolidated_by rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3/con/20251227"/>
+              <eli:consolidated_by rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3/con/20230509"/>
+              <eli:consolidated_by rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3/con/20230221"/>
+              <eli:consolidated_by rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3/con/20210527"/>
+              <eli:consolidated_by rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3/con/20201230"/>
+              <eli:consolidated_by rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3/con/20190625"/>
+              <eli:consolidated_by rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3/con/20181206"/>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/lo/2018/12/05/3/dof/spa">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y garantía de los derechos digitales.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:date_publication rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-12-06</eli:date_publication>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3/dof"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/lo/2018/12/05/3/dof/spa/epub">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/application/epub+zip"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3/dof/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/lo/2018/12/05/3/dof/spa/html">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3/dof/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/lo/2018/12/05/3/dof/spa/pdf">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/application/pdf"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3/dof/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/lo/2018/12/05/3/dof/spa/xml">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/application/xml"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3/dof/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/lo/2018/12/05/3/dof/cat">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/cat"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Llei orgànica 3/2018, de 5 de desembre, de protecció de dades personals i garantia dels drets digitals. [Traducció corregida el 28/03/2019]</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:date_publication rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-12-06</eli:date_publication>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3/dof"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/lo/2018/12/05/3/dof/cat/pdf">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/application/pdf"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3/dof/cat"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/lo/2018/12/05/3/dof/glg">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/glg"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Lei orgánica 3/2018, do 5 de decembro, de protección de datos persoais e garantía dos dereitos dixitais.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:date_publication rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-12-06</eli:date_publication>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3/dof"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/lo/2018/12/05/3/dof/glg/pdf">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/application/pdf"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3/dof/glg"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/lo/2018/12/05/3/dof/eus">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/eus"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3/2018 Lege Organikoa, abenduaren 5ekoa, Datu Pertsonalak Babestekoa eta Eskubide Digitalak Bermatzekoa.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:date_publication rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-12-06</eli:date_publication>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3/dof"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/lo/2018/12/05/3/dof/eus/pdf">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/application/pdf"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3/dof/eus"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+            </eli:LegalResource>
+          </eli:has_member>
+          <eli:has_member>
+            <eli:LegalResource rdf:about="https://www.boe.es/eli/es/lo/2018/12/05/3/con/20251227">
+              <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+              <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/lo"/>
+              <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2018-16673</eli:id_local>
+              <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-12-05</eli:date_document>
+              <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3</eli:number>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/35"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/397"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/817"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1320"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1499"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1624"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1705"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/2282"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/2289"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/2463"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3079"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3114"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3159"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3202"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3214"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3254"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3857"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4506"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4521"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4701"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4711"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5163"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5706"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5923"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6015"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6058"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6278"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6909"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6980"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7854"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7894"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7908"/>
+              <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/con"/>
+              <eli:version_date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-12-27</eli:version_date>
+              <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3"/>
+              <eli:consolidates rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3/dof"/>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/lo/2018/12/05/3/con/20251227/spa">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y garantía de los derechos digitales.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3/con/20251227"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/lo/2018/12/05/3/con/20251227/spa/html">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3/con/20251227/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+            </eli:LegalResource>
+          </eli:has_member>
+          <eli:has_member>
+            <eli:LegalResource rdf:about="https://www.boe.es/eli/es/lo/2018/12/05/3/con/20230509">
+              <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+              <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/lo"/>
+              <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2018-16673</eli:id_local>
+              <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-12-05</eli:date_document>
+              <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3</eli:number>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/35"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/397"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/817"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1320"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1499"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1624"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1705"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/2282"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/2289"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/2463"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3079"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3114"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3159"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3202"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3214"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3254"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3857"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4506"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4521"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4701"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4711"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5163"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5706"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5923"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6015"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6058"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6278"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6909"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6980"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7854"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7894"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7908"/>
+              <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/con"/>
+              <eli:version_date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-05-09</eli:version_date>
+              <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3"/>
+              <eli:consolidates rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3/dof"/>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/lo/2018/12/05/3/con/20230509/spa">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y garantía de los derechos digitales.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3/con/20230509"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/lo/2018/12/05/3/con/20230509/spa/html">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3/con/20230509/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+            </eli:LegalResource>
+          </eli:has_member>
+          <eli:has_member>
+            <eli:LegalResource rdf:about="https://www.boe.es/eli/es/lo/2018/12/05/3/con/20230221">
+              <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+              <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/lo"/>
+              <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2018-16673</eli:id_local>
+              <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-12-05</eli:date_document>
+              <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3</eli:number>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/35"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/397"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/817"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1320"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1499"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1624"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1705"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/2282"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/2289"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/2463"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3079"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3114"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3159"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3202"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3214"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3254"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3857"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4506"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4521"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4701"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4711"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5163"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5706"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5923"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6015"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6058"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6278"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6909"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6980"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7854"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7894"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7908"/>
+              <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/con"/>
+              <eli:version_date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-02-21</eli:version_date>
+              <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3"/>
+              <eli:consolidates rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3/dof"/>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/lo/2018/12/05/3/con/20230221/spa">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y garantía de los derechos digitales.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3/con/20230221"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/lo/2018/12/05/3/con/20230221/spa/html">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3/con/20230221/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+            </eli:LegalResource>
+          </eli:has_member>
+          <eli:has_member>
+            <eli:LegalResource rdf:about="https://www.boe.es/eli/es/lo/2018/12/05/3/con/20210527">
+              <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+              <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/lo"/>
+              <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2018-16673</eli:id_local>
+              <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-12-05</eli:date_document>
+              <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3</eli:number>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/35"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/397"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/817"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1320"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1499"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1624"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1705"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/2282"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/2289"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/2463"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3079"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3114"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3159"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3202"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3214"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3254"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3857"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4506"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4521"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4701"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4711"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5163"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5706"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5923"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6015"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6058"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6278"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6909"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6980"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7854"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7894"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7908"/>
+              <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/con"/>
+              <eli:version_date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-05-27</eli:version_date>
+              <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3"/>
+              <eli:consolidates rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3/dof"/>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/lo/2018/12/05/3/con/20210527/spa">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y garantía de los derechos digitales.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3/con/20210527"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/lo/2018/12/05/3/con/20210527/spa/html">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3/con/20210527/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+            </eli:LegalResource>
+          </eli:has_member>
+          <eli:has_member>
+            <eli:LegalResource rdf:about="https://www.boe.es/eli/es/lo/2018/12/05/3/con/20201230">
+              <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+              <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/lo"/>
+              <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2018-16673</eli:id_local>
+              <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-12-05</eli:date_document>
+              <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3</eli:number>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/35"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/397"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/817"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1320"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1499"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1624"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1705"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/2282"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/2289"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/2463"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3079"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3114"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3159"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3202"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3214"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3254"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3857"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4506"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4521"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4701"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4711"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5163"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5706"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5923"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6015"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6058"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6278"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6909"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6980"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7854"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7894"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7908"/>
+              <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/con"/>
+              <eli:version_date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-30</eli:version_date>
+              <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3"/>
+              <eli:consolidates rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3/dof"/>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/lo/2018/12/05/3/con/20201230/spa">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y garantía de los derechos digitales.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3/con/20201230"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/lo/2018/12/05/3/con/20201230/spa/html">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3/con/20201230/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+            </eli:LegalResource>
+          </eli:has_member>
+          <eli:has_member>
+            <eli:LegalResource rdf:about="https://www.boe.es/eli/es/lo/2018/12/05/3/con/20190625">
+              <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+              <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/lo"/>
+              <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2018-16673</eli:id_local>
+              <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-12-05</eli:date_document>
+              <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3</eli:number>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/35"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/397"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/817"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1320"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1499"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1624"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1705"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/2282"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/2289"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/2463"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3079"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3114"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3159"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3202"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3214"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3254"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3857"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4506"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4521"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4701"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4711"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5163"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5706"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5923"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6015"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6058"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6278"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6909"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6980"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7854"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7894"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7908"/>
+              <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/con"/>
+              <eli:version_date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-06-25</eli:version_date>
+              <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3"/>
+              <eli:consolidates rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3/dof"/>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/lo/2018/12/05/3/con/20190625/spa">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y garantía de los derechos digitales.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3/con/20190625"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/lo/2018/12/05/3/con/20190625/spa/html">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3/con/20190625/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+            </eli:LegalResource>
+          </eli:has_member>
+          <eli:has_member>
+            <eli:LegalResource rdf:about="https://www.boe.es/eli/es/lo/2018/12/05/3/con/20181206">
+              <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+              <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/lo"/>
+              <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2018-16673</eli:id_local>
+              <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-12-05</eli:date_document>
+              <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3</eli:number>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/35"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/397"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/817"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1320"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1499"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1624"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1705"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/2282"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/2289"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/2463"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3079"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3114"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3159"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3202"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3214"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3254"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3857"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4506"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4521"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4701"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4711"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5163"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5706"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5923"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6015"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6058"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6278"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6909"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6980"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7854"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7894"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7908"/>
+              <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/con"/>
+              <eli:version_date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-12-06</eli:version_date>
+              <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3"/>
+              <eli:consolidates rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3/dof"/>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/lo/2018/12/05/3/con/20181206/spa">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y garantía de los derechos digitales.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3/con/20181206"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/lo/2018/12/05/3/con/20181206/spa/html">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/lo/2018/12/05/3/con/20181206/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+            </eli:LegalResource>
+          </eli:has_member>
+        </eli:LegalResource>
+      </rdf:RDF>
+    </metadata-eli>
+  </data>
+</response>

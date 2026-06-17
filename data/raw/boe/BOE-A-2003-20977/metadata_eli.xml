@@ -1,0 +1,1907 @@
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+  <status>
+    <code>200</code>
+    <text>ok</text>
+  </status>
+  <data>
+    <metadata-eli xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:eli="http://data.europa.eu/eli/ontology#">
+      <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:eli="http://data.europa.eu/eli/ontology#">
+        <eli:LegalResource rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38">
+          <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+          <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/l"/>
+          <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2003-20977</eli:id_local>
+          <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2003-11-17</eli:date_document>
+          <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">38</eli:number>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/82"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/85"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/93"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/119"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/420"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/449"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/618"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1320"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1677"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1704"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3241"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3497"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3743"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3768"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3770"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3862"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3927"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4130"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4311"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4406"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4496"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4510"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4512"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4518"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5143"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5345"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5542"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5666"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5685"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5686"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6800"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6954"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7001"/>
+          <eli:has_member>
+            <eli:LegalResource rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/dof">
+              <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+              <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/l"/>
+              <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2003-20977</eli:id_local>
+              <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2003-11-17</eli:date_document>
+              <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">38</eli:number>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/82"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/85"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/93"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/119"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/420"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/449"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/618"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1320"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1677"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1704"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3241"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3497"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3743"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3768"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3770"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3862"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3927"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4130"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4311"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4406"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4496"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4510"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4512"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4518"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5143"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5345"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5542"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5666"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5685"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5686"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6800"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6954"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7001"/>
+              <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/dof"/>
+              <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38"/>
+              <eli:consolidated_by rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20240802"/>
+              <eli:consolidated_by rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20230629"/>
+              <eli:consolidated_by rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20230221"/>
+              <eli:consolidated_by rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20221224"/>
+              <eli:consolidated_by rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20220929"/>
+              <eli:consolidated_by rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20220907"/>
+              <eli:consolidated_by rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20211229"/>
+              <eli:consolidated_by rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20201231"/>
+              <eli:consolidated_by rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20180704"/>
+              <eli:consolidated_by rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20180522"/>
+              <eli:consolidated_by rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20170628"/>
+              <eli:consolidated_by rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20160520"/>
+              <eli:consolidated_by rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20151002"/>
+              <eli:consolidated_by rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20150331"/>
+              <eli:consolidated_by rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20141028"/>
+              <eli:consolidated_by rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20140917"/>
+              <eli:consolidated_by rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20140108"/>
+              <eli:consolidated_by rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20130702"/>
+              <eli:consolidated_by rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20130629"/>
+              <eli:consolidated_by rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20130627"/>
+              <eli:consolidated_by rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20121228"/>
+              <eli:consolidated_by rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20110602"/>
+              <eli:consolidated_by rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20101223"/>
+              <eli:consolidated_by rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20100413"/>
+              <eli:consolidated_by rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20081224"/>
+              <eli:consolidated_by rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20061229"/>
+              <eli:consolidated_by rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20051119"/>
+              <eli:consolidated_by rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20031118"/>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/dof/cat">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/cat"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LLEI 38/2003, de 17 de novembre, general de subvencions.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:date_publication rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2003-11-24</eli:date_publication>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/dof"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/dof/cat/pdf">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/application/pdf"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/dof/cat"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/dof/spa">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ley 38/2003, de 17 de noviembre, General de Subvenciones.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:date_publication rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2003-11-18</eli:date_publication>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/dof"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/dof/spa/html">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/dof/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/dof/spa/pdf">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/application/pdf"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/dof/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/dof/spa/xml">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/application/xml"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/dof/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/dof/glg">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/glg"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LEI 38/2003, do 17 de novembro, xeral de subvencións.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:date_publication rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2003-11-24</eli:date_publication>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/dof"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/dof/glg/pdf">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/application/pdf"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/dof/glg"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/dof/vci">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/vci"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LLEI 38/2003, de 17 de novembre, General de Subvencions.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:date_publication rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2003-12-01</eli:date_publication>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/dof"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/dof/vci/pdf">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/application/pdf"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/dof/vci"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+            </eli:LegalResource>
+          </eli:has_member>
+          <eli:has_member>
+            <eli:LegalResource rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20240802">
+              <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+              <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/l"/>
+              <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2003-20977</eli:id_local>
+              <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2003-11-17</eli:date_document>
+              <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">38</eli:number>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/82"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/85"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/93"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/119"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/420"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/449"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/618"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1320"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1677"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1704"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3241"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3497"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3743"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3768"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3770"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3862"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3927"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4130"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4311"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4406"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4496"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4510"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4512"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4518"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5143"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5345"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5542"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5666"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5685"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5686"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6800"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6954"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7001"/>
+              <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/con"/>
+              <eli:version_date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-08-02</eli:version_date>
+              <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38"/>
+              <eli:consolidates rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/dof"/>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20240802/spa">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ley 38/2003, de 17 de noviembre, General de Subvenciones.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20240802"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20240802/spa/html">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20240802/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+            </eli:LegalResource>
+          </eli:has_member>
+          <eli:has_member>
+            <eli:LegalResource rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20230629">
+              <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+              <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/l"/>
+              <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2003-20977</eli:id_local>
+              <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2003-11-17</eli:date_document>
+              <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">38</eli:number>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/82"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/85"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/93"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/119"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/420"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/449"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/618"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1320"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1677"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1704"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3241"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3497"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3743"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3768"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3770"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3862"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3927"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4130"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4311"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4406"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4496"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4510"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4512"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4518"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5143"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5345"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5542"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5666"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5685"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5686"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6800"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6954"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7001"/>
+              <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/con"/>
+              <eli:version_date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-06-29</eli:version_date>
+              <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38"/>
+              <eli:consolidates rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/dof"/>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20230629/spa">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ley 38/2003, de 17 de noviembre, General de Subvenciones.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20230629"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20230629/spa/html">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20230629/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+            </eli:LegalResource>
+          </eli:has_member>
+          <eli:has_member>
+            <eli:LegalResource rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20230221">
+              <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+              <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/l"/>
+              <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2003-20977</eli:id_local>
+              <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2003-11-17</eli:date_document>
+              <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">38</eli:number>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/82"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/85"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/93"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/119"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/420"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/449"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/618"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1320"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1677"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1704"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3241"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3497"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3743"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3768"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3770"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3862"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3927"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4130"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4311"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4406"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4496"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4510"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4512"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4518"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5143"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5345"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5542"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5666"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5685"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5686"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6800"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6954"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7001"/>
+              <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/con"/>
+              <eli:version_date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-02-21</eli:version_date>
+              <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38"/>
+              <eli:consolidates rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/dof"/>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20230221/spa">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ley 38/2003, de 17 de noviembre, General de Subvenciones.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20230221"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20230221/spa/html">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20230221/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+            </eli:LegalResource>
+          </eli:has_member>
+          <eli:has_member>
+            <eli:LegalResource rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20221224">
+              <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+              <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/l"/>
+              <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2003-20977</eli:id_local>
+              <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2003-11-17</eli:date_document>
+              <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">38</eli:number>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/82"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/85"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/93"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/119"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/420"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/449"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/618"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1320"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1677"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1704"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3241"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3497"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3743"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3768"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3770"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3862"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3927"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4130"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4311"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4406"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4496"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4510"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4512"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4518"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5143"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5345"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5542"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5666"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5685"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5686"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6800"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6954"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7001"/>
+              <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/con"/>
+              <eli:version_date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-12-24</eli:version_date>
+              <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38"/>
+              <eli:consolidates rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/dof"/>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20221224/spa">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ley 38/2003, de 17 de noviembre, General de Subvenciones.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20221224"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20221224/spa/html">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20221224/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+            </eli:LegalResource>
+          </eli:has_member>
+          <eli:has_member>
+            <eli:LegalResource rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20220929">
+              <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+              <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/l"/>
+              <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2003-20977</eli:id_local>
+              <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2003-11-17</eli:date_document>
+              <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">38</eli:number>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/82"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/85"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/93"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/119"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/420"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/449"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/618"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1320"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1677"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1704"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3241"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3497"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3743"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3768"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3770"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3862"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3927"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4130"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4311"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4406"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4496"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4510"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4512"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4518"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5143"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5345"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5542"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5666"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5685"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5686"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6800"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6954"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7001"/>
+              <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/con"/>
+              <eli:version_date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-09-29</eli:version_date>
+              <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38"/>
+              <eli:consolidates rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/dof"/>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20220929/spa">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ley 38/2003, de 17 de noviembre, General de Subvenciones.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20220929"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20220929/spa/html">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20220929/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+            </eli:LegalResource>
+          </eli:has_member>
+          <eli:has_member>
+            <eli:LegalResource rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20220907">
+              <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+              <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/l"/>
+              <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2003-20977</eli:id_local>
+              <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2003-11-17</eli:date_document>
+              <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">38</eli:number>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/82"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/85"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/93"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/119"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/420"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/449"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/618"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1320"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1677"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1704"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3241"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3497"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3743"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3768"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3770"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3862"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3927"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4130"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4311"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4406"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4496"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4510"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4512"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4518"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5143"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5345"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5542"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5666"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5685"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5686"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6800"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6954"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7001"/>
+              <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/con"/>
+              <eli:version_date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-09-07</eli:version_date>
+              <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38"/>
+              <eli:consolidates rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/dof"/>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20220907/spa">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ley 38/2003, de 17 de noviembre, General de Subvenciones.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20220907"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20220907/spa/html">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20220907/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+            </eli:LegalResource>
+          </eli:has_member>
+          <eli:has_member>
+            <eli:LegalResource rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20211229">
+              <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+              <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/l"/>
+              <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2003-20977</eli:id_local>
+              <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2003-11-17</eli:date_document>
+              <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">38</eli:number>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/82"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/85"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/93"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/119"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/420"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/449"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/618"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1320"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1677"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1704"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3241"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3497"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3743"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3768"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3770"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3862"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3927"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4130"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4311"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4406"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4496"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4510"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4512"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4518"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5143"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5345"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5542"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5666"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5685"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5686"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6800"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6954"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7001"/>
+              <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/con"/>
+              <eli:version_date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-12-29</eli:version_date>
+              <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38"/>
+              <eli:consolidates rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/dof"/>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20211229/spa">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ley 38/2003, de 17 de noviembre, General de Subvenciones.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20211229"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20211229/spa/html">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20211229/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+            </eli:LegalResource>
+          </eli:has_member>
+          <eli:has_member>
+            <eli:LegalResource rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20201231">
+              <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+              <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/l"/>
+              <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2003-20977</eli:id_local>
+              <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2003-11-17</eli:date_document>
+              <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">38</eli:number>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/82"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/85"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/93"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/119"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/420"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/449"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/618"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1320"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1677"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1704"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3241"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3497"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3743"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3768"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3770"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3862"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3927"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4130"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4311"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4406"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4496"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4510"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4512"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4518"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5143"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5345"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5542"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5666"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5685"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5686"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6800"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6954"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7001"/>
+              <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/con"/>
+              <eli:version_date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-31</eli:version_date>
+              <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38"/>
+              <eli:consolidates rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/dof"/>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20201231/spa">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ley 38/2003, de 17 de noviembre, General de Subvenciones.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20201231"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20201231/spa/html">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20201231/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+            </eli:LegalResource>
+          </eli:has_member>
+          <eli:has_member>
+            <eli:LegalResource rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20180704">
+              <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+              <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/l"/>
+              <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2003-20977</eli:id_local>
+              <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2003-11-17</eli:date_document>
+              <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">38</eli:number>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/82"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/85"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/93"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/119"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/420"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/449"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/618"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1320"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1677"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1704"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3241"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3497"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3743"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3768"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3770"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3862"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3927"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4130"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4311"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4406"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4496"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4510"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4512"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4518"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5143"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5345"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5542"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5666"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5685"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5686"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6800"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6954"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7001"/>
+              <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/con"/>
+              <eli:version_date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-07-04</eli:version_date>
+              <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38"/>
+              <eli:consolidates rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/dof"/>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20180704/spa">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ley 38/2003, de 17 de noviembre, General de Subvenciones.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20180704"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20180704/spa/html">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20180704/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+            </eli:LegalResource>
+          </eli:has_member>
+          <eli:has_member>
+            <eli:LegalResource rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20180522">
+              <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+              <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/l"/>
+              <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2003-20977</eli:id_local>
+              <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2003-11-17</eli:date_document>
+              <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">38</eli:number>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/82"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/85"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/93"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/119"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/420"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/449"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/618"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1320"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1677"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1704"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3241"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3497"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3743"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3768"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3770"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3862"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3927"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4130"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4311"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4406"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4496"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4510"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4512"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4518"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5143"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5345"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5542"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5666"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5685"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5686"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6800"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6954"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7001"/>
+              <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/con"/>
+              <eli:version_date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-05-22</eli:version_date>
+              <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38"/>
+              <eli:consolidates rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/dof"/>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20180522/spa">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ley 38/2003, de 17 de noviembre, General de Subvenciones.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20180522"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20180522/spa/html">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20180522/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+            </eli:LegalResource>
+          </eli:has_member>
+          <eli:has_member>
+            <eli:LegalResource rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20170628">
+              <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+              <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/l"/>
+              <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2003-20977</eli:id_local>
+              <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2003-11-17</eli:date_document>
+              <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">38</eli:number>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/82"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/85"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/93"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/119"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/420"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/449"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/618"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1320"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1677"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1704"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3241"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3497"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3743"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3768"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3770"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3862"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3927"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4130"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4311"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4406"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4496"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4510"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4512"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4518"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5143"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5345"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5542"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5666"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5685"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5686"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6800"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6954"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7001"/>
+              <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/con"/>
+              <eli:version_date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2017-06-28</eli:version_date>
+              <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38"/>
+              <eli:consolidates rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/dof"/>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20170628/spa">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ley 38/2003, de 17 de noviembre, General de Subvenciones.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20170628"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20170628/spa/html">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20170628/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+            </eli:LegalResource>
+          </eli:has_member>
+          <eli:has_member>
+            <eli:LegalResource rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20160520">
+              <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+              <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/l"/>
+              <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2003-20977</eli:id_local>
+              <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2003-11-17</eli:date_document>
+              <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">38</eli:number>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/82"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/85"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/93"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/119"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/420"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/449"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/618"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1320"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1677"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1704"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3241"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3497"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3743"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3768"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3770"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3862"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3927"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4130"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4311"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4406"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4496"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4510"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4512"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4518"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5143"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5345"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5542"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5666"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5685"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5686"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6800"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6954"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7001"/>
+              <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/con"/>
+              <eli:version_date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2016-05-20</eli:version_date>
+              <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38"/>
+              <eli:consolidates rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/dof"/>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20160520/spa">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ley 38/2003, de 17 de noviembre, General de Subvenciones.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20160520"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20160520/spa/html">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20160520/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+            </eli:LegalResource>
+          </eli:has_member>
+          <eli:has_member>
+            <eli:LegalResource rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20151002">
+              <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+              <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/l"/>
+              <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2003-20977</eli:id_local>
+              <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2003-11-17</eli:date_document>
+              <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">38</eli:number>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/82"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/85"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/93"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/119"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/420"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/449"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/618"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1320"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1677"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1704"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3241"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3497"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3743"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3768"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3770"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3862"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3927"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4130"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4311"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4406"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4496"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4510"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4512"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4518"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5143"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5345"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5542"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5666"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5685"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5686"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6800"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6954"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7001"/>
+              <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/con"/>
+              <eli:version_date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-10-02</eli:version_date>
+              <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38"/>
+              <eli:consolidates rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/dof"/>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20151002/spa">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ley 38/2003, de 17 de noviembre, General de Subvenciones.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20151002"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20151002/spa/html">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20151002/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+            </eli:LegalResource>
+          </eli:has_member>
+          <eli:has_member>
+            <eli:LegalResource rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20150331">
+              <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+              <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/l"/>
+              <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2003-20977</eli:id_local>
+              <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2003-11-17</eli:date_document>
+              <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">38</eli:number>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/82"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/85"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/93"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/119"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/420"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/449"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/618"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1320"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1677"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1704"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3241"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3497"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3743"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3768"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3770"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3862"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3927"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4130"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4311"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4406"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4496"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4510"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4512"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4518"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5143"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5345"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5542"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5666"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5685"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5686"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6800"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6954"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7001"/>
+              <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/con"/>
+              <eli:version_date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-03-31</eli:version_date>
+              <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38"/>
+              <eli:consolidates rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/dof"/>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20150331/spa">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ley 38/2003, de 17 de noviembre, General de Subvenciones.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20150331"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20150331/spa/html">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20150331/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+            </eli:LegalResource>
+          </eli:has_member>
+          <eli:has_member>
+            <eli:LegalResource rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20141028">
+              <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+              <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/l"/>
+              <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2003-20977</eli:id_local>
+              <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2003-11-17</eli:date_document>
+              <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">38</eli:number>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/82"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/85"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/93"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/119"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/420"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/449"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/618"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1320"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1677"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1704"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3241"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3497"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3743"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3768"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3770"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3862"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3927"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4130"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4311"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4406"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4496"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4510"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4512"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4518"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5143"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5345"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5542"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5666"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5685"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5686"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6800"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6954"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7001"/>
+              <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/con"/>
+              <eli:version_date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2014-10-28</eli:version_date>
+              <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38"/>
+              <eli:consolidates rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/dof"/>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20141028/spa">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ley 38/2003, de 17 de noviembre, General de Subvenciones.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20141028"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20141028/spa/html">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20141028/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+            </eli:LegalResource>
+          </eli:has_member>
+          <eli:has_member>
+            <eli:LegalResource rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20140917">
+              <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+              <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/l"/>
+              <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2003-20977</eli:id_local>
+              <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2003-11-17</eli:date_document>
+              <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">38</eli:number>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/82"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/85"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/93"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/119"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/420"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/449"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/618"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1320"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1677"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1704"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3241"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3497"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3743"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3768"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3770"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3862"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3927"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4130"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4311"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4406"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4496"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4510"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4512"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4518"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5143"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5345"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5542"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5666"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5685"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5686"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6800"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6954"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7001"/>
+              <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/con"/>
+              <eli:version_date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2014-09-17</eli:version_date>
+              <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38"/>
+              <eli:consolidates rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/dof"/>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20140917/spa">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ley 38/2003, de 17 de noviembre, General de Subvenciones.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20140917"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20140917/spa/html">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20140917/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+            </eli:LegalResource>
+          </eli:has_member>
+          <eli:has_member>
+            <eli:LegalResource rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20140108">
+              <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+              <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/l"/>
+              <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2003-20977</eli:id_local>
+              <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2003-11-17</eli:date_document>
+              <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">38</eli:number>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/82"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/85"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/93"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/119"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/420"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/449"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/618"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1320"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1677"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1704"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3241"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3497"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3743"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3768"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3770"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3862"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3927"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4130"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4311"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4406"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4496"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4510"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4512"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4518"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5143"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5345"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5542"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5666"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5685"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5686"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6800"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6954"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7001"/>
+              <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/con"/>
+              <eli:version_date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2014-01-08</eli:version_date>
+              <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38"/>
+              <eli:consolidates rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/dof"/>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20140108/spa">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ley 38/2003, de 17 de noviembre, General de Subvenciones.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20140108"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20140108/spa/html">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20140108/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+            </eli:LegalResource>
+          </eli:has_member>
+          <eli:has_member>
+            <eli:LegalResource rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20130702">
+              <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+              <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/l"/>
+              <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2003-20977</eli:id_local>
+              <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2003-11-17</eli:date_document>
+              <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">38</eli:number>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/82"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/85"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/93"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/119"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/420"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/449"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/618"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1320"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1677"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1704"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3241"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3497"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3743"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3768"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3770"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3862"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3927"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4130"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4311"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4406"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4496"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4510"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4512"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4518"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5143"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5345"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5542"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5666"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5685"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5686"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6800"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6954"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7001"/>
+              <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/con"/>
+              <eli:version_date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-07-02</eli:version_date>
+              <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38"/>
+              <eli:consolidates rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/dof"/>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20130702/spa">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ley 38/2003, de 17 de noviembre, General de Subvenciones.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20130702"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20130702/spa/html">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20130702/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+            </eli:LegalResource>
+          </eli:has_member>
+          <eli:has_member>
+            <eli:LegalResource rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20130629">
+              <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+              <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/l"/>
+              <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2003-20977</eli:id_local>
+              <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2003-11-17</eli:date_document>
+              <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">38</eli:number>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/82"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/85"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/93"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/119"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/420"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/449"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/618"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1320"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1677"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1704"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3241"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3497"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3743"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3768"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3770"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3862"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3927"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4130"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4311"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4406"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4496"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4510"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4512"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4518"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5143"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5345"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5542"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5666"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5685"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5686"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6800"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6954"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7001"/>
+              <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/con"/>
+              <eli:version_date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-06-29</eli:version_date>
+              <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38"/>
+              <eli:consolidates rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/dof"/>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20130629/spa">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ley 38/2003, de 17 de noviembre, General de Subvenciones.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20130629"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20130629/spa/html">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20130629/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+            </eli:LegalResource>
+          </eli:has_member>
+          <eli:has_member>
+            <eli:LegalResource rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20130627">
+              <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+              <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/l"/>
+              <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2003-20977</eli:id_local>
+              <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2003-11-17</eli:date_document>
+              <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">38</eli:number>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/82"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/85"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/93"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/119"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/420"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/449"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/618"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1320"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1677"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1704"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3241"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3497"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3743"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3768"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3770"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3862"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3927"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4130"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4311"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4406"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4496"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4510"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4512"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4518"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5143"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5345"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5542"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5666"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5685"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5686"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6800"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6954"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7001"/>
+              <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/con"/>
+              <eli:version_date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-06-27</eli:version_date>
+              <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38"/>
+              <eli:consolidates rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/dof"/>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20130627/spa">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ley 38/2003, de 17 de noviembre, General de Subvenciones.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20130627"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20130627/spa/html">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20130627/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+            </eli:LegalResource>
+          </eli:has_member>
+          <eli:has_member>
+            <eli:LegalResource rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20121228">
+              <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+              <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/l"/>
+              <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2003-20977</eli:id_local>
+              <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2003-11-17</eli:date_document>
+              <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">38</eli:number>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/82"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/85"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/93"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/119"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/420"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/449"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/618"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1320"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1677"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1704"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3241"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3497"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3743"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3768"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3770"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3862"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3927"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4130"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4311"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4406"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4496"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4510"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4512"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4518"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5143"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5345"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5542"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5666"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5685"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5686"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6800"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6954"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7001"/>
+              <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/con"/>
+              <eli:version_date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2012-12-28</eli:version_date>
+              <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38"/>
+              <eli:consolidates rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/dof"/>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20121228/spa">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ley 38/2003, de 17 de noviembre, General de Subvenciones.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20121228"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20121228/spa/html">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20121228/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+            </eli:LegalResource>
+          </eli:has_member>
+          <eli:has_member>
+            <eli:LegalResource rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20110602">
+              <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+              <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/l"/>
+              <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2003-20977</eli:id_local>
+              <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2003-11-17</eli:date_document>
+              <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">38</eli:number>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/82"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/85"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/93"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/119"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/420"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/449"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/618"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1320"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1677"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1704"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3241"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3497"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3743"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3768"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3770"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3862"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3927"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4130"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4311"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4406"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4496"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4510"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4512"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4518"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5143"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5345"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5542"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5666"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5685"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5686"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6800"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6954"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7001"/>
+              <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/con"/>
+              <eli:version_date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2011-06-02</eli:version_date>
+              <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38"/>
+              <eli:consolidates rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/dof"/>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20110602/spa">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ley 38/2003, de 17 de noviembre, General de Subvenciones.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20110602"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20110602/spa/html">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20110602/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+            </eli:LegalResource>
+          </eli:has_member>
+          <eli:has_member>
+            <eli:LegalResource rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20101223">
+              <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+              <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/l"/>
+              <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2003-20977</eli:id_local>
+              <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2003-11-17</eli:date_document>
+              <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">38</eli:number>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/82"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/85"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/93"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/119"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/420"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/449"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/618"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1320"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1677"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1704"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3241"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3497"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3743"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3768"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3770"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3862"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3927"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4130"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4311"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4406"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4496"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4510"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4512"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4518"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5143"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5345"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5542"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5666"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5685"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5686"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6800"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6954"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7001"/>
+              <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/con"/>
+              <eli:version_date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2010-12-23</eli:version_date>
+              <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38"/>
+              <eli:consolidates rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/dof"/>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20101223/spa">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ley 38/2003, de 17 de noviembre, General de Subvenciones.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20101223"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20101223/spa/html">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20101223/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+            </eli:LegalResource>
+          </eli:has_member>
+          <eli:has_member>
+            <eli:LegalResource rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20100413">
+              <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+              <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/l"/>
+              <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2003-20977</eli:id_local>
+              <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2003-11-17</eli:date_document>
+              <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">38</eli:number>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/82"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/85"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/93"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/119"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/420"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/449"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/618"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1320"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1677"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1704"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3241"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3497"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3743"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3768"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3770"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3862"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3927"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4130"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4311"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4406"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4496"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4510"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4512"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4518"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5143"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5345"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5542"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5666"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5685"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5686"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6800"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6954"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7001"/>
+              <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/con"/>
+              <eli:version_date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2010-04-13</eli:version_date>
+              <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38"/>
+              <eli:consolidates rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/dof"/>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20100413/spa">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ley 38/2003, de 17 de noviembre, General de Subvenciones.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20100413"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20100413/spa/html">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20100413/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+            </eli:LegalResource>
+          </eli:has_member>
+          <eli:has_member>
+            <eli:LegalResource rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20081224">
+              <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+              <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/l"/>
+              <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2003-20977</eli:id_local>
+              <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2003-11-17</eli:date_document>
+              <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">38</eli:number>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/82"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/85"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/93"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/119"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/420"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/449"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/618"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1320"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1677"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1704"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3241"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3497"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3743"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3768"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3770"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3862"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3927"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4130"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4311"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4406"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4496"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4510"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4512"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4518"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5143"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5345"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5542"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5666"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5685"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5686"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6800"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6954"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7001"/>
+              <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/con"/>
+              <eli:version_date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2008-12-24</eli:version_date>
+              <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38"/>
+              <eli:consolidates rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/dof"/>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20081224/spa">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ley 38/2003, de 17 de noviembre, General de Subvenciones.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20081224"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20081224/spa/html">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20081224/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+            </eli:LegalResource>
+          </eli:has_member>
+          <eli:has_member>
+            <eli:LegalResource rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20061229">
+              <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+              <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/l"/>
+              <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2003-20977</eli:id_local>
+              <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2003-11-17</eli:date_document>
+              <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">38</eli:number>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/82"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/85"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/93"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/119"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/420"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/449"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/618"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1320"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1677"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1704"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3241"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3497"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3743"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3768"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3770"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3862"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3927"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4130"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4311"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4406"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4496"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4510"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4512"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4518"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5143"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5345"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5542"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5666"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5685"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5686"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6800"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6954"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7001"/>
+              <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/con"/>
+              <eli:version_date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2006-12-29</eli:version_date>
+              <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38"/>
+              <eli:consolidates rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/dof"/>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20061229/spa">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ley 38/2003, de 17 de noviembre, General de Subvenciones.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20061229"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20061229/spa/html">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20061229/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+            </eli:LegalResource>
+          </eli:has_member>
+          <eli:has_member>
+            <eli:LegalResource rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20051119">
+              <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+              <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/l"/>
+              <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2003-20977</eli:id_local>
+              <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2003-11-17</eli:date_document>
+              <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">38</eli:number>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/82"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/85"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/93"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/119"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/420"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/449"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/618"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1320"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1677"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1704"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3241"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3497"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3743"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3768"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3770"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3862"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3927"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4130"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4311"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4406"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4496"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4510"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4512"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4518"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5143"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5345"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5542"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5666"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5685"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5686"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6800"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6954"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7001"/>
+              <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/con"/>
+              <eli:version_date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2005-11-19</eli:version_date>
+              <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38"/>
+              <eli:consolidates rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/dof"/>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20051119/spa">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ley 38/2003, de 17 de noviembre, General de Subvenciones.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20051119"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20051119/spa/html">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20051119/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+            </eli:LegalResource>
+          </eli:has_member>
+          <eli:has_member>
+            <eli:LegalResource rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20031118">
+              <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+              <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/l"/>
+              <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2003-20977</eli:id_local>
+              <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2003-11-17</eli:date_document>
+              <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">38</eli:number>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/82"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/85"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/93"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/119"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/420"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/449"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/618"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1320"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1677"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1704"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3241"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3497"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3743"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3768"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3770"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3862"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3927"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4130"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4311"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4406"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4496"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4510"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4512"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4518"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5143"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5345"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5542"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5666"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5685"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5686"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6800"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6954"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7001"/>
+              <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/con"/>
+              <eli:version_date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2003-11-18</eli:version_date>
+              <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38"/>
+              <eli:consolidates rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/dof"/>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20031118/spa">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ley 38/2003, de 17 de noviembre, General de Subvenciones.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20031118"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/l/2003/11/17/38/con/20031118/spa/html">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/l/2003/11/17/38/con/20031118/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+            </eli:LegalResource>
+          </eli:has_member>
+        </eli:LegalResource>
+      </rdf:RDF>
+    </metadata-eli>
+  </data>
+</response>

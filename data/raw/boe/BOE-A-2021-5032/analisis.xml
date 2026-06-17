@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+  <status>
+    <code>200</code>
+    <text>ok</text>
+  </status>
+  <data>
+    <analisis>
+      <materias>
+        <materia codigo="35">Acceso a la información</materia>
+        <materia codigo="1508">Administración electrónica</materia>
+        <materia codigo="82">Administración General del Estado</materia>
+        <materia codigo="93">Administraciones Públicas</materia>
+        <materia codigo="281">Archivos</materia>
+        <materia codigo="7879">Certificados telemáticos</materia>
+        <materia codigo="7894">Comunicaciones electrónicas</materia>
+        <materia codigo="3085">Documentos</materia>
+        <materia codigo="3159">Empleados públicos</materia>
+        <materia codigo="3716">Firma electrónica</materia>
+        <materia codigo="4506">Internet</materia>
+        <materia codigo="4517">Inventarios</materia>
+        <materia codigo="5159">Normalización</materia>
+        <materia codigo="5165">Normas jurídicas</materia>
+        <materia codigo="7872">Notificaciones telemáticas</materia>
+        <materia codigo="5703">Procedimiento administrativo</materia>
+        <materia codigo="5923">Redes de telecomunicación</materia>
+        <materia codigo="7869">Registros telemáticos</materia>
+        <materia codigo="6062">Representación</materia>
+        <materia codigo="4189">Seguridad informática</materia>
+      </materias>
+      <referencias>
+        <anteriores>
+          <anterior>
+            <id_norma>BOE-A-2009-18358</id_norma>
+            <relacion codigo="210">DEROGA</relacion>
+            <texto>el Real Decreto 1671/2009, de 6 de noviembre</texto>
+          </anterior>
+          <anterior>
+            <id_norma>BOE-A-2017-13065</id_norma>
+            <relacion codigo="270">MODIFICA</relacion>
+            <texto>el art. 2.1.d) y g) del del Real Decreto 931/2017, de 27 de octubre</texto>
+          </anterior>
+          <anterior>
+            <id_norma>BOE-A-2010-1331</id_norma>
+            <relacion codigo="270">MODIFICA</relacion>
+            <texto>los arts. 9, 11, 14, 16 a 18, disposición adicional 1, anexo y SUPRIME el art. 19, las disposiciones adicionales 3 y 4 del Real Decreto 4/2010, de 8 de enero</texto>
+          </anterior>
+          <anterior>
+            <id_norma>BOE-A-2015-10566</id_norma>
+            <relacion codigo="490">DESARROLLA</relacion>
+            <texto>la Ley 40/2015, de 1 de octubre</texto>
+          </anterior>
+          <anterior>
+            <id_norma>BOE-A-2015-10565</id_norma>
+            <relacion codigo="490">DESARROLLA</relacion>
+            <texto>la Ley 39/2015, de 1 de octubre</texto>
+          </anterior>
+        </anteriores>
+        <posteriores>
+          <posterior>
+            <id_norma>BOE-A-2025-6601</id_norma>
+            <relacion codigo="270">SE MODIFICA</relacion>
+            <texto>los arts. 27.1 y 28.1, por Real Decreto 255/2025, de 1 de abril</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2024-21592</id_norma>
+            <relacion codigo="440">SE DICTA DE CONFORMIDAD</relacion>
+            <texto>, y actualiza la sede electrónica del Comisionado para el Mercdo de Tabacos: Resolución de 15 de octubre de 2024</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2021-20479</id_norma>
+            <relacion codigo="440">SE DICTA DE CONFORMIDAD</relacion>
+            <texto>con el art. 33.5  y se regula el Registro Electrónico de apoderamientos en el ámbito de la Administración General del Estado: Orden PCM/1384/2021, de 9 de diciembre</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2021-20478</id_norma>
+            <relacion codigo="440">SE DICTA DE CONFORMIDAD</relacion>
+            <texto>y se regula el Registro de Funcionarios Habilitados en el ámbito de la Administración General del Estado: Orden PCM/1383/2021, de 9 de diciembre</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2023-10045</id_norma>
+            <relacion codigo="470">SE DECLARA</relacion>
+            <texto>en el Conflicto 5253/2021, su extinción por desaparición sobrevenida de su objeto en relación con los arts. 15.3 a), 26.2 c), 28.2, 29.4 y la disposición adicional 9, por Sentencia 20/2023, de 23 de marzo</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2022-11512</id_norma>
+            <relacion codigo="470">SE DECLARA</relacion>
+            <texto>la nulidad de la disposición transitoria 1, por Sentencia del TS de 30 de mayo de 2022</texto>
+          </posterior>
+        </posteriores>
+      </referencias>
+    </analisis>
+  </data>
+</response>

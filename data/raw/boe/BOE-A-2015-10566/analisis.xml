@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+  <status>
+    <code>200</code>
+    <text>ok</text>
+  </status>
+  <data>
+    <analisis>
+      <materias>
+        <materia codigo="79">Administración del Estado en el Exterior</materia>
+        <materia codigo="1508">Administración electrónica</materia>
+        <materia codigo="82">Administración General del Estado</materia>
+        <materia codigo="85">Administración Local</materia>
+        <materia codigo="93">Administraciones Públicas</materia>
+        <materia codigo="8484">Agencias estatales</materia>
+        <materia codigo="217">Altos cargos</materia>
+        <materia codigo="433">Baleares</materia>
+        <materia codigo="517">Boletín Oficial del Estado</materia>
+        <materia codigo="599">Canarias</materia>
+        <materia codigo="828">Ceuta</materia>
+        <materia codigo="1320">Comunidades Autónomas</materia>
+        <materia codigo="1424">Consejo de Ministros</materia>
+        <materia codigo="1589">Consejos consultivos</materia>
+        <materia codigo="1640">Contratación administrativa</materia>
+        <materia codigo="2290">Delegación de atribuciones</materia>
+        <materia codigo="2309">Delegaciones del Gobierno en las Comunidades Autónomas</materia>
+        <materia codigo="3159">Empleados públicos</materia>
+        <materia codigo="3180">Empresas públicas</materia>
+        <materia codigo="3185">Encomienda de gestión</materia>
+        <materia codigo="3229">Entidades aseguradoras</materia>
+        <materia codigo="3244">Entidades Públicas Empresariales</materia>
+        <materia codigo="3716">Firma electrónica</materia>
+        <materia codigo="3857">Funcionarios públicos</materia>
+        <materia codigo="3862">Fundaciones estatales</materia>
+        <materia codigo="3887">Garantías</materia>
+        <materia codigo="3938">Gobierno</materia>
+        <materia codigo="4270">Iniciativa legislativa</materia>
+        <materia codigo="4323">Instituto de Crédito Oficial</materia>
+        <materia codigo="4923">Melilla</materia>
+        <materia codigo="5020">Ministros</materia>
+        <materia codigo="5153">Nombramientos</materia>
+        <materia codigo="5165">Normas jurídicas</materia>
+        <materia codigo="5268">Organismos autónomos</materia>
+        <materia codigo="5278">Organización de la Administración del Estado</materia>
+        <materia codigo="5331">Órganos colegiados</materia>
+        <materia codigo="7911">Patrimonio de las Administraciones Públicas</materia>
+        <materia codigo="5436">Patrimonio Nacional</materia>
+        <materia codigo="5686">Presupuestos Generales del Estado</materia>
+        <materia codigo="5703">Procedimiento administrativo</materia>
+        <materia codigo="8021">Procedimiento concursal</materia>
+        <materia codigo="5709">Procedimiento sancionador</materia>
+        <materia codigo="5796">Publicidad institucional</materia>
+        <materia codigo="6219">Responsabilidad Civil de la Administración</materia>
+        <materia codigo="9012">Secretarías generales técnicas ministeriales</materia>
+        <materia codigo="6487">Secretarios de Estado</materia>
+        <materia codigo="6714">Subdelegaciones del Gobierno en las Comunidades Autónomas</materia>
+        <materia codigo="9015">Subsecretarías ministeriales</materia>
+        <materia codigo="6800">Subvenciones</materia>
+        <materia codigo="6928">Transporte de viajeros</materia>
+        <materia codigo="6936">Transportes marítimos</materia>
+      </materias>
+      <notas>
+        <nota>Entrada en vigor:  el 2 de octubre de 2016, con las salvedades y efectos indicados.</nota>
+      </notas>
+      <referencias>
+        <anteriores>
+          <anterior>
+            <id_norma>BOE-A-2014-9467</id_norma>
+            <relacion codigo="210">DEROGA</relacion>
+            <texto>Arts. 12 a 15 y disposición adicional 6 de la Ley 15/2014, de 16 de septiembre</texto>
+          </anterior>
+          <anterior>
+            <id_norma>BOE-A-2009-18358</id_norma>
+            <relacion codigo="210">DEROGA</relacion>
+            <texto>Art. 6.1.f), disposiciones adicional 3 y transitorias 2 y 4 del Real Decreto 1671/2009, de 6 de noviembre</texto>
+          </anterior>
+          <anterior>
+            <id_norma>BOE-A-2006-13011</id_norma>
+            <relacion codigo="210">DEROGA</relacion>
+            <texto>, en la forma indicada, la Ley 28/2006, de 18 de julio</texto>
+          </anterior>
+          <anterior>
+            <id_norma>BOE-A-2002-25180</id_norma>
+            <relacion codigo="210">DEROGA</relacion>
+            <texto>Arts. 44 a 46 y MODIFICA el art. 34.2 de la Ley 50/2002, de 26 de diciembre</texto>
+          </anterior>
+          <anterior>
+            <id_norma>BOE-A-1997-7878</id_norma>
+            <relacion codigo="210">DEROGA</relacion>
+            <texto>Ley 6/1997, de 14 de abril</texto>
+          </anterior>
+          <anterior>
+            <id_norma>BOE-A-1986-9865</id_norma>
+            <relacion codigo="210">DEROGA</relacion>
+            <texto>Art. 110 de la Ley de Régimen local, texto refundido aprobado por Real Decreto Legislativo 781/1986, de 18 de abril</texto>
+          </anterior>
+          <anterior>
+            <id_norma>BOE-A-1985-5392</id_norma>
+            <relacion codigo="210">DEROGA</relacion>
+            <texto>Art. 87 de la Ley 7/1985, de 2 de abril</texto>
+          </anterior>
+          <anterior>
+            <id_norma>BOE-A-1955-10057</id_norma>
+            <relacion codigo="210">DEROGA</relacion>
+            <texto>Arts. 37 a 40 del Decreto de 17 de junio de 1955 (Gazeta)</texto>
+          </anterior>
+          <anterior>
+            <id_norma>BOE-A-2015-7897</id_norma>
+            <relacion codigo="270">MODIFICA</relacion>
+            <texto>Disposición final 21.2 de la Ley 20/2015, de 14 de julio</texto>
+          </anterior>
+          <anterior>
+            <id_norma>BOE-A-2012-15651</id_norma>
+            <relacion codigo="270">MODIFICA</relacion>
+            <texto>Disposición adicional 13 de la Ley 17/2012, de 27 de diciembre</texto>
+          </anterior>
+          <anterior>
+            <id_norma>BOE-A-2011-17887</id_norma>
+            <relacion codigo="270">MODIFICA</relacion>
+            <texto>y AÑADE determinados preceptos a Ley de Contratos del Sector Público, texto refundido aprobado por Real Decreto Legislativo 3/2011, de 14 de noviembre</texto>
+          </anterior>
+          <anterior>
+            <id_norma>BOE-A-2003-21614</id_norma>
+            <relacion codigo="270">MODIFICA</relacion>
+            <texto>Arts. 2 y 3 Ley 47/2003, de 26 de noviembre</texto>
+          </anterior>
+          <anterior>
+            <id_norma>BOE-A-2003-20977</id_norma>
+            <relacion codigo="270">MODIFICA</relacion>
+            <texto>Art. 10 y disposición adicional 16.1 y AÑADE las disposiciones transitoria 3 y adicional 25 a la Ley 38/2003, de 17 de noviembre</texto>
+          </anterior>
+          <anterior>
+            <id_norma>BOE-A-2003-20254</id_norma>
+            <relacion codigo="270">MODIFICA</relacion>
+            <texto>Arts. 166.1 y 167.2 de la Ley 33/2003, de 3 de noviembre</texto>
+          </anterior>
+          <anterior>
+            <id_norma>BOE-A-2003-13813</id_norma>
+            <relacion codigo="270">MODIFICA</relacion>
+            <texto>Arts. 3.1, 34 ter, 34 quáter y 90.1.6 de la Ley 22/2003, de 9 de julio</texto>
+          </anterior>
+          <anterior>
+            <id_norma>BOE-A-1997-25336</id_norma>
+            <relacion codigo="270">MODIFICA</relacion>
+            <texto>Arts. 4 a 13, 20 y el título V y AÑADE el título VI a la Ley 50/1997, de 27 de noviembre</texto>
+          </anterior>
+          <anterior>
+            <id_norma>BOE-A-1995-27964</id_norma>
+            <relacion codigo="270">MODIFICA</relacion>
+            <texto>Disposición adicional 6 y AÑADE la disposición transitoria 5 al Real Decreto-ley 12/1995, de 28 de diciembre</texto>
+          </anterior>
+          <anterior>
+            <id_norma>BOE-A-1982-15230</id_norma>
+            <relacion codigo="270">MODIFICA</relacion>
+            <texto>Art. 8.Uno Ley 23/1982, de 16 de junio</texto>
+          </anterior>
+          <anterior>
+            <id_norma>BOE-A-2007-22294</id_norma>
+            <relacion codigo="330">CITA</relacion>
+            <texto>Ley 50/2007, de 26 de diciembre</texto>
+          </anterior>
+        </anteriores>
+        <posteriores>
+          <posterior>
+            <id_norma>BOE-A-2020-4859</id_norma>
+            <relacion codigo="210">SE DEROGA</relacion>
+            <texto>la disposición final 5, por Real Decreto Legislativo 1/2020, de 5 de mayo</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2024-15936</id_norma>
+            <relacion codigo="270">SE MODIFICA</relacion>
+            <texto>, con efectos desde el 22 de agosto de 2024, el art. 54.1 y SE AÑADE los arts. 55 bis y 84 bis, por Ley Orgánica 2/2024, de 1 de agosto</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2023-25758</id_norma>
+            <relacion codigo="270">SE MODIFICA</relacion>
+            <texto>los arts. 63.3 y 66.2, por Real Decreto-ley 6/2023, de 19 de diciembre</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2022-22128</id_norma>
+            <relacion codigo="270">SE MODIFICA</relacion>
+            <texto>los arts. 121 y 122.3, por Ley 31/2022, de 23 de diciembre</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2022-4972</id_norma>
+            <relacion codigo="270">SE MODIFICA</relacion>
+            <texto>el art. 142 y SE AÑADE la disposición adicional 30, por Real Decreto-ley 6/2022, de 29 de marzo</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2021-21653</id_norma>
+            <relacion codigo="270">SE MODIFICA</relacion>
+            <texto>los arts. 50.2, 122.3, 128.1, 129 y la disposición adicional 4, por Ley 22/2021, de 28 de diciembre</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2020-17340</id_norma>
+            <relacion codigo="270">SE MODIFICA</relacion>
+            <texto>los arts. 48.8, 50.2, la disposición adicional 7.2 y SE AÑADE las adicionales 28 y 29, por Real Decreto-ley 36/2020, de 30 de diciembre</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2020-17339</id_norma>
+            <relacion codigo="270">SE MODIFICA</relacion>
+            <texto>y SE AÑADEN determinados preceptos, por Ley 11/2020, de 30 de diciembre</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2019-15790</id_norma>
+            <relacion codigo="270">SE MODIFICA</relacion>
+            <texto>el art. 155 y SE AÑADE el art. 46 bis, por Real Decreto-ley 14/2019, de 31 de octubre</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2018-9268</id_norma>
+            <relacion codigo="270">SE MODIFICA</relacion>
+            <texto>la disposición final 10.8.a), por Ley 6/2018, de 3 de julio</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2017-12902</id_norma>
+            <relacion codigo="270">SE MODIFICA</relacion>
+            <texto>los arts. 82.1 y 84.2, por Ley 9/2017, de 8 de noviembre</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2015-14020</id_norma>
+            <relacion codigo="201">CORRECCIÓN de errores</relacion>
+            <texto>en BOE núm. 306 de 23 de diciembre de 2015</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2021-6240</id_norma>
+            <relacion codigo="203">SE CORRIGEN errores</relacion>
+            <texto>en la Ley 11/2020, de 30 de diciembre, en BOE núm. 94, de 20 de abril de 2021</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2021-1064</id_norma>
+            <relacion codigo="203">SE CORRIGEN errores</relacion>
+            <texto>, con variación de preceptos modificadores, en el Real Decreto-ley 36/2020, de 30 de diciembre, en BOE núm. 22 de 26 de enero de 2021</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2021-5032</id_norma>
+            <relacion codigo="490">SE DESARROLLA</relacion>
+            <texto>, y se aprueba el Reglamento de actuación y funcionamiento del sector público por medios electrónicos: Real Decreto 203/2021, de 30 de marzo</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2024-20160</id_norma>
+            <relacion codigo="440">SE DICTA DE CONFORMIDAD</relacion>
+            <texto>y crea el órgano colegiado que ejercerá de Consejo de Inversión de los instrumentos financieros del Fondo de Resiliencia Autonómica: Orden ECM/1066/2024, de 3 de octubre</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2024-15203</id_norma>
+            <relacion codigo="440">SE DICTA DE CONFORMIDAD</relacion>
+            <texto>y se crean órganos de coordinación, seguimiento y participación del II Plan Nacional de Derechos Humanos (2023-2027): Real Decreto 709/2024, de 23 de julio</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2024-8712</id_norma>
+            <relacion codigo="440">SE DICTA DE CONFORMIDAD</relacion>
+            <texto>sobre criterios de funcionamiento de las Conferencias Sectoriales: Real Decreto 440/2024, de 30 de abril</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2024-8708</id_norma>
+            <relacion codigo="440">SE DICTA DE CONFORMIDAD</relacion>
+            <texto>con la disposición adicional 30 y se crea la Plataforma Digital de Colaboración entre las Administraciones Públicas, por Orden PJC/385/2024, de 30 de abril</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2017-15350</id_norma>
+            <relacion codigo="440">SE DICTA DE CONFORMIDAD</relacion>
+            <texto>y aprueba las instrucciones para la tramitación de convenios: Orden PRA/1267/2017, de 21 de diciembre</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2020-10923</id_norma>
+            <relacion codigo="331">SE DICTA EN RELACIÓN</relacion>
+            <texto>la suspensión de la aplicación de lo indicado del art.96.1.e) y 3, para las cuentas anuales aprobadas durante los ejercicios 2020, 2021 y 2022: Ley 3/2020, de 18 de septiembre</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2020-4705</id_norma>
+            <relacion codigo="331">SE DICTA EN RELACIÓN</relacion>
+            <texto>la suspensión de la aplicación de lo indicado del art.96.1.e) y 3, para las cuentas anuales aprobadas durante los ejercicios 2020, 2021 y 2022: Real Decreto-ley 16/2020, de 28 de abril</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2019-5726</id_norma>
+            <relacion codigo="470">SE DECLARA</relacion>
+            <texto>en el Recurso 3903/2016, la desestimación en relación con los arts. 48.8, 50.2 d) y disposiciones adicionales 7 y 8, por Sentencia 33/2019, de 14 de marzo</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2019-457</id_norma>
+            <relacion codigo="470">SE DECLARA</relacion>
+            <texto>en el Recurso 3774/2016, la inconstitucionalidad de lo indicado del art. 52.2 en los términos del fj 8 b) y su desestimación en todo lo demás, por Sentencia 132/2018, de 13 de diciembre</texto>
+          </posterior>
+        </posteriores>
+      </referencias>
+    </analisis>
+  </data>
+</response>

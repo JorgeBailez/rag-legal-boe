@@ -1,0 +1,3351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+  <status>
+    <code>200</code>
+    <text>ok</text>
+  </status>
+  <data>
+    <bloque>
+      <id>no</id>
+      <titulo/>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/no</url>
+    </bloque>
+    <bloque>
+      <id>pr</id>
+      <titulo>[preambulo]</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/pr</url>
+    </bloque>
+    <bloque>
+      <id>tp</id>
+      <titulo>TÍTULO PRELIMINAR</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/tp</url>
+    </bloque>
+    <bloque>
+      <id>ci</id>
+      <titulo>CAPÍTULO I</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/ci</url>
+    </bloque>
+    <bloque>
+      <id>s1</id>
+      <titulo>Sección 1</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s1</url>
+    </bloque>
+    <bloque>
+      <id>a1</id>
+      <titulo>Artículo 1</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1</url>
+    </bloque>
+    <bloque>
+      <id>a2</id>
+      <titulo>Artículo 2</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2</url>
+    </bloque>
+    <bloque>
+      <id>a3</id>
+      <titulo>Artículo 3</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3</url>
+    </bloque>
+    <bloque>
+      <id>s2</id>
+      <titulo>Sección 2</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s2</url>
+    </bloque>
+    <bloque>
+      <id>a4</id>
+      <titulo>Artículo 4</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a4</url>
+    </bloque>
+    <bloque>
+      <id>a5</id>
+      <titulo>Artículo 5</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a5</url>
+    </bloque>
+    <bloque>
+      <id>a6</id>
+      <titulo>Artículo 6</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a6</url>
+    </bloque>
+    <bloque>
+      <id>a7</id>
+      <titulo>Artículo 7</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a7</url>
+    </bloque>
+    <bloque>
+      <id>a8</id>
+      <titulo>Artículo 8</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a8</url>
+    </bloque>
+    <bloque>
+      <id>a9</id>
+      <titulo>Artículo 9</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a9</url>
+    </bloque>
+    <bloque>
+      <id>a1-2</id>
+      <titulo>Artículo 10</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-2</url>
+    </bloque>
+    <bloque>
+      <id>a1-3</id>
+      <titulo>Artículo 11</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-3</url>
+    </bloque>
+    <bloque>
+      <id>ci-2</id>
+      <titulo>CAPÍTULO II</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/ci-2</url>
+    </bloque>
+    <bloque>
+      <id>s1-2</id>
+      <titulo>Sección 1</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s1-2</url>
+    </bloque>
+    <bloque>
+      <id>a1-4</id>
+      <titulo>Artículo 12</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-4</url>
+    </bloque>
+    <bloque>
+      <id>a1-5</id>
+      <titulo>Artículo 13</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-5</url>
+    </bloque>
+    <bloque>
+      <id>a1-6</id>
+      <titulo>Artículo 14</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-6</url>
+    </bloque>
+    <bloque>
+      <id>a1-7</id>
+      <titulo>Artículo 15</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-7</url>
+    </bloque>
+    <bloque>
+      <id>a1-8</id>
+      <titulo>Artículo 16</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-8</url>
+    </bloque>
+    <bloque>
+      <id>a1-9</id>
+      <titulo>Artículo 17</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-9</url>
+    </bloque>
+    <bloque>
+      <id>a1-10</id>
+      <titulo>Artículo 18</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-10</url>
+    </bloque>
+    <bloque>
+      <id>s2-2</id>
+      <titulo>Sección 2</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s2-2</url>
+    </bloque>
+    <bloque>
+      <id>a1-11</id>
+      <titulo>Artículo 19</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-11</url>
+    </bloque>
+    <bloque>
+      <id>a2-2</id>
+      <titulo>Artículo 20</titulo>
+      <fecha_actualizacion>20251226</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-2</url>
+    </bloque>
+    <bloque>
+      <id>a2-3</id>
+      <titulo>Artículo 21</titulo>
+      <fecha_actualizacion>20251226</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-3</url>
+    </bloque>
+    <bloque>
+      <id>a2-4</id>
+      <titulo>Artículo 22</titulo>
+      <fecha_actualizacion>20251226</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-4</url>
+    </bloque>
+    <bloque>
+      <id>a2-5</id>
+      <titulo>Artículo 23</titulo>
+      <fecha_actualizacion>20251226</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-5</url>
+    </bloque>
+    <bloque>
+      <id>s3</id>
+      <titulo>Sección 3</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s3</url>
+    </bloque>
+    <bloque>
+      <id>a2-6</id>
+      <titulo>Artículo 24</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-6</url>
+    </bloque>
+    <bloque>
+      <id>a2-7</id>
+      <titulo>Artículo 25</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-7</url>
+    </bloque>
+    <bloque>
+      <id>a2-8</id>
+      <titulo>Artículo 26</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-8</url>
+    </bloque>
+    <bloque>
+      <id>a2-9</id>
+      <titulo>Artículo 27</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-9</url>
+    </bloque>
+    <bloque>
+      <id>lp</id>
+      <titulo>LIBRO PRIMERO</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/lp</url>
+    </bloque>
+    <bloque>
+      <id>ti</id>
+      <titulo>TÍTULO I</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/ti</url>
+    </bloque>
+    <bloque>
+      <id>ci-3</id>
+      <titulo>CAPÍTULO I</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/ci-3</url>
+    </bloque>
+    <bloque>
+      <id>a2-10</id>
+      <titulo>Artículo 28</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-10</url>
+    </bloque>
+    <bloque>
+      <id>a2-11</id>
+      <titulo>Artículo 29</titulo>
+      <fecha_actualizacion>20221224</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-11</url>
+    </bloque>
+    <bloque>
+      <id>a3-2</id>
+      <titulo>Artículo 30</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-2</url>
+    </bloque>
+    <bloque>
+      <id>a3-3</id>
+      <titulo>Artículo 31</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-3</url>
+    </bloque>
+    <bloque>
+      <id>a3-4</id>
+      <titulo>Artículo 32</titulo>
+      <fecha_actualizacion>20201231</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-4</url>
+    </bloque>
+    <bloque>
+      <id>a3-5</id>
+      <titulo>Artículo 33</titulo>
+      <fecha_actualizacion>20201231</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-5</url>
+    </bloque>
+    <bloque>
+      <id>ci-4</id>
+      <titulo>CAPÍTULO II</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/ci-4</url>
+    </bloque>
+    <bloque>
+      <id>a3-6</id>
+      <titulo>Artículo 34</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-6</url>
+    </bloque>
+    <bloque>
+      <id>a3-7</id>
+      <titulo>Artículo 35</titulo>
+      <fecha_actualizacion>20191105</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-7</url>
+    </bloque>
+    <bloque>
+      <id>ci-5</id>
+      <titulo>CAPÍTULO III</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/ci-5</url>
+    </bloque>
+    <bloque>
+      <id>a3-8</id>
+      <titulo>Artículo 36</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-8</url>
+    </bloque>
+    <bloque>
+      <id>a3-9</id>
+      <titulo>Artículo 37</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-9</url>
+    </bloque>
+    <bloque>
+      <id>ci-6</id>
+      <titulo>CAPÍTULO IV</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/ci-6</url>
+    </bloque>
+    <bloque>
+      <id>a3-10</id>
+      <titulo>Artículo 38</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-10</url>
+    </bloque>
+    <bloque>
+      <id>a3-11</id>
+      <titulo>Artículo 39</titulo>
+      <fecha_actualizacion>20191105</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-11</url>
+    </bloque>
+    <bloque>
+      <id>a4-2</id>
+      <titulo>Artículo 40</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a4-2</url>
+    </bloque>
+    <bloque>
+      <id>a4-3</id>
+      <titulo>Artículo 41</titulo>
+      <fecha_actualizacion>20210423</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a4-3</url>
+    </bloque>
+    <bloque>
+      <id>a4-4</id>
+      <titulo>Artículo 42</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a4-4</url>
+    </bloque>
+    <bloque>
+      <id>a4-5</id>
+      <titulo>Artículo 43</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a4-5</url>
+    </bloque>
+    <bloque>
+      <id>cv</id>
+      <titulo>CAPÍTULO V</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/cv</url>
+    </bloque>
+    <bloque>
+      <id>a4-6</id>
+      <titulo>Artículo 44</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a4-6</url>
+    </bloque>
+    <bloque>
+      <id>a4-7</id>
+      <titulo>Artículo 45</titulo>
+      <fecha_actualizacion>20201231</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a4-7</url>
+    </bloque>
+    <bloque>
+      <id>a4-8</id>
+      <titulo>Artículo 46</titulo>
+      <fecha_actualizacion>20210423</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a4-8</url>
+    </bloque>
+    <bloque>
+      <id>a4-9</id>
+      <titulo>Artículo 47</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a4-9</url>
+    </bloque>
+    <bloque>
+      <id>a4-10</id>
+      <titulo>Artículo 48</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a4-10</url>
+    </bloque>
+    <bloque>
+      <id>a4-11</id>
+      <titulo>Artículo 49</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a4-11</url>
+    </bloque>
+    <bloque>
+      <id>a5-2</id>
+      <titulo>Artículo 50</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a5-2</url>
+    </bloque>
+    <bloque>
+      <id>a5-3</id>
+      <titulo>Artículo 51</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a5-3</url>
+    </bloque>
+    <bloque>
+      <id>a5-4</id>
+      <titulo>Artículo 52</titulo>
+      <fecha_actualizacion>20210423</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a5-4</url>
+    </bloque>
+    <bloque>
+      <id>a5-5</id>
+      <titulo>Artículo 53</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a5-5</url>
+    </bloque>
+    <bloque>
+      <id>a5-6</id>
+      <titulo>Artículo 54</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a5-6</url>
+    </bloque>
+    <bloque>
+      <id>a5-7</id>
+      <titulo>Artículo 55</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a5-7</url>
+    </bloque>
+    <bloque>
+      <id>a5-8</id>
+      <titulo>Artículo 56</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a5-8</url>
+    </bloque>
+    <bloque>
+      <id>a5-9</id>
+      <titulo>Artículo 57</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a5-9</url>
+    </bloque>
+    <bloque>
+      <id>a5-10</id>
+      <titulo>Artículo 58</titulo>
+      <fecha_actualizacion>20210423</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a5-10</url>
+    </bloque>
+    <bloque>
+      <id>a5-11</id>
+      <titulo>Artículo 59</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a5-11</url>
+    </bloque>
+    <bloque>
+      <id>a6-2</id>
+      <titulo>Artículo 60</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a6-2</url>
+    </bloque>
+    <bloque>
+      <id>ti-2</id>
+      <titulo>TÍTULO II</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/ti-2</url>
+    </bloque>
+    <bloque>
+      <id>ci-7</id>
+      <titulo>CAPÍTULO I</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/ci-7</url>
+    </bloque>
+    <bloque>
+      <id>a6-3</id>
+      <titulo>Artículo 61</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a6-3</url>
+    </bloque>
+    <bloque>
+      <id>a6-4</id>
+      <titulo>Artículo 62</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a6-4</url>
+    </bloque>
+    <bloque>
+      <id>a6-5</id>
+      <titulo>Artículo 63</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a6-5</url>
+    </bloque>
+    <bloque>
+      <id>a6-6</id>
+      <titulo>Artículo 64</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a6-6</url>
+    </bloque>
+    <bloque>
+      <id>ci-8</id>
+      <titulo>CAPÍTULO II</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/ci-8</url>
+    </bloque>
+    <bloque>
+      <id>s1-3</id>
+      <titulo>Sección 1</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s1-3</url>
+    </bloque>
+    <bloque>
+      <id>s1-4</id>
+      <titulo>Subsección 1</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s1-4</url>
+    </bloque>
+    <bloque>
+      <id>a6-7</id>
+      <titulo>Artículo 65</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a6-7</url>
+    </bloque>
+    <bloque>
+      <id>a6-8</id>
+      <titulo>Artículo 66</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a6-8</url>
+    </bloque>
+    <bloque>
+      <id>a6-9</id>
+      <titulo>Artículo 67</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a6-9</url>
+    </bloque>
+    <bloque>
+      <id>a6-10</id>
+      <titulo>Artículo 68</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a6-10</url>
+    </bloque>
+    <bloque>
+      <id>a6-11</id>
+      <titulo>Artículo 69</titulo>
+      <fecha_actualizacion>20221224</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a6-11</url>
+    </bloque>
+    <bloque>
+      <id>a7-2</id>
+      <titulo>Artículo 70</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a7-2</url>
+    </bloque>
+    <bloque>
+      <id>s2-3</id>
+      <titulo>Subsección 2</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s2-3</url>
+    </bloque>
+    <bloque>
+      <id>a7-3</id>
+      <titulo>Artículo 71</titulo>
+      <fecha_actualizacion>20240802</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a7-3</url>
+    </bloque>
+    <bloque>
+      <id>a7-4</id>
+      <titulo>Artículo 72</titulo>
+      <fecha_actualizacion>20210423</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a7-4</url>
+    </bloque>
+    <bloque>
+      <id>a7-5</id>
+      <titulo>Artículo 73</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a7-5</url>
+    </bloque>
+    <bloque>
+      <id>s3-2</id>
+      <titulo>Subsección 3</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s3-2</url>
+    </bloque>
+    <bloque>
+      <id>a7-6</id>
+      <titulo>Artículo 74</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a7-6</url>
+    </bloque>
+    <bloque>
+      <id>a7-7</id>
+      <titulo>Artículo 75</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a7-7</url>
+    </bloque>
+    <bloque>
+      <id>a7-8</id>
+      <titulo>Artículo 76</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a7-8</url>
+    </bloque>
+    <bloque>
+      <id>s4</id>
+      <titulo>Subsección 4</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s4</url>
+    </bloque>
+    <bloque>
+      <id>a7-9</id>
+      <titulo>Artículo 77</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a7-9</url>
+    </bloque>
+    <bloque>
+      <id>a7-10</id>
+      <titulo>Artículo 78</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a7-10</url>
+    </bloque>
+    <bloque>
+      <id>a7-11</id>
+      <titulo>Artículo 79</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a7-11</url>
+    </bloque>
+    <bloque>
+      <id>a8-2</id>
+      <titulo>Artículo 80</titulo>
+      <fecha_actualizacion>20221224</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a8-2</url>
+    </bloque>
+    <bloque>
+      <id>a8-3</id>
+      <titulo>Artículo 81</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a8-3</url>
+    </bloque>
+    <bloque>
+      <id>a8-4</id>
+      <titulo>Artículo 82</titulo>
+      <fecha_actualizacion>20210423</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a8-4</url>
+    </bloque>
+    <bloque>
+      <id>a8-5</id>
+      <titulo>Artículo 83</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a8-5</url>
+    </bloque>
+    <bloque>
+      <id>s2-4</id>
+      <titulo>Sección 2</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s2-4</url>
+    </bloque>
+    <bloque>
+      <id>s1-5</id>
+      <titulo>Subsección 1</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s1-5</url>
+    </bloque>
+    <bloque>
+      <id>a8-6</id>
+      <titulo>Artículo 84</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a8-6</url>
+    </bloque>
+    <bloque>
+      <id>s2-5</id>
+      <titulo>Subsección 2</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s2-5</url>
+    </bloque>
+    <bloque>
+      <id>a8-7</id>
+      <titulo>Artículo 85</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a8-7</url>
+    </bloque>
+    <bloque>
+      <id>s3-3</id>
+      <titulo>Subsección 3</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s3-3</url>
+    </bloque>
+    <bloque>
+      <id>a8-8</id>
+      <titulo>Artículo 86</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a8-8</url>
+    </bloque>
+    <bloque>
+      <id>a8-9</id>
+      <titulo>Artículo 87</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a8-9</url>
+    </bloque>
+    <bloque>
+      <id>a8-10</id>
+      <titulo>Artículo 88</titulo>
+      <fecha_actualizacion>20221224</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a8-10</url>
+    </bloque>
+    <bloque>
+      <id>a8-11</id>
+      <titulo>Artículo 89</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a8-11</url>
+    </bloque>
+    <bloque>
+      <id>a9-2</id>
+      <titulo>Artículo 90</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a9-2</url>
+    </bloque>
+    <bloque>
+      <id>a9-3</id>
+      <titulo>Artículo 91</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a9-3</url>
+    </bloque>
+    <bloque>
+      <id>a9-4</id>
+      <titulo>Artículo 92</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a9-4</url>
+    </bloque>
+    <bloque>
+      <id>a9-5</id>
+      <titulo>Artículo 93</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a9-5</url>
+    </bloque>
+    <bloque>
+      <id>a9-6</id>
+      <titulo>Artículo 94</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a9-6</url>
+    </bloque>
+    <bloque>
+      <id>a9-7</id>
+      <titulo>Artículo 95</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a9-7</url>
+    </bloque>
+    <bloque>
+      <id>s4-2</id>
+      <titulo>Subsección 4</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s4-2</url>
+    </bloque>
+    <bloque>
+      <id>a9-8</id>
+      <titulo>Artículo 96</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a9-8</url>
+    </bloque>
+    <bloque>
+      <id>a9-9</id>
+      <titulo>Artículo 97</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a9-9</url>
+    </bloque>
+    <bloque>
+      <id>ci-9</id>
+      <titulo>CAPÍTULO III</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/ci-9</url>
+    </bloque>
+    <bloque>
+      <id>a9-10</id>
+      <titulo>Artículo 98</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a9-10</url>
+    </bloque>
+    <bloque>
+      <id>ti-3</id>
+      <titulo>TÍTULO III</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/ti-3</url>
+    </bloque>
+    <bloque>
+      <id>ci-10</id>
+      <titulo>CAPÍTULO I</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/ci-10</url>
+    </bloque>
+    <bloque>
+      <id>a9-11</id>
+      <titulo>Artículo 99</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a9-11</url>
+    </bloque>
+    <bloque>
+      <id>a1-12</id>
+      <titulo>Artículo 100</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-12</url>
+    </bloque>
+    <bloque>
+      <id>a1-13</id>
+      <titulo>Artículo 101</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-13</url>
+    </bloque>
+    <bloque>
+      <id>a1-14</id>
+      <titulo>Artículo 102</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-14</url>
+    </bloque>
+    <bloque>
+      <id>ci-11</id>
+      <titulo>CAPÍTULO II</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/ci-11</url>
+    </bloque>
+    <bloque>
+      <id>a1-15</id>
+      <titulo>Artículo 103</titulo>
+      <fecha_actualizacion>20230509</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-15</url>
+    </bloque>
+    <bloque>
+      <id>a1-16</id>
+      <titulo>Artículo 104</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-16</url>
+    </bloque>
+    <bloque>
+      <id>a1-17</id>
+      <titulo>Artículo 105</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-17</url>
+    </bloque>
+    <bloque>
+      <id>ti-4</id>
+      <titulo>TÍTULO IV</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/ti-4</url>
+    </bloque>
+    <bloque>
+      <id>ci-12</id>
+      <titulo>CAPÍTULO I</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/ci-12</url>
+    </bloque>
+    <bloque>
+      <id>s1-6</id>
+      <titulo>Sección 1</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s1-6</url>
+    </bloque>
+    <bloque>
+      <id>a1-18</id>
+      <titulo>Artículo 106</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-18</url>
+    </bloque>
+    <bloque>
+      <id>s2-6</id>
+      <titulo>Sección 2</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s2-6</url>
+    </bloque>
+    <bloque>
+      <id>a1-19</id>
+      <titulo>Artículo 107</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-19</url>
+    </bloque>
+    <bloque>
+      <id>a1-20</id>
+      <titulo>Artículo 108</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-20</url>
+    </bloque>
+    <bloque>
+      <id>a1-21</id>
+      <titulo>Artículo 109</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-21</url>
+    </bloque>
+    <bloque>
+      <id>a1-22</id>
+      <titulo>Artículo 110</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-22</url>
+    </bloque>
+    <bloque>
+      <id>a1-23</id>
+      <titulo>Artículo 111</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-23</url>
+    </bloque>
+    <bloque>
+      <id>s3-4</id>
+      <titulo>Sección 3</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s3-4</url>
+    </bloque>
+    <bloque>
+      <id>a1-24</id>
+      <titulo>Artículo 112</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-24</url>
+    </bloque>
+    <bloque>
+      <id>a1-25</id>
+      <titulo>Artículo 113</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-25</url>
+    </bloque>
+    <bloque>
+      <id>ci-13</id>
+      <titulo>CAPÍTULO II</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/ci-13</url>
+    </bloque>
+    <bloque>
+      <id>a1-26</id>
+      <titulo>Artículo 114</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-26</url>
+    </bloque>
+    <bloque>
+      <id>ls</id>
+      <titulo>LIBRO SEGUNDO</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/ls</url>
+    </bloque>
+    <bloque>
+      <id>ti-5</id>
+      <titulo>TÍTULO I</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/ti-5</url>
+    </bloque>
+    <bloque>
+      <id>ci-14</id>
+      <titulo>CAPÍTULO I</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/ci-14</url>
+    </bloque>
+    <bloque>
+      <id>s1-7</id>
+      <titulo>Sección 1</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s1-7</url>
+    </bloque>
+    <bloque>
+      <id>a1-27</id>
+      <titulo>Artículo 115</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-27</url>
+    </bloque>
+    <bloque>
+      <id>s1-8</id>
+      <titulo>Subsección 1</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s1-8</url>
+    </bloque>
+    <bloque>
+      <id>a1-28</id>
+      <titulo>Artículo 116</titulo>
+      <fecha_actualizacion>20191105</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-28</url>
+    </bloque>
+    <bloque>
+      <id>a1-29</id>
+      <titulo>Artículo 117</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-29</url>
+    </bloque>
+    <bloque>
+      <id>a1-30</id>
+      <titulo>Artículo 118</titulo>
+      <fecha_actualizacion>20200205</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-30</url>
+    </bloque>
+    <bloque>
+      <id>a1-31</id>
+      <titulo>Artículo 119</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-31</url>
+    </bloque>
+    <bloque>
+      <id>a1-32</id>
+      <titulo>Artículo 120</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-32</url>
+    </bloque>
+    <bloque>
+      <id>s2-7</id>
+      <titulo>Subsección 2</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s2-7</url>
+    </bloque>
+    <bloque>
+      <id>a1-33</id>
+      <titulo>Artículo 121</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-33</url>
+    </bloque>
+    <bloque>
+      <id>a1-34</id>
+      <titulo>Artículo 122</titulo>
+      <fecha_actualizacion>20230301</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-34</url>
+    </bloque>
+    <bloque>
+      <id>a1-35</id>
+      <titulo>Artículo 123</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-35</url>
+    </bloque>
+    <bloque>
+      <id>a1-36</id>
+      <titulo>Artículo 124</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-36</url>
+    </bloque>
+    <bloque>
+      <id>a1-37</id>
+      <titulo>Artículo 125</titulo>
+      <fecha_actualizacion>20210423</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-37</url>
+    </bloque>
+    <bloque>
+      <id>a1-38</id>
+      <titulo>Artículo 126</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-38</url>
+    </bloque>
+    <bloque>
+      <id>a1-39</id>
+      <titulo>Artículo 127</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-39</url>
+    </bloque>
+    <bloque>
+      <id>a1-40</id>
+      <titulo>Artículo 128</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-40</url>
+    </bloque>
+    <bloque>
+      <id>a1-41</id>
+      <titulo>Artículo 129</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-41</url>
+    </bloque>
+    <bloque>
+      <id>a1-42</id>
+      <titulo>Artículo 130</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-42</url>
+    </bloque>
+    <bloque>
+      <id>s2-8</id>
+      <titulo>Sección 2</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s2-8</url>
+    </bloque>
+    <bloque>
+      <id>s1-9</id>
+      <titulo>Subsección 1</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s1-9</url>
+    </bloque>
+    <bloque>
+      <id>a1-43</id>
+      <titulo>Artículo 131</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-43</url>
+    </bloque>
+    <bloque>
+      <id>a1-44</id>
+      <titulo>Artículo 132</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-44</url>
+    </bloque>
+    <bloque>
+      <id>a1-45</id>
+      <titulo>Artículo 133</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-45</url>
+    </bloque>
+    <bloque>
+      <id>a1-46</id>
+      <titulo>Artículo 134</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-46</url>
+    </bloque>
+    <bloque>
+      <id>a1-47</id>
+      <titulo>Artículo 135</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-47</url>
+    </bloque>
+    <bloque>
+      <id>a1-48</id>
+      <titulo>Artículo 136</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-48</url>
+    </bloque>
+    <bloque>
+      <id>a1-49</id>
+      <titulo>Artículo 137</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-49</url>
+    </bloque>
+    <bloque>
+      <id>a1-50</id>
+      <titulo>Artículo 138</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-50</url>
+    </bloque>
+    <bloque>
+      <id>a1-51</id>
+      <titulo>Artículo 139</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-51</url>
+    </bloque>
+    <bloque>
+      <id>a1-52</id>
+      <titulo>Artículo 140</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-52</url>
+    </bloque>
+    <bloque>
+      <id>a1-53</id>
+      <titulo>Artículo 141</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-53</url>
+    </bloque>
+    <bloque>
+      <id>a1-54</id>
+      <titulo>Artículo 142</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-54</url>
+    </bloque>
+    <bloque>
+      <id>a1-55</id>
+      <titulo>Artículo 143</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-55</url>
+    </bloque>
+    <bloque>
+      <id>a1-56</id>
+      <titulo>Artículo 144</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-56</url>
+    </bloque>
+    <bloque>
+      <id>a1-57</id>
+      <titulo>Artículo 145</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-57</url>
+    </bloque>
+    <bloque>
+      <id>a1-58</id>
+      <titulo>Artículo 146</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-58</url>
+    </bloque>
+    <bloque>
+      <id>a1-59</id>
+      <titulo>Artículo 147</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-59</url>
+    </bloque>
+    <bloque>
+      <id>a1-60</id>
+      <titulo>Artículo 148</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-60</url>
+    </bloque>
+    <bloque>
+      <id>a1-61</id>
+      <titulo>Artículo 149</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-61</url>
+    </bloque>
+    <bloque>
+      <id>a1-62</id>
+      <titulo>Artículo 150</titulo>
+      <fecha_actualizacion>20221224</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-62</url>
+    </bloque>
+    <bloque>
+      <id>a1-63</id>
+      <titulo>Artículo 151</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-63</url>
+    </bloque>
+    <bloque>
+      <id>a1-64</id>
+      <titulo>Artículo 152</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-64</url>
+    </bloque>
+    <bloque>
+      <id>a1-65</id>
+      <titulo>Artículo 153</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-65</url>
+    </bloque>
+    <bloque>
+      <id>a1-66</id>
+      <titulo>Artículo 154</titulo>
+      <fecha_actualizacion>20210423</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-66</url>
+    </bloque>
+    <bloque>
+      <id>a1-67</id>
+      <titulo>Artículo 155</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-67</url>
+    </bloque>
+    <bloque>
+      <id>s2-9</id>
+      <titulo>Subsección 2</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s2-9</url>
+    </bloque>
+    <bloque>
+      <id>a1-68</id>
+      <titulo>Artículo 156</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-68</url>
+    </bloque>
+    <bloque>
+      <id>a1-69</id>
+      <titulo>Artículo 157</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-69</url>
+    </bloque>
+    <bloque>
+      <id>a1-70</id>
+      <titulo>Artículo 158</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-70</url>
+    </bloque>
+    <bloque>
+      <id>a1-71</id>
+      <titulo>Artículo 159</titulo>
+      <fecha_actualizacion>20211229</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-71</url>
+    </bloque>
+    <bloque>
+      <id>s3-5</id>
+      <titulo>Subsección 3</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s3-5</url>
+    </bloque>
+    <bloque>
+      <id>a1-72</id>
+      <titulo>Artículo 160</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-72</url>
+    </bloque>
+    <bloque>
+      <id>a1-73</id>
+      <titulo>Artículo 161</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-73</url>
+    </bloque>
+    <bloque>
+      <id>a1-74</id>
+      <titulo>Artículo 162</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-74</url>
+    </bloque>
+    <bloque>
+      <id>a1-75</id>
+      <titulo>Artículo 163</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-75</url>
+    </bloque>
+    <bloque>
+      <id>a1-76</id>
+      <titulo>Artículo 164</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-76</url>
+    </bloque>
+    <bloque>
+      <id>a1-77</id>
+      <titulo>Artículo 165</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-77</url>
+    </bloque>
+    <bloque>
+      <id>s4-3</id>
+      <titulo>Subsección 4</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s4-3</url>
+    </bloque>
+    <bloque>
+      <id>a1-78</id>
+      <titulo>Artículo 166</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-78</url>
+    </bloque>
+    <bloque>
+      <id>a1-79</id>
+      <titulo>Artículo 167</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-79</url>
+    </bloque>
+    <bloque>
+      <id>a1-80</id>
+      <titulo>Artículo 168</titulo>
+      <fecha_actualizacion>20221224</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-80</url>
+    </bloque>
+    <bloque>
+      <id>a1-81</id>
+      <titulo>Artículo 169</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-81</url>
+    </bloque>
+    <bloque>
+      <id>a1-82</id>
+      <titulo>Artículo 170</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-82</url>
+    </bloque>
+    <bloque>
+      <id>a1-83</id>
+      <titulo>Artículo 171</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-83</url>
+    </bloque>
+    <bloque>
+      <id>s5</id>
+      <titulo>Subsección 5</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s5</url>
+    </bloque>
+    <bloque>
+      <id>a1-84</id>
+      <titulo>Artículo 172</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-84</url>
+    </bloque>
+    <bloque>
+      <id>a1-85</id>
+      <titulo>Artículo 173</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-85</url>
+    </bloque>
+    <bloque>
+      <id>a1-86</id>
+      <titulo>Artículo 174</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-86</url>
+    </bloque>
+    <bloque>
+      <id>a1-87</id>
+      <titulo>Artículo 175</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-87</url>
+    </bloque>
+    <bloque>
+      <id>a1-88</id>
+      <titulo>Artículo 176</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-88</url>
+    </bloque>
+    <bloque>
+      <id>s6</id>
+      <titulo>Subsección 6</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s6</url>
+    </bloque>
+    <bloque>
+      <id>a1-89</id>
+      <titulo>Artículo 177</titulo>
+      <fecha_actualizacion>20210423</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-89</url>
+    </bloque>
+    <bloque>
+      <id>a1-90</id>
+      <titulo>Artículo 178</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-90</url>
+    </bloque>
+    <bloque>
+      <id>a1-91</id>
+      <titulo>Artículo 179</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-91</url>
+    </bloque>
+    <bloque>
+      <id>a1-92</id>
+      <titulo>Artículo 180</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-92</url>
+    </bloque>
+    <bloque>
+      <id>a1-93</id>
+      <titulo>Artículo 181</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-93</url>
+    </bloque>
+    <bloque>
+      <id>a1-94</id>
+      <titulo>Artículo 182</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-94</url>
+    </bloque>
+    <bloque>
+      <id>s7</id>
+      <titulo>Subsección 7</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s7</url>
+    </bloque>
+    <bloque>
+      <id>a1-95</id>
+      <titulo>Artículo 183</titulo>
+      <fecha_actualizacion>20220615</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-95</url>
+    </bloque>
+    <bloque>
+      <id>a1-96</id>
+      <titulo>Artículo 184</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-96</url>
+    </bloque>
+    <bloque>
+      <id>a1-97</id>
+      <titulo>Artículo 185</titulo>
+      <fecha_actualizacion>20210423</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-97</url>
+    </bloque>
+    <bloque>
+      <id>a1-98</id>
+      <titulo>Artículo 186</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-98</url>
+    </bloque>
+    <bloque>
+      <id>a1-99</id>
+      <titulo>Artículo 187</titulo>
+      <fecha_actualizacion>20220615</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-99</url>
+    </bloque>
+    <bloque>
+      <id>s3-6</id>
+      <titulo>Sección 3</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s3-6</url>
+    </bloque>
+    <bloque>
+      <id>s1-10</id>
+      <titulo>Subsección 1</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s1-10</url>
+    </bloque>
+    <bloque>
+      <id>a1-100</id>
+      <titulo>Artículo 188</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-100</url>
+    </bloque>
+    <bloque>
+      <id>a1-101</id>
+      <titulo>Artículo 189</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-101</url>
+    </bloque>
+    <bloque>
+      <id>s2-10</id>
+      <titulo>Subsección 2</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s2-10</url>
+    </bloque>
+    <bloque>
+      <id>a1-102</id>
+      <titulo>Artículo 190</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-102</url>
+    </bloque>
+    <bloque>
+      <id>a1-103</id>
+      <titulo>Artículo 191</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-103</url>
+    </bloque>
+    <bloque>
+      <id>s3-7</id>
+      <titulo>Subsección 3</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s3-7</url>
+    </bloque>
+    <bloque>
+      <id>a1-104</id>
+      <titulo>Artículo 192</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-104</url>
+    </bloque>
+    <bloque>
+      <id>a1-105</id>
+      <titulo>Artículo 193</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-105</url>
+    </bloque>
+    <bloque>
+      <id>a1-106</id>
+      <titulo>Artículo 194</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-106</url>
+    </bloque>
+    <bloque>
+      <id>a1-107</id>
+      <titulo>Artículo 195</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-107</url>
+    </bloque>
+    <bloque>
+      <id>a1-108</id>
+      <titulo>Artículo 196</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-108</url>
+    </bloque>
+    <bloque>
+      <id>a1-109</id>
+      <titulo>Artículo 197</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-109</url>
+    </bloque>
+    <bloque>
+      <id>a1-110</id>
+      <titulo>Artículo 198</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-110</url>
+    </bloque>
+    <bloque>
+      <id>a1-111</id>
+      <titulo>Artículo 199</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a1-111</url>
+    </bloque>
+    <bloque>
+      <id>a2-12</id>
+      <titulo>Artículo 200</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-12</url>
+    </bloque>
+    <bloque>
+      <id>a2-13</id>
+      <titulo>Artículo 201</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-13</url>
+    </bloque>
+    <bloque>
+      <id>a2-14</id>
+      <titulo>Artículo 202</titulo>
+      <fecha_actualizacion>20250402</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-14</url>
+    </bloque>
+    <bloque>
+      <id>s4-4</id>
+      <titulo>Subsección 4</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s4-4</url>
+    </bloque>
+    <bloque>
+      <id>a2-15</id>
+      <titulo>Artículo 203</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-15</url>
+    </bloque>
+    <bloque>
+      <id>a2-16</id>
+      <titulo>Artículo 204</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-16</url>
+    </bloque>
+    <bloque>
+      <id>a2-17</id>
+      <titulo>Artículo 205</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-17</url>
+    </bloque>
+    <bloque>
+      <id>a2-18</id>
+      <titulo>Artículo 206</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-18</url>
+    </bloque>
+    <bloque>
+      <id>a2-19</id>
+      <titulo>Artículo 207</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-19</url>
+    </bloque>
+    <bloque>
+      <id>s5-2</id>
+      <titulo>Subsección 5</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s5-2</url>
+    </bloque>
+    <bloque>
+      <id>a2-20</id>
+      <titulo>Artículo 208</titulo>
+      <fecha_actualizacion>20201231</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-20</url>
+    </bloque>
+    <bloque>
+      <id>a2-21</id>
+      <titulo>Artículo 209</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-21</url>
+    </bloque>
+    <bloque>
+      <id>a2-22</id>
+      <titulo>Artículo 210</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-22</url>
+    </bloque>
+    <bloque>
+      <id>a2-23</id>
+      <titulo>Artículo 211</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-23</url>
+    </bloque>
+    <bloque>
+      <id>a2-24</id>
+      <titulo>Artículo 212</titulo>
+      <fecha_actualizacion>20210423</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-24</url>
+    </bloque>
+    <bloque>
+      <id>a2-25</id>
+      <titulo>Artículo 213</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-25</url>
+    </bloque>
+    <bloque>
+      <id>s6-2</id>
+      <titulo>Subsección 6</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s6-2</url>
+    </bloque>
+    <bloque>
+      <id>a2-26</id>
+      <titulo>Artículo 214</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-26</url>
+    </bloque>
+    <bloque>
+      <id>a2-27</id>
+      <titulo>Artículo 215</titulo>
+      <fecha_actualizacion>20191105</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-27</url>
+    </bloque>
+    <bloque>
+      <id>a2-28</id>
+      <titulo>Artículo 216</titulo>
+      <fecha_actualizacion>20220929</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-28</url>
+    </bloque>
+    <bloque>
+      <id>a2-29</id>
+      <titulo>Artículo 217</titulo>
+      <fecha_actualizacion>20220929</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-29</url>
+    </bloque>
+    <bloque>
+      <id>ci-15</id>
+      <titulo>CAPÍTULO II</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/ci-15</url>
+    </bloque>
+    <bloque>
+      <id>s1-11</id>
+      <titulo>Sección 1</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s1-11</url>
+    </bloque>
+    <bloque>
+      <id>a2-30</id>
+      <titulo>Artículo 218</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-30</url>
+    </bloque>
+    <bloque>
+      <id>s2-11</id>
+      <titulo>Sección 2</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s2-11</url>
+    </bloque>
+    <bloque>
+      <id>a2-31</id>
+      <titulo>Artículo 219</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-31</url>
+    </bloque>
+    <bloque>
+      <id>a2-32</id>
+      <titulo>Artículo 220</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-32</url>
+    </bloque>
+    <bloque>
+      <id>a2-33</id>
+      <titulo>Artículo 221</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-33</url>
+    </bloque>
+    <bloque>
+      <id>a2-34</id>
+      <titulo>Artículo 222</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-34</url>
+    </bloque>
+    <bloque>
+      <id>s3-8</id>
+      <titulo>Sección 3</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s3-8</url>
+    </bloque>
+    <bloque>
+      <id>a2-35</id>
+      <titulo>Artículo 223</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-35</url>
+    </bloque>
+    <bloque>
+      <id>a2-36</id>
+      <titulo>Artículo 224</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-36</url>
+    </bloque>
+    <bloque>
+      <id>a2-37</id>
+      <titulo>Artículo 225</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-37</url>
+    </bloque>
+    <bloque>
+      <id>a2-38</id>
+      <titulo>Artículo 226</titulo>
+      <fecha_actualizacion>20211229</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-38</url>
+    </bloque>
+    <bloque>
+      <id>s4-5</id>
+      <titulo>Sección 4</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s4-5</url>
+    </bloque>
+    <bloque>
+      <id>s1-12</id>
+      <titulo>Subsección 1</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s1-12</url>
+    </bloque>
+    <bloque>
+      <id>a2-39</id>
+      <titulo>Artículo 227</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-39</url>
+    </bloque>
+    <bloque>
+      <id>a2-40</id>
+      <titulo>Artículo 228</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-40</url>
+    </bloque>
+    <bloque>
+      <id>s2-12</id>
+      <titulo>Subsección 2</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s2-12</url>
+    </bloque>
+    <bloque>
+      <id>a2-41</id>
+      <titulo>Artículo 229</titulo>
+      <fecha_actualizacion>20221224</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-41</url>
+    </bloque>
+    <bloque>
+      <id>a2-42</id>
+      <titulo>Artículo 230</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-42</url>
+    </bloque>
+    <bloque>
+      <id>ti-6</id>
+      <titulo>TÍTULO II</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/ti-6</url>
+    </bloque>
+    <bloque>
+      <id>ci-16</id>
+      <titulo>CAPÍTULO I</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/ci-16</url>
+    </bloque>
+    <bloque>
+      <id>s1-13</id>
+      <titulo>Sección 1</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s1-13</url>
+    </bloque>
+    <bloque>
+      <id>a2-43</id>
+      <titulo>Artículo 231</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-43</url>
+    </bloque>
+    <bloque>
+      <id>a2-44</id>
+      <titulo>Artículo 232</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-44</url>
+    </bloque>
+    <bloque>
+      <id>a2-45</id>
+      <titulo>Artículo 233</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-45</url>
+    </bloque>
+    <bloque>
+      <id>a2-46</id>
+      <titulo>Artículo 234</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-46</url>
+    </bloque>
+    <bloque>
+      <id>a2-47</id>
+      <titulo>Artículo 235</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-47</url>
+    </bloque>
+    <bloque>
+      <id>a2-48</id>
+      <titulo>Artículo 236</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-48</url>
+    </bloque>
+    <bloque>
+      <id>s2-13</id>
+      <titulo>Sección 2</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s2-13</url>
+    </bloque>
+    <bloque>
+      <id>a2-49</id>
+      <titulo>Artículo 237</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-49</url>
+    </bloque>
+    <bloque>
+      <id>a2-50</id>
+      <titulo>Artículo 238</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-50</url>
+    </bloque>
+    <bloque>
+      <id>a2-51</id>
+      <titulo>Artículo 239</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-51</url>
+    </bloque>
+    <bloque>
+      <id>a2-52</id>
+      <titulo>Artículo 240</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-52</url>
+    </bloque>
+    <bloque>
+      <id>a2-53</id>
+      <titulo>Artículo 241</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-53</url>
+    </bloque>
+    <bloque>
+      <id>s3-9</id>
+      <titulo>Sección 3</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s3-9</url>
+    </bloque>
+    <bloque>
+      <id>a2-54</id>
+      <titulo>Artículo 242</titulo>
+      <fecha_actualizacion>20210423</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-54</url>
+    </bloque>
+    <bloque>
+      <id>s4-6</id>
+      <titulo>Sección 4</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s4-6</url>
+    </bloque>
+    <bloque>
+      <id>a2-55</id>
+      <titulo>Artículo 243</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-55</url>
+    </bloque>
+    <bloque>
+      <id>a2-56</id>
+      <titulo>Artículo 244</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-56</url>
+    </bloque>
+    <bloque>
+      <id>s5-3</id>
+      <titulo>Sección 5</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s5-3</url>
+    </bloque>
+    <bloque>
+      <id>a2-57</id>
+      <titulo>Artículo 245</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-57</url>
+    </bloque>
+    <bloque>
+      <id>a2-58</id>
+      <titulo>Artículo 246</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-58</url>
+    </bloque>
+    <bloque>
+      <id>ci-17</id>
+      <titulo>CAPÍTULO II</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/ci-17</url>
+    </bloque>
+    <bloque>
+      <id>s1-14</id>
+      <titulo>Sección 1</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s1-14</url>
+    </bloque>
+    <bloque>
+      <id>a2-59</id>
+      <titulo>Artículo 247</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-59</url>
+    </bloque>
+    <bloque>
+      <id>a2-60</id>
+      <titulo>Artículo 248</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-60</url>
+    </bloque>
+    <bloque>
+      <id>a2-61</id>
+      <titulo>Artículo 249</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-61</url>
+    </bloque>
+    <bloque>
+      <id>a2-62</id>
+      <titulo>Artículo 250</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-62</url>
+    </bloque>
+    <bloque>
+      <id>s2-14</id>
+      <titulo>Sección 2</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s2-14</url>
+    </bloque>
+    <bloque>
+      <id>a2-63</id>
+      <titulo>Artículo 251</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-63</url>
+    </bloque>
+    <bloque>
+      <id>s3-10</id>
+      <titulo>Sección 3</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s3-10</url>
+    </bloque>
+    <bloque>
+      <id>a2-64</id>
+      <titulo>Artículo 252</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-64</url>
+    </bloque>
+    <bloque>
+      <id>a2-65</id>
+      <titulo>Artículo 253</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-65</url>
+    </bloque>
+    <bloque>
+      <id>a2-66</id>
+      <titulo>Artículo 254</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-66</url>
+    </bloque>
+    <bloque>
+      <id>a2-67</id>
+      <titulo>Artículo 255</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-67</url>
+    </bloque>
+    <bloque>
+      <id>a2-68</id>
+      <titulo>Artículo 256</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-68</url>
+    </bloque>
+    <bloque>
+      <id>s4-7</id>
+      <titulo>Sección 4</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s4-7</url>
+    </bloque>
+    <bloque>
+      <id>s1-15</id>
+      <titulo>Subsección 1</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s1-15</url>
+    </bloque>
+    <bloque>
+      <id>a2-69</id>
+      <titulo>Artículo 257</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-69</url>
+    </bloque>
+    <bloque>
+      <id>a2-70</id>
+      <titulo>Artículo 258</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-70</url>
+    </bloque>
+    <bloque>
+      <id>a2-71</id>
+      <titulo>Artículo 259</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-71</url>
+    </bloque>
+    <bloque>
+      <id>a2-72</id>
+      <titulo>Artículo 260</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-72</url>
+    </bloque>
+    <bloque>
+      <id>s2-15</id>
+      <titulo>Subsección 2</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s2-15</url>
+    </bloque>
+    <bloque>
+      <id>a2-73</id>
+      <titulo>Artículo 261</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-73</url>
+    </bloque>
+    <bloque>
+      <id>a2-74</id>
+      <titulo>Artículo 262</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-74</url>
+    </bloque>
+    <bloque>
+      <id>a2-75</id>
+      <titulo>Artículo 263</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-75</url>
+    </bloque>
+    <bloque>
+      <id>a2-76</id>
+      <titulo>Artículo 264</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-76</url>
+    </bloque>
+    <bloque>
+      <id>s5-4</id>
+      <titulo>Sección 5</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s5-4</url>
+    </bloque>
+    <bloque>
+      <id>a2-77</id>
+      <titulo>Artículo 265</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-77</url>
+    </bloque>
+    <bloque>
+      <id>a2-78</id>
+      <titulo>Artículo 266</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-78</url>
+    </bloque>
+    <bloque>
+      <id>a2-79</id>
+      <titulo>Artículo 267</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-79</url>
+    </bloque>
+    <bloque>
+      <id>a2-80</id>
+      <titulo>Artículo 268</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-80</url>
+    </bloque>
+    <bloque>
+      <id>a2-81</id>
+      <titulo>Artículo 269</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-81</url>
+    </bloque>
+    <bloque>
+      <id>a2-82</id>
+      <titulo>Artículo 270</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-82</url>
+    </bloque>
+    <bloque>
+      <id>s6-3</id>
+      <titulo>Sección 6</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s6-3</url>
+    </bloque>
+    <bloque>
+      <id>s1-16</id>
+      <titulo>Subsección 1</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s1-16</url>
+    </bloque>
+    <bloque>
+      <id>a2-83</id>
+      <titulo>Artículo 271</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-83</url>
+    </bloque>
+    <bloque>
+      <id>a2-84</id>
+      <titulo>Artículo 272</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-84</url>
+    </bloque>
+    <bloque>
+      <id>s2-16</id>
+      <titulo>Subsección 2</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s2-16</url>
+    </bloque>
+    <bloque>
+      <id>a2-85</id>
+      <titulo>Artículo 273</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-85</url>
+    </bloque>
+    <bloque>
+      <id>a2-86</id>
+      <titulo>Artículo 274</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-86</url>
+    </bloque>
+    <bloque>
+      <id>a2-87</id>
+      <titulo>Artículo 275</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-87</url>
+    </bloque>
+    <bloque>
+      <id>a2-88</id>
+      <titulo>Artículo 276</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-88</url>
+    </bloque>
+    <bloque>
+      <id>s3-11</id>
+      <titulo>Subsección 3</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s3-11</url>
+    </bloque>
+    <bloque>
+      <id>a2-89</id>
+      <titulo>Artículo 277</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-89</url>
+    </bloque>
+    <bloque>
+      <id>s7-2</id>
+      <titulo>Sección 7</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s7-2</url>
+    </bloque>
+    <bloque>
+      <id>a2-90</id>
+      <titulo>Artículo 278</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-90</url>
+    </bloque>
+    <bloque>
+      <id>a2-91</id>
+      <titulo>Artículo 279</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-91</url>
+    </bloque>
+    <bloque>
+      <id>a2-92</id>
+      <titulo>Artículo 280</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-92</url>
+    </bloque>
+    <bloque>
+      <id>a2-93</id>
+      <titulo>Artículo 281</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-93</url>
+    </bloque>
+    <bloque>
+      <id>a2-94</id>
+      <titulo>Artículo 282</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-94</url>
+    </bloque>
+    <bloque>
+      <id>a2-95</id>
+      <titulo>Artículo 283</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-95</url>
+    </bloque>
+    <bloque>
+      <id>ci-18</id>
+      <titulo>CAPÍTULO III</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/ci-18</url>
+    </bloque>
+    <bloque>
+      <id>s1-17</id>
+      <titulo>Sección 1</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s1-17</url>
+    </bloque>
+    <bloque>
+      <id>a2-96</id>
+      <titulo>Artículo 284</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-96</url>
+    </bloque>
+    <bloque>
+      <id>s2-17</id>
+      <titulo>Sección 2</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s2-17</url>
+    </bloque>
+    <bloque>
+      <id>s1-18</id>
+      <titulo>Subsección 1</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s1-18</url>
+    </bloque>
+    <bloque>
+      <id>a2-97</id>
+      <titulo>Artículo 285</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-97</url>
+    </bloque>
+    <bloque>
+      <id>s2-18</id>
+      <titulo>Subsección 2</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s2-18</url>
+    </bloque>
+    <bloque>
+      <id>a2-98</id>
+      <titulo>Artículo 286</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-98</url>
+    </bloque>
+    <bloque>
+      <id>s3-12</id>
+      <titulo>Sección 3</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s3-12</url>
+    </bloque>
+    <bloque>
+      <id>a2-99</id>
+      <titulo>Artículo 287</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-99</url>
+    </bloque>
+    <bloque>
+      <id>a2-100</id>
+      <titulo>Artículo 288</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-100</url>
+    </bloque>
+    <bloque>
+      <id>a2-101</id>
+      <titulo>Artículo 289</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-101</url>
+    </bloque>
+    <bloque>
+      <id>s4-8</id>
+      <titulo>Sección 4</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s4-8</url>
+    </bloque>
+    <bloque>
+      <id>a2-102</id>
+      <titulo>Artículo 290</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-102</url>
+    </bloque>
+    <bloque>
+      <id>s5-5</id>
+      <titulo>Sección 5</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s5-5</url>
+    </bloque>
+    <bloque>
+      <id>a2-103</id>
+      <titulo>Artículo 291</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-103</url>
+    </bloque>
+    <bloque>
+      <id>a2-104</id>
+      <titulo>Artículo 292</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-104</url>
+    </bloque>
+    <bloque>
+      <id>a2-105</id>
+      <titulo>Artículo 293</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-105</url>
+    </bloque>
+    <bloque>
+      <id>s6-4</id>
+      <titulo>Sección 6</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s6-4</url>
+    </bloque>
+    <bloque>
+      <id>a2-106</id>
+      <titulo>Artículo 294</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-106</url>
+    </bloque>
+    <bloque>
+      <id>a2-107</id>
+      <titulo>Artículo 295</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-107</url>
+    </bloque>
+    <bloque>
+      <id>s7-3</id>
+      <titulo>Sección 7</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s7-3</url>
+    </bloque>
+    <bloque>
+      <id>a2-108</id>
+      <titulo>Artículo 296</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-108</url>
+    </bloque>
+    <bloque>
+      <id>s8</id>
+      <titulo>Sección 8</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s8</url>
+    </bloque>
+    <bloque>
+      <id>a2-109</id>
+      <titulo>Artículo 297</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-109</url>
+    </bloque>
+    <bloque>
+      <id>ci-19</id>
+      <titulo>CAPÍTULO IV</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/ci-19</url>
+    </bloque>
+    <bloque>
+      <id>s1-19</id>
+      <titulo>Sección 1</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s1-19</url>
+    </bloque>
+    <bloque>
+      <id>a2-110</id>
+      <titulo>Artículo 298</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-110</url>
+    </bloque>
+    <bloque>
+      <id>a2-111</id>
+      <titulo>Artículo 299</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a2-111</url>
+    </bloque>
+    <bloque>
+      <id>s2-19</id>
+      <titulo>Sección 2</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s2-19</url>
+    </bloque>
+    <bloque>
+      <id>a3-12</id>
+      <titulo>Artículo 300</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-12</url>
+    </bloque>
+    <bloque>
+      <id>a3-13</id>
+      <titulo>Artículo 301</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-13</url>
+    </bloque>
+    <bloque>
+      <id>a3-14</id>
+      <titulo>Artículo 302</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-14</url>
+    </bloque>
+    <bloque>
+      <id>a3-15</id>
+      <titulo>Artículo 303</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-15</url>
+    </bloque>
+    <bloque>
+      <id>s3-13</id>
+      <titulo>Sección 3</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s3-13</url>
+    </bloque>
+    <bloque>
+      <id>a3-16</id>
+      <titulo>Artículo 304</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-16</url>
+    </bloque>
+    <bloque>
+      <id>a3-17</id>
+      <titulo>Artículo 305</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-17</url>
+    </bloque>
+    <bloque>
+      <id>s4-9</id>
+      <titulo>Sección 4</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s4-9</url>
+    </bloque>
+    <bloque>
+      <id>a3-18</id>
+      <titulo>Artículo 306</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-18</url>
+    </bloque>
+    <bloque>
+      <id>a3-19</id>
+      <titulo>Artículo 307</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-19</url>
+    </bloque>
+    <bloque>
+      <id>cv-2</id>
+      <titulo>CAPÍTULO V</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/cv-2</url>
+    </bloque>
+    <bloque>
+      <id>s1-20</id>
+      <titulo>Sección 1</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s1-20</url>
+    </bloque>
+    <bloque>
+      <id>a3-20</id>
+      <titulo>Artículo 308</titulo>
+      <fecha_actualizacion>20220615</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-20</url>
+    </bloque>
+    <bloque>
+      <id>a3-21</id>
+      <titulo>Artículo 309</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-21</url>
+    </bloque>
+    <bloque>
+      <id>a3-22</id>
+      <titulo>Artículo 310</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-22</url>
+    </bloque>
+    <bloque>
+      <id>s2-20</id>
+      <titulo>Sección 2</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s2-20</url>
+    </bloque>
+    <bloque>
+      <id>a3-23</id>
+      <titulo>Artículo 311</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-23</url>
+    </bloque>
+    <bloque>
+      <id>a3-24</id>
+      <titulo>Artículo 312</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-24</url>
+    </bloque>
+    <bloque>
+      <id>s3-14</id>
+      <titulo>Sección 3</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s3-14</url>
+    </bloque>
+    <bloque>
+      <id>a3-25</id>
+      <titulo>Artículo 313</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-25</url>
+    </bloque>
+    <bloque>
+      <id>s4-10</id>
+      <titulo>Sección 4</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/s4-10</url>
+    </bloque>
+    <bloque>
+      <id>a3-26</id>
+      <titulo>Artículo 314</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-26</url>
+    </bloque>
+    <bloque>
+      <id>a3-27</id>
+      <titulo>Artículo 315</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-27</url>
+    </bloque>
+    <bloque>
+      <id>lt</id>
+      <titulo>LIBRO TERCERO</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/lt</url>
+    </bloque>
+    <bloque>
+      <id>ti-7</id>
+      <titulo>TÍTULO I</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/ti-7</url>
+    </bloque>
+    <bloque>
+      <id>a3-28</id>
+      <titulo>Artículo 316</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-28</url>
+    </bloque>
+    <bloque>
+      <id>a3-29</id>
+      <titulo>Artículo 317</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-29</url>
+    </bloque>
+    <bloque>
+      <id>a3-30</id>
+      <titulo>Artículo 318</titulo>
+      <fecha_actualizacion>20251226</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-30</url>
+    </bloque>
+    <bloque>
+      <id>a3-31</id>
+      <titulo>Artículo 319</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-31</url>
+    </bloque>
+    <bloque>
+      <id>a3-32</id>
+      <titulo>Artículo 320</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-32</url>
+    </bloque>
+    <bloque>
+      <id>ti-8</id>
+      <titulo>TÍTULO II</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/ti-8</url>
+    </bloque>
+    <bloque>
+      <id>a3-33</id>
+      <titulo>Artículo 321</titulo>
+      <fecha_actualizacion>20201231</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-33</url>
+    </bloque>
+    <bloque>
+      <id>a3-34</id>
+      <titulo>Artículo 322</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-34</url>
+    </bloque>
+    <bloque>
+      <id>lc</id>
+      <titulo>LIBRO CUARTO</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/lc</url>
+    </bloque>
+    <bloque>
+      <id>ti-9</id>
+      <titulo>TÍTULO I</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/ti-9</url>
+    </bloque>
+    <bloque>
+      <id>ci-20</id>
+      <titulo>CAPÍTULO I</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/ci-20</url>
+    </bloque>
+    <bloque>
+      <id>a3-35</id>
+      <titulo>Artículo 323</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-35</url>
+    </bloque>
+    <bloque>
+      <id>a3-36</id>
+      <titulo>Artículo 324</titulo>
+      <fecha_actualizacion>20211229</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-36</url>
+    </bloque>
+    <bloque>
+      <id>a3-37</id>
+      <titulo>Artículo 325</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-37</url>
+    </bloque>
+    <bloque>
+      <id>ci-21</id>
+      <titulo>CAPÍTULO II</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/ci-21</url>
+    </bloque>
+    <bloque>
+      <id>a3-38</id>
+      <titulo>Artículo 326</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-38</url>
+    </bloque>
+    <bloque>
+      <id>a3-39</id>
+      <titulo>Artículo 327</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-39</url>
+    </bloque>
+    <bloque>
+      <id>ci-22</id>
+      <titulo>CAPÍTULO III</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/ci-22</url>
+    </bloque>
+    <bloque>
+      <id>a3-40</id>
+      <titulo>Artículo 328</titulo>
+      <fecha_actualizacion>20211103</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-40</url>
+    </bloque>
+    <bloque>
+      <id>a3-41</id>
+      <titulo>Artículo 329</titulo>
+      <fecha_actualizacion>20221224</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-41</url>
+    </bloque>
+    <bloque>
+      <id>a3-42</id>
+      <titulo>Artículo 330</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-42</url>
+    </bloque>
+    <bloque>
+      <id>a3-43</id>
+      <titulo>Artículo 331</titulo>
+      <fecha_actualizacion>20211103</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-43</url>
+    </bloque>
+    <bloque>
+      <id>a3-44</id>
+      <titulo>Artículo 332</titulo>
+      <fecha_actualizacion>20221224</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-44</url>
+    </bloque>
+    <bloque>
+      <id>a3-45</id>
+      <titulo>Artículo 333</titulo>
+      <fecha_actualizacion>20221224</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-45</url>
+    </bloque>
+    <bloque>
+      <id>a3-46</id>
+      <titulo>Artículo 334</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-46</url>
+    </bloque>
+    <bloque>
+      <id>ci-23</id>
+      <titulo>CAPÍTULO IV</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/ci-23</url>
+    </bloque>
+    <bloque>
+      <id>a3-47</id>
+      <titulo>Artículo 335</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-47</url>
+    </bloque>
+    <bloque>
+      <id>a3-48</id>
+      <titulo>Artículo 336</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-48</url>
+    </bloque>
+    <bloque>
+      <id>ti-10</id>
+      <titulo>TÍTULO II</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/ti-10</url>
+    </bloque>
+    <bloque>
+      <id>ci-24</id>
+      <titulo>CAPÍTULO I</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/ci-24</url>
+    </bloque>
+    <bloque>
+      <id>a3-49</id>
+      <titulo>Artículo 337</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-49</url>
+    </bloque>
+    <bloque>
+      <id>a3-50</id>
+      <titulo>Artículo 338</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-50</url>
+    </bloque>
+    <bloque>
+      <id>a3-51</id>
+      <titulo>Artículo 339</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-51</url>
+    </bloque>
+    <bloque>
+      <id>a3-52</id>
+      <titulo>Artículo 340</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-52</url>
+    </bloque>
+    <bloque>
+      <id>a3-53</id>
+      <titulo>Artículo 341</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-53</url>
+    </bloque>
+    <bloque>
+      <id>a3-54</id>
+      <titulo>Artículo 342</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-54</url>
+    </bloque>
+    <bloque>
+      <id>a3-55</id>
+      <titulo>Artículo 343</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-55</url>
+    </bloque>
+    <bloque>
+      <id>a3-56</id>
+      <titulo>Artículo 344</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-56</url>
+    </bloque>
+    <bloque>
+      <id>a3-57</id>
+      <titulo>Artículo 345</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-57</url>
+    </bloque>
+    <bloque>
+      <id>ci-25</id>
+      <titulo>CAPÍTULO II</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/ci-25</url>
+    </bloque>
+    <bloque>
+      <id>a3-58</id>
+      <titulo>Artículo 346</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-58</url>
+    </bloque>
+    <bloque>
+      <id>ti-11</id>
+      <titulo>TÍTULO III</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/ti-11</url>
+    </bloque>
+    <bloque>
+      <id>a3-59</id>
+      <titulo>Artículo 347</titulo>
+      <fecha_actualizacion>20210423</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/a3-59</url>
+    </bloque>
+    <bloque>
+      <id>da</id>
+      <titulo>Disposición adicional primera</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da</url>
+    </bloque>
+    <bloque>
+      <id>da-2</id>
+      <titulo>Disposición adicional segunda</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-2</url>
+    </bloque>
+    <bloque>
+      <id>da-3</id>
+      <titulo>Disposición adicional tercera</titulo>
+      <fecha_actualizacion>20221224</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-3</url>
+    </bloque>
+    <bloque>
+      <id>da-4</id>
+      <titulo>Disposición adicional cuarta</titulo>
+      <fecha_actualizacion>20260409</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-4</url>
+    </bloque>
+    <bloque>
+      <id>da-5</id>
+      <titulo>Disposición adicional quinta</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-5</url>
+    </bloque>
+    <bloque>
+      <id>da-6</id>
+      <titulo>Disposición adicional sexta</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-6</url>
+    </bloque>
+    <bloque>
+      <id>da-7</id>
+      <titulo>Disposición adicional séptima</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-7</url>
+    </bloque>
+    <bloque>
+      <id>da-8</id>
+      <titulo>Disposición adicional octava</titulo>
+      <fecha_actualizacion>20221224</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-8</url>
+    </bloque>
+    <bloque>
+      <id>da-9</id>
+      <titulo>Disposición adicional novena</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-9</url>
+    </bloque>
+    <bloque>
+      <id>da-10</id>
+      <titulo>Disposición adicional décima</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-10</url>
+    </bloque>
+    <bloque>
+      <id>da-11</id>
+      <titulo>Disposición adicional undécima</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-11</url>
+    </bloque>
+    <bloque>
+      <id>da-12</id>
+      <titulo>Disposición adicional duodécima</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-12</url>
+    </bloque>
+    <bloque>
+      <id>da-13</id>
+      <titulo>Disposición adicional decimotercera</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-13</url>
+    </bloque>
+    <bloque>
+      <id>da-14</id>
+      <titulo>Disposición adicional decimocuarta</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-14</url>
+    </bloque>
+    <bloque>
+      <id>da-15</id>
+      <titulo>Disposición adicional decimoquinta</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-15</url>
+    </bloque>
+    <bloque>
+      <id>da-16</id>
+      <titulo>Disposición adicional decimosexta</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-16</url>
+    </bloque>
+    <bloque>
+      <id>da-17</id>
+      <titulo>Disposición adicional decimoséptima</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-17</url>
+    </bloque>
+    <bloque>
+      <id>da-18</id>
+      <titulo>Disposición adicional decimoctava</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-18</url>
+    </bloque>
+    <bloque>
+      <id>da-19</id>
+      <titulo>Disposición adicional decimonovena</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-19</url>
+    </bloque>
+    <bloque>
+      <id>da-20</id>
+      <titulo>Disposición adicional vigésima</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-20</url>
+    </bloque>
+    <bloque>
+      <id>da-21</id>
+      <titulo>Disposición adicional vigésima primera</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-21</url>
+    </bloque>
+    <bloque>
+      <id>da-22</id>
+      <titulo>Disposición adicional vigésima segunda</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-22</url>
+    </bloque>
+    <bloque>
+      <id>da-23</id>
+      <titulo>Disposición adicional vigésima tercera</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-23</url>
+    </bloque>
+    <bloque>
+      <id>da-24</id>
+      <titulo>Disposición adicional vigésima cuarta</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-24</url>
+    </bloque>
+    <bloque>
+      <id>da-25</id>
+      <titulo>Disposición adicional vigésima quinta</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-25</url>
+    </bloque>
+    <bloque>
+      <id>da-26</id>
+      <titulo>Disposición adicional vigésima sexta</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-26</url>
+    </bloque>
+    <bloque>
+      <id>da-27</id>
+      <titulo>Disposición adicional vigésima séptima</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-27</url>
+    </bloque>
+    <bloque>
+      <id>da-28</id>
+      <titulo>Disposición adicional vigésima octava</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-28</url>
+    </bloque>
+    <bloque>
+      <id>da-29</id>
+      <titulo>Disposición adicional vigésima novena</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-29</url>
+    </bloque>
+    <bloque>
+      <id>da-30</id>
+      <titulo>Disposición adicional trigésima</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-30</url>
+    </bloque>
+    <bloque>
+      <id>da-31</id>
+      <titulo>Disposición adicional trigésima primera</titulo>
+      <fecha_actualizacion>20230301</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-31</url>
+    </bloque>
+    <bloque>
+      <id>da-32</id>
+      <titulo>Disposición adicional trigésima segunda</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-32</url>
+    </bloque>
+    <bloque>
+      <id>da-33</id>
+      <titulo>Disposición adicional trigésima tercera</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-33</url>
+    </bloque>
+    <bloque>
+      <id>da-34</id>
+      <titulo>Disposición adicional trigésima cuarta</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-34</url>
+    </bloque>
+    <bloque>
+      <id>da-35</id>
+      <titulo>Disposición adicional trigésima quinta</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-35</url>
+    </bloque>
+    <bloque>
+      <id>da-36</id>
+      <titulo>Disposición adicional trigésima sexta</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-36</url>
+    </bloque>
+    <bloque>
+      <id>da-37</id>
+      <titulo>Disposición adicional trigésima séptima</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-37</url>
+    </bloque>
+    <bloque>
+      <id>da-38</id>
+      <titulo>Disposición adicional trigésima octava</titulo>
+      <fecha_actualizacion>20210423</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-38</url>
+    </bloque>
+    <bloque>
+      <id>da-39</id>
+      <titulo>Disposición adicional trigésima novena</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-39</url>
+    </bloque>
+    <bloque>
+      <id>da-40</id>
+      <titulo>Disposición adicional cuadragésima</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-40</url>
+    </bloque>
+    <bloque>
+      <id>da-41</id>
+      <titulo>Disposición adicional cuadragésima primera</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-41</url>
+    </bloque>
+    <bloque>
+      <id>da-42</id>
+      <titulo>Disposición adicional cuadragésima segunda</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-42</url>
+    </bloque>
+    <bloque>
+      <id>da-43</id>
+      <titulo>Disposición adicional cuadragésima tercera</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-43</url>
+    </bloque>
+    <bloque>
+      <id>da-44</id>
+      <titulo>Disposición adicional cuadragésima cuarta</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-44</url>
+    </bloque>
+    <bloque>
+      <id>da-45</id>
+      <titulo>Disposición adicional cuadragésima quinta</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-45</url>
+    </bloque>
+    <bloque>
+      <id>da-46</id>
+      <titulo>Disposición adicional cuadragésima sexta</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-46</url>
+    </bloque>
+    <bloque>
+      <id>da-47</id>
+      <titulo>Disposición adicional cuadragésima séptima</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-47</url>
+    </bloque>
+    <bloque>
+      <id>da-48</id>
+      <titulo>Disposición adicional cuadragésima octava</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-48</url>
+    </bloque>
+    <bloque>
+      <id>da-49</id>
+      <titulo>Disposición adicional cuadragésima novena</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-49</url>
+    </bloque>
+    <bloque>
+      <id>da-50</id>
+      <titulo>Disposición adicional quincuagésima</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-50</url>
+    </bloque>
+    <bloque>
+      <id>da-51</id>
+      <titulo>Disposición adicional quincuagésima primera</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-51</url>
+    </bloque>
+    <bloque>
+      <id>da-52</id>
+      <titulo>Disposición adicional quincuagésima segunda</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-52</url>
+    </bloque>
+    <bloque>
+      <id>da-53</id>
+      <titulo>Disposición adicional quincuagésima tercera</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-53</url>
+    </bloque>
+    <bloque>
+      <id>da-54</id>
+      <titulo>Disposición adicional quincuagésima cuarta</titulo>
+      <fecha_actualizacion>20190209</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-54</url>
+    </bloque>
+    <bloque>
+      <id>da-55</id>
+      <titulo>Disposición adicional quincuagésima quinta</titulo>
+      <fecha_actualizacion>20221224</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-55</url>
+    </bloque>
+    <bloque>
+      <id>da-56</id>
+      <titulo>Disposición adicional quincuagésima sexta</titulo>
+      <fecha_actualizacion>20221224</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-56</url>
+    </bloque>
+    <bloque>
+      <id>da-57</id>
+      <titulo>Disposición adicional quincuagésima séptima</titulo>
+      <fecha_actualizacion>20251204</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-57</url>
+    </bloque>
+    <bloque>
+      <id>da-58</id>
+      <titulo>Disposición adicional quincuagésima séptima [sic]</titulo>
+      <fecha_actualizacion>20260321</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/da-58</url>
+    </bloque>
+    <bloque>
+      <id>dt</id>
+      <titulo>Disposición transitoria primera</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/dt</url>
+    </bloque>
+    <bloque>
+      <id>dt-2</id>
+      <titulo>Disposición transitoria segunda</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/dt-2</url>
+    </bloque>
+    <bloque>
+      <id>dt-3</id>
+      <titulo>Disposición transitoria tercera</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/dt-3</url>
+    </bloque>
+    <bloque>
+      <id>dt-4</id>
+      <titulo>Disposición transitoria cuarta</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/dt-4</url>
+    </bloque>
+    <bloque>
+      <id>dt-5</id>
+      <titulo>Disposición transitoria quinta</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/dt-5</url>
+    </bloque>
+    <bloque>
+      <id>dt-6</id>
+      <titulo>Disposición transitoria sexta</titulo>
+      <fecha_actualizacion>20221224</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/dt-6</url>
+    </bloque>
+    <bloque>
+      <id>dd</id>
+      <titulo>Disposición derogatoria</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/dd</url>
+    </bloque>
+    <bloque>
+      <id>df</id>
+      <titulo>Disposición final primera</titulo>
+      <fecha_actualizacion>20210423</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/df</url>
+    </bloque>
+    <bloque>
+      <id>df-2</id>
+      <titulo>Disposición final segunda</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/df-2</url>
+    </bloque>
+    <bloque>
+      <id>df-3</id>
+      <titulo>Disposición final tercera</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/df-3</url>
+    </bloque>
+    <bloque>
+      <id>df-4</id>
+      <titulo>Disposición final cuarta</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/df-4</url>
+    </bloque>
+    <bloque>
+      <id>df-5</id>
+      <titulo>Disposición final quinta</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/df-5</url>
+    </bloque>
+    <bloque>
+      <id>df-6</id>
+      <titulo>Disposición final sexta</titulo>
+      <fecha_actualizacion>20210423</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/df-6</url>
+    </bloque>
+    <bloque>
+      <id>df-7</id>
+      <titulo>Disposición final séptima</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/df-7</url>
+    </bloque>
+    <bloque>
+      <id>df-8</id>
+      <titulo>Disposición final octava</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/df-8</url>
+    </bloque>
+    <bloque>
+      <id>df-9</id>
+      <titulo>Disposición final novena</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/df-9</url>
+    </bloque>
+    <bloque>
+      <id>df-10</id>
+      <titulo>Disposición final décima</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/df-10</url>
+    </bloque>
+    <bloque>
+      <id>df-11</id>
+      <titulo>Disposición final undécima</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/df-11</url>
+    </bloque>
+    <bloque>
+      <id>df-12</id>
+      <titulo>Disposición final duodécima</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/df-12</url>
+    </bloque>
+    <bloque>
+      <id>df-13</id>
+      <titulo>Disposición final decimotercera</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/df-13</url>
+    </bloque>
+    <bloque>
+      <id>df-14</id>
+      <titulo>Disposición final decimocuarta</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/df-14</url>
+    </bloque>
+    <bloque>
+      <id>df-15</id>
+      <titulo>Disposición final decimoquinta</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/df-15</url>
+    </bloque>
+    <bloque>
+      <id>df-16</id>
+      <titulo>Disposición final decimosexta</titulo>
+      <fecha_actualizacion>20221224</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/df-16</url>
+    </bloque>
+    <bloque>
+      <id>fi</id>
+      <titulo>[firma]</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/fi</url>
+    </bloque>
+    <bloque>
+      <id>ai</id>
+      <titulo>ANEXO I</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/ai</url>
+    </bloque>
+    <bloque>
+      <id>ai-2</id>
+      <titulo>ANEXO II</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/ai-2</url>
+    </bloque>
+    <bloque>
+      <id>ai-3</id>
+      <titulo>ANEXO III</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/ai-3</url>
+    </bloque>
+    <bloque>
+      <id>ai-4</id>
+      <titulo>ANEXO IV</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/ai-4</url>
+    </bloque>
+    <bloque>
+      <id>av</id>
+      <titulo>ANEXO V</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/av</url>
+    </bloque>
+    <bloque>
+      <id>av-2</id>
+      <titulo>ANEXO VI</titulo>
+      <fecha_actualizacion>20171109</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2017-12902/texto/bloque/av-2</url>
+    </bloque>
+  </data>
+</response>

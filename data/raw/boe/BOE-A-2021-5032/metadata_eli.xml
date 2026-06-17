@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+  <status>
+    <code>200</code>
+    <text>ok</text>
+  </status>
+  <data>
+    <metadata-eli xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:eli="http://data.europa.eu/eli/ontology#">
+      <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:eli="http://data.europa.eu/eli/ontology#">
+        <eli:LegalResource rdf:about="https://www.boe.es/eli/es/rd/2021/03/30/203">
+          <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+          <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/rd"/>
+          <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2021-5032</eli:id_local>
+          <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-03-30</eli:date_document>
+          <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">203</eli:number>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/35"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/82"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/93"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/281"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1508"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3085"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3159"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3716"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4189"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4506"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4517"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5159"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5165"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5923"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6062"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7869"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7872"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7879"/>
+          <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7894"/>
+          <eli:has_member>
+            <eli:LegalResource rdf:about="https://www.boe.es/eli/es/rd/2021/03/30/203/dof">
+              <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+              <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/rd"/>
+              <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2021-5032</eli:id_local>
+              <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-03-30</eli:date_document>
+              <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">203</eli:number>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/35"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/82"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/93"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/281"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1508"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3085"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3159"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3716"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4189"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4506"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4517"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5159"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5165"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5923"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6062"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7869"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7872"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7879"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7894"/>
+              <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/dof"/>
+              <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/rd/2021/03/30/203"/>
+              <eli:consolidated_by rdf:resource="https://www.boe.es/eli/es/rd/2021/03/30/203/con/20250402"/>
+              <eli:consolidated_by rdf:resource="https://www.boe.es/eli/es/rd/2021/03/30/203/con/20220712"/>
+              <eli:consolidated_by rdf:resource="https://www.boe.es/eli/es/rd/2021/03/30/203/con/20210331"/>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/rd/2021/03/30/203/dof/spa">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Real Decreto 203/2021, de 30 de marzo, por el que se aprueba el Reglamento de actuación y funcionamiento del sector público por medios electrónicos.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:date_publication rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-03-31</eli:date_publication>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/rd/2021/03/30/203/dof"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/rd/2021/03/30/203/dof/spa/epub">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/application/epub+zip"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/rd/2021/03/30/203/dof/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/rd/2021/03/30/203/dof/spa/html">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/rd/2021/03/30/203/dof/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/rd/2021/03/30/203/dof/spa/pdf">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/application/pdf"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/rd/2021/03/30/203/dof/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/rd/2021/03/30/203/dof/spa/xml">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/application/xml"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/rd/2021/03/30/203/dof/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/rd/2021/03/30/203/dof/cat">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/cat"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Reial decret 203/2021, de 30 de març, pel qual s'aprova el Reglament d'actuació i funcionament del sector públic per mitjans electrònics.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:date_publication rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-03-31</eli:date_publication>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/rd/2021/03/30/203/dof"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/rd/2021/03/30/203/dof/cat/pdf">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/application/pdf"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/rd/2021/03/30/203/dof/cat"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/rd/2021/03/30/203/dof/glg">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/glg"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Real decreto 203/2021, do 30 de marzo, polo que se aproba o Regulamento de actuación e funcionamento do sector público por medios electrónicos.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:date_publication rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-03-31</eli:date_publication>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/rd/2021/03/30/203/dof"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/rd/2021/03/30/203/dof/glg/pdf">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/application/pdf"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/rd/2021/03/30/203/dof/glg"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+            </eli:LegalResource>
+          </eli:has_member>
+          <eli:has_member>
+            <eli:LegalResource rdf:about="https://www.boe.es/eli/es/rd/2021/03/30/203/con/20250402">
+              <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+              <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/rd"/>
+              <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2021-5032</eli:id_local>
+              <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-03-30</eli:date_document>
+              <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">203</eli:number>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/35"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/82"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/93"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/281"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1508"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3085"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3159"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3716"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4189"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4506"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4517"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5159"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5165"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5923"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6062"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7869"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7872"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7879"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7894"/>
+              <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/con"/>
+              <eli:version_date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-04-02</eli:version_date>
+              <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/rd/2021/03/30/203"/>
+              <eli:consolidates rdf:resource="https://www.boe.es/eli/es/rd/2021/03/30/203/dof"/>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/rd/2021/03/30/203/con/20250402/spa">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Real Decreto 203/2021, de 30 de marzo, por el que se aprueba el Reglamento de actuación y funcionamiento del sector público por medios electrónicos.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/rd/2021/03/30/203/con/20250402"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/rd/2021/03/30/203/con/20250402/spa/html">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/rd/2021/03/30/203/con/20250402/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+            </eli:LegalResource>
+          </eli:has_member>
+          <eli:has_member>
+            <eli:LegalResource rdf:about="https://www.boe.es/eli/es/rd/2021/03/30/203/con/20220712">
+              <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+              <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/rd"/>
+              <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2021-5032</eli:id_local>
+              <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-03-30</eli:date_document>
+              <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">203</eli:number>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/35"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/82"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/93"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/281"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1508"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3085"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3159"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3716"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4189"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4506"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4517"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5159"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5165"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5923"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6062"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7869"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7872"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7879"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7894"/>
+              <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/con"/>
+              <eli:version_date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-07-12</eli:version_date>
+              <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/rd/2021/03/30/203"/>
+              <eli:consolidates rdf:resource="https://www.boe.es/eli/es/rd/2021/03/30/203/dof"/>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/rd/2021/03/30/203/con/20220712/spa">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Real Decreto 203/2021, de 30 de marzo, por el que se aprueba el Reglamento de actuación y funcionamiento del sector público por medios electrónicos.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/rd/2021/03/30/203/con/20220712"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/rd/2021/03/30/203/con/20220712/spa/html">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/rd/2021/03/30/203/con/20220712/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+            </eli:LegalResource>
+          </eli:has_member>
+          <eli:has_member>
+            <eli:LegalResource rdf:about="https://www.boe.es/eli/es/rd/2021/03/30/203/con/20210331">
+              <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+              <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/rd"/>
+              <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2021-5032</eli:id_local>
+              <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-03-30</eli:date_document>
+              <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">203</eli:number>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/35"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/82"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/93"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/281"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/1508"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3085"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3159"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/3716"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4189"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4506"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/4517"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5159"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5165"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5703"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5923"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/6062"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7869"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7872"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7879"/>
+              <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/7894"/>
+              <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/con"/>
+              <eli:version_date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-03-31</eli:version_date>
+              <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/rd/2021/03/30/203"/>
+              <eli:consolidates rdf:resource="https://www.boe.es/eli/es/rd/2021/03/30/203/dof"/>
+              <eli:is_realized_by>
+                <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/rd/2021/03/30/203/con/20210331/spa">
+                  <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                  <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Real Decreto 203/2021, de 30 de marzo, por el que se aprueba el Reglamento de actuación y funcionamiento del sector público por medios electrónicos.</eli:title>
+                  <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                  <eli:realizes rdf:resource="https://www.boe.es/eli/es/rd/2021/03/30/203/con/20210331"/>
+                  <eli:is_embodied_by>
+                    <eli:Format rdf:about="https://www.boe.es/eli/es/rd/2021/03/30/203/con/20210331/spa/html">
+                      <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                      <eli:embodies rdf:resource="https://www.boe.es/eli/es/rd/2021/03/30/203/con/20210331/spa"/>
+                    </eli:Format>
+                  </eli:is_embodied_by>
+                </eli:LegalExpression>
+              </eli:is_realized_by>
+            </eli:LegalResource>
+          </eli:has_member>
+        </eli:LegalResource>
+      </rdf:RDF>
+    </metadata-eli>
+  </data>
+</response>

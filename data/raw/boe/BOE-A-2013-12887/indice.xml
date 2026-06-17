@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+  <status>
+    <code>200</code>
+    <text>ok</text>
+  </status>
+  <data>
+    <bloque>
+      <id>preambulo</id>
+      <titulo/>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/preambulo</url>
+    </bloque>
+    <bloque>
+      <id>tpreliminar</id>
+      <titulo>TÍTULO PRELIMINAR</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/tpreliminar</url>
+    </bloque>
+    <bloque>
+      <id>a1</id>
+      <titulo>Artículo 1</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/a1</url>
+    </bloque>
+    <bloque>
+      <id>ti</id>
+      <titulo>TÍTULO I</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/ti</url>
+    </bloque>
+    <bloque>
+      <id>ci</id>
+      <titulo>CAPÍTULO I</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/ci</url>
+    </bloque>
+    <bloque>
+      <id>a2</id>
+      <titulo>Artículo 2</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/a2</url>
+    </bloque>
+    <bloque>
+      <id>a3</id>
+      <titulo>Artículo 3</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/a3</url>
+    </bloque>
+    <bloque>
+      <id>a4</id>
+      <titulo>Artículo 4</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/a4</url>
+    </bloque>
+    <bloque>
+      <id>cii</id>
+      <titulo>CAPÍTULO II</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/cii</url>
+    </bloque>
+    <bloque>
+      <id>a5</id>
+      <titulo>Artículo 5</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/a5</url>
+    </bloque>
+    <bloque>
+      <id>a6</id>
+      <titulo>Artículo 6</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/a6</url>
+    </bloque>
+    <bloque>
+      <id>ab</id>
+      <titulo>Artículo 6 bis</titulo>
+      <fecha_actualizacion>20181206</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/ab</url>
+    </bloque>
+    <bloque>
+      <id>a7</id>
+      <titulo>Artículo 7</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/a7</url>
+    </bloque>
+    <bloque>
+      <id>a8</id>
+      <titulo>Artículo 8</titulo>
+      <fecha_actualizacion>20220709</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/a8</url>
+    </bloque>
+    <bloque>
+      <id>a9</id>
+      <titulo>Artículo 9</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/a9</url>
+    </bloque>
+    <bloque>
+      <id>a10</id>
+      <titulo>Artículo 10</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/a10</url>
+    </bloque>
+    <bloque>
+      <id>a11</id>
+      <titulo>Artículo 11</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/a11</url>
+    </bloque>
+    <bloque>
+      <id>ciii</id>
+      <titulo>CAPÍTULO III</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/ciii</url>
+    </bloque>
+    <bloque>
+      <id>s1</id>
+      <titulo>Sección 1</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/s1</url>
+    </bloque>
+    <bloque>
+      <id>a12</id>
+      <titulo>Artículo 12</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/a12</url>
+    </bloque>
+    <bloque>
+      <id>a13</id>
+      <titulo>Artículo 13</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/a13</url>
+    </bloque>
+    <bloque>
+      <id>a14</id>
+      <titulo>Artículo 14</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/a14</url>
+    </bloque>
+    <bloque>
+      <id>a15</id>
+      <titulo>Artículo 15</titulo>
+      <fecha_actualizacion>20181206</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/a15</url>
+    </bloque>
+    <bloque>
+      <id>a16</id>
+      <titulo>Artículo 16</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/a16</url>
+    </bloque>
+    <bloque>
+      <id>s2</id>
+      <titulo>Sección 2</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/s2</url>
+    </bloque>
+    <bloque>
+      <id>a17</id>
+      <titulo>Artículo 17</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/a17</url>
+    </bloque>
+    <bloque>
+      <id>a18</id>
+      <titulo>Artículo 18</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/a18</url>
+    </bloque>
+    <bloque>
+      <id>a19</id>
+      <titulo>Artículo 19</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/a19</url>
+    </bloque>
+    <bloque>
+      <id>a20</id>
+      <titulo>Artículo 20</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/a20</url>
+    </bloque>
+    <bloque>
+      <id>a21</id>
+      <titulo>Artículo 21</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/a21</url>
+    </bloque>
+    <bloque>
+      <id>a22</id>
+      <titulo>Artículo 22</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/a22</url>
+    </bloque>
+    <bloque>
+      <id>s3</id>
+      <titulo>Sección 3</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/s3</url>
+    </bloque>
+    <bloque>
+      <id>a23</id>
+      <titulo>Artículo 23</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/a23</url>
+    </bloque>
+    <bloque>
+      <id>a24</id>
+      <titulo>Artículo 24</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/a24</url>
+    </bloque>
+    <bloque>
+      <id>tii</id>
+      <titulo>TÍTULO II</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/tii</url>
+    </bloque>
+    <bloque>
+      <id>a25</id>
+      <titulo>Artículo 25</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/a25</url>
+    </bloque>
+    <bloque>
+      <id>a26</id>
+      <titulo>Artículo 26</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/a26</url>
+    </bloque>
+    <bloque>
+      <id>a27</id>
+      <titulo>Artículo 27</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/a27</url>
+    </bloque>
+    <bloque>
+      <id>a28</id>
+      <titulo>Artículo 28</titulo>
+      <fecha_actualizacion>20131221</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/a28</url>
+    </bloque>
+    <bloque>
+      <id>a29</id>
+      <titulo>Artículo 29</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/a29</url>
+    </bloque>
+    <bloque>
+      <id>a30</id>
+      <titulo>Artículo 30</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/a30</url>
+    </bloque>
+    <bloque>
+      <id>a31</id>
+      <titulo>Artículo 31</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/a31</url>
+    </bloque>
+    <bloque>
+      <id>a32</id>
+      <titulo>Artículo 32</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/a32</url>
+    </bloque>
+    <bloque>
+      <id>tiii</id>
+      <titulo>TÍTULO III</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/tiii</url>
+    </bloque>
+    <bloque>
+      <id>a33</id>
+      <titulo>Artículo 33</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/a33</url>
+    </bloque>
+    <bloque>
+      <id>a34</id>
+      <titulo>Artículo 34</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/a34</url>
+    </bloque>
+    <bloque>
+      <id>a35</id>
+      <titulo>Artículo 35</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/a35</url>
+    </bloque>
+    <bloque>
+      <id>a36</id>
+      <titulo>Artículo 36</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/a36</url>
+    </bloque>
+    <bloque>
+      <id>a37</id>
+      <titulo>Artículo 37</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/a37</url>
+    </bloque>
+    <bloque>
+      <id>a38</id>
+      <titulo>Artículo 38</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/a38</url>
+    </bloque>
+    <bloque>
+      <id>a39</id>
+      <titulo>Artículo 39</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/a39</url>
+    </bloque>
+    <bloque>
+      <id>a40</id>
+      <titulo>Artículo 40</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/a40</url>
+    </bloque>
+    <bloque>
+      <id>daprimera</id>
+      <titulo>Disposición adicional primera</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/daprimera</url>
+    </bloque>
+    <bloque>
+      <id>dasegunda</id>
+      <titulo>Disposición adicional segunda</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/dasegunda</url>
+    </bloque>
+    <bloque>
+      <id>datercera</id>
+      <titulo>Disposición adicional tercera</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/datercera</url>
+    </bloque>
+    <bloque>
+      <id>dacuaa</id>
+      <titulo>Disposición adicional cuarta</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/dacuaa</url>
+    </bloque>
+    <bloque>
+      <id>daquinta</id>
+      <titulo>Disposición adicional quinta</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/daquinta</url>
+    </bloque>
+    <bloque>
+      <id>dasexta</id>
+      <titulo>Disposición adicional sexta</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/dasexta</url>
+    </bloque>
+    <bloque>
+      <id>daseptima</id>
+      <titulo>Disposición adicional séptima</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/daseptima</url>
+    </bloque>
+    <bloque>
+      <id>daoctava</id>
+      <titulo>Disposición adicional octava</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/daoctava</url>
+    </bloque>
+    <bloque>
+      <id>dfprimera</id>
+      <titulo>Disposición final primera</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/dfprimera</url>
+    </bloque>
+    <bloque>
+      <id>dfsegunda</id>
+      <titulo>Disposición final segunda</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/dfsegunda</url>
+    </bloque>
+    <bloque>
+      <id>dftercera</id>
+      <titulo>Disposición final tercera</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/dftercera</url>
+    </bloque>
+    <bloque>
+      <id>dfcuaa</id>
+      <titulo>Disposición final cuarta</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/dfcuaa</url>
+    </bloque>
+    <bloque>
+      <id>dfquinta</id>
+      <titulo>Disposición final quinta</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/dfquinta</url>
+    </bloque>
+    <bloque>
+      <id>dfsexta</id>
+      <titulo>Disposición final sexta</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/dfsexta</url>
+    </bloque>
+    <bloque>
+      <id>dfseptima</id>
+      <titulo>Disposición final séptima</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/dfseptima</url>
+    </bloque>
+    <bloque>
+      <id>dfoctava</id>
+      <titulo>Disposición final octava</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/dfoctava</url>
+    </bloque>
+    <bloque>
+      <id>dfnovena</id>
+      <titulo>Disposición final novena</titulo>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/dfnovena</url>
+    </bloque>
+    <bloque>
+      <id>firma</id>
+      <titulo/>
+      <fecha_actualizacion>20131210</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2013-12887/texto/bloque/firma</url>
+    </bloque>
+  </data>
+</response>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+  <status>
+    <code>200</code>
+    <text>ok</text>
+  </status>
+  <data>
+    <metadatos>
+      <fecha_actualizacion>20260414T074302Z</fecha_actualizacion>
+      <identificador>BOE-A-2021-5032</identificador>
+      <ambito codigo="1">Estatal</ambito>
+      <departamento codigo="9574">Ministerio de la Presidencia, Relaciones con las Cortes y Memoria Democrática</departamento>
+      <rango codigo="1340">Real Decreto</rango>
+      <fecha_disposicion>20210330</fecha_disposicion>
+      <numero_oficial>203/2021</numero_oficial>
+      <titulo>Real Decreto 203/2021, de 30 de marzo, por el que se aprueba el Reglamento de actuación y funcionamiento del sector público por medios electrónicos.</titulo>
+      <diario>Boletín Oficial del Estado</diario>
+      <fecha_publicacion>20210331</fecha_publicacion>
+      <diario_numero>77</diario_numero>
+      <fecha_vigencia>20210402</fecha_vigencia>
+      <estatus_derogacion>N</estatus_derogacion>
+      <estatus_anulacion>N</estatus_anulacion>
+      <vigencia_agotada>N</vigencia_agotada>
+      <estado_consolidacion codigo="3">Finalizado</estado_consolidacion>
+      <url_eli>https://www.boe.es/eli/es/rd/2021/03/30/203</url_eli>
+      <url_html_consolidada>https://www.boe.es/buscar/act.php?id=BOE-A-2021-5032</url_html_consolidada>
+    </metadatos>
+  </data>
+</response>

@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+  <status>
+    <code>200</code>
+    <text>ok</text>
+  </status>
+  <data>
+    <analisis>
+      <materias>
+        <materia codigo="82">Administración General del Estado</materia>
+        <materia codigo="85">Administración Local</materia>
+        <materia codigo="93">Administraciones Públicas</materia>
+        <materia codigo="119">Agencia Estatal de la Administración Tributaria</materia>
+        <materia codigo="420">Ayudas</materia>
+        <materia codigo="449">Banco de España</materia>
+        <materia codigo="618">Carbón</materia>
+        <materia codigo="1320">Comunidades Autónomas</materia>
+        <materia codigo="1677">Control financiero</materia>
+        <materia codigo="1704">Cooperación internacional</materia>
+        <materia codigo="3241">Entidades Gestoras y Servicios Comunes de la Seguridad Social</materia>
+        <materia codigo="3497">Evaluación de impacto ambiental</materia>
+        <materia codigo="3743">Fondo de Cohesión</materia>
+        <materia codigo="3768">Fondo Europeo de Desarrollo Regional</materia>
+        <materia codigo="3770">Fondo Europeo de Orientación y de Garantía Agrícola</materia>
+        <materia codigo="3862">Fundaciones estatales</materia>
+        <materia codigo="3927">Gestión presupuestaria</materia>
+        <materia codigo="4130">Incentivos regionales</materia>
+        <materia codigo="4311">Instituto Cervantes</materia>
+        <materia codigo="4406">Instituto Nacional de Empleo</materia>
+        <materia codigo="4496">Instrumento Financiero de Orientación de la Pesca</materia>
+        <materia codigo="4510">Intervención General de la Administración del Estado</materia>
+        <materia codigo="4512">Intervención General de la Seguridad Social</materia>
+        <materia codigo="4518">Inversiones</materia>
+        <materia codigo="5143">Navarra</materia>
+        <materia codigo="5345">País Vasco</materia>
+        <materia codigo="5542">Pequeña y Mediana Empresa</materia>
+        <materia codigo="5666">Premios</materia>
+        <materia codigo="5685">Presupuestos de las Comunidades Autónomas</materia>
+        <materia codigo="5686">Presupuestos Generales del Estado</materia>
+        <materia codigo="5703">Procedimiento administrativo</materia>
+        <materia codigo="6800">Subvenciones</materia>
+        <materia codigo="6954">Tribunal de Cuentas</materia>
+        <materia codigo="7001">Unión Europea</materia>
+      </materias>
+      <referencias>
+        <anteriores>
+          <anterior>
+            <id_norma>BOE-A-1996-1578</id_norma>
+            <relacion codigo="210">DEROGA</relacion>
+            <texto>el párrafo segundo del art. 34.1, 36.6, párrafo b) del 37.1, 38. bis.3, 43, 44 y 45 del Real Decreto 2188/1995, de 28 de diciembre</texto>
+          </anterior>
+          <anterior>
+            <id_norma>BOE-A-1993-31099</id_norma>
+            <relacion codigo="210">DEROGA</relacion>
+            <texto>en cuanto se oponga el Reglamento aprobado por el Real Decreto 2225/1993, de 17 de diciembre</texto>
+          </anterior>
+          <anterior>
+            <id_norma>BOE-A-1988-22572</id_norma>
+            <relacion codigo="210">DEROGA</relacion>
+            <texto>los arts. 81 y 82 de la Ley General Presupuestaria, texto refundido aprobado por el Real Decreto Legislativo 1091/1988, de 23 de septiembre</texto>
+          </anterior>
+          <anterior>
+            <id_norma>BOE-A-1964-15526</id_norma>
+            <relacion codigo="210">DEROGA</relacion>
+            <texto>en cuanto se oponga el Decreto 2784/1964, de 27 de julio</texto>
+          </anterior>
+          <anterior>
+            <id_norma>BOE-A-2001-23523</id_norma>
+            <relacion codigo="330">CITA</relacion>
+            <texto>Ley 18/2001, de 12 de diciembre</texto>
+          </anterior>
+          <anterior>
+            <id_norma>BOE-A-1992-26318</id_norma>
+            <relacion codigo="330">CITA</relacion>
+            <texto>Ley 30/1992, de 26 de noviembre</texto>
+          </anterior>
+        </anteriores>
+        <posteriores>
+          <posterior>
+            <id_norma>BOE-A-2024-15936</id_norma>
+            <relacion codigo="270">SE MODIFICA</relacion>
+            <texto>, con efectos desde el 22 de agosto de 2024, el art. 2.4.i, por Ley Orgánica 2/2024, de 1 de agosto</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2023-15135</id_norma>
+            <relacion codigo="270">SE MODIFICA</relacion>
+            <texto>, en la forma indicada, el art. 13.3 bis, por Real Decreto-ley 5/2023, de 28 de junio</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2023-4512</id_norma>
+            <relacion codigo="270">SE MODIFICA</relacion>
+            <texto>la disposición adicional 18.2, por Ley 1/2023, de 20 de febrero</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2022-22128</id_norma>
+            <relacion codigo="270">SE MODIFICA</relacion>
+            <texto>los arts. 8.1, 20.5 y 8, la disposición adicional 16.1, por Ley 31/2022, de 23 de diciembre</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2022-22127</id_norma>
+            <relacion codigo="270">SE MODIFICA</relacion>
+            <texto>el art. 45 y la disposición adicional 2, por Ley 30/2022, de 23 de diciembre</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2022-15818</id_norma>
+            <relacion codigo="270">SE MODIFICA</relacion>
+            <texto>los arts. 13 y 31.2, por Ley 18/2022, de 28 de septiembre</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2022-14630</id_norma>
+            <relacion codigo="270">SE MODIFICA</relacion>
+            <texto>, con efectos desde el 7 de octubre de 2022, el art. 2.4, por Ley Orgánica 10/2022, de 6 de septiembre</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2021-21653</id_norma>
+            <relacion codigo="270">SE MODIFICA</relacion>
+            <texto>los arts. 49.7 y 51.1, por Ley 22/2021, de 28 de diciembre</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2020-17339</id_norma>
+            <relacion codigo="270">SE MODIFICA</relacion>
+            <texto>los arts. 10.2, 51.2 y SE AÑADE la disposición adicional 27 y la transitoria 4, por Ley 11/2020, de 30 de diciembre</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2017-7387</id_norma>
+            <relacion codigo="270">SE MODIFICA</relacion>
+            <texto>los arts. 29.7, 31.1 y 37.1, por Ley 3/2017, de 27 de junio</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2015-10566</id_norma>
+            <relacion codigo="270">SE MODIFICA</relacion>
+            <texto>, con efectos desde el 3 de octubre de 2015, el art. 10 y disposición adicional 16.1 y SE AÑADE las disposiciones transitoria 3 y adicional 25, por Ley 40/2015, de 1 de octubre</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2015-3441</id_norma>
+            <relacion codigo="270">SE MODIFICA</relacion>
+            <texto>el art. 13.2, por Ley Orgánica 3/2015, de 30 de marzo</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2014-9467</id_norma>
+            <relacion codigo="270">SE MODIFICA</relacion>
+            <texto>los arts. 17, 18, 20, 63, 66, 23, 47, 57 y 62 y SE AÑADE la disposición adicional 24, por Ley 15/2014, de 16 de septiembre</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2013-7062</id_norma>
+            <relacion codigo="270">SE MODIFICA</relacion>
+            <texto>el art. 7, por Real Decreto-ley 7/2013, de 28 de junio</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2012-15651</id_norma>
+            <relacion codigo="270">SE MODIFICA</relacion>
+            <texto>el art. 22.2.a), por Ley 17/2012, de 27 de diciembre</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2011-9617</id_norma>
+            <relacion codigo="270">SE MODIFICA</relacion>
+            <texto>, con efectos de 2 de diciembre de 2011, el art. 31.3, por Ley 14/2011, de 1 de junio</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2010-19703</id_norma>
+            <relacion codigo="270">SE MODIFICA</relacion>
+            <texto>con efectos desde 1 de enero de 2011, los arts. 13, 31.1 y 49, por Ley 39/2010, de 22 de diciembre</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2010-5879</id_norma>
+            <relacion codigo="270">SE MODIFICA</relacion>
+            <texto>los arts. 13.2.b) y 34.4, por Real Decreto-ley 6/2010, de 9 de abril</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2008-20744</id_norma>
+            <relacion codigo="270">SE MODIFICA</relacion>
+            <texto>el art. 16, por Ley 2/2008, de 23 de diciembre</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2006-22865</id_norma>
+            <relacion codigo="270">SE MODIFICA</relacion>
+            <texto>el art. 2.2, por Ley 42/2006, de 28 de diciembre</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2005-19005</id_norma>
+            <relacion codigo="270">SE MODIFICA</relacion>
+            <texto>la disposición adicional 8, por Ley 24/2005, de 18 de noviembre</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2018-9268</id_norma>
+            <relacion codigo="407">SE AÑADE</relacion>
+            <texto>la disposición adicional 26, por Ley 6/2018, de 3 de julio</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2013-6938</id_norma>
+            <relacion codigo="407">SE AÑADE</relacion>
+            <texto>la disposición adicional 23, por Ley 8/2013, de 26 de junio</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2021-6240</id_norma>
+            <relacion codigo="203">SE CORRIGEN errores</relacion>
+            <texto>en la Ley 11/2020, de 30 de diciembre, en BOE núm. 94, de 20 de abril de 2021</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2006-13371</id_norma>
+            <relacion codigo="490">SE DESARROLLA</relacion>
+            <texto>por Real Decreto 887/2006, de 21 de julio</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2023-7940</id_norma>
+            <relacion codigo="440">SE DICTA DE CONFORMIDAD</relacion>
+            <texto>con el art. 13.3 bis y establece criterios de verificación, por Real Decreto 206/2023, de 28 de marzo</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2021-5135</id_norma>
+            <relacion codigo="440">SE DICTA DE CONFORMIDAD</relacion>
+            <texto>con la disposición adicional 27 y se establecen los requisitos necesarios para su aplicación: Orden CIN/310/2021, de 30 de marzo</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2016-3892</id_norma>
+            <relacion codigo="440">SE DICTA DE CONFORMIDAD</relacion>
+            <texto>con la disposición adicional 16 sobre autorización para conceder subvenciones a la Fundación para la Prevención de Riesgos Laborales: Resolución  de 16 de marzo de 2016</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2018-6825</id_norma>
+            <relacion codigo="470">SE DECLARA</relacion>
+            <texto>, en el Recurso 3447/2015, la inconstitucionalidad de los arts. 17.3.b) y 20.8.a), y la constitucionalidad, interpretado según el fj.12.b), de los arts. 62.3 y 66.4, todo ello en la redacción dada por el art. 30 de la Ley 15/2014, de 16 de septiembre, por Sentencia 33/2018, de 12 de abril</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2016-4854</id_norma>
+            <relacion codigo="470">SE DECLARA</relacion>
+            <texto>en el Recurso 5567/2013, la inconstitucionalidad y nulidad del art. 7.1 a) en la redacción dada por la disposición final 2 del Real Decreto-ley 7/2013, de 28 de junio, por Sentencia 70/2016, de 14 de abril</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2014-11021</id_norma>
+            <relacion codigo="470">SE DECLARA</relacion>
+            <texto>, en el Recurso 1725/2011,  la inconstitucionalidad y nulidad, con el alcance señalado en el fj6, de la disposición final 8 de la Ley 39/2010, de 22 de diciembre y, en su conexión, el art. 13.2 y 4 de la presente norma, por Sentencia 152/2014, de 25 de septiembre</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2014-223</id_norma>
+            <relacion codigo="470">SE DECLARA</relacion>
+            <texto>, en el Recurso 2691/2009,  con los efectos establecidos en el fj 3 h) y j), la inconstitucionalidad de lo indicado del art. 16, en la redacción dada por la disposición final 11 de la Ley 2/2008, de 23 de diciembre,  por Sentencia 206/2013, de 5 de diciembre</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2013-7211</id_norma>
+            <relacion codigo="470">SE DECLARA</relacion>
+            <texto>en el Recurso 964/2004,  la constitucionalidad del art. 3.4.a) y de lo indicado del art. 45.2, en los términos del fj 4, por Sentencia 135/2013, de 6 de junio</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2013-7206</id_norma>
+            <relacion codigo="470">SE DECLARA</relacion>
+            <texto>en el Recurso 931/2004,  la constitucionalidad de los arts. 3.4.a), 7.2, 12.1, 15.1.a) y b) en los términos del fj 9 y de lo indicado del art. 45.2 en los términos del fj 12, por Sentencia 130/2013, de 4 de junio</texto>
+          </posterior>
+        </posteriores>
+      </referencias>
+    </analisis>
+  </data>
+</response>

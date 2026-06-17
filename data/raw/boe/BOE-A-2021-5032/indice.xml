@@ -1,0 +1,645 @@
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+  <status>
+    <code>200</code>
+    <text>ok</text>
+  </status>
+  <data>
+    <bloque>
+      <id>pr</id>
+      <titulo>[preambulo]</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/pr</url>
+    </bloque>
+    <bloque>
+      <id>au</id>
+      <titulo>Artículo único</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/au</url>
+    </bloque>
+    <bloque>
+      <id>dt</id>
+      <titulo>Disposición transitoria primera</titulo>
+      <fecha_actualizacion>20220712</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/dt</url>
+    </bloque>
+    <bloque>
+      <id>dt-2</id>
+      <titulo>Disposición transitoria segunda</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/dt-2</url>
+    </bloque>
+    <bloque>
+      <id>dd</id>
+      <titulo>Disposición derogatoria única</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/dd</url>
+    </bloque>
+    <bloque>
+      <id>df</id>
+      <titulo>Disposición final primera</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/df</url>
+    </bloque>
+    <bloque>
+      <id>df-2</id>
+      <titulo>Disposición final segunda</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/df-2</url>
+    </bloque>
+    <bloque>
+      <id>df-3</id>
+      <titulo>Disposición final tercera</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/df-3</url>
+    </bloque>
+    <bloque>
+      <id>df-4</id>
+      <titulo>Disposición final cuarta</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/df-4</url>
+    </bloque>
+    <bloque>
+      <id>df-5</id>
+      <titulo>Disposición final quinta</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/df-5</url>
+    </bloque>
+    <bloque>
+      <id>fi</id>
+      <titulo>[firma]</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/fi</url>
+    </bloque>
+    <bloque>
+      <id>re</id>
+      <titulo>REGLAMENTO</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/re</url>
+    </bloque>
+    <bloque>
+      <id>tp</id>
+      <titulo>TÍTULO PRELIMINAR</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/tp</url>
+    </bloque>
+    <bloque>
+      <id>a1</id>
+      <titulo>Artículo 1</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a1</url>
+    </bloque>
+    <bloque>
+      <id>a2</id>
+      <titulo>Artículo 2</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a2</url>
+    </bloque>
+    <bloque>
+      <id>a3</id>
+      <titulo>Artículo 3</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a3</url>
+    </bloque>
+    <bloque>
+      <id>a4</id>
+      <titulo>Artículo 4</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a4</url>
+    </bloque>
+    <bloque>
+      <id>ti</id>
+      <titulo>TÍTULO I</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/ti</url>
+    </bloque>
+    <bloque>
+      <id>a5</id>
+      <titulo>Artículo 5</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a5</url>
+    </bloque>
+    <bloque>
+      <id>a6</id>
+      <titulo>Artículo 6</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a6</url>
+    </bloque>
+    <bloque>
+      <id>a7</id>
+      <titulo>Artículo 7</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a7</url>
+    </bloque>
+    <bloque>
+      <id>a8</id>
+      <titulo>Artículo 8</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a8</url>
+    </bloque>
+    <bloque>
+      <id>a9</id>
+      <titulo>Artículo 9</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a9</url>
+    </bloque>
+    <bloque>
+      <id>a1-2</id>
+      <titulo>Artículo 10</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a1-2</url>
+    </bloque>
+    <bloque>
+      <id>a1-3</id>
+      <titulo>Artículo 11</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a1-3</url>
+    </bloque>
+    <bloque>
+      <id>a1-4</id>
+      <titulo>Artículo 12</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a1-4</url>
+    </bloque>
+    <bloque>
+      <id>ti-2</id>
+      <titulo>TÍTULO II</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/ti-2</url>
+    </bloque>
+    <bloque>
+      <id>ci</id>
+      <titulo>CAPÍTULO I</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/ci</url>
+    </bloque>
+    <bloque>
+      <id>a1-5</id>
+      <titulo>Artículo 13</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a1-5</url>
+    </bloque>
+    <bloque>
+      <id>a1-6</id>
+      <titulo>Artículo 14</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a1-6</url>
+    </bloque>
+    <bloque>
+      <id>ci-2</id>
+      <titulo>CAPÍTULO II</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/ci-2</url>
+    </bloque>
+    <bloque>
+      <id>s1</id>
+      <titulo>Sección 1</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/s1</url>
+    </bloque>
+    <bloque>
+      <id>a1-7</id>
+      <titulo>Artículo 15</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a1-7</url>
+    </bloque>
+    <bloque>
+      <id>a1-8</id>
+      <titulo>Artículo 16</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a1-8</url>
+    </bloque>
+    <bloque>
+      <id>a1-9</id>
+      <titulo>Artículo 17</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a1-9</url>
+    </bloque>
+    <bloque>
+      <id>s2</id>
+      <titulo>Sección 2</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/s2</url>
+    </bloque>
+    <bloque>
+      <id>a1-10</id>
+      <titulo>Artículo 18</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a1-10</url>
+    </bloque>
+    <bloque>
+      <id>a1-11</id>
+      <titulo>Artículo 19</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a1-11</url>
+    </bloque>
+    <bloque>
+      <id>a2-2</id>
+      <titulo>Artículo 20</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a2-2</url>
+    </bloque>
+    <bloque>
+      <id>a2-3</id>
+      <titulo>Artículo 21</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a2-3</url>
+    </bloque>
+    <bloque>
+      <id>a2-4</id>
+      <titulo>Artículo 22</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a2-4</url>
+    </bloque>
+    <bloque>
+      <id>a2-5</id>
+      <titulo>Artículo 23</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a2-5</url>
+    </bloque>
+    <bloque>
+      <id>a2-6</id>
+      <titulo>Artículo 24</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a2-6</url>
+    </bloque>
+    <bloque>
+      <id>a2-7</id>
+      <titulo>Artículo 25</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a2-7</url>
+    </bloque>
+    <bloque>
+      <id>s3</id>
+      <titulo>Sección 3</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/s3</url>
+    </bloque>
+    <bloque>
+      <id>a2-8</id>
+      <titulo>Artículo 26</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a2-8</url>
+    </bloque>
+    <bloque>
+      <id>a2-9</id>
+      <titulo>Artículo 27</titulo>
+      <fecha_actualizacion>20250402</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a2-9</url>
+    </bloque>
+    <bloque>
+      <id>a2-10</id>
+      <titulo>Artículo 28</titulo>
+      <fecha_actualizacion>20250402</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a2-10</url>
+    </bloque>
+    <bloque>
+      <id>a2-11</id>
+      <titulo>Artículo 29</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a2-11</url>
+    </bloque>
+    <bloque>
+      <id>a3-2</id>
+      <titulo>Artículo 30</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a3-2</url>
+    </bloque>
+    <bloque>
+      <id>a3-3</id>
+      <titulo>Artículo 31</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a3-3</url>
+    </bloque>
+    <bloque>
+      <id>s4</id>
+      <titulo>Sección 4</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/s4</url>
+    </bloque>
+    <bloque>
+      <id>a3-4</id>
+      <titulo>Artículo 32</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a3-4</url>
+    </bloque>
+    <bloque>
+      <id>a3-5</id>
+      <titulo>Artículo 33</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a3-5</url>
+    </bloque>
+    <bloque>
+      <id>a3-6</id>
+      <titulo>Artículo 34</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a3-6</url>
+    </bloque>
+    <bloque>
+      <id>a3-7</id>
+      <titulo>Artículo 35</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a3-7</url>
+    </bloque>
+    <bloque>
+      <id>a3-8</id>
+      <titulo>Artículo 36</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a3-8</url>
+    </bloque>
+    <bloque>
+      <id>ci-3</id>
+      <titulo>CAPÍTULO III</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/ci-3</url>
+    </bloque>
+    <bloque>
+      <id>s1-2</id>
+      <titulo>Sección 1</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/s1-2</url>
+    </bloque>
+    <bloque>
+      <id>a3-9</id>
+      <titulo>Artículo 37</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a3-9</url>
+    </bloque>
+    <bloque>
+      <id>a3-10</id>
+      <titulo>Artículo 38</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a3-10</url>
+    </bloque>
+    <bloque>
+      <id>a3-11</id>
+      <titulo>Artículo 39</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a3-11</url>
+    </bloque>
+    <bloque>
+      <id>a4-2</id>
+      <titulo>Artículo 40</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a4-2</url>
+    </bloque>
+    <bloque>
+      <id>s2-2</id>
+      <titulo>Sección 2</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/s2-2</url>
+    </bloque>
+    <bloque>
+      <id>a4-3</id>
+      <titulo>Artículo 41</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a4-3</url>
+    </bloque>
+    <bloque>
+      <id>a4-4</id>
+      <titulo>Artículo 42</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a4-4</url>
+    </bloque>
+    <bloque>
+      <id>a4-5</id>
+      <titulo>Artículo 43</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a4-5</url>
+    </bloque>
+    <bloque>
+      <id>a4-6</id>
+      <titulo>Artículo 44</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a4-6</url>
+    </bloque>
+    <bloque>
+      <id>a4-7</id>
+      <titulo>Artículo 45</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a4-7</url>
+    </bloque>
+    <bloque>
+      <id>ti-3</id>
+      <titulo>TÍTULO III</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/ti-3</url>
+    </bloque>
+    <bloque>
+      <id>ci-4</id>
+      <titulo>CAPÍTULO I</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/ci-4</url>
+    </bloque>
+    <bloque>
+      <id>a4-8</id>
+      <titulo>Artículo 46</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a4-8</url>
+    </bloque>
+    <bloque>
+      <id>a4-9</id>
+      <titulo>Artículo 47</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a4-9</url>
+    </bloque>
+    <bloque>
+      <id>a4-10</id>
+      <titulo>Artículo 48</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a4-10</url>
+    </bloque>
+    <bloque>
+      <id>a4-11</id>
+      <titulo>Artículo 49</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a4-11</url>
+    </bloque>
+    <bloque>
+      <id>a5-2</id>
+      <titulo>Artículo 50</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a5-2</url>
+    </bloque>
+    <bloque>
+      <id>a5-3</id>
+      <titulo>Artículo 51</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a5-3</url>
+    </bloque>
+    <bloque>
+      <id>a5-4</id>
+      <titulo>Artículo 52</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a5-4</url>
+    </bloque>
+    <bloque>
+      <id>a5-5</id>
+      <titulo>Artículo 53</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a5-5</url>
+    </bloque>
+    <bloque>
+      <id>ci-5</id>
+      <titulo>CAPÍTULO II</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/ci-5</url>
+    </bloque>
+    <bloque>
+      <id>a5-6</id>
+      <titulo>Artículo 54</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a5-6</url>
+    </bloque>
+    <bloque>
+      <id>a5-7</id>
+      <titulo>Artículo 55</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a5-7</url>
+    </bloque>
+    <bloque>
+      <id>ti-4</id>
+      <titulo>TÍTULO IV</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/ti-4</url>
+    </bloque>
+    <bloque>
+      <id>ci-6</id>
+      <titulo>CAPÍTULO I</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/ci-6</url>
+    </bloque>
+    <bloque>
+      <id>a5-8</id>
+      <titulo>Artículo 56</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a5-8</url>
+    </bloque>
+    <bloque>
+      <id>a5-9</id>
+      <titulo>Artículo 57</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a5-9</url>
+    </bloque>
+    <bloque>
+      <id>a5-10</id>
+      <titulo>Artículo 58</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a5-10</url>
+    </bloque>
+    <bloque>
+      <id>a5-11</id>
+      <titulo>Artículo 59</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a5-11</url>
+    </bloque>
+    <bloque>
+      <id>a6-2</id>
+      <titulo>Artículo 60</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a6-2</url>
+    </bloque>
+    <bloque>
+      <id>a6-3</id>
+      <titulo>Artículo 61</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a6-3</url>
+    </bloque>
+    <bloque>
+      <id>a6-4</id>
+      <titulo>Artículo 62</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a6-4</url>
+    </bloque>
+    <bloque>
+      <id>a6-5</id>
+      <titulo>Artículo 63</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a6-5</url>
+    </bloque>
+    <bloque>
+      <id>ci-7</id>
+      <titulo>CAPÍTULO II</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/ci-7</url>
+    </bloque>
+    <bloque>
+      <id>a6-6</id>
+      <titulo>Artículo 64</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a6-6</url>
+    </bloque>
+    <bloque>
+      <id>a6-7</id>
+      <titulo>Artículo 65</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/a6-7</url>
+    </bloque>
+    <bloque>
+      <id>da</id>
+      <titulo>Disposición adicional primera</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/da</url>
+    </bloque>
+    <bloque>
+      <id>da-2</id>
+      <titulo>Disposición adicional segunda</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/da-2</url>
+    </bloque>
+    <bloque>
+      <id>da-3</id>
+      <titulo>Disposición adicional tercera</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/da-3</url>
+    </bloque>
+    <bloque>
+      <id>da-4</id>
+      <titulo>Disposición adicional cuarta</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/da-4</url>
+    </bloque>
+    <bloque>
+      <id>da-5</id>
+      <titulo>Disposición adicional quinta</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/da-5</url>
+    </bloque>
+    <bloque>
+      <id>da-6</id>
+      <titulo>Disposición adicional sexta</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/da-6</url>
+    </bloque>
+    <bloque>
+      <id>da-7</id>
+      <titulo>Disposición adicional séptima</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/da-7</url>
+    </bloque>
+    <bloque>
+      <id>da-8</id>
+      <titulo>Disposición adicional octava</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/da-8</url>
+    </bloque>
+    <bloque>
+      <id>da-9</id>
+      <titulo>Disposición adicional novena</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/da-9</url>
+    </bloque>
+    <bloque>
+      <id>da-10</id>
+      <titulo>Disposición adicional décima</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/da-10</url>
+    </bloque>
+    <bloque>
+      <id>an</id>
+      <titulo>ANEXO</titulo>
+      <fecha_actualizacion>20210331</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2021-5032/texto/bloque/an</url>
+    </bloque>
+  </data>
+</response>

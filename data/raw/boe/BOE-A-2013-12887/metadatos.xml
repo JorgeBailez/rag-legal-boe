@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+  <status>
+    <code>200</code>
+    <text>ok</text>
+  </status>
+  <data>
+    <metadatos>
+      <fecha_actualizacion>20260102T105216Z</fecha_actualizacion>
+      <identificador>BOE-A-2013-12887</identificador>
+      <ambito codigo="1">Estatal</ambito>
+      <departamento codigo="7723">Jefatura del Estado</departamento>
+      <rango codigo="1300">Ley</rango>
+      <fecha_disposicion>20131209</fecha_disposicion>
+      <numero_oficial>19/2013</numero_oficial>
+      <titulo>Ley 19/2013, de 9 de diciembre, de transparencia, acceso a la información pública y buen gobierno.</titulo>
+      <diario>Boletín Oficial del Estado</diario>
+      <fecha_publicacion>20131210</fecha_publicacion>
+      <diario_numero>295</diario_numero>
+      <fecha_vigencia>20141210</fecha_vigencia>
+      <estatus_derogacion>N</estatus_derogacion>
+      <estatus_anulacion>N</estatus_anulacion>
+      <vigencia_agotada>N</vigencia_agotada>
+      <estado_consolidacion codigo="3">Finalizado</estado_consolidacion>
+      <url_eli>https://www.boe.es/eli/es/l/2013/12/09/19</url_eli>
+      <url_html_consolidada>https://www.boe.es/buscar/act.php?id=BOE-A-2013-12887</url_html_consolidada>
+    </metadatos>
+  </data>
+</response>

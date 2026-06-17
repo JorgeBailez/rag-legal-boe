@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+  <status>
+    <code>200</code>
+    <text>ok</text>
+  </status>
+  <data>
+    <analisis>
+      <materias>
+        <materia codigo="82">Administración General del Estado</materia>
+        <materia codigo="85">Administración Local</materia>
+        <materia codigo="93">Administraciones Públicas</materia>
+        <materia codigo="473">Bases de datos</materia>
+        <materia codigo="1262">Comités consultivos</materia>
+        <materia codigo="1320">Comunidades Autónomas</materia>
+        <materia codigo="1677">Control financiero</materia>
+        <materia codigo="3762">Fondo Español de Garantía Agraria</materia>
+        <materia codigo="3887">Garantías</materia>
+        <materia codigo="3927">Gestión presupuestaria</materia>
+        <materia codigo="4165">Información</materia>
+        <materia codigo="4510">Intervención General de la Administración del Estado</materia>
+        <materia codigo="7872">Notificaciones telemáticas</materia>
+        <materia codigo="5278">Organización de la Administración del Estado</materia>
+        <materia codigo="5415">Partidos políticos</materia>
+        <materia codigo="5703">Procedimiento administrativo</materia>
+        <materia codigo="6015">Registros administrativos</materia>
+        <materia codigo="6800">Subvenciones</materia>
+        <materia codigo="7001">Unión Europea</materia>
+      </materias>
+      <referencias>
+        <anteriores>
+          <anterior>
+            <id_norma>BOE-A-2003-12270</id_norma>
+            <relacion codigo="210">DEROGA</relacion>
+            <texto>En la forma indicada la Resolución de 29 de mayo de 2003</texto>
+          </anterior>
+          <anterior>
+            <id_norma>BOE-A-2000-1722</id_norma>
+            <relacion codigo="210">DEROGA</relacion>
+            <texto>En la forma indicada la Orden de 13 de enero de 2000</texto>
+          </anterior>
+          <anterior>
+            <id_norma>BOE-A-1996-1578</id_norma>
+            <relacion codigo="210">DEROGA</relacion>
+            <texto>En la foma indicada el art. 46 del Real Decreto 2188/1995, de 28 de diciembre</texto>
+          </anterior>
+          <anterior>
+            <id_norma>BOE-A-1993-31099</id_norma>
+            <relacion codigo="210">DEROGA</relacion>
+            <texto>Real Decreto 2225/1993, de 17 de diciembre</texto>
+          </anterior>
+          <anterior>
+            <id_norma>BOE-A-1987-27139</id_norma>
+            <relacion codigo="210">DEROGA</relacion>
+            <texto>En la forma indicada la Orden de 25 de noviembre de 1987</texto>
+          </anterior>
+          <anterior>
+            <id_norma>BOE-A-1986-10637</id_norma>
+            <relacion codigo="210">DEROGA</relacion>
+            <texto>En la forma indicada la Resolución de 28 de abril de 1986</texto>
+          </anterior>
+          <anterior>
+            <id_norma>BOE-A-1986-10635</id_norma>
+            <relacion codigo="210">DEROGA</relacion>
+            <texto>En la forma indicada la Orden de 28 de abril de 1986</texto>
+          </anterior>
+          <anterior>
+            <id_norma>BOE-A-1964-15526</id_norma>
+            <relacion codigo="210">DEROGA</relacion>
+            <texto>Decreto 2784/1964, de 27 de julio</texto>
+          </anterior>
+          <anterior>
+            <id_norma>BOE-A-2003-20977</id_norma>
+            <relacion codigo="490">DESARROLLA</relacion>
+            <texto>la Ley 38/2003, de 17 de noviembre</texto>
+          </anterior>
+          <anterior>
+            <id_norma>BOE-A-2003-21614</id_norma>
+            <relacion codigo="330">CITA</relacion>
+            <texto>Ley 47/2003, de 26 de noviembre</texto>
+          </anterior>
+        </anteriores>
+        <posteriores>
+          <posterior>
+            <id_norma>BOE-A-2019-4671</id_norma>
+            <relacion codigo="210">SE DEROGA</relacion>
+            <texto>los arts. 35 a 41, las disposiciones adicionales 3, 4 y 5 y lo indicado de la 10,  SE MODIFICA los arts. 5.1.c), 13, 25, 30, 31 y 102.1, la disposición adicional 7 y la disposición final 1.1 y SE AÑADE la disposición adicional 13, por Real Decreto 130/2019, de 8 de marzo</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2023-15135</id_norma>
+            <relacion codigo="270">SE MODIFICA</relacion>
+            <texto>el art. 23 y SE AÑADE el 22 bis, por Real Decreto-ley 5/2023, de 28 de junio</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2006-19623</id_norma>
+            <relacion codigo="201">CORRECCIÓN de errores</relacion>
+            <texto>en BOE num. 270 de 11 de noviembre de 2006</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2013-12321</id_norma>
+            <relacion codigo="440">SE DICTA DE CONFORMIDAD</relacion>
+            <texto>y establece las normas especiales de ayudas extraordinarias para trabajadores afectados por reestructuración de empresas: Real Decreto 908/2013, de 22 de noviembre</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2009-4809</id_norma>
+            <relacion codigo="440">SE DICTA DE CONFORMIDAD</relacion>
+            <texto>con el art. 24.5, regulando la presentación de la Declaración responsable: Orden EHA/699/2009, de 12 de marzo</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2007-14331</id_norma>
+            <relacion codigo="440">SE DICTA DE CONFORMIDAD</relacion>
+            <texto>el art. 81 y la disposición adicional 2, regulando el empleo de medios electrónicos, informáticos y telemáticos en la justificación de las subvenciones: Orden EHA/2261/2007, de 17 de julio</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2007-13881</id_norma>
+            <relacion codigo="440">SE DICTA DE CONFORMIDAD</relacion>
+            <texto>: Orden FOM/2184/2007, de 9 de julio de 2007</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2007-10485</id_norma>
+            <relacion codigo="440">SE DICTA DE CONFORMIDAD</relacion>
+            <texto>el art. 74, aprobando la norma de actuación de los auditores de cuentas en cuentas justificativas de subvenciones, en el ámbito del sector público estatal: Orden EHA/1434/2007, de 17 de mayo</texto>
+          </posterior>
+          <posterior>
+            <id_norma>BOE-A-2007-7285</id_norma>
+            <relacion codigo="440">SE DICTA DE CONFORMIDAD</relacion>
+            <texto>, sobre contenido y especificaciones técnicas de la información a suministrar a la Base de Datos Nacional de Subvenciones: Orden EHA/875/2007, de 29 de marzo</texto>
+          </posterior>
+        </posteriores>
+      </referencias>
+    </analisis>
+  </data>
+</response>

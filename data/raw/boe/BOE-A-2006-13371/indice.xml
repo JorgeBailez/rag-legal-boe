@@ -1,0 +1,1035 @@
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+  <status>
+    <code>200</code>
+    <text>ok</text>
+  </status>
+  <data>
+    <bloque>
+      <id>no</id>
+      <titulo/>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/no</url>
+    </bloque>
+    <bloque>
+      <id>preambulo</id>
+      <titulo/>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/preambulo</url>
+    </bloque>
+    <bloque>
+      <id>aunico</id>
+      <titulo>Artículo único</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/aunico</url>
+    </bloque>
+    <bloque>
+      <id>ddunica</id>
+      <titulo>Disposición derogatoria única</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/ddunica</url>
+    </bloque>
+    <bloque>
+      <id>dfunica</id>
+      <titulo>Disposición final única</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/dfunica</url>
+    </bloque>
+    <bloque>
+      <id>firma</id>
+      <titulo/>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/firma</url>
+    </bloque>
+    <bloque>
+      <id>reglamento</id>
+      <titulo>REGLAMENTO</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/reglamento</url>
+    </bloque>
+    <bloque>
+      <id>tpreliminar</id>
+      <titulo>TÍTULO PRELIMINAR</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/tpreliminar</url>
+    </bloque>
+    <bloque>
+      <id>ci</id>
+      <titulo>CAPÍTULO I</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/ci</url>
+    </bloque>
+    <bloque>
+      <id>a1</id>
+      <titulo>Artículo 1</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a1</url>
+    </bloque>
+    <bloque>
+      <id>a2</id>
+      <titulo>Artículo 2</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a2</url>
+    </bloque>
+    <bloque>
+      <id>a3</id>
+      <titulo>Artículo 3</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a3</url>
+    </bloque>
+    <bloque>
+      <id>a4</id>
+      <titulo>Artículo 4</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a4</url>
+    </bloque>
+    <bloque>
+      <id>a5</id>
+      <titulo>Artículo 5</titulo>
+      <fecha_actualizacion>20190330</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a5</url>
+    </bloque>
+    <bloque>
+      <id>a6</id>
+      <titulo>Artículo 6</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a6</url>
+    </bloque>
+    <bloque>
+      <id>a7</id>
+      <titulo>Artículo 7</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a7</url>
+    </bloque>
+    <bloque>
+      <id>cii</id>
+      <titulo>CAPÍTULO II</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/cii</url>
+    </bloque>
+    <bloque>
+      <id>a8</id>
+      <titulo>Artículo 8</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a8</url>
+    </bloque>
+    <bloque>
+      <id>a9</id>
+      <titulo>Artículo 9</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a9</url>
+    </bloque>
+    <bloque>
+      <id>ciii</id>
+      <titulo>CAPÍTULO III</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/ciii</url>
+    </bloque>
+    <bloque>
+      <id>s1</id>
+      <titulo>Sección 1</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/s1</url>
+    </bloque>
+    <bloque>
+      <id>a10</id>
+      <titulo>Artículo 10</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a10</url>
+    </bloque>
+    <bloque>
+      <id>a11</id>
+      <titulo>Artículo 11</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a11</url>
+    </bloque>
+    <bloque>
+      <id>a12</id>
+      <titulo>Artículo 12</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a12</url>
+    </bloque>
+    <bloque>
+      <id>a13</id>
+      <titulo>Artículo 13</titulo>
+      <fecha_actualizacion>20190330</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a13</url>
+    </bloque>
+    <bloque>
+      <id>a14</id>
+      <titulo>Artículo 14</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a14</url>
+    </bloque>
+    <bloque>
+      <id>a15</id>
+      <titulo>Artículo 15</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a15</url>
+    </bloque>
+    <bloque>
+      <id>s2</id>
+      <titulo>Sección 2</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/s2</url>
+    </bloque>
+    <bloque>
+      <id>a16</id>
+      <titulo>Artículo 16</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a16</url>
+    </bloque>
+    <bloque>
+      <id>a17</id>
+      <titulo>Artículo 17</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a17</url>
+    </bloque>
+    <bloque>
+      <id>s3</id>
+      <titulo>Sección 3</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/s3</url>
+    </bloque>
+    <bloque>
+      <id>a18</id>
+      <titulo>Artículo 18</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a18</url>
+    </bloque>
+    <bloque>
+      <id>a19</id>
+      <titulo>Artículo 19</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a19</url>
+    </bloque>
+    <bloque>
+      <id>a20</id>
+      <titulo>Artículo 20</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a20</url>
+    </bloque>
+    <bloque>
+      <id>a21</id>
+      <titulo>Artículo 21</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a21</url>
+    </bloque>
+    <bloque>
+      <id>a22</id>
+      <titulo>Artículo 22</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a22</url>
+    </bloque>
+    <bloque>
+      <id>a2-2</id>
+      <titulo>Artículo 22 bis</titulo>
+      <fecha_actualizacion>20230629</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a2-2</url>
+    </bloque>
+    <bloque>
+      <id>a23</id>
+      <titulo>Artículo 23</titulo>
+      <fecha_actualizacion>20230629</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a23</url>
+    </bloque>
+    <bloque>
+      <id>a24</id>
+      <titulo>Artículo 24</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a24</url>
+    </bloque>
+    <bloque>
+      <id>a25</id>
+      <titulo>Artículo 25</titulo>
+      <fecha_actualizacion>20190330</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a25</url>
+    </bloque>
+    <bloque>
+      <id>a26</id>
+      <titulo>Artículo 26</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a26</url>
+    </bloque>
+    <bloque>
+      <id>a27</id>
+      <titulo>Artículo 27</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a27</url>
+    </bloque>
+    <bloque>
+      <id>a28</id>
+      <titulo>Artículo 28</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a28</url>
+    </bloque>
+    <bloque>
+      <id>a29</id>
+      <titulo>Artículo 29</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a29</url>
+    </bloque>
+    <bloque>
+      <id>s4</id>
+      <titulo>Sección 4</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/s4</url>
+    </bloque>
+    <bloque>
+      <id>a30</id>
+      <titulo>Artículo 30</titulo>
+      <fecha_actualizacion>20190330</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a30</url>
+    </bloque>
+    <bloque>
+      <id>a31</id>
+      <titulo>Artículo 31</titulo>
+      <fecha_actualizacion>20190330</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a31</url>
+    </bloque>
+    <bloque>
+      <id>s5</id>
+      <titulo>Sección 5</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/s5</url>
+    </bloque>
+    <bloque>
+      <id>a32</id>
+      <titulo>Artículo 32</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a32</url>
+    </bloque>
+    <bloque>
+      <id>a33</id>
+      <titulo>Artículo 33</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a33</url>
+    </bloque>
+    <bloque>
+      <id>a34</id>
+      <titulo>Artículo 34</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a34</url>
+    </bloque>
+    <bloque>
+      <id>s6</id>
+      <titulo>Sección 6</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/s6</url>
+    </bloque>
+    <bloque>
+      <id>a3-2</id>
+      <titulo>Artículos 35 a 41</titulo>
+      <fecha_actualizacion>20190330</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a3-2</url>
+    </bloque>
+    <bloque>
+      <id>a35</id>
+      <titulo>Artículo 35</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a35</url>
+    </bloque>
+    <bloque>
+      <id>a36</id>
+      <titulo>Artículo 36</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a36</url>
+    </bloque>
+    <bloque>
+      <id>a37</id>
+      <titulo>Artículo 37</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a37</url>
+    </bloque>
+    <bloque>
+      <id>a38</id>
+      <titulo>Artículo 38</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a38</url>
+    </bloque>
+    <bloque>
+      <id>a39</id>
+      <titulo>Artículo 39</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a39</url>
+    </bloque>
+    <bloque>
+      <id>a40</id>
+      <titulo>Artículo 40</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a40</url>
+    </bloque>
+    <bloque>
+      <id>a41</id>
+      <titulo>Artículo 41</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a41</url>
+    </bloque>
+    <bloque>
+      <id>s7</id>
+      <titulo>Sección 7</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/s7</url>
+    </bloque>
+    <bloque>
+      <id>a42</id>
+      <titulo>Artículo 42</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a42</url>
+    </bloque>
+    <bloque>
+      <id>a43</id>
+      <titulo>Artículo 43</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a43</url>
+    </bloque>
+    <bloque>
+      <id>ss1</id>
+      <titulo>Subsección 1</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/ss1</url>
+    </bloque>
+    <bloque>
+      <id>a44</id>
+      <titulo>Artículo 44</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a44</url>
+    </bloque>
+    <bloque>
+      <id>ss2</id>
+      <titulo>Subsección 2</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/ss2</url>
+    </bloque>
+    <bloque>
+      <id>a45</id>
+      <titulo>Artículo 45</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a45</url>
+    </bloque>
+    <bloque>
+      <id>a46</id>
+      <titulo>Artículo 46</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a46</url>
+    </bloque>
+    <bloque>
+      <id>a47</id>
+      <titulo>Artículo 47</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a47</url>
+    </bloque>
+    <bloque>
+      <id>a48</id>
+      <titulo>Artículo 48</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a48</url>
+    </bloque>
+    <bloque>
+      <id>a49</id>
+      <titulo>Artículo 49</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a49</url>
+    </bloque>
+    <bloque>
+      <id>a50</id>
+      <titulo>Artículo 50</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a50</url>
+    </bloque>
+    <bloque>
+      <id>a51</id>
+      <titulo>Artículo 51</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a51</url>
+    </bloque>
+    <bloque>
+      <id>a52</id>
+      <titulo>Artículo 52</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a52</url>
+    </bloque>
+    <bloque>
+      <id>ss3</id>
+      <titulo>Subsección 3</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/ss3</url>
+    </bloque>
+    <bloque>
+      <id>a53</id>
+      <titulo>Artículo 53</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a53</url>
+    </bloque>
+    <bloque>
+      <id>a54</id>
+      <titulo>Artículo 54</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a54</url>
+    </bloque>
+    <bloque>
+      <id>ti</id>
+      <titulo>TÍTULO I</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/ti</url>
+    </bloque>
+    <bloque>
+      <id>ci-2</id>
+      <titulo>CAPÍTULO I</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/ci-2</url>
+    </bloque>
+    <bloque>
+      <id>a55</id>
+      <titulo>Artículo 55</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a55</url>
+    </bloque>
+    <bloque>
+      <id>a56</id>
+      <titulo>Artículo 56</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a56</url>
+    </bloque>
+    <bloque>
+      <id>a57</id>
+      <titulo>Artículo 57</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a57</url>
+    </bloque>
+    <bloque>
+      <id>cii-2</id>
+      <titulo>CAPÍTULO II</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/cii-2</url>
+    </bloque>
+    <bloque>
+      <id>a58</id>
+      <titulo>Artículo 58</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a58</url>
+    </bloque>
+    <bloque>
+      <id>a59</id>
+      <titulo>Artículo 59</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a59</url>
+    </bloque>
+    <bloque>
+      <id>a60</id>
+      <titulo>Artículo 60</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a60</url>
+    </bloque>
+    <bloque>
+      <id>a61</id>
+      <titulo>Artículo 61</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a61</url>
+    </bloque>
+    <bloque>
+      <id>a62</id>
+      <titulo>Artículo 62</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a62</url>
+    </bloque>
+    <bloque>
+      <id>a63</id>
+      <titulo>Artículo 63</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a63</url>
+    </bloque>
+    <bloque>
+      <id>a64</id>
+      <titulo>Artículo 64</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a64</url>
+    </bloque>
+    <bloque>
+      <id>ciii-2</id>
+      <titulo>CAPÍTULO III</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/ciii-2</url>
+    </bloque>
+    <bloque>
+      <id>a65</id>
+      <titulo>Artículo 65</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a65</url>
+    </bloque>
+    <bloque>
+      <id>a66</id>
+      <titulo>Artículo 66</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a66</url>
+    </bloque>
+    <bloque>
+      <id>a67</id>
+      <titulo>Artículo 67</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a67</url>
+    </bloque>
+    <bloque>
+      <id>tii</id>
+      <titulo>TÍTULO II</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/tii</url>
+    </bloque>
+    <bloque>
+      <id>ci-3</id>
+      <titulo>CAPÍTULO I</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/ci-3</url>
+    </bloque>
+    <bloque>
+      <id>a68</id>
+      <titulo>Artículo 68</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a68</url>
+    </bloque>
+    <bloque>
+      <id>cii-3</id>
+      <titulo>CAPÍTULO II</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/cii-3</url>
+    </bloque>
+    <bloque>
+      <id>s1-2</id>
+      <titulo>Sección 1</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/s1-2</url>
+    </bloque>
+    <bloque>
+      <id>a69</id>
+      <titulo>Artículo 69</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a69</url>
+    </bloque>
+    <bloque>
+      <id>a70</id>
+      <titulo>Artículo 70</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a70</url>
+    </bloque>
+    <bloque>
+      <id>a71</id>
+      <titulo>Artículo 71</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a71</url>
+    </bloque>
+    <bloque>
+      <id>s2-2</id>
+      <titulo>Sección 2</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/s2-2</url>
+    </bloque>
+    <bloque>
+      <id>ss1-2</id>
+      <titulo>Subsección 1</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/ss1-2</url>
+    </bloque>
+    <bloque>
+      <id>a72</id>
+      <titulo>Artículo 72</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a72</url>
+    </bloque>
+    <bloque>
+      <id>a73</id>
+      <titulo>Artículo 73</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a73</url>
+    </bloque>
+    <bloque>
+      <id>ss2-2</id>
+      <titulo>Subsección 2</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/ss2-2</url>
+    </bloque>
+    <bloque>
+      <id>a74</id>
+      <titulo>Artículo 74</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a74</url>
+    </bloque>
+    <bloque>
+      <id>ss3-2</id>
+      <titulo>Subsección 3</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/ss3-2</url>
+    </bloque>
+    <bloque>
+      <id>a75</id>
+      <titulo>Artículo 75</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a75</url>
+    </bloque>
+    <bloque>
+      <id>s3-2</id>
+      <titulo>Sección 3</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/s3-2</url>
+    </bloque>
+    <bloque>
+      <id>a76</id>
+      <titulo>Artículo 76</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a76</url>
+    </bloque>
+    <bloque>
+      <id>a77</id>
+      <titulo>Artículo 77</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a77</url>
+    </bloque>
+    <bloque>
+      <id>a78</id>
+      <titulo>Artículo 78</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a78</url>
+    </bloque>
+    <bloque>
+      <id>a79</id>
+      <titulo>Artículo 79</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a79</url>
+    </bloque>
+    <bloque>
+      <id>s4-2</id>
+      <titulo>Sección 4</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/s4-2</url>
+    </bloque>
+    <bloque>
+      <id>a80</id>
+      <titulo>Artículo 80</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a80</url>
+    </bloque>
+    <bloque>
+      <id>s5-2</id>
+      <titulo>Sección 5</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/s5-2</url>
+    </bloque>
+    <bloque>
+      <id>a81</id>
+      <titulo>Artículo 81</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a81</url>
+    </bloque>
+    <bloque>
+      <id>s6-2</id>
+      <titulo>Sección 6</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/s6-2</url>
+    </bloque>
+    <bloque>
+      <id>a82</id>
+      <titulo>Artículo 82</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a82</url>
+    </bloque>
+    <bloque>
+      <id>ciii-3</id>
+      <titulo>CAPÍTULO III</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/ciii-3</url>
+    </bloque>
+    <bloque>
+      <id>a83</id>
+      <titulo>Artículo 83</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a83</url>
+    </bloque>
+    <bloque>
+      <id>civ</id>
+      <titulo>CAPÍTULO IV</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/civ</url>
+    </bloque>
+    <bloque>
+      <id>a84</id>
+      <titulo>Artículo 84</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a84</url>
+    </bloque>
+    <bloque>
+      <id>a85</id>
+      <titulo>Artículo 85</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a85</url>
+    </bloque>
+    <bloque>
+      <id>a86</id>
+      <titulo>Artículo 86</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a86</url>
+    </bloque>
+    <bloque>
+      <id>a87</id>
+      <titulo>Artículo 87</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a87</url>
+    </bloque>
+    <bloque>
+      <id>cv</id>
+      <titulo>CAPÍTULO V</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/cv</url>
+    </bloque>
+    <bloque>
+      <id>a88</id>
+      <titulo>Artículo 88</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a88</url>
+    </bloque>
+    <bloque>
+      <id>a89</id>
+      <titulo>Artículo 89</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a89</url>
+    </bloque>
+    <bloque>
+      <id>a90</id>
+      <titulo>Artículo 90</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a90</url>
+    </bloque>
+    <bloque>
+      <id>tiii</id>
+      <titulo>TÍTULO III</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/tiii</url>
+    </bloque>
+    <bloque>
+      <id>ci-4</id>
+      <titulo>CAPÍTULO I</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/ci-4</url>
+    </bloque>
+    <bloque>
+      <id>a91</id>
+      <titulo>Artículo 91</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a91</url>
+    </bloque>
+    <bloque>
+      <id>a92</id>
+      <titulo>Artículo 92</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a92</url>
+    </bloque>
+    <bloque>
+      <id>a93</id>
+      <titulo>Artículo 93</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a93</url>
+    </bloque>
+    <bloque>
+      <id>cii-4</id>
+      <titulo>CAPÍTULO II</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/cii-4</url>
+    </bloque>
+    <bloque>
+      <id>s1-3</id>
+      <titulo>Sección 1</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/s1-3</url>
+    </bloque>
+    <bloque>
+      <id>a94</id>
+      <titulo>Artículo 94</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a94</url>
+    </bloque>
+    <bloque>
+      <id>a95</id>
+      <titulo>Artículo 95</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a95</url>
+    </bloque>
+    <bloque>
+      <id>s2-3</id>
+      <titulo>Sección 2</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/s2-3</url>
+    </bloque>
+    <bloque>
+      <id>a96</id>
+      <titulo>Artículo 96</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a96</url>
+    </bloque>
+    <bloque>
+      <id>a97</id>
+      <titulo>Artículo 97</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a97</url>
+    </bloque>
+    <bloque>
+      <id>a98</id>
+      <titulo>Artículo 98</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a98</url>
+    </bloque>
+    <bloque>
+      <id>a99</id>
+      <titulo>Artículo 99</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a99</url>
+    </bloque>
+    <bloque>
+      <id>a100</id>
+      <titulo>Artículo 100</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a100</url>
+    </bloque>
+    <bloque>
+      <id>a101</id>
+      <titulo>Artículo 101</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a101</url>
+    </bloque>
+    <bloque>
+      <id>tiv</id>
+      <titulo>TÍTULO IV</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/tiv</url>
+    </bloque>
+    <bloque>
+      <id>a102</id>
+      <titulo>Artículo 102</titulo>
+      <fecha_actualizacion>20190330</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a102</url>
+    </bloque>
+    <bloque>
+      <id>a103</id>
+      <titulo>Artículo 103</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/a103</url>
+    </bloque>
+    <bloque>
+      <id>daprimera</id>
+      <titulo>Disposición adicional primera</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/daprimera</url>
+    </bloque>
+    <bloque>
+      <id>dasegunda</id>
+      <titulo>Disposición adicional segunda</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/dasegunda</url>
+    </bloque>
+    <bloque>
+      <id>datercera</id>
+      <titulo>Disposición adicional tercera</titulo>
+      <fecha_actualizacion>20190330</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/datercera</url>
+    </bloque>
+    <bloque>
+      <id>dacuarta</id>
+      <titulo>Disposición adicional cuarta</titulo>
+      <fecha_actualizacion>20190330</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/dacuarta</url>
+    </bloque>
+    <bloque>
+      <id>daquinta</id>
+      <titulo>Disposición adicional quinta</titulo>
+      <fecha_actualizacion>20190330</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/daquinta</url>
+    </bloque>
+    <bloque>
+      <id>dasexta</id>
+      <titulo>Disposición adicional sexta</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/dasexta</url>
+    </bloque>
+    <bloque>
+      <id>daseptima</id>
+      <titulo>Disposición adicional séptima</titulo>
+      <fecha_actualizacion>20190330</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/daseptima</url>
+    </bloque>
+    <bloque>
+      <id>daoctava</id>
+      <titulo>Disposición adicional octava</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/daoctava</url>
+    </bloque>
+    <bloque>
+      <id>danovena</id>
+      <titulo>Disposición adicional novena</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/danovena</url>
+    </bloque>
+    <bloque>
+      <id>dadecima</id>
+      <titulo>Disposición adicional décima</titulo>
+      <fecha_actualizacion>20190330</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/dadecima</url>
+    </bloque>
+    <bloque>
+      <id>daundecima</id>
+      <titulo>Disposición adicional undécima</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/daundecima</url>
+    </bloque>
+    <bloque>
+      <id>daduodecima</id>
+      <titulo>Disposición adicional duodécima</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/daduodecima</url>
+    </bloque>
+    <bloque>
+      <id>da</id>
+      <titulo>Disposición adicional decimotercera</titulo>
+      <fecha_actualizacion>20190330</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/da</url>
+    </bloque>
+    <bloque>
+      <id>dtprimera</id>
+      <titulo>Disposición transitoria primera</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/dtprimera</url>
+    </bloque>
+    <bloque>
+      <id>dtsegunda</id>
+      <titulo>Disposición transitoria segunda</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/dtsegunda</url>
+    </bloque>
+    <bloque>
+      <id>dttercera</id>
+      <titulo>Disposición transitoria tercera</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/dttercera</url>
+    </bloque>
+    <bloque>
+      <id>dtcuarta</id>
+      <titulo>Disposición transitoria cuarta</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/dtcuarta</url>
+    </bloque>
+    <bloque>
+      <id>dtquinta</id>
+      <titulo>Disposición transitoria quinta</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/dtquinta</url>
+    </bloque>
+    <bloque>
+      <id>dfprimera</id>
+      <titulo>Disposición final primera</titulo>
+      <fecha_actualizacion>20190330</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/dfprimera</url>
+    </bloque>
+    <bloque>
+      <id>dfsegunda</id>
+      <titulo>Disposición final segunda</titulo>
+      <fecha_actualizacion>20060725</fecha_actualizacion>
+      <url>https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2006-13371/texto/bloque/dfsegunda</url>
+    </bloque>
+  </data>
+</response>

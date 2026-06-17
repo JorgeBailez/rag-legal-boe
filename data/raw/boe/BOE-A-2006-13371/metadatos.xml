@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+  <status>
+    <code>200</code>
+    <text>ok</text>
+  </status>
+  <data>
+    <metadatos>
+      <fecha_actualizacion>20260608T113149Z</fecha_actualizacion>
+      <identificador>BOE-A-2006-13371</identificador>
+      <ambito codigo="1">Estatal</ambito>
+      <departamento codigo="5130">Ministerio de Economía y Hacienda</departamento>
+      <rango codigo="1340">Real Decreto</rango>
+      <fecha_disposicion>20060721</fecha_disposicion>
+      <numero_oficial>887/2006</numero_oficial>
+      <titulo>Real Decreto 887/2006, de 21 de julio, por el que se aprueba el Reglamento de la Ley 38/2003, de 17 de noviembre, General de Subvenciones.</titulo>
+      <diario>Boletín Oficial del Estado</diario>
+      <fecha_publicacion>20060725</fecha_publicacion>
+      <diario_numero>176</diario_numero>
+      <fecha_vigencia>20061025</fecha_vigencia>
+      <estatus_derogacion>N</estatus_derogacion>
+      <estatus_anulacion>N</estatus_anulacion>
+      <vigencia_agotada>N</vigencia_agotada>
+      <estado_consolidacion codigo="3">Finalizado</estado_consolidacion>
+      <url_eli>https://www.boe.es/eli/es/rd/2006/07/21/887</url_eli>
+      <url_html_consolidada>https://www.boe.es/buscar/act.php?id=BOE-A-2006-13371</url_html_consolidada>
+    </metadatos>
+  </data>
+</response>
