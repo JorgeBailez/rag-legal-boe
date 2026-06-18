@@ -70,3 +70,6 @@ data/processed/reports/*
 
 # Índices locales (se generan en runtime)
 data/indexes/
+
+# Material de trabajo del pooling de evaluación (derivado de bundles no versionados; regenerable)
+data/evaluation/dense_retrieval_v1/_candidates/
