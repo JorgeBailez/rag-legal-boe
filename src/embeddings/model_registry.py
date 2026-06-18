@@ -346,7 +346,10 @@ CANDIDATES: dict[str, ModelContract] = {
             "Alibaba-NLP/new-impl (sha 40ced75c, jul-2024), revisado 2026-06-16: solo define "
             "nn.Module de torch; sin red, IO de ficheros, subprocess/exec/eval, env ni secretos. "
             "Pesos+tokenizer fijados en 9bbca17d. Caveat reproducibilidad: el codigo remoto "
-            "resuelve new-impl@main salvo code_revision, que el encoder actual no fija."
+            "resuelve new-impl@main salvo code_revision, que el encoder actual no fija. "
+            "DEFERIDO 2026-06-18: incompatible con el transformers del entorno "
+            "(IndexError RoPE en new-impl); reactivar con transformers ~4.39 en venv "
+            "aparte. Ver docs/known_issues.md."
         ),
     ),
 }

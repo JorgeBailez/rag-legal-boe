@@ -99,6 +99,30 @@ Tras la corrección previa a embeddings y la **corrección de integridad tempora
       futura trae `<img>` sin texto alternativo o un `<table>` sin `<p>`, se reportan como
       `image_only_block_without_text` / `table_without_textual_representation` (no bloqueantes).
 
+## Campaña de embeddings / bake-off (Fase C–E)
+
+Estado tras la campaña en `dslab01` (2026-06-18): **4 bundles válidos** sobre el corpus limpio
+(`e5-base`, `e5-large`, `e5-large-instruct`, `bge-m3`; Gate B OK, 3263–3301 vectores). Dos modelos
+quedan fuera del bake-off activo:
+
+- **(APLAZADO) `gte-multilingual-base`.** Su código remoto propio (`Alibaba-NLP/new-impl`,
+  `modeling.py`, escrito para `transformers 4.39`) es **incompatible con el `transformers` del entorno
+  actual** (el que exige `qwen3`): el encode revienta con
+  `IndexError: ... rope_cos[position_ids]` (RoPE con `position_ids` corrupto), gatillado por el wrapper
+  reciente `transformers/utils/output_capturing.py`. El **contrato es correcto** (pesos+tokenizer
+  pinneados en `9bbca17d`, código remoto revisado el 2026-06-16), pero **no se puede ejecutar en este
+  stack**. No bloquea el cierre del MVP. **Reactivar** con un venv de `transformers` pinneado a
+  ~4.39–4.4x cuando se quiera su número. Decisión 2026-06-18 (opción "aplazar").
+- **(Coste prohibitivo) `qwen3-0.6b`.** Funciona, pero en esta CPU (EPYC 7451 Naples) va a
+  ~0,1–0,2 docs/s → horas por bundle. Se genera para completar la calidad del bake-off, pero su coste
+  lo descalifica de facto para un despliegue CPU-only (hallazgo, no fallo).
+
+**Caveat de medición:** `dslab01` es **compartido**; los tiempos/throughput **varían con la carga de
+otros usuarios** (e5-large y e5-large-instruct, misma arquitectura, dieron ~6× de diferencia según la
+ventana). La **calidad** (vectores deterministas, Gate B) NO se ve afectada; el **coste** solo es
+fiable medido en ventana ociosa (`load < 1`) o se reporta con caveat explícito. Contendientes
+prácticos en CPU: **familia e5 + bge-m3**.
+
 ## Inconsistencias detectadas en el scaffold (no bloqueantes)
 
 - [x] ~~`CHROMA_PERSIST_DIR=data/indexes/chroma`...~~ **Resuelto (Fase 2)**: se eliminaron de

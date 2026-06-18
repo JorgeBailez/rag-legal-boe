@@ -3,6 +3,14 @@
 Registro reproducible del checkpoint de selección del recuperador denso sobre el
 corpus MVP de 10 normas.
 
+> **ACTUALIZACIÓN 2026-06-18 (cierre MVP).** El corpus se reprocesó con el parser endurecido y el
+> bundle baseline se **regeneró sobre el corpus limpio** → nuevo id
+> `e5-large-instruct__j1__42105deb4afe` (el `bc11142bdcc5` pre-fix queda **obsoleto**). **La SELECCIÓN
+> se mantiene** (e5-large-instruct · J1 · I2_CITIZEN_LEGISLATION), pero las **MÉTRICAS de abajo
+> (`ParentnDCG@10 = 0.8694`, etc.) se midieron sobre el corpus PRE-fix y quedan VOID**: se
+> re-establecerán en el bake-off sobre corpus limpio + gold validado (Fase D+E), con **5 modelos**
+> (e5×3, bge-m3, qwen3; `gte` aplazado por incompatibilidad de stack — ver `docs/known_issues.md`).
+
 ## Alcance
 
 - Evaluación de checkpoint, no evaluación formal definitiva.
