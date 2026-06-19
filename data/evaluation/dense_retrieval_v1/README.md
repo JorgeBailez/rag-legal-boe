@@ -8,12 +8,16 @@ Dataset de evaluación del sistema RAG sobre el corpus MVP (10 normas). Versiona
 - `answer_keys.jsonl` — respuesta de referencia + hechos clave + citas esperadas (gold de
   **generación**, modelo-agnóstico).
 
-> **Estado actual: BORRADOR (`provenance: auto_draft`, `review_status: draft`).** Los enunciados y
-> metadatos están autorados según la taxonomía de modos de fallo, y los `parent_id` /
-> `expected_citation_parents` reutilizan mapeos **verificados del corpus**, pero **nada está
-> `reviewed`**: faltan la revisión jurídica, los `paragraph_orders` reales, la relevancia graduada
-> (1/0) y el ajuste de `reference_answer`/`key_facts`. Hasta esa revisión, **Gate C no habilita** el
-> benchmark formal. Diseño y métricas: [`docs/evaluacion_gold_y_metricas.md`](../../../docs/evaluacion_gold_y_metricas.md).
+> **Estado (2026-06-19) — gold de RELEVANCIA validado (Fase D).** El gold de retrieval
+> (`judgments.jsonl`) está **revisado**: relevancia graduada 2/1/0, `paragraph_orders` reales,
+> `quote`, negativos tentadores (rel 0), `multi_parent` y trampas. Pooling multi-sistema sobre los 5
+> bundles densos (`scripts/build_eval_candidates.py`) para no sesgar el gold hacia el denso.
+> **Gate C retrieval (checkpoint):** development ✅ (≥40) · out_of_corpus ✅ (10/10) · test **19/20**.
+> El test queda 1 corto **a propósito**: `q0051` es una **trampa temporal** (art. 45 LBRL «(Sin
+> contenido)»), su gold es `rel 0` (abstención) y por diseño no cuenta como pregunta con relevante. Se
+> **acepta 19/20** (el gold está completo; la trampa es una *feature*, no un hueco). El **gold de
+> generación** (`answer_keys.jsonl`) sigue mayoritariamente `draft` (2ª pasada). `audit_eval_dataset.py`
+> → **"Sin flags"**. Diseño y métricas: [`docs/evaluacion_gold_y_metricas.md`](../../../docs/evaluacion_gold_y_metricas.md).
 
 ## `questions.jsonl`
 
@@ -80,8 +84,9 @@ uv run python scripts/validate_evaluation_dataset.py --gate-c-level checkpoint
 ## Cómo anotar (silver → gold)
 
 1. Revisa el enunciado (`provenance: auto_draft` → `human_authored` si lo reescribes).
-2. Recupera candidatos con `scripts/query_dense_index.py` y, para no sesgar, también con otros
-   recuperadores cuando existan (pooling multi-sistema).
+2. Reúne candidatos con **pooling multi-sistema**: `scripts/build_eval_candidates.py --split <split>`
+   recupera el top-k de los bundles densos publicados (y, cuando exista, BM25) y genera un *worksheet*
+   con cita + procedencia + párrafos numerados. Protocolo de criterios: `docs/anotacion_gold_relevancia.md`.
 3. En `judgments.jsonl`: ajusta la relevancia (2/1/0), marca los `paragraph_orders` reales (con
    `scripts/inspect_processed_norm.py`) y la `quote`.
 4. En `answer_keys.jsonl`: revisa `reference_answer`, `key_facts`, `forbidden_facts` y
