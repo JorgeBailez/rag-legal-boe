@@ -223,6 +223,18 @@ def _print_summary(out: Path, metrics_rows: list[dict], summary: dict) -> None:
             f"  Δ {paired['strategy']} − {paired['baseline']}: "
             f"{d['mean_diff']:+.3f} IC95%=[{d['ci_low']:+.3f}, {d['ci_high']:+.3f}]"
         )
+    by_style = summary.get("stratified", {}).get("by_query_style", {})
+    if by_style:
+        styles = sorted({s for groups in by_style.values() for s in groups})
+        print(f"\n  {PRIMARY_METRIC} por query_style:")
+        print("    " + "estrategia".ljust(16) + "".join(s[:14].rjust(16) for s in styles))
+        for name, groups in by_style.items():
+            cells = "".join(
+                (f"{groups[s][PRIMARY_METRIC]:.3f}(n{groups[s]['n']})" if s in groups else "-")
+                .rjust(16)
+                for s in styles
+            )
+            print("    " + name.ljust(16) + cells)
 
 
 if __name__ == "__main__":

@@ -21,6 +21,7 @@ import numpy as np
 
 from src.evaluation.metrics import (
     PRIMARY_METRIC,
+    aggregate_metric_groups,
     aggregate_metrics,
     bootstrap_ci,
     compute_query_retrieval_metrics,
@@ -64,6 +65,19 @@ def _percentile_ms(values: list[float], p: float) -> float:
     return float(np.percentile(values, p)) if values else 0.0
 
 
+def _group_by(field: str, questions: list[dict], per_query: list[dict]) -> dict[str, list[dict]]:
+    """Agrupa las métricas por query según un campo de la pregunta (p. ej. `query_style`).
+
+    `per_query` va alineado con `questions` (mismo orden de evaluación). Las preguntas sin el campo
+    caen en `(sin)` para no perderlas del recuento.
+    """
+    groups: dict[str, list[dict]] = {}
+    for q, m in zip(questions, per_query, strict=True):
+        key = str(q.get(field) or "(sin)")
+        groups.setdefault(key, []).append(m)
+    return groups
+
+
 def evaluate_retrieval_strategies(
     *,
     strategies: dict[str, Retriever],
@@ -81,6 +95,8 @@ def evaluate_retrieval_strategies(
     pareadas es `baseline` si está presente, si no la primera estrategia. Devuelve
     `{metrics_rows, query_results, summary}`; `summary` incluye el IC por estrategia y el bootstrap
     pareado de cada estrategia frente a la baseline sobre la métrica primaria (ParentnDCG@10).
+    `summary["stratified"]` desglosa cada estrategia por `query_style` y `difficulty` (n + medias +
+    IC por estrato) para ver DÓNDE gana o pierde cada una (p. ej. el léxico en `directa_articulo`).
     """
     notify = on_progress or (lambda _info: None)
     total = len(strategies) * len(split_questions)
@@ -154,6 +170,15 @@ def evaluate_retrieval_strategies(
         for name in strategies
         if base is not None and name != base
     ]
+    stratified = {
+        field_key: {
+            name: aggregate_metric_groups(
+                _group_by(field, split_questions, per_query[name]), seed=seed
+            )
+            for name in strategies
+        }
+        for field, field_key in (("query_style", "by_query_style"), ("difficulty", "by_difficulty"))
+    }
     summary = {
         "primary_metric": PRIMARY_METRIC,
         "baseline": base,
@@ -168,5 +193,6 @@ def evaluate_retrieval_strategies(
             for name in strategies
         ],
         "paired_vs_baseline": paired_vs_baseline,
+        "stratified": stratified,
     }
     return {"metrics_rows": metrics_rows, "query_results": query_results, "summary": summary}

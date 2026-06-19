@@ -46,6 +46,49 @@ def test_compara_estrategias_y_calcula_pareado() -> None:
     assert len(result["query_results"]) == 4  # 2 estrategias × 2 queries
 
 
+def test_estratifica_por_query_style_y_difficulty() -> None:
+    questions = [
+        {
+            "query_id": "q1",
+            "query": "¿qué dice el art. 122?",
+            "split": "development",
+            "query_style": "directa_articulo",
+            "difficulty": "dificil",
+        },
+        {
+            "query_id": "q2",
+            "query": "¿cuánto tarda en resolverse?",
+            "split": "development",
+            "query_style": "ciudadana",
+            "difficulty": "facil",
+        },
+    ]
+    result = evaluate_retrieval_strategies(
+        strategies={"dense": _retriever(_P1, _P2), "bm25": _retriever(_P2, _P1)},
+        split_questions=questions,
+        judgments_by_query=_judgments(),
+    )
+    by_style = result["summary"]["stratified"]["by_query_style"]
+    assert set(by_style["dense"]) == {"directa_articulo", "ciudadana"}
+    assert by_style["dense"]["directa_articulo"]["n"] == 1
+    assert "primary_ci" in by_style["dense"]["ciudadana"]
+    # el desglose discrimina dónde gana cada estrategia (el denso acierta, bm25 no)
+    nd = "ParentnDCG@10"
+    assert by_style["dense"]["directa_articulo"][nd] > by_style["bm25"]["directa_articulo"][nd]
+    by_diff = result["summary"]["stratified"]["by_difficulty"]
+    assert set(by_diff["dense"]) == {"dificil", "facil"}
+
+
+def test_estrato_tolera_preguntas_sin_query_style() -> None:
+    # las preguntas de _questions() no traen query_style: deben caer en "(sin)" sin romper
+    result = evaluate_retrieval_strategies(
+        strategies={"dense": _retriever(_P1, _P2)},
+        split_questions=_questions(),
+        judgments_by_query=_judgments(),
+    )
+    assert set(result["summary"]["stratified"]["by_query_style"]["dense"]) == {"(sin)"}
+
+
 def test_baseline_cae_a_la_primera_si_no_hay_dense() -> None:
     result = evaluate_retrieval_strategies(
         strategies={"bm25": _retriever(_P1, _P2), "hybrid": _retriever(_P2, _P1)},
