@@ -110,8 +110,16 @@ def evaluate_generation(
     per_query: list[dict] = []
     metrics_rows: list[dict] = []
     for idx, q in enumerate(selected, start=1):
-        notify({"event": "start", "i": idx, "total": total, "query_id": q.query_id,
-                "failure_mode": q.failure_mode, "query_style": q.query_style})
+        notify(
+            {
+                "event": "start",
+                "i": idx,
+                "total": total,
+                "query_id": q.query_id,
+                "failure_mode": q.failure_mode,
+                "query_style": q.query_style,
+            }
+        )
         answer: RagAnswerV1 = generator.answer(q.query, query_profile_id=query_profile_id)
         cited_parents = [c.parent_id for c in answer.citations]
         ak = ak_by_qid.get(q.query_id)
@@ -126,16 +134,30 @@ def evaluate_generation(
         judge_error: str | None = None
         if judge is not None and answer.answered and answerable:
             try:
-                notify({"event": "judging", "phase": "fidelidad", "i": idx, "total": total,
-                        "query_id": q.query_id})
+                notify(
+                    {
+                        "event": "judging",
+                        "phase": "fidelidad",
+                        "i": idx,
+                        "total": total,
+                        "query_id": q.query_id,
+                    }
+                )
                 block = _evidences_block_for(generator, q.query, query_profile_id)
                 faith_verdict, _ = judge.judge_faithfulness(
                     answer=answer.answer, evidences_block=block
                 )
                 faithfulness_claims = [c.supported for c in faith_verdict.claims]
                 if reference.strip():
-                    notify({"event": "judging", "phase": "corrección", "i": idx, "total": total,
-                            "query_id": q.query_id})
+                    notify(
+                        {
+                            "event": "judging",
+                            "phase": "corrección",
+                            "i": idx,
+                            "total": total,
+                            "query_id": q.query_id,
+                        }
+                    )
                     corr_verdict, _ = judge.judge_correctness(
                         question=q.query, answer=answer.answer, reference=reference
                     )
@@ -195,10 +217,21 @@ def evaluate_generation(
             }
         )
         metrics_rows.append(_scalar_row(q, metrics, latency_s=latency_s))
-        notify({"event": "done", "i": idx, "total": total, "query_id": q.query_id,
-                "answered": answer.answered, "answerable": answerable, "latency_s": latency_s,
-                "abstention_outcome": metrics["abstention_outcome"], "judge_error": judge_error,
-                "failure_mode": q.failure_mode, "query_style": q.query_style})
+        notify(
+            {
+                "event": "done",
+                "i": idx,
+                "total": total,
+                "query_id": q.query_id,
+                "answered": answer.answered,
+                "answerable": answerable,
+                "latency_s": latency_s,
+                "abstention_outcome": metrics["abstention_outcome"],
+                "judge_error": judge_error,
+                "failure_mode": q.failure_mode,
+                "query_style": q.query_style,
+            }
+        )
 
     aggregate = aggregate_generation_metrics(per_query)
     return per_query, metrics_rows, aggregate
@@ -230,7 +263,8 @@ def rejudge_correctness(
     selected = prior_per_query if limit is None else prior_per_query[:limit]
 
     missing = [
-        r.get("query_id") for r in selected
+        r.get("query_id")
+        for r in selected
         if r.get("query_id") not in q_by_qid or r.get("query_id") not in ak_by_qid
     ]
     if missing:
@@ -253,15 +287,30 @@ def rejudge_correctness(
         cited_parents = pr.get("cited_parents", [])
         has_gen_metrics = pr.get("eval_count") is not None
         prior_faith = pr.get("faithfulness")
-        notify({"event": "start", "i": idx, "total": total, "query_id": qid,
-                "failure_mode": q.failure_mode, "query_style": q.query_style})
+        notify(
+            {
+                "event": "start",
+                "i": idx,
+                "total": total,
+                "query_id": qid,
+                "failure_mode": q.failure_mode,
+                "query_style": q.query_style,
+            }
+        )
 
         correctness_label: str | None = None
         judge_error: str | None = None
         if judge is not None and answered and ak.answerable and ak.reference_answer.strip():
             try:
-                notify({"event": "judging", "phase": "corrección", "i": idx, "total": total,
-                        "query_id": qid})
+                notify(
+                    {
+                        "event": "judging",
+                        "phase": "corrección",
+                        "i": idx,
+                        "total": total,
+                        "query_id": qid,
+                    }
+                )
                 corr_verdict, _ = judge.judge_correctness(
                     question=q.query, answer=answer_text, reference=ak.reference_answer
                 )
@@ -308,11 +357,21 @@ def rejudge_correctness(
             }
         )
         metrics_rows.append(_scalar_row(q, metrics, latency_s=pr.get("latency_s")))
-        notify({"event": "done", "i": idx, "total": total, "query_id": qid,
-                "answered": answered, "answerable": ak.answerable,
+        notify(
+            {
+                "event": "done",
+                "i": idx,
+                "total": total,
+                "query_id": qid,
+                "answered": answered,
+                "answerable": ak.answerable,
                 "latency_s": pr.get("latency_s"),
-                "abstention_outcome": metrics["abstention_outcome"], "judge_error": judge_error,
-                "failure_mode": q.failure_mode, "query_style": q.query_style})
+                "abstention_outcome": metrics["abstention_outcome"],
+                "judge_error": judge_error,
+                "failure_mode": q.failure_mode,
+                "query_style": q.query_style,
+            }
+        )
 
     aggregate = aggregate_generation_metrics(per_query)
     return per_query, metrics_rows, aggregate

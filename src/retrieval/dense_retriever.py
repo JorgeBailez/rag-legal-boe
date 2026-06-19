@@ -96,6 +96,34 @@ class DenseHit:
     citation_url: str | None
 
 
+def hit_from_raw(
+    raw_hit: dict, *, chunks_by_id: dict[str, dict], parents_by_id: dict[str, dict]
+) -> DenseHit:
+    """Construye un `DenseHit` desde un hit crudo del índice + los joins del corpus.
+
+    Compartido por los recuperadores denso, léxico e híbrido: todos producen el MISMO tipo de hit
+    (mismo metadato de row), variando solo el origen del score. La cita es siempre la autoritativa
+    del corpus (nunca del LLM) y cae al `parent_id` si no hay etiqueta.
+    """
+    text, citation = resolve_hit_text_and_citation(
+        raw_hit, chunks_by_id=chunks_by_id, parents_by_id=parents_by_id
+    )
+    return DenseHit(
+        rank=raw_hit["rank"],
+        score=raw_hit["score"],
+        row_index=raw_hit["row_index"],
+        embedding_input_id=raw_hit["embedding_input_id"],
+        document_id=raw_hit["document_id"],
+        block_id=raw_hit["block_id"],
+        parent_id=raw_hit["parent_id"],
+        source=raw_hit["source"],
+        context_anchor=raw_hit.get("context_anchor"),
+        retrieval_text=text,
+        citation_label=citation.get("label") or raw_hit["parent_id"],
+        citation_url=citation.get("url"),
+    )
+
+
 class DenseRetriever:
     """Recuperador denso exacto sobre un bundle publicado, con joins precalculados."""
 
@@ -171,28 +199,8 @@ class DenseRetriever:
         return [self._resolve_hit(h) for h in raw_hits]
 
     def _resolve_hit(self, hit: dict) -> DenseHit:
-        """Resuelve el texto recuperado (K_ONLY) y la cita autoritativa (label/url) de un hit."""
-        text, citation = self._resolve_text_and_citation(hit)
-        return DenseHit(
-            rank=hit["rank"],
-            score=hit["score"],
-            row_index=hit["row_index"],
-            embedding_input_id=hit["embedding_input_id"],
-            document_id=hit["document_id"],
-            block_id=hit["block_id"],
-            parent_id=hit["parent_id"],
-            source=hit["source"],
-            context_anchor=hit.get("context_anchor"),
-            retrieval_text=text,
-            citation_label=citation.get("label") or hit["parent_id"],
-            citation_url=citation.get("url"),
-        )
-
-    def _resolve_text_and_citation(self, hit: dict) -> tuple[str, dict]:
-        """Texto recuperado + cita usando los joins precalculados del retriever."""
-        return resolve_hit_text_and_citation(
-            hit, chunks_by_id=self._chunks_by_id, parents_by_id=self._parents_by_id
-        )
+        """Resuelve un hit crudo a `DenseHit` con los joins precalculados del retriever."""
+        return hit_from_raw(hit, chunks_by_id=self._chunks_by_id, parents_by_id=self._parents_by_id)
 
 
 # Dataclass auxiliar para mantener la firma de los campos de filtro en un solo lugar reutilizable.
