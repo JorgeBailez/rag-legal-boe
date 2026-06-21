@@ -75,6 +75,11 @@ def _parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--judge-model", default=None, help="modelo juez; fallback JUDGE_MODEL.")
     parser.add_argument(
+        "--generator-model",
+        default=None,
+        help="modelo generador Ollama; fallback OLLAMA_MODEL/settings.ollama_model.",
+    )
+    parser.add_argument(
         "--no-judge", action="store_true", help="omite las métricas con juez (L3/L5)."
     )
     parser.add_argument(
@@ -192,9 +197,12 @@ def main() -> int:  # noqa: C901 - orquestación lineal del CLI
         print(f"No se pudo cargar el bundle/modelo: {exc}", file=sys.stderr)
         return 1
 
+    generator_model = (
+        args.generator_model if args.generator_model is not None else settings.ollama_model
+    )
     gen_client = OllamaClient(
         base_url=settings.ollama_base_url,
-        model=settings.ollama_model,
+        model=generator_model,
         timeout=settings.ollama_timeout_seconds,
         think=settings.ollama_think,
         keep_alive=settings.ollama_keep_alive,
@@ -265,7 +273,7 @@ def main() -> int:  # noqa: C901 - orquestación lineal del CLI
             "dataset_dir": str(dataset_dir),
             "bundle_id": retriever.bundle_id,
             "model_alias": retriever.model_alias,
-            "generator_model": settings.ollama_model,
+            "generator_model": generator_model,
             "judge_model": judge_model if judge is not None else None,
             "query_profile_id": retriever.resolved_query_profile_id(config.query_profile_id),
             "top_k": config.top_k,
