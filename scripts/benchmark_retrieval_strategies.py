@@ -65,6 +65,12 @@ def _parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--bm25-no-stem", action="store_true")
     parser.add_argument("--bm25-no-stopwords", action="store_true")
+    parser.add_argument(
+        "--bm25-heading-boost",
+        type=int,
+        default=0,
+        help="copias EXTRA de los tokens de la cabecera al indexar BM25 (0 = sin boost).",
+    )
     parser.add_argument("--gate-c-level", default="formal", choices=["checkpoint", "formal"])
     parser.add_argument(
         "--allow-incomplete-dataset",
@@ -97,7 +103,9 @@ def _build_strategies(args: argparse.Namespace, bundle: str, corpus: dict) -> tu
         else None
     )
     lexical = (
-        LexicalRetriever.from_bundle(bundle, corpus=corpus, analyzer=analyzer)
+        LexicalRetriever.from_bundle(
+            bundle, corpus=corpus, analyzer=analyzer, heading_boost=args.bm25_heading_boost
+        )
         if need_lexical
         else None
     )
@@ -128,6 +136,7 @@ def _build_strategies(args: argparse.Namespace, bundle: str, corpus: dict) -> tu
             dense.resolved_query_profile_id(args.query_profile_id) if dense else "lexical"
         ),
         "analyzer": analyzer.signature(),
+        "bm25_heading_boost": args.bm25_heading_boost,
     }
     return strategies, meta
 

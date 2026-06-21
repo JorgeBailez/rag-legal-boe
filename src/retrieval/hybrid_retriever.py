@@ -89,6 +89,7 @@ class HybridRetriever:
         corpus: dict | None = None,
         encoder: object | None = None,
         analyzer: SpanishAnalyzer | None = None,
+        heading_boost: int = 0,
         fusion: FusionMethod = "rrf",
         rrf_k: int = 60,
         alpha: float = 0.5,
@@ -97,7 +98,9 @@ class HybridRetriever:
         """Construye denso + léxico sobre el MISMO bundle/corpus (mismas rows) y los fusiona."""
         corpus = corpus if corpus is not None else load_processed_corpus()
         dense = DenseRetriever.from_bundle(bundle_dir, corpus=corpus, encoder=encoder)
-        lexical = LexicalRetriever.from_bundle(bundle_dir, corpus=corpus, analyzer=analyzer)
+        lexical = LexicalRetriever.from_bundle(
+            bundle_dir, corpus=corpus, analyzer=analyzer, heading_boost=heading_boost
+        )
         return cls(
             dense=dense,
             lexical=lexical,

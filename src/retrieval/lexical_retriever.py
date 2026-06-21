@@ -37,10 +37,13 @@ class LexicalRetriever:
         *,
         corpus: dict | None = None,
         analyzer: SpanishAnalyzer | None = None,
+        heading_boost: int = 0,
     ) -> LexicalRetriever:
         """Carga corpus + rows del bundle y construye el índice BM25 + el retriever."""
         corpus = corpus if corpus is not None else load_processed_corpus()
-        index = LexicalIndex.from_bundle(Path(bundle_dir), corpus=corpus, analyzer=analyzer)
+        index = LexicalIndex.from_bundle(
+            Path(bundle_dir), corpus=corpus, analyzer=analyzer, heading_boost=heading_boost
+        )
         return cls(index=index, corpus=corpus)
 
     def resolved_query_profile_id(self, query_profile_id: str | None = None) -> str:

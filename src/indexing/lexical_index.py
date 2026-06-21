@@ -40,6 +40,23 @@ def row_texts(rows: list[dict], corpus: dict) -> list[str]:
     ]
 
 
+def row_headings(rows: list[dict], corpus: dict) -> list[str]:
+    """Cabecera limpia (título del bloque) de cada row, por join al parent (mismo orden que rows).
+
+    Devuelve `full_title` ("Artículo 122. Recursos"), con fallback a `title` y a "" si el bloque no
+    tiene título (preámbulo, algunas disposiciones). Es la fuente del boost de cabecera del BM25: el
+    nº de artículo y la rúbrica, SIN el nombre de la ley (que sí va en `citation.label` y lo
+    contaminaría).
+    """
+    parents_by_id = corpus.get("parents_by_id", {})
+    return [
+        (parents_by_id.get(row["parent_id"], {}).get("full_title")
+         or parents_by_id.get(row["parent_id"], {}).get("title")
+         or "")
+        for row in rows
+    ]
+
+
 class LexicalIndex:
     """Índice BM25 sobre las rows de un bundle. `search` espeja `ExactDenseIndex.search`."""
 
@@ -48,6 +65,8 @@ class LexicalIndex:
         *,
         rows: list[dict],
         texts: list[str],
+        headings: list[str] | None = None,
+        heading_boost: int = 0,
         manifest: dict | None = None,
         analyzer: SpanishAnalyzer | None = None,
     ) -> None:
@@ -55,23 +74,53 @@ class LexicalIndex:
             raise ValueError(
                 f"rows ({len(rows)}) y texts ({len(texts)}) deben tener igual longitud."
             )
+        if heading_boost < 0:
+            raise ValueError(f"heading_boost debe ser >= 0 (recibido {heading_boost}).")
+        headings = headings if headings is not None else [""] * len(texts)
+        if len(headings) != len(texts):
+            raise ValueError(
+                f"headings ({len(headings)}) y texts ({len(texts)}) deben tener igual longitud."
+            )
         self.rows = rows
         self.manifest = manifest or {}
         self.analyzer = analyzer or SpanishAnalyzer()
-        tokenized = [self.analyzer.analyze(t) for t in texts]
+        # BM25F-lite: a los tokens de cada doc se añaden `heading_boost` copias EXTRA de los de su
+        # cabecera (título del artículo). Como la cabecera ya está 1× en el `retrieval_text`,
+        # `heading_boost=0` reproduce el comportamiento sin boost; subirlo pesa más el nº de
+        # artículo y la rúbrica (tokens raros), que es donde el léxico debe ganar.
+        self.heading_boost = heading_boost
+        tokenized: list[list[str]] = []
+        for text, heading in zip(texts, headings, strict=True):
+            toks = self.analyzer.analyze(text)
+            if heading_boost and heading:
+                toks = toks + self.analyzer.analyze(heading) * heading_boost
+            tokenized.append(toks)
         self._bm25 = BM25Okapi(tokenized)
         # Conjunto de tokens por doc: el "match" se decide por SOLAPE léxico real, no por el signo
         # del score (el IDF de Okapi puede ser 0 o negativo y dejar a 0 un solape legítimo cuando un
-        # término aparece en ~la mitad de los docs o el corpus es pequeño).
+        # término aparece en ~la mitad de los docs o el corpus es pequeño). El boost no altera el
+        # conjunto (set), solo el ranking → la elegibilidad de match se mantiene.
         self._doc_tokens: list[set[str]] = [set(toks) for toks in tokenized]
 
     @classmethod
     def from_bundle(
-        cls, bundle_dir: str | Path, *, corpus: dict, analyzer: SpanishAnalyzer | None = None
+        cls,
+        bundle_dir: str | Path,
+        *,
+        corpus: dict,
+        analyzer: SpanishAnalyzer | None = None,
+        heading_boost: int = 0,
     ) -> LexicalIndex:
         """Construye el índice léxico sobre las rows del bundle denso (mismo orden/ids)."""
         manifest, rows, _embeddings = load_validated_bundle(Path(bundle_dir), corpus=corpus)
-        return cls(rows=rows, texts=row_texts(rows, corpus), manifest=manifest, analyzer=analyzer)
+        return cls(
+            rows=rows,
+            texts=row_texts(rows, corpus),
+            headings=row_headings(rows, corpus),
+            heading_boost=heading_boost,
+            manifest=manifest,
+            analyzer=analyzer,
+        )
 
     def __len__(self) -> int:
         return len(self.rows)

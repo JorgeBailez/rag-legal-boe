@@ -3,7 +3,7 @@
 import numpy as np
 import pytest
 
-from src.indexing.lexical_index import LexicalIndex
+from src.indexing.lexical_index import LexicalIndex, row_headings
 
 
 def _row(eid: str, parent_id: str) -> dict:
@@ -50,3 +50,50 @@ def test_mask_excluye_candidatos() -> None:
 def test_longitudes_desiguales_lanzan_error() -> None:
     with pytest.raises(ValueError):
         LexicalIndex(rows=[_row("e1", "p1")], texts=[])
+
+
+def test_row_headings_usa_full_title_con_fallback() -> None:
+    rows = [_row("e1", "p1"), _row("e2", "p2"), _row("e3", "p3")]
+    corpus = {
+        "parents_by_id": {
+            "p1": {"full_title": "Artículo 1. Objeto", "title": "Artículo 1"},
+            "p2": {"title": "Artículo 2"},  # sin full_title → cae a title
+            "p3": {},  # sin título → ""
+        }
+    }
+    assert row_headings(rows, corpus) == ["Artículo 1. Objeto", "Artículo 2", ""]
+
+
+def test_heading_boost_sube_el_bloque_correcto() -> None:
+    # El nº de artículo SOLO vive en la cabecera de p1 (no en su cuerpo); p2 lo repite en el cuerpo.
+    # Sin boost, p1 ni es candidato (sin solape); con boost de cabecera, p1 sube al #1.
+    rows = [_row("e1", "p1"), _row("e2", "p2"), _row("e3", "p3")]
+    texts = [
+        "Recursos contra las resoluciones que ponen fin al procedimiento.",  # p1: sin "122"
+        "El artículo 122 regula el plazo; el artículo 122 fija recursos.",  # p2: 122 en el cuerpo
+        "El padrón municipal acredita la residencia de los vecinos.",  # p3: relleno
+    ]
+    headings = ["Artículo 122. Recursos", "Artículo 7. Plazos", "Artículo 16. Padrón"]
+
+    sin_boost = LexicalIndex(rows=rows, texts=texts)  # cabeceras por defecto = ""
+    hits_sin = sin_boost.search("artículo 122", k=3)
+    assert "p1" not in [h["parent_id"] for h in hits_sin]  # sin el nº en el cuerpo no hay solape
+
+    con_boost = LexicalIndex(rows=rows, texts=texts, headings=headings, heading_boost=3)
+    hits_con = con_boost.search("artículo 122", k=3)
+    assert hits_con[0]["parent_id"] == "p1"  # el boost de cabecera lo coloca el primero
+
+
+def test_heading_boost_cero_no_cambia_nada() -> None:
+    rows = [_row("e1", "p1"), _row("e2", "p2"), _row("e3", "p3")]
+    texts = [
+        "Los contratos menores de obras tienen un umbral de 40.000 euros.",
+        "El padrón municipal acredita la residencia de los vecinos.",
+        "La garantía definitiva es del 5 por 100 del precio del contrato.",
+    ]
+    headings = ["Artículo 118. Contrato menor", "Artículo 17. Padrón", "Artículo 107. Garantía"]
+    q = "umbral del contrato menor de obras"
+    base = LexicalIndex(rows=rows, texts=texts).search(q, k=3)
+    cero = LexicalIndex(rows=rows, texts=texts, headings=headings, heading_boost=0).search(q, k=3)
+    assert [h["parent_id"] for h in base] == [h["parent_id"] for h in cero]
+    assert [round(h["score"], 6) for h in base] == [round(h["score"], 6) for h in cero]
