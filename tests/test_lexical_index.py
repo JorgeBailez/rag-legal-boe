@@ -3,7 +3,7 @@
 import numpy as np
 import pytest
 
-from src.indexing.lexical_index import LexicalIndex, row_headings
+from src.indexing.lexical_index import LexicalIndex, row_boost_text
 
 
 def _row(eid: str, parent_id: str) -> dict:
@@ -52,16 +52,41 @@ def test_longitudes_desiguales_lanzan_error() -> None:
         LexicalIndex(rows=[_row("e1", "p1")], texts=[])
 
 
-def test_row_headings_usa_full_title_con_fallback() -> None:
+def test_row_boost_text_incluye_ley_y_titulo() -> None:
     rows = [_row("e1", "p1"), _row("e2", "p2"), _row("e3", "p3")]
     corpus = {
         "parents_by_id": {
-            "p1": {"full_title": "Artículo 1. Objeto", "title": "Artículo 1"},
-            "p2": {"title": "Artículo 2"},  # sin full_title → cae a title
-            "p3": {},  # sin título → ""
+            "p1": {"citation": {"label": "Ley 39/2015"}, "full_title": "Artículo 1. Objeto"},
+            "p2": {"citation": {"label": "Ley 40/2015"}, "title": "Artículo 2"},  # cae a title
+            "p3": {},  # sin ley ni título → ""
         }
     }
-    assert row_headings(rows, corpus) == ["Artículo 1. Objeto", "Artículo 2", ""]
+    assert row_boost_text(rows, corpus) == [
+        "Ley 39/2015 Artículo 1. Objeto",
+        "Ley 40/2015 Artículo 2",
+        "",
+    ]
+
+
+def test_boost_con_ley_desambigua_articulos_homonimos() -> None:
+    # Dos "Artículo 122" de leyes distintas; la pregunta cita la ley. El boost (ley + título) debe
+    # desempatar hacia la ley correcta — no solo por el nº, que colisiona (caso real q0077).
+    rows = [_row("e1", "L39__a122"), _row("e2", "L40__a122"), _row("e3", "f1"), _row("e4", "f2")]
+    texts = [
+        "Ley 39/2015. Artículo 122. Recurso de alzada y potestativo de reposición.",
+        "Ley 40/2015. Artículo 122. Conflictos de atribuciones entre órganos.",
+        "El padrón municipal acredita la residencia de los vecinos.",
+        "La garantía definitiva es del cinco por ciento del precio del contrato.",
+    ]
+    boost = [
+        "Ley 39/2015 Artículo 122. Recurso de alzada",
+        "Ley 40/2015 Artículo 122. Conflictos de atribuciones",
+        "",
+        "",
+    ]
+    idx = LexicalIndex(rows=rows, texts=texts, headings=boost, heading_boost=3)
+    hits = idx.search("artículo 122 de la Ley 39/2015", k=2)
+    assert hits[0]["parent_id"] == "L39__a122"  # la ley citada desempata hacia el a122 correcto
 
 
 def test_heading_boost_sube_el_bloque_correcto() -> None:

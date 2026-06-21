@@ -40,21 +40,22 @@ def row_texts(rows: list[dict], corpus: dict) -> list[str]:
     ]
 
 
-def row_headings(rows: list[dict], corpus: dict) -> list[str]:
-    """Cabecera limpia (título del bloque) de cada row, por join al parent (mismo orden que rows).
+def row_boost_text(rows: list[dict], corpus: dict) -> list[str]:
+    """Texto a boostear por fila: nombre de la ley + título del bloque, por join al parent.
 
-    Devuelve `full_title` ("Artículo 122. Recursos"), con fallback a `title` y a "" si el bloque no
-    tiene título (preámbulo, algunas disposiciones). Es la fuente del boost de cabecera del BM25: el
-    nº de artículo y la rúbrica, SIN el nombre de la ley (que sí va en `citation.label` y lo
-    contaminaría).
+    Incluye la LEY (`parent.citation.label`, "Ley 39/2015") junto al título (`full_title`→`title`,
+    "Artículo 122. Recursos") a propósito: boostear solo el nº de artículo hace colisionar dos
+    "Artículo 122" de leyes distintas (el barrido lo mostró en q0077); añadir la ley refuerza el
+    discriminador para que la ley citada desempate. Devuelve "" si no hay ni ley ni título.
     """
     parents_by_id = corpus.get("parents_by_id", {})
-    return [
-        (parents_by_id.get(row["parent_id"], {}).get("full_title")
-         or parents_by_id.get(row["parent_id"], {}).get("title")
-         or "")
-        for row in rows
-    ]
+    out: list[str] = []
+    for row in rows:
+        parent = parents_by_id.get(row["parent_id"], {})
+        law = (parent.get("citation") or {}).get("label") or ""
+        title = parent.get("full_title") or parent.get("title") or ""
+        out.append(f"{law} {title}".strip())
+    return out
 
 
 class LexicalIndex:
@@ -116,7 +117,7 @@ class LexicalIndex:
         return cls(
             rows=rows,
             texts=row_texts(rows, corpus),
-            headings=row_headings(rows, corpus),
+            headings=row_boost_text(rows, corpus),
             heading_boost=heading_boost,
             manifest=manifest,
             analyzer=analyzer,
