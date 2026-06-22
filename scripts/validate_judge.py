@@ -170,6 +170,8 @@ def _print_dim(name: str, dim: dict) -> None:
     print(f"      κ nominal={_fmt_kappa(k)}{_fmt_ci(dim.get('cohens_kappa_ci'))}")
     if wk is not None:
         print(f"      κ lineal-ponderado={_fmt_kappa(wk)}{_fmt_ci(dim.get('weighted_kappa_ci'))}")
+    ac1 = dim.get("gwet_ac1")  # robusto a la prevalencia (ver judge.py)
+    print(f"      AC1 (Gwet)={_fmt_kappa(ac1)}{_fmt_ci(dim.get('gwet_ac1_ci'))}")
     labels = dim.get("labels")
     matrix = dim.get("confusion_matrix")
     if labels and matrix:
@@ -256,12 +258,15 @@ def main() -> int:
         "percent_agreement": corr.get("percent_agreement"),
         "cohens_kappa": corr.get("cohens_kappa"),
         "weighted_kappa": corr.get("weighted_kappa"),
+        "gwet_ac1": corr.get("gwet_ac1"),
         "cohens_kappa_ci": corr.get("cohens_kappa_ci"),
         "weighted_kappa_ci": corr.get("weighted_kappa_ci"),
+        "gwet_ac1_ci": corr.get("gwet_ac1_ci"),
         "confusion_matrix": corr.get("confusion_matrix"),
         "labels": corr.get("labels"),
         "primary_dimension": "correctness",
         "primary_kappa": "weighted_kappa",
+        "primary_metric_imbalanced": "gwet_ac1",
         "by_dimension": result,
     }
     (report_dir / "judge_agreement.json").write_text(
@@ -272,8 +277,15 @@ def main() -> int:
     k = corr.get("weighted_kappa")
     if k is None:
         k = corr.get("cohens_kappa")
+    ac1 = corr.get("gwet_ac1")
     if k is not None and k < 0.6:
-        print("⚠ κ < 0.6 en corrección: trata L3/L5 como PROVISIONALES o cambia de modelo juez.")
+        if ac1 is not None and ac1 >= 0.6:
+            print(
+                f"ℹ κ < 0.6 pero AC1={ac1:.2f} ≥ 0.6: probable PARADOJA DE PREVALENCIA "
+                "(clases desbalanceadas). Reporta AC1 como métrica primaria y el % de acuerdo."
+            )
+        else:
+            print("⚠ κ < 0.6 y AC1 < 0.6: trata L3/L5 como PROVISIONALES o cambia de modelo juez.")
     return 0
 
 

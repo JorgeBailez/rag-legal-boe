@@ -199,6 +199,30 @@ def _kappa_from_matrix(matrix: list[list[int]], *, linear: bool) -> float | None
     return 1.0 - obs / exp
 
 
+def _ac1_from_matrix(matrix: list[list[int]]) -> float | None:
+    """Gwet's AC1 a partir de la confusión: acuerdo robusto a la PREVALENCIA.
+
+    Cohen's κ se desploma cuando una categoría domina (paradoja de prevalencia) pese a un acuerdo
+    observado alto. AC1 corrige el acuerdo esperado con `Pe = (1/(q−1))·Σ π_k(1−π_k)` (π_k = prob.
+    marginal media de la categoría k), así que no colapsa con clases desbalanceadas. Métrica
+    primaria recomendada para el acuerdo juez↔humano con desbalanceo.
+    """
+    k = len(matrix)
+    n = sum(sum(row) for row in matrix)
+    if n == 0:
+        return None
+    if k < 2:
+        return 1.0
+    pa = sum(matrix[i][i] for i in range(k)) / n
+    rows = [sum(matrix[i]) for i in range(k)]
+    cols = [sum(matrix[i][j] for i in range(k)) for j in range(k)]
+    pi = [(rows[i] + cols[i]) / (2 * n) for i in range(k)]
+    pe = sum(p * (1.0 - p) for p in pi) / (k - 1)
+    if pe >= 1.0:
+        return 1.0
+    return (pa - pe) / (1.0 - pe)
+
+
 def _kappa_ci(
     pairs: list[tuple[str, str]],
     labels: Sequence[str],
@@ -232,6 +256,34 @@ def _kappa_ci(
     return {"lo": lo, "hi": hi, "n_boot": n_boot, "level": round(1 - alpha, 2)}
 
 
+def _ac1_ci(
+    pairs: list[tuple[str, str]],
+    labels: Sequence[str],
+    *,
+    n_boot: int,
+    seed: int,
+    alpha: float,
+) -> dict | None:
+    """IC de AC1 por bootstrap pareado (mismo remuestreo de pares que el κ)."""
+    n = len(pairs)
+    if n < 2 or n_boot <= 0:
+        return None
+    rng = random.Random(seed)
+    stats: list[float] = []
+    for _ in range(n_boot):
+        sample = [pairs[rng.randrange(n)] for _ in range(n)]
+        matrix = _confusion_counts([h for h, _ in sample], [j for _, j in sample], labels)
+        ac1 = _ac1_from_matrix(matrix)
+        if ac1 is not None:
+            stats.append(ac1)
+    if not stats:
+        return None
+    stats.sort()
+    lo = stats[int((alpha / 2) * len(stats))]
+    hi = stats[min(len(stats) - 1, int((1 - alpha / 2) * len(stats)))]
+    return {"lo": lo, "hi": hi, "n_boot": n_boot, "level": round(1 - alpha, 2)}
+
+
 def judge_agreement(
     human_labels: Sequence[str],
     judge_labels: Sequence[str],
@@ -241,12 +293,14 @@ def judge_agreement(
     seed: int = 42,
     ci_alpha: float = 0.05,
 ) -> dict:
-    """Acuerdo juez↔humano: % acuerdo, Cohen's κ nominal y, si es ordinal, κ lineal-ponderado.
+    """Acuerdo juez↔humano: % acuerdo, Cohen's κ (nominal y ponderado) y **Gwet's AC1**.
 
     Etiquetas alineadas posición a posición (misma longitud). κ corrige el acuerdo esperado por
-    azar; >0.6 ≈ sustancial. `ordered_labels` fija el orden de las categorías (p. ej. corrección
-    incorrect<partial<correct) y habilita el κ lineal-ponderado, el estadístico adecuado para una
-    escala ordinal de 3 niveles. Devuelve además la matriz de confusión e IC por bootstrap.
+    azar; >0.6 ≈ sustancial, PERO se desploma con clases desbalanceadas (paradoja de prevalencia) →
+    por eso se reporta también **AC1**, robusto a la prevalencia y métrica primaria recomendada
+    cuando una categoría domina. `ordered_labels` fija el orden (p. ej. incorrect<partial<correct) y
+    habilita el κ lineal-ponderado (adecuado para la escala ordinal). Devuelve además la matriz de
+    confusión e IC por bootstrap de κ, κ-ponderado y AC1.
     """
     if len(human_labels) != len(judge_labels):
         raise ValueError("judge_agreement requiere secuencias de la misma longitud")
@@ -256,10 +310,12 @@ def judge_agreement(
         "percent_agreement": None,
         "cohens_kappa": None,
         "weighted_kappa": None,
+        "gwet_ac1": None,
         "labels": None,
         "confusion_matrix": None,
         "cohens_kappa_ci": None,
         "weighted_kappa_ci": None,
+        "gwet_ac1_ci": None,
     }
     if n == 0:
         return out
@@ -283,6 +339,8 @@ def judge_agreement(
     out["cohens_kappa_ci"] = _kappa_ci(
         pairs, labels, linear=False, n_boot=n_boot, seed=seed, alpha=ci_alpha
     )
+    out["gwet_ac1"] = _ac1_from_matrix(matrix)
+    out["gwet_ac1_ci"] = _ac1_ci(pairs, labels, n_boot=n_boot, seed=seed, alpha=ci_alpha)
     if ordinal:
         out["weighted_kappa"] = _kappa_from_matrix(matrix, linear=True)
         out["weighted_kappa_ci"] = _kappa_ci(

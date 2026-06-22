@@ -64,7 +64,20 @@ def test_judge_agreement_perfect() -> None:
     out = judge_agreement(["correct", "incorrect", "partial"], ["correct", "incorrect", "partial"])
     assert out["percent_agreement"] == 1.0
     assert out["cohens_kappa"] == 1.0
+    assert out["gwet_ac1"] == 1.0
     assert out["n"] == 3
+
+
+def test_gwet_ac1_robusto_a_prevalencia() -> None:
+    # 90% de acuerdo pero una clase domina (19/20 'correct') → Cohen's κ se desploma (paradoja de
+    # prevalencia); Gwet's AC1 NO colapsa y refleja el acuerdo real.
+    human = ["correct"] * 18 + ["correct", "incorrect"]
+    judge = ["correct"] * 18 + ["incorrect", "correct"]
+    out = judge_agreement(human, judge, ordered_labels=["incorrect", "partial", "correct"])
+    assert out["percent_agreement"] == pytest.approx(0.9)
+    assert out["cohens_kappa"] < 0.2  # κ hundido pese al 90% de acuerdo
+    assert out["gwet_ac1"] > 0.8  # AC1 robusto a la prevalencia
+    assert out["gwet_ac1"] > out["cohens_kappa"]
 
 
 def test_judge_agreement_partial() -> None:
