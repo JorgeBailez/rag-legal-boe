@@ -142,7 +142,8 @@
   <a class="sub" href="#exp-vistas">6.2 Ablaciones de chunking</a>
   <a class="sub" href="#exp-query">6.3 Ablaciones de consulta</a>
   <a class="sub" href="#exp-contexto">6.4 Ensamblado de contexto</a>
-  <a class="sub" href="#exp-generacion">6.5 Generación y juez</a>
+  <a class="sub" href="#exp-hibrido">6.5 Significado vs palabras vs híbrido ⭐</a>
+  <a class="sub" href="#exp-generacion">6.6 Generación y juez</a>
   <a href="#futuro">7 · Futuro: RAG avanzado</a>
   <a class="sub" href="#fut-inmediato">7.1 Pasos inmediatos</a>
   <a class="sub" href="#fut-filtros">7.2 Filtros en respuestas</a>
@@ -171,6 +172,22 @@
 </header>
 
 <div class="inner">
+
+<div class="box info" style="border-width:2px">
+  <p class="h">🆕 Novedades desde nuestra última reunión</p>
+  <p>Tres avances esta semana, todos en la parte de <b>búsqueda</b> (el núcleo del trabajo):</p>
+  <ul style="margin:6px 0">
+    <li><b>1. Endurecí el parser</b> (el lector de leyes): ahora maneja bien las <b>tablas</b> y las
+     <b>notas editoriales</b> del BOE que antes ensuciaban el texto. Reprocesé las 10 leyes con esa
+     versión limpia (§2, recuadro «Mejora reciente»).</li>
+    <li><b>2. Regeneré todos los embeddings</b> (los «significados» numéricos) sobre ese texto limpio y
+     <b>repetí la comparación de modelos</b>, esta vez con un conjunto de preguntas ya revisado (§6.1).</li>
+    <li><b>3. Monté y medí la comparación estrella del TFG:</b> <b>búsqueda por significado vs. por
+     palabras exactas vs. las dos combinadas</b> (§6.5). El resultado es más interesante de lo esperado.</li>
+  </ul>
+  <p class="small">El resto del documento (cómo funciona cada pieza) sigue vigente; he marcado con
+  «🆕» lo que es nuevo o ha cambiado.</p>
+</div>
 
 <!-- ===================== 0 ===================== -->
 <section id="resumen">
@@ -262,10 +279,10 @@ todo, <b>auditar</b> qué pasó en cada punto.</p>
 <table>
 <tr><th>Fase</th><th>Qué es</th><th>Estado</th></tr>
 <tr><td>F1</td><td>Ingesta → parser → chunking → auditoría</td><td><span class="pill ok">Cerrada</span></td></tr>
-<tr><td>F2</td><td>Índice de vectores (búsqueda densa)</td><td><span class="pill ok">Cerrada</span></td></tr>
+<tr><td>F2</td><td>Índice de vectores (búsqueda por significado)</td><td><span class="pill ok">Cerrada</span> <span class="pill">🆕 rehecha sobre el texto limpio</span></td></tr>
 <tr><td>F3</td><td>Generación de respuestas con LLM local</td><td><span class="pill ok">Implementada</span></td></tr>
-<tr><td>P0</td><td>Evaluación (métricas + juez + dataset)</td><td><span class="pill">En validación</span></td></tr>
-<tr><td>P2</td><td>Comparar estrategias de retrieval</td><td><span class="pill no">Siguiente</span></td></tr>
+<tr><td>P0</td><td>Evaluación (la «regla de medir»: preguntas + respuestas correctas)</td><td><span class="pill ok">🆕 preguntas de búsqueda revisadas</span> <span class="pill">generación pendiente</span></td></tr>
+<tr><td>P2</td><td>Comparar estrategias de búsqueda (significado / palabras / híbrida)</td><td><span class="pill ok">🆕 híbrido/BM25 hecho</span> <span class="pill no">resto, siguiente</span></td></tr>
 </table>
 </section>
 
@@ -462,6 +479,24 @@ las tres fichas cuando lo necesito.</p>
   garantiza que todas las leyes salgan con la misma forma y que nadie «cuele» datos raros. Es la
   <b>fuente única de verdad</b> de la estructura de datos del proyecto.</p>
 </div>
+
+<div class="box info" style="border-width:2px">
+  <p class="h">🆕 Mejora reciente: el parser ahora limpia mejor el texto</p>
+  <p>Esta semana endurecí el parser para dos cosas que antes ensuciaban el texto de las leyes y, por
+  tanto, la búsqueda:</p>
+  <ul style="margin:6px 0">
+    <li><b>Notas y aparato editorial:</b> el BOE intercala avisos del editor (del tipo «téngase en
+     cuenta que…», bloques entrecomillados). Antes podían colarse mezclados con la ley; ahora se
+     detectan y se apartan, para que el texto que se indexa sea <b>solo la norma</b>.</li>
+    <li><b>Tablas:</b> algunas normas traen tablas (p. ej. cuantías). Antes podían quedar como un
+     amasijo ilegible; ahora se «aplanan» <b>fila a fila</b> para que se lean bien, y un control avisa
+     si se pierde alguna celda.</li>
+  </ul>
+  <p>Tras este cambio <b>reprocesé las 10 leyes</b> desde cero. Por eso esta semana también tuve que
+  rehacer los embeddings (los «significados» numéricos) sobre el texto ya limpio: si cambian las leyes
+  de base, hay que recalcular todo lo que cuelga de ellas. Todos los resultados de búsqueda de la
+  sección 6 están medidos sobre esta <b>versión limpia</b>.</p>
+</div>
 </section>
 
 <!-- ===================== 3 RAG ===================== -->
@@ -593,7 +628,9 @@ bundle nuevo, no piso el anterior.</p>
   número. El bundle congelado me da esa trazabilidad.</p>
 </div>
 
-<p class="small">El bundle baseline actual es <code>e5-large-instruct__j1__bc11142bdcc5</code>.</p>
+<p class="small">🆕 El bundle baseline actual (sobre el texto limpio de esta semana) es
+<code>e5-large-instruct__j1__42105deb4afe</code>. El anterior (<code>…bc11142bdcc5</code>) quedó
+obsoleto: se midió sobre el texto «sucio» de antes del arreglo del parser.</p>
 
 <!-- 3.5 -->
 <h3 id="rag-retrieval">3.5 Retrieval — buscar los fragmentos relevantes</h3>
@@ -849,16 +886,35 @@ referencia.</p>
 
 <div class="box danger">
   <p class="h">⚠️ Una lección de honestidad metodológica</p>
-  <p>El dataset gold anterior estaba autogenerado y mal etiquetado (marcaba todo como «revisado»
-  siendo borrador, con evidencias ficticias). Lo <b>rehíce desde cero</b> y hoy todo está marcado como
-  <b>«borrador» (draft)</b> a propósito, hasta que tenga revisión jurídica real. Prefiero admitir que
-  está sin validar que mentir diciendo que está revisado. <b>Esto es justo algo en lo que necesito tu
-  ayuda (sección 6).</b></p>
+  <p>El conjunto de evaluación anterior estaba autogenerado y mal etiquetado (marcaba todo como
+  «revisado» siendo borrador, con evidencias ficticias). Lo <b>rehíce desde cero</b> y, en lugar de
+  fiarme, lo fui marcando como «borrador» hasta revisarlo de verdad. Prefiero admitir que algo está
+  sin validar que mentir diciendo que está revisado.</p>
 </div>
 
-<h4>Qué dicen los primeros resultados</h4>
-<p>Ya he hecho corridas en el servidor. El veredicto provisional es <b>«seguro pero demasiado
-prudente»</b>:</p>
+<div class="box info">
+  <p class="h">🆕 Avance esta semana: la parte de BÚSQUEDA ya está revisada</p>
+  <p>El conjunto de evaluación tiene dos mitades: (1) <b>para la búsqueda</b> = qué artículos son la
+  respuesta correcta de cada pregunta; (2) <b>para la redacción</b> = la respuesta modelo y los datos
+  que debe contener. Esta semana <b>revisé y dejé lista la primera mitad</b> (la de búsqueda) contra el
+  texto real de las leyes: para cada una de las preguntas marqué qué artículos son <b>plenamente
+  relevantes</b>, cuáles son de <b>apoyo</b> y cuáles <b>no valen</b>, e incluso metí «trampas» a
+  propósito (preguntas sin respuesta, o por un artículo que hoy está vacío) para comprobar que el
+  sistema no se las inventa. Gracias a eso pude medir los experimentos de la sección 6 con una vara
+  fiable. La segunda mitad (la de redacción) sigue en borrador. <b>Aquí es donde tu criterio jurídico
+  me vendría muy bien:</b> validar una muestra de lo que he marcado y ayudarme con la mitad de
+  redacción.</p>
+</div>
+
+<h4>Qué dicen los primeros resultados (de la <b>redacción</b> de respuestas)</h4>
+<div class="box term">
+  <p class="h">🆕 Nota de estado</p>
+  <p>Estos resultados son de una corrida <b>anterior al arreglo del parser de esta semana</b>, así que
+  habrá que <b>repetirlos</b> sobre el texto limpio. Los dejo porque <b>la conclusión cualitativa
+  (seguro pero prudente, y la evaluación localiza el fallo) sigue siendo válida como ejemplo</b>. El
+  esfuerzo de esta semana fue en la <b>búsqueda</b> (secciones 6.1 y 6.5), no en la redacción.</p>
+</div>
+<p>El veredicto provisional de esa corrida fue <b>«seguro pero demasiado prudente»</b>:</p>
 <ul>
   <li>✅ <b>Seguridad excelente</b>: no se inventa respuestas (0 respuestas falsas), abstiene bien en
    preguntas fuera de su alcance, y no «cae» en datos-trampa.</li>
@@ -909,8 +965,12 @@ parte de recuperación, que es donde más opciones había que decidir.</p>
 <tr><td><b>e5-large-instruct</b> ✅</td><td>1024</td><td>512 tokens</td><td>Acepta instrucción en la consulta. <b>El elegido.</b></td></tr>
 <tr><td>bge-m3</td><td>1024</td><td>8.192 tokens</td><td>Contexto largo (casi nunca recorta).</td></tr>
 <tr><td>qwen3-0.6b</td><td>1024</td><td>32.768 tokens</td><td>Contexto enorme.</td></tr>
-<tr><td>gte-multilingual-base</td><td>768</td><td>8.192 tokens</td><td>Requiere «código remoto» (a revisar).</td></tr>
+<tr><td>gte-multilingual-base</td><td>768</td><td>8.192 tokens</td><td>🆕 <b>Aplazado</b>: su código no es compatible con la versión de librerías del entorno (lo dejo documentado para retomarlo).</td></tr>
 </table>
+<p class="small">🆕 Finalmente compararon <b>5 modelos</b> (el sexto, <code>gte</code>, quedó aplazado por
+incompatibilidad técnica). <code>qwen3</code> funciona pero es <b>demasiado lento sin tarjeta gráfica</b>
+(~5 horas en crear sus vectores), así que en la práctica los candidatos viables en este servidor son
+la familia <b>e5</b> y <b>bge-m3</b>.</p>
 
 <p>Claves metodológicas de esta comparativa:</p>
 <ul>
@@ -934,11 +994,16 @@ parte de recuperación, que es donde más opciones había que decidir.</p>
 </div>
 
 <div class="box info">
-  <p class="h">ℹ️ Resultado</p>
-  <p>El baseline seleccionado es <b>e5-large-instruct</b>, con la vista J1 y el perfil de consulta
-  ciudadano (lo explico abajo). Quedó congelado en el bundle
-  <code>e5-large-instruct__j1__bc11142bdcc5</code>. La lectura general: la recuperación densa
-  <b>funciona bien</b> sobre este corpus.</p>
+  <p class="h">ℹ️ Resultado 🆕 (rehecho esta semana sobre el texto limpio)</p>
+  <p>El mejor es <b>e5-large-instruct</b> con la vista J1 y el perfil de consulta ciudadano, con una
+  nota de <b>0,86 sobre 1</b> (nDCG@10). Matiz honesto: con 50 preguntas, las diferencias entre los
+  modelos de arriba son <b>pequeñas y dentro del margen de error</b> —nadie supera al resto con
+  seguridad estadística—; el único <b>claramente peor</b> es el modelo pequeño (e5-base). Mirando
+  también el <b>coste en CPU</b>, e5-large-instruct es la mejor relación calidad/tiempo; bge-m3 y qwen3
+  cuestan más sin ganar calidad. Quedó congelado en el bundle
+  <code>e5-large-instruct__j1__42105deb4afe</code>. Lectura general: la búsqueda por significado
+  <b>funciona bien</b> sobre este corpus… salvo en un tipo concreto de pregunta, que es de lo que va
+  el experimento estrella (§6.5).</p>
 </div>
 
 <!-- 6.2 -->
@@ -988,8 +1053,74 @@ probar. Adaptar la instrucción al usuario real (un ciudadano) dio el mejor resu
 (q0001) señaló como problemática: demasiado contexto ruidoso puede expulsar al artículo bueno. Por eso
 es un experimento clave para la siguiente fase.</p>
 
-<!-- 6.5 -->
-<h3 id="exp-generacion">6.5 Experimentos de generación y validación del juez</h3>
+<!-- 6.5 HIBRIDO -->
+<h3 id="exp-hibrido">6.5 🆕 ⭐ Búsqueda por significado vs. por palabras exactas vs. las dos juntas</h3>
+<p class="lead">Esta es <b>la comparación central del TFG</b>, y la acabo de medir esta semana. Hasta
+ahora el sistema busca <b>por significado</b> (con los embeddings). Pero hay otra forma clásica de
+buscar: <b>por palabras exactas</b>. La pregunta de investigación es: ¿cuál es mejor para leyes, o
+conviene combinarlas?</p>
+
+<div class="box term">
+  <p class="h">📖 Tecnicismo: «BM25» (búsqueda por palabras) y «híbrido»</p>
+  <p><b>BM25</b> es el buscador «de toda la vida» (el que hay detrás de un Ctrl+F potente o de los
+  buscadores clásicos): no entiende significados, solo <b>cuenta coincidencias de palabras</b> entre la
+  pregunta y cada fragmento, dando más importancia a las palabras <b>raras</b> (las que distinguen) que
+  a las comunes. La <b>búsqueda híbrida</b> es <b>juntar las dos</b>: se pide a la búsqueda por
+  significado y a la de palabras sus resultados, y se <b>combinan</b> en una sola lista.</p>
+</div>
+
+<div class="box plain">
+  <p class="h">💡 En cristiano: ¿por qué combinarlas?</p>
+  <p>La búsqueda por significado es buenísima entendiendo lo que quieres decir («plazo para
+  contestar» ≈ «tiempo para resolver»), pero <b>floja con datos literales</b> como un número de
+  artículo. La de palabras es justo al revés: tonta para los sinónimos, pero <b>clava las
+  coincidencias exactas</b> («artículo 122»). Combinarlas debería dar lo mejor de cada una. La forma de
+  combinarlas que uso (se llama <b>RRF</b>) es robusta: mira en qué <b>puesto</b> queda cada fragmento
+  en cada lista, no las puntuaciones (que no son comparables entre los dos buscadores).</p>
+</div>
+
+<h4>El resultado (nota de 0 a 1, sobre las 50 preguntas revisadas)</h4>
+<table>
+<tr><th>Tipo de pregunta</th><th>Por significado</th><th>Por palabras (BM25)</th><th>Combinada (híbrida)</th></tr>
+<tr><td><b>En general</b> (las 50)</td><td><b>0,86</b> ✅</td><td>0,68</td><td>0,84</td></tr>
+<tr><td>Ciudadana / conceptual / de trámite</td><td>0,87–0,93 ✅</td><td>0,64–0,72</td><td>0,79–0,94</td></tr>
+<tr><td>Por término o sigla (BDNS, ICIO…)</td><td>0,90 ✅</td><td>0,69</td><td>0,87</td></tr>
+<tr><td><b>«¿Qué dice el artículo 122?»</b> (cita el nº)</td><td><b>0,41</b> ❌</td><td>0,48</td><td><b>0,75</b> ✅</td></tr>
+</table>
+
+<div class="box info">
+  <p class="h">ℹ️ La conclusión (más interesante de lo que esperaba)</p>
+  <p><b>No es que «el híbrido gane siempre».</b> En general, la búsqueda por significado <b>ya es muy
+  buena</b> y el híbrido casi la iguala (0,84 vs 0,86); y la de palabras sola es claramente peor.
+  <b>Pero hay un tipo de pregunta donde el significado se hunde</b>: cuando el usuario <b>cita un
+  artículo por su número</b> («¿qué dice el artículo 122?»). Ahí la búsqueda por significado saca un
+  pobre 0,41… y <b>combinarla con la de palabras la sube a 0,75</b>. Es decir: cada método gana en
+  casos distintos, y el híbrido <b>rescata justo el punto débil</b> del otro.</p>
+</div>
+
+<div class="box plain">
+  <p class="h">💡 El caso que mejor lo demuestra (pregunta «artículo 122 de la Ley 39/2015»)</p>
+  <ul style="margin:6px 0">
+    <li>La búsqueda <b>por significado</b> NO encontró el artículo 122 (trajo un artículo vecino).</li>
+    <li>La <b>de palabras</b> SÍ lo encontró (vio el «122»), pero no lo puso el primero.</li>
+    <li>La <b>combinada</b> lo colocó en el <b>puesto 1</b>. Ninguna de las dos sola acertaba; juntas, sí.</li>
+  </ul>
+  <p>Es el ejemplo de libro de por qué merece la pena combinar.</p>
+</div>
+
+<div class="box danger">
+  <p class="h">⚠️ Honestidad: lo que aún NO resuelve, y el matiz de tamaño</p>
+  <p>Hay un caso (el «artículo 38») que <b>falla incluso con palabras</b>, porque el número «38»
+  aparece en muchos sitios del corpus y se confunde. Eso me marca la <b>siguiente mejora</b>: dar más
+  peso al número cuando está en el <b>título</b> del artículo. Y el matiz importante: las preguntas que
+  citan un artículo por su número son <b>solo 4</b> en este conjunto; la dirección es clarísima, pero
+  para afirmarlo con solidez estadística necesito <b>más preguntas de ese tipo</b> (llegará al ampliar
+  el corpus). Por eso este experimento <b>ya da una conclusión defendible</b>: «cada estrategia conviene
+  en un caso distinto», que es justo el tipo de hallazgo con valor del TFG.</p>
+</div>
+
+<!-- 6.6 -->
+<h3 id="exp-generacion">6.6 Experimentos de generación y validación del juez</h3>
 <p>Ya en la parte de respuestas (Fase 3 + evaluación), he ejecutado en el servidor:</p>
 <table>
 <tr><th>Experimento</th><th>Resultado</th></tr>
@@ -1027,17 +1158,24 @@ construidas</b>.</p>
    fidelidad (L3) y corrección (L5) sobre las 40 preguntas.</li>
   <li><b>Validar al juez con Cohen's κ</b> (herramienta ya programada): anotar a mano ~30-50 casos y
    medir el acuerdo. Si es alto, me puedo fiar de L3/L5.</li>
-  <li>🤝 <b>Anotación jurídica del dataset gold (contigo):</b> pasar las preguntas de «borrador» a
-   «revisado», confirmar artículos relevantes y respuestas de referencia. <b>Tu criterio jurídico es
+  <li>🤝 <b>Revisión jurídica del conjunto de evaluación (contigo):</b> la mitad de <b>búsqueda</b> ya
+   la dejé revisada esta semana; me ayudaría que <b>validaras una muestra</b> de lo que he marcado y que
+   viéramos juntos la mitad de <b>redacción</b> (respuestas de referencia). <b>Tu criterio jurídico es
    clave aquí.</b></li>
-  <li><b>Mejorar el prompt</b> (experimento A/B ya preparado): una versión menos literal que responda
-   cuando la evidencia lo sustenta, sin perder la prudencia.</li>
-  <li><b>Fase P2 — comparar estrategias de retrieval</b> sobre el dataset ya validado:
-   <span class="pill">Reranker</span> (reordenar lo recuperado para subir el bueno y echar el ruido)
-   <span class="pill">Híbrido / BM25</span> (combinar significado + palabras exactas)
+  <li><b>🆕 Seguir comparando estrategias de búsqueda</b> (el primer gran resultado, híbrido/BM25, ya
+   está hecho — sección 6.5). Lo que queda por probar con la misma vara de medir:
+   <span class="pill ok">Híbrido / BM25 ✓ hecho</span>
+   <span class="pill">Dar más peso al nº de artículo</span>
+   <span class="pill">Combinación adaptativa (híbrido solo donde conviene)</span>
+   <span class="pill">Reranker (reordenar lo recuperado)</span>
    <span class="pill">Reescritura de la consulta</span>
-   <span class="pill">Ajuste del presupuesto de contexto</span>
    <span class="pill">Calibrar el umbral de abstención</span></li>
+  <li><b>Ampliar el corpus de 10 a ~100 leyes</b> (con un conjunto de preguntas mayor): es lo que dará
+   <b>solidez estadística</b> a hallazgos como el de las preguntas por número de artículo, hoy basados
+   en pocas preguntas.</li>
+  <li><b>Mejorar el prompt y re-medir la redacción</b> sobre el texto limpio (experimento A/B ya
+   preparado): una versión menos literal que responda cuando la evidencia lo sustenta, sin perder la
+   prudencia. <span class="small">(Apoyo secundario respecto a la búsqueda.)</span></li>
 </ol>
 
 <div class="box plain">
@@ -1162,10 +1300,10 @@ conectar el sistema a una interfaz web o a otras aplicaciones.</p>
 <h4>Resumen visual de la hoja de ruta</h4>
 <div class="pipe">
   <div class="step"><span class="num">✓</span><h5>Base construida</h5><p>Ingesta → parser → chunking → embedding → retrieval → generación.</p></div>
-  <div class="step"><span class="num">▶</span><h5>Evaluación</h5><p>Validar juez + anotar gold (en curso).</p></div>
-  <div class="step"><span class="num">→</span><h5>Afinar retrieval</h5><p>Reranker, híbrido, prompt, umbral.</p></div>
-  <div class="step"><span class="num">→</span><h5>Arquitecturas</h5><p>Filtros, Agentic, Graph RAG.</p></div>
-  <div class="step"><span class="num">→</span><h5>Comparar</h5><p>Estudio con la misma evaluación.</p></div>
+  <div class="step"><span class="num">✓</span><h5>🆕 Texto limpio</h5><p>Parser endurecido + embeddings rehechos sobre las 10 leyes.</p></div>
+  <div class="step"><span class="num">▶</span><h5>Afinar búsqueda</h5><p>🆕 Híbrido/BM25 ✓. Siguen: peso al nº de artículo, reranker, corpus 100.</p></div>
+  <div class="step"><span class="num">→</span><h5>Evaluación redacción</h5><p>Re-medir con juez + revisar la mitad de redacción del gold.</p></div>
+  <div class="step"><span class="num">→</span><h5>Arquitecturas</h5><p>Filtros, Agentic, Graph RAG, y compararlas.</p></div>
   <div class="step"><span class="num">→</span><h5>API</h5><p>Exponer el sistema final.</p></div>
 </div>
 </section>
@@ -1201,17 +1339,22 @@ qué decisiones de diseño importan en un RAG legal. En concreto, me gustaría l
 </div>
 
 <hr>
-<h4>Resumen para llevar a la reunión (4 frases)</h4>
+<h4>Resumen para llevar a la reunión (5 frases)</h4>
 <ol>
   <li>El RAG completo está <b>construido y funcionando</b> de extremo a extremo (ingesta → parser →
    chunking → embedding → retrieval → aumento → generación), con foco en <b>seguridad y trazabilidad</b>.</li>
-  <li>Cada decisión se ha tomado <b>comparando alternativas con métricas</b>: 6 modelos de embeddings,
-   ablaciones de chunking (J1/J2/C1) y de consulta, estrategias de contexto y corridas de generación
-   con juez.</li>
-  <li>Estoy en la fase de <b>evaluación</b>, el verdadero valor del TFG: 6 capas + juez LLM + dataset
-   gold; el sistema es <b>seguro pero demasiado prudente</b> y las métricas ya localizan <b>dónde</b> falla.</li>
-  <li>El final es <b>ambicioso</b>: tras afinar la base, probar y <b>comparar arquitecturas avanzadas</b>
-   (filtros, <b>Agentic RAG</b>, <b>Graph RAG</b>) con la misma evaluación, y rematar con una <b>API</b>.</li>
+  <li>🆕 <b>Esta semana</b>: endurecí el parser (tablas y notas editoriales), <b>rehíce los
+   embeddings</b> sobre ese texto limpio y dejé <b>revisada la mitad de búsqueda</b> del conjunto de
+   evaluación.</li>
+  <li>🆕 Medí la <b>comparación central del TFG</b> (búsqueda por significado vs. por palabras vs.
+   híbrida). Hallazgo: el significado ya es muy bueno <b>salvo cuando se cita un artículo por su
+   número</b>, y ahí <b>combinar con palabras lo rescata</b> (de 0,41 a 0,75). La conclusión defendible
+   no es «el híbrido gana», sino <b>«cada estrategia conviene en un caso distinto»</b>.</li>
+  <li>Cada decisión se toma <b>comparando alternativas con métricas</b> (5 modelos de embeddings,
+   ablaciones de chunking y de consulta, y esta comparación de estrategias), no a ojo.</li>
+  <li>El final es <b>ambicioso</b>: ampliar el corpus a ~100 leyes, re-medir la redacción, y
+   <b>comparar arquitecturas avanzadas</b> (filtros, <b>Agentic RAG</b>, <b>Graph RAG</b>) con la misma
+   evaluación, rematando con una <b>API</b>.</li>
 </ol>
 </section>
 
