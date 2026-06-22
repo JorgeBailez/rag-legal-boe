@@ -10,20 +10,21 @@ Devuelve exit code != 0 si falta algún fichero o si algún hash/tamaño no coin
 
 from __future__ import annotations
 
+import argparse
 import json
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from src.boe.corpus import load_seed_corpus  # noqa: E402
+from src.boe.corpus import SEED_CORPUS_PATH, load_seed_corpus  # noqa: E402
 from src.quality.corpus_audit import raw_integrity, verify_manifest  # noqa: E402
 
 MANIFEST_DIR = Path("data/manifests")
 
 
-def main() -> int:
-    norms = load_seed_corpus()
+def main(seed: Path = SEED_CORPUS_PATH) -> int:
+    norms = load_seed_corpus(seed)
     norm_ids = [n["norm_id"] for n in norms]
 
     for norm_id in norm_ids:
@@ -45,4 +46,12 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    parser = argparse.ArgumentParser(description="Valida la integridad del raw vs los manifests.")
+    parser.add_argument(
+        "--seed",
+        type=Path,
+        default=SEED_CORPUS_PATH,
+        help="catálogo de normas (default: seed MVP-10 data/corpus/seed_corpus.json).",
+    )
+    args = parser.parse_args()
+    raise SystemExit(main(seed=args.seed))

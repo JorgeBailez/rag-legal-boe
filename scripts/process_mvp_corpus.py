@@ -10,12 +10,13 @@ No llama a internet ni re-descarga: por cada norma del catálogo canónico
 
 from __future__ import annotations
 
+import argparse
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from src.boe.corpus import load_seed_corpus  # noqa: E402
+from src.boe.corpus import SEED_CORPUS_PATH, load_seed_corpus  # noqa: E402
 from src.boe.parser import build_processed_bundle, save_processed_bundle  # noqa: E402
 from src.core.exceptions import ParsingError  # noqa: E402
 from src.preprocessing.chunker import create_chunks, save_chunks  # noqa: E402
@@ -28,9 +29,9 @@ PARENTS_DIR = Path("data/processed/parents")
 CHUNKS_DIR = Path("data/processed/chunks")
 
 
-def main() -> int:
-    """Regenera offline el corpus MVP a los contratos v2 (document + history + parents + chunks)."""
-    norms = load_seed_corpus()
+def main(seed: Path = SEED_CORPUS_PATH) -> int:
+    """Regenera offline el corpus a los contratos v2 (document + history + parents + chunks)."""
+    norms = load_seed_corpus(seed)
     failures = 0
     for norm in norms:
         norm_id = norm["norm_id"]
@@ -53,4 +54,12 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    parser = argparse.ArgumentParser(description="Reprocesa offline el corpus (parser + chunker).")
+    parser.add_argument(
+        "--seed",
+        type=Path,
+        default=SEED_CORPUS_PATH,
+        help="catálogo de normas (default: seed MVP-10 data/corpus/seed_corpus.json).",
+    )
+    args = parser.parse_args()
+    raise SystemExit(main(seed=args.seed))
