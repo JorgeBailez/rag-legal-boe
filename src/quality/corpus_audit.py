@@ -145,7 +145,10 @@ SINGULAR_LABEL_CLASSES = {"libro", "titulo", "capitulo", "anexo"}
 
 ISO_DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 ISO_DATETIME = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$")
-XML_TAG = re.compile(r"<[a-zA-Z/]")
+# Etiqueta XML/HTML BIEN FORMADA (con cierre '>'): exigir el '>' evita falsos positivos con un
+# '<' literal del texto normativo (p. ej. "<P20" — agudeza visual de la TABLA B del baremo del
+# RDLeg 8/2004 — o "menor < que").
+XML_TAG = re.compile(r"</?[a-zA-Z][^<>]*>")
 # Fórmulas editoriales del BOE que NUNCA deben quedar en el texto normativo indexado (gate
 # anti-regresión del aparato editorial: avisos «Téngase…» y el marcador «Redacción anterior:»).
 # Se exige el ':' tras «anterior(es)» para no confundir con la prosa de disposiciones transitorias.
@@ -158,7 +161,9 @@ EDITORIAL_LEAK_RE = re.compile(
 # Umbral de anomalía: fracción de `<p>` de la versión vigente descartados como aparato editorial.
 # Por encima, el bloque es mayoritariamente cita editorial → aflora para inspección humana.
 EDITORIAL_DROP_FRACTION_WARN = 0.5
-CHUNK_ID = re.compile(r"^BOE-[A-Z]-\d{4}-\d+__.+__c\d{3}$")
+# `c\d{3,}`: 3 dígitos por defecto, pero ≥3 para bloques con >1000 chunks (p. ej. el anexo del
+# baremo del RDLeg 8/2004, ~1185 chunks → c1000+).
+CHUNK_ID = re.compile(r"^BOE-[A-Z]-\d{4}-\d+__.+__c\d{3,}$")
 # `..` artificial: exactamente dos puntos, no parte de una elipsis legal `...`.
 _ARTIFICIAL_DOUBLE_DOT = re.compile(r"(?<!\.)\.\.(?!\.)")
 
@@ -570,7 +575,9 @@ def _check_temporal(b: dict, did: str, processing_date: str) -> list[dict]:
             )
         return out
 
-    if (
+    # La versión vigente solo importa en bloques indexables; en los excluidos (nota_inicial,
+    # encabezados sin cuerpo) la resolución temporal es irrelevante y no debe marcar ERROR.
+    if indexable and (
         lv.get("publication_date") != res["selected_publication_date"]
         or lv.get("source_norm_id") != res["selected_source_norm_id"]
     ):
@@ -618,7 +625,9 @@ def _check_blocks(doc: dict, did: str, processing_date: str) -> list[dict]:
                     f"block_type no esperado: {bt!r}",
                 )
             )
-        if b.get("parent_id") != f"{did}__{bid}":
+        # parent_id None es legítimo en bloques sin texto vigente (excluidos: nota_inicial,
+        # encabezados sin cuerpo). Solo se exige el patrón {doc}__{block_id} cuando hay parent.
+        if b.get("parent_id") is not None and b.get("parent_id") != f"{did}__{bid}":
             out.append(
                 finding(
                     "block.parent_id",
@@ -1453,8 +1462,11 @@ def temporal_integrity(
             res = resolve_current_version(versions, b.get("index_last_update_date"))
             status = res["status"]
             lv = b.get("latest_version") or {}
+            # Indexabilidad robusta a la vista (joined: bajo `retrieval`; descriptor: nivel sup.).
+            retr = b.get("retrieval")
+            indexable = retr.get("indexable") if isinstance(retr, dict) else b.get("indexable")
             if status == "resolved":
-                if (
+                if indexable and (
                     lv.get("publication_date") != res["selected_publication_date"]
                     or lv.get("source_norm_id") != res["selected_source_norm_id"]
                 ):

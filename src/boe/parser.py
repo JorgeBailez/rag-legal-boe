@@ -525,6 +525,10 @@ def _full_title(block_type: str, paragraphs: list[dict]) -> str | None:
         if num in prefix:
             parts = [prefix[num], prefix.get(tit, "")]
             return clean_text(". ".join(x for x in parts if x))
+        # Rótulo en la clase de título SIN número: el BOE a veces etiqueta el número como _tit
+        # (p. ej. "CAPÍTULO III" en class="capitulo_tit"). Mejor el título que un full_title nulo.
+        if tit in prefix:
+            return clean_text(prefix[tit])
     for single in ("seccion", "subseccion", "libro", "titulo", "capitulo", "anexo"):
         if single in prefix:
             return prefix[single]
