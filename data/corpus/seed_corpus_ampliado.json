@@ -1,6 +1,6 @@
 {
-  "name": "corpus_ampliado_93",
-  "description": "Corpus ampliado del cierre del TFG: 93 normas estatales consolidadas de alto uso ciudadano (12 áreas). Superconjunto del MVP-10 (seed_corpus.json). Identificadores BOE-A verificados contra boe.es el 2026-06-22 (vigencia + última actualización); ver data/corpus/corpus_100_candidatas.md. Excluye derogadas (RDLeg 3/2015, Ley 9/2014, RD 557/2011→RD 1155/2024) y difiere Código Civil (BOE-A-1889-4763) y LOPJ (BOE-A-1985-12666) por riesgo de parser/peso.",
+  "name": "corpus_ampliado_92",
+  "description": "Corpus ampliado del cierre del TFG: 92 normas estatales consolidadas de alto uso ciudadano (12 áreas). Superconjunto del MVP-10 (seed_corpus.json). Identificadores BOE-A verificados contra boe.es el 2026-06-22 (vigencia + última actualización); ver data/corpus/corpus_100_candidatas.md. Excluye derogadas (RDLeg 3/2015, Ley 9/2014, RD 557/2011→RD 1155/2024), la Ley 35/2015 (sin texto consolidado propio: es ley de reforma, su baremo vive en el anexo del RDLeg 8/2004; dio 404 en la API consolidada el 2026-06-22) y difiere Código Civil (BOE-A-1889-4763) y LOPJ (BOE-A-1985-12666) por riesgo de parser/peso.",
   "norms": [
     { "norm_id": "BOE-A-2015-10565", "label": "Ley 39/2015, Procedimiento Administrativo Común", "expected_rank": "Ley", "area": "nucleo" },
     { "norm_id": "BOE-A-2015-10566", "label": "Ley 40/2015, Régimen Jurídico del Sector Público", "expected_rank": "Ley", "area": "nucleo" },
@@ -82,7 +82,6 @@
 
     { "norm_id": "BOE-A-2015-11722", "label": "Real Decreto Legislativo 6/2015, Ley de Tráfico y Seguridad Vial", "expected_rank": "Real Decreto Legislativo", "area": "trafico_movilidad" },
     { "norm_id": "BOE-A-2004-18911", "label": "Real Decreto Legislativo 8/2004, responsabilidad civil y seguro en la circulación de vehículos", "expected_rank": "Real Decreto Legislativo", "area": "trafico_movilidad" },
-    { "norm_id": "BOE-A-2015-10197", "label": "Ley 35/2015, valoración de daños a personas en accidentes de circulación", "expected_rank": "Ley", "area": "trafico_movilidad" },
     { "norm_id": "BOE-A-2003-23514", "label": "Real Decreto 1428/2003, Reglamento General de Circulación", "expected_rank": "Real Decreto", "area": "trafico_movilidad" },
 
     { "norm_id": "BOE-A-2002-13758", "label": "Ley 34/2002, servicios de la sociedad de la información y comercio electrónico", "expected_rank": "Ley", "area": "digital_telecom" },

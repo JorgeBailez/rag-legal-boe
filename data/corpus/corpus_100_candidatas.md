@@ -123,7 +123,7 @@
 |---|---|---|---|---|---|
 | RDLeg 6/2015, Ley de Tráfico y Seguridad Vial | BOE-A-2015-11722 | VIGENTE | 2025-12-04 | [A] | apta |
 | RDLeg 8/2004, RC y seguro circulación | BOE-A-2004-18911 | VIGENTE (mod. Ley 5/2025) | ~2025-07 | [A] (baremo) | apta (reclamaciones) |
-| Ley 35/2015, valoración de daños (baremo) | BOE-A-2015-10197 | VIGENTE | 2016-01-01 | [T] | apta (contenido material en anexo del RDLeg 8/2004) |
+| ~~Ley 35/2015, valoración de daños (baremo)~~ | ~~BOE-A-2015-10197~~ | VIGENTE como disposición, **SIN texto consolidado propio** | — | — | **FUERA** (404 en la API consolidada el 2026-06-22: es ley de reforma; el baremo vive en el anexo del RDLeg 8/2004, ya en el corpus) |
 | RD 1428/2003, Reglamento General de Circulación [R] | BOE-A-2003-23514 | VIGENTE (mod. RD 465/2025) | ~2025-06 | [T][A]? | apta (señales) |
 
 ## 10 · Digital / telecomunicaciones
@@ -174,24 +174,28 @@
   Ley 58/2003 LGT = `BOE-A-2003-23186` (la pista original era la de la 47/2003).
 - **Derogadas detectadas → FUERA (3):** RDLeg 3/2015 (→ Ley 3/2023), Ley 9/2014 (→ Ley 11/2022) y
   **RD 557/2011 (→ RD 1155/2024, hallazgo nuevo: hay reglamento de extranjería de 2024)**.
-- **Vigentes-aptas (núcleo + secciones 1-12, sin las FUERA):** ~82 nuevas + 10 núcleo = **~92**.
+- **Caída en la descarga → FUERA (1):** Ley 35/2015 (`BOE-A-2015-10197`) dio **404 en la API de
+  legislación consolidada** (2026-06-22): es ley de reforma sin consolidado propio; su baremo vive en
+  el anexo del RDLeg 8/2004 (ya en el corpus). El id es correcto, pero no cumple "tener consolidado".
+- **Vigentes-aptas (núcleo + secciones 1-12, sin las FUERA):** 10 núcleo + 82 nuevas = **92**.
 - **Dudosas (vigentes, decisión de recorte):** Ley 47/2003, Ley 33/2003, LO 3/1980, Ley 20/1990,
   Ley 23/2015, Ley 8/2021, Ley 29/2015, RDLeg 1/2015, Ley 19/2015, Ley 56/2007, Ley 7/2022,
   Ley 20/2013 (preceptos anulados). ~12.
 - **Cuotas para el flagship:** [T]/[A] abundan en tributario y tráfico (estrés de parser); homonimia
   de artículos garantizada por el volumen; el RD 439/2007 (rgto) ↔ Ley 35/2006 da cruces reglamento-ley.
 
-## Decisión final (2026-06-22) — corpus ~93, bajo riesgo
+## Decisión final (2026-06-22) — corpus 92, bajo riesgo
 - **Dentro:** núcleo 10 + todas las VIGENTES de §1-12 (las "dudosas" entran pero se marcan para no
   redactar gold sobre preceptos anulados) + **Constitución** + **Código Penal**.
 - **Fuera (derogadas):** RDLeg 3/2015, Ley 9/2014 y RD 557/2011 → este último **sustituido por
-  RD 1155/2024**.
+  RD 1155/2024**. **+ Ley 35/2015** (sin consolidado propio, cayó en la descarga; baremo en RDLeg 8/2004).
 - **Diferido:** Código Civil y LOPJ (riesgo de parser / peso); Ley Hipotecaria y TRLC no entran ahora.
-- **Total objetivo: 93 normas** (cumple el "~100" del PLAN sin meter el riesgo del CC en el cierre).
+- **Total descargado y procesado: 92 normas** (seed pedía 93; la Ley 35/2015 cayó por 404 en la API
+  consolidada → corpus efectivo 92). Cumple el "~100" del PLAN sin meter el riesgo del CC en el cierre.
 
 ## Siguiente paso (A2)
 1. ✅ lista confirmada (decisión 2026-06-22).
-2. ✅ seed nuevo `data/corpus/seed_corpus_ampliado.json` (93 normas; `seed_corpus.json` MVP-10 intacto).
+2. ✅ seed nuevo `data/corpus/seed_corpus_ampliado.json` (92 normas; `seed_corpus.json` MVP-10 intacto).
    `expected_rank` de la Constitución = `"Constitución"` (es documental: `load_seed_corpus` no lo
    valida; el rank real se lee de los metadatos al descargar). Scripts del flujo con flag `--seed`
    (default = MVP-10) y `build_corpus` escribe `verification_report_ampliado.json` (no pisa el del 10).
