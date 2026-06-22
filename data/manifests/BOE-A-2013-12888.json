@@ -1,0 +1,44 @@
+{
+  "norm_id": "BOE-A-2013-12888",
+  "source": "BOE legislación consolidada",
+  "base_url": "https://www.boe.es/datosabiertos/api",
+  "downloaded_at": "2026-06-22T17:44:00.574582+00:00",
+  "files": [
+    {
+      "endpoint_name": "full",
+      "path": "data/raw/boe/BOE-A-2013-12888/full.xml",
+      "sha256": "dadf9318568db447a4bd1663930be53d804a6f846bc883cccbc3fe574e28b5b4",
+      "size_bytes": 234579
+    },
+    {
+      "endpoint_name": "metadatos",
+      "path": "data/raw/boe/BOE-A-2013-12888/metadatos.xml",
+      "sha256": "24bb2ba6ab3d71ac4d63ce7be4762e2358ab5b059dd0b20edd642233b150d8b7",
+      "size_bytes": 1222
+    },
+    {
+      "endpoint_name": "analisis",
+      "path": "data/raw/boe/BOE-A-2013-12888/analisis.xml",
+      "sha256": "1472564bc164def836dd7ce3edeae92889c355fe58c9b94d4d118629b771e7b2",
+      "size_bytes": 5198
+    },
+    {
+      "endpoint_name": "metadata_eli",
+      "path": "data/raw/boe/BOE-A-2013-12888/metadata_eli.xml",
+      "sha256": "843f238ce248c7bf8e60a207c7624f2fe214a28ca4696ed4fc783ce10a8c1a35",
+      "size_bytes": 24201
+    },
+    {
+      "endpoint_name": "texto",
+      "path": "data/raw/boe/BOE-A-2013-12888/texto.xml",
+      "sha256": "5e933c267639045e2d6bf566cd82b6ba97c47d78862b298dde2a343900cfab63",
+      "size_bytes": 204393
+    },
+    {
+      "endpoint_name": "indice",
+      "path": "data/raw/boe/BOE-A-2013-12888/indice.xml",
+      "sha256": "9d686d0d25a70ff0cd791f52a5f4c40a823a0cef6eec2b51263d3a758ac74728",
+      "size_bytes": 15330
+    }
+  ]
+}

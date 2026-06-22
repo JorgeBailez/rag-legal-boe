@@ -1,0 +1,44 @@
+{
+  "norm_id": "BOE-A-2024-24099",
+  "source": "BOE legislación consolidada",
+  "base_url": "https://www.boe.es/datosabiertos/api",
+  "downloaded_at": "2026-06-22T17:44:33.855566+00:00",
+  "files": [
+    {
+      "endpoint_name": "full",
+      "path": "data/raw/boe/BOE-A-2024-24099/full.xml",
+      "sha256": "2d2f187513fafa68e5eadb1d3f41bbf3c5bb9d8f3c9bbffeefa8ea3286f08725",
+      "size_bytes": 989460
+    },
+    {
+      "endpoint_name": "metadatos",
+      "path": "data/raw/boe/BOE-A-2024-24099/metadatos.xml",
+      "sha256": "37e0133c449c47d28b3c31669019757cae4dfeace8ada067e4ddb6947a764d61",
+      "size_bytes": 1421
+    },
+    {
+      "endpoint_name": "analisis",
+      "path": "data/raw/boe/BOE-A-2024-24099/analisis.xml",
+      "sha256": "4941d9ff5239cdb5e6965112cfc8dbe13c575f5d1ff7c0b0abe39c38d0b1384e",
+      "size_bytes": 3566
+    },
+    {
+      "endpoint_name": "metadata_eli",
+      "path": "data/raw/boe/BOE-A-2024-24099/metadata_eli.xml",
+      "sha256": "6950cfdb65411e4838865fd69ae5d1b2c435ea385800459047f3cda168fdb94c",
+      "size_bytes": 16540
+    },
+    {
+      "endpoint_name": "texto",
+      "path": "data/raw/boe/BOE-A-2024-24099/texto.xml",
+      "sha256": "0488e4e71c2a7b4b86299b85644741ebe83900ee64580d0f9415646bf237d9ae",
+      "size_bytes": 968368
+    },
+    {
+      "endpoint_name": "indice",
+      "path": "data/raw/boe/BOE-A-2024-24099/indice.xml",
+      "sha256": "74dc6fcb79b379b5249982fd21adc2abcd2f7b076c54dfe0f5240466dcef1040",
+      "size_bytes": 99936
+    }
+  ]
+}

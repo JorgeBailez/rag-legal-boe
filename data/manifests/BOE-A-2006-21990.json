@@ -1,0 +1,44 @@
+{
+  "norm_id": "BOE-A-2006-21990",
+  "source": "BOE legislación consolidada",
+  "base_url": "https://www.boe.es/datosabiertos/api",
+  "downloaded_at": "2026-06-22T17:44:59.008430+00:00",
+  "files": [
+    {
+      "endpoint_name": "full",
+      "path": "data/raw/boe/BOE-A-2006-21990/full.xml",
+      "sha256": "008a9b546e3d2b312d01e6f7ccc7494eeeac45fbd5cb2e08ee716f685c7b82b3",
+      "size_bytes": 357213
+    },
+    {
+      "endpoint_name": "metadatos",
+      "path": "data/raw/boe/BOE-A-2006-21990/metadatos.xml",
+      "sha256": "08077c95e381030aa7458a77ca4bf534b03349f59db3eeecf0f0d43bbea390cb",
+      "size_bytes": 1282
+    },
+    {
+      "endpoint_name": "analisis",
+      "path": "data/raw/boe/BOE-A-2006-21990/analisis.xml",
+      "sha256": "6e76a91b0382fbe73bbb53830a5abb8684b3ca09bb0dc82386f9e420bd1c32b1",
+      "size_bytes": 15479
+    },
+    {
+      "endpoint_name": "metadata_eli",
+      "path": "data/raw/boe/BOE-A-2006-21990/metadata_eli.xml",
+      "sha256": "484b559928818116d7d89389a438da0f21a6192ec0eb6627f7244eb0b2142940",
+      "size_bytes": 61296
+    },
+    {
+      "endpoint_name": "texto",
+      "path": "data/raw/boe/BOE-A-2006-21990/texto.xml",
+      "sha256": "c4c2aec67cfcab53f240227a7665e56414ca3cf4fdb61f24a8466c4414eb5739",
+      "size_bytes": 279591
+    },
+    {
+      "endpoint_name": "indice",
+      "path": "data/raw/boe/BOE-A-2006-21990/indice.xml",
+      "sha256": "25ef7da18a3ed94a9ed00659124baa36ee9b1fefb1590641f0448e0a1e02cbaa",
+      "size_bytes": 25741
+    }
+  ]
+}

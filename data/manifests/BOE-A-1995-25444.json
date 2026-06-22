@@ -1,0 +1,44 @@
+{
+  "norm_id": "BOE-A-1995-25444",
+  "source": "BOE legislación consolidada",
+  "base_url": "https://www.boe.es/datosabiertos/api",
+  "downloaded_at": "2026-06-22T17:45:00.631911+00:00",
+  "files": [
+    {
+      "endpoint_name": "full",
+      "path": "data/raw/boe/BOE-A-1995-25444/full.xml",
+      "sha256": "400aa39df2504efb0cd080ba312afd25c5e7a6825d139c09f454a64a574f202f",
+      "size_bytes": 3019265
+    },
+    {
+      "endpoint_name": "metadatos",
+      "path": "data/raw/boe/BOE-A-1995-25444/metadatos.xml",
+      "sha256": "b8f8fda009631408e76eaded32560a6a323f5e81aef4df8799def7948ea97182",
+      "size_bytes": 1225
+    },
+    {
+      "endpoint_name": "analisis",
+      "path": "data/raw/boe/BOE-A-1995-25444/analisis.xml",
+      "sha256": "b90970eb43e6dfc9678aae55b6ac5e7f525bb4c3f8a0cac932e1aec423e6491c",
+      "size_bytes": 65429
+    },
+    {
+      "endpoint_name": "metadata_eli",
+      "path": "data/raw/boe/BOE-A-1995-25444/metadata_eli.xml",
+      "sha256": "e6c9f318ad1e3dab572cc456ac62872dd031c3827517dca49e0b392c8741be8f",
+      "size_bytes": 407249
+    },
+    {
+      "endpoint_name": "texto",
+      "path": "data/raw/boe/BOE-A-1995-25444/texto.xml",
+      "sha256": "073f5c8ce332fdde637f93dcb70e335d520caf8f7dd65eb89f521446ff2bf542",
+      "size_bytes": 2545797
+    },
+    {
+      "endpoint_name": "indice",
+      "path": "data/raw/boe/BOE-A-1995-25444/indice.xml",
+      "sha256": "72f7ed99414f572c20266ab42cfce19f0cea2eaa7579b6991aadc37c1ebb3fbb",
+      "size_bytes": 255699
+    }
+  ]
+}

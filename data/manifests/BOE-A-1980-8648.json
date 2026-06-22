@@ -1,0 +1,44 @@
+{
+  "norm_id": "BOE-A-1980-8648",
+  "source": "BOE legislación consolidada",
+  "base_url": "https://www.boe.es/datosabiertos/api",
+  "downloaded_at": "2026-06-22T17:44:01.199872+00:00",
+  "files": [
+    {
+      "endpoint_name": "full",
+      "path": "data/raw/boe/BOE-A-1980-8648/full.xml",
+      "sha256": "2af3b4d1cabd0bc15fd2f96d972c6902944ca02298cc1e2036f0b76dd7f89cbf",
+      "size_bytes": 103596
+    },
+    {
+      "endpoint_name": "metadatos",
+      "path": "data/raw/boe/BOE-A-1980-8648/metadatos.xml",
+      "sha256": "2b3963a37cab59c4cda182e5ea3faf35926ebf968d59bb748a2ee531f2426ed4",
+      "size_bytes": 1220
+    },
+    {
+      "endpoint_name": "analisis",
+      "path": "data/raw/boe/BOE-A-1980-8648/analisis.xml",
+      "sha256": "2e391475e8f6334e30380f89de42db2975e6ee56a3f2095903e9fbc37c987129",
+      "size_bytes": 3022
+    },
+    {
+      "endpoint_name": "metadata_eli",
+      "path": "data/raw/boe/BOE-A-1980-8648/metadata_eli.xml",
+      "sha256": "8da363e8f3ac2f13d042d5412198a96f6fa4f00ee54e0af4b0978010b33e3282",
+      "size_bytes": 22044
+    },
+    {
+      "endpoint_name": "texto",
+      "path": "data/raw/boe/BOE-A-1980-8648/texto.xml",
+      "sha256": "76efc58ba83b2c2afe2dc8087f64e96bb43e9cb3ac6bb97708ca8e131c7033e3",
+      "size_bytes": 77745
+    },
+    {
+      "endpoint_name": "indice",
+      "path": "data/raw/boe/BOE-A-1980-8648/indice.xml",
+      "sha256": "a33c9c8f087e11c5ec24d97e62200fb32fa7a1ebc95231b113c7a024a9238595",
+      "size_bytes": 10838
+    }
+  ]
+}

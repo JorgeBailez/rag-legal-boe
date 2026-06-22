@@ -1,0 +1,44 @@
+{
+  "norm_id": "BOE-A-1992-28740",
+  "source": "BOE legislación consolidada",
+  "base_url": "https://www.boe.es/datosabiertos/api",
+  "downloaded_at": "2026-06-22T17:44:05.322670+00:00",
+  "files": [
+    {
+      "endpoint_name": "full",
+      "path": "data/raw/boe/BOE-A-1992-28740/full.xml",
+      "sha256": "56bd3d1b6c372146f8161391db221b514fa8a89f4b86ea496f2f4502dbb0aaa0",
+      "size_bytes": 5661325
+    },
+    {
+      "endpoint_name": "metadatos",
+      "path": "data/raw/boe/BOE-A-1992-28740/metadatos.xml",
+      "sha256": "65d469d8658196eca0b59c59265f23eb2fc0982b5b3d1559db14786a5431e9a0",
+      "size_bytes": 1223
+    },
+    {
+      "endpoint_name": "analisis",
+      "path": "data/raw/boe/BOE-A-1992-28740/analisis.xml",
+      "sha256": "d541f1fea568e51639b9432e9d4daba3c20ebba204746c01442c70c466818bca",
+      "size_bytes": 38764
+    },
+    {
+      "endpoint_name": "metadata_eli",
+      "path": "data/raw/boe/BOE-A-1992-28740/metadata_eli.xml",
+      "sha256": "44b229595ec0add3e501d3abefdc9fe4f3a212ea17ce7ee537d90654aff7fd7c",
+      "size_bytes": 246084
+    },
+    {
+      "endpoint_name": "texto",
+      "path": "data/raw/boe/BOE-A-1992-28740/texto.xml",
+      "sha256": "371432fc76f0ae3cb7bac8530cb1e229a8c6c6f2e09ee6fdf3f78fc18a70a202",
+      "size_bytes": 5375689
+    },
+    {
+      "endpoint_name": "indice",
+      "path": "data/raw/boe/BOE-A-1992-28740/indice.xml",
+      "sha256": "5e0dfe52521576fb3a7d47ce8c82afd2f3e39e286353487d5cdf0728f1e84775",
+      "size_bytes": 80495
+    }
+  ]
+}

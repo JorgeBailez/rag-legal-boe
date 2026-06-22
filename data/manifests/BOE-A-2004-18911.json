@@ -1,0 +1,44 @@
+{
+  "norm_id": "BOE-A-2004-18911",
+  "source": "BOE legislación consolidada",
+  "base_url": "https://www.boe.es/datosabiertos/api",
+  "downloaded_at": "2026-06-22T17:44:47.150300+00:00",
+  "files": [
+    {
+      "endpoint_name": "full",
+      "path": "data/raw/boe/BOE-A-2004-18911/full.xml",
+      "sha256": "de231d00357117ecf1ac4fe3f73a026891dcfdada823ceed3589788294c24a0c",
+      "size_bytes": 50257347
+    },
+    {
+      "endpoint_name": "metadatos",
+      "path": "data/raw/boe/BOE-A-2004-18911/metadatos.xml",
+      "sha256": "7cdfe1709f7164d5aab30936f26f60882f266abd63e66b2e47e23f2d492dd30a",
+      "size_bytes": 1364
+    },
+    {
+      "endpoint_name": "analisis",
+      "path": "data/raw/boe/BOE-A-2004-18911/analisis.xml",
+      "sha256": "bd1085f0460c7b86b17daa806db6e459557d237997ce536fc654dede6fbd8048",
+      "size_bytes": 9575
+    },
+    {
+      "endpoint_name": "metadata_eli",
+      "path": "data/raw/boe/BOE-A-2004-18911/metadata_eli.xml",
+      "sha256": "740a6e5d5620f8915909a8a2077e8e455cae3734665872309500ec8c1edc1c5b",
+      "size_bytes": 102693
+    },
+    {
+      "endpoint_name": "texto",
+      "path": "data/raw/boe/BOE-A-2004-18911/texto.xml",
+      "sha256": "64a3dfcf8904af3ea8fc686011b2e6c764d85a975ed69d3e5fae1188ecd3ac66",
+      "size_bytes": 50144150
+    },
+    {
+      "endpoint_name": "indice",
+      "path": "data/raw/boe/BOE-A-2004-18911/indice.xml",
+      "sha256": "1e8cd1b671902b3fb3994bc473e92b978d9c9fe71cd68ec07e2c8e6128432bbe",
+      "size_bytes": 53257
+    }
+  ]
+}

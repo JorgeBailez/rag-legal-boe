@@ -1,0 +1,44 @@
+{
+  "norm_id": "BOE-A-2012-9112",
+  "source": "BOE legislación consolidada",
+  "base_url": "https://www.boe.es/datosabiertos/api",
+  "downloaded_at": "2026-06-22T17:44:27.544025+00:00",
+  "files": [
+    {
+      "endpoint_name": "full",
+      "path": "data/raw/boe/BOE-A-2012-9112/full.xml",
+      "sha256": "a91faca42b2726285c625a49a21bbadb5fbdc7e9d06e8c704f0af417a452c5df",
+      "size_bytes": 149110
+    },
+    {
+      "endpoint_name": "metadatos",
+      "path": "data/raw/boe/BOE-A-2012-9112/metadatos.xml",
+      "sha256": "3bb9df93e2c5acac674c76d5b61499ebb80dd3c8bfd30ce99fef3e224e5ea264",
+      "size_bytes": 1223
+    },
+    {
+      "endpoint_name": "analisis",
+      "path": "data/raw/boe/BOE-A-2012-9112/analisis.xml",
+      "sha256": "726bc12e31ce5553c6368e2bf2b03d425a4cff0a0af420b880fc6771dcc59d6c",
+      "size_bytes": 3346
+    },
+    {
+      "endpoint_name": "metadata_eli",
+      "path": "data/raw/boe/BOE-A-2012-9112/metadata_eli.xml",
+      "sha256": "44be06e8cb8fd39791f6fa862bb4bdba24c1f3ad4a3d3c01b5215de90e49f087",
+      "size_bytes": 21405
+    },
+    {
+      "endpoint_name": "texto",
+      "path": "data/raw/boe/BOE-A-2012-9112/texto.xml",
+      "sha256": "108c1d5a2d4d0ec01bcbac51de538eabaa9dbf1a10d6b3a8f5f7c142e37b0311",
+      "size_bytes": 123571
+    },
+    {
+      "endpoint_name": "indice",
+      "path": "data/raw/boe/BOE-A-2012-9112/indice.xml",
+      "sha256": "5bd32c7bdce2463322b5b6b52a7533f862b51310e2f503aed4a2b0fa292b2a35",
+      "size_bytes": 13127
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "norm_id": "BOE-A-2007-6820",
+  "source": "BOE legislación consolidada",
+  "base_url": "https://www.boe.es/datosabiertos/api",
+  "downloaded_at": "2026-06-22T17:44:10.127435+00:00",
+  "files": [
+    {
+      "endpoint_name": "full",
+      "path": "data/raw/boe/BOE-A-2007-6820/full.xml",
+      "sha256": "26b424dad1768c207f5a4018a7157a8dfdb897264c15eb877a6f9f0abd0356f7",
+      "size_bytes": 1663164
+    },
+    {
+      "endpoint_name": "metadatos",
+      "path": "data/raw/boe/BOE-A-2007-6820/metadatos.xml",
+      "sha256": "deea480a3bdf2e9fa6faea135949ff41a6227b222de3220e8e159684bf696f66",
+      "size_bytes": 1419
+    },
+    {
+      "endpoint_name": "analisis",
+      "path": "data/raw/boe/BOE-A-2007-6820/analisis.xml",
+      "sha256": "6df43789d1408e4a5661ea167d1ebf6c25333b7a9567cbf8ece00680854b44dd",
+      "size_bytes": 14078
+    },
+    {
+      "endpoint_name": "metadata_eli",
+      "path": "data/raw/boe/BOE-A-2007-6820/metadata_eli.xml",
+      "sha256": "6316a94662085d4d03520953bb7fa359cb89c4579da78e3e7cc70f408c14eccf",
+      "size_bytes": 112709
+    },
+    {
+      "endpoint_name": "texto",
+      "path": "data/raw/boe/BOE-A-2007-6820/texto.xml",
+      "sha256": "24c8a0a396f6f883d12d6091b918c58d977988bc3abd9de371a6ef1be59cc6ac",
+      "size_bytes": 1535393
+    },
+    {
+      "endpoint_name": "indice",
+      "path": "data/raw/boe/BOE-A-2007-6820/indice.xml",
+      "sha256": "7a8e3a387cd1fab18766b8fa7f0d51583a02ff55c1f13b4c026b9e4d1602900f",
+      "size_bytes": 56111
+    }
+  ]
+}

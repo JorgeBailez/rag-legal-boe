@@ -1,0 +1,44 @@
+{
+  "norm_id": "BOE-A-2021-9233",
+  "source": "BOE legislación consolidada",
+  "base_url": "https://www.boe.es/datosabiertos/api",
+  "downloaded_at": "2026-06-22T17:44:26.568824+00:00",
+  "files": [
+    {
+      "endpoint_name": "full",
+      "path": "data/raw/boe/BOE-A-2021-9233/full.xml",
+      "sha256": "d38ec05f67b962160a2c545ebb047d3da9759b1c4f99ccf3753fa0a6f84971a0",
+      "size_bytes": 291948
+    },
+    {
+      "endpoint_name": "metadatos",
+      "path": "data/raw/boe/BOE-A-2021-9233/metadatos.xml",
+      "sha256": "ea2a8dcb613326fcf87649a43768d8d490b6664d548944be9de244bd9e54df2a",
+      "size_bytes": 1319
+    },
+    {
+      "endpoint_name": "analisis",
+      "path": "data/raw/boe/BOE-A-2021-9233/analisis.xml",
+      "sha256": "0f24bd1163c7ae6ced7eed8f7d0adf1ab8f55a4d3a3c21cba769a493f2d1f8c2",
+      "size_bytes": 5133
+    },
+    {
+      "endpoint_name": "metadata_eli",
+      "path": "data/raw/boe/BOE-A-2021-9233/metadata_eli.xml",
+      "sha256": "90bfc7d8c0cd46062269545dc10458af20b32ad39b8324d6e0a5d82e8cd3d958",
+      "size_bytes": 18967
+    },
+    {
+      "endpoint_name": "texto",
+      "path": "data/raw/boe/BOE-A-2021-9233/texto.xml",
+      "sha256": "fe500b8343c8e9d2742b4ab801d88d607d4184b4792d2f5a32d64358f6431d43",
+      "size_bytes": 266964
+    },
+    {
+      "endpoint_name": "indice",
+      "path": "data/raw/boe/BOE-A-2021-9233/indice.xml",
+      "sha256": "7c85bddb41d9d0f38e6b9573b30d82eae17d759abfd51073edf10fb60e0ee319",
+      "size_bytes": 5972
+    }
+  ]
+}

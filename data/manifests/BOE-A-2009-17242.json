@@ -1,0 +1,44 @@
+{
+  "norm_id": "BOE-A-2009-17242",
+  "source": "BOE legislación consolidada",
+  "base_url": "https://www.boe.es/datosabiertos/api",
+  "downloaded_at": "2026-06-22T17:44:33.330591+00:00",
+  "files": [
+    {
+      "endpoint_name": "full",
+      "path": "data/raw/boe/BOE-A-2009-17242/full.xml",
+      "sha256": "3171d1ad8d55161417cbad1ee8cf3ee05935dbbc02521ed0d4fac3ac1bf453ad",
+      "size_bytes": 164426
+    },
+    {
+      "endpoint_name": "metadatos",
+      "path": "data/raw/boe/BOE-A-2009-17242/metadatos.xml",
+      "sha256": "1532fcc99abc27f26b5dcd9f7d39d562a442e49469096e67a178157bc5223ccd",
+      "size_bytes": 1248
+    },
+    {
+      "endpoint_name": "analisis",
+      "path": "data/raw/boe/BOE-A-2009-17242/analisis.xml",
+      "sha256": "fa48e5858e1453811432386494a5ac80b6a5a93581c7800776ac54cf8ba6cf48",
+      "size_bytes": 3529
+    },
+    {
+      "endpoint_name": "metadata_eli",
+      "path": "data/raw/boe/BOE-A-2009-17242/metadata_eli.xml",
+      "sha256": "67d317d89502ec3b0865b953aba391d7d40564c2d2e7f63d38ed00ae52038db3",
+      "size_bytes": 27905
+    },
+    {
+      "endpoint_name": "texto",
+      "path": "data/raw/boe/BOE-A-2009-17242/texto.xml",
+      "sha256": "a5687bf2cdd1e2427afb0e73ba309893e4ebd8a901074f4d3d539756cab66770",
+      "size_bytes": 132179
+    },
+    {
+      "endpoint_name": "indice",
+      "path": "data/raw/boe/BOE-A-2009-17242/indice.xml",
+      "sha256": "50327cd1800f495398d1b844ff868cc5f3547d90981b9d91e077940b70b6e797",
+      "size_bytes": 20922
+    }
+  ]
+}

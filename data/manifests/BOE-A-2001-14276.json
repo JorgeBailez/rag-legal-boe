@@ -1,0 +1,44 @@
+{
+  "norm_id": "BOE-A-2001-14276",
+  "source": "BOE legislación consolidada",
+  "base_url": "https://www.boe.es/datosabiertos/api",
+  "downloaded_at": "2026-06-22T17:44:56.616104+00:00",
+  "files": [
+    {
+      "endpoint_name": "full",
+      "path": "data/raw/boe/BOE-A-2001-14276/full.xml",
+      "sha256": "4047962642452aca58ea7b90a3e426633d31736033af5229ccadc8164c0c7668",
+      "size_bytes": 775787
+    },
+    {
+      "endpoint_name": "metadatos",
+      "path": "data/raw/boe/BOE-A-2001-14276/metadatos.xml",
+      "sha256": "0760964a63bdd318b637ee9ad912a7e8b353a574c13394f8f09cf786d91ade53",
+      "size_bytes": 1293
+    },
+    {
+      "endpoint_name": "analisis",
+      "path": "data/raw/boe/BOE-A-2001-14276/analisis.xml",
+      "sha256": "f0fa778909c4984304c3ed3ba2edffeee91035f4e1b5f92e4fa892b733c2f1e6",
+      "size_bytes": 18364
+    },
+    {
+      "endpoint_name": "metadata_eli",
+      "path": "data/raw/boe/BOE-A-2001-14276/metadata_eli.xml",
+      "sha256": "6dc68601b022708f9c62109e840d740b521115cf6432bf30b913dad8642b87d3",
+      "size_bytes": 155295
+    },
+    {
+      "endpoint_name": "texto",
+      "path": "data/raw/boe/BOE-A-2001-14276/texto.xml",
+      "sha256": "902ac22e861fa4a7b09736c9d78bb69493c06d7a9708be79d238ce48e78c3227",
+      "size_bytes": 601270
+    },
+    {
+      "endpoint_name": "indice",
+      "path": "data/raw/boe/BOE-A-2001-14276/indice.xml",
+      "sha256": "5ac0dab8457842e1ba7ccaabd02c72464b57f60d62083cf02b6875853b0df1a5",
+      "size_bytes": 61478
+    }
+  ]
+}

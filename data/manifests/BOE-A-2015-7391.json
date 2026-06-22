@@ -1,0 +1,44 @@
+{
+  "norm_id": "BOE-A-2015-7391",
+  "source": "BOE legislación consolidada",
+  "base_url": "https://www.boe.es/datosabiertos/api",
+  "downloaded_at": "2026-06-22T17:44:26.070983+00:00",
+  "files": [
+    {
+      "endpoint_name": "full",
+      "path": "data/raw/boe/BOE-A-2015-7391/full.xml",
+      "sha256": "ec4217db67f771807f87c9d2f5253cf2ce24eaf922b4488c498b8a2900cced76",
+      "size_bytes": 957820
+    },
+    {
+      "endpoint_name": "metadatos",
+      "path": "data/raw/boe/BOE-A-2015-7391/metadatos.xml",
+      "sha256": "46880d91541cbb0da8c8163f604efa1a38a6d09c1d6c1dd69993dadd82cd5500",
+      "size_bytes": 1210
+    },
+    {
+      "endpoint_name": "analisis",
+      "path": "data/raw/boe/BOE-A-2015-7391/analisis.xml",
+      "sha256": "de00d725d40c5752d79f621c9e6ee2951892b03e69a7996a204e4d46a28fb1ca",
+      "size_bytes": 12217
+    },
+    {
+      "endpoint_name": "metadata_eli",
+      "path": "data/raw/boe/BOE-A-2015-7391/metadata_eli.xml",
+      "sha256": "80bcf950f6edde387fabc18e0a605ada70e8b5c37923b50afea356e562009c03",
+      "size_bytes": 68888
+    },
+    {
+      "endpoint_name": "texto",
+      "path": "data/raw/boe/BOE-A-2015-7391/texto.xml",
+      "sha256": "517ba875771420565de63a53a22097e874b9d3408d49e43b766b1623963e49c0",
+      "size_bytes": 875940
+    },
+    {
+      "endpoint_name": "indice",
+      "path": "data/raw/boe/BOE-A-2015-7391/indice.xml",
+      "sha256": "b600897bffd8c559021e7cdc3736f3c3a5a9753bb06501a8a13f98e66fde8ef0",
+      "size_bytes": 65377
+    }
+  ]
+}

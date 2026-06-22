@@ -1,0 +1,44 @@
+{
+  "norm_id": "BOE-A-2019-3814",
+  "source": "BOE legislación consolidada",
+  "base_url": "https://www.boe.es/datosabiertos/api",
+  "downloaded_at": "2026-06-22T17:44:20.238479+00:00",
+  "files": [
+    {
+      "endpoint_name": "full",
+      "path": "data/raw/boe/BOE-A-2019-3814/full.xml",
+      "sha256": "358d403e909dd1d37d247520ec0c60061302e5a94f80c2edd4f101a50ed08077",
+      "size_bytes": 363815
+    },
+    {
+      "endpoint_name": "metadatos",
+      "path": "data/raw/boe/BOE-A-2019-3814/metadatos.xml",
+      "sha256": "ab3bcb7bc2d9a90b2e9367900ffab707df75fb1594017a7e6c3762fbecc25cf6",
+      "size_bytes": 1229
+    },
+    {
+      "endpoint_name": "analisis",
+      "path": "data/raw/boe/BOE-A-2019-3814/analisis.xml",
+      "sha256": "ca45061980c830392d5128d86fb5a5841f8c7ed0eacf5ab69655483562c0dc2c",
+      "size_bytes": 7793
+    },
+    {
+      "endpoint_name": "metadata_eli",
+      "path": "data/raw/boe/BOE-A-2019-3814/metadata_eli.xml",
+      "sha256": "d6959379a02fbc858b22a104b0aa2e483593f52b8e1de7fdbf47abc89e42e8e7",
+      "size_bytes": 28509
+    },
+    {
+      "endpoint_name": "texto",
+      "path": "data/raw/boe/BOE-A-2019-3814/texto.xml",
+      "sha256": "1f858418f3afa4ac09a6cebb5e5a4ec8e7836613dc9197251ef4498ac11b8f69",
+      "size_bytes": 326719
+    },
+    {
+      "endpoint_name": "indice",
+      "path": "data/raw/boe/BOE-A-2019-3814/indice.xml",
+      "sha256": "4bf8b206080a377070c605d29abc89d48826264c9a84e2f8ad64ca203391d555",
+      "size_bytes": 26431
+    }
+  ]
+}

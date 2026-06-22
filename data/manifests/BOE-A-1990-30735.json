@@ -1,0 +1,44 @@
+{
+  "norm_id": "BOE-A-1990-30735",
+  "source": "BOE legislación consolidada",
+  "base_url": "https://www.boe.es/datosabiertos/api",
+  "downloaded_at": "2026-06-22T17:44:10.669741+00:00",
+  "files": [
+    {
+      "endpoint_name": "full",
+      "path": "data/raw/boe/BOE-A-1990-30735/full.xml",
+      "sha256": "a85ee8b8dde4bc06db69ad4a6073520386b60b56b789be78cf63b7d230adfa0e",
+      "size_bytes": 296072
+    },
+    {
+      "endpoint_name": "metadatos",
+      "path": "data/raw/boe/BOE-A-1990-30735/metadatos.xml",
+      "sha256": "077d0863970080f9d18e2ba0a14744632e9b2f55c7f0cbec82501d2b8cee9f64",
+      "size_bytes": 1228
+    },
+    {
+      "endpoint_name": "analisis",
+      "path": "data/raw/boe/BOE-A-1990-30735/analisis.xml",
+      "sha256": "7d002cdd4c985bf331d86e74865ab6efc4b7e7b39946750d07a07d8faa453530",
+      "size_bytes": 12006
+    },
+    {
+      "endpoint_name": "metadata_eli",
+      "path": "data/raw/boe/BOE-A-1990-30735/metadata_eli.xml",
+      "sha256": "d1345cb3de140bc0832a3834c2e18f3489d85ff7b2679ccbcfa6c80b5aa7f1f3",
+      "size_bytes": 93203
+    },
+    {
+      "endpoint_name": "texto",
+      "path": "data/raw/boe/BOE-A-1990-30735/texto.xml",
+      "sha256": "5da8670f75c89ce2f4add5a0f6b386d5a898d5eeec5223f8e159a5bcc244880e",
+      "size_bytes": 190070
+    },
+    {
+      "endpoint_name": "indice",
+      "path": "data/raw/boe/BOE-A-1990-30735/indice.xml",
+      "sha256": "0afbb9c8296ac9bd87c0b80ef95e42fe09b2cad47f025e9c1da4d1654f2cc499",
+      "size_bytes": 20108
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "norm_id": "BOE-A-1960-10906",
+  "source": "BOE legislación consolidada",
+  "base_url": "https://www.boe.es/datosabiertos/api",
+  "downloaded_at": "2026-06-22T17:44:17.739377+00:00",
+  "files": [
+    {
+      "endpoint_name": "full",
+      "path": "data/raw/boe/BOE-A-1960-10906/full.xml",
+      "sha256": "c47a363790871a4d3c2e6ffbec51fc58855b5e11c0abed6c67ea7c794b107217",
+      "size_bytes": 464912
+    },
+    {
+      "endpoint_name": "metadatos",
+      "path": "data/raw/boe/BOE-A-1960-10906/metadatos.xml",
+      "sha256": "2a796b014bd5273ff6fd2d2b410a65568b104f9ee12ceb3cc602ea9f80083280",
+      "size_bytes": 1209
+    },
+    {
+      "endpoint_name": "analisis",
+      "path": "data/raw/boe/BOE-A-1960-10906/analisis.xml",
+      "sha256": "57b73882143e03314b84c0581069aa7cadba549a001550226d19b2446f53c960",
+      "size_bytes": 6865
+    },
+    {
+      "endpoint_name": "metadata_eli",
+      "path": "data/raw/boe/BOE-A-1960-10906/metadata_eli.xml",
+      "sha256": "f86d3ebe6063f6a7b0f1301a800a1ce236f7456d00890a07ab3886c7b7c1bf31",
+      "size_bytes": 62809
+    },
+    {
+      "endpoint_name": "texto",
+      "path": "data/raw/boe/BOE-A-1960-10906/texto.xml",
+      "sha256": "2dc10d98e93192d02a4e542efdaff65dbd00e947b45c20ee1c8419013da29b0f",
+      "size_bytes": 394464
+    },
+    {
+      "endpoint_name": "indice",
+      "path": "data/raw/boe/BOE-A-1960-10906/indice.xml",
+      "sha256": "3db87d66ef84c66cb1ca92f1fb4485e9735d35ad83709f267f9db09471940da7",
+      "size_bytes": 9528
+    }
+  ]
+}

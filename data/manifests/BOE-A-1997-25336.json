@@ -1,0 +1,44 @@
+{
+  "norm_id": "BOE-A-1997-25336",
+  "source": "BOE legislación consolidada",
+  "base_url": "https://www.boe.es/datosabiertos/api",
+  "downloaded_at": "2026-06-22T17:43:56.648074+00:00",
+  "files": [
+    {
+      "endpoint_name": "full",
+      "path": "data/raw/boe/BOE-A-1997-25336/full.xml",
+      "sha256": "2eb84a4025a1579741696f9bef7aa749c5f1b060ac1d7d9c40cb33da712c8052",
+      "size_bytes": 235988
+    },
+    {
+      "endpoint_name": "metadatos",
+      "path": "data/raw/boe/BOE-A-1997-25336/metadatos.xml",
+      "sha256": "d2c7bd0d51175945612819d93552a7f73e01d86ebaec89cdfd0684d44eb828c1",
+      "size_bytes": 1199
+    },
+    {
+      "endpoint_name": "analisis",
+      "path": "data/raw/boe/BOE-A-1997-25336/analisis.xml",
+      "sha256": "fee58b82155ee74b9319bb0bd7f95a34b3f35857f843556262382ae9b029f3f0",
+      "size_bytes": 6403
+    },
+    {
+      "endpoint_name": "metadata_eli",
+      "path": "data/raw/boe/BOE-A-1997-25336/metadata_eli.xml",
+      "sha256": "635181e9abdea816d4f5390b6bb3a0ef330d5b4d42457b9e0f1a3d7d76a7bac8",
+      "size_bytes": 34121
+    },
+    {
+      "endpoint_name": "texto",
+      "path": "data/raw/boe/BOE-A-1997-25336/texto.xml",
+      "sha256": "f9a147b06884d18295b234948fa20f3bc2ecd2b73c3edd126452e8e590c2d91a",
+      "size_bytes": 194700
+    },
+    {
+      "endpoint_name": "indice",
+      "path": "data/raw/boe/BOE-A-1997-25336/indice.xml",
+      "sha256": "67878a3e0a0de6cce5fce16c865dcabbd3ebc4da95928449ffbe4702cb0a657d",
+      "size_bytes": 12188
+    }
+  ]
+}

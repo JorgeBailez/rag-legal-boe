@@ -2,18 +2,18 @@
   "norm_id": "BOE-A-2017-12902",
   "source": "BOE legislación consolidada",
   "base_url": "https://www.boe.es/datosabiertos/api",
-  "downloaded_at": "2026-06-04T22:24:15.233722+00:00",
+  "downloaded_at": "2026-06-22T17:43:55.370713+00:00",
   "files": [
     {
       "endpoint_name": "full",
       "path": "data/raw/boe/BOE-A-2017-12902/full.xml",
-      "sha256": "33a8102d8648d88bb384e5258060fb9cf21364d2c45dc90964aa5d10ec1c8c84",
+      "sha256": "76287b7420ef84db911c23b503b13a0ce06e1983ef80c15e1a2e5d7e6efe8d0e",
       "size_bytes": 2207943
     },
     {
       "endpoint_name": "metadatos",
       "path": "data/raw/boe/BOE-A-2017-12902/metadatos.xml",
-      "sha256": "f746e7301e068cf3553c7ad75e94c8308ef6f0f7e5b1d7afee589a1cb1a2dcda",
+      "sha256": "40c20363db791e4595d11071f12d7275b39b932ec00fc65562e82f85062e0e13",
       "size_bytes": 1378
     },
     {
