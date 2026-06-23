@@ -118,30 +118,41 @@ def _token_windows(
 # --------------------------------------------------------------------------- #
 
 
-def _paragraph_anchor(chunk_text: str, parent: dict, *, chunk_id: str | None) -> dict | None:
-    """Resuelve un rango de párrafos buscando una secuencia contigua exacta."""
+def _paragraph_anchor(
+    chunk_text: str, parent: dict, *, chunk_id: str | None, min_start: int = 0
+) -> tuple[dict | None, int]:
+    """Resuelve el rango de párrafos del chunk como secuencia contigua exacta del parent.
+
+    Cuando el texto del chunk se **repite** en el parent (párrafos idénticos: filas o líneas
+    de lista duplicadas, p. ej. el equipamiento de los vehículos de apertura/cierre del art. 9
+    del Reglamento General de Circulación), la secuencia casa en >1 posición. Los chunks de un
+    parent son contiguos y en orden, así que se desambigua con `min_start` (cursor del chunk
+    previo): se toma la primera coincidencia en/posterior al cursor. Devuelve
+    `(anchor, next_min_start)` para que el llamante avance el cursor por parent.
+    """
     paragraphs = parent.get("paragraphs") or []
     if not paragraphs:
-        return None
+        return None, min_start
     chunk_lines = [line for line in chunk_text.split("\n") if line != ""]
     if not chunk_lines:
-        return None
+        return None, min_start
     parent_texts = [p.get("text", "") for p in paragraphs]
-    matches: list[int] = []
     n = len(chunk_lines)
-    for start in range(0, len(parent_texts) - n + 1):
-        if parent_texts[start : start + n] == chunk_lines:
-            matches.append(start)
+    matches = [
+        start
+        for start in range(0, len(parent_texts) - n + 1)
+        if parent_texts[start : start + n] == chunk_lines
+    ]
     label = chunk_id or parent.get("parent_id", "<sin parent_id>")
     if not matches:
         raise AnchorResolutionError(f"no se pudo localizar el chunk como secuencia: {label}")
-    if len(matches) > 1:
-        raise AnchorResolutionError(f"secuencia de párrafos ambigua para chunk: {label}")
-    start = matches[0]
+    forward = [m for m in matches if m >= min_start]
+    start = forward[0] if forward else matches[0]
     orders = [p.get("order") for p in paragraphs[start : start + n] if p.get("order") is not None]
     if not orders:
         raise AnchorResolutionError(f"secuencia sin orders válidos para chunk: {label}")
-    return {"paragraph_start": min(orders), "paragraph_end": max(orders)}
+    # overlap de 1 párrafo: el cursor del siguiente chunk apunta a este último párrafo.
+    return {"paragraph_start": min(orders), "paragraph_end": max(orders)}, start + n - 1
 
 
 def _paragraph_token_intervals(
@@ -415,10 +426,17 @@ def prepare_inputs(
 
     if view in ("J1", "J2"):
         field_name = _VIEW_FIELD[view]
+        # Cursor por parent: los chunks de un parent llegan contiguos y en orden, así que desambigua
+        # las secuencias de párrafos repetidas (chunk i = primera coincidencia tras el chunk i-1).
+        cursor_by_parent: dict[str, int] = {}
         for ch in chunks:
-            parent = parents_by_id.get(ch.get("parent_id"), {})
-            anchor = _paragraph_anchor(
-                ch.get("text", "") or "", parent, chunk_id=ch.get("chunk_id")
+            parent_id = ch.get("parent_id")
+            parent = parents_by_id.get(parent_id, {})
+            anchor, cursor_by_parent[parent_id] = _paragraph_anchor(
+                ch.get("text", "") or "",
+                parent,
+                chunk_id=ch.get("chunk_id"),
+                min_start=cursor_by_parent.get(parent_id, 0),
             )
             _emit_for_base_text(
                 base_text=ch.get(field_name, "") or "",
