@@ -1005,6 +1005,38 @@ if _EVDIR.is_dir():
             )
 
 
+# Split dev/test (familias enteras, sin fuga). Estratificado por estilo Y dificultad (~34% a test)
+# y repartiendo las familias de reformulación (UQV): 10 en dev, 3 en test. Determinista (greedy por
+# id con guarda de overshoot). dev=53, test=28; Gate C checkpoint listo. test queda held-out para el
+# flagship; el bake-off denso (OE-03) se reporta sobre development.
+TEST_FAMILIES = {
+    "aguas_dph",
+    "asilo_frontera_plazo",
+    "asilo_subsidiaria",
+    "autonomo_trade",
+    "becas_losu_vs_loe",
+    "ce_art20",
+    "ce_detencion",
+    "ce_intimidad_domicilio",
+    "ce_vivienda_educacion",
+    "ciencia_predoctoral",
+    "confianza_certificado",
+    "consumo_clausula_abusiva",
+    "consumo_desistimiento",
+    "consumo_garantia",
+    "coop_proteccion_bin",
+    "coopjur_exequatur",
+    "cp_estafa",
+    "cp_hurto",
+    "credinmob_tae",
+    "dependencia_concepto",
+    "electrico_autoconsumo",
+    "extranjeria_arraigo",
+    "extranjeria_nie",
+    "registrocivil_nombre",
+}
+
+
 def main() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
     qrecs: list[dict] = []
@@ -1016,7 +1048,7 @@ def main() -> int:
             {
                 "query_id": qid,
                 "query": q,
-                "split": "development",
+                "split": "test" if fam in TEST_FAMILIES else "development",
                 "issue_family_id": fam,
                 "query_style": style,
                 "answer_scope": scope,
