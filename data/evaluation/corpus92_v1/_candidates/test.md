@@ -10,7 +10,7 @@ _split=test · difficulty=media · failure_mode=—_
 
 ### Ley 5/2019, ANEXO I · `BOE-A-2019-3814__ai` [JUZGADO rel=0 draft] · flags: anexo
 https://www.boe.es/buscar/act.php?id=BOE-A-2019-3814#ai
-_recuperado por:_ bge-m3/BASELINE#1 (0.741) · e5-base/BASELINE#1 (0.891) · e5-large-instruct/I0_GENERIC#1 (0.917) · e5-large-instruct/I1_LEGAL#1 (0.930) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.929)  [5 sistemas]
+_recuperado por:_ bge-m3/BASELINE#1 (0.741) · e5-base/BASELINE#1 (0.891) · e5-large-instruct/I0_GENERIC#1 (0.917) · e5-large-instruct/I1_LEGAL#1 (0.930) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.929) · bm25/lexical#1 (28.094) · hybrid_rrf/I0_GENERIC#1 (0.033)  [7 sistemas]
 ```
   [1] ANEXO I
   [2] Ficha Europea de Información Normalizada (FEIN)
@@ -222,7 +222,7 @@ _recuperado por:_ bge-m3/BASELINE#1 (0.741) · e5-base/BASELINE#1 (0.891) · e5-
 
 ### Ley 5/2019, artículo 8 · `BOE-A-2019-3814__ar-8` [JUZGADO rel=2 reviewed]
 https://www.boe.es/buscar/act.php?id=BOE-A-2019-3814#ar-8
-_recuperado por:_ e5-base/BASELINE#2 (0.885) · e5-large-instruct/I1_LEGAL#2 (0.925) · e5-large-instruct/I2_CITIZEN_LEGISLATION#4 (0.920) · bge-m3/BASELINE#7 (0.630) · e5-large-instruct/I0_GENERIC#7 (0.898)  [5 sistemas]
+_recuperado por:_ e5-base/BASELINE#2 (0.885) · e5-large-instruct/I1_LEGAL#2 (0.925) · hybrid_rrf/I0_GENERIC#3 (0.030) · e5-large-instruct/I2_CITIZEN_LEGISLATION#4 (0.920) · bm25/lexical#5 (23.373) · bge-m3/BASELINE#7 (0.630) · e5-large-instruct/I0_GENERIC#7 (0.898)  [7 sistemas]
 ```
   [1] Artículo 8. Cálculo de la Tasa Anual Equivalente (TAE).
   [2] 1. La Tasa Anual Equivalente (TAE) se calculará de acuerdo con la fórmula matemática que figura en el Anexo II, epígrafe I de esta Ley.
@@ -237,7 +237,7 @@ _recuperado por:_ e5-base/BASELINE#2 (0.885) · e5-large-instruct/I1_LEGAL#2 (0.
 
 ### Ley 5/2019, ANEXO II · `BOE-A-2019-3814__ai-2` [JUZGADO rel=2 reviewed] · flags: anexo
 https://www.boe.es/buscar/act.php?id=BOE-A-2019-3814#ai-2
-_recuperado por:_ e5-large-instruct/I0_GENERIC#2 (0.907) · e5-large-instruct/I2_CITIZEN_LEGISLATION#2 (0.922) · bge-m3/BASELINE#3 (0.653) · e5-large-instruct/I1_LEGAL#3 (0.925) · e5-base/BASELINE#8 (0.860)  [5 sistemas]
+_recuperado por:_ e5-large-instruct/I0_GENERIC#2 (0.907) · e5-large-instruct/I2_CITIZEN_LEGISLATION#2 (0.922) · bge-m3/BASELINE#3 (0.653) · e5-large-instruct/I1_LEGAL#3 (0.925) · e5-base/BASELINE#8 (0.860) · hybrid_rrf/I0_GENERIC#9 (0.027) · bm25/lexical#19 (17.252)  [7 sistemas]
 ```
   [1] ANEXO II
   [2] Cálculo de la Tasa Anual Equivalente (TAE)
@@ -293,62 +293,9 @@ _recuperado por:_ e5-large-instruct/I0_GENERIC#2 (0.907) · e5-large-instruct/I2
   [52] ii. se considerará que los incrementos porcentuales del valor del bien inmueble que constituye la garantía del contrato de crédito sobre capital compartido, así como la tasa de cualquier índice de inflación mencionado en el contrato, son un porcentaje igual al mayor de los dos valores siguientes: la tasa de inflación objetivo del Banco Central en ese momento, o el nivel de inflación existente en el momento de la celebración del contrato en el Estado miembro en el que está situado el bien; o bien el 0 % si los dos porcentajes anteriores son negativos.
 ```
 
-### Ley 16/2011, ANEXO I · `BOE-A-2011-10970__ani` [sin juzgar] · flags: anexo, tabla
-https://www.boe.es/buscar/act.php?id=BOE-A-2011-10970#ani
-_recuperado por:_ bge-m3/BASELINE#8 (0.629) · e5-large-instruct/I0_GENERIC#13 (0.890) · e5-large-instruct/I2_CITIZEN_LEGISLATION#13 (0.903) · e5-large-instruct/I1_LEGAL#14 (0.906) · e5-base/BASELINE#19 (0.847)  [5 sistemas]
-```
-  [1] ANEXO I
-  [2] I. Ecuación de base que traduce la equivalencia de las disposiciones del crédito, por una parte, y de los reembolsos y pagos, por otra
-  [3] La ecuación de base, que define la tasa anual equivalente (TAE), expresa la equivalencia anual entre, por un lado, la suma de los valores actualizados de las disposiciones del crédito y, por otro, la suma de los valores actualizados de los importes de los reembolsos y pagos de gastos, es decir:
-  [4] m | m’
-  [5] Σ | Ck (1 + X)-tk | = | Σ | Dℓ (1 + X)-sℓ
-  [6] k=1 | ℓ = 1
-  [7] Donde:
-  [8] – X es la TAE.
-  [9] – m es el número de orden de la última disposición del crédito.
-  [10] – k es el número de orden de una operación de disposición de crédito, por lo que 1 ≤ k ≤ m.
-  [11] – Ck es el importe de la disposición número k.
-  [12] – tk es el intervalo de tiempo, expresado en años y fracciones de año, entre la fecha de la primera operación de disposición y la fecha de cada una de las disposiciones siguientes, de modo que t1 = 0.
-  [13] – m’ es el número de orden del último reembolso o pago de gastos.
-  [14] – ℓ es el número de orden de un reembolso o pago de gastos.
-  [15] – Dℓ es el importe de un reembolso o pago de gastos.
-  [16] – sℓ es el intervalo de tiempo, expresado en años y fracciones de año, entre la fecha de la primera disposición y la de cada reembolso o pago de gastos.
-  [17] Observaciones:
-  [18] a) Las sumas abonadas por cada una de las partes en diferentes momentos no son necesariamente iguales ni se abonan necesariamente a intervalos iguales.
-  [19] b) la fecha inicial es la de la primera disposición de fondos.
-  [20] c) Los intervalos entre las fechas utilizadas en los cálculos se expresarán en años o fracciones de año. Un año tiene 365 días (en el caso de los años bisiestos, 366), 52 semanas o doce meses normalizados. Un mes normalizado tiene 30,41666 días (es decir, 365/12), con independencia de que el año sea bisiesto o no.
-  [21] d) El resultado del cálculo se expresará con una precisión de un decimal como mínimo. Si la cifra del decimal siguiente es superior o igual a 5, el primer decimal se redondeará a la cifra superior.
-  [22] e) Se puede reformular la ecuación utilizando solamente un sumatorio y empleando la noción de flujos (A1), que serán positivos o negativos, es decir, respectivamente pagados o percibidos en los periodos 1 a k, y expresados en años, a saber:
-  [23] n
-  [24] S | = | Σ | Ak (1 + X)-tk
-  [25] k=1
-  [26] Donde S es el saldo de los flujos actualizados, cuyo valor será nulo si se quiere conservar la equivalencia de los flujos.
-  [27] II. Supuestos adicionales para calcular la tasa anual equivalente
-  [28] Los supuestos adicionales para calcular la tasa anual equivalente serán los siguientes:
-  [29] a) Si un contrato de crédito da al consumidor libertad de disposición de fondos, se considerará que el consumidor ha dispuesto del importe total del crédito inmediata y totalmente;
-  [30] b) Si un contrato de crédito establece diferentes formas de disposición de fondos con diferentes tasas o tipos deudores, se considerará que se ha dispuesto del importe total del crédito al más alto de los tipos deudores y con las tasas más elevadas aplicadas a la categoría de transacción más comúnmente utilizada en ese tipo de contrato de crédito;
-  [31] c) Si un contrato de crédito da al consumidor libertad de disposición de fondos en general, pero impone, entre las diferentes formas de disposición, una limitación respecto del importe y del período de tiempo, se considerará que se ha dispuesto del importe del crédito en la fecha más temprana prevista en el contrato de crédito y con arreglo a dichos límites de disposición de fondos;
-  [32] d) En el caso de un crédito en forma de posibilidad de descubierto, se considerará que se ha dispuesto del importe total del crédito en su totalidad y por toda la duración del contrato de crédito. Si la duración de la posibilidad de descubierto no se conoce, la tasa anual equivalente se calculará basándose en el supuesto de que la duración del crédito es de tres meses;
-  [33] e) En el caso de un contrato de crédito de duración indefinida que no sea en forma de posibilidad de descubierto, se presumirá:
-  [34] 1.º Que el crédito se concede por un período de un año a partir de la fecha de la disposición de fondos inicial y que el pago final hecho por el consumidor liquida el saldo de capital, intereses y otros gastos, en su caso,
-  [35] 2.º Que el consumidor devuelve el crédito en doce plazos mensuales iguales, a partir de un mes después de la fecha de la disposición de fondos inicial; no obstante, en caso de que el capital tenga que ser reembolsado en su totalidad en un pago único, dentro de cada período de pago, se presumirá que se producen disposiciones y reembolsos sucesivos de todo el capital por parte del consumidor a lo largo del período de un año; los intereses y otros gastos se aplicarán de conformidad con estas disposiciones y reembolsos de capital y conforme a lo establecido en el contrato de crédito.
-  [36] A los efectos del presente punto, se considerará contrato de crédito de duración indefinida un contrato de crédito que no tiene duración fija e incluye créditos que deben reembolsarse en su totalidad dentro o después de un período, pero que, una vez devueltos, vuelven a estar disponibles para una nueva disposición de fondos;
-  [37] f) En el caso de contratos de crédito distintos de los créditos en forma de posibilidad de descubierto y de duración indefinida contemplados en los supuestos de las letras d) y e):
-  [38] 1.º Si no pueden determinarse la fecha o el importe de un reembolso de capital que debe efectuar el consumidor, se presumirá que el reembolso se hace en la fecha más temprana prevista en el contrato de crédito y conforme al importe más bajo establecido en el mismo,
-  [39] 2.º Si no se conoce la fecha de celebración del contrato de crédito, se presumirá que la fecha de la disposición inicial es la fecha que tenga como resultado el intervalo más corto entre esa fecha y la del primer pago que deba hacer el consumidor;
-  [40] g) Cuando no puedan determinarse la fecha o el importe de un pago que debe efectuar el consumidor conforme al contrato de crédito o a los supuestos establecidos en las letras d), e) o f), se presumirá que el pago se hace con arreglo a las fechas y condiciones exigidas por el prestamista y, cuando estas sean desconocidas:
-  [41] 1.º Los gastos de intereses se pagarán junto con los reembolsos de capital,
-  [42] 2.º Los gastos distintos de los intereses expresados como una suma única se pagarán en la fecha de celebración del contrato de crédito,
-  [43] 3.º Los gastos distintos de los intereses expresados como varios pagos se pagarán a intervalos regulares, comenzando en la fecha del primer reembolso de capital y, si el importe de tales pagos no se conoce, se presumirá que tienen importes iguales,
-  [44] 4.º El pago final liquidará el saldo de capital, intereses y otros gastos, en su caso;
-  [45] h) Si todavía no se ha acordado el límite máximo aplicable al crédito, se presumirá que es de 1.500,00 euros;
-  [46] i) Si durante un período o por un importe limitados se proponen diferentes tipos deudores y tasas, se considerará que el tipo deudor y las tasas corresponden al tipo más alto de toda la duración del contrato de crédito;
-  [47] j) En los contratos de crédito al consumo en los que se haya convenido un tipo deudor fijo en relación con el período inicial, finalizado el cual se determina un nuevo tipo deudor, que se ajusta periódicamente con arreglo a un indicador convenido, el cálculo de la tasa anual equivalente partirá del supuesto de que, al final del período de tipo deudor fijo, el tipo deudor es el mismo que en el momento de calcularse la tasa anual equivalente, en función del valor del indicador convenido en ese momento.
-```
-
 ### Ley 16/2011, ANEXO II · `BOE-A-2011-10970__anii` [JUZGADO rel=0 draft] · flags: anexo, tabla
 https://www.boe.es/buscar/act.php?id=BOE-A-2011-10970#anii
-_recuperado por:_ bge-m3/BASELINE#2 (0.659) · e5-base/BASELINE#3 (0.869) · e5-large-instruct/I0_GENERIC#12 (0.895) · e5-large-instruct/I1_LEGAL#15 (0.904) · e5-large-instruct/I2_CITIZEN_LEGISLATION#15 (0.899)  [5 sistemas]
+_recuperado por:_ bge-m3/BASELINE#2 (0.659) · e5-base/BASELINE#3 (0.869) · e5-large-instruct/I0_GENERIC#12 (0.895) · hybrid_rrf/I0_GENERIC#13 (0.026) · e5-large-instruct/I1_LEGAL#15 (0.904) · e5-large-instruct/I2_CITIZEN_LEGISLATION#15 (0.899) · bm25/lexical#20 (17.114)  [7 sistemas]
 ```
   [1] ANEXO II
   [2] Información normalizada europea sobre el crédito al consumo
@@ -400,6 +347,109 @@ _recuperado por:_ bge-m3/BASELINE#2 (0.659) · e5-base/BASELINE#3 (0.869) · e5-
   [48] c) Relativa al recurso
   [49] Existencia y acceso a los procedimientos extrajudiciales de reclamación y recurso | [Si existe o no acceso a procedimientos extrajudiciales de reclamación y recurso para el consumidor que es parte en el contrato a distancia, y, de ser así, cómo puede el consumidor tener acceso a ellos]
   [50] (*) Estos datos son facultativos para el prestamista
+```
+
+### Ley 16/2011, ANEXO III · `BOE-A-2011-10970__aniii` [sin juzgar] · flags: anexo, tabla
+https://www.boe.es/buscar/act.php?id=BOE-A-2011-10970#aniii
+_recuperado por:_ hybrid_rrf/I0_GENERIC#11 (0.027) · bge-m3/BASELINE#14 (0.614) · bm25/lexical#14 (17.996) · e5-base/BASELINE#15 (0.852) · e5-large-instruct/I0_GENERIC#16 (0.884)  [5 sistemas]
+```
+  [1] ANEXO III
+  [2] Información europea de créditos al consumo
+  [3] Para:
+  [4] 1. Descubiertos.
+  [5] 2. Créditos al consumo ofrecidos por determinadas organizaciones de crédito (artículo 2, apartado 5, de la Directiva 2008/48/CE).
+  [6] 3. Conversión de la deuda.
+  [7] 1. Identidad y detalles de contacto del prestamista/intermediario del crédito.
+  [8] Prestamista Dirección Número de teléfono (*) Correo electrónico (*) Número de fax (*) Dirección de la página web (*) | [Identidad] [Dirección social para uso del consumidor]
+  [9] Si ha lugar Intermediario del crédito Dirección Número de teléfono (*) Correo electrónico (*) Número de fax (*) Dirección de la página web (*) | [Identidad] [Dirección social para uso del consumidor]
+  [10] (*) Estos datos son facultativos para el prestamista
+  [11] Cuando se indique «si ha lugar», el prestamista tendrá que rellenar el apartado si la información es pertinente para el producto crediticio, pero si la información no es pertinente para el tipo de crédito del que se trate, deberá suprimir los datos correspondientes o la sección entera.
+  [12] Las indicaciones que se hallan entre corchetes constituyen una explicación para el prestamista que han de ser sustituidas por la información correspondiente.
+  [13] 2. Descripción de las características principales del producto de crédito.
+  [14] Tipo de crédito
+  [15] Importe total del crédito Es decir, el importe máximo o la suma de todas las cantidades puestas a disposición del consumidor en el marco de un contrato de crédito.
+  [16] Duración del contrato de crédito
+  [17] Si ha lugar, Se le puede solicitar el reembolso del importe del crédito en su totalidad, previa petición, en cualquier momento.
+  [18] 3. Costes del crédito.
+  [19] Tipo deudor o, si ha lugar, los diferentes tipos deudores que se aplican al contrato de crédito | [ % - fijo, o - variable (con el índice o tipo de referencia aplicable al tipo deudor inicial)]
+  [20] Si ha lugar, Tasa anual equivalente (TAE) (*) La TAE es el coste total del crédito expresado en forma de porcentaje anual del importe total del crédito. La TAE sirve para comparar diferentes ofertas. | [ % Aquí figurará un ejemplo representativo que incluya todos los supuestos utilizados para calcular la tasa]
+  [21] Si ha lugar, Costes Si ha lugar, Condiciones en que estos gastos pueden modificarse | [Los costes aplicables en el momento en que se celebró el contrato de crédito]
+  [22] Costes en caso de pagos atrasados | Usted deberá pagar [… (tipo de interés aplicable y acuerdos para su ajuste y, si procede, gastos por impago)] por pagos atrasados
+  [23] (*) No aplicable a los contratos de crédito en forma de posibilidad de descubierto y que han de reembolsarse previa petición o en el plazo máximo de tres meses.
+  [24] 4. Otros aspectos jurídicos importantes.
+  [25] Terminación del contrato de crédito | [Condiciones y procedimiento para poner fin al contrato de crédito]
+  [26] Consulta de una base de datos El prestamista deberá informarle de inmediato y sin cargo del resultado de una consulta de una base de datos si se rechaza la solicitud de crédito sobre la base de una consulta de ese tipo. Esto no se aplica si la difusión de esa información está prohibida por una ley o por la legislación de la Unión Europea o es contraria a los objetivos de orden público o de seguridad pública.
+  [27] Si ha lugar, Período durante el cual el prestamista está vinculado por la información precontractual Si ha lugar, | Esta información será válida desde … hasta …
+  [28] 5. Información adicional si la información precontractual la proporcionan determinadas organizaciones de crédito (artículo 2, apartado 5, de la Directiva 2008/48/CE) o si se ofrece para un crédito al consumidor destinado a la conversión de una deuda.
+  [29] Plazos y, cuando proceda, el orden en que se asignarán dichos plazos. | Se deberá pagar lo siguiente: [Ejemplo representativo de un cuadro de plazos que incluya el importe, el número y la frecuencia de pagos por parte del consumidor]
+  [30] Importe total que deberá usted reembolsar
+  [31] Reembolso anticipado Usted tiene derecho a reembolsar anticipadamente el crédito total o parcialmente, en cualquier momento. Si ha lugar, El prestamista tiene derecho a compensación en caso de reembolso anticipado Si ha lugar, | [Determinación de la compensación (método de cálculo) con arreglo al artículo 30 de la Ley de Contratos de Crédito al Consumo]
+  [32] 6. Información adicional en caso de comercialización a distancia de servicios financieros.
+  [33] a) Relativa al prestamista
+  [34] Si ha lugar, Representante del prestamista en el Estado miembro donde reside Dirección Número de teléfono (*) Correo electrónico (*) Número de fax (*) Página web (*) | [Identidad] [Dirección social que deberá utilizar el consumidor]
+  [35] Si ha lugar, Registro | [El registro comercial en que está inscrito el prestamista y su número de registro o un medio de identificación equivalente en ese registro]
+  [36] Si ha lugar, La autoridad de supervisión
+  [37] b) Relativa al contrato de crédito
+  [38] Derecho de desistimiento Tiene usted derecho a desistir del contrato de crédito en un plazo de 14 días naturales. Si ha lugar, Ejercicio del derecho de desistimiento | Sí/no [Instrucciones prácticas para ejercer el derecho de desistimiento indicando, entre otras cosas, la dirección a la que debe enviarse la notificación del derecho de desistimiento y las consecuencias de no ejercer el derecho de desistimiento]
+  [39] Si ha lugar, La ley escogida por el prestamista como base para el establecimiento de relaciones con usted con anterioridad a la celebración del contrato de crédito
+  [40] Si ha lugar, Cláusula sobre la legislación aplicable al contrato de crédito y/o tribunal competente | [Aquí figurará la cláusula pertinente]
+  [41] Si ha lugar, Régimen lingüístico | La información y los términos contractuales se facilitarán en [lengua]. Con su consentimiento, durante la duración del contrato de crédito nos comunicaremos con usted en [lengua o lenguas].
+  [42] c) Relativa al recurso
+  [43] Existencia y acceso a los procedimientos extrajudiciales de reclamación y recurso | [Si existe o no acceso a procedimientos extrajudiciales de reclamación y recurso para el consumidor que es parte en el contrato a distancia, y, de ser así, cómo puede el consumidor tener acceso a ellos]
+  [44] (*) Estos datos son optativos para el prestamista.
+```
+
+### Ley 16/2011, ANEXO I · `BOE-A-2011-10970__ani` [sin juzgar] · flags: anexo, tabla
+https://www.boe.es/buscar/act.php?id=BOE-A-2011-10970#ani
+_recuperado por:_ bge-m3/BASELINE#8 (0.629) · e5-large-instruct/I0_GENERIC#13 (0.890) · e5-large-instruct/I2_CITIZEN_LEGISLATION#13 (0.903) · e5-large-instruct/I1_LEGAL#14 (0.906) · e5-base/BASELINE#19 (0.847)  [5 sistemas]
+```
+  [1] ANEXO I
+  [2] I. Ecuación de base que traduce la equivalencia de las disposiciones del crédito, por una parte, y de los reembolsos y pagos, por otra
+  [3] La ecuación de base, que define la tasa anual equivalente (TAE), expresa la equivalencia anual entre, por un lado, la suma de los valores actualizados de las disposiciones del crédito y, por otro, la suma de los valores actualizados de los importes de los reembolsos y pagos de gastos, es decir:
+  [4] m | m’
+  [5] Σ | Ck (1 + X)-tk | = | Σ | Dℓ (1 + X)-sℓ
+  [6] k=1 | ℓ = 1
+  [7] Donde:
+  [8] – X es la TAE.
+  [9] – m es el número de orden de la última disposición del crédito.
+  [10] – k es el número de orden de una operación de disposición de crédito, por lo que 1 ≤ k ≤ m.
+  [11] – Ck es el importe de la disposición número k.
+  [12] – tk es el intervalo de tiempo, expresado en años y fracciones de año, entre la fecha de la primera operación de disposición y la fecha de cada una de las disposiciones siguientes, de modo que t1 = 0.
+  [13] – m’ es el número de orden del último reembolso o pago de gastos.
+  [14] – ℓ es el número de orden de un reembolso o pago de gastos.
+  [15] – Dℓ es el importe de un reembolso o pago de gastos.
+  [16] – sℓ es el intervalo de tiempo, expresado en años y fracciones de año, entre la fecha de la primera disposición y la de cada reembolso o pago de gastos.
+  [17] Observaciones:
+  [18] a) Las sumas abonadas por cada una de las partes en diferentes momentos no son necesariamente iguales ni se abonan necesariamente a intervalos iguales.
+  [19] b) la fecha inicial es la de la primera disposición de fondos.
+  [20] c) Los intervalos entre las fechas utilizadas en los cálculos se expresarán en años o fracciones de año. Un año tiene 365 días (en el caso de los años bisiestos, 366), 52 semanas o doce meses normalizados. Un mes normalizado tiene 30,41666 días (es decir, 365/12), con independencia de que el año sea bisiesto o no.
+  [21] d) El resultado del cálculo se expresará con una precisión de un decimal como mínimo. Si la cifra del decimal siguiente es superior o igual a 5, el primer decimal se redondeará a la cifra superior.
+  [22] e) Se puede reformular la ecuación utilizando solamente un sumatorio y empleando la noción de flujos (A1), que serán positivos o negativos, es decir, respectivamente pagados o percibidos en los periodos 1 a k, y expresados en años, a saber:
+  [23] n
+  [24] S | = | Σ | Ak (1 + X)-tk
+  [25] k=1
+  [26] Donde S es el saldo de los flujos actualizados, cuyo valor será nulo si se quiere conservar la equivalencia de los flujos.
+  [27] II. Supuestos adicionales para calcular la tasa anual equivalente
+  [28] Los supuestos adicionales para calcular la tasa anual equivalente serán los siguientes:
+  [29] a) Si un contrato de crédito da al consumidor libertad de disposición de fondos, se considerará que el consumidor ha dispuesto del importe total del crédito inmediata y totalmente;
+  [30] b) Si un contrato de crédito establece diferentes formas de disposición de fondos con diferentes tasas o tipos deudores, se considerará que se ha dispuesto del importe total del crédito al más alto de los tipos deudores y con las tasas más elevadas aplicadas a la categoría de transacción más comúnmente utilizada en ese tipo de contrato de crédito;
+  [31] c) Si un contrato de crédito da al consumidor libertad de disposición de fondos en general, pero impone, entre las diferentes formas de disposición, una limitación respecto del importe y del período de tiempo, se considerará que se ha dispuesto del importe del crédito en la fecha más temprana prevista en el contrato de crédito y con arreglo a dichos límites de disposición de fondos;
+  [32] d) En el caso de un crédito en forma de posibilidad de descubierto, se considerará que se ha dispuesto del importe total del crédito en su totalidad y por toda la duración del contrato de crédito. Si la duración de la posibilidad de descubierto no se conoce, la tasa anual equivalente se calculará basándose en el supuesto de que la duración del crédito es de tres meses;
+  [33] e) En el caso de un contrato de crédito de duración indefinida que no sea en forma de posibilidad de descubierto, se presumirá:
+  [34] 1.º Que el crédito se concede por un período de un año a partir de la fecha de la disposición de fondos inicial y que el pago final hecho por el consumidor liquida el saldo de capital, intereses y otros gastos, en su caso,
+  [35] 2.º Que el consumidor devuelve el crédito en doce plazos mensuales iguales, a partir de un mes después de la fecha de la disposición de fondos inicial; no obstante, en caso de que el capital tenga que ser reembolsado en su totalidad en un pago único, dentro de cada período de pago, se presumirá que se producen disposiciones y reembolsos sucesivos de todo el capital por parte del consumidor a lo largo del período de un año; los intereses y otros gastos se aplicarán de conformidad con estas disposiciones y reembolsos de capital y conforme a lo establecido en el contrato de crédito.
+  [36] A los efectos del presente punto, se considerará contrato de crédito de duración indefinida un contrato de crédito que no tiene duración fija e incluye créditos que deben reembolsarse en su totalidad dentro o después de un período, pero que, una vez devueltos, vuelven a estar disponibles para una nueva disposición de fondos;
+  [37] f) En el caso de contratos de crédito distintos de los créditos en forma de posibilidad de descubierto y de duración indefinida contemplados en los supuestos de las letras d) y e):
+  [38] 1.º Si no pueden determinarse la fecha o el importe de un reembolso de capital que debe efectuar el consumidor, se presumirá que el reembolso se hace en la fecha más temprana prevista en el contrato de crédito y conforme al importe más bajo establecido en el mismo,
+  [39] 2.º Si no se conoce la fecha de celebración del contrato de crédito, se presumirá que la fecha de la disposición inicial es la fecha que tenga como resultado el intervalo más corto entre esa fecha y la del primer pago que deba hacer el consumidor;
+  [40] g) Cuando no puedan determinarse la fecha o el importe de un pago que debe efectuar el consumidor conforme al contrato de crédito o a los supuestos establecidos en las letras d), e) o f), se presumirá que el pago se hace con arreglo a las fechas y condiciones exigidas por el prestamista y, cuando estas sean desconocidas:
+  [41] 1.º Los gastos de intereses se pagarán junto con los reembolsos de capital,
+  [42] 2.º Los gastos distintos de los intereses expresados como una suma única se pagarán en la fecha de celebración del contrato de crédito,
+  [43] 3.º Los gastos distintos de los intereses expresados como varios pagos se pagarán a intervalos regulares, comenzando en la fecha del primer reembolso de capital y, si el importe de tales pagos no se conoce, se presumirá que tienen importes iguales,
+  [44] 4.º El pago final liquidará el saldo de capital, intereses y otros gastos, en su caso;
+  [45] h) Si todavía no se ha acordado el límite máximo aplicable al crédito, se presumirá que es de 1.500,00 euros;
+  [46] i) Si durante un período o por un importe limitados se proponen diferentes tipos deudores y tasas, se considerará que el tipo deudor y las tasas corresponden al tipo más alto de toda la duración del contrato de crédito;
+  [47] j) En los contratos de crédito al consumo en los que se haya convenido un tipo deudor fijo en relación con el período inicial, finalizado el cual se determina un nuevo tipo deudor, que se ajusta periódicamente con arreglo a un indicador convenido, el cálculo de la tasa anual equivalente partirá del supuesto de que, al final del período de tipo deudor fijo, el tipo deudor es el mismo que en el momento de calcularse la tasa anual equivalente, en función del valor del indicador convenido en ese momento.
 ```
 
 ### Ley 5/2019, artículo 4 · `BOE-A-2019-3814__ar-4` [sin juzgar]
@@ -459,62 +509,88 @@ _recuperado por:_ e5-large-instruct/I1_LEGAL#18 (0.896) · e5-large-instruct/I2_
   [8] 5. Si fuera necesario, la tasa anual equivalente se podrá calcular tomando como base los supuestos adicionales que figuran en el anexo I.
 ```
 
-### Ley 16/2011, ANEXO III · `BOE-A-2011-10970__aniii` [sin juzgar] · flags: anexo, tabla
-https://www.boe.es/buscar/act.php?id=BOE-A-2011-10970#aniii
-_recuperado por:_ bge-m3/BASELINE#14 (0.614) · e5-base/BASELINE#15 (0.852) · e5-large-instruct/I0_GENERIC#16 (0.884)  [3 sistemas]
+### Ley 5/2019, [preambulo] · `BOE-A-2019-3814__pr` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2019-3814#pr
+_recuperado por:_ bm25/lexical#8 (20.770) · hybrid_rrf/I0_GENERIC#17 (0.023)  [2 sistemas]
 ```
-  [1] ANEXO III
-  [2] Información europea de créditos al consumo
-  [3] Para:
-  [4] 1. Descubiertos.
-  [5] 2. Créditos al consumo ofrecidos por determinadas organizaciones de crédito (artículo 2, apartado 5, de la Directiva 2008/48/CE).
-  [6] 3. Conversión de la deuda.
-  [7] 1. Identidad y detalles de contacto del prestamista/intermediario del crédito.
-  [8] Prestamista Dirección Número de teléfono (*) Correo electrónico (*) Número de fax (*) Dirección de la página web (*) | [Identidad] [Dirección social para uso del consumidor]
-  [9] Si ha lugar Intermediario del crédito Dirección Número de teléfono (*) Correo electrónico (*) Número de fax (*) Dirección de la página web (*) | [Identidad] [Dirección social para uso del consumidor]
-  [10] (*) Estos datos son facultativos para el prestamista
-  [11] Cuando se indique «si ha lugar», el prestamista tendrá que rellenar el apartado si la información es pertinente para el producto crediticio, pero si la información no es pertinente para el tipo de crédito del que se trate, deberá suprimir los datos correspondientes o la sección entera.
-  [12] Las indicaciones que se hallan entre corchetes constituyen una explicación para el prestamista que han de ser sustituidas por la información correspondiente.
-  [13] 2. Descripción de las características principales del producto de crédito.
-  [14] Tipo de crédito
-  [15] Importe total del crédito Es decir, el importe máximo o la suma de todas las cantidades puestas a disposición del consumidor en el marco de un contrato de crédito.
-  [16] Duración del contrato de crédito
-  [17] Si ha lugar, Se le puede solicitar el reembolso del importe del crédito en su totalidad, previa petición, en cualquier momento.
-  [18] 3. Costes del crédito.
-  [19] Tipo deudor o, si ha lugar, los diferentes tipos deudores que se aplican al contrato de crédito | [ % - fijo, o - variable (con el índice o tipo de referencia aplicable al tipo deudor inicial)]
-  [20] Si ha lugar, Tasa anual equivalente (TAE) (*) La TAE es el coste total del crédito expresado en forma de porcentaje anual del importe total del crédito. La TAE sirve para comparar diferentes ofertas. | [ % Aquí figurará un ejemplo representativo que incluya todos los supuestos utilizados para calcular la tasa]
-  [21] Si ha lugar, Costes Si ha lugar, Condiciones en que estos gastos pueden modificarse | [Los costes aplicables en el momento en que se celebró el contrato de crédito]
-  [22] Costes en caso de pagos atrasados | Usted deberá pagar [… (tipo de interés aplicable y acuerdos para su ajuste y, si procede, gastos por impago)] por pagos atrasados
-  [23] (*) No aplicable a los contratos de crédito en forma de posibilidad de descubierto y que han de reembolsarse previa petición o en el plazo máximo de tres meses.
-  [24] 4. Otros aspectos jurídicos importantes.
-  [25] Terminación del contrato de crédito | [Condiciones y procedimiento para poner fin al contrato de crédito]
-  [26] Consulta de una base de datos El prestamista deberá informarle de inmediato y sin cargo del resultado de una consulta de una base de datos si se rechaza la solicitud de crédito sobre la base de una consulta de ese tipo. Esto no se aplica si la difusión de esa información está prohibida por una ley o por la legislación de la Unión Europea o es contraria a los objetivos de orden público o de seguridad pública.
-  [27] Si ha lugar, Período durante el cual el prestamista está vinculado por la información precontractual Si ha lugar, | Esta información será válida desde … hasta …
-  [28] 5. Información adicional si la información precontractual la proporcionan determinadas organizaciones de crédito (artículo 2, apartado 5, de la Directiva 2008/48/CE) o si se ofrece para un crédito al consumidor destinado a la conversión de una deuda.
-  [29] Plazos y, cuando proceda, el orden en que se asignarán dichos plazos. | Se deberá pagar lo siguiente: [Ejemplo representativo de un cuadro de plazos que incluya el importe, el número y la frecuencia de pagos por parte del consumidor]
-  [30] Importe total que deberá usted reembolsar
-  [31] Reembolso anticipado Usted tiene derecho a reembolsar anticipadamente el crédito total o parcialmente, en cualquier momento. Si ha lugar, El prestamista tiene derecho a compensación en caso de reembolso anticipado Si ha lugar, | [Determinación de la compensación (método de cálculo) con arreglo al artículo 30 de la Ley de Contratos de Crédito al Consumo]
-  [32] 6. Información adicional en caso de comercialización a distancia de servicios financieros.
-  [33] a) Relativa al prestamista
-  [34] Si ha lugar, Representante del prestamista en el Estado miembro donde reside Dirección Número de teléfono (*) Correo electrónico (*) Número de fax (*) Página web (*) | [Identidad] [Dirección social que deberá utilizar el consumidor]
-  [35] Si ha lugar, Registro | [El registro comercial en que está inscrito el prestamista y su número de registro o un medio de identificación equivalente en ese registro]
-  [36] Si ha lugar, La autoridad de supervisión
-  [37] b) Relativa al contrato de crédito
-  [38] Derecho de desistimiento Tiene usted derecho a desistir del contrato de crédito en un plazo de 14 días naturales. Si ha lugar, Ejercicio del derecho de desistimiento | Sí/no [Instrucciones prácticas para ejercer el derecho de desistimiento indicando, entre otras cosas, la dirección a la que debe enviarse la notificación del derecho de desistimiento y las consecuencias de no ejercer el derecho de desistimiento]
-  [39] Si ha lugar, La ley escogida por el prestamista como base para el establecimiento de relaciones con usted con anterioridad a la celebración del contrato de crédito
-  [40] Si ha lugar, Cláusula sobre la legislación aplicable al contrato de crédito y/o tribunal competente | [Aquí figurará la cláusula pertinente]
-  [41] Si ha lugar, Régimen lingüístico | La información y los términos contractuales se facilitarán en [lengua]. Con su consentimiento, durante la duración del contrato de crédito nos comunicaremos con usted en [lengua o lenguas].
-  [42] c) Relativa al recurso
-  [43] Existencia y acceso a los procedimientos extrajudiciales de reclamación y recurso | [Si existe o no acceso a procedimientos extrajudiciales de reclamación y recurso para el consumidor que es parte en el contrato a distancia, y, de ser así, cómo puede el consumidor tener acceso a ellos]
-  [44] (*) Estos datos son optativos para el prestamista.
+  [1] FELIPE VI
+  [2] REY DE ESPAÑA
+  [3] A todos los que la presente vieren y entendieren.
+  [4] Sabed: Que las Cortes Generales han aprobado y Yo vengo en sancionar la siguiente ley:
+  [5] PREÁMBULO
+  [6] I
+  [7] La regulación de los contratos de crédito inmobiliario desempeña un papel relevante en la estabilidad económica y es un instrumento de cohesión social. El sistema hipotecario español y, en particular, el régimen de concesión de préstamos y créditos con garantía hipotecaria inmobiliaria, ha hecho posible que numerosas familias españolas puedan disfrutar de viviendas en propiedad y que lo hagan en una proporción superior a la de muchos países de nuestro entorno. Garantizar un régimen jurídico seguro, ágil y eficaz, que proteja este tipo de operaciones es una exigencia que deriva no sólo de las obligaciones impuestas por el Derecho de la Unión Europea, sino de los indudables beneficios que supone para la economía de un país. Tanto la protección de las transacciones como la seguridad jurídica generan crédito para los individuos, lo que redunda en el crecimiento de la economía. Así mismo, el acceso a la propiedad consolida la libertad y responsabilidad de los individuos como ciudadanos. En este proceso el acceso al crédito hipotecario es un elemento clave en el éxito del régimen de propiedad de España.
+  [8] II
+  [9] Partiendo de estas consideraciones, esta Ley tiene como objeto la trasposición de la Directiva 2014/17/UE del Parlamento Europeo y del Consejo, de 4 de febrero de 2014.
+  [10] Además, vista la experiencia hasta la fecha, y al objeto de la recuperación de la confianza de los prestatarios, se introducen previsiones cuya finalidad es la de potenciar la seguridad jurídica, la transparencia y comprensión de los contratos y de las cláusulas que los componen, así como el justo equilibrio entre las partes.
+  [11] La Directiva 2014/17/UE reconoce en su considerando (3) que «La crisis financiera ha demostrado que el comportamiento irresponsable de los participantes en el mercado puede socavar los cimientos del sistema financiero, (...) y puede tener graves consecuencias sociales y económicas». En particular, la Directiva pone de manifiesto en su considerando (4) que «la Comisión ha determinado una serie de problemas que sufren los mercados hipotecarios de la Unión en relación con la irresponsabilidad en la concesión y contratación de préstamos, así como con el margen potencial de comportamiento irresponsable entre los participantes en el mercado, incluidos los intermediarios de crédito».
+  [12] Dichos considerandos ponen de relieve, además, la asimétrica posición que ocupan en la relación contractual el prestamista y el prestatario, que no queda salvada por el simple hecho de proporcionar al cliente información y advertencias. Se exige, por tanto, a la parte que domina la relación que, como profesional, tenga un plus de responsabilidad en su comportamiento hacia el prestatario.
+  [13] III
+  [14] La Directiva 2014/17/UE establece un régimen específico de protección de las personas consumidoras que tengan la condición de prestatarios, garantes o titulares de garantías en préstamos o créditos garantizados mediante hipoteca sobre bienes inmuebles de uso residencial, o cuya finalidad sea la adquisición de bienes inmuebles de uso residencial.
+  [15] En la Unión Europea, cuyo derecho goza del principio de primacía frente al derecho nacional, la vivienda está reconocida como un derecho fundamental, tal como reconoce expresamente el apartado 65 de la Sentencia del Tribunal de Justicia de la Unión Europea de 10 de septiembre de 2014, asunto C-34/13, donde con toda contundencia se manifiesta que «En el Derecho de la Unión, el derecho a la vivienda es un derecho fundamental garantizado por el artículo 7 de la Carta que el tribunal remitente debe tomar en consideración al aplicar la Directiva 93/13».
+  [16] La normativa europea se refiere a los créditos celebrados con consumidores que estén garantizados mediante hipoteca u otro tipo de garantía, en relación con bienes inmuebles de uso residencial, es decir, su objeto es la protección de los consumidores, entendiéndose por tales las personas físicas que no actúan en el ámbito de su actividad profesional o empresarial. Sin embargo, también permite que por parte de los Estados miembros se adopten disposiciones más estrictas en materia de protección de las personas consumidoras, incluyendo también la posibilidad de ampliar el ámbito de aplicación a no consumidores.
+  [17] De esta forma, la presente Ley extiende su régimen jurídico a todas las personas físicas, con independencia de que sean o no consumidores. Esta ampliación de la esfera subjetiva de protección de la Ley frente a la Directiva sigue la línea tradicional de nuestro ordenamiento jurídico de ampliar el ámbito de protección a colectivos como los trabajadores autónomos. Así se configura el ámbito de aplicación de la vigente normativa de transparencia en materia de créditos hipotecarios que se regula en el Capítulo II del Título III de la Orden EHA/2899/2011, de 28 de octubre, de transparencia y protección del cliente de servicios bancarios.
+  [18] La Ley regula tres aspectos diferenciados. En primer lugar, contiene normas de transparencia y de conducta que imponen obligaciones a los prestamistas e intermediarios de crédito, así como a sus representantes designados, completando y mejorando el actual marco existente de la referida Orden EHA/2899/2011, de 28 de octubre y la Ley 2/2009, de 31 de marzo, por la que se regula la contratación con los consumidores de préstamos o créditos hipotecarios y de servicios de intermediación para la celebración de contratos de préstamo o crédito.
+  [19] En segundo lugar, regula el régimen jurídico de los intermediarios de crédito inmobiliario y los prestamistas inmobiliarios, y en tercer lugar, establece el régimen sancionador para los incumplimientos de las obligaciones contenidas en la misma.
+  [20] Además, se introducen a lo largo del articulado una serie de disposiciones que regulan aspectos que no están específicamente previstos en la normativa europea o que van más allá de su contenido, y cuya finalidad es reforzar determinados aspectos del régimen jurídico de contratación hipotecaria y de su vida contractual, referidos a determinadas situaciones que, en contratos de tan larga duración pueden producirse y deben tenerse en consideración, ya sea exigiendo mayores garantías, reforzando las existentes, estableciendo una regulación clara y sencilla que evite dudas interpretativas innecesarias o estableciendo mecanismos de solución de conflictos o situaciones que pudieran variar la situación del prestatario en las condiciones que contrató. El objetivo último es reforzar las garantías para los prestatarios en el proceso de contratación y evitar en última instancia la ejecución de este tipo de préstamos en vía judicial con la consiguiente pérdida de la vivienda.
+  [21] IV
+  [22] La Ley se estructura en cuatro Capítulos, que se corresponden con las líneas esenciales de la regulación, doce disposiciones adicionales, cinco disposiciones transitorias, una disposición derogatoria y dieciséis disposiciones finales, así como dos Anexos, el I referente a la Ficha Europea de Información Normalizada (FEIN) y el II al Cálculo de la Tasa Anual Equivalente (TAE).
+  [23] El Capítulo I recoge las disposiciones generales que alcanzan al objeto, ámbito de aplicación, carácter irrenunciable de los derechos que reconoce para los prestatarios y definiciones a efectos de la Ley. En los mismos términos que la referida Directiva 2014/17/UE, la Ley se aplicará tanto a la concesión profesional de préstamos con garantía hipotecaria sobre bienes inmuebles de uso residencial y préstamos para la adquisición de inmuebles de uso residencial como a la intermediación profesional en alguna de las dos actividades anteriores.
+  [24] El Capítulo II establece las normas de transparencia y de conducta orientadas, en particular, a la concesión responsable de financiación que afecte a inmuebles, así como a favorecer la progresiva implantación de un mercado de crédito fiable, con reglas homogéneas en el espacio europeo y con un mayor grado de confianza de los clientes en las entidades prestamistas; un mercado en el que las personas físicas que busquen financiación hipotecaria puedan hacerlo con la confianza de que las entidades prestamistas se comportarán de forma profesional y responsable. En este sentido, la Ley contribuye a la implantación de un mercado único europeo más transparente, competitivo y homogéneo, con contratos de crédito que afectan a bienes inmuebles más equitativos y que aseguran un elevado nivel de protección a las personas físicas que obtienen financiación.
+  [25] Este Capítulo se estructura, a su vez, en tres secciones. La sección 1.ª recoge, a modo de disposiciones generales, los principios de actuación básicos en la concesión de préstamos inmobiliarios, dirigidos a la protección de los legítimos intereses, las características generales de la información precontractual, las obligaciones de transparencia en relación con los contratos, la determinación del cálculo de la Tasa Anual Equivalente (TAE) y la Ficha Europea de Información Normalizada (FEIN).
+  [26] Entre los aspectos más novedosos de la Ley se establece una regulación detallada de la fase precontractual. En este sentido, se ha optado por ir más allá de la estricta transposición de la Directiva 2014/17 con el objetivo de garantizar que el prestatario tenga a su disposición la información necesaria para que pueda comprender en su integridad la carga económica y jurídica del préstamo que va a contratar y que, por lo tanto, se pueda considerar cumplido el principio de transparencia en su vertiente material.
+  [27] Esta medida, destinada a reforzar el equilibrio que debe existir entre las partes en toda relación jurídica contractual, se complementa atribuyendo al notario la función de asesorar imparcialmente al prestatario, aclarando todas aquellas dudas que le pudiera suscitar el contrato, y de comprobar que tanto los plazos como los demás requisitos que permiten considerar cumplido el citado principio de transparencia material, especialmente los relacionados con las cláusulas contractuales de mayor complejidad o relevancia en el contrato, concurren al tiempo de autorizar en escritura pública el contrato de préstamo o crédito hipotecario.
+  [28] De ese modo, se constituirá prueba en beneficio de ambas partes –prestamista y prestatario– de que el primero ha cumplido con su obligación de entregar en los plazos previstos dicha documentación y el segundo podrá ejercer el derecho, que presupone también la existencia de un deber, a conocer las consecuencias de aquello a lo que se obliga.
+  [29] No obstante, es importante señalar que, al igual que como sucedió con las modificaciones introducidas en su momento por la Orden EHA/2899/2011, de 28 de octubre, de transparencia y protección del cliente de servicios bancarios, las innovaciones en la fase precontractual, derivadas de la aplicación de esta Ley, no serán de aplicación, salvo a lo que expresamente se atribuya efecto retroactivo, a la cartera hipotecaria concedida. Y no lo serán ni siquiera como parámetro de comparación, en la medida en que nos encontramos ante contratos que se celebraron al amparo de una legislación que determinaba en su integridad los requisitos de transparencia a los que quedaban sujetos tales contratos.
+  [30] La sección 2.ª recoge las normas de conducta que prestamistas, intermediarios de crédito inmobiliario y representantes designados deben cumplir en el proceso de elaboración, promoción, comercialización y contratación de préstamos inmobiliarios, tanto respecto de su organización interna, como respecto del cliente. Cabe destacar algunas de ellas por su especial relevancia. Así, en primer lugar, se exige que el personal que evalúa la solvencia y comercializa préstamos inmobiliarios deba cumplir con determinados requisitos de capacitación que aseguren (artículo 16) que el prestatario recibe una información adecuada y ajustada a sus necesidades por parte del prestamista. Se prohíben, en segundo lugar y con carácter general, las ventas vinculadas, es decir, ventas de paquetes integrados por el préstamo y otros productos, cuando el contrato de préstamo no se ofrezca al prestatario también por separado (artículo 17). Esta medida está orientada a favorecer la elección del producto más adecuado por parte del cliente y fomentar la competencia entre prestamistas, posibilitando la venta agrupada en aquellos casos en los que resulte más beneficioso para aquellos. Por otro lado, se imponen límites a la política retributiva del personal de los prestamistas y de los asesores, evitando incentivos adversos que favorezcan una posible contratación excesiva en detrimento de una adecuada valoración del riesgo y de la provisión de la necesaria información al cliente, estableciendo, en particular, que el volumen de préstamos contratados no sea el factor predominante a la hora de retribuir al personal que los diseña, comercializa o los recomienda (artículo 18). También se limita la actividad de asesoramiento en materia de préstamos y créditos que, con determinadas excepciones, sólo podrá prestarse por los intermediarios de crédito inmobiliario y los prestamistas inmobiliarios (artículo 19), estableciendo al tiempo reglas que aseguren la provisión de recomendaciones claras, objetivas y adaptadas al cliente. Por otra parte, se incorpora por vez primera en nuestro ordenamiento jurídico el derecho del consumidor a convertir el préstamo denominado en moneda extranjera a la moneda en la que el prestatario reciba sus ingresos o la del Estado miembro en el que resida, como mecanismo sencillo y fácil de comprender para conseguir cobertura y protección frente al riesgo de cambio (artículo 20). No obstante, el prestatario profesional, que no sea consumidor, podrá sustituir este derecho por otro tipo de mecanismo alternativo para la cobertura del riesgo de cambio. La cobertura del riesgo de cambio viene acompañada de la obligación de información periódica del prestamista al prestatario sobre la evolución de la deuda y del derecho de éste a convertir, en su caso, el préstamo a una moneda alternativa.
+  [31] La sección 3.ª regula la forma, ejecución y resolución de los contratos. Como novedad se establece el derecho del prestatario a reembolsar, con carácter general, todo o parte del préstamo sin tener que soportar comisiones o compensaciones para el prestamista. Únicamente se satisfará al prestamista la pérdida financiera de éste cuando el reembolso se produzca en los primeros años de vigencia del contrato (difieren entre los contratos a tipo variable y los contratos a tipo fijo), y siempre que esa pérdida no supere aplicando unos porcentajes máximos previstos legalmente (artículo 23). Igualmente reseñable es la opción de favorecer la subrogación y la novación modificativa de préstamos cuando tengan por finalidad la modificación del tipo de interés variable a uno fijo. El objetivo perseguido es lograr que los prestatarios puedan conocer con exactitud el coste que en el medio y largo plazo les va a suponer la financiación que contratan, lo que les permitirá realizar una planificación financiera a largo plazo, a la par que favorece la simplicidad en la redacción de los contratos y en consecuencia la transparencia con los prestatarios. En todo caso, la regulación trata de establecer un punto de equilibrio entre facilitar a las personas físicas el reembolso de sus préstamos y no generar escenarios adversos en los prestamistas respecto de la oferta de contratos de préstamo a tipo fijo, en los que el riesgo de tipo de interés es mayor.
+  [32] Por último, esta sección aborda la nueva regulación del vencimiento anticipado del contrato de préstamo y de los intereses de demora, sustituyendo el régimen vigente, en el que existía cierto margen a la autonomía de la voluntad de las partes, por normas de carácter estrictamente imperativo. Así, mediante el nuevo régimen del vencimiento anticipado se garantiza que este solo pueda tener lugar cuando el incumplimiento del deudor es suficientemente significativo en atención al préstamo contratado. Del mismo modo dota de una mayor seguridad jurídica a la contratación, y se sustituye el anterior régimen de los intereses de demora, en el que únicamente se establecía un límite máximo para cuantificarlos, por un criterio claro y fijo para su determinación. En ambos casos se persigue impedir la inclusión en el contrato de cláusulas que pudieran ser abusivas y, a la vez, robustecer el necesario equilibrio económico y financiero entre las partes.
+  [33] El Capítulo III con la rúbrica de régimen jurídico de los intermediarios de crédito inmobiliario, sus representantes designados y los prestamistas inmobiliarios, se estructura en cuatro secciones. La sección 1.ª describe las fuentes del régimen jurídico de estas figuras (artículo 26). Las secciones 2.ª, 3.ª y 4.ª se refieren a los intermediarios de crédito inmobiliario, los representantes designados de los intermediarios y los prestamistas inmobiliarios, respectivamente. Regulan los requisitos de acceso a la actividad y el régimen de supervisión de los mismos. Aquellos operadores que deseen realizar profesionalmente estas actividades deberán estar debidamente inscritos en el correspondiente registro público y contar, entre otros aspectos, con reconocido prestigio y conocimientos y competencia adecuados.
+  [34] El Capítulo IV se dedica a la regulación del régimen sancionador. A estos efectos, las obligaciones establecidas en esta Ley tienen el carácter de normas de ordenación y disciplina para los intermediarios de crédito inmobiliario y los prestamistas inmobiliarios, que aplicarán el Banco de España o el órgano designado por cada Comunidad Autónoma, en función del ámbito geográfico en el que opere el intermediario o el prestamista inmobiliario, con un abanico de infracciones y sanciones proporcionales a la dimensión de los destinatarios.
+  [35] Las disposiciones adicionales, doce en total, regulan ámbitos específicos vinculados con el régimen jurídico de los contratos de crédito inmobiliario en ámbitos tales como la resolución de controversias a través de reclamaciones extrajudiciales en referencia a la Autoridad Independiente para velar por la protección y transparencia en la contratación inmobiliaria prevista en la Disposición adicional primera de la Ley 7/2017, de 2 de noviembre, la cooperación entre las autoridades competentes, la educación financiera, el régimen de conservación de la documentación precontractual, aspectos de desarrollo autonómico, los supuestos de subrogación de deudor y novación modificativa del contrato de préstamo, las obligaciones del empresario con ocasión de la transmisión del inmueble hipotecado, las obligaciones de notarios y registradores con ocasión de la autorización e inscripción del préstamo hipotecario, los honorarios notariales y registrales en caso de subrogación o novación modificativa de los préstamos por cambio de tipo de interés variable a fijo, el régimen de valoración de bienes inmuebles y la adhesión al Código de Buenas Prácticas para la reestructuración viable de las deudas con garantía hipotecaria sobre la vivienda habitual.
+  [36] La disposición transitoria primera establece como regla general la aplicación no retroactiva de sus disposiciones, de la que se exceptúan los supuestos regulados en sus apartados dos a cuatro. En cuanto a este último, se determina que quedará regulado bajo los términos de esta Ley el vencimiento anticipado de los contratos que tenga lugar a partir de la entrada en vigor de la misma, aunque los contratos se hubieran celebrado con anterioridad e incluso aunque contuvieran alguna estipulación al respecto, salvo que el deudor alegara que la previsión que contiene resulta más favorable para él. Por tanto, esta regulación no se aplica al vencimiento anticipado de los contratos que hubiera tenido lugar antes de la entrada en vigor de la Ley, se hubiera instado o no un procedimiento de ejecución hipotecaria para hacerlo efectivo, y estuviera este suspendido o no.
+  [37] Por su parte, la disposición transitoria segunda prevé la obligación de adaptación al nuevo régimen por parte de los intermediarios de crédito inmobiliario y prestamistas inmobiliarios preexistentes.
+  [38] La disposición transitoria tercera establece un régimen especial en los procesos de ejecución en curso a la entrada en vigor de la Ley 1/2013, de 14 de mayo, de medidas para reforzar la protección a los deudores hipotecarios, reestructuración de deuda y alquiler social para dar cumplimiento a las sentencias de 29 de octubre de 2015 y de 26 de enero de 2017 dictadas por el Tribunal de Justicia de la Unión Europea. Con ello se otorga a los deudores hipotecarios contemplados en la disposición transitoria cuarta de la citada Ley un nuevo plazo de diez días para formular oposición sobre la base de la posible existencia de cláusulas abusivas cuando se den determinadas circunstancias. Este nuevo plazo se contará a partir de la notificación al deudor de su posibilidad de plantear la oposición. Dicha notificación deberá realizarse en el plazo de 15 días naturales a contar desde la entrada en vigor de esta Ley.
+  [39] Las circunstancias que excluyen el otorgamiento de un nuevo plazo residen en razones de seguridad jurídica y coherencia. Por ello no se aplicará la previsión a los supuestos en que el juez de oficio hubiese analizado la existencia de cláusulas abusivas; cuando se hubiera notificado personalmente al ejecutado la posibilidad de formular el incidente extraordinario de oposición basado en la existencia de las causas de oposición previstas en el apartado 7.ª del artículo 557.1 y 4.ª del artículo 695.1 de la Ley de Enjuiciamiento Civil; cuando el ejecutado hubiera formulado el citado incidente extraordinario de oposición, conforme a lo recogido en la citada disposición transitoria cuarta de la Ley 1/2013, de 14 de mayo, o cuando con base en la sentencia del Tribunal de Justicia de la UE de 29 de octubre de 2016 se haya admitido la oposición del ejecutado.
+  [40] Conforme a la disposición transitoria cuarta, los prestamistas podrán seguir utilizando la Ficha de Información Personalizada prevista en el artículo 22 y el anexo II de la Orden EHA/2899/2011, de 28 de octubre, de transparencia y protección del cliente de servicios bancarios, hasta el 21 de marzo de 2019.
+  [41] La disposición transitoria quinta establece el régimen transitorio para la resolución de quejas y reclamaciones en tanto se crea la Autoridad Independiente a que se refiere la Disposición adicional primera de esta Ley.
+  [42] V
+  [43] La Ley contiene 16 disposiciones finales. La primera modifica la Ley Hipotecaria con la finalidad de integrar en ella las mejoras en la protección de los prestatarios en materia de vencimiento anticipado y el interés de demora y otras de carácter técnico.
+  [44] La disposición final segunda modifica el Real Decreto Legislativo 1/1993, de 24 de septiembre, por el que se aprueba el Texto Refundido del Impuesto sobre Transmisiones Patrimoniales y Actos Jurídicos Documentados.
+  [45] La disposición final tercera modifica la Ley 2/1994, de 30 de marzo, sobre subrogación y modificación de préstamos hipotecarios, modificada por la Ley 41/2007, de 7 de diciembre, por la que se modifica la Ley 2/1981, de 25 de marzo, de Regulación del Mercado Hipotecario y otras normas del sistema hipotecario y financiero, de regulación de las hipotecas inversas y el seguro de dependencia y por la que se establece determinada norma tributaria.
+  [46] La disposición final cuarta modifica la Ley 7/1998, de 13 de abril, sobre condiciones generales de la contratación, y entre otras medidas, establece la obligación de remitir las sentencias firmes dictadas en acciones colectivas o individuales por las que se declare la nulidad, cesación o retractación en la utilización de condiciones generales abusivas, al Registro de Condiciones Generales.
+  [47] La disposición final quinta modifica la Ley 1/2000, de 7 de enero, de Enjuiciamiento Civil en consonancia con lo establecido en el párrafo anterior.
+  [48] La disposición final sexta modifica la Ley 14/2000, de 29 de diciembre, de medidas fiscales, administrativas y del orden social, en materia de régimen disciplinario de los notarios.
+  [49] La disposición final séptima modifica la Ley 44/2002, de 22 de noviembre, de Medidas de Reforma del Sistema Financiero, con la finalidad de dar acceso a la Central de Información de Riesgos del Banco de España a todas las entidades prestamistas de crédito inmobiliario.
+  [50] La disposición final octava modifica el Texto Refundido de la Ley General para la Defensa de los Consumidores y Usuarios, y otras leyes complementarias.
+  [51] La disposición final novena adapta el ámbito de aplicación de la Ley 2/2009, de 31 de marzo, a las previsiones de esta Ley, evitando solapamientos normativos y clarificando el régimen jurídico aplicable a cada situación.
+  [52] La disposición final décima modifica el Real Decreto-Ley 6/2012, de 9 de marzo, de medidas urgentes de protección de deudores hipotecarios sin recursos con el fin de convertir el código de buenas prácticas en un mecanismo permanente y obligatorio para todas las entidades adheridas que permita a todos los deudores más vulnerables en situación de impago acceder a las opciones de alivio de la deuda contenidas en el mismo.
+  [53] La disposición final undécima modifica la Ley 9/2012, de 14 de noviembre, de reestructuración y resolución de entidades de crédito, con el fin de clarificar las condiciones y requisitos necesarios con que la Sociedad de Gestión de Activos Procedentes de la Reestructuración Bancaria, S.A., puede iniciar una demanda ejecutiva a efectos de que pueda desarrollar de forma eficaz las funciones que tiene encomendadas, preservándose su posición para la ejecución de las garantías de los activos financieros adquiridos. Dicha medida se enmarca en el objeto social singular de la Sociedad de Gestión de Activos Procedentes de la Reestructuración Bancaria, S.A. y en el interés público derivado de su actividad dentro del proceso de reestructuración y saneamiento del sector bancario español.
+  [54] La disposición final duodécima adapta la Ley 10/2014, de 26 de junio, de ordenación, supervisión y solvencia de entidades de crédito, para evitar solapamientos regulatorios en materia de transparencia con la clientela bancaria, adaptándola a las especificidades del régimen sancionador establecidas por la presente Ley, en particular, en lo relativo a las competencias de las Comunidades Autónomas.
+  [55] Sobre el Título competencial de la Ley, la disposición final decimotercera, establece la competencia estatal exclusiva sobre las bases de obligaciones contractuales, haciendo hincapié en el respeto de las competencias autonómicas en materia de consumo cuando se trate de créditos que recaen sobre vivienda habitual de la persona consumidora.
+  [56] La disposición final decimocuarta señala que mediante esta Ley se incorpora, parcialmente, al ordenamiento jurídico español la Directiva 2014/17/UE del Parlamento Europeo y del Consejo, de 4 de febrero de 2014, sobre los contratos de crédito celebrados con los consumidores para bienes inmuebles de uso residencial y por la que se modifican las Directivas 2008/48/CE y 2013/36/UE y el Reglamento (UE) n.º 1093/2010.
+  [57] La disposición final decimoquinta establece una habilitación normativa a favor del Gobierno en materia de transparencia y conducta a seguir por los prestamistas en la comercialización de préstamos inmobiliarios, que alcanza aspectos específicos como la información precontractual, obligaciones de comunicación, información y documentación, publicidad, evaluación de riesgos y solvencia y otros aspectos relacionados, acompañada de una habilitación a la persona titular del Ministerio de Economía y Empresa para cuestiones muy concretas y de detalle, que requieren de un instrumento normativo más flexible. Con el ejercicio de estas habilitaciones se garantizará la completa transposición de la Directiva 2014/17/UE, a través de norma de naturaleza reglamentaria, al tiempo que se facilita la adaptación ágil y efectiva de las prácticas a los principios establecidos en la Ley y en la normativa europea. Las disposiciones reglamentarias de desarrollo respetarán en todo caso la máxima protección de los prestatarios de acuerdo con el espíritu de esta Ley.
+  [58] Finalmente, la disposición final decimosexta establece la entrada en vigor de la Ley.
 ```
 
-### Ley 5/2019, artículo 13 · `BOE-A-2019-3814__ar-13` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2019-3814#ar-13
-_recuperado por:_ e5-large-instruct/I1_LEGAL#17 (0.898) · e5-large-instruct/I2_CITIZEN_LEGISLATION#17 (0.893)  [2 sistemas]
+### Ley 5/2019, artículo 35 · `BOE-A-2019-3814__ar-35` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2019-3814#ar-35
+_recuperado por:_ bm25/lexical#15 (17.971) · hybrid_rrf/I0_GENERIC#16 (0.024)  [2 sistemas]
 ```
-  [1] Artículo 13. Tasación de los bienes inmuebles.
-  [2] Los inmuebles aportados en garantía habrán de ser objeto de una tasación adecuada antes de la celebración del contrato de préstamo. La tasación se realizará por una sociedad de tasación, servicio de tasación de una entidad de crédito regulados por la Ley 2/1981, de 25 de marzo, de regulación del mercado hipotecario, y/o profesional homologado conforme al Real Decreto 775/1997, de 30 de mayo y a la disposición adicional décima de esta Ley, independiente del prestamista o del intermediario de crédito inmobiliario, utilizando normas de tasación fiables y reconocidas internacionalmente, de conformidad con lo establecido por la Orden ECO/805/2003, de 27 de marzo, sobre normas de valoración de bienes inmuebles y de determinados derechos para ciertas finalidades financieras.
+  [1] Artículo 35. Requisitos de información de los intermediarios de crédito inmobiliario.
+  [2] 1. Con antelación suficiente a la prestación de cualquiera de las actividades propias de la intermediación de crédito inmobiliario definidas en el artículo 4.5), el intermediario de crédito o el representante designado facilitarán al prestatario, como mínimo, la información siguiente en papel o cualquier otro soporte duradero:
+  [3] a) La identidad y domicilio del intermediario de crédito inmobiliario.
+  [4] b) El registro en el que esté inscrito, el número de registro, y los medios para comprobar esa inscripción.
+  [5] c) Si el intermediario de crédito inmobiliario está vinculado a uno o más prestamistas o trabaja exclusivamente para ellos, en cuyo caso, indicará los nombres de los prestamistas en nombre de los cuales actúa.
+  [6] d) Si el intermediario de crédito inmobiliario ofrece o no servicios de asesoramiento y si éstos son independientes.
+  [7] e) La remuneración que, en su caso, el prestatario deba abonar al intermediario de crédito inmobiliario por sus servicios o, cuando ello no sea posible, el método para calcular dicha remuneración.
+  [8] f) Los procedimientos a disposición de los prestatarios u otros interesados para realizar reclamaciones extrajudiciales contra los intermediarios de crédito inmobiliario y, en su caso, las vías de acceso a dichos procedimientos.
+  [9] g) Si procede, la existencia y, cuando se conozca, el importe de las comisiones u otros incentivos que el prestamista o un tercero han de abonar al intermediario de crédito inmobiliario por sus servicios en relación con el contrato de préstamo. Si el importe no es conocido en el momento de facilitarse la información, el intermediario de crédito inmobiliario informará al prestatario de que el importe real será revelado posteriormente en la ficha de información personalizada.
+  [10] h) Cuando el intermediario de crédito cobre una remuneración al prestatario y reciba adicionalmente una comisión del prestamista o de un tercero, deberá informar al prestatario si la remuneración se deducirá o no, total o parcialmente, de la comisión.
+  [11] 2. Los intermediarios de crédito inmobiliario que no estén vinculados pero reciban comisiones de uno o más prestamistas informarán al prestatario del derecho de éste a exigir información sobre los diferentes tipos y cuantías de comisión que abonan los distintos prestamistas que proporcionan los contratos de crédito que se ofrecen al prestatario.
+  [12] 3. La remuneración que, en su caso, el prestatario deba abonar al intermediario de crédito inmobiliario por sus servicios será comunicada al prestamista por aquel para su inclusión en el cálculo de la TAE.
+  [13] 4. Los intermediarios de crédito inmobiliario deben asegurarse de que sus representantes designados, cuando se pongan en contacto con el prestatario o antes de entablar negociaciones con él, le comuniquen, además de la información prevista en el presente artículo, la calidad en la que actúan y el intermediario de crédito inmobiliario al que representan.
+  [14] 5. Los intermediarios de crédito inmobiliario o representantes designados deben presentar fielmente al prestamista correspondiente la información necesaria obtenida a través del prestatario, con el fin de que pueda realizarse la evaluación de la solvencia, sin perjuicio de lo previsto en la legislación de protección de datos personales.
 ```
 
 ---
@@ -523,21 +599,20 @@ _recuperado por:_ e5-large-instruct/I1_LEGAL#17 (0.898) · e5-large-instruct/I2_
 **Pregunta:** ¿Qué se considera una situación de dependencia y qué grados existen?
 _split=test · difficulty=media · failure_mode=—_
 
-### Ley 39/2006, artículo 26 · `BOE-A-2006-21990__a26` [JUZGADO rel=2 reviewed]
-https://www.boe.es/buscar/act.php?id=BOE-A-2006-21990#a26
-_recuperado por:_ bge-m3/BASELINE#1 (0.787) · e5-base/BASELINE#1 (0.886) · e5-large-instruct/I0_GENERIC#1 (0.919) · e5-large-instruct/I1_LEGAL#1 (0.941) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.941)  [5 sistemas]
+### Ley 39/2006, artículo 30 · `BOE-A-2006-21990__a30` [JUZGADO rel=0 draft]
+https://www.boe.es/buscar/act.php?id=BOE-A-2006-21990#a30
+_recuperado por:_ hybrid_rrf/I0_GENERIC#2 (0.031) · bge-m3/BASELINE#3 (0.622) · e5-large-instruct/I0_GENERIC#3 (0.883) · e5-large-instruct/I1_LEGAL#3 (0.904) · e5-large-instruct/I2_CITIZEN_LEGISLATION#3 (0.902) · e5-base/BASELINE#4 (0.852) · bm25/lexical#4 (18.141)  [7 sistemas]
 ```
-  [1] Artículo 26. Grados de dependencia.
-  [2] 1. La situación de dependencia se clasificará en los siguientes grados:
-  [3] a) Grado I. Dependencia moderada: cuando la persona necesita ayuda para realizar varias actividades básicas de la vida diaria, al menos una vez al día o tiene necesidades de apoyo intermitente o limitado para su autonomía personal.
-  [4] b) Grado II. Dependencia severa: cuando la persona necesita ayuda para realizar varias actividades básicas de la vida diaria dos o tres veces al día, pero no quiere el apoyo permanente de un cuidador o tiene necesidades de apoyo extenso para su autonomía personal.
-  [5] c) Grado III. Gran dependencia: cuando la persona necesita ayuda para realizar varias actividades básicas de la vida diaria varias veces al día y, por su pérdida total de autonomía física, mental, intelectual o sensorial, necesita el apoyo indispensable y continuo de otra persona o tiene necesidades de apoyo generalizado para su autonomía personal.
-  [6] 2. Los intervalos para la determinación de los grados se establecerán en el baremo al que se refiere el artículo siguiente.
+  [1] Artículo 30. Revisión del grado de dependencia y de la prestación reconocida.
+  [2] 1. El grado de dependencia será revisable, a instancia del interesado, de sus representantes o de oficio por las Administraciones públicas competentes, por alguna de las siguientes causas:
+  [3] a) Mejoría o empeoramiento de la situación de dependencia.
+  [4] b) Error de diagnóstico o en la aplicación del correspondiente baremo..
+  [5] 2. Las prestaciones podrán ser modificadas o extinguidas en función de la situación personal del beneficiario, cuando se produzca una variación de cualquiera de los requisitos establecidos para su reconocimiento, o por incumplimiento de las obligaciones reguladas en la presente Ley.
 ```
 
 ### Ley 39/2006, artículo 27 · `BOE-A-2006-21990__a27` [JUZGADO rel=0 draft]
 https://www.boe.es/buscar/act.php?id=BOE-A-2006-21990#a27
-_recuperado por:_ bge-m3/BASELINE#2 (0.658) · e5-large-instruct/I0_GENERIC#2 (0.886) · e5-large-instruct/I1_LEGAL#2 (0.917) · e5-large-instruct/I2_CITIZEN_LEGISLATION#2 (0.917) · e5-base/BASELINE#3 (0.853)  [5 sistemas]
+_recuperado por:_ hybrid_rrf/I0_GENERIC#1 (0.032) · bge-m3/BASELINE#2 (0.658) · e5-large-instruct/I0_GENERIC#2 (0.886) · e5-large-instruct/I1_LEGAL#2 (0.917) · e5-large-instruct/I2_CITIZEN_LEGISLATION#2 (0.917) · e5-base/BASELINE#3 (0.853) · bm25/lexical#5 (18.071)  [7 sistemas]
 ```
   [1] Artículo 27. Valoración de la situación de dependencia.
   [2] 1. Las comunidades autónomas determinarán los órganos de valoración de la situación de dependencia, que emitirán un dictamen sobre el grado de dependencia con especificación de los cuidados que la persona pueda requerir. El Consejo Territorial de Servicios Sociales y del Sistema para la Autonomía y Atención a la Dependencia deberá acordar unos criterios comunes de composición y actuación de los órganos de valoración de las comunidades autónomas que, en todo caso, tendrán carácter público.
@@ -547,39 +622,22 @@ _recuperado por:_ bge-m3/BASELINE#2 (0.658) · e5-large-instruct/I0_GENERIC#2 (0
   [6] 5. La valoración se realizará teniendo en cuenta los correspondientes informes sobre la salud de la persona y sobre el entorno en el que viva, y considerando, en su caso, las ayudas técnicas, órtesis y prótesis que le hayan sido prescritas.
 ```
 
-### Ley 39/2006, artículo 30 · `BOE-A-2006-21990__a30` [JUZGADO rel=0 draft]
-https://www.boe.es/buscar/act.php?id=BOE-A-2006-21990#a30
-_recuperado por:_ bge-m3/BASELINE#3 (0.622) · e5-large-instruct/I0_GENERIC#3 (0.883) · e5-large-instruct/I1_LEGAL#3 (0.904) · e5-large-instruct/I2_CITIZEN_LEGISLATION#3 (0.902) · e5-base/BASELINE#4 (0.852)  [5 sistemas]
+### Ley 39/2006, artículo 28 · `BOE-A-2006-21990__a28` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2006-21990#a28
+_recuperado por:_ bm25/lexical#6 (17.895) · e5-large-instruct/I2_CITIZEN_LEGISLATION#7 (0.897) · hybrid_rrf/I0_GENERIC#7 (0.029) · bge-m3/BASELINE#8 (0.584) · e5-large-instruct/I1_LEGAL#8 (0.896) · e5-base/BASELINE#12 (0.841) · e5-large-instruct/I0_GENERIC#13 (0.859)  [7 sistemas]
 ```
-  [1] Artículo 30. Revisión del grado de dependencia y de la prestación reconocida.
-  [2] 1. El grado de dependencia será revisable, a instancia del interesado, de sus representantes o de oficio por las Administraciones públicas competentes, por alguna de las siguientes causas:
-  [3] a) Mejoría o empeoramiento de la situación de dependencia.
-  [4] b) Error de diagnóstico o en la aplicación del correspondiente baremo..
-  [5] 2. Las prestaciones podrán ser modificadas o extinguidas en función de la situación personal del beneficiario, cuando se produzca una variación de cualquiera de los requisitos establecidos para su reconocimiento, o por incumplimiento de las obligaciones reguladas en la presente Ley.
-```
-
-### Ley 39/2006, disposición adicional novena · `BOE-A-2006-21990__danovena` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2006-21990#danovena
-_recuperado por:_ e5-large-instruct/I0_GENERIC#4 (0.879) · e5-large-instruct/I1_LEGAL#4 (0.903) · e5-large-instruct/I2_CITIZEN_LEGISLATION#5 (0.899) · e5-base/BASELINE#14 (0.840) · bge-m3/BASELINE#15 (0.558)  [5 sistemas]
-```
-  [1] Disposición adicional novena. Efectividad del reconocimiento de las situaciones vigentes de gran invalidez y de necesidad de ayuda de tercera persona.
-  [2] Quienes tengan reconocida la pensión de gran invalidez o la necesidad de asistencia de tercera persona según el Real Decreto 1971/1999, de 23 de diciembre, de procedimiento para el reconocimiento, declaración y calificación del grado de discapacidad, tendrán reconocido el requisito de encontrarse en situación de dependencia en el grado que se disponga en el desarrollo reglamentario de esta ley.
-```
-
-### Ley 39/2006, artículo 7 · `BOE-A-2006-21990__a7` [JUZGADO rel=0 draft]
-https://www.boe.es/buscar/act.php?id=BOE-A-2006-21990#a7
-_recuperado por:_ e5-base/BASELINE#2 (0.856) · e5-large-instruct/I2_CITIZEN_LEGISLATION#4 (0.900) · bge-m3/BASELINE#5 (0.596) · e5-large-instruct/I1_LEGAL#5 (0.901) · e5-large-instruct/I0_GENERIC#6 (0.873)  [5 sistemas]
-```
-  [1] Artículo 7. Niveles de protección del Sistema.
-  [2] La protección de la situación de dependencia por parte del Sistema se prestará en los términos establecidos en esta Ley y de acuerdo con los siguientes niveles:
-  [3] 1.º El nivel de protección mínimo establecido por la Administración General del Estado en aplicación del artícu­lo 9.
-  [4] 2.º El nivel de protección que se acuerde entre la Administración General del Estado y la Administración de cada una de las Comunidades Autónomas a través de los Convenios previstos en el artículo 10.
-  [5] 3.º El nivel adicional de protección que pueda establecer cada Comunidad Autónoma.
+  [1] Artículo 28. Procedimiento para el reconocimiento de la situación de dependencia y del derecho a las prestaciones del Sistema.
+  [2] 1. El procedimiento se iniciará a instancia de la persona que pueda estar afectada por algún grado de dependencia o de quien ostente su representación, y su tramitación se ajustará a las previsiones establecidas en la Ley 30/1992, de 26 de noviembre, de Régimen Jurídico de las Administraciones Públicas y del Procedimiento Administrativo Común, con las especificidades que resulten de la presente Ley.
+  [3] 2. El reconocimiento de la situación de dependencia se efectuará mediante resolución expedida por la Administración Autonómica correspondiente a la residencia del solicitante y tendrá validez en todo el territorio del Estado.
+  [4] 3. La resolución a la que se refiere el apartado anterior determinará los servicios o prestaciones que corresponden al solicitante según el grado de dependencia.
+  [5] 4. En el supuesto de cambio de residencia, la Comunidad Autónoma de destino determinará, en función de su red de servicios y prestaciones, los que correspondan a la persona en situación de dependencia.
+  [6] 5. Los criterios básicos de procedimiento para el reconocimiento de la situación de dependencia y las características comunes del órgano y profesionales que procedan al reconocimiento serán acordados por el Consejo Territorial del Sistema para la Autonomía y Atención a la Dependencia.
+  [7] 6. Los servicios de valoración de la situación de dependencia, la prescripción de servicios y prestaciones y la gestión de las prestaciones económicas previstas en la presente Ley, se efectuarán directamente por las Administraciones Públicas no pudiendo ser objeto de delegación, contratación o concierto con entidades privadas.
 ```
 
 ### Ley 39/2006, disposición final primera · `BOE-A-2006-21990__dfprimera` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2006-21990#dfprimera
-_recuperado por:_ bge-m3/BASELINE#4 (0.609) · e5-large-instruct/I2_CITIZEN_LEGISLATION#6 (0.897) · e5-large-instruct/I1_LEGAL#7 (0.898) · e5-large-instruct/I0_GENERIC#9 (0.866) · e5-base/BASELINE#15 (0.838)  [5 sistemas]
+_recuperado por:_ bge-m3/BASELINE#4 (0.609) · hybrid_rrf/I0_GENERIC#5 (0.029) · e5-large-instruct/I2_CITIZEN_LEGISLATION#6 (0.897) · e5-large-instruct/I1_LEGAL#7 (0.898) · bm25/lexical#7 (17.821) · e5-large-instruct/I0_GENERIC#9 (0.866) · e5-base/BASELINE#15 (0.838)  [7 sistemas]
 ```
   [1] Disposición final primera. Aplicación progresiva de la Ley.
   [2] 1. La efectividad del derecho a las prestaciones de dependencia incluidas en la presente ley se ejercitará progresivamente, de modo gradual, y se realizará de acuerdo con el siguiente calendario a partir del 1 de enero de 2007:
@@ -595,22 +653,37 @@ _recuperado por:_ bge-m3/BASELINE#4 (0.609) · e5-large-instruct/I2_CITIZEN_LEGI
   [12] 5. En la evaluación de los resultados a que se refiere el apartado anterior se efectuará informe de impacto de género sobre el desarrollo de la Ley.
 ```
 
-### Ley 39/2006, artículo 28 · `BOE-A-2006-21990__a28` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2006-21990#a28
-_recuperado por:_ e5-large-instruct/I2_CITIZEN_LEGISLATION#7 (0.897) · bge-m3/BASELINE#8 (0.584) · e5-large-instruct/I1_LEGAL#8 (0.896) · e5-base/BASELINE#12 (0.841) · e5-large-instruct/I0_GENERIC#13 (0.859)  [5 sistemas]
+### Ley 39/2006, artículo 26 · `BOE-A-2006-21990__a26` [JUZGADO rel=2 reviewed]
+https://www.boe.es/buscar/act.php?id=BOE-A-2006-21990#a26
+_recuperado por:_ bge-m3/BASELINE#1 (0.787) · e5-base/BASELINE#1 (0.886) · e5-large-instruct/I0_GENERIC#1 (0.919) · e5-large-instruct/I1_LEGAL#1 (0.941) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.941) · hybrid_rrf/I0_GENERIC#3 (0.031) · bm25/lexical#8 (17.727)  [7 sistemas]
 ```
-  [1] Artículo 28. Procedimiento para el reconocimiento de la situación de dependencia y del derecho a las prestaciones del Sistema.
-  [2] 1. El procedimiento se iniciará a instancia de la persona que pueda estar afectada por algún grado de dependencia o de quien ostente su representación, y su tramitación se ajustará a las previsiones establecidas en la Ley 30/1992, de 26 de noviembre, de Régimen Jurídico de las Administraciones Públicas y del Procedimiento Administrativo Común, con las especificidades que resulten de la presente Ley.
-  [3] 2. El reconocimiento de la situación de dependencia se efectuará mediante resolución expedida por la Administración Autonómica correspondiente a la residencia del solicitante y tendrá validez en todo el territorio del Estado.
-  [4] 3. La resolución a la que se refiere el apartado anterior determinará los servicios o prestaciones que corresponden al solicitante según el grado de dependencia.
-  [5] 4. En el supuesto de cambio de residencia, la Comunidad Autónoma de destino determinará, en función de su red de servicios y prestaciones, los que correspondan a la persona en situación de dependencia.
-  [6] 5. Los criterios básicos de procedimiento para el reconocimiento de la situación de dependencia y las características comunes del órgano y profesionales que procedan al reconocimiento serán acordados por el Consejo Territorial del Sistema para la Autonomía y Atención a la Dependencia.
-  [7] 6. Los servicios de valoración de la situación de dependencia, la prescripción de servicios y prestaciones y la gestión de las prestaciones económicas previstas en la presente Ley, se efectuarán directamente por las Administraciones Públicas no pudiendo ser objeto de delegación, contratación o concierto con entidades privadas.
+  [1] Artículo 26. Grados de dependencia.
+  [2] 1. La situación de dependencia se clasificará en los siguientes grados:
+  [3] a) Grado I. Dependencia moderada: cuando la persona necesita ayuda para realizar varias actividades básicas de la vida diaria, al menos una vez al día o tiene necesidades de apoyo intermitente o limitado para su autonomía personal.
+  [4] b) Grado II. Dependencia severa: cuando la persona necesita ayuda para realizar varias actividades básicas de la vida diaria dos o tres veces al día, pero no quiere el apoyo permanente de un cuidador o tiene necesidades de apoyo extenso para su autonomía personal.
+  [5] c) Grado III. Gran dependencia: cuando la persona necesita ayuda para realizar varias actividades básicas de la vida diaria varias veces al día y, por su pérdida total de autonomía física, mental, intelectual o sensorial, necesita el apoyo indispensable y continuo de otra persona o tiene necesidades de apoyo generalizado para su autonomía personal.
+  [6] 2. Los intervalos para la determinación de los grados se establecerán en el baremo al que se refiere el artículo siguiente.
+```
+
+### Ley 39/2006, disposición adicional novena · `BOE-A-2006-21990__danovena` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2006-21990#danovena
+_recuperado por:_ e5-large-instruct/I0_GENERIC#4 (0.879) · e5-large-instruct/I1_LEGAL#4 (0.903) · hybrid_rrf/I0_GENERIC#4 (0.030) · e5-large-instruct/I2_CITIZEN_LEGISLATION#5 (0.899) · bm25/lexical#12 (15.808) · e5-base/BASELINE#14 (0.840) · bge-m3/BASELINE#15 (0.558)  [7 sistemas]
+```
+  [1] Disposición adicional novena. Efectividad del reconocimiento de las situaciones vigentes de gran invalidez y de necesidad de ayuda de tercera persona.
+  [2] Quienes tengan reconocida la pensión de gran invalidez o la necesidad de asistencia de tercera persona según el Real Decreto 1971/1999, de 23 de diciembre, de procedimiento para el reconocimiento, declaración y calificación del grado de discapacidad, tendrán reconocido el requisito de encontrarse en situación de dependencia en el grado que se disponga en el desarrollo reglamentario de esta ley.
+```
+
+### Real Decreto Legislativo 8/2015, artículo 354 · `BOE-A-2015-11724__a354` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2015-11724#a354
+_recuperado por:_ e5-large-instruct/I0_GENERIC#7 (0.868) · hybrid_rrf/I0_GENERIC#8 (0.028) · e5-large-instruct/I1_LEGAL#11 (0.887) · e5-large-instruct/I2_CITIZEN_LEGISLATION#15 (0.884) · bm25/lexical#15 (14.777) · e5-base/BASELINE#17 (0.837) · bge-m3/BASELINE#20 (0.552)  [7 sistemas]
+```
+  [1] Artículo 354. Determinación del grado de discapacidad y de la necesidad del concurso de otra persona.
+  [2] El grado de discapacidad, a efectos del reconocimiento de las asignaciones por hijo o menor a cargo, así como la situación de dependencia y la necesidad del concurso de otra persona a que se refiere el apartado 2 del artículo anterior se determinarán mediante la aplicación del baremo aprobado por el Gobierno mediante real decreto.
 ```
 
 ### Ley 39/2006 · `BOE-A-2006-21990__preambulo` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2006-21990#preambulo
-_recuperado por:_ e5-large-instruct/I1_LEGAL#9 (0.893) · e5-large-instruct/I2_CITIZEN_LEGISLATION#9 (0.894) · e5-large-instruct/I0_GENERIC#11 (0.862) · bge-m3/BASELINE#13 (0.572) · e5-base/BASELINE#19 (0.833)  [5 sistemas]
+_recuperado por:_ e5-large-instruct/I1_LEGAL#9 (0.893) · e5-large-instruct/I2_CITIZEN_LEGISLATION#9 (0.894) · hybrid_rrf/I0_GENERIC#10 (0.026) · e5-large-instruct/I0_GENERIC#11 (0.862) · bge-m3/BASELINE#13 (0.572) · e5-base/BASELINE#19 (0.833) · bm25/lexical#20 (13.827)  [7 sistemas]
 ```
   [1] JUAN CARLOS I
   [2] REY DE ESPAÑA
@@ -650,22 +723,40 @@ _recuperado por:_ e5-large-instruct/I1_LEGAL#9 (0.893) · e5-large-instruct/I2_C
   [36] La disposición transitoria primera regula la participación financiera del Estado en la puesta en marcha del Sistema en un periodo transitorio hasta el año 2015, de acuerdo con las previsiones del calendario de aplicación de la Ley que se contiene en la disposición final primera.
 ```
 
-### Real Decreto Legislativo 8/2015, artículo 354 · `BOE-A-2015-11724__a354` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2015-11724#a354
-_recuperado por:_ e5-large-instruct/I0_GENERIC#7 (0.868) · e5-large-instruct/I1_LEGAL#11 (0.887) · e5-large-instruct/I2_CITIZEN_LEGISLATION#15 (0.884) · e5-base/BASELINE#17 (0.837) · bge-m3/BASELINE#20 (0.552)  [5 sistemas]
+### Ley 39/2006, artículo 14 · `BOE-A-2006-21990__a14` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2006-21990#a14
+_recuperado por:_ bm25/lexical#3 (18.457) · hybrid_rrf/I0_GENERIC#6 (0.029) · e5-large-instruct/I1_LEGAL#10 (0.889) · e5-large-instruct/I2_CITIZEN_LEGISLATION#10 (0.889) · e5-base/BASELINE#13 (0.840) · e5-large-instruct/I0_GENERIC#16 (0.857)  [6 sistemas]
 ```
-  [1] Artículo 354. Determinación del grado de discapacidad y de la necesidad del concurso de otra persona.
-  [2] El grado de discapacidad, a efectos del reconocimiento de las asignaciones por hijo o menor a cargo, así como la situación de dependencia y la necesidad del concurso de otra persona a que se refiere el apartado 2 del artículo anterior se determinarán mediante la aplicación del baremo aprobado por el Gobierno mediante real decreto.
+  [1] Artículo 14. Prestaciones de atención a la dependencia.
+  [2] 1. Las prestaciones de atención a la dependencia podrán tener la naturaleza de servicios y de prestaciones económicas e irán destinadas, por una parte, a la promoción de la autonomía personal y, por otra, a atender las necesidades de las personas con dificultades para la realización de las actividades básicas de la vida diaria.
+  [3] 2. Los servicios del Catálogo del artículo 15 tendrán carácter prioritario y se prestarán a través de la oferta pública de la Red de Servicios Sociales por las respectivas Comunidades Autónomas mediante centros y servicios públicos o privados concertados debidamente acreditados.
+  [4] 3. De no ser posible la atención mediante alguno de estos servicios, en los Convenios a que se refiere el artícu­lo 10 se incorporará la prestación económica vinculada establecida en el artículo 17. Esta prestación irá destinada a la cobertura de los gastos del servicio previsto en el Programa Individual de Atención al que se refiere el artícu­lo 29, debiendo ser prestado por una entidad o centro acreditado para la atención a la dependencia.
+  [5] 4. El beneficiario podrá, excepcionalmente, recibir una prestación económica para ser atendido por cuidadores no profesionales, siempre que se den condiciones adecuadas de convivencia y de habitabilidad de la vivienda y así lo establezca su Programa Individual de Atención.
+  [6] 5. Las personas en situación de dependencia podrán recibir una prestación económica de asistencia personal en los términos del artículo 19.
+  [7] 6. La prioridad en el acceso a los servicios vendrá determinada por el grado de dependencia y, a igual grado, por la capacidad económica del solicitante. Hasta que la red de servicios esté totalmente implantada, las personas en situación de dependencia que no puedan acceder a los servicios por aplicación del régimen de prioridad señalado, tendrán derecho a la prestación económica vinculada al servicio prevista en el artículo 17 de esta ley.
+  [8] 7. A los efectos de esta Ley, la capacidad económica se determinará, en la forma que reglamentariamente se establezca, a propuesta del Consejo Territorial del Sistema para la Autonomía y Atención a la Dependencia, en atención a la renta y el patrimonio del solicitante. En la consideración del patrimonio se tendrán en cuenta la edad del beneficiario y el tipo de servicio que se presta.
+  [9] 8. Las prestaciones económicas establecidas en virtud de esta Ley son inembargables, salvo para el supuesto previsto en el artículo 608 de la Ley de Enjuiciamiento Civil.
 ```
 
-### Ley 39/2006, artículo 13 · `BOE-A-2006-21990__a13` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2006-21990#a13
-_recuperado por:_ e5-base/BASELINE#10 (0.841) · e5-large-instruct/I0_GENERIC#10 (0.864) · bge-m3/BASELINE#14 (0.569) · e5-large-instruct/I1_LEGAL#14 (0.885) · e5-large-instruct/I2_CITIZEN_LEGISLATION#16 (0.884)  [5 sistemas]
+### Ley 39/2006, disposición adicional decimoséptima · `BOE-A-2006-21990__da` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2006-21990#da
+_recuperado por:_ e5-base/BASELINE#9 (0.844) · bge-m3/BASELINE#10 (0.579) · e5-large-instruct/I1_LEGAL#15 (0.884) · hybrid_rrf/I0_GENERIC#17 (0.024) · e5-large-instruct/I2_CITIZEN_LEGISLATION#18 (0.883) · bm25/lexical#18 (14.372)  [6 sistemas]
 ```
-  [1] Artículo 13. Objetivos de las prestaciones de dependencia.
-  [2] La atención a las personas en situación de dependencia y la promoción de su autonomía personal deberán orientarse a la consecución de una mejor calidad de vida y autonomía personal, en un marco de efectiva igualdad de oportunidades, de acuerdo con los siguientes objetivos:
-  [3] a) Facilitar una existencia autónoma en su medio habitual, todo el tiempo que desee y sea posible.
-  [4] b) Proporcionar un trato digno en todos los ámbitos de su vida personal, familiar y social, facilitando su incorporación activa en la vida de la comunidad.
+  [1] Disposición adicional decimoséptima. Régimen jurídico de las personas incluidas en el ámbito de aplicación de la Ley 3/2024, de 30 de octubre, para mejorar la calidad de vida de personas con Esclerosis Lateral Amiotrófica y otras enfermedades o procesos de alta complejidad y curso irreversible.
+  [2] 1. Se crea un nuevo Grado III+ de dependencia extrema, que incluye a las personas que, teniendo reconocido el Grado III de dependencia están diagnosticadas con Esclerosis Lateral Amiotrófica en aquella fase avanzada de la enfermedad que determina una dependencia completa para actividades básicas de la vida diaria, así como asistencia instrumental y personal derivada de problemas respiratorios y disfagia. También se incluye a las personas que, teniendo reconocido el Grado III de dependencia, están diagnosticadas con otras enfermedades o procesos de alta complejidad y curso irreversible, conforme a los criterios establecidos en el reglamento que determine el ámbito de aplicación de la Ley 3/2024, de 30 de octubre, conforme a lo establecido en su disposición final séptima.
+  [3] 2. A este Grado III+ de dependencia extrema se le asignará un nivel mínimo de protección específico, garantizado por la Administración General del Estado, en función de la prestación o servicio que se disfrute.
+  [4] Las personas que tengan reconocido un Grado III+ de dependencia extrema tendrán reconocido el acceso a una prestación económica vinculada al servicio, de conformidad con el artículo 17, que únicamente podrá ser destinada a ayuda a domicilio, o a una prestación económica de asistencia personal, en los términos previstos en el artículo 19.
+```
+
+### Ley 39/2006, artículo 7 · `BOE-A-2006-21990__a7` [JUZGADO rel=0 draft]
+https://www.boe.es/buscar/act.php?id=BOE-A-2006-21990#a7
+_recuperado por:_ e5-base/BASELINE#2 (0.856) · e5-large-instruct/I2_CITIZEN_LEGISLATION#4 (0.900) · bge-m3/BASELINE#5 (0.596) · e5-large-instruct/I1_LEGAL#5 (0.901) · e5-large-instruct/I0_GENERIC#6 (0.873)  [5 sistemas]
+```
+  [1] Artículo 7. Niveles de protección del Sistema.
+  [2] La protección de la situación de dependencia por parte del Sistema se prestará en los términos establecidos en esta Ley y de acuerdo con los siguientes niveles:
+  [3] 1.º El nivel de protección mínimo establecido por la Administración General del Estado en aplicación del artícu­lo 9.
+  [4] 2.º El nivel de protección que se acuerde entre la Administración General del Estado y la Administración de cada una de las Comunidades Autónomas a través de los Convenios previstos en el artículo 10.
+  [5] 3.º El nivel adicional de protección que pueda establecer cada Comunidad Autónoma.
 ```
 
 ### Ley 39/2006, artículo 2 · `BOE-A-2006-21990__a2` [JUZGADO rel=1 reviewed]
@@ -692,7 +783,7 @@ _split=test · difficulty=dificil · failure_mode=—_
 
 ### Ley 27/2014, disposición final cuarta · `BOE-A-2014-12328__dfcuaa` [JUZGADO rel=1 reviewed]
 https://www.boe.es/buscar/act.php?id=BOE-A-2014-12328#dfcuaa
-_recuperado por:_ bge-m3/BASELINE#1 (0.660) · e5-large-instruct/I1_LEGAL#1 (0.915) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.912) · e5-large-instruct/I0_GENERIC#2 (0.903) · e5-base/BASELINE#4 (0.867)  [5 sistemas]
+_recuperado por:_ bge-m3/BASELINE#1 (0.660) · e5-large-instruct/I1_LEGAL#1 (0.915) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.912) · hybrid_rrf/I0_GENERIC#1 (0.031) · e5-large-instruct/I0_GENERIC#2 (0.903) · e5-base/BASELINE#4 (0.867) · bm25/lexical#5 (33.177)  [7 sistemas]
 ```
   [1] Disposición final cuarta. Modificaciones en la Ley 20/1990, de 19 de diciembre, sobre Régimen Fiscal de las Cooperativas.
   [2] Primero. Con efectos para los períodos impositivos iniciados a partir de 1 de enero de 2011, se introducen las siguientes modificaciones en la Ley 20/1990, de 19 de diciembre, sobre Régimen Fiscal de las Cooperativas:
@@ -729,9 +820,45 @@ _recuperado por:_ bge-m3/BASELINE#1 (0.660) · e5-large-instruct/I1_LEGAL#1 (0.9
   [33] 2. El limite a que se refiere el apartado 1 del artículo 24 de esta Ley será del 60 por ciento para los períodos impositivos que se inicien en el año 2016.»
 ```
 
+### Ley 20/1990, artículo 24 · `BOE-A-1990-30735__art24` [JUZGADO rel=2 reviewed]
+https://www.boe.es/buscar/act.php?id=BOE-A-1990-30735#art24
+_recuperado por:_ e5-base/BASELINE#2 (0.871) · hybrid_rrf/I0_GENERIC#3 (0.030) · e5-large-instruct/I1_LEGAL#6 (0.910) · e5-large-instruct/I2_CITIZEN_LEGISLATION#6 (0.907) · bm25/lexical#7 (31.680) · bge-m3/BASELINE#8 (0.626) · e5-large-instruct/I0_GENERIC#8 (0.898)  [7 sistemas]
+```
+  [1] Artículo 24. Compensación de cuotas negativas.
+  [2] 1. Si la suma algebraica a que se refiere el artículo anterior resultase negativa, su importe podrá compensarse por la cooperativa con las cuotas íntegras positivas de los períodos impositivos siguientes, con el límite del 70 por ciento de la cuota íntegra previa a su compensación. En todo caso, serán compensables en el período impositivo cuotas íntegras por el importe que resulte de multiplicar un millón de euros al tipo medio de gravamen de la entidad.
+  [3] El derecho de la Administración para iniciar el procedimiento de comprobación de las cuotas negativas compensadas o pendientes de compensación prescribirá a los 10 años a contar desde el día siguiente a aquel en que finalice el plazo establecido para presentar la declaración o autoliquidación correspondiente al período impositivo en que se generó el derecho a su aplicación.
+  [4] Transcurrido dicho plazo, el contribuyente deberá acreditar las cuotas negativas cuya compensación pretenda, mediante la exhibición de la liquidación o autoliquidación y la contabilidad, con acreditación de su depósito durante el citado plazo en el Registro Mercantil.
+  [5] 2. Este procedimiento sustituye a la compensación de bases imponibles negativas prevista en el artículo 26 de la Ley 27/2014, de 27 de noviembre, del Impuesto sobre Sociedades que, en consecuencia, no será aplicable a las cooperativas.
+```
+
+### Ley 20/1990, artículo 33 · `BOE-A-1990-30735__art33` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-1990-30735#art33
+_recuperado por:_ e5-base/BASELINE#5 (0.866) · bge-m3/BASELINE#6 (0.628) · hybrid_rrf/I0_GENERIC#11 (0.024) · e5-large-instruct/I2_CITIZEN_LEGISLATION#14 (0.901) · e5-large-instruct/I1_LEGAL#15 (0.903) · bm25/lexical#17 (26.739)  [6 sistemas]
+```
+  [1] Artículo 33. Beneficios fiscales reconocidos a las cooperativas protegidas.
+  [2] Las cooperativas protegidas disfrutarán de los siguientes beneficios fiscales:
+  [3] 1. En el Impuesto sobre Transmisiones Patrimoniales y Actos Jurídicos Documentados, exención, por cualquiera de los conceptos que puedan ser de aplicación, salvo el gravamen previsto en el artículo 31.1 del texto refundido, aprobado por Real Decreto Legislativo 3050/1980, de 30 de diciembre, respecto de los actos, contratos y operaciones siguientes:
+  [4] a) Los actos de constitución, ampliación de capital, fusión y escisión.
+  [5] b) La constitución y cancelación de préstamos, incluso los representados por obligaciones.
+  [6] c) Las adquisiciones de bienes y derechos que se integren en el Fondo de Educación y Promoción para el cumplimiento de sus fines.
+  [7] 2. En el Impuesto sobre Sociedades se aplicarán los siguientes tipos de gravamen:
+  [8] a) A la base imponible, positiva o negativa, correspondiente a los resultados cooperativos se le aplicará el tipo del 20 por 100.
+  [9] b) A la base imponible, positiva o negativa, correspondiente a los resultados extracooperativos se le aplicará el tipo general.
+  [10] 3. Asimismo, gozarán, en el Impuesto sobre Sociedades, de libertad de amortización de los elementos de activo fijo nuevo amortizable, adquiridos en el plazo de tres años a partir de la fecha de su inscripción en el Registro de Cooperativas y Sociedades Anónimas Laborales del Ministerio de Trabajo y Seguridad Social, o, en su caso, de las Comunidades Autónomas.
+  [11] La cantidad fiscalmente deducible en concepto de libertad de amortización, una vez practicada la amortización normal de cada ejercicio en cuantía no inferior a la mínima, no podrá exceder del importe del saldo de la cuenta de resultados cooperativos disminuido en las aplicaciones obligatorias al Fondo de Reserva Obligatorio y participaciones del personal asalariado.
+  [12] Este beneficio es compatible, en su caso, para los mismos elementos, con la deducción por inversiones prevista en el artículo 26 de la Ley 61/1978, de 27 de diciembre.
+  [13] 4. Gozarán de una bonificación del 95 por 100 de la cuota, y, en su caso, de los recargos, de los siguientes tributos locales:
+  [14] a) Impuesto sobre Actividades Económicas.
+  [15] b) Impuesto sobre Bienes Inmuebles correspondiente a los bienes de naturaleza rústica de las Cooperativas Agrarias y de Explotación Comunitaria de la Tierra.
+  [16] A efectos de lo previsto en el artículo 9.2 de la Ley 39/1988, de 28 de diciembre, reguladora de las Haciendas Locales, los Ayuntamientos comunicarán anualmente a la Dirección General de Coordinación con las Haciendas Territoriales del Ministerio de Economía y Hacienda la relación de cooperativas que hayan disfrutado efectivamente de estas bonificaciones y el importe total del gasto fiscal soportado.
+  [17] Previas las comprobaciones que sean necesarias, la Dirección General de Coordinación con las Haciendas Territoriales ordenará las compensaciones que procedan con cargo a un crédito ampliable que se consignará, a tal efecto, en los Presupuestos Generales del Estado.
+  [18] 5. En el Impuesto General sobre el Tráfico de las Empresas, exención para las operaciones sujetas que realicen las cooperativas entre sí o con sus socios, en Canarias, Ceuta y Melilla.
+  [19] Se exceptúan de esta exención las ventas, entregas o transmisiones de bienes inmuebles.
+```
+
 ### Ley 20/1990 · `BOE-A-1990-30735__preambulo` [JUZGADO rel=0 draft]
 https://www.boe.es/buscar/act.php?id=BOE-A-1990-30735#preambulo
-_recuperado por:_ e5-large-instruct/I0_GENERIC#3 (0.902) · e5-large-instruct/I2_CITIZEN_LEGISLATION#4 (0.908) · e5-large-instruct/I1_LEGAL#5 (0.910) · e5-base/BASELINE#7 (0.865) · bge-m3/BASELINE#20 (0.609)  [5 sistemas]
+_recuperado por:_ e5-large-instruct/I0_GENERIC#3 (0.902) · e5-large-instruct/I2_CITIZEN_LEGISLATION#4 (0.908) · e5-large-instruct/I1_LEGAL#5 (0.910) · e5-base/BASELINE#7 (0.865) · hybrid_rrf/I0_GENERIC#19 (0.023) · bge-m3/BASELINE#20 (0.609)  [6 sistemas]
 ```
   [1] JUAN CARLOS I
   [2] REY DE ESPAÑA
@@ -758,39 +885,9 @@ _recuperado por:_ e5-large-instruct/I0_GENERIC#3 (0.902) · e5-large-instruct/I2
   [23] Se regula, también, el régimen de las Cooperativas de Crédito, clasificadas como cooperativas protegidas, con ciertas especialidades y el de las Sociedades Agrarias de Transformación, a las que se les reconoce unos beneficios fiscales propios, con una clara aproximación, no obstante, de su régimen tributario a las normas generales, dada la similitud operativa de las primeras con las restantes entidades de crédito y la inexistencia en las segundas de los principios característicos de la fórmula social cooperativa que, por otra parte, tienen la posibilidad de adoptar, al amparo de las previsiones de la Ley General.
 ```
 
-### Ley 20/1990, artículo 24 · `BOE-A-1990-30735__art24` [JUZGADO rel=2 reviewed]
-https://www.boe.es/buscar/act.php?id=BOE-A-1990-30735#art24
-_recuperado por:_ e5-base/BASELINE#2 (0.871) · e5-large-instruct/I1_LEGAL#6 (0.910) · e5-large-instruct/I2_CITIZEN_LEGISLATION#6 (0.907) · bge-m3/BASELINE#8 (0.626) · e5-large-instruct/I0_GENERIC#8 (0.898)  [5 sistemas]
-```
-  [1] Artículo 24. Compensación de cuotas negativas.
-  [2] 1. Si la suma algebraica a que se refiere el artículo anterior resultase negativa, su importe podrá compensarse por la cooperativa con las cuotas íntegras positivas de los períodos impositivos siguientes, con el límite del 70 por ciento de la cuota íntegra previa a su compensación. En todo caso, serán compensables en el período impositivo cuotas íntegras por el importe que resulte de multiplicar un millón de euros al tipo medio de gravamen de la entidad.
-  [3] El derecho de la Administración para iniciar el procedimiento de comprobación de las cuotas negativas compensadas o pendientes de compensación prescribirá a los 10 años a contar desde el día siguiente a aquel en que finalice el plazo establecido para presentar la declaración o autoliquidación correspondiente al período impositivo en que se generó el derecho a su aplicación.
-  [4] Transcurrido dicho plazo, el contribuyente deberá acreditar las cuotas negativas cuya compensación pretenda, mediante la exhibición de la liquidación o autoliquidación y la contabilidad, con acreditación de su depósito durante el citado plazo en el Registro Mercantil.
-  [5] 2. Este procedimiento sustituye a la compensación de bases imponibles negativas prevista en el artículo 26 de la Ley 27/2014, de 27 de noviembre, del Impuesto sobre Sociedades que, en consecuencia, no será aplicable a las cooperativas.
-```
-
-### Ley 20/1990, artículo 6 · `BOE-A-1990-30735__art6` [JUZGADO rel=2 reviewed]
-https://www.boe.es/buscar/act.php?id=BOE-A-1990-30735#art6
-_recuperado por:_ e5-large-instruct/I1_LEGAL#7 (0.907) · e5-large-instruct/I2_CITIZEN_LEGISLATION#8 (0.905) · e5-large-instruct/I0_GENERIC#9 (0.897) · bge-m3/BASELINE#15 (0.615) · e5-base/BASELINE#19 (0.860)  [5 sistemas]
-```
-  [1] Artículo 6. Cooperativas protegidas: Su consideración tributaria.
-  [2] 1. Serán consideradas como cooperativas protegidas, a los efectos de esta Ley, aquellas Entidades que, sea cual fuere la fecha de su constitución, se ajusten a los principios y disposiciones de la Ley General de Cooperativas o de las Leyes de cooperativas de las Comunidades Autónomas que tengan competencia en esta materia y no incurran en ninguna de las causas previstas en el artículo 13.
-  [3] 2. No obstante lo dispuesto en el apartado anterior, las normas contenidas en el Capítulo cuarto del Título III [sic] de esta Ley serán de aplicación a todas las cooperativas regularmente constituidas e inscritas en el Registro de Cooperativas correspondiente, aun en el caso de que incurran en alguna de las causas de pérdida de la condición de Cooperativa fiscalmente protegida.
-  [4] En este último supuesto, las cooperativas tributarán siempre al tipo general del Impuesto sobre Sociedades por la totalidad de sus resultados.
-```
-
-### Ley 20/1990, disposición adicional tercera · `BOE-A-1990-30735__tercera` [JUZGADO rel=0 draft]
-https://www.boe.es/buscar/act.php?id=BOE-A-1990-30735#tercera
-_recuperado por:_ bge-m3/BASELINE#2 (0.640) · e5-large-instruct/I0_GENERIC#6 (0.899) · e5-large-instruct/I1_LEGAL#8 (0.906) · e5-base/BASELINE#9 (0.864) · e5-large-instruct/I2_CITIZEN_LEGISLATION#9 (0.904)  [5 sistemas]
-```
-  [1] Disposición adicional tercera.
-  [2] 1. Las cooperativas de trabajo asociado fiscalmente protegidas que integren, al menos, un 50 por 100 de socios minusválidos y que acrediten que, en el momento de constituirse la cooperativa, dichos socios se hallaban en situación de desempleo, gozarán de una bonificación del 90 por 100 de la cuota íntegra del Impuesto sobre Sociedades durante los cinco primeros años de actividad social, en tanto se mantenga el referido porcentaje de socios.
-  [3] 2. La Ley de Presupuestos Generales del Estado podrá adecuar o suprimir esta bonificación en función de la evolución del mercado de trabajo.
-```
-
 ### Ley 20/1990, artículo 13 · `BOE-A-1990-30735__art13` [JUZGADO rel=0 draft]
 https://www.boe.es/buscar/act.php?id=BOE-A-1990-30735#art13
-_recuperado por:_ e5-base/BASELINE#3 (0.867) · e5-large-instruct/I2_CITIZEN_LEGISLATION#7 (0.905) · e5-large-instruct/I1_LEGAL#9 (0.905) · bge-m3/BASELINE#10 (0.623) · e5-large-instruct/I0_GENERIC#15 (0.894)  [5 sistemas]
+_recuperado por:_ e5-base/BASELINE#3 (0.867) · e5-large-instruct/I2_CITIZEN_LEGISLATION#7 (0.905) · e5-large-instruct/I1_LEGAL#9 (0.905) · bge-m3/BASELINE#10 (0.623) · e5-large-instruct/I0_GENERIC#15 (0.894) · hybrid_rrf/I0_GENERIC#18 (0.023)  [6 sistemas]
 ```
   [1] Artículo 13. Causas de pérdida de la condición de cooperativa fiscalmente protegida.
   [2] Será causa de pérdida de la condición de cooperativa fiscalmente protegida incurrir en alguna de las circunstancias que se relacionan a continuación:
@@ -818,7 +915,7 @@ _recuperado por:_ e5-base/BASELINE#3 (0.867) · e5-large-instruct/I2_CITIZEN_LEG
 
 ### Ley 20/1990, disposición adicional séptima · `BOE-A-1990-30735__septima` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-1990-30735#septima
-_recuperado por:_ e5-base/BASELINE#6 (0.865) · e5-large-instruct/I1_LEGAL#12 (0.905) · e5-large-instruct/I2_CITIZEN_LEGISLATION#13 (0.902) · bge-m3/BASELINE#19 (0.609) · e5-large-instruct/I0_GENERIC#20 (0.891)  [5 sistemas]
+_recuperado por:_ e5-base/BASELINE#6 (0.865) · e5-large-instruct/I1_LEGAL#12 (0.905) · e5-large-instruct/I2_CITIZEN_LEGISLATION#13 (0.902) · hybrid_rrf/I0_GENERIC#14 (0.024) · bge-m3/BASELINE#19 (0.609) · e5-large-instruct/I0_GENERIC#20 (0.891)  [6 sistemas]
 ```
   [1] Disposición adicional séptima. Reglas especiales aplicables a las Cooperativas en relación con los activos por impuesto diferido.
   [2] En el supuesto de sociedades cooperativas a las que resulte de aplicación esta Ley, se aplicarán las siguientes especialidades:
@@ -830,39 +927,26 @@ _recuperado por:_ e5-base/BASELINE#6 (0.865) · e5-large-instruct/I1_LEGAL#12 (0
   [8] c) Los activos por impuesto diferido a que se refiere el último párrafo del apartado 1 de la Disposición adicional vigésima segunda del Texto Refundido de la Ley del Impuesto sobre Sociedades, deberán entenderse referidos a los correspondientes al derecho a compensar en ejercicios posteriores las cuotas negativas.
 ```
 
-### Ley 20/1990, disposición adicional octava · `BOE-A-1990-30735__octava-2` [JUZGADO rel=1 reviewed]
-https://www.boe.es/buscar/act.php?id=BOE-A-1990-30735#octava-2
-_recuperado por:_ e5-large-instruct/I0_GENERIC#1 (0.907) · e5-large-instruct/I1_LEGAL#3 (0.914) · e5-large-instruct/I2_CITIZEN_LEGISLATION#3 (0.908) · bge-m3/BASELINE#12 (0.622)  [4 sistemas]
+### Ley 27/2014, artículo 67 · `BOE-A-2014-12328__a67` [JUZGADO rel=0 draft]
+https://www.boe.es/buscar/act.php?id=BOE-A-2014-12328#a67
+_recuperado por:_ e5-base/BASELINE#1 (0.872) · bm25/lexical#1 (37.271) · bge-m3/BASELINE#4 (0.638) · hybrid_rrf/I0_GENERIC#4 (0.029) · e5-large-instruct/I0_GENERIC#18 (0.892)  [5 sistemas]
 ```
-  [1] Disposición adicional octava. Límites aplicables a la compensación de cuotas tributarias negativas.
-  [2] En el caso de cooperativas cuyo importe neto de la cifra de negocios sea al menos de 20 millones de euros durante los 12 meses anteriores a la fecha en que se inicie el período impositivo, el límite establecido en el apartado 1 del artículo 24 de esta Ley se sustituirá por el siguiente:
-  [3] – El 50 por ciento, cuando en los referidos 12 meses el importe neto de la cifra de negocios sea al menos de 20 millones de euros pero inferior a 60 millones de euros.
-  [4] – El 25 por ciento, cuando en los referidos 12 meses el importe neto de la cifra de negocios sea al menos de 60 millones de euros.
-  [5] La limitación a la compensación de cuotas negativas no resultará de aplicación en el importe de las rentas correspondientes a quitas y esperas consecuencia de un acuerdo con los acreedores no vinculados con el contribuyente.
-```
-
-### Ley 20/1990, artículo 34 · `BOE-A-1990-30735__art34` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-1990-30735#art34
-_recuperado por:_ e5-large-instruct/I0_GENERIC#7 (0.898) · e5-base/BASELINE#8 (0.865) · e5-large-instruct/I1_LEGAL#11 (0.905) · e5-large-instruct/I2_CITIZEN_LEGISLATION#12 (0.903)  [4 sistemas]
-```
-  [1] Artículo 34. Beneficios fiscales reconocidos a las cooperativas especialmente protegidas.
-  [2] Las cooperativas especialmente protegidas disfrutarán, además de los beneficios reconocidos en el artículo anterior, de los siguientes:
-  [3] 1. En el Impuesto sobre Transmisiones Patrimoniales y Actos Jurídicos Documentados, exención para las operaciones de adquisición de bienes y derechos destinados directamente al cumplimiento de sus fines sociales y estatutarios.
-  [4] 2. En el Impuesto sobre Sociedades disfrutarán de una bonificación del 50 por 100 de la cuota íntegra a que se refiere el artículo 23 de esta Ley.
-```
-
-### Ley 20/1990, artículo 37 · `BOE-A-1990-30735__art37` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-1990-30735#art37
-_recuperado por:_ e5-large-instruct/I1_LEGAL#13 (0.904) · e5-large-instruct/I2_CITIZEN_LEGISLATION#15 (0.901) · bge-m3/BASELINE#16 (0.615) · e5-base/BASELINE#20 (0.859)  [4 sistemas]
-```
-  [1] Artículo 37. Aplicación de los beneficios fiscales y pérdida de los mismos.
-  [2] Las exenciones y bonificaciones fiscales previstas en la presente Ley se aplicarán a las cooperativas protegidas y, en su caso, a las especialmente protegidas, sin necesidad de previa declaración administrativa sobre la procedencia de su disfrute.
-  [3] La concurrencia de alguna de las circunstancias tipificadas en la presente Ley como causas de pérdida de la condición de cooperativa fiscalmente protegida determinará la aplicación del régimen tributario general, teniendo en cuenta lo dispuesto en el apartado 2 del artículo 6 de esta Ley, y la privación de los beneficios disfrutados en el ejercicio económico en que se produzca, sin perjuicio de lo previsto en la Ley General Tributaria sobre infracciones y sanciones tributarias e intereses de demora y, en particular, de lo dispuesto en los artículos 84 y 87, apartado 3, de la misma sobre sanciones que no consistan en multa.
+  [1] Artículo 67. Reglas especiales de incorporación de entidades en el grupo fiscal.
+  [2] En el supuesto de que una entidad se incorpore a un grupo fiscal, en la determinación de la base imponible del grupo fiscal resultarán de aplicación las siguientes reglas:
+  [3] a) Los gastos financieros netos pendientes de deducir en el momento de su integración en el grupo fiscal a que se refiere el artículo 16 de esta Ley se deducirán con el límite del 30 por ciento del beneficio operativo de la propia entidad, teniendo en cuenta las eliminaciones e incorporaciones que correspondan a dicha entidad, de acuerdo con lo previsto en los artículos 64 y 65 de esta Ley. Estos gastos financieros se tendrán en cuenta, igualmente, en el límite a que se refiere el apartado 1 del referido artículo 16.
+  [4] Asimismo, la diferencia establecida en el apartado 2 del artículo 16 de esta Ley generada por una entidad con anterioridad a su integración en el grupo fiscal será aplicable en relación con los gastos financieros generados por la propia entidad.
+  [5] b) A los efectos de lo previsto en el artículo 16 de esta Ley, los gastos financieros derivados de deudas destinadas a la adquisición de participaciones en el capital o fondos propios de cualquier tipo de entidades que se incorporen a un grupo de consolidación fiscal se deducirán con el límite adicional del 30 por ciento del beneficio operativo de la entidad o grupo fiscal adquirente, teniendo en cuenta las eliminaciones e incorporaciones que correspondan, de acuerdo con lo previsto en los artículos 64 y 65 de esta Ley, sin incluir en dicho beneficio operativo el correspondiente a la entidad adquirida o cualquier otra que se incorpore al grupo fiscal en los períodos impositivos que se inicien en los 4 años posteriores a dicha adquisición. Estos gastos financieros se tendrán en cuenta, igualmente, en el límite a que se refiere el apartado 1 del referido artículo 16.
+  [6] Los gastos financieros no deducibles que resulten de la aplicación de lo dispuesto en esta letra serán deducibles en períodos impositivos siguientes con el límite previsto en la misma y en el apartado 1 del artículo 16 de esta Ley.
+  [7] El límite previsto en esta letra no resultará de aplicación en el período impositivo en que se adquieran las participaciones en el capital o fondos propios de entidades si la adquisición se financia con deuda, como máximo, en un 70 por ciento del precio de adquisición. Asimismo, este límite no se aplicará en los períodos impositivos siguientes siempre que el importe de esa deuda se minore, desde el momento de la adquisición, al menos en la parte proporcional que corresponda a cada uno de los 8 años siguientes, hasta que la deuda alcance el 30 por ciento del precio de adquisición.
+  [8] c) Las cantidades correspondientes a la reserva de capitalización prevista en el artículo 25 de esta Ley pendientes de aplicar, se aplicarán en la base imponible del grupo fiscal, con el límite del 10 por ciento de la base imponible positiva individual de la propia entidad previa a su aplicación, a la integración de las dotaciones a que se refiere el apartado 12 del artículo 11 de esta Ley y a la compensación de bases imponibles negativas, teniendo en cuenta las eliminaciones e incorporaciones que correspondan a dicha entidad, de acuerdo con lo previsto en los artículos 64 y 65 de esta Ley.
+  [9] d) Las dotaciones a que se refiere el apartado 12 del artículo 11 de esta Ley pendientes de integrar en la base imponible, se integrarán en la base imponible del grupo fiscal, con el límite del 70 por ciento de la base imponible positiva individual de la propia entidad previa a la integración de las dotaciones de la referida naturaleza y a la compensación de bases imponibles negativas, teniendo en cuenta las eliminaciones e incorporaciones que correspondan a dicha entidad, de acuerdo con lo previsto en los artículos 64 y 65 de esta Ley.
+  [10] e) Las bases imponibles negativas de cualquier entidad pendientes de compensar en el momento de su integración en el grupo fiscal podrán ser compensadas en la base imponible de este, con el límite del 70 por ciento de la base imponible individual de la propia entidad, teniendo en cuenta las eliminaciones e incorporaciones que correspondan a dicha entidad, de acuerdo con lo establecido en los artículos 64 y 65 de esta Ley.
+  [11] f) Las cantidades correspondientes a la reserva de nivelación de bases imponibles prevista en el artículo 105 de esta Ley pendiente de adicionar en el momento de su integración en el grupo fiscal se adicionarán a la base imponible de este.
 ```
 
 ### Ley 27/2014, artículo 26 · `BOE-A-2014-12328__a26` [JUZGADO rel=1 reviewed]
 https://www.boe.es/buscar/act.php?id=BOE-A-2014-12328#a26
-_recuperado por:_ bge-m3/BASELINE#13 (0.617) · e5-large-instruct/I1_LEGAL#16 (0.902) · e5-large-instruct/I2_CITIZEN_LEGISLATION#20 (0.897)  [3 sistemas]
+_recuperado por:_ bm25/lexical#2 (35.295) · hybrid_rrf/I0_GENERIC#5 (0.028) · bge-m3/BASELINE#13 (0.617) · e5-large-instruct/I1_LEGAL#16 (0.902) · e5-large-instruct/I2_CITIZEN_LEGISLATION#20 (0.897)  [5 sistemas]
 ```
   [1] Artículo 26. Compensación de bases imponibles negativas.
   [2] 1. Las bases imponibles negativas que hayan sido objeto de liquidación o autoliquidación podrán ser compensadas con las rentas positivas de los períodos impositivos siguientes con el límite del 70 por ciento de la base imponible previa a la aplicación de la reserva de capitalización establecida en el artículo 25 de esta Ley y a su compensación.
@@ -883,26 +967,39 @@ _recuperado por:_ bge-m3/BASELINE#13 (0.617) · e5-large-instruct/I1_LEGAL#16 (0
   [17] Transcurrido dicho plazo, el contribuyente deberá acreditar las bases imponibles negativas cuya compensación pretenda mediante la exhibición de la liquidación o autoliquidación y la contabilidad, con acreditación de su depósito durante el citado plazo en el Registro Mercantil.
 ```
 
-### Ley 27/2014, artículo 67 · `BOE-A-2014-12328__a67` [JUZGADO rel=0 draft]
-https://www.boe.es/buscar/act.php?id=BOE-A-2014-12328#a67
-_recuperado por:_ e5-base/BASELINE#1 (0.872) · bge-m3/BASELINE#4 (0.638) · e5-large-instruct/I0_GENERIC#18 (0.892)  [3 sistemas]
+### Ley 20/1990, disposición adicional octava · `BOE-A-1990-30735__octava-2` [JUZGADO rel=1 reviewed]
+https://www.boe.es/buscar/act.php?id=BOE-A-1990-30735#octava-2
+_recuperado por:_ e5-large-instruct/I0_GENERIC#1 (0.907) · e5-large-instruct/I1_LEGAL#3 (0.914) · e5-large-instruct/I2_CITIZEN_LEGISLATION#3 (0.908) · hybrid_rrf/I0_GENERIC#10 (0.025) · bge-m3/BASELINE#12 (0.622)  [5 sistemas]
 ```
-  [1] Artículo 67. Reglas especiales de incorporación de entidades en el grupo fiscal.
-  [2] En el supuesto de que una entidad se incorpore a un grupo fiscal, en la determinación de la base imponible del grupo fiscal resultarán de aplicación las siguientes reglas:
-  [3] a) Los gastos financieros netos pendientes de deducir en el momento de su integración en el grupo fiscal a que se refiere el artículo 16 de esta Ley se deducirán con el límite del 30 por ciento del beneficio operativo de la propia entidad, teniendo en cuenta las eliminaciones e incorporaciones que correspondan a dicha entidad, de acuerdo con lo previsto en los artículos 64 y 65 de esta Ley. Estos gastos financieros se tendrán en cuenta, igualmente, en el límite a que se refiere el apartado 1 del referido artículo 16.
-  [4] Asimismo, la diferencia establecida en el apartado 2 del artículo 16 de esta Ley generada por una entidad con anterioridad a su integración en el grupo fiscal será aplicable en relación con los gastos financieros generados por la propia entidad.
-  [5] b) A los efectos de lo previsto en el artículo 16 de esta Ley, los gastos financieros derivados de deudas destinadas a la adquisición de participaciones en el capital o fondos propios de cualquier tipo de entidades que se incorporen a un grupo de consolidación fiscal se deducirán con el límite adicional del 30 por ciento del beneficio operativo de la entidad o grupo fiscal adquirente, teniendo en cuenta las eliminaciones e incorporaciones que correspondan, de acuerdo con lo previsto en los artículos 64 y 65 de esta Ley, sin incluir en dicho beneficio operativo el correspondiente a la entidad adquirida o cualquier otra que se incorpore al grupo fiscal en los períodos impositivos que se inicien en los 4 años posteriores a dicha adquisición. Estos gastos financieros se tendrán en cuenta, igualmente, en el límite a que se refiere el apartado 1 del referido artículo 16.
-  [6] Los gastos financieros no deducibles que resulten de la aplicación de lo dispuesto en esta letra serán deducibles en períodos impositivos siguientes con el límite previsto en la misma y en el apartado 1 del artículo 16 de esta Ley.
-  [7] El límite previsto en esta letra no resultará de aplicación en el período impositivo en que se adquieran las participaciones en el capital o fondos propios de entidades si la adquisición se financia con deuda, como máximo, en un 70 por ciento del precio de adquisición. Asimismo, este límite no se aplicará en los períodos impositivos siguientes siempre que el importe de esa deuda se minore, desde el momento de la adquisición, al menos en la parte proporcional que corresponda a cada uno de los 8 años siguientes, hasta que la deuda alcance el 30 por ciento del precio de adquisición.
-  [8] c) Las cantidades correspondientes a la reserva de capitalización prevista en el artículo 25 de esta Ley pendientes de aplicar, se aplicarán en la base imponible del grupo fiscal, con el límite del 10 por ciento de la base imponible positiva individual de la propia entidad previa a su aplicación, a la integración de las dotaciones a que se refiere el apartado 12 del artículo 11 de esta Ley y a la compensación de bases imponibles negativas, teniendo en cuenta las eliminaciones e incorporaciones que correspondan a dicha entidad, de acuerdo con lo previsto en los artículos 64 y 65 de esta Ley.
-  [9] d) Las dotaciones a que se refiere el apartado 12 del artículo 11 de esta Ley pendientes de integrar en la base imponible, se integrarán en la base imponible del grupo fiscal, con el límite del 70 por ciento de la base imponible positiva individual de la propia entidad previa a la integración de las dotaciones de la referida naturaleza y a la compensación de bases imponibles negativas, teniendo en cuenta las eliminaciones e incorporaciones que correspondan a dicha entidad, de acuerdo con lo previsto en los artículos 64 y 65 de esta Ley.
-  [10] e) Las bases imponibles negativas de cualquier entidad pendientes de compensar en el momento de su integración en el grupo fiscal podrán ser compensadas en la base imponible de este, con el límite del 70 por ciento de la base imponible individual de la propia entidad, teniendo en cuenta las eliminaciones e incorporaciones que correspondan a dicha entidad, de acuerdo con lo establecido en los artículos 64 y 65 de esta Ley.
-  [11] f) Las cantidades correspondientes a la reserva de nivelación de bases imponibles prevista en el artículo 105 de esta Ley pendiente de adicionar en el momento de su integración en el grupo fiscal se adicionarán a la base imponible de este.
+  [1] Disposición adicional octava. Límites aplicables a la compensación de cuotas tributarias negativas.
+  [2] En el caso de cooperativas cuyo importe neto de la cifra de negocios sea al menos de 20 millones de euros durante los 12 meses anteriores a la fecha en que se inicie el período impositivo, el límite establecido en el apartado 1 del artículo 24 de esta Ley se sustituirá por el siguiente:
+  [3] – El 50 por ciento, cuando en los referidos 12 meses el importe neto de la cifra de negocios sea al menos de 20 millones de euros pero inferior a 60 millones de euros.
+  [4] – El 25 por ciento, cuando en los referidos 12 meses el importe neto de la cifra de negocios sea al menos de 60 millones de euros.
+  [5] La limitación a la compensación de cuotas negativas no resultará de aplicación en el importe de las rentas correspondientes a quitas y esperas consecuencia de un acuerdo con los acreedores no vinculados con el contribuyente.
+```
+
+### Ley 20/1990, artículo 6 · `BOE-A-1990-30735__art6` [JUZGADO rel=2 reviewed]
+https://www.boe.es/buscar/act.php?id=BOE-A-1990-30735#art6
+_recuperado por:_ e5-large-instruct/I1_LEGAL#7 (0.907) · e5-large-instruct/I2_CITIZEN_LEGISLATION#8 (0.905) · e5-large-instruct/I0_GENERIC#9 (0.897) · bge-m3/BASELINE#15 (0.615) · e5-base/BASELINE#19 (0.860)  [5 sistemas]
+```
+  [1] Artículo 6. Cooperativas protegidas: Su consideración tributaria.
+  [2] 1. Serán consideradas como cooperativas protegidas, a los efectos de esta Ley, aquellas Entidades que, sea cual fuere la fecha de su constitución, se ajusten a los principios y disposiciones de la Ley General de Cooperativas o de las Leyes de cooperativas de las Comunidades Autónomas que tengan competencia en esta materia y no incurran en ninguna de las causas previstas en el artículo 13.
+  [3] 2. No obstante lo dispuesto en el apartado anterior, las normas contenidas en el Capítulo cuarto del Título III [sic] de esta Ley serán de aplicación a todas las cooperativas regularmente constituidas e inscritas en el Registro de Cooperativas correspondiente, aun en el caso de que incurran en alguna de las causas de pérdida de la condición de Cooperativa fiscalmente protegida.
+  [4] En este último supuesto, las cooperativas tributarán siempre al tipo general del Impuesto sobre Sociedades por la totalidad de sus resultados.
+```
+
+### Ley 20/1990, disposición adicional tercera · `BOE-A-1990-30735__tercera` [JUZGADO rel=0 draft]
+https://www.boe.es/buscar/act.php?id=BOE-A-1990-30735#tercera
+_recuperado por:_ bge-m3/BASELINE#2 (0.640) · e5-large-instruct/I0_GENERIC#6 (0.899) · e5-large-instruct/I1_LEGAL#8 (0.906) · e5-base/BASELINE#9 (0.864) · e5-large-instruct/I2_CITIZEN_LEGISLATION#9 (0.904)  [5 sistemas]
+```
+  [1] Disposición adicional tercera.
+  [2] 1. Las cooperativas de trabajo asociado fiscalmente protegidas que integren, al menos, un 50 por 100 de socios minusválidos y que acrediten que, en el momento de constituirse la cooperativa, dichos socios se hallaban en situación de desempleo, gozarán de una bonificación del 90 por 100 de la cuota íntegra del Impuesto sobre Sociedades durante los cinco primeros años de actividad social, en tanto se mantenga el referido porcentaje de socios.
+  [3] 2. La Ley de Presupuestos Generales del Estado podrá adecuar o suprimir esta bonificación en función de la evolución del mercado de trabajo.
 ```
 
 ### Ley 27/2014, disposición transitoria vigésima sexta · `BOE-A-2014-12328__dtvigesimasexta` [JUZGADO rel=0 draft]
 https://www.boe.es/buscar/act.php?id=BOE-A-2014-12328#dtvigesimasexta
-_recuperado por:_ bge-m3/BASELINE#3 (0.638) · e5-base/BASELINE#16 (0.861)  [2 sistemas]
+_recuperado por:_ bge-m3/BASELINE#3 (0.638) · bm25/lexical#11 (28.943) · hybrid_rrf/I0_GENERIC#12 (0.024) · e5-base/BASELINE#16 (0.861)  [4 sistemas]
 ```
   [1] Disposición transitoria vigésima sexta. Régimen de consolidación fiscal de los grupos formados por entidades de crédito integrantes de un sistema institucional de protección de las cajas de ahorros.
   [2] 1. A efectos de la aplicación del régimen de consolidación fiscal establecido en el Capítulo VI del Título VII de esta Ley, en aquellos grupos cuya entidad dominante sea la entidad central de un sistema institucional de protección a que se refiere la letra d) del apartado 3 del artículo octavo de la Ley 13/1985, de 25 de mayo, de coeficientes de inversión, recursos propios y obligaciones de información de los intermediarios financieros, se tendrán en consideración las siguientes especialidades:
@@ -928,9 +1025,29 @@ _recuperado por:_ bge-m3/BASELINE#3 (0.638) · e5-base/BASELINE#16 (0.861)  [2 s
 _split=test · difficulty=dificil · failure_mode=—_
 > ⚠️ Parents ya juzgados que NINGÚN sistema recuperó (revisar recall o gold): BOE-A-2015-8564__a42
 
+### Ley 29/2015, artículo 1 · `BOE-A-2015-8564__a1` [JUZGADO rel=0 draft]
+https://www.boe.es/buscar/act.php?id=BOE-A-2015-8564#a1
+_recuperado por:_ e5-base/BASELINE#1 (0.898) · e5-large-instruct/I0_GENERIC#1 (0.933) · bm25/lexical#1 (36.662) · hybrid_rrf/I0_GENERIC#1 (0.033) · bge-m3/BASELINE#2 (0.707) · e5-large-instruct/I1_LEGAL#8 (0.929) · e5-large-instruct/I2_CITIZEN_LEGISLATION#9 (0.926)  [7 sistemas]
+```
+  [1] Artículo 1. Objeto.
+  [2] 1. La presente ley regula la cooperación jurídica internacional entre las autoridades españolas y extranjeras.
+  [3] 2. Esta ley se aplica en materia civil y mercantil con independencia de la naturaleza del órgano jurisdiccional, incluyendo la responsabilidad civil derivada de delito y los contratos de trabajo.
+```
+
+### Ley 29/2015, artículo 2 · `BOE-A-2015-8564__a2` [JUZGADO rel=0 draft]
+https://www.boe.es/buscar/act.php?id=BOE-A-2015-8564#a2
+_recuperado por:_ e5-base/BASELINE#2 (0.891) · hybrid_rrf/I0_GENERIC#3 (0.031) · bm25/lexical#4 (35.367) · e5-large-instruct/I0_GENERIC#5 (0.923) · bge-m3/BASELINE#12 (0.646) · e5-large-instruct/I1_LEGAL#17 (0.913) · e5-large-instruct/I2_CITIZEN_LEGISLATION#20 (0.909)  [7 sistemas]
+```
+  [1] Artículo 2. Fuentes.
+  [2] La cooperación jurídica internacional en materia civil y mercantil, se rige por:
+  [3] a) Las normas de la Unión Europea y los tratados internacionales en los que España sea parte.
+  [4] b) Las normas especiales del Derecho interno.
+  [5] c) Subsidiariamente, por la presente ley.
+```
+
 ### Ley 29/2015 · `BOE-A-2015-8564__preambulo` [JUZGADO rel=0 draft]
 https://www.boe.es/buscar/act.php?id=BOE-A-2015-8564#preambulo
-_recuperado por:_ bge-m3/BASELINE#1 (0.709) · e5-large-instruct/I1_LEGAL#1 (0.944) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.944) · e5-large-instruct/I0_GENERIC#2 (0.933) · e5-base/BASELINE#4 (0.888)  [5 sistemas]
+_recuperado por:_ bge-m3/BASELINE#1 (0.709) · e5-large-instruct/I1_LEGAL#1 (0.944) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.944) · e5-large-instruct/I0_GENERIC#2 (0.933) · hybrid_rrf/I0_GENERIC#2 (0.031) · e5-base/BASELINE#4 (0.888) · bm25/lexical#5 (35.268)  [7 sistemas]
 ```
   [1] FELIPE VI
   [2] REY DE ESPAÑA
@@ -997,29 +1114,18 @@ _recuperado por:_ bge-m3/BASELINE#1 (0.709) · e5-large-instruct/I1_LEGAL#1 (0.9
   [63] Finalmente, se introducen una disposición final tercera que modifica el artículo 27 de la Ley 5/2012, de 6 de julio, de mediación en asuntos civiles y mercantiles, una disposición final segunda que modifica la Ley 1/2000, de 7 de enero, de Enjuiciamiento Civil para adaptarla a lo establecido en el Reglamento (UE) 1015/2012 del Parlamento y del Consejo, de 12 de diciembre de 2012, relativo a la competencia judicial, el reconocimiento y la ejecución de resoluciones judiciales en materia civil y mercantil, y al Reglamento (UE) n.º 650/2012 del Parlamento Europeo y del Consejo, de 4 de julio 2012, relativo a la competencia, la ley aplicable, el reconocimiento y la ejecución de las resoluciones, a la aceptación y la ejecución de los documentos públicos en materia de sucesiones «mortis causa» y a la creación de un certificado sucesorio europeo, además de una disposición final primera de modificación de la Ley Hipotecaria que incorpora dicho certificado. Por último, mediante la disposición final cuarta se modifica la Ley 2/2014, de 25 de marzo, de la Acción y del Servicio Exterior del Estado, para reconocer también el carácter oficial de las traducciones de documentos públicos extranjeros hechas o asumidas por las representaciones de España en el exterior o las hechas por representaciones extranjeras en España de documentos públicos de su propio Estado. Con ello se facilita la relación de los ciudadanos con las Administraciones Públicas, en especial cuando se trata de expedientes o procedimientos que se tramitan, al menos parcialmente, en el extranjero.
 ```
 
-### Ley 29/2015, artículo 1 · `BOE-A-2015-8564__a1` [JUZGADO rel=0 draft]
-https://www.boe.es/buscar/act.php?id=BOE-A-2015-8564#a1
-_recuperado por:_ e5-base/BASELINE#1 (0.898) · e5-large-instruct/I0_GENERIC#1 (0.933) · bge-m3/BASELINE#2 (0.707) · e5-large-instruct/I1_LEGAL#8 (0.929) · e5-large-instruct/I2_CITIZEN_LEGISLATION#9 (0.926)  [5 sistemas]
+### Ley 29/2015, artículo 11 · `BOE-A-2015-8564__a11` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2015-8564#a11
+_recuperado por:_ bm25/lexical#9 (32.912) · e5-base/BASELINE#11 (0.878) · hybrid_rrf/I0_GENERIC#11 (0.028) · e5-large-instruct/I0_GENERIC#13 (0.917) · e5-large-instruct/I1_LEGAL#14 (0.916) · e5-large-instruct/I2_CITIZEN_LEGISLATION#15 (0.914) · bge-m3/BASELINE#18 (0.630)  [7 sistemas]
 ```
-  [1] Artículo 1. Objeto.
-  [2] 1. La presente ley regula la cooperación jurídica internacional entre las autoridades españolas y extranjeras.
-  [3] 2. Esta ley se aplica en materia civil y mercantil con independencia de la naturaleza del órgano jurisdiccional, incluyendo la responsabilidad civil derivada de delito y los contratos de trabajo.
-```
-
-### Ley 29/2015, artículo 2 · `BOE-A-2015-8564__a2` [JUZGADO rel=0 draft]
-https://www.boe.es/buscar/act.php?id=BOE-A-2015-8564#a2
-_recuperado por:_ e5-base/BASELINE#2 (0.891) · e5-large-instruct/I0_GENERIC#5 (0.923) · bge-m3/BASELINE#12 (0.646) · e5-large-instruct/I1_LEGAL#17 (0.913) · e5-large-instruct/I2_CITIZEN_LEGISLATION#20 (0.909)  [5 sistemas]
-```
-  [1] Artículo 2. Fuentes.
-  [2] La cooperación jurídica internacional en materia civil y mercantil, se rige por:
-  [3] a) Las normas de la Unión Europea y los tratados internacionales en los que España sea parte.
-  [4] b) Las normas especiales del Derecho interno.
-  [5] c) Subsidiariamente, por la presente ley.
+  [1] Artículo 11. Idioma.
+  [2] 1. Las solicitudes de cooperación jurídica internacional, y sus documentos adjuntos, que se dirijan a una autoridad extranjera, deberán acompañarse de una traducción a una lengua oficial del Estado requerido o aceptada por éste.
+  [3] 2. Las solicitudes de cooperación jurídica internacional dirigidas a las autoridades españolas, y sus documentos adjuntos, deberán acompañarse de una traducción con arreglo al artículo 144 de la Ley de Enjuiciamiento Civil.
 ```
 
 ### Ley 29/2015, artículo 9 · `BOE-A-2015-8564__a9` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2015-8564#a9
-_recuperado por:_ e5-base/BASELINE#8 (0.879) · e5-large-instruct/I0_GENERIC#12 (0.918) · e5-large-instruct/I2_CITIZEN_LEGISLATION#12 (0.916) · e5-large-instruct/I1_LEGAL#13 (0.918) · bge-m3/BASELINE#17 (0.630)  [5 sistemas]
+_recuperado por:_ e5-base/BASELINE#8 (0.879) · bm25/lexical#10 (32.765) · e5-large-instruct/I0_GENERIC#12 (0.918) · e5-large-instruct/I2_CITIZEN_LEGISLATION#12 (0.916) · hybrid_rrf/I0_GENERIC#12 (0.028) · e5-large-instruct/I1_LEGAL#13 (0.918) · bge-m3/BASELINE#17 (0.630)  [7 sistemas]
 ```
   [1] Artículo 9. Transmisión de las solicitudes.
   [2] Las solicitudes de cooperación jurídica internacional en materia civil podrán transmitirse, siempre que estuvieran previstas en el ordenamiento jurídico de ambos Estados, por cualquiera de las siguientes vías:
@@ -1029,18 +1135,9 @@ _recuperado por:_ e5-base/BASELINE#8 (0.879) · e5-large-instruct/I0_GENERIC#12 
   [6] d) Por conducto notarial, si ello es compatible con la naturaleza del acto de cooperación.
 ```
 
-### Ley 29/2015, artículo 11 · `BOE-A-2015-8564__a11` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2015-8564#a11
-_recuperado por:_ e5-base/BASELINE#11 (0.878) · e5-large-instruct/I0_GENERIC#13 (0.917) · e5-large-instruct/I1_LEGAL#14 (0.916) · e5-large-instruct/I2_CITIZEN_LEGISLATION#15 (0.914) · bge-m3/BASELINE#18 (0.630)  [5 sistemas]
-```
-  [1] Artículo 11. Idioma.
-  [2] 1. Las solicitudes de cooperación jurídica internacional, y sus documentos adjuntos, que se dirijan a una autoridad extranjera, deberán acompañarse de una traducción a una lengua oficial del Estado requerido o aceptada por éste.
-  [3] 2. Las solicitudes de cooperación jurídica internacional dirigidas a las autoridades españolas, y sus documentos adjuntos, deberán acompañarse de una traducción con arreglo al artículo 144 de la Ley de Enjuiciamiento Civil.
-```
-
 ### Ley 29/2015, disposición adicional primera · `BOE-A-2015-8564__daprimera` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2015-8564#daprimera
-_recuperado por:_ e5-large-instruct/I1_LEGAL#6 (0.929) · e5-large-instruct/I2_CITIZEN_LEGISLATION#6 (0.927) · e5-large-instruct/I0_GENERIC#10 (0.919) · bge-m3/BASELINE#11 (0.653)  [4 sistemas]
+_recuperado por:_ bm25/lexical#3 (35.497) · hybrid_rrf/I0_GENERIC#4 (0.030) · e5-large-instruct/I1_LEGAL#6 (0.929) · e5-large-instruct/I2_CITIZEN_LEGISLATION#6 (0.927) · e5-large-instruct/I0_GENERIC#10 (0.919) · bge-m3/BASELINE#11 (0.653)  [6 sistemas]
 ```
   [1] Disposición adicional primera. Normas especiales en materia de cooperación jurídica internacional en materia civil y mercantil.
   [2] A los efectos de lo previsto en el artículo 2 de esta ley, tienen la consideración de normas especiales en materia de cooperación jurídica internacional en materia civil y mercantil, entre otras, las siguientes:
@@ -1055,7 +1152,7 @@ _recuperado por:_ e5-large-instruct/I1_LEGAL#6 (0.929) · e5-large-instruct/I2_C
 
 ### Ley 29/2015, artículo 3 · `BOE-A-2015-8564__a3` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2015-8564#a3
-_recuperado por:_ e5-base/BASELINE#9 (0.879) · e5-large-instruct/I1_LEGAL#11 (0.921) · e5-large-instruct/I2_CITIZEN_LEGISLATION#11 (0.921) · e5-large-instruct/I0_GENERIC#18 (0.910)  [4 sistemas]
+_recuperado por:_ e5-base/BASELINE#9 (0.879) · e5-large-instruct/I1_LEGAL#11 (0.921) · e5-large-instruct/I2_CITIZEN_LEGISLATION#11 (0.921) · e5-large-instruct/I0_GENERIC#18 (0.910) · bm25/lexical#19 (29.078) · hybrid_rrf/I0_GENERIC#19 (0.025)  [6 sistemas]
 ```
   [1] Artículo 3. Principio general favorable de cooperación.
   [2] 1. Las autoridades españolas cooperarán con las autoridades extranjeras en las materias objeto de esta ley conforme a lo establecido en el artículo anterior.
@@ -1066,7 +1163,7 @@ _recuperado por:_ e5-base/BASELINE#9 (0.879) · e5-large-instruct/I1_LEGAL#11 (0
 
 ### Ley 29/2015, artículo 7 · `BOE-A-2015-8564__a7` [JUZGADO rel=0 draft]
 https://www.boe.es/buscar/act.php?id=BOE-A-2015-8564#a7
-_recuperado por:_ e5-base/BASELINE#3 (0.890) · e5-large-instruct/I0_GENERIC#16 (0.911) · bge-m3/BASELINE#19 (0.622)  [3 sistemas]
+_recuperado por:_ bm25/lexical#2 (35.803) · e5-base/BASELINE#3 (0.890) · hybrid_rrf/I0_GENERIC#8 (0.029) · e5-large-instruct/I0_GENERIC#16 (0.911) · bge-m3/BASELINE#19 (0.622)  [5 sistemas]
 ```
   [1] Artículo 7. Autoridad central española.
   [2] La autoridad central española en materia de cooperación jurídica internacional en materia civil es el Ministerio de Justicia.
@@ -1074,7 +1171,7 @@ _recuperado por:_ e5-base/BASELINE#3 (0.890) · e5-large-instruct/I0_GENERIC#16 
 
 ### Ley 29/2015, disposición final tercera · `BOE-A-2015-8564__dftercera` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2015-8564#dftercera
-_recuperado por:_ e5-large-instruct/I1_LEGAL#16 (0.913) · e5-large-instruct/I2_CITIZEN_LEGISLATION#17 (0.912)  [2 sistemas]
+_recuperado por:_ e5-large-instruct/I1_LEGAL#16 (0.913) · e5-large-instruct/I2_CITIZEN_LEGISLATION#17 (0.912) · bm25/lexical#18 (29.296)  [3 sistemas]
 ```
   [1] Disposición final tercera. Modificación de la Ley 5/2012, de 6 de julio, de mediación en asuntos civiles y mercantiles.
   [2] El artículo 27 de la Ley 5/2012, de 6 de julio, de mediación en asuntos civiles y mercantiles, queda redactado en los siguientes términos:
@@ -1084,12 +1181,12 @@ _recuperado por:_ e5-large-instruct/I1_LEGAL#16 (0.913) · e5-large-instruct/I2_
   [6] 3. El documento extranjero no podrá ser ejecutado cuando resulte contrario al orden público español.»
 ```
 
-### Ley 29/2015, artículo 5 · `BOE-A-2015-8564__a5` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2015-8564#a5
-_recuperado por:_ e5-large-instruct/I0_GENERIC#15 (0.913) · bge-m3/BASELINE#16 (0.635)  [2 sistemas]
+### Ley 1/2000, disposición final vigésima · `BOE-A-2000-323__dfvigesima` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2000-323#dfvigesima
+_recuperado por:_ e5-large-instruct/I0_GENERIC#14 (0.913) · hybrid_rrf/I0_GENERIC#17 (0.026) · bm25/lexical#20 (28.550)  [3 sistemas]
 ```
-  [1] Artículo 5. Ámbito de aplicación.
-  [2] El presente título se aplica a los actos de cooperación jurídica internacional, en particular a los actos de comunicación y traslado de documentos judiciales y extrajudiciales, tales como notificaciones, citaciones y requerimientos, así como a las comisiones rogatorias que tengan por objeto los actos relativos a la obtención y práctica de pruebas.
+  [1] Disposición final vigésima. Proyecto de Ley sobre cooperación jurídica internacional en materia civil.
+  [2] En el plazo de seis meses a contar desde la fecha de entrada en vigor de esta Ley, el Gobierno remitirá a las Cortes Generales un proyecto de Ley sobre cooperación jurídica internacional en materia civil.
 ```
 
 ### Ley 29/2015, artículo 42 · `BOE-A-2015-8564__a42` [JUZGADO rel=2 reviewed]
@@ -1109,7 +1206,7 @@ _split=test · difficulty=facil · failure_mode=—_
 
 ### Ley 20/2011, artículo 51 · `BOE-A-2011-12628__a51` [JUZGADO rel=2 reviewed]
 https://www.boe.es/buscar/act.php?id=BOE-A-2011-12628#a51
-_recuperado por:_ bge-m3/BASELINE#1 (0.686) · e5-large-instruct/I0_GENERIC#1 (0.906) · e5-large-instruct/I1_LEGAL#1 (0.926) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.923) · e5-base/BASELINE#2 (0.861)  [5 sistemas]
+_recuperado por:_ bge-m3/BASELINE#1 (0.686) · e5-large-instruct/I0_GENERIC#1 (0.906) · e5-large-instruct/I1_LEGAL#1 (0.926) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.923) · bm25/lexical#1 (22.055) · hybrid_rrf/I0_GENERIC#1 (0.033) · e5-base/BASELINE#2 (0.861)  [7 sistemas]
 ```
   [1] Artículo 51. Principio de libre elección del nombre propio.
   [2] El nombre propio será elegido libremente y solo quedará sujeto a las siguientes limitaciones, que se interpretarán restrictivamente:
@@ -1118,52 +1215,9 @@ _recuperado por:_ bge-m3/BASELINE#1 (0.686) · e5-large-instruct/I0_GENERIC#1 (0
   [5] 3.º No podrá imponerse al nacido nombre que ostente uno de sus hermanos o hermanas con idénticos apellidos, a no ser que hubiera fallecido.
 ```
 
-### Ley 20/2011, artículo 50 · `BOE-A-2011-12628__a50` [JUZGADO rel=0 draft]
-https://www.boe.es/buscar/act.php?id=BOE-A-2011-12628#a50
-_recuperado por:_ e5-large-instruct/I1_LEGAL#2 (0.903) · e5-large-instruct/I2_CITIZEN_LEGISLATION#2 (0.899) · e5-large-instruct/I0_GENERIC#3 (0.881) · bge-m3/BASELINE#4 (0.599) · e5-base/BASELINE#5 (0.850)  [5 sistemas]
-```
-  [1] Artículo 50. Derecho al nombre.
-  [2] 1. Toda persona tiene derecho a un nombre desde su nacimiento.
-  [3] 2. Las personas son identificadas por su nombre y apellidos.
-  [4] 3. El Encargado impondrá un nombre y unos apellidos de uso corriente al nacido cuya filiación sea desconocida. Igualmente impondrá, tras haberles apercibido y transcurrido un plazo de tres días, un nombre de uso corriente cuando los obligados a su fijación no lo señalaren.
-  [5] 4. A petición del interesado o de su representante legal, el encargado del Registro sustituirá el nombre propio de aquél por su equivalente en cualquiera de las lenguas españolas.
-```
-
-### Ley 20/2011, artículo 49 · `BOE-A-2011-12628__a49` [JUZGADO rel=0 draft]
-https://www.boe.es/buscar/act.php?id=BOE-A-2011-12628#a49
-_recuperado por:_ bge-m3/BASELINE#3 (0.602) · e5-large-instruct/I1_LEGAL#3 (0.896) · e5-large-instruct/I2_CITIZEN_LEGISLATION#3 (0.892) · e5-large-instruct/I0_GENERIC#4 (0.880) · e5-base/BASELINE#8 (0.843)  [5 sistemas]
-```
-  [1] Artículo 49. Contenido de la inscripción de nacimiento y atribución de apellidos.
-  [2] 1. En la inscripción de nacimiento constarán los datos de identidad del nacido consistentes en el nombre que se le impone y los apellidos que le correspondan según su filiación. Constarán asimismo el lugar, fecha y hora del nacimiento y el sexo del nacido.
-  [3] 2. La filiación determina los apellidos.
-  [4] Si la filiación está determinada por ambas líneas, los progenitores acordarán el orden de transmisión de su respectivo primer apellido, antes de la inscripción registral.
-  [5] En caso de desacuerdo o cuando no se hayan hecho constar los apellidos en la solicitud de inscripción, el Encargado del Registro Civil requerirá a los progenitores, o a quienes ostenten la representación legal del menor, para que en el plazo máximo de tres días comuniquen el orden de apellidos. Transcurrido dicho plazo sin comunicación expresa, el Encargado acordará el orden de los apellidos atendiendo al interés superior del menor.
-  [6] En los supuestos de nacimiento con una sola filiación reconocida, ésta determina los apellidos. El progenitor podrá determinar el orden de los apellidos.
-  [7] El orden de los apellidos establecido para la primera inscripción de nacimiento determina el orden para la inscripción de los posteriores nacimientos con idéntica filiación. En esta primera inscripción, cuando así se solicite, podrán constar la preposición «de» y las conjunciones «y» o «i»entre los apellidos, en los términos previstos en el artículo 53 de la presente Ley.
-  [8] 3. También se incorporará a la inscripción el código personal asignado.
-  [9] 4. Constarán, además, y siempre que fuera posible, las siguientes circunstancias de los progenitores: nombre y apellidos, Documento Nacional de Identidad o Número de identificación y pasaporte del extranjero, en su caso, lugar y fecha de nacimiento, estado civil, domicilio y nacionalidad, así como cualquier otro dato necesario para el cumplimiento del objeto del Registro Civil al que se refiere el artículo 2 que se haya incluido en los modelos oficialmente aprobados. Si la madre hubiera renunciado a su hijo en el momento del parto el domicilio de la misma estará sujeto al régimen de publicidad restringida, y no figurará a efectos estadísticos.
-  [10] 5. En el caso de que el parte facultativo indicara la condición intersexual del nacido, los progenitores, de común acuerdo, podrán solicitar que la mención del sexo figure en blanco por el plazo máximo de un año. Transcurrido dicho plazo, la mención al sexo será obligatoria y su inscripción habrá de ser solicitada por los progenitores.
-```
-
-### Ley 20/2011, artículo 52 · `BOE-A-2011-12628__a52` [JUZGADO rel=1 reviewed]
-https://www.boe.es/buscar/act.php?id=BOE-A-2011-12628#a52
-_recuperado por:_ e5-base/BASELINE#1 (0.864) · bge-m3/BASELINE#2 (0.602) · e5-large-instruct/I0_GENERIC#2 (0.887) · e5-large-instruct/I1_LEGAL#4 (0.894) · e5-large-instruct/I2_CITIZEN_LEGISLATION#4 (0.890)  [5 sistemas]
-```
-  [1] Artículo 52. Cambio de nombre.
-  [2] El Encargado del Registro Civil, mediante procedimiento registral, podrá autorizar el cambio de nombre previa declaración del interesado, que deberá probar el uso habitual del nuevo nombre, y siempre que concurran las demás circunstancias exigidas en la legislación del Registro Civil.
-```
-
-### Ley 20/2011, artículo 55 · `BOE-A-2011-12628__a55` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2011-12628#a55
-_recuperado por:_ e5-large-instruct/I0_GENERIC#5 (0.877) · e5-large-instruct/I1_LEGAL#6 (0.889) · e5-large-instruct/I2_CITIZEN_LEGISLATION#6 (0.884) · bge-m3/BASELINE#15 (0.558) · e5-base/BASELINE#20 (0.836)  [5 sistemas]
-```
-  [1] Artículo 55. Autorización del cambio de apellidos o identidad en circunstancias excepcionales.
-  [2] Cuando razones de urgencia o seguridad no contempladas en el artículo 54.5 u otras circunstancias excepcionales lo requieran, podrá autorizarse el cambio de apellidos o el cambio total de identidad, por Orden del Ministerio de Justicia, en los términos fijados reglamentariamente.
-```
-
 ### Ley 19/2015, artículo segundo · `BOE-A-2015-7851__asegundo` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2015-7851#asegundo
-_recuperado por:_ e5-base/BASELINE#4 (0.853) · e5-large-instruct/I1_LEGAL#7 (0.885) · e5-large-instruct/I2_CITIZEN_LEGISLATION#8 (0.881) · bge-m3/BASELINE#9 (0.573) · e5-large-instruct/I0_GENERIC#15 (0.861)  [5 sistemas]
+_recuperado por:_ bm25/lexical#3 (20.050) · e5-base/BASELINE#4 (0.853) · hybrid_rrf/I0_GENERIC#6 (0.025) · e5-large-instruct/I1_LEGAL#7 (0.885) · e5-large-instruct/I2_CITIZEN_LEGISLATION#8 (0.881) · bge-m3/BASELINE#9 (0.573) · e5-large-instruct/I0_GENERIC#15 (0.861)  [7 sistemas]
 ```
   [1] Artículo segundo. Modificación de la Ley 20/2011, de 21 de julio, del Registro Civil.
   [2] La Ley 20/2011, de 21 de julio, del Registro Civil, queda modificada como sigue:
@@ -1231,19 +1285,9 @@ _recuperado por:_ e5-base/BASELINE#4 (0.853) · e5-large-instruct/I1_LEGAL#7 (0.
   [64] Hasta la completa entrada en vigor de esta Ley, el Gobierno adoptará las medidas y los cambios normativos necesarios que afecten a la organización y funcionamiento de los Registros Civiles.»
 ```
 
-### Ley 20/2011, artículo 57 · `BOE-A-2011-12628__a57` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2011-12628#a57
-_recuperado por:_ bge-m3/BASELINE#7 (0.578) · e5-base/BASELINE#7 (0.847) · e5-large-instruct/I0_GENERIC#8 (0.869) · e5-large-instruct/I1_LEGAL#8 (0.884) · e5-large-instruct/I2_CITIZEN_LEGISLATION#9 (0.880)  [5 sistemas]
-```
-  [1] Artículo 57. Reglas comunes al cambio de nombre y apellidos.
-  [2] 1. El cambio de apellidos alcanza a todas las personas sujetas a la patria potestad y también a los demás descendientes que expresamente lo consientan.
-  [3] 2. El cambio de nombre y apellidos se inscribirá en el registro individual del interesado. Dicha inscripción tiene carácter constitutivo.
-  [4] 3. Los cambios señalados en los párrafos anteriores podrán ser solicitados por el propio interesado si es mayor de dieciséis años.
-```
-
 ### Ley 20/2011, artículo 44 · `BOE-A-2011-12628__a44` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2011-12628#a44
-_recuperado por:_ e5-base/BASELINE#6 (0.848) · e5-large-instruct/I2_CITIZEN_LEGISLATION#7 (0.881) · e5-large-instruct/I1_LEGAL#10 (0.883) · e5-large-instruct/I0_GENERIC#12 (0.862) · bge-m3/BASELINE#20 (0.546)  [5 sistemas]
+_recuperado por:_ hybrid_rrf/I0_GENERIC#5 (0.025) · e5-base/BASELINE#6 (0.848) · e5-large-instruct/I2_CITIZEN_LEGISLATION#7 (0.881) · bm25/lexical#8 (18.333) · e5-large-instruct/I1_LEGAL#10 (0.883) · e5-large-instruct/I0_GENERIC#12 (0.862) · bge-m3/BASELINE#20 (0.546)  [7 sistemas]
 ```
   [1] Artículo 44. Inscripción de nacimiento y filiación.
   [2] 1. Son inscribibles los nacimientos de las personas, conforme a lo previsto en el artículo 30 del Código Civil.
@@ -1268,9 +1312,86 @@ _recuperado por:_ e5-base/BASELINE#6 (0.848) · e5-large-instruct/I2_CITIZEN_LEG
   [21] 8. Una vez practicada la inscripción, el Encargado expedirá certificación literal electrónica de la inscripción de nacimiento y la pondrá a disposición del declarante o declarantes.
 ```
 
+### Ley 20/2011, artículo 49 · `BOE-A-2011-12628__a49` [JUZGADO rel=0 draft]
+https://www.boe.es/buscar/act.php?id=BOE-A-2011-12628#a49
+_recuperado por:_ bge-m3/BASELINE#3 (0.602) · e5-large-instruct/I1_LEGAL#3 (0.896) · e5-large-instruct/I2_CITIZEN_LEGISLATION#3 (0.892) · e5-large-instruct/I0_GENERIC#4 (0.880) · e5-base/BASELINE#8 (0.843) · hybrid_rrf/I0_GENERIC#10 (0.023)  [6 sistemas]
+```
+  [1] Artículo 49. Contenido de la inscripción de nacimiento y atribución de apellidos.
+  [2] 1. En la inscripción de nacimiento constarán los datos de identidad del nacido consistentes en el nombre que se le impone y los apellidos que le correspondan según su filiación. Constarán asimismo el lugar, fecha y hora del nacimiento y el sexo del nacido.
+  [3] 2. La filiación determina los apellidos.
+  [4] Si la filiación está determinada por ambas líneas, los progenitores acordarán el orden de transmisión de su respectivo primer apellido, antes de la inscripción registral.
+  [5] En caso de desacuerdo o cuando no se hayan hecho constar los apellidos en la solicitud de inscripción, el Encargado del Registro Civil requerirá a los progenitores, o a quienes ostenten la representación legal del menor, para que en el plazo máximo de tres días comuniquen el orden de apellidos. Transcurrido dicho plazo sin comunicación expresa, el Encargado acordará el orden de los apellidos atendiendo al interés superior del menor.
+  [6] En los supuestos de nacimiento con una sola filiación reconocida, ésta determina los apellidos. El progenitor podrá determinar el orden de los apellidos.
+  [7] El orden de los apellidos establecido para la primera inscripción de nacimiento determina el orden para la inscripción de los posteriores nacimientos con idéntica filiación. En esta primera inscripción, cuando así se solicite, podrán constar la preposición «de» y las conjunciones «y» o «i»entre los apellidos, en los términos previstos en el artículo 53 de la presente Ley.
+  [8] 3. También se incorporará a la inscripción el código personal asignado.
+  [9] 4. Constarán, además, y siempre que fuera posible, las siguientes circunstancias de los progenitores: nombre y apellidos, Documento Nacional de Identidad o Número de identificación y pasaporte del extranjero, en su caso, lugar y fecha de nacimiento, estado civil, domicilio y nacionalidad, así como cualquier otro dato necesario para el cumplimiento del objeto del Registro Civil al que se refiere el artículo 2 que se haya incluido en los modelos oficialmente aprobados. Si la madre hubiera renunciado a su hijo en el momento del parto el domicilio de la misma estará sujeto al régimen de publicidad restringida, y no figurará a efectos estadísticos.
+  [10] 5. En el caso de que el parte facultativo indicara la condición intersexual del nacido, los progenitores, de común acuerdo, podrán solicitar que la mención del sexo figure en blanco por el plazo máximo de un año. Transcurrido dicho plazo, la mención al sexo será obligatoria y su inscripción habrá de ser solicitada por los progenitores.
+```
+
+### Ley 20/2011, artículo 52 · `BOE-A-2011-12628__a52` [JUZGADO rel=1 reviewed]
+https://www.boe.es/buscar/act.php?id=BOE-A-2011-12628#a52
+_recuperado por:_ e5-base/BASELINE#1 (0.864) · bge-m3/BASELINE#2 (0.602) · e5-large-instruct/I0_GENERIC#2 (0.887) · hybrid_rrf/I0_GENERIC#2 (0.028) · e5-large-instruct/I1_LEGAL#4 (0.894) · e5-large-instruct/I2_CITIZEN_LEGISLATION#4 (0.890)  [6 sistemas]
+```
+  [1] Artículo 52. Cambio de nombre.
+  [2] El Encargado del Registro Civil, mediante procedimiento registral, podrá autorizar el cambio de nombre previa declaración del interesado, que deberá probar el uso habitual del nuevo nombre, y siempre que concurran las demás circunstancias exigidas en la legislación del Registro Civil.
+```
+
+### Ley 20/2011, artículo 57 · `BOE-A-2011-12628__a57` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2011-12628#a57
+_recuperado por:_ bge-m3/BASELINE#7 (0.578) · e5-base/BASELINE#7 (0.847) · hybrid_rrf/I0_GENERIC#7 (0.025) · e5-large-instruct/I0_GENERIC#8 (0.869) · e5-large-instruct/I1_LEGAL#8 (0.884) · e5-large-instruct/I2_CITIZEN_LEGISLATION#9 (0.880)  [6 sistemas]
+```
+  [1] Artículo 57. Reglas comunes al cambio de nombre y apellidos.
+  [2] 1. El cambio de apellidos alcanza a todas las personas sujetas a la patria potestad y también a los demás descendientes que expresamente lo consientan.
+  [3] 2. El cambio de nombre y apellidos se inscribirá en el registro individual del interesado. Dicha inscripción tiene carácter constitutivo.
+  [4] 3. Los cambios señalados en los párrafos anteriores podrán ser solicitados por el propio interesado si es mayor de dieciséis años.
+```
+
+### Ley 20/2011, artículo 4 · `BOE-A-2011-12628__a4` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2011-12628#a4
+_recuperado por:_ bge-m3/BASELINE#5 (0.590) · hybrid_rrf/I0_GENERIC#11 (0.023) · bm25/lexical#16 (16.745) · e5-large-instruct/I1_LEGAL#18 (0.877) · e5-large-instruct/I2_CITIZEN_LEGISLATION#18 (0.872)  [5 sistemas]
+```
+  [1] Artículo 4. Hechos y actos inscribibles.
+  [2] Tienen acceso al Registro Civil los hechos y actos que se refieren a la identidad, estado civil y demás circunstancias de la persona. Son, por tanto, inscribibles:
+  [3] 1.º El nacimiento.
+  [4] 2.º La filiación.
+  [5] 3.º El nombre y los apellidos y sus cambios.
+  [6] 4.º El sexo y el cambio de sexo.
+  [7] 5.º La nacionalidad y la vecindad civil.
+  [8] 6.º La emancipación y el beneficio de la mayor edad.
+  [9] 7.º El matrimonio. La separación, nulidad y divorcio.
+  [10] 8.º El régimen económico matrimonial legal o pactado.
+  [11] 9.º Las relaciones paterno-filiales y sus modificaciones.
+  [12] 10.º Los poderes y mandatos preventivos, la propuesta de nombramiento de curador y las medidas de apoyo previstas por una persona respecto de sí misma o de sus bienes.
+  [13] 11.º Las resoluciones judiciales dictadas en procedimientos de provisión de medidas judiciales de apoyo a personas con discapacidad.
+  [14] 12.º Los actos relativos a la constitución y régimen del patrimonio protegido de las personas con discapacidad.
+  [15] 13.º La tutela del menor y la defensa judicial del menor emancipado.
+  [16] 14.º Las declaraciones de concurso de las personas físicas y la intervención o suspensión de sus facultades.
+  [17] 15.º Las declaraciones de ausencia y fallecimiento.
+  [18] 16.º La defunción.
+```
+
+### Ley 20/2011, artículo 50 · `BOE-A-2011-12628__a50` [JUZGADO rel=0 draft]
+https://www.boe.es/buscar/act.php?id=BOE-A-2011-12628#a50
+_recuperado por:_ e5-large-instruct/I1_LEGAL#2 (0.903) · e5-large-instruct/I2_CITIZEN_LEGISLATION#2 (0.899) · e5-large-instruct/I0_GENERIC#3 (0.881) · bge-m3/BASELINE#4 (0.599) · e5-base/BASELINE#5 (0.850)  [5 sistemas]
+```
+  [1] Artículo 50. Derecho al nombre.
+  [2] 1. Toda persona tiene derecho a un nombre desde su nacimiento.
+  [3] 2. Las personas son identificadas por su nombre y apellidos.
+  [4] 3. El Encargado impondrá un nombre y unos apellidos de uso corriente al nacido cuya filiación sea desconocida. Igualmente impondrá, tras haberles apercibido y transcurrido un plazo de tres días, un nombre de uso corriente cuando los obligados a su fijación no lo señalaren.
+  [5] 4. A petición del interesado o de su representante legal, el encargado del Registro sustituirá el nombre propio de aquél por su equivalente en cualquiera de las lenguas españolas.
+```
+
+### Ley 20/2011, artículo 55 · `BOE-A-2011-12628__a55` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2011-12628#a55
+_recuperado por:_ e5-large-instruct/I0_GENERIC#5 (0.877) · e5-large-instruct/I1_LEGAL#6 (0.889) · e5-large-instruct/I2_CITIZEN_LEGISLATION#6 (0.884) · bge-m3/BASELINE#15 (0.558) · e5-base/BASELINE#20 (0.836)  [5 sistemas]
+```
+  [1] Artículo 55. Autorización del cambio de apellidos o identidad en circunstancias excepcionales.
+  [2] Cuando razones de urgencia o seguridad no contempladas en el artículo 54.5 u otras circunstancias excepcionales lo requieran, podrá autorizarse el cambio de apellidos o el cambio total de identidad, por Orden del Ministerio de Justicia, en los términos fijados reglamentariamente.
+```
+
 ### Ley 20/2011, artículo 11 · `BOE-A-2011-12628__a11` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2011-12628#a11
-_recuperado por:_ bge-m3/BASELINE#8 (0.576) · e5-large-instruct/I2_CITIZEN_LEGISLATION#10 (0.879) · e5-large-instruct/I1_LEGAL#13 (0.882) · e5-base/BASELINE#15 (0.839)  [4 sistemas]
+_recuperado por:_ bge-m3/BASELINE#8 (0.576) · e5-large-instruct/I2_CITIZEN_LEGISLATION#10 (0.879) · e5-large-instruct/I1_LEGAL#13 (0.882) · hybrid_rrf/I0_GENERIC#13 (0.023) · e5-base/BASELINE#15 (0.839)  [5 sistemas]
 ```
   [1] Artículo 11. Derechos ante el Registro Civil.
   [2] Son derechos de las personas ante el Registro Civil:
@@ -1288,22 +1409,9 @@ _recuperado por:_ bge-m3/BASELINE#8 (0.576) · e5-large-instruct/I2_CITIZEN_LEGI
   [14] l) El derecho a acceder a los servicios del Registro Civil con garantía de los principios de accesibilidad universal y diseño para todas las personas.
 ```
 
-### Ley 20/2011, artículo 53 · `BOE-A-2011-12628__a53` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2011-12628#a53
-_recuperado por:_ e5-base/BASELINE#9 (0.842) · e5-large-instruct/I1_LEGAL#14 (0.880) · e5-large-instruct/I2_CITIZEN_LEGISLATION#14 (0.876) · e5-large-instruct/I0_GENERIC#19 (0.858)  [4 sistemas]
-```
-  [1] Artículo 53. Cambio de apellidos mediante declaración de voluntad.
-  [2] El Encargado puede, mediante declaración de voluntad del interesado, autorizar el cambio de apellidos en los casos siguientes:
-  [3] 1.º La inversión del orden de apellidos.
-  [4] 2.º La anteposición de la preposición «de» al primer apellido que fuera usualmente nombre propio o empezare por tal, así como las conjunciones «y» o «i» entre los apellidos.
-  [5] 3.º La acomodación de los apellidos de los hijos mayores de edad o emancipados al cambio de apellidos de los progenitores cuando aquellos expresamente lo consientan.
-  [6] 4.º La regularización ortográfica de los apellidos a cualquiera de las lenguas oficiales correspondiente al origen o domicilio del interesado y la adecuación gráfica a dichas lenguas de la fonética de apellidos también extranjeros.
-  [7] 5.º Cuando sobre la base de una filiación rectificada con posterioridad, el hijo o sus descendientes pretendieran conservar los apellidos que vinieren usando antes de la rectificación. Dicha conservación de apellidos deberá instarse dentro de los dos meses siguientes a la inscripción de la nueva filiación o, en su caso, a la mayoría de edad.
-```
-
 ### Ley 20/2011, disposición adicional cuarta · `BOE-A-2011-12628__dacuaa` [JUZGADO rel=0 draft]
 https://www.boe.es/buscar/act.php?id=BOE-A-2011-12628#dacuaa
-_recuperado por:_ e5-base/BASELINE#3 (0.855) · e5-large-instruct/I0_GENERIC#11 (0.863)  [2 sistemas]
+_recuperado por:_ e5-base/BASELINE#3 (0.855) · e5-large-instruct/I0_GENERIC#11 (0.863) · hybrid_rrf/I0_GENERIC#12 (0.023)  [3 sistemas]
 ```
   [1] Disposición adicional cuarta. Constancia en el Registro Civil de los fallecimientos con posterioridad a los seis meses de gestación.
   [2] Figurarán en un archivo del Registro Civil, sin efectos jurídicos, los fallecimientos que se produzcan con posterioridad a los seis meses de gestación y no cumplieran las condiciones previstas en el artículo 30 del Código Civil, pudiendo los progenitores otorgar un nombre.
@@ -1318,7 +1426,7 @@ _split=test · difficulty=media · failure_mode=—_
 
 ### Real Decreto 1155/2024, artículo 125 · `BOE-A-2024-24099__a1-37` [JUZGADO rel=2 reviewed]
 https://www.boe.es/buscar/act.php?id=BOE-A-2024-24099#a1-37
-_recuperado por:_ e5-large-instruct/I0_GENERIC#1 (0.904) · e5-large-instruct/I1_LEGAL#1 (0.916) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.916) · bge-m3/BASELINE#2 (0.653) · e5-base/BASELINE#3 (0.849)  [5 sistemas]
+_recuperado por:_ e5-large-instruct/I0_GENERIC#1 (0.904) · e5-large-instruct/I1_LEGAL#1 (0.916) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.916) · bm25/lexical#1 (27.801) · hybrid_rrf/I0_GENERIC#1 (0.033) · bge-m3/BASELINE#2 (0.653) · e5-base/BASELINE#3 (0.849)  [7 sistemas]
 ```
   [1] Artículo 125. Tipos de autorización de residencia temporal por razones de arraigo.
   [2] 1. Se concederá una autorización de residencia temporal por razones de arraigo a las personas extranjeras que se encuentren en España, cuando existan vínculos con el lugar en el que residen, ya sean de tipo económico, social, familiar, laboral o formativo, siempre que cumplan con los requisitos establecidos en los artículos 126 y 127.
@@ -1333,7 +1441,7 @@ _recuperado por:_ e5-large-instruct/I0_GENERIC#1 (0.904) · e5-large-instruct/I1
 
 ### Real Decreto 1155/2024, [preambulo] · `BOE-A-2024-24099__pr` [JUZGADO rel=1 reviewed]
 https://www.boe.es/buscar/act.php?id=BOE-A-2024-24099#pr
-_recuperado por:_ bge-m3/BASELINE#1 (0.707) · e5-base/BASELINE#1 (0.856) · e5-large-instruct/I0_GENERIC#2 (0.897) · e5-large-instruct/I1_LEGAL#2 (0.910) · e5-large-instruct/I2_CITIZEN_LEGISLATION#2 (0.910)  [5 sistemas]
+_recuperado por:_ bge-m3/BASELINE#1 (0.707) · e5-base/BASELINE#1 (0.856) · e5-large-instruct/I0_GENERIC#2 (0.897) · e5-large-instruct/I1_LEGAL#2 (0.910) · e5-large-instruct/I2_CITIZEN_LEGISLATION#2 (0.910) · bm25/lexical#2 (25.248) · hybrid_rrf/I0_GENERIC#2 (0.032)  [7 sistemas]
 ```
   [1] I
   [2] El fenómeno migratorio es un fenómeno estructural; la movilidad humana en busca de oportunidades y una vida mejor es una realidad constatada a lo largo de los años que va a continuar.
@@ -1399,7 +1507,7 @@ _recuperado por:_ bge-m3/BASELINE#1 (0.707) · e5-base/BASELINE#1 (0.856) · e5-
 
 ### Real Decreto 1155/2024, disposición adicional vigesimoprimera · `BOE-A-2024-24099__da-21` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2024-24099#da-21
-_recuperado por:_ bge-m3/BASELINE#5 (0.605) · e5-base/BASELINE#5 (0.840) · e5-large-instruct/I1_LEGAL#5 (0.893) · e5-large-instruct/I2_CITIZEN_LEGISLATION#5 (0.892) · e5-large-instruct/I0_GENERIC#6 (0.881)  [5 sistemas]
+_recuperado por:_ bm25/lexical#4 (19.492) · hybrid_rrf/I0_GENERIC#4 (0.031) · bge-m3/BASELINE#5 (0.605) · e5-base/BASELINE#5 (0.840) · e5-large-instruct/I1_LEGAL#5 (0.893) · e5-large-instruct/I2_CITIZEN_LEGISLATION#5 (0.892) · e5-large-instruct/I0_GENERIC#6 (0.881)  [7 sistemas]
 ```
   [1] Disposición adicional vigesimoprimera. Autorizaciones de residencia temporal por circunstancias excepcionales por razón de arraigo extraordinario.
   [2] 1. De conformidad con lo previsto en el artículo 31.3 de la Ley Orgánica 4/2000, de 11 de enero, en atención a la concurrencia de circunstancias excepcionales, las personas extranjeras que se encontraran en España antes del 1 de enero de 2026 podrán solicitar una autorización de residencia temporal por circunstancias excepcionales por razón de arraigo extraordinario, siempre y cuando cumplan de forma acumulativa los siguientes requisitos:
@@ -1453,7 +1561,7 @@ _recuperado por:_ bge-m3/BASELINE#5 (0.605) · e5-base/BASELINE#5 (0.840) · e5-
 
 ### Real Decreto 1155/2024, disposición adicional vigésima · `BOE-A-2024-24099__da-20` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2024-24099#da-20
-_recuperado por:_ e5-base/BASELINE#6 (0.840) · e5-large-instruct/I1_LEGAL#7 (0.893) · e5-large-instruct/I2_CITIZEN_LEGISLATION#8 (0.891) · bge-m3/BASELINE#9 (0.599) · e5-large-instruct/I0_GENERIC#11 (0.880)  [5 sistemas]
+_recuperado por:_ e5-base/BASELINE#6 (0.840) · bm25/lexical#6 (18.591) · hybrid_rrf/I0_GENERIC#6 (0.028) · e5-large-instruct/I1_LEGAL#7 (0.893) · e5-large-instruct/I2_CITIZEN_LEGISLATION#8 (0.891) · bge-m3/BASELINE#9 (0.599) · e5-large-instruct/I0_GENERIC#11 (0.880)  [7 sistemas]
 ```
   [1] Disposición adicional vigésima. Autorizaciones de residencia temporal por circunstancias excepcionales por razón de arraigo para personas solicitantes de protección internacional.
   [2] 1. De conformidad con lo previsto en el artículo 31.3 de la Ley Orgánica 4/2000, de 11 de enero, en atención a la concurrencia de circunstancias excepcionales, las personas extranjeras que, antes del 1 de enero de 2026, hubieran presentado solicitud de acceso al procedimiento de protección internacional, registrado o formalizado solicitud de protección internacional en España, podrán solicitar una autorización de residencia temporal por circunstancias excepcionales por razón de arraigo, siempre y cuando cumplan de forma acumulativa los siguientes requisitos:
@@ -1502,7 +1610,7 @@ _recuperado por:_ e5-base/BASELINE#6 (0.840) · e5-large-instruct/I1_LEGAL#7 (0.
 
 ### Real Decreto 1155/2024, artículo 127 · `BOE-A-2024-24099__a1-39` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2024-24099#a1-39
-_recuperado por:_ bge-m3/BASELINE#6 (0.601) · e5-large-instruct/I2_CITIZEN_LEGISLATION#6 (0.891) · e5-large-instruct/I0_GENERIC#7 (0.881) · e5-base/BASELINE#9 (0.837) · e5-large-instruct/I1_LEGAL#9 (0.892)  [5 sistemas]
+_recuperado por:_ bge-m3/BASELINE#6 (0.601) · e5-large-instruct/I2_CITIZEN_LEGISLATION#6 (0.891) · e5-large-instruct/I0_GENERIC#7 (0.881) · hybrid_rrf/I0_GENERIC#7 (0.028) · e5-base/BASELINE#9 (0.837) · e5-large-instruct/I1_LEGAL#9 (0.892) · bm25/lexical#11 (16.472)  [7 sistemas]
 ```
   [1] Artículo 127. Requisitos específicos.
   [2] La persona extranjera solicitante deberá cumplir, además de los requisitos generales del artículo anterior, los siguientes requisitos específicos en función de la razón del arraigo:
@@ -1525,9 +1633,17 @@ _recuperado por:_ bge-m3/BASELINE#6 (0.601) · e5-large-instruct/I2_CITIZEN_LEGI
   [19] 2.º Ser quien preste apoyo a una persona con discapacidad, que sea nacional de otro Estado miembro de la Unión Europea, del Espacio Económico Europeo o de Suiza, para el ejercicio de su capacidad jurídica, siempre que la persona solicitante sea su familiar, tenga a cargo a la persona con discapacidad y conviva con ella.
 ```
 
+### Real Decreto 1155/2024, disposición transitoria tercera · `BOE-A-2024-24099__dt-3` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2024-24099#dt-3
+_recuperado por:_ hybrid_rrf/I0_GENERIC#10 (0.026) · bm25/lexical#14 (16.165) · bge-m3/BASELINE#17 (0.578) · e5-large-instruct/I1_LEGAL#19 (0.888) · e5-large-instruct/I0_GENERIC#20 (0.877) · e5-large-instruct/I2_CITIZEN_LEGISLATION#20 (0.886)  [6 sistemas]
+```
+  [1] Disposición transitoria tercera. Autorizaciones de residencia temporal por razones de arraigo familiar o tarjetas de residencia de familiar de ciudadanos de la Unión.
+  [2] Las personas extranjeras que, con ocasión de un vínculo familiar con una persona de nacionalidad española, sean titulares de autorizaciones de residencia temporal por razones de arraigo familiar o de tarjetas de residencia de familiar de ciudadano de la Unión Europea que se encuentren vigentes a la fecha de entrada en vigor del Reglamento de la Ley Orgánica 4/2000, de 11 de enero, sobre derechos y libertades de los extranjeros en España y su integración social, conservarán la residencia mientras cumplan las condiciones del capítulo VII del título IV, sin que sea necesario presentar la solicitud de autorización de residencia temporal de familiares de personas con nacionalidad española.
+```
+
 ### Real Decreto 1155/2024, artículo 126 · `BOE-A-2024-24099__a1-38` [JUZGADO rel=1 reviewed]
 https://www.boe.es/buscar/act.php?id=BOE-A-2024-24099#a1-38
-_recuperado por:_ e5-large-instruct/I0_GENERIC#5 (0.884) · bge-m3/BASELINE#8 (0.599) · e5-large-instruct/I1_LEGAL#18 (0.888) · e5-large-instruct/I2_CITIZEN_LEGISLATION#19 (0.887)  [4 sistemas]
+_recuperado por:_ e5-large-instruct/I0_GENERIC#5 (0.884) · bge-m3/BASELINE#8 (0.599) · hybrid_rrf/I0_GENERIC#12 (0.024) · e5-large-instruct/I1_LEGAL#18 (0.888) · e5-large-instruct/I2_CITIZEN_LEGISLATION#19 (0.887)  [5 sistemas]
 ```
   [1] Artículo 126. Requisitos generales.
   [2] Se podrá conceder una autorización de residencia temporal por las razones de arraigo establecidas en el artículo anterior cuando la persona extranjera cumpla de forma acumulativa los siguientes requisitos generales:
@@ -1542,17 +1658,9 @@ _recuperado por:_ e5-large-instruct/I0_GENERIC#5 (0.884) · bge-m3/BASELINE#8 (0
   [11] h) No ser titular de una autorización de estancia o residencia ni ostentar la condición de persona interesada en procedimientos que tengan por objeto la concesión, prórroga, renovación o modificación de autorizaciones de estancia o residencia.
 ```
 
-### Real Decreto 1155/2024, disposición transitoria tercera · `BOE-A-2024-24099__dt-3` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2024-24099#dt-3
-_recuperado por:_ bge-m3/BASELINE#17 (0.578) · e5-large-instruct/I1_LEGAL#19 (0.888) · e5-large-instruct/I0_GENERIC#20 (0.877) · e5-large-instruct/I2_CITIZEN_LEGISLATION#20 (0.886)  [4 sistemas]
-```
-  [1] Disposición transitoria tercera. Autorizaciones de residencia temporal por razones de arraigo familiar o tarjetas de residencia de familiar de ciudadanos de la Unión.
-  [2] Las personas extranjeras que, con ocasión de un vínculo familiar con una persona de nacionalidad española, sean titulares de autorizaciones de residencia temporal por razones de arraigo familiar o de tarjetas de residencia de familiar de ciudadano de la Unión Europea que se encuentren vigentes a la fecha de entrada en vigor del Reglamento de la Ley Orgánica 4/2000, de 11 de enero, sobre derechos y libertades de los extranjeros en España y su integración social, conservarán la residencia mientras cumplan las condiciones del capítulo VII del título IV, sin que sea necesario presentar la solicitud de autorización de residencia temporal de familiares de personas con nacionalidad española.
-```
-
 ### Ley Orgánica 4/2000, disposición transitoria primera · `BOE-A-2000-544__dtprimera` [JUZGADO rel=0 draft]
 https://www.boe.es/buscar/act.php?id=BOE-A-2000-544#dtprimera
-_recuperado por:_ e5-large-instruct/I0_GENERIC#3 (0.889) · e5-large-instruct/I1_LEGAL#13 (0.891) · e5-large-instruct/I2_CITIZEN_LEGISLATION#16 (0.888)  [3 sistemas]
+_recuperado por:_ e5-large-instruct/I0_GENERIC#3 (0.889) · hybrid_rrf/I0_GENERIC#9 (0.027) · e5-large-instruct/I1_LEGAL#13 (0.891) · e5-large-instruct/I2_CITIZEN_LEGISLATION#16 (0.888)  [4 sistemas]
 ```
   [1] Disposición transitoria primera. Regularización de extranjeros que se encuentren en España.
   [2] El Gobierno, mediante Real Decreto, establecerá el procedimiento para la regularización de los extranjeros que se encuentren en territorio español antes del día 1 de junio de 1999 y que acrediten haber solicitado en alguna ocasión autorización de residencia o trabajo o que lo hayan tenido en los tres últimos años.
@@ -1560,7 +1668,7 @@ _recuperado por:_ e5-large-instruct/I0_GENERIC#3 (0.889) · e5-large-instruct/I1
 
 ### Ley Orgánica 4/2000, artículo 68 · `BOE-A-2000-544__a68` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2000-544#a68
-_recuperado por:_ e5-large-instruct/I0_GENERIC#16 (0.878) · e5-large-instruct/I1_LEGAL#20 (0.887)  [2 sistemas]
+_recuperado por:_ e5-large-instruct/I0_GENERIC#16 (0.878) · hybrid_rrf/I0_GENERIC#18 (0.020) · e5-large-instruct/I1_LEGAL#20 (0.887)  [3 sistemas]
 ```
   [1] Artículo 68. Coordinación de las Administraciones Públicas.
   [2] 1. La Conferencia Sectorial de Inmigración es el órgano a través del cual se asegurará la adecuada coordinación de las actuaciones que desarrollen las Administraciones Públicas en materia de inmigración.
@@ -1569,13 +1677,12 @@ _recuperado por:_ e5-large-instruct/I0_GENERIC#16 (0.878) · e5-large-instruct/I
   [5] 4. Las Comunidades Autónomas que hayan asumido competencias en materia de seguridad ciudadana y orden público mediante la creación de una policía propia, podrán aportar, en su caso, un informe sobre afectación al orden público en todos los procedimientos de autorización de residencia o su renovación, referidas a extranjeros que se encuentran en España, en los que se prevea la necesidad de informe gubernativo. Tal informe se incorporará al expediente al igual que el que, en su caso, aporten las Fuerzas y Cuerpos de Seguridad del Estado en el ejercicio de sus competencias sobre seguridad pública.
 ```
 
-### Real Decreto 1155/2024, artículo 83 · `BOE-A-2024-24099__a8-5` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2024-24099#a8-5
-_recuperado por:_ e5-large-instruct/I0_GENERIC#10 (0.880)  [1 sistemas]
+### Real Decreto 1155/2024, disposición transitoria quinta · `BOE-A-2024-24099__dt-5` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2024-24099#dt-5
+_recuperado por:_ hybrid_rrf/I0_GENERIC#16 (0.021) · e5-large-instruct/I0_GENERIC#17 (0.878)  [2 sistemas]
 ```
-  [1] Artículo 83. Autorización inicial de residencia temporal y trabajo por cuenta propia.
-  [2] La autorización inicial de residencia temporal y trabajo por cuenta propia tendrá una duración de un año y se limitará a un ámbito geográfico autonómico y a un sector de actividad.
-  [3] Cuando la Comunidad Autónoma tuviera reconocidas competencias en materia de autorización inicial de trabajo por cuenta propia podrá fijar el ámbito geográfico de la autorización dentro de su territorio.
+  [1] Disposición transitoria quinta. Autorizaciones de residencia por circunstancias excepcionales por razón de arraigo.
+  [2] (Derogada)
 ```
 
 ---
@@ -1584,105 +1691,9 @@ _recuperado por:_ e5-large-instruct/I0_GENERIC#10 (0.880)  [1 sistemas]
 **Pregunta:** Llevo dos años en España sin papeles, ¿qué modalidades de arraigo podría pedir y qué me exigen?
 _split=test · difficulty=media · failure_mode=—_
 
-### Real Decreto 1155/2024, artículo 127 · `BOE-A-2024-24099__a1-39` [JUZGADO rel=2 reviewed]
-https://www.boe.es/buscar/act.php?id=BOE-A-2024-24099#a1-39
-_recuperado por:_ e5-large-instruct/I0_GENERIC#1 (0.887) · e5-large-instruct/I1_LEGAL#1 (0.905) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.903) · e5-base/BASELINE#2 (0.854) · bge-m3/BASELINE#5 (0.635)  [5 sistemas]
-```
-  [1] Artículo 127. Requisitos específicos.
-  [2] La persona extranjera solicitante deberá cumplir, además de los requisitos generales del artículo anterior, los siguientes requisitos específicos en función de la razón del arraigo:
-  [3] a) Para el arraigo de segunda oportunidad, haber sido titular de una autorización de residencia, que no hubiera sido otorgada por circunstancias excepcionales, en los dos años inmediatamente anteriores a la fecha de presentación de la solicitud, y cuya renovación no se hubiera producido por motivos distintos a razones de orden público, seguridad y salud pública. No obstante, será posible solicitarlo si existe sentencia denegatoria, sobreseimiento o absolución de la pena.
-  [4] b) Para el arraigo sociolaboral, la aportación de uno o varios contratos de trabajo que garantice al menos el salario mínimo interprofesional o el salario establecido, en su caso, en el convenio colectivo aplicable, en el momento de la solicitud, en proporción a la jornada trabajada, y cuya suma represente una jornada semanal no inferior a veinte horas en cómputo global. Podrá aportarse más de un contrato de trabajo en los siguientes supuestos:
-  [5] 1.º En el caso de la realización de trabajos de naturaleza estacional o vinculados a actividades productivas de temporada se podrán presentar dos o más contratos, con distintos empleadores y concatenados.
-  [6] 2.º En el caso de desarrollo de actividades en una misma o distinta ocupación, trabajando parcialmente y de manera simultánea para más de un empleador, se admitirá la presentación de varios contratos.
-  [7] El empleador o empleadores deberá cumplir los requisitos del artículo 74 excepto lo establecido en el apartado 1.a).
-  [8] c) Para el arraigo social, siempre que existan vínculos familiares con otras personas extranjeras titulares de una autorización de residencia y que se justifique disponer de medios económicos suficientes para su mantenimiento que, en todo caso, deberán alcanzar, al menos, el 100 % del IPREM. Estos vínculos familiares se referirán al cónyuge o pareja registrada y a los familiares en primer grado en línea directa. En caso de que no se acredite la existencia de ese tipo de vínculos familiares se valorará el esfuerzo de integración de la persona extranjera. Los medios económicos deberán estar disponibles en España y podrán proceder de los familiares mencionados en este párrafo. Si se cumplen los requisitos del artículo 84, se podrá alegar que los medios proceden de una actividad por cuenta propia.
-  [9] El esfuerzo de integración se acreditará mediante la aportación de un informe sobre la integración social favorable emitido por los órganos competentes de la Comunidad Autónoma de su lugar de residencia. Dicho informe podrá ser emitido por la Corporación local en la que el extranjero tenga su domicilio habitual, cuando así haya sido establecido por la Comunidad Autónoma competente, siempre que ello haya sido previamente puesto en conocimiento de la Secretaría de Estado de Migraciones. En ambos casos el informe deberá ser emitido en el plazo de un mes desde su solicitud.
-  [10] El informe sobre la integración social hará constar, entre otros factores de arraigo que puedan acreditarse por las diferentes Administraciones competentes, el tiempo de permanencia de la persona interesada en su domicilio habitual, los medios económicos con los que cuente, y los esfuerzos de integración a través del seguimiento de programas de inserción sociolaborales y culturales. Simultáneamente y por medios electrónicos, la Comunidad Autónoma o la Corporación local deberá dar traslado del informe a la Oficina de Extranjería competente.
-  [11] Para la emisión del informe, el órgano autonómico competente, en su caso, podrá realizar consulta al Ayuntamiento donde el extranjero tenga su domicilio habitual sobre la información que pueda incorporar al mismo.
-  [12] En caso de que el informe no haya sido emitido en plazo, circunstancia que habrá de ser debidamente acreditada por el interesado, podrá justificarse este requisito por cualquier medio de prueba.
-  [13] d) Para el arraigo socioformativo estar matriculado o estar cursando alguna de las formaciones referidas en los artículos 52.1.b) y 52.1.e) 5.º, en este último caso incluido también el nivel uno, así como la oferta presencial correspondiente a las enseñanzas obligatorias dentro de la educación de personas adultas.
-  [14] Si la matrícula tuviera un plazo oficial para su formalización, la solicitud de la autorización de arraigo socioformativo deberá presentarse en los dos meses anteriores al inicio de ese plazo. La prueba de la matriculación se deberá acreditar ante la oficina de extranjería en un plazo de tres meses desde la notificación de la resolución de concesión de la autorización. En casos debidamente justificados, se podrá presentar la matrícula para una formación distinta de la prevista inicialmente, siempre y cuando, se cumpla los requisitos de la formación referida en el párrafo anterior. La falta de acreditación de la prueba de la matrícula en plazo será causa de extinción de la autorización concedida.
-  [15] Asimismo, podrán solicitar una autorización de residencia temporal por arraigo socioformativo, las personas extranjeras que se comprometan a realizar una formación promovida por los Servicios Públicos de Empleo en España y orientada al desempeño de ocupaciones incluidas en el Catálogo al que se refiere el artículo 75.1. La falta de acreditación de la realización de dicha formación será causa de extinción de la autorización concedida.
-  [16] Junto a los anteriores requisitos se exigirá un informe de integración social en España en los términos previstos en el apartado c) de este artículo.
-  [17] e) Para el de arraigo familiar:
-  [18] 1.º Ser padre, madre o tutor de un menor, nacional de otro Estado miembro de la Unión Europea, del Espacio Económico Europeo o de Suiza, siempre que al solicitar acredite residir en territorio nacional, tener a cargo al menor y convivir con éste o esté al corriente de sus obligaciones paternofiliales.
-  [19] 2.º Ser quien preste apoyo a una persona con discapacidad, que sea nacional de otro Estado miembro de la Unión Europea, del Espacio Económico Europeo o de Suiza, para el ejercicio de su capacidad jurídica, siempre que la persona solicitante sea su familiar, tenga a cargo a la persona con discapacidad y conviva con ella.
-```
-
-### Real Decreto 1155/2024, disposición adicional vigesimoprimera · `BOE-A-2024-24099__da-21` [JUZGADO rel=1 reviewed]
-https://www.boe.es/buscar/act.php?id=BOE-A-2024-24099#da-21
-_recuperado por:_ bge-m3/BASELINE#3 (0.635) · e5-large-instruct/I0_GENERIC#3 (0.886) · e5-large-instruct/I1_LEGAL#3 (0.904) · e5-large-instruct/I2_CITIZEN_LEGISLATION#3 (0.902) · e5-base/BASELINE#5 (0.848)  [5 sistemas]
-```
-  [1] Disposición adicional vigesimoprimera. Autorizaciones de residencia temporal por circunstancias excepcionales por razón de arraigo extraordinario.
-  [2] 1. De conformidad con lo previsto en el artículo 31.3 de la Ley Orgánica 4/2000, de 11 de enero, en atención a la concurrencia de circunstancias excepcionales, las personas extranjeras que se encontraran en España antes del 1 de enero de 2026 podrán solicitar una autorización de residencia temporal por circunstancias excepcionales por razón de arraigo extraordinario, siempre y cuando cumplan de forma acumulativa los siguientes requisitos:
-  [3] a) Ser mayor de edad, encontrarse en España en el momento de la presentación de la solicitud de la autorización de residencia y no ser titular de una autorización de estancia o residencia.
-  [4] b) No ostentar la condición de persona interesada en procedimientos que tengan por objeto la concesión, prórroga, renovación o modificación de autorizaciones de estancia o residencia.
-  [5] c) No ser ni haber sido titular de una autorización de residencia obtenida conforme a la Decisión de Ejecución (UE) 2022/382 del Consejo de 4 de marzo de 2022 por la que se constata la existencia de una afluencia masiva de personas desplazadas procedentes de Ucrania en el sentido del artículo 5 de la Directiva 2001/55/CE y con el efecto de que se inicie la protección temporal.
-  [6] d) Aportar copia completa del pasaporte en vigor o caducado, cédula de inscripción en vigor o caducada o título de viaje, reconocido como válido en España, en vigor o caducado.
-  [7] e) Haber permanecido en España de forma ininterrumpida durante los cinco meses anteriores al momento de presentar la solicitud de autorización de residencia. Esta circunstancia podrá acreditarse mediante cualquier prueba válida en derecho, siempre que incluya datos personales que permitan acreditar su identidad.
-  [8] f) Carecer de antecedentes penales en los términos establecidos en el artículo 126.d).
-  [9] A tal efecto, no se tomarán en consideración los antecedentes susceptibles de cancelación en España. Si existieran antecedentes penales susceptibles de cancelación en España, la persona interesada solicitará al Ministerio de la Presidencia, Justicia y Relaciones con las Cortes, la cancelación, antes de que se notifique la resolución del procedimiento.
-  [10] g) No representar una amenaza para el orden público, la seguridad pública o la salud pública. Esta circunstancia se acreditará mediante la comprobación de la inexistencia de antecedentes penales y la valoración del informe policial correspondiente. La existencia de antecedentes en el informe policial no supondrá, por sí misma y de forma automática, causa de denegación de la autorización.
-  [11] En ese caso, el órgano competente para tramitar la solicitud valorará de forma casuística y circunstanciada, que la persona extranjera no suponga una amenaza para el orden público, la seguridad interior, la salud pública o las relaciones internacionales de ninguno de los Estados miembros de la Unión Europea.
-  [12] h) No figurar como rechazable en el espacio territorial de países con los que España haya firmado un convenio en tal sentido.
-  [13] i) En su caso, no encontrarse dentro del plazo de compromiso de no retorno a España.
-  [14] j) Haber abonado la tasa por tramitación de la autorización. La cuantía de esta será la determinada por la Orden PJC/617/2025, de 13 de junio, por la que se establece el importe de las tasas por tramitación de autorizaciones administrativas y documentos de identidad en materia de inmigración y extranjería, para la autorización de residencia temporal por circunstancias excepcionales por arraigo.
-  [15] 2. Además, para la concesión de la autorización, deberán acreditar el cumplimiento de al menos uno de los siguientes requisitos:
-  [16] a) Haber trabajado, por cuenta ajena o por cuenta propia, durante su permanencia en España o acreditar la intención de trabajar por cuenta ajena, presentando una oferta de trabajo, o por cuenta propia, a través de la presentación de una declaración responsable, presentada a través de modelo específico.
-  [17] A efectos de contratación laboral, se admitirán todas las modalidades contractuales previstas en la normativa sectorial vigente, siempre que se acredite que el contrato o la suma de contratos tengan una duración superior a noventa días en un año.
-  [18] b) Permanecer en España junto con su unidad familiar, siempre que esté compuesta por hijas e hijos menores de edad o mayores de edad que tengan una discapacidad que requiera de apoyo o que no sean objetivamente capaces de proveer a sus propias necesidades debido a su estado de salud o ascendientes de primer grado con los que convivan.
-  [19] c) Encontrarse en situación de vulnerabilidad, acreditada, conforme a modelo específico, por las entidades competentes en materia de asistencia social. Podrán acreditar también dicha situación las entidades del Tercer Sector inscritas en el Registro Electrónico de Colaboradores de Extranjería regulado por la Orden ISM/164/2026, de 2 de marzo. El certificado que acredite esta situación de vulnerabilidad surtirá efectos exclusivamente a los fines previstos en esta disposición.
-  [20] A los únicos efectos de esta disposición adicional, se considerará que se encuentran en situación de vulnerabilidad las personas extranjeras que, atendiendo a su condición administrativa irregular, y a las circunstancias personales, económicas, sociales, psicosociales, familiares o habitacionales derivadas de la misma, dichos elementos afecten a sus condiciones de vida o al acceso efectivo a sus derechos.
-  [21] 3. En los supuestos en los que las personas extranjeras, a las que se refiere el apartado primero, tengan ascendientes de primer grado, cónyuge o pareja registrada que formen parte de la unidad de convivencia podrán solicitar la autorización prevista en esta disposición simultáneamente y se resolverán de manera simultánea.
-  [22] 4. Con la comunicación de inicio de la tramitación del procedimiento previsto en esta disposición adicional y hasta que se resuelva, se habilitará, de forma provisional, a las personas solicitantes a residir y a trabajar por cuenta ajena y por cuenta propia en todo el territorio nacional y en cualquier ocupación o sector de actividad. En la comunicación de inicio se hará constar que la persona solicitante está habilitada provisionalmente a trabajar. En su caso, una vez concedida la autorización definitiva, su eficacia se retrotraerá al momento en el que se presentó la solicitud.
-  [23] La denegación de la solicitud supondrá la automática pérdida de la habilitación provisional para trabajar sin necesidad de pronunciamiento administrativo expreso.
-  [24] En todo caso, si la persona extranjera habilitada provisionalmente trabaja por cuenta ajena, una vez notificada la resolución del procedimiento, deberá poner inmediatamente en conocimiento de la persona empleadora el sentido de la misma.
-  [25] El plazo máximo de resolución del procedimiento y notificación de la resolución será de tres meses a partir del día siguiente al de la fecha en que hayan tenido entrada en el registro del órgano competente para tramitarla y podrá ser suspendido en los términos recogidos en el artículo 22 de la Ley 39/2015, de 1 de octubre. Durante dicha suspensión seguirá siendo válida la autorización provisional regulada en este apartado. Todo ello sin perjuicio de lo previsto en el artículo 95 de la Ley 39/2015, de 1 de octubre, en virtud del cual, en los procedimientos iniciados a solicitud de la persona interesada, cuando se produzca su paralización por causa imputable al mismo, el órgano tramitador de este procedimiento le advertirá que, transcurridos tres meses, se producirá la caducidad del procedimiento. Consumido este plazo sin que el particular requerido realice las actividades necesarias para reanudar la tramitación, el órgano tramitador de este procedimiento acordará el archivo de las actuaciones, notificándoselo a la persona interesada.
-  [26] Transcurrido el plazo máximo de resolución de tres meses sin que se haya notificado la resolución, se entenderá que la solicitud ha sido desestimada por silencio administrativo.
-  [27] 5. En los supuestos en los que la persona solicitante se encuentre afectada por un procedimiento de devolución o expulsión por las infracciones previstas en el artículo 53.1.a) y b) de la Ley Orgánica 4/2000, de 11 de enero, la concesión de la autorización prevista en esta disposición supondrá el archivo del procedimiento de expulsión o devolución y, en su caso, la revocación de la orden.
-  [28] 6. La autorización de residencia temporal por circunstancias excepcionales por razón de arraigo podrá ser solicitada hasta el 30 de junio de 2026, por la persona extranjera, personalmente o mediante representación, ante las oficinas públicas de la provincia en la que resida que estén habilitadas para ello, o a través de los medios electrónicos disponibles, en los términos previstos en la disposición adicional tercera de la Ley Orgánica 4/2000, de 11 de enero, y en el artículo 197.4 de este reglamento.
-  [29] A tal efecto, se habilitarán oficinas públicas en todo el territorio nacional, incluidas las oficinas de Correos, las oficinas de la Seguridad Social y las oficinas de extranjería que se determinen, para la presentación de las solicitudes a través de un procedimiento específico, preferente y diferenciado de tramitación.
-  [30] La solicitud deberá presentarse a través del modelo específico, que estará disponible en el portal web de los Ministerios de Inclusión Seguridad Social y Migraciones y de Política Territorial y Memoria Democrática, para el procedimiento previsto en esta disposición. Asimismo, se publicarán en dichos portales web las hojas informativas correspondientes.
-  [31] La solicitud se acompañará de un cuestionario, en modelo específico, relativo a la situación formativa y sociolaboral de la persona solicitante. Los datos recogidos en dicho cuestionario tendrán carácter estadístico y serán utilizados exclusivamente para la evaluación del impacto de la presente disposición, sin que su contenido condicione la resolución del procedimiento.
-  [32] La Unidad de Tramitación de Expedientes de Extranjería, dependiente del Ministerio de Inclusión, Seguridad Social y Migraciones, comprobará el cumplimiento de los requisitos previstos en los apartados primero y segundo y que la solicitud se acompaña de la documentación necesaria para acreditarlos. En caso de que la solicitud estuviera incompleta, formulará a la persona solicitante el oportuno requerimiento a fin de que se subsanen los defectos observados en el plazo que se señale en la notificación, que no podrá ser superior quince días, advirtiéndole de que de no subsanarse en plazo se le tendrá por desistido de su solicitud y se procederá al archivo de su expediente.
-  [33] La competencia para la resolución del procedimiento corresponderá a la persona titular de la Dirección General de Gestión Migratoria.
-  [34] 7. Durante el mes inmediatamente posterior a la concesión de la autorización, la persona extranjera deberá solicitar la tarjeta de identidad de extranjero que será expedida por el plazo de validez de la autorización. No obstante, la autorización otorgará plenos derechos desde su concesión.
-  [35] La residencia habitual se podrá acreditar mediante la aportación de cualquier prueba válida en derecho.
-  [36] 8. No será exigible aportar documentos que ya obren en poder de las Administraciones, en los términos del artículo 28 de la Ley 39/2015, de 1 de octubre.
-  [37] 9. Para la valoración de los requisitos establecidos en las letras f) y g) del apartado 1, la Unidad de Tramitación de Expedientes de Extranjería recabará de oficio informe del Registro Central de Penados, el informe de las bases de datos de la Unión Europea, así como informe policial sobre la persona solicitante. Estos informes serán emitidos en el plazo de quince días.
-  [38] En relación con los antecedentes penales del país de origen y de los países en los que hubiese residido durante los últimos cinco años anteriores a la fecha de entrada en España, la persona solicitante deberá aportar certificado de antecedentes penales o documento equivalente expedido por las autoridades del país correspondiente.
-  [39] Con carácter excepcional, si la persona interesada acreditase haber solicitado el certificado de antecedentes penales de las autoridades del país de origen o de aquellos donde hubiera residido durante los últimos cinco años anteriores a la fecha de entrada en España, y hubiera transcurrido un mes sin haberlo recibido, la Unidad de Tramitación de Expedientes de Extranjería solicitará al Ministerio de la Presidencia, Justicia y Relaciones con las Cortes que recabe, por vía diplomática, a través de las Misiones Diplomáticas de España, de la autoridad competente del país o países correspondientes, el certificado de antecedentes penales o documento equivalente. Una vez recibido dicho documento, el Ministerio de la Presidencia, Justicia y Relaciones con las Cortes emitirá el informe correspondiente y lo trasladará a la Unidad de Tramitación de Expedientes de Extranjería.
-  [40] A tal efecto, la persona interesada deberá presentar su solicitud de autorización acompañada de la siguiente documentación:
-  [41] a) Justificante de la solicitud del certificado de antecedentes penales o documento equivalente a expedir por las autoridades del país extranjero.
-  [42] b) Declaración responsable, conforme al modelo específico, en la que manifieste no haber recibido respuesta a su solicitud en el plazo de un mes.
-  [43] c) Autorización, conforme al modelo específico, a las autoridades españolas para recabar sus antecedentes penales ante el país correspondiente. Este documento deberá ser presentado en español y en el idioma del país o países en que deba surtir efecto.
-  [44] Una vez, solicitado el informe al Ministerio de la Presidencia, Justicia y Relaciones con las Cortes, conforme al artículo 22.1.d) de la Ley 39/2015, de 1 de octubre, se producirá la suspensión del procedimiento por un plazo máximo de tres meses. Transcurridos los tres meses sin que el Ministerio de la Presidencia, Justicia y Relaciones con las Cortes haya recibido certificado de antecedentes penales o documento equivalente, lo pondrá en conocimiento de la Unidad de Tramitación de Expedientes de Extranjería, que comunicará esta situación a la persona solicitante y le requerirá para que, en el plazo de quince días, aporte el certificado de antecedentes penales o documento equivalente, con indicación de que, si así no lo hiciera, se le tendrá por desistido de su solicitud.
-  [45] 10. La autorización de residencia temporal por circunstancias excepcionales por razón de arraigo extraordinario tendrá una vigencia de un año y habilitará a sus titulares a residir y trabajar por cuenta ajena y por cuenta propia, en cualquier parte del territorio español, ocupación o sector de actividad.
-  [46] Durante los dos meses previos a la fecha de expiración de la vigencia de su autorización de residencia, sus titulares deberán solicitar una modificación conforme al artículo 191 de este reglamento. La presentación de la solicitud prorrogará la validez de la autorización anterior hasta la resolución del procedimiento. También se prorrogará hasta la resolución del procedimiento en el supuesto en que la solicitud se presentase dentro de los tres meses posteriores a la fecha en que hubiera finalizado la vigencia de la anterior autorización, sin perjuicio de la incoación del correspondiente procedimiento sancionador de conformidad con el artículo 52.b) de la Ley Orgánica 4/2000, de 11 de enero.
-  [47] Excepcionalmente, si no se pudiera solicitar una modificación conforme a este reglamento, esta autorización podrá ser prorrogada siempre y cuando se acredite estar en búsqueda activa de empleo y debidamente inscrito en el servicio público de empleo o se aporte un informe de esfuerzo de integración emitido por los órganos competentes de la Comunidad Autónoma de su lugar de residencia que recomienden la prórroga. El informe, de ser favorable, certificará, entre otros elementos, el aprendizaje de las lenguas oficiales del lugar de residencia. Esta prórroga tendrá una vigencia de un año.
-  [48] No obstante, se podrá prorrogar sin necesidad de acreditar los anteriores requisitos si concurren circunstancias que impidan el acceso al empleo por razones debidamente justificadas, tales como enfermedad grave o discapacidad de la persona solicitante, de su cónyuge o descendiente de primer grado menor de edad o mayores de edad que no sean objetivamente capaces de proveer sus propias necesidades debido a su estado de salud, así como en el supuesto de haber alcanzado la edad legal de jubilación. En estos casos, la prórroga tendrá una duración de cuatro años.
-```
-
-### Real Decreto 1155/2024, artículo 126 · `BOE-A-2024-24099__a1-38` [JUZGADO rel=2 reviewed]
-https://www.boe.es/buscar/act.php?id=BOE-A-2024-24099#a1-38
-_recuperado por:_ e5-base/BASELINE#4 (0.853) · e5-large-instruct/I0_GENERIC#4 (0.886) · bge-m3/BASELINE#7 (0.626) · e5-large-instruct/I1_LEGAL#7 (0.902) · e5-large-instruct/I2_CITIZEN_LEGISLATION#8 (0.901)  [5 sistemas]
-```
-  [1] Artículo 126. Requisitos generales.
-  [2] Se podrá conceder una autorización de residencia temporal por las razones de arraigo establecidas en el artículo anterior cuando la persona extranjera cumpla de forma acumulativa los siguientes requisitos generales:
-  [3] a) Encontrarse en España y no tener la condición de solicitante de protección internacional en el momento de la presentación de la solicitud ni durante su tramitación. A tal efecto, se entenderá por solicitante de protección internacional a aquella persona extranjera que haya formulado una solicitud de protección internacional sobre la que no se haya adoptado una resolución firme en sede administrativa, y, en su caso, judicial.
-  [4] b) Haber permanecido en territorio nacional de forma continuada durante, al menos, los dos años anteriores a la presentación de dicha solicitud. A estos efectos, cuando la persona extranjera haya sido solicitante de protección internacional, no será computable el tiempo de permanencia en España durante la tramitación de la solicitud de protección internacional hasta su resolución firme en sede administrativa, y, en su caso, judicial.
-  [5] El arraigo familiar no requerirá ninguna permanencia mínima.
-  [6] c) No representar una amenaza para el orden público, seguridad o salud pública.
-  [7] d) Carecer de antecedentes penales en España y en los países donde haya residido durante los cinco últimos años anteriores a la fecha de entrada en España, por delitos previstos en el ordenamiento jurídico español.
-  [8] e) No figurar como rechazable en el espacio territorial de países con los que España tenga firmado un convenio en tal sentido.
-  [9] f) En su caso, no encontrarse dentro del plazo de compromiso de no retorno a España.
-  [10] g) Haber abonado la tasa por la tramitación del procedimiento.
-  [11] h) No ser titular de una autorización de estancia o residencia ni ostentar la condición de persona interesada en procedimientos que tengan por objeto la concesión, prórroga, renovación o modificación de autorizaciones de estancia o residencia.
-```
-
 ### Real Decreto 1155/2024, [preambulo] · `BOE-A-2024-24099__pr` [JUZGADO rel=0 draft]
 https://www.boe.es/buscar/act.php?id=BOE-A-2024-24099#pr
-_recuperado por:_ bge-m3/BASELINE#1 (0.677) · e5-base/BASELINE#1 (0.855) · e5-large-instruct/I2_CITIZEN_LEGISLATION#7 (0.902) · e5-large-instruct/I1_LEGAL#10 (0.901) · e5-large-instruct/I0_GENERIC#19 (0.882)  [5 sistemas]
+_recuperado por:_ bge-m3/BASELINE#1 (0.677) · e5-base/BASELINE#1 (0.855) · bm25/lexical#1 (22.683) · hybrid_rrf/I0_GENERIC#5 (0.029) · e5-large-instruct/I2_CITIZEN_LEGISLATION#7 (0.902) · e5-large-instruct/I1_LEGAL#10 (0.901) · e5-large-instruct/I0_GENERIC#19 (0.882)  [7 sistemas]
 ```
   [1] I
   [2] El fenómeno migratorio es un fenómeno estructural; la movilidad humana en busca de oportunidades y una vida mejor es una realidad constatada a lo largo de los años que va a continuar.
@@ -1746,9 +1757,120 @@ _recuperado por:_ bge-m3/BASELINE#1 (0.677) · e5-base/BASELINE#1 (0.855) · e5-
   [60] DISPONGO:
 ```
 
+### Real Decreto 1155/2024, artículo 126 · `BOE-A-2024-24099__a1-38` [JUZGADO rel=2 reviewed]
+https://www.boe.es/buscar/act.php?id=BOE-A-2024-24099#a1-38
+_recuperado por:_ bm25/lexical#3 (19.487) · e5-base/BASELINE#4 (0.853) · e5-large-instruct/I0_GENERIC#4 (0.886) · hybrid_rrf/I0_GENERIC#4 (0.030) · bge-m3/BASELINE#7 (0.626) · e5-large-instruct/I1_LEGAL#7 (0.902) · e5-large-instruct/I2_CITIZEN_LEGISLATION#8 (0.901)  [7 sistemas]
+```
+  [1] Artículo 126. Requisitos generales.
+  [2] Se podrá conceder una autorización de residencia temporal por las razones de arraigo establecidas en el artículo anterior cuando la persona extranjera cumpla de forma acumulativa los siguientes requisitos generales:
+  [3] a) Encontrarse en España y no tener la condición de solicitante de protección internacional en el momento de la presentación de la solicitud ni durante su tramitación. A tal efecto, se entenderá por solicitante de protección internacional a aquella persona extranjera que haya formulado una solicitud de protección internacional sobre la que no se haya adoptado una resolución firme en sede administrativa, y, en su caso, judicial.
+  [4] b) Haber permanecido en territorio nacional de forma continuada durante, al menos, los dos años anteriores a la presentación de dicha solicitud. A estos efectos, cuando la persona extranjera haya sido solicitante de protección internacional, no será computable el tiempo de permanencia en España durante la tramitación de la solicitud de protección internacional hasta su resolución firme en sede administrativa, y, en su caso, judicial.
+  [5] El arraigo familiar no requerirá ninguna permanencia mínima.
+  [6] c) No representar una amenaza para el orden público, seguridad o salud pública.
+  [7] d) Carecer de antecedentes penales en España y en los países donde haya residido durante los cinco últimos años anteriores a la fecha de entrada en España, por delitos previstos en el ordenamiento jurídico español.
+  [8] e) No figurar como rechazable en el espacio territorial de países con los que España tenga firmado un convenio en tal sentido.
+  [9] f) En su caso, no encontrarse dentro del plazo de compromiso de no retorno a España.
+  [10] g) Haber abonado la tasa por la tramitación del procedimiento.
+  [11] h) No ser titular de una autorización de estancia o residencia ni ostentar la condición de persona interesada en procedimientos que tengan por objeto la concesión, prórroga, renovación o modificación de autorizaciones de estancia o residencia.
+```
+
+### Real Decreto 1155/2024, artículo 127 · `BOE-A-2024-24099__a1-39` [JUZGADO rel=2 reviewed]
+https://www.boe.es/buscar/act.php?id=BOE-A-2024-24099#a1-39
+_recuperado por:_ e5-large-instruct/I0_GENERIC#1 (0.887) · e5-large-instruct/I1_LEGAL#1 (0.905) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.903) · hybrid_rrf/I0_GENERIC#1 (0.032) · e5-base/BASELINE#2 (0.854) · bge-m3/BASELINE#5 (0.635) · bm25/lexical#6 (15.697)  [7 sistemas]
+```
+  [1] Artículo 127. Requisitos específicos.
+  [2] La persona extranjera solicitante deberá cumplir, además de los requisitos generales del artículo anterior, los siguientes requisitos específicos en función de la razón del arraigo:
+  [3] a) Para el arraigo de segunda oportunidad, haber sido titular de una autorización de residencia, que no hubiera sido otorgada por circunstancias excepcionales, en los dos años inmediatamente anteriores a la fecha de presentación de la solicitud, y cuya renovación no se hubiera producido por motivos distintos a razones de orden público, seguridad y salud pública. No obstante, será posible solicitarlo si existe sentencia denegatoria, sobreseimiento o absolución de la pena.
+  [4] b) Para el arraigo sociolaboral, la aportación de uno o varios contratos de trabajo que garantice al menos el salario mínimo interprofesional o el salario establecido, en su caso, en el convenio colectivo aplicable, en el momento de la solicitud, en proporción a la jornada trabajada, y cuya suma represente una jornada semanal no inferior a veinte horas en cómputo global. Podrá aportarse más de un contrato de trabajo en los siguientes supuestos:
+  [5] 1.º En el caso de la realización de trabajos de naturaleza estacional o vinculados a actividades productivas de temporada se podrán presentar dos o más contratos, con distintos empleadores y concatenados.
+  [6] 2.º En el caso de desarrollo de actividades en una misma o distinta ocupación, trabajando parcialmente y de manera simultánea para más de un empleador, se admitirá la presentación de varios contratos.
+  [7] El empleador o empleadores deberá cumplir los requisitos del artículo 74 excepto lo establecido en el apartado 1.a).
+  [8] c) Para el arraigo social, siempre que existan vínculos familiares con otras personas extranjeras titulares de una autorización de residencia y que se justifique disponer de medios económicos suficientes para su mantenimiento que, en todo caso, deberán alcanzar, al menos, el 100 % del IPREM. Estos vínculos familiares se referirán al cónyuge o pareja registrada y a los familiares en primer grado en línea directa. En caso de que no se acredite la existencia de ese tipo de vínculos familiares se valorará el esfuerzo de integración de la persona extranjera. Los medios económicos deberán estar disponibles en España y podrán proceder de los familiares mencionados en este párrafo. Si se cumplen los requisitos del artículo 84, se podrá alegar que los medios proceden de una actividad por cuenta propia.
+  [9] El esfuerzo de integración se acreditará mediante la aportación de un informe sobre la integración social favorable emitido por los órganos competentes de la Comunidad Autónoma de su lugar de residencia. Dicho informe podrá ser emitido por la Corporación local en la que el extranjero tenga su domicilio habitual, cuando así haya sido establecido por la Comunidad Autónoma competente, siempre que ello haya sido previamente puesto en conocimiento de la Secretaría de Estado de Migraciones. En ambos casos el informe deberá ser emitido en el plazo de un mes desde su solicitud.
+  [10] El informe sobre la integración social hará constar, entre otros factores de arraigo que puedan acreditarse por las diferentes Administraciones competentes, el tiempo de permanencia de la persona interesada en su domicilio habitual, los medios económicos con los que cuente, y los esfuerzos de integración a través del seguimiento de programas de inserción sociolaborales y culturales. Simultáneamente y por medios electrónicos, la Comunidad Autónoma o la Corporación local deberá dar traslado del informe a la Oficina de Extranjería competente.
+  [11] Para la emisión del informe, el órgano autonómico competente, en su caso, podrá realizar consulta al Ayuntamiento donde el extranjero tenga su domicilio habitual sobre la información que pueda incorporar al mismo.
+  [12] En caso de que el informe no haya sido emitido en plazo, circunstancia que habrá de ser debidamente acreditada por el interesado, podrá justificarse este requisito por cualquier medio de prueba.
+  [13] d) Para el arraigo socioformativo estar matriculado o estar cursando alguna de las formaciones referidas en los artículos 52.1.b) y 52.1.e) 5.º, en este último caso incluido también el nivel uno, así como la oferta presencial correspondiente a las enseñanzas obligatorias dentro de la educación de personas adultas.
+  [14] Si la matrícula tuviera un plazo oficial para su formalización, la solicitud de la autorización de arraigo socioformativo deberá presentarse en los dos meses anteriores al inicio de ese plazo. La prueba de la matriculación se deberá acreditar ante la oficina de extranjería en un plazo de tres meses desde la notificación de la resolución de concesión de la autorización. En casos debidamente justificados, se podrá presentar la matrícula para una formación distinta de la prevista inicialmente, siempre y cuando, se cumpla los requisitos de la formación referida en el párrafo anterior. La falta de acreditación de la prueba de la matrícula en plazo será causa de extinción de la autorización concedida.
+  [15] Asimismo, podrán solicitar una autorización de residencia temporal por arraigo socioformativo, las personas extranjeras que se comprometan a realizar una formación promovida por los Servicios Públicos de Empleo en España y orientada al desempeño de ocupaciones incluidas en el Catálogo al que se refiere el artículo 75.1. La falta de acreditación de la realización de dicha formación será causa de extinción de la autorización concedida.
+  [16] Junto a los anteriores requisitos se exigirá un informe de integración social en España en los términos previstos en el apartado c) de este artículo.
+  [17] e) Para el de arraigo familiar:
+  [18] 1.º Ser padre, madre o tutor de un menor, nacional de otro Estado miembro de la Unión Europea, del Espacio Económico Europeo o de Suiza, siempre que al solicitar acredite residir en territorio nacional, tener a cargo al menor y convivir con éste o esté al corriente de sus obligaciones paternofiliales.
+  [19] 2.º Ser quien preste apoyo a una persona con discapacidad, que sea nacional de otro Estado miembro de la Unión Europea, del Espacio Económico Europeo o de Suiza, para el ejercicio de su capacidad jurídica, siempre que la persona solicitante sea su familiar, tenga a cargo a la persona con discapacidad y conviva con ella.
+```
+
+### Real Decreto 1155/2024, disposición adicional vigesimoprimera · `BOE-A-2024-24099__da-21` [JUZGADO rel=1 reviewed]
+https://www.boe.es/buscar/act.php?id=BOE-A-2024-24099#da-21
+_recuperado por:_ bge-m3/BASELINE#3 (0.635) · e5-large-instruct/I0_GENERIC#3 (0.886) · e5-large-instruct/I1_LEGAL#3 (0.904) · e5-large-instruct/I2_CITIZEN_LEGISLATION#3 (0.902) · e5-base/BASELINE#5 (0.848) · hybrid_rrf/I0_GENERIC#7 (0.026) · bm25/lexical#12 (14.833)  [7 sistemas]
+```
+  [1] Disposición adicional vigesimoprimera. Autorizaciones de residencia temporal por circunstancias excepcionales por razón de arraigo extraordinario.
+  [2] 1. De conformidad con lo previsto en el artículo 31.3 de la Ley Orgánica 4/2000, de 11 de enero, en atención a la concurrencia de circunstancias excepcionales, las personas extranjeras que se encontraran en España antes del 1 de enero de 2026 podrán solicitar una autorización de residencia temporal por circunstancias excepcionales por razón de arraigo extraordinario, siempre y cuando cumplan de forma acumulativa los siguientes requisitos:
+  [3] a) Ser mayor de edad, encontrarse en España en el momento de la presentación de la solicitud de la autorización de residencia y no ser titular de una autorización de estancia o residencia.
+  [4] b) No ostentar la condición de persona interesada en procedimientos que tengan por objeto la concesión, prórroga, renovación o modificación de autorizaciones de estancia o residencia.
+  [5] c) No ser ni haber sido titular de una autorización de residencia obtenida conforme a la Decisión de Ejecución (UE) 2022/382 del Consejo de 4 de marzo de 2022 por la que se constata la existencia de una afluencia masiva de personas desplazadas procedentes de Ucrania en el sentido del artículo 5 de la Directiva 2001/55/CE y con el efecto de que se inicie la protección temporal.
+  [6] d) Aportar copia completa del pasaporte en vigor o caducado, cédula de inscripción en vigor o caducada o título de viaje, reconocido como válido en España, en vigor o caducado.
+  [7] e) Haber permanecido en España de forma ininterrumpida durante los cinco meses anteriores al momento de presentar la solicitud de autorización de residencia. Esta circunstancia podrá acreditarse mediante cualquier prueba válida en derecho, siempre que incluya datos personales que permitan acreditar su identidad.
+  [8] f) Carecer de antecedentes penales en los términos establecidos en el artículo 126.d).
+  [9] A tal efecto, no se tomarán en consideración los antecedentes susceptibles de cancelación en España. Si existieran antecedentes penales susceptibles de cancelación en España, la persona interesada solicitará al Ministerio de la Presidencia, Justicia y Relaciones con las Cortes, la cancelación, antes de que se notifique la resolución del procedimiento.
+  [10] g) No representar una amenaza para el orden público, la seguridad pública o la salud pública. Esta circunstancia se acreditará mediante la comprobación de la inexistencia de antecedentes penales y la valoración del informe policial correspondiente. La existencia de antecedentes en el informe policial no supondrá, por sí misma y de forma automática, causa de denegación de la autorización.
+  [11] En ese caso, el órgano competente para tramitar la solicitud valorará de forma casuística y circunstanciada, que la persona extranjera no suponga una amenaza para el orden público, la seguridad interior, la salud pública o las relaciones internacionales de ninguno de los Estados miembros de la Unión Europea.
+  [12] h) No figurar como rechazable en el espacio territorial de países con los que España haya firmado un convenio en tal sentido.
+  [13] i) En su caso, no encontrarse dentro del plazo de compromiso de no retorno a España.
+  [14] j) Haber abonado la tasa por tramitación de la autorización. La cuantía de esta será la determinada por la Orden PJC/617/2025, de 13 de junio, por la que se establece el importe de las tasas por tramitación de autorizaciones administrativas y documentos de identidad en materia de inmigración y extranjería, para la autorización de residencia temporal por circunstancias excepcionales por arraigo.
+  [15] 2. Además, para la concesión de la autorización, deberán acreditar el cumplimiento de al menos uno de los siguientes requisitos:
+  [16] a) Haber trabajado, por cuenta ajena o por cuenta propia, durante su permanencia en España o acreditar la intención de trabajar por cuenta ajena, presentando una oferta de trabajo, o por cuenta propia, a través de la presentación de una declaración responsable, presentada a través de modelo específico.
+  [17] A efectos de contratación laboral, se admitirán todas las modalidades contractuales previstas en la normativa sectorial vigente, siempre que se acredite que el contrato o la suma de contratos tengan una duración superior a noventa días en un año.
+  [18] b) Permanecer en España junto con su unidad familiar, siempre que esté compuesta por hijas e hijos menores de edad o mayores de edad que tengan una discapacidad que requiera de apoyo o que no sean objetivamente capaces de proveer a sus propias necesidades debido a su estado de salud o ascendientes de primer grado con los que convivan.
+  [19] c) Encontrarse en situación de vulnerabilidad, acreditada, conforme a modelo específico, por las entidades competentes en materia de asistencia social. Podrán acreditar también dicha situación las entidades del Tercer Sector inscritas en el Registro Electrónico de Colaboradores de Extranjería regulado por la Orden ISM/164/2026, de 2 de marzo. El certificado que acredite esta situación de vulnerabilidad surtirá efectos exclusivamente a los fines previstos en esta disposición.
+  [20] A los únicos efectos de esta disposición adicional, se considerará que se encuentran en situación de vulnerabilidad las personas extranjeras que, atendiendo a su condición administrativa irregular, y a las circunstancias personales, económicas, sociales, psicosociales, familiares o habitacionales derivadas de la misma, dichos elementos afecten a sus condiciones de vida o al acceso efectivo a sus derechos.
+  [21] 3. En los supuestos en los que las personas extranjeras, a las que se refiere el apartado primero, tengan ascendientes de primer grado, cónyuge o pareja registrada que formen parte de la unidad de convivencia podrán solicitar la autorización prevista en esta disposición simultáneamente y se resolverán de manera simultánea.
+  [22] 4. Con la comunicación de inicio de la tramitación del procedimiento previsto en esta disposición adicional y hasta que se resuelva, se habilitará, de forma provisional, a las personas solicitantes a residir y a trabajar por cuenta ajena y por cuenta propia en todo el territorio nacional y en cualquier ocupación o sector de actividad. En la comunicación de inicio se hará constar que la persona solicitante está habilitada provisionalmente a trabajar. En su caso, una vez concedida la autorización definitiva, su eficacia se retrotraerá al momento en el que se presentó la solicitud.
+  [23] La denegación de la solicitud supondrá la automática pérdida de la habilitación provisional para trabajar sin necesidad de pronunciamiento administrativo expreso.
+  [24] En todo caso, si la persona extranjera habilitada provisionalmente trabaja por cuenta ajena, una vez notificada la resolución del procedimiento, deberá poner inmediatamente en conocimiento de la persona empleadora el sentido de la misma.
+  [25] El plazo máximo de resolución del procedimiento y notificación de la resolución será de tres meses a partir del día siguiente al de la fecha en que hayan tenido entrada en el registro del órgano competente para tramitarla y podrá ser suspendido en los términos recogidos en el artículo 22 de la Ley 39/2015, de 1 de octubre. Durante dicha suspensión seguirá siendo válida la autorización provisional regulada en este apartado. Todo ello sin perjuicio de lo previsto en el artículo 95 de la Ley 39/2015, de 1 de octubre, en virtud del cual, en los procedimientos iniciados a solicitud de la persona interesada, cuando se produzca su paralización por causa imputable al mismo, el órgano tramitador de este procedimiento le advertirá que, transcurridos tres meses, se producirá la caducidad del procedimiento. Consumido este plazo sin que el particular requerido realice las actividades necesarias para reanudar la tramitación, el órgano tramitador de este procedimiento acordará el archivo de las actuaciones, notificándoselo a la persona interesada.
+  [26] Transcurrido el plazo máximo de resolución de tres meses sin que se haya notificado la resolución, se entenderá que la solicitud ha sido desestimada por silencio administrativo.
+  [27] 5. En los supuestos en los que la persona solicitante se encuentre afectada por un procedimiento de devolución o expulsión por las infracciones previstas en el artículo 53.1.a) y b) de la Ley Orgánica 4/2000, de 11 de enero, la concesión de la autorización prevista en esta disposición supondrá el archivo del procedimiento de expulsión o devolución y, en su caso, la revocación de la orden.
+  [28] 6. La autorización de residencia temporal por circunstancias excepcionales por razón de arraigo podrá ser solicitada hasta el 30 de junio de 2026, por la persona extranjera, personalmente o mediante representación, ante las oficinas públicas de la provincia en la que resida que estén habilitadas para ello, o a través de los medios electrónicos disponibles, en los términos previstos en la disposición adicional tercera de la Ley Orgánica 4/2000, de 11 de enero, y en el artículo 197.4 de este reglamento.
+  [29] A tal efecto, se habilitarán oficinas públicas en todo el territorio nacional, incluidas las oficinas de Correos, las oficinas de la Seguridad Social y las oficinas de extranjería que se determinen, para la presentación de las solicitudes a través de un procedimiento específico, preferente y diferenciado de tramitación.
+  [30] La solicitud deberá presentarse a través del modelo específico, que estará disponible en el portal web de los Ministerios de Inclusión Seguridad Social y Migraciones y de Política Territorial y Memoria Democrática, para el procedimiento previsto en esta disposición. Asimismo, se publicarán en dichos portales web las hojas informativas correspondientes.
+  [31] La solicitud se acompañará de un cuestionario, en modelo específico, relativo a la situación formativa y sociolaboral de la persona solicitante. Los datos recogidos en dicho cuestionario tendrán carácter estadístico y serán utilizados exclusivamente para la evaluación del impacto de la presente disposición, sin que su contenido condicione la resolución del procedimiento.
+  [32] La Unidad de Tramitación de Expedientes de Extranjería, dependiente del Ministerio de Inclusión, Seguridad Social y Migraciones, comprobará el cumplimiento de los requisitos previstos en los apartados primero y segundo y que la solicitud se acompaña de la documentación necesaria para acreditarlos. En caso de que la solicitud estuviera incompleta, formulará a la persona solicitante el oportuno requerimiento a fin de que se subsanen los defectos observados en el plazo que se señale en la notificación, que no podrá ser superior quince días, advirtiéndole de que de no subsanarse en plazo se le tendrá por desistido de su solicitud y se procederá al archivo de su expediente.
+  [33] La competencia para la resolución del procedimiento corresponderá a la persona titular de la Dirección General de Gestión Migratoria.
+  [34] 7. Durante el mes inmediatamente posterior a la concesión de la autorización, la persona extranjera deberá solicitar la tarjeta de identidad de extranjero que será expedida por el plazo de validez de la autorización. No obstante, la autorización otorgará plenos derechos desde su concesión.
+  [35] La residencia habitual se podrá acreditar mediante la aportación de cualquier prueba válida en derecho.
+  [36] 8. No será exigible aportar documentos que ya obren en poder de las Administraciones, en los términos del artículo 28 de la Ley 39/2015, de 1 de octubre.
+  [37] 9. Para la valoración de los requisitos establecidos en las letras f) y g) del apartado 1, la Unidad de Tramitación de Expedientes de Extranjería recabará de oficio informe del Registro Central de Penados, el informe de las bases de datos de la Unión Europea, así como informe policial sobre la persona solicitante. Estos informes serán emitidos en el plazo de quince días.
+  [38] En relación con los antecedentes penales del país de origen y de los países en los que hubiese residido durante los últimos cinco años anteriores a la fecha de entrada en España, la persona solicitante deberá aportar certificado de antecedentes penales o documento equivalente expedido por las autoridades del país correspondiente.
+  [39] Con carácter excepcional, si la persona interesada acreditase haber solicitado el certificado de antecedentes penales de las autoridades del país de origen o de aquellos donde hubiera residido durante los últimos cinco años anteriores a la fecha de entrada en España, y hubiera transcurrido un mes sin haberlo recibido, la Unidad de Tramitación de Expedientes de Extranjería solicitará al Ministerio de la Presidencia, Justicia y Relaciones con las Cortes que recabe, por vía diplomática, a través de las Misiones Diplomáticas de España, de la autoridad competente del país o países correspondientes, el certificado de antecedentes penales o documento equivalente. Una vez recibido dicho documento, el Ministerio de la Presidencia, Justicia y Relaciones con las Cortes emitirá el informe correspondiente y lo trasladará a la Unidad de Tramitación de Expedientes de Extranjería.
+  [40] A tal efecto, la persona interesada deberá presentar su solicitud de autorización acompañada de la siguiente documentación:
+  [41] a) Justificante de la solicitud del certificado de antecedentes penales o documento equivalente a expedir por las autoridades del país extranjero.
+  [42] b) Declaración responsable, conforme al modelo específico, en la que manifieste no haber recibido respuesta a su solicitud en el plazo de un mes.
+  [43] c) Autorización, conforme al modelo específico, a las autoridades españolas para recabar sus antecedentes penales ante el país correspondiente. Este documento deberá ser presentado en español y en el idioma del país o países en que deba surtir efecto.
+  [44] Una vez, solicitado el informe al Ministerio de la Presidencia, Justicia y Relaciones con las Cortes, conforme al artículo 22.1.d) de la Ley 39/2015, de 1 de octubre, se producirá la suspensión del procedimiento por un plazo máximo de tres meses. Transcurridos los tres meses sin que el Ministerio de la Presidencia, Justicia y Relaciones con las Cortes haya recibido certificado de antecedentes penales o documento equivalente, lo pondrá en conocimiento de la Unidad de Tramitación de Expedientes de Extranjería, que comunicará esta situación a la persona solicitante y le requerirá para que, en el plazo de quince días, aporte el certificado de antecedentes penales o documento equivalente, con indicación de que, si así no lo hiciera, se le tendrá por desistido de su solicitud.
+  [45] 10. La autorización de residencia temporal por circunstancias excepcionales por razón de arraigo extraordinario tendrá una vigencia de un año y habilitará a sus titulares a residir y trabajar por cuenta ajena y por cuenta propia, en cualquier parte del territorio español, ocupación o sector de actividad.
+  [46] Durante los dos meses previos a la fecha de expiración de la vigencia de su autorización de residencia, sus titulares deberán solicitar una modificación conforme al artículo 191 de este reglamento. La presentación de la solicitud prorrogará la validez de la autorización anterior hasta la resolución del procedimiento. También se prorrogará hasta la resolución del procedimiento en el supuesto en que la solicitud se presentase dentro de los tres meses posteriores a la fecha en que hubiera finalizado la vigencia de la anterior autorización, sin perjuicio de la incoación del correspondiente procedimiento sancionador de conformidad con el artículo 52.b) de la Ley Orgánica 4/2000, de 11 de enero.
+  [47] Excepcionalmente, si no se pudiera solicitar una modificación conforme a este reglamento, esta autorización podrá ser prorrogada siempre y cuando se acredite estar en búsqueda activa de empleo y debidamente inscrito en el servicio público de empleo o se aporte un informe de esfuerzo de integración emitido por los órganos competentes de la Comunidad Autónoma de su lugar de residencia que recomienden la prórroga. El informe, de ser favorable, certificará, entre otros elementos, el aprendizaje de las lenguas oficiales del lugar de residencia. Esta prórroga tendrá una vigencia de un año.
+  [48] No obstante, se podrá prorrogar sin necesidad de acreditar los anteriores requisitos si concurren circunstancias que impidan el acceso al empleo por razones debidamente justificadas, tales como enfermedad grave o discapacidad de la persona solicitante, de su cónyuge o descendiente de primer grado menor de edad o mayores de edad que no sean objetivamente capaces de proveer sus propias necesidades debido a su estado de salud, así como en el supuesto de haber alcanzado la edad legal de jubilación. En estos casos, la prórroga tendrá una duración de cuatro años.
+```
+
+### Real Decreto 1155/2024, artículo 125 · `BOE-A-2024-24099__a1-37` [JUZGADO rel=2 reviewed]
+https://www.boe.es/buscar/act.php?id=BOE-A-2024-24099#a1-37
+_recuperado por:_ hybrid_rrf/I0_GENERIC#3 (0.030) · bm25/lexical#4 (18.431) · e5-large-instruct/I0_GENERIC#8 (0.884) · e5-large-instruct/I1_LEGAL#12 (0.901) · bge-m3/BASELINE#13 (0.621) · e5-large-instruct/I2_CITIZEN_LEGISLATION#14 (0.899)  [6 sistemas]
+```
+  [1] Artículo 125. Tipos de autorización de residencia temporal por razones de arraigo.
+  [2] 1. Se concederá una autorización de residencia temporal por razones de arraigo a las personas extranjeras que se encuentren en España, cuando existan vínculos con el lugar en el que residen, ya sean de tipo económico, social, familiar, laboral o formativo, siempre que cumplan con los requisitos establecidos en los artículos 126 y 127.
+  [3] Las autorizaciones de residencia temporal por razones de arraigo pueden ser de los siguientes tipos:
+  [4] a) Por razón de arraigo de segunda oportunidad.
+  [5] b) Por razón de arraigo sociolaboral.
+  [6] c) Por razón de arraigo social.
+  [7] d) Por razón de arraigo socioformativo.
+  [8] e) Por razón de arraigo familiar.
+  [9] 2. La duración de estas autorizaciones es de un año, salvo por razón de arraigo familiar, cuya duración será de cinco años.
+```
+
 ### Real Decreto 1155/2024, disposición adicional vigésima · `BOE-A-2024-24099__da-20` [JUZGADO rel=1 reviewed]
 https://www.boe.es/buscar/act.php?id=BOE-A-2024-24099#da-20
-_recuperado por:_ bge-m3/BASELINE#2 (0.643) · e5-base/BASELINE#7 (0.846) · e5-large-instruct/I0_GENERIC#9 (0.884) · e5-large-instruct/I1_LEGAL#9 (0.902) · e5-large-instruct/I2_CITIZEN_LEGISLATION#10 (0.900)  [5 sistemas]
+_recuperado por:_ bge-m3/BASELINE#2 (0.643) · e5-base/BASELINE#7 (0.846) · e5-large-instruct/I0_GENERIC#9 (0.884) · e5-large-instruct/I1_LEGAL#9 (0.902) · e5-large-instruct/I2_CITIZEN_LEGISLATION#10 (0.900) · hybrid_rrf/I0_GENERIC#12 (0.022)  [6 sistemas]
 ```
   [1] Disposición adicional vigésima. Autorizaciones de residencia temporal por circunstancias excepcionales por razón de arraigo para personas solicitantes de protección internacional.
   [2] 1. De conformidad con lo previsto en el artículo 31.3 de la Ley Orgánica 4/2000, de 11 de enero, en atención a la concurrencia de circunstancias excepcionales, las personas extranjeras que, antes del 1 de enero de 2026, hubieran presentado solicitud de acceso al procedimiento de protección internacional, registrado o formalizado solicitud de protección internacional en España, podrán solicitar una autorización de residencia temporal por circunstancias excepcionales por razón de arraigo, siempre y cuando cumplan de forma acumulativa los siguientes requisitos:
@@ -1795,24 +1917,9 @@ _recuperado por:_ bge-m3/BASELINE#2 (0.643) · e5-base/BASELINE#7 (0.846) · e5-
   [43] No obstante, se podrá prorrogar sin necesidad de acreditar los anteriores requisitos si concurren circunstancias que impidan el acceso al empleo por razones debidamente justificadas, tales como enfermedad grave o discapacidad de la persona solicitante, de su cónyuge o descendiente de primer grado menor de edad o mayores de edad que no sean objetivamente capaces de proveer sus propias necesidades debido a su estado de salud, así como en el supuesto de haber alcanzado la edad legal de jubilación. En estos casos, la prórroga tendrá una duración de cuatro años y tendrá la consideración de prórroga de autorización de residencia temporal por circunstancias excepcionales por razón de arraigo extraordinario.
 ```
 
-### Real Decreto 1155/2024, artículo 125 · `BOE-A-2024-24099__a1-37` [JUZGADO rel=2 reviewed]
-https://www.boe.es/buscar/act.php?id=BOE-A-2024-24099#a1-37
-_recuperado por:_ e5-large-instruct/I0_GENERIC#8 (0.884) · e5-large-instruct/I1_LEGAL#12 (0.901) · bge-m3/BASELINE#13 (0.621) · e5-large-instruct/I2_CITIZEN_LEGISLATION#14 (0.899)  [4 sistemas]
-```
-  [1] Artículo 125. Tipos de autorización de residencia temporal por razones de arraigo.
-  [2] 1. Se concederá una autorización de residencia temporal por razones de arraigo a las personas extranjeras que se encuentren en España, cuando existan vínculos con el lugar en el que residen, ya sean de tipo económico, social, familiar, laboral o formativo, siempre que cumplan con los requisitos establecidos en los artículos 126 y 127.
-  [3] Las autorizaciones de residencia temporal por razones de arraigo pueden ser de los siguientes tipos:
-  [4] a) Por razón de arraigo de segunda oportunidad.
-  [5] b) Por razón de arraigo sociolaboral.
-  [6] c) Por razón de arraigo social.
-  [7] d) Por razón de arraigo socioformativo.
-  [8] e) Por razón de arraigo familiar.
-  [9] 2. La duración de estas autorizaciones es de un año, salvo por razón de arraigo familiar, cuya duración será de cinco años.
-```
-
 ### Real Decreto 1155/2024, artículo 160 · `BOE-A-2024-24099__a1-72` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2024-24099#a1-72
-_recuperado por:_ e5-large-instruct/I2_CITIZEN_LEGISLATION#5 (0.902) · e5-large-instruct/I1_LEGAL#6 (0.903) · e5-large-instruct/I0_GENERIC#7 (0.885)  [3 sistemas]
+_recuperado por:_ e5-large-instruct/I2_CITIZEN_LEGISLATION#5 (0.902) · e5-large-instruct/I1_LEGAL#6 (0.903) · e5-large-instruct/I0_GENERIC#7 (0.885) · hybrid_rrf/I0_GENERIC#18 (0.017)  [4 sistemas]
 ```
   [1] Artículo 160. Residencia de la persona acompañada menor de edad o con una discapacidad no nacida en España.
   [2] 1. Los hijos, biológicos o adoptivos, no nacidos en España que sean solteros y menores de dieciocho años en el momento de la solicitud, y que se encuentren acompañados del progenitor extranjero con residencia en nuestro país o los hijos que tengan una discapacidad y no sean objetivamente capaces de proveer sus propias necesidades debido a su estado de salud y siempre que, en ambos casos, no hayan constituido su propia unidad familiar, podrán obtener una autorización de residencia temporal cuando se acredite su permanencia continuada e ininterrumpida en España durante un mínimo de dos años previos a la fecha de la solicitud y sus padres o tutores cumplan los requisitos de medios económicos y alojamiento exigidos en este reglamento para ejercer el derecho a la reagrupación familiar.
@@ -1876,7 +1983,7 @@ _recuperado por:_ e5-large-instruct/I0_GENERIC#15 (0.883) · e5-large-instruct/I
 
 ### Real Decreto 1155/2024, artículo 130 · `BOE-A-2024-24099__a1-42` [JUZGADO rel=1 reviewed]
 https://www.boe.es/buscar/act.php?id=BOE-A-2024-24099#a1-42
-_recuperado por:_ e5-base/BASELINE#3 (0.853) · bge-m3/BASELINE#17 (0.611)  [2 sistemas]
+_recuperado por:_ e5-base/BASELINE#3 (0.853) · hybrid_rrf/I0_GENERIC#14 (0.020) · bge-m3/BASELINE#17 (0.611)  [3 sistemas]
 ```
   [1] Artículo 130. Procedimiento.
   [2] 1. La autorización de residencia temporal por circunstancias excepcionales, que no requerirá visado, deberá ser solicitada personalmente por la persona extranjera ante el órgano competente para su tramitación, salvo en el caso de menores o de personas con discapacidad que precisan el apoyo de otra persona para el ejercicio de su capacidad jurídica, en el que podrá presentar la solicitud su representante legal, o la persona que presta dicho apoyo, acompañada de la siguiente documentación:
@@ -1907,7 +2014,7 @@ _split=test · difficulty=facil · failure_mode=—_
 
 ### Real Decreto 1155/2024, artículo 205 · `BOE-A-2024-24099__a2-17` [JUZGADO rel=2 reviewed]
 https://www.boe.es/buscar/act.php?id=BOE-A-2024-24099#a2-17
-_recuperado por:_ bge-m3/BASELINE#1 (0.573) · e5-base/BASELINE#1 (0.843) · e5-large-instruct/I0_GENERIC#1 (0.890) · e5-large-instruct/I1_LEGAL#1 (0.911) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.908)  [5 sistemas]
+_recuperado por:_ bge-m3/BASELINE#1 (0.573) · e5-base/BASELINE#1 (0.843) · e5-large-instruct/I0_GENERIC#1 (0.890) · e5-large-instruct/I1_LEGAL#1 (0.911) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.908) · bm25/lexical#1 (17.742) · hybrid_rrf/I0_GENERIC#1 (0.033)  [7 sistemas]
 ```
   [1] Artículo 205. Número de identidad de extranjero.
   [2] 1. Las personas extranjeras a cuyo favor se inicie un procedimiento para obtener un documento que les habilite para permanecer en territorio español, aquéllos a los que se les haya incoado un expediente administrativo en virtud de lo dispuesto en la normativa sobre extranjería y aquellos que por sus intereses económicos, profesionales, sociales o de cualquier otra índole, se relacionen con España serán dotados, a los efectos de identificación, de un número personal, único y exclusivo, de carácter secuencial.
@@ -1924,7 +2031,7 @@ _recuperado por:_ bge-m3/BASELINE#1 (0.573) · e5-base/BASELINE#1 (0.843) · e5-
 
 ### Real Decreto 1065/2007, artículo 21 · `BOE-A-2007-15984__a21` [JUZGADO rel=0 draft]
 https://www.boe.es/buscar/act.php?id=BOE-A-2007-15984#a21
-_recuperado por:_ e5-large-instruct/I0_GENERIC#3 (0.860) · e5-base/BASELINE#4 (0.809) · e5-large-instruct/I1_LEGAL#4 (0.883) · e5-large-instruct/I2_CITIZEN_LEGISLATION#5 (0.879) · bge-m3/BASELINE#12 (0.461)  [5 sistemas]
+_recuperado por:_ e5-large-instruct/I0_GENERIC#3 (0.860) · hybrid_rrf/I0_GENERIC#3 (0.027) · e5-base/BASELINE#4 (0.809) · e5-large-instruct/I1_LEGAL#4 (0.883) · e5-large-instruct/I2_CITIZEN_LEGISLATION#5 (0.879) · bge-m3/BASELINE#12 (0.461) · bm25/lexical#18 (7.352)  [7 sistemas]
 ```
   [1] Artículo 21. Normas sobre la asignación del número de identificación fiscal a personas físicas nacionales y extranjeras por la Administración tributaria.
   [2] 1. El número de identificación fiscal asignado directamente por la Administración tributaria de acuerdo con los artículos 19 y 20 tendrá validez en tanto su titular no obtenga el documento nacional de identidad o su número de identidad de extranjero.
@@ -1935,7 +2042,7 @@ _recuperado por:_ e5-large-instruct/I0_GENERIC#3 (0.860) · e5-base/BASELINE#4 (
 
 ### Ley Orgánica 4/2015, artículo 8 · `BOE-A-2015-3442__a8` [JUZGADO rel=0 draft]
 https://www.boe.es/buscar/act.php?id=BOE-A-2015-3442#a8
-_recuperado por:_ e5-large-instruct/I1_LEGAL#3 (0.889) · e5-large-instruct/I2_CITIZEN_LEGISLATION#3 (0.889) · e5-large-instruct/I0_GENERIC#4 (0.860) · bge-m3/BASELINE#5 (0.472)  [4 sistemas]
+_recuperado por:_ e5-large-instruct/I1_LEGAL#3 (0.889) · e5-large-instruct/I2_CITIZEN_LEGISLATION#3 (0.889) · e5-large-instruct/I0_GENERIC#4 (0.860) · bge-m3/BASELINE#5 (0.472) · hybrid_rrf/I0_GENERIC#15 (0.016)  [5 sistemas]
 ```
   [1] Artículo 8. Acreditación de la identidad de los ciudadanos españoles.
   [2] 1. Los españoles tienen derecho a que se les expida el Documento Nacional de Identidad.
@@ -1947,7 +2054,7 @@ _recuperado por:_ e5-large-instruct/I1_LEGAL#3 (0.889) · e5-large-instruct/I2_C
 
 ### Ley 7/1985, artículo 16 · `BOE-A-1985-5392__a16` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-1985-5392#a16
-_recuperado por:_ e5-large-instruct/I2_CITIZEN_LEGISLATION#4 (0.879) · e5-large-instruct/I0_GENERIC#5 (0.854) · e5-large-instruct/I1_LEGAL#5 (0.882) · bge-m3/BASELINE#10 (0.466)  [4 sistemas]
+_recuperado por:_ e5-large-instruct/I2_CITIZEN_LEGISLATION#4 (0.879) · e5-large-instruct/I0_GENERIC#5 (0.854) · e5-large-instruct/I1_LEGAL#5 (0.882) · bge-m3/BASELINE#10 (0.466) · hybrid_rrf/I0_GENERIC#17 (0.015)  [5 sistemas]
 ```
   [1] Artículo 16.
   [2] 1. El Padrón municipal es el registro administrativo donde constan los vecinos de un municipio. Sus datos constituyen prueba de la residencia en el municipio y del domicilio habitual en el mismo. Las certificaciones que de dichos datos se expidan tendrán carácter de documento público y fehaciente para todos los efectos administrativos.
@@ -1970,7 +2077,7 @@ _recuperado por:_ e5-large-instruct/I2_CITIZEN_LEGISLATION#4 (0.879) · e5-large
 
 ### Ley Orgánica 4/2015, artículo 10 · `BOE-A-2015-3442__a10` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2015-3442#a10
-_recuperado por:_ e5-large-instruct/I0_GENERIC#6 (0.853) · e5-large-instruct/I2_CITIZEN_LEGISLATION#14 (0.871) · e5-large-instruct/I1_LEGAL#15 (0.874) · bge-m3/BASELINE#17 (0.455)  [4 sistemas]
+_recuperado por:_ e5-large-instruct/I0_GENERIC#6 (0.853) · e5-large-instruct/I2_CITIZEN_LEGISLATION#14 (0.871) · e5-large-instruct/I1_LEGAL#15 (0.874) · bge-m3/BASELINE#17 (0.455) · hybrid_rrf/I0_GENERIC#19 (0.015)  [5 sistemas]
 ```
   [1] Artículo 10. Competencias sobre el Documento Nacional de Identidad.
   [2] 1. Corresponde al Ministerio del Interior la competencia exclusiva para la dirección, organización y gestión de todos los aspectos referentes a la confección y expedición del Documento Nacional de Identidad, conforme a lo dispuesto en esta Ley y en la legislación sobre firma electrónica.
@@ -1980,7 +2087,7 @@ _recuperado por:_ e5-large-instruct/I0_GENERIC#6 (0.853) · e5-large-instruct/I2
 
 ### Ley 20/2011, artículo 49 · `BOE-A-2011-12628__a49` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2011-12628#a49
-_recuperado por:_ e5-large-instruct/I1_LEGAL#6 (0.878) · e5-large-instruct/I0_GENERIC#7 (0.853) · e5-large-instruct/I2_CITIZEN_LEGISLATION#9 (0.874)  [3 sistemas]
+_recuperado por:_ e5-large-instruct/I1_LEGAL#6 (0.878) · e5-large-instruct/I0_GENERIC#7 (0.853) · e5-large-instruct/I2_CITIZEN_LEGISLATION#9 (0.874) · hybrid_rrf/I0_GENERIC#20 (0.015)  [4 sistemas]
 ```
   [1] Artículo 49. Contenido de la inscripción de nacimiento y atribución de apellidos.
   [2] 1. En la inscripción de nacimiento constarán los datos de identidad del nacido consistentes en el nombre que se le impone y los apellidos que le correspondan según su filiación. Constarán asimismo el lugar, fecha y hora del nacimiento y el sexo del nacido.
@@ -1994,43 +2101,9 @@ _recuperado por:_ e5-large-instruct/I1_LEGAL#6 (0.878) · e5-large-instruct/I0_G
   [10] 5. En el caso de que el parte facultativo indicara la condición intersexual del nacido, los progenitores, de común acuerdo, podrán solicitar que la mención del sexo figure en blanco por el plazo máximo de un año. Transcurrido dicho plazo, la mención al sexo será obligatoria y su inscripción habrá de ser solicitada por los progenitores.
 ```
 
-### Ley 20/2011, artículo 50 · `BOE-A-2011-12628__a50` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2011-12628#a50
-_recuperado por:_ e5-large-instruct/I1_LEGAL#7 (0.878) · e5-large-instruct/I2_CITIZEN_LEGISLATION#7 (0.875) · e5-large-instruct/I0_GENERIC#18 (0.848)  [3 sistemas]
-```
-  [1] Artículo 50. Derecho al nombre.
-  [2] 1. Toda persona tiene derecho a un nombre desde su nacimiento.
-  [3] 2. Las personas son identificadas por su nombre y apellidos.
-  [4] 3. El Encargado impondrá un nombre y unos apellidos de uso corriente al nacido cuya filiación sea desconocida. Igualmente impondrá, tras haberles apercibido y transcurrido un plazo de tres días, un nombre de uso corriente cuando los obligados a su fijación no lo señalaren.
-  [5] 4. A petición del interesado o de su representante legal, el encargado del Registro sustituirá el nombre propio de aquél por su equivalente en cualquiera de las lenguas españolas.
-```
-
-### Real Decreto 1155/2024, artículo 160 · `BOE-A-2024-24099__a1-72` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2024-24099#a1-72
-_recuperado por:_ e5-large-instruct/I2_CITIZEN_LEGISLATION#6 (0.876) · e5-large-instruct/I0_GENERIC#8 (0.852) · e5-large-instruct/I1_LEGAL#8 (0.878)  [3 sistemas]
-```
-  [1] Artículo 160. Residencia de la persona acompañada menor de edad o con una discapacidad no nacida en España.
-  [2] 1. Los hijos, biológicos o adoptivos, no nacidos en España que sean solteros y menores de dieciocho años en el momento de la solicitud, y que se encuentren acompañados del progenitor extranjero con residencia en nuestro país o los hijos que tengan una discapacidad y no sean objetivamente capaces de proveer sus propias necesidades debido a su estado de salud y siempre que, en ambos casos, no hayan constituido su propia unidad familiar, podrán obtener una autorización de residencia temporal cuando se acredite su permanencia continuada e ininterrumpida en España durante un mínimo de dos años previos a la fecha de la solicitud y sus padres o tutores cumplan los requisitos de medios económicos y alojamiento exigidos en este reglamento para ejercer el derecho a la reagrupación familiar.
-  [3] Cuando se trate de hijos de uno solo de los cónyuges o miembros de la pareja se requerirá, además, que éste ejerza en solitario la patria potestad, que se le haya otorgado la custodia con carácter exclusivo y se haya autorizado el traslado de residencia del menor a España por la autoridad judicial o bajo consentimiento del otro progenitor, o que se haya otorgado con carácter compartido, siempre que el otro titular del derecho de custodia haya dado su consentimiento para que resida en territorio nacional.
-  [4] No obstante lo anterior, también se admitirá la presentación de la solicitud mientras se encuentre en trámite la autorización de residencia del progenitor.
-  [5] 2. Cuando se cumplan los requisitos establecidos en el apartado anterior, también podrán acceder al mismo tipo de autorización, los que sean menores de dieciocho años en el momento de la solicitud acompañados por la persona extranjera residente en España que ejerza legalmente su tutela, siempre y cuando esta relación haya sido constituida conforme al ordenamiento jurídico español.
-  [6] 3. Cuando los menores se encuentren en edad de escolarización obligatoria, se deberá acreditar en el procedimiento que se encuentra matriculado en un centro de enseñanza oficial autorizado.
-  [7] 4. A la solicitud, que se presentará en modelo normalizado, deberá acompañarse la siguiente documentación:
-  [8] a) Copia completa del pasaporte, documento de viaje o cédula de inscripción en vigor tanto del menor como del progenitor o tutor solicitante.
-  [9] b) Copia del certificado de nacimiento del menor o de la documentación acreditativa de la tutela.
-  [10] c) Documentación acreditativa del abono de la tasa por tramitación del procedimiento.
-  [11] d) En su caso, documentación acreditación de la escolarización del menor.
-  [12] e) Documentación acreditativa de la permanencia continuada e ininterrumpida del menor en España en los dos años inmediatamente anteriores a la fecha de presentación de la solicitud.
-  [13] f) Documentación acreditativa de los medios económicos y alojamiento exigidos en este reglamento para ejercer el derecho a la reagrupación familiar.
-  [14] 5. El órgano competente para resolver comprobará que se presenta debidamente la documentación exigida y en caso contrario efectuará el oportuno requerimiento a fin de que se subsanen los defectos en el plazo de los diez días siguientes a su notificación, advirtiéndole de que, de no subsanarse, se le tendrá por desistido y se procederá al archivo del expediente, dictándose la correspondiente resolución. El plazo máximo para resolver y notificar será de un mes desde la recepción de la solicitud. Transcurrido dicho plazo, la solicitud se entenderá desestimada.
-  [15] 6. En el plazo de un mes desde la notificación de la concesión de la autorización de residencia, la persona extranjera, acompañada del progenitor, deberá solicitar personalmente la tarjeta de identidad de extranjero ante la oficina de extranjería o la Comisaría de Policía correspondientes.
-  [16] 7. La autorización, que no requerirá visado, tendrá una duración de 5 años desde la fecha de la resolución.
-  [17] 8. La autorización de residencia concedida con base a lo previsto en este artículo habilitará para trabajar por cuenta ajena y por cuenta propia, sin necesidad de ningún otro trámite administrativo adicional, cuando su titular alcance la edad mínima de admisión al trabajo.
-```
-
 ### Real Decreto 1065/2007, artículo 19 · `BOE-A-2007-15984__a19` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2007-15984#a19
-_recuperado por:_ e5-large-instruct/I0_GENERIC#10 (0.851) · e5-large-instruct/I1_LEGAL#10 (0.875) · e5-large-instruct/I2_CITIZEN_LEGISLATION#13 (0.872)  [3 sistemas]
+_recuperado por:_ e5-large-instruct/I0_GENERIC#10 (0.851) · e5-large-instruct/I1_LEGAL#10 (0.875) · hybrid_rrf/I0_GENERIC#11 (0.021) · e5-large-instruct/I2_CITIZEN_LEGISLATION#13 (0.872)  [4 sistemas]
 ```
   [1] Artículo 19. El número de identificación fiscal de las personas físicas de nacionalidad española.
   [2] 1. Para las personas físicas de nacionalidad española, el número de identificación fiscal será el número de su documento nacional de identidad seguido del correspondiente código o carácter de verificación, constituido por una letra mayúscula que habrá de constar en el propio documento nacional de identidad, de acuerdo con sus disposiciones reguladoras.
@@ -2039,14 +2112,61 @@ _recuperado por:_ e5-large-instruct/I0_GENERIC#10 (0.851) · e5-large-instruct/I
   [5] 3. Para la identificación de los menores de 14 años en sus relaciones de naturaleza o con trascendencia tributaria habrán de figurar tanto los datos de la persona menor de 14 años, incluido su número de identificación fiscal, como los de su representante legal.
 ```
 
-### Ley 15/2015, artículo 24 · `BOE-A-2015-7391__a24` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2015-7391#a24
-_recuperado por:_ e5-large-instruct/I1_LEGAL#11 (0.875) · e5-large-instruct/I2_CITIZEN_LEGISLATION#11 (0.873) · e5-large-instruct/I0_GENERIC#19 (0.848)  [3 sistemas]
+### Real Decreto 1065/2007, artículo 20 · `BOE-A-2007-15984__a20` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2007-15984#a20
+_recuperado por:_ hybrid_rrf/I0_GENERIC#7 (0.025) · e5-large-instruct/I0_GENERIC#13 (0.851) · e5-large-instruct/I1_LEGAL#19 (0.872) · bge-m3/BASELINE#20 (0.452)  [4 sistemas]
 ```
-  [1] Artículo 24. Competencia, legitimación y postulación.
-  [2] 1. Será competente para conocer de este expediente el Juzgado de Primera Instancia del domicilio del reconocido o, si no lo tuviera en territorio nacional, el de su residencia en dicho territorio. Si el reconocido no tuviera su residencia en España, lo será el del domicilio o residencia del progenitor autor del reconocimiento.
-  [3] 2. Podrá promover este expediente el progenitor autor del reconocimiento, por sí mismo o asistido de su representante legal, tutor o curador, en su caso.
-  [4] 3. En la tramitación del presente expediente no será preceptiva la intervención de Abogado ni Procurador.
+  [1] Artículo 20. El número de identificación fiscal de las personas físicas de nacionalidad extranjera.
+  [2] 1. Para las personas físicas que carezcan de la nacionalidad española, el número de identificación fiscal será el número de identidad de extranjero que se les asigne o se les facilite de acuerdo con la Ley Orgánica 4/2000, de 11 de enero, sobre derechos y libertades de los extranjeros en España y su integración social, y su normativa de desarrollo.
+  [3] 2. Las personas físicas que carezcan de la nacionalidad española y no dispongan del número de identidad de extranjero, bien de forma transitoria por estar obligados a tenerlo o bien de forma definitiva al no estar obligados a ello, deberán solicitar a la Administración tributaria la asignación de un número de identificación fiscal cuando vayan a realizar operaciones de naturaleza o con trascendencia tributaria. Dicho número estará integrado por nueve caracteres con la siguiente composición: una letra inicial, que será la M, destinada a indicar la naturaleza de este número, siete caracteres alfanuméricos y un carácter de verificación alfabético.
+  [4] En el caso de que no lo soliciten, la Administración tributaria podrá proceder de oficio a darles de alta en el Censo de Obligados Tributarios y a asignarles el número de identificación fiscal que corresponda.
+```
+
+### Ley 44/2003, artículo 4 · `BOE-A-2003-21340__a4` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2003-21340#a4
+_recuperado por:_ bge-m3/BASELINE#3 (0.497) · bm25/lexical#5 (8.423) · hybrid_rrf/I0_GENERIC#8 (0.024)  [3 sistemas]
+```
+  [1] Artículo 4. Principios generales.
+  [2] 1. De acuerdo con lo establecido en los artículos 35 y 36 de la Constitución, se reconoce el derecho al libre ejercicio de las profesiones sanitarias, con los requisitos previstos en esta ley y en las demás normas legales que resulten aplicables.
+  [3] 2. El ejercicio de una profesión sanitaria, por cuenta propia o ajena, requerirá la posesión del correspondiente título oficial que habilite expresamente para ello o, en su caso, de la certificación prevista en el artículo 2.4, y se atendrá, en su caso, a lo previsto en ésta, en las demás leyes aplicables y en las normas reguladoras de los colegios profesionales.
+  [4] 3. Los profesionales sanitarios desarrollan, entre otras, funciones en los ámbitos asistencial, investigador, docente, de gestión clínica, de prevención y de información y educación sanitarias.
+  [5] 4. Corresponde a todas las profesiones sanitarias participar activamente en proyectos que puedan beneficiar la salud y el bienestar de las personas en situaciones de salud y enfermedad, especialmente en el campo de la prevención de enfermedades, de la educación sanitaria, de la investigación y del intercambio de información con otros profesionales y con las autoridades sanitarias, para mejor garantía de dichas finalidades.
+  [6] 5. Los profesionales tendrán como guía de su actuación el servicio a la sociedad, el interés y salud del ciudadano a quien se le presta el servicio, el cumplimiento riguroso de las obligaciones deontológicas, determinadas por las propias profesiones conforme a la legislación vigente, y de los criterios de normo-praxis o, en su caso, los usos generales propios de su profesión.
+  [7] 6. Los profesionales sanitarios realizarán a lo largo de su vida profesional una formación continuada, y acreditarán regularmente su competencia profesional.
+  [8] 7. El ejercicio de las profesiones sanitarias se llevará a cabo con plena autonomía técnica y científica, sin más limitaciones que las establecidas en esta ley y por los demás principios y valores contenidos en el ordenamiento jurídico y deontológico, y de acuerdo con los siguientes principios:
+  [9] a) Existirá formalización escrita de su trabajo reflejada en una historia clínica que deberá ser común para cada centro y única para cada paciente atendido en él.
+  [10] La historia clínica tenderá a ser soportada en medios electrónicos y a ser compartida entre profesionales, centros y niveles asistenciales.
+  [11] b) Se tenderá a la unificación de los criterios de actuación, que estarán basados en la evidencia científica y en los medios disponibles y soportados en guías y protocolos de práctica clínica y asistencial. Los protocolos deberán ser utilizados de forma orientativa, como guía de decisión para todos los profesionales de un equipo, y serán regularmente actualizados con la participación de aquellos que los deben aplicar.
+  [12] c) La eficacia organizativa de los servicios, secciones y equipos, o unidades asistenciales equivalentes sea cual sea su denominación, requerirá la existencia escrita de normas de funcionamiento interno y la definición de objetivos y funciones tanto generales como específicas para cada miembro del mismo, así como la cumplimentación por parte de los profesionales de la documentación asistencial, informativa o estadística que determine el centro.
+  [13] d) La continuidad asistencial de los pacientes, tanto la de aquellos que sean atendidos por distintos profesionales y especialistas dentro del mismo centro como la de quienes lo sean en diferentes niveles, requerirá en cada ámbito asistencial la existencia de procedimientos, protocolos de elaboración conjunta e indicadores para asegurar esta finalidad.
+  [14] e) La progresiva consideración de la interdisciplinariedad y multidisciplinariedad de los equipos profesionales en la atención sanitaria.
+  [15] 8. Para el ejercicio de una profesión sanitaria será necesario cumplir las obligaciones y requisitos previstos en el ordenamiento jurídico vigente. En todo caso, para ejercer una profesión sanitaria, serán requisitos imprescindibles:
+  [16] a) Estar colegiado, cuando una ley estatal establezca esta obligación para el ejercicio de una profesión titulada o algunas actividades propias de ésta.
+  [17] b) No encontrarse inhabilitado o suspendido para el ejercicio profesional por sentencia judicial firme, durante el periodo de tiempo que fije ésta.
+  [18] c) No encontrarse suspendido o inhabilitado para el ejercicio profesional por resolución sancionadora impuesta por un colegio profesional sanitario, cuando una ley estatal establezca para este ejercicio la obligación de estar colegiado, durante el periodo de tiempo que fije ésta.
+  [19] d) No encontrarse suspendido o inhabilitado para el ejercicio profesional, o separado del servicio, por resolución administrativa sancionadora firme, durante el periodo de tiempo que fije ésta, cuando se ejerza la profesión en el ámbito de la asistencia sanitaria pública.
+  [20] e) Tener suscrito y vigente un seguro de responsabilidad, un aval u otra garantía financiera, sean de protección personal o colectiva, que cubra las indemnizaciones que se puedan derivar de la responsabilidad profesional por un eventual daño a las personas causado con ocasión de la prestación de tal asistencia o servicios cuando se ejerza la profesión en el ámbito de la asistencia sanitaria privada.
+  [21] 9. Con la finalidad de facilitar la observancia de los requisitos previstos en el apartado anterior, se establecen las siguientes obligaciones de cesión de datos, para las que no será necesario el consentimiento del titular de los datos de carácter personal:
+  [22] a) Los juzgados y tribunales deberán remitir aquellos datos necesarios referentes a las sentencias firmes de inhabilitación o suspensión para el ejercicio profesional al Ministerio de Sanidad, Servicios Sociales e Igualdad en la forma que reglamentariamente se establezca.
+  [23] b) Las administraciones públicas con competencias sancionadoras sobre los profesionales sanitarios empleados por ellas deberán remitir las resoluciones sancionadoras que afecten a la situación de suspensión o habilitación de éstos.
+  [24] c) Las corporaciones colegiales deberán remitir al Ministerio de Sanidad, Servicios Sociales e Igualdad copia de las resoluciones sancionadoras que suspendan o inhabiliten para el ejercicio profesional impuestas por ellos, cuando una ley estatal establezca para este ejercicio la obligación de estar colegiado.
+  [25] d) El Ministerio de Sanidad, Servicios Sociales e Igualdad comunicará a las entidades mencionadas en los apartados b) y c) anteriores las resoluciones sancionadoras que reciba. Para ello, establecerá mecanismos de cooperación y sistemas de comunicación e intercambio de la información a través del Registro Estatal de Profesionales Sanitarios, creado por la disposición adicional décima de la Ley 16/2003, de 28 de mayo, de cohesión y calidad del Sistema Nacional de Salud.
+  [26] 10. El órgano encargado del Registro Estatal de Profesionales Sanitarios podrá consultar los datos de carácter personal de los profesionales sanitarios contenidos en los archivos y ficheros del Documento Nacional de Identidad (DNI) y del Número de Identidad del Extranjero (NIE) competencia del Ministerio del Interior, para contrastar la veracidad de la información que consta en el registro. Para esta consulta no será necesario el consentimiento del titular de los datos de carácter personal.
+  [27] El órgano encargado de los registros integrados en el Sistema de Registros Administrativos de Apoyo a la Administración de Justicia, informará al órgano del Ministerio de Sanidad, Servicios Sociales e Igualdad encargado del Registro Estatal de Profesionales Sanitarios, a solicitud de éste, de los datos necesarios referentes a las sentencias de inhabilitación o suspensión para el ejercicio profesional contenidas en las inscripciones de estos registros integrados, siempre que no se trate de información reservada a Jueces y Tribunales, en la forma que reglamentariamente se establezca. Para la cesión de estos datos no será necesario el consentimiento del titular de los datos de carácter personal.
+```
+
+### Ley Orgánica 2/2006, disposición adicional trigésima cuarta · `BOE-A-2006-7899__datrigesimacuaa` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#datrigesimacuaa
+_recuperado por:_ e5-base/BASELINE#3 (0.810) · hybrid_rrf/I0_GENERIC#6 (0.026) · bm25/lexical#10 (7.573)  [3 sistemas]
+```
+  [1] Disposición adicional trigésima cuarta. Becas y ayudas al estudio convocadas por el Ministerio de Educación y Formación Profesional.
+  [2] 1. Las notificaciones y publicaciones que deban efectuarse con ocasión de la tramitación de los procedimientos de otorgamiento, resolución de recursos administrativos, revocación, revisión de oficio y reintegro de ingresos indebidos sobre becas y ayudas al estudio, financiadas con cargo a los Presupuestos Generales del Estado y cuya competencia esté atribuida al Ministerio de Educación y Formación Profesional, se practicarán por medios electrónicos en la forma que se establezca reglamentariamente en aplicación de lo previsto en el Capítulo II del Título III de la Ley 39/2015, de 1 de octubre del Procedimiento Administrativo Común de las Administraciones Públicas.
+  [3] De acuerdo con lo previsto en dicho Capítulo II, las notificaciones que se practiquen en relación con los procedimientos sobre becas y ayudas al estudio a que se refiere el párrafo anterior, irán precedidas de un aviso a las personas interesadas por los medios que se establezcan en la correspondiente convocatoria, de la puesta a disposición de dicha notificación.
+  [4] Transcurridos diez días naturales desde que la notificación se hubiese puesto a disposición del interesado sin que haya accedido a su contenido, se entenderá rechazada, dándose por cumplido dicho trámite y continuándose con el procedimiento.
+  [5] 2. Las becas y ayudas al estudio que se concedan para cursar estudios universitarios o no universitarios con validez académica oficial serán inembargables en todos los casos.
+  [6] 3. Procederá el reintegro de las cantidades percibidas en concepto de becas y ayudas al estudio, de conformidad con lo dispuesto en el artículo 37.1.i) de la Ley 38/2003, de 17 de noviembre, General de Subvenciones, en aquellos casos en los que las personas beneficiarias no reunieran alguno o algunos de los requisitos establecidos para la obtención de las becas o ayudas o no los hubieran acreditado debidamente.
+  [7] 4. La identificación de los solicitantes de becas y ayudas del sistema estatal de becas así como de los miembros computables de su unidad familiar, a que se refiere el artículo 9 de la Ley 39/2015, de 1 de octubre, del Procedimiento Administrativo Común de las Administraciones Públicas, podrá efectuarse mediante la consignación en la solicitud de beca, en la sede electrónica del Ministerio de Educación y Formación Profesional, de los datos del DNI o NIE que establezca la convocatoria. El Ministerio de Educación y Formación Profesional podrá verificar la autenticidad de dichos datos mediante consulta a la Dirección General de la Policía o requerir al solicitante y a los miembros computables de su unidad familiar, la presentación del documento identificativo original.
+  [8] De conformidad con lo establecido en el artículo 10 de la referida Ley 39/2015, el anterior sistema de identificación será asimismo admitido como sistema de firma tanto de la solicitud de beca y ayuda como de la autorización para obtener de las administraciones públicas la información que resulte precisa para la determinación, conocimiento y comprobación de los datos de identificación, personales, de residencia, académicos y familiares del solicitante, así como de los datos de renta y patrimonio de los miembros computables de su unidad familiar.
 ```
 
 ### Ley 15/2015, artículo 26 nonies · `BOE-A-2015-7391__a2-9` [JUZGADO rel=0 draft]
@@ -2064,17 +2184,9 @@ _recuperado por:_ e5-base/BASELINE#2 (0.817) · e5-large-instruct/I0_GENERIC#14 
 **Pregunta:** ¿Qué es la protección subsidiaria y en qué se diferencia de la condición de refugiado?
 _split=test · difficulty=media · failure_mode=—_
 
-### Ley 12/2009, artículo 4 · `BOE-A-2009-17242__a4` [JUZGADO rel=2 reviewed]
-https://www.boe.es/buscar/act.php?id=BOE-A-2009-17242#a4
-_recuperado por:_ bge-m3/BASELINE#1 (0.698) · e5-base/BASELINE#1 (0.907) · e5-large-instruct/I0_GENERIC#1 (0.911) · e5-large-instruct/I1_LEGAL#1 (0.934) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.934)  [5 sistemas]
-```
-  [1] Artículo 4. La protección subsidiaria.
-  [2] El derecho a la protección subsidiaria es el dispensado a las personas de otros países y a los apátridas que, sin reunir los requisitos para obtener el asilo o ser reconocidas como refugiadas, pero respecto de las cuales se den motivos fundados para creer que si regresasen a su país de origen en el caso de los nacionales o, al de su anterior residencia habitual en el caso de los apátridas, se enfrentarían a un riesgo real de sufrir alguno de los daños graves previstos en el artículo 10 de esta Ley, y que no pueden o, a causa de dicho riesgo, no quieren, acogerse a la protección del país de que se trate, siempre que no concurra alguno de los supuestos mencionados en los artículos 11 y 12 de esta Ley.
-```
-
 ### Ley 12/2009 · `BOE-A-2009-17242__preambulo` [JUZGADO rel=0 draft]
 https://www.boe.es/buscar/act.php?id=BOE-A-2009-17242#preambulo
-_recuperado por:_ bge-m3/BASELINE#2 (0.668) · e5-large-instruct/I1_LEGAL#2 (0.925) · e5-large-instruct/I2_CITIZEN_LEGISLATION#2 (0.924) · e5-large-instruct/I0_GENERIC#3 (0.898) · e5-base/BASELINE#4 (0.872)  [5 sistemas]
+_recuperado por:_ bm25/lexical#1 (25.405) · hybrid_rrf/I0_GENERIC#1 (0.031) · bge-m3/BASELINE#2 (0.668) · e5-large-instruct/I1_LEGAL#2 (0.925) · e5-large-instruct/I2_CITIZEN_LEGISLATION#2 (0.924) · e5-large-instruct/I0_GENERIC#3 (0.898) · e5-base/BASELINE#4 (0.872)  [7 sistemas]
 ```
   [1] JUAN CARLOS I
   [2] REY DE ESPAÑA
@@ -2116,37 +2228,9 @@ _recuperado por:_ bge-m3/BASELINE#2 (0.668) · e5-large-instruct/I1_LEGAL#2 (0.9
   [38] Igualmente, han sido objeto de consideración las aportaciones de otros actores u organismos cualificados en la materia regulada por la presente Ley, lo que, sin duda, contribuye a que la nueva regulación se vea impregnada por las tendencias más favorables del Derecho internacional de los derechos humanos.
 ```
 
-### Ley 12/2009, artículo 5 · `BOE-A-2009-17242__a5` [JUZGADO rel=0 draft]
-https://www.boe.es/buscar/act.php?id=BOE-A-2009-17242#a5
-_recuperado por:_ e5-base/BASELINE#2 (0.880) · e5-large-instruct/I0_GENERIC#2 (0.904) · e5-large-instruct/I1_LEGAL#3 (0.918) · e5-large-instruct/I2_CITIZEN_LEGISLATION#3 (0.916) · bge-m3/BASELINE#4 (0.622)  [5 sistemas]
-```
-  [1] Artículo 5. Derechos garantizados con el asilo y la protección subsidiaria.
-  [2] La protección concedida con el derecho de asilo y la protección subsidiaria consiste en la no devolución ni expulsión de las personas a quienes se les haya reconocido, así como en la adopción de las medidas contempladas en el artículo 36 de esta Ley y en las normas que lo desarrollen, en la normativa de la Unión Europea y en los Convenios internacionales ratificados por España.
-```
-
-### Ley 12/2009, disposición Transitoria Segunda · `BOE-A-2009-17242__dtsegunda` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2009-17242#dtsegunda
-_recuperado por:_ e5-large-instruct/I0_GENERIC#4 (0.891) · e5-large-instruct/I1_LEGAL#5 (0.913) · e5-large-instruct/I2_CITIZEN_LEGISLATION#5 (0.911) · bge-m3/BASELINE#6 (0.609) · e5-base/BASELINE#9 (0.864)  [5 sistemas]
-```
-  [1] Disposición Transitoria Segunda. Normativa aplicable a las personas autorizadas a residir en España por razones humanitarias.
-  [2] Las personas que hubieran obtenido una autorización para permanecer en España por razones humanitarias conforme a lo previsto en el artículo 17.2 de la Ley 5/1984, de 26 de marzo, reguladora del derecho de asilo y de la condición de refugiado, y en los términos de lo dispuesto en el apartado tercero del artículo 31 de su Reglamento de aplicación, aprobado por el Real Decreto 203/1995, de 10 de febrero, podrán beneficiarse del derecho a la protección subsidiaria previsto en esta Ley.
-```
-
-### Ley 12/2009, artículo 43 · `BOE-A-2009-17242__a43` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2009-17242#a43
-_recuperado por:_ e5-large-instruct/I0_GENERIC#6 (0.886) · e5-large-instruct/I1_LEGAL#6 (0.908) · e5-large-instruct/I2_CITIZEN_LEGISLATION#6 (0.906) · bge-m3/BASELINE#7 (0.606) · e5-base/BASELINE#8 (0.865)  [5 sistemas]
-```
-  [1] Artículo 43. Cese de la protección subsidiaria.
-  [2] 1. La protección subsidiaria cesará cuando:
-  [3] a) se solicite expresamente por la persona beneficiaria;
-  [4] b) la persona beneficiaria haya abandonado el territorio español y fijado su residencia en otro país;
-  [5] c) las circunstancias que condujeron a su concesión dejen de existir o cambien de tal forma que dicha protección ya no sea necesaria. El Estado español tendrá en cuenta si el cambio de circunstancias es lo suficientemente significativo, sin ser de carácter temporal, como para que la persona con derecho a protección subsidiaria ya no corra un riesgo real de sufrir daños graves.
-  [6] 2. El cese en la protección subsidiaria no impedirá la continuación de la residencia en España conforme a la normativa vigente en materia de extranjería e inmigración. A estos efectos se tendrá en cuenta el período que los interesados hayan residido legalmente en nuestro país.
-```
-
 ### Ley 12/2009, artículo 40 · `BOE-A-2009-17242__a40` [JUZGADO rel=0 draft]
 https://www.boe.es/buscar/act.php?id=BOE-A-2009-17242#a40
-_recuperado por:_ e5-base/BASELINE#3 (0.874) · e5-large-instruct/I0_GENERIC#7 (0.885) · e5-large-instruct/I1_LEGAL#7 (0.906) · e5-large-instruct/I2_CITIZEN_LEGISLATION#7 (0.905) · bge-m3/BASELINE#9 (0.604)  [5 sistemas]
+_recuperado por:_ bm25/lexical#2 (23.864) · hybrid_rrf/I0_GENERIC#2 (0.031) · e5-base/BASELINE#3 (0.874) · e5-large-instruct/I0_GENERIC#7 (0.885) · e5-large-instruct/I1_LEGAL#7 (0.906) · e5-large-instruct/I2_CITIZEN_LEGISLATION#7 (0.905) · bge-m3/BASELINE#9 (0.604)  [7 sistemas]
 ```
   [1] Artículo 40. Extensión familiar del derecho de asilo o de la protección subsidiaria.
   [2] 1. El restablecimiento de la unidad familiar de las personas refugiadas y beneficiarias de protección subsidiaria podrá garantizarse mediante la concesión, respectivamente, del derecho de asilo o de la protección subsidiaria por extensión familiar, en los siguientes supuestos:
@@ -2162,7 +2246,7 @@ _recuperado por:_ e5-base/BASELINE#3 (0.874) · e5-large-instruct/I0_GENERIC#7 (
 
 ### Ley 12/2009, artículo 36 · `BOE-A-2009-17242__a36` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2009-17242#a36
-_recuperado por:_ bge-m3/BASELINE#5 (0.612) · e5-base/BASELINE#6 (0.867) · e5-large-instruct/I1_LEGAL#8 (0.905) · e5-large-instruct/I2_CITIZEN_LEGISLATION#8 (0.905) · e5-large-instruct/I0_GENERIC#12 (0.879)  [5 sistemas]
+_recuperado por:_ bm25/lexical#3 (23.337) · bge-m3/BASELINE#5 (0.612) · e5-base/BASELINE#6 (0.867) · hybrid_rrf/I0_GENERIC#6 (0.030) · e5-large-instruct/I1_LEGAL#8 (0.905) · e5-large-instruct/I2_CITIZEN_LEGISLATION#8 (0.905) · e5-large-instruct/I0_GENERIC#12 (0.879)  [7 sistemas]
 ```
   [1] Artículo 36. Efectos de la concesión del derecho de asilo o de protección subsidiaria.
   [2] 1. La concesión del derecho de asilo o de la protección subsidiaria implicará el reconocimiento de los derechos establecidos en la Convención de Ginebra sobre el Estatuto de los Refugiados, en la normativa vigente en materia de extranjería e inmigración, así como en la normativa de la Unión Europea, y, en todo caso:
@@ -2182,34 +2266,69 @@ _recuperado por:_ bge-m3/BASELINE#5 (0.612) · e5-base/BASELINE#6 (0.867) · e5-
   [16] 4. En casos específicos, debido a dificultades sociales o económicas, las Administraciones Públicas podrán poner en marcha servicios complementarios a los sistemas públicos de acceso al empleo, a la vivienda y a los servicios educativos generales, así como servicios especializados de interpretación y traducción de documentos, ayudas permanentes para ancianos y personas con discapacidad y ayudas económicas de emergencia.
 ```
 
-### Ley 12/2009, artículo 3 · `BOE-A-2009-17242__a3` [JUZGADO rel=2 reviewed]
-https://www.boe.es/buscar/act.php?id=BOE-A-2009-17242#a3
-_recuperado por:_ e5-large-instruct/I1_LEGAL#10 (0.900) · e5-large-instruct/I2_CITIZEN_LEGISLATION#10 (0.899) · e5-base/BASELINE#11 (0.861) · e5-large-instruct/I0_GENERIC#11 (0.880) · bge-m3/BASELINE#14 (0.581)  [5 sistemas]
-```
-  [1] Artículo 3. La condición de refugiado.
-  [2] La condición de refugiado se reconoce a toda persona que, debido a fundados temores de ser perseguida por motivos de raza, religión, nacionalidad, opiniones políticas, pertenencia a determinado grupo social, de género, orientación sexual o de identidad sexual, se encuentra fuera del país de su nacionalidad y no puede o, a causa de dichos temores, no quiere acogerse a la protección de tal país, o al apátrida que, careciendo de nacionalidad y hallándose fuera del país donde antes tuviera su residencia habitual, por los mismos motivos no puede o, a causa de dichos temores, no quiere regresar a él, y no esté incurso en alguna de las causas de exclusión del artículo 8 o de las causas de denegación o revocación del artículo 9.
-```
-
-### Ley 12/2009, artículo 11 · `BOE-A-2009-17242__a11` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2009-17242#a11
-_recuperado por:_ bge-m3/BASELINE#12 (0.593) · e5-large-instruct/I1_LEGAL#13 (0.898) · e5-large-instruct/I2_CITIZEN_LEGISLATION#13 (0.896) · e5-large-instruct/I0_GENERIC#15 (0.877) · e5-base/BASELINE#16 (0.852)  [5 sistemas]
-```
-  [1] Artículo 11. Causas de exclusión.
-  [2] 1. Quedarán excluidas de la condición de beneficiarias de la protección subsidiaria aquellas personas respecto de las que existan fundados motivos para considerar que:
-  [3] a) han cometido un delito contra la paz, un delito de guerra o un delito contra la humanidad, de los definidos en los instrumentos internacionales que establecen disposiciones relativas a tales delitos;
-  [4] b) han cometido fuera del país de protección antes de ser admitidas como beneficiarias de la protección subsidiaria, es decir, antes de la expedición de la autorización de residencia basada en el reconocimiento de la condición de beneficiario de protección subsidiaria, un delito grave, entendiéndose por tal los que lo sean conforme al Código Penal español y que afecten a la vida, la libertad, la indemnidad o la libertad sexual, la integridad de las personas o el patrimonio, siempre que fuesen realizados con fuerza en las cosas, o violencia o intimidación en las personas, así como en los casos de la delincuencia organizada, debiendo entenderse incluida, en todo caso, en el término delincuencia organizada la recogida en el apartado cuarto del artículo 282 bis de la Ley de Enjuiciamiento Criminal, en relación con los delitos enumerados;
-  [5] c) son culpables de actos contrarios a las finalidades y a los principios de las Naciones Unidas establecidos en el Preámbulo y en los artículos 1 y 2 de la Carta de las Naciones Unidas;
-  [6] d) constituyen un peligro para la seguridad interior o exterior de España o para el orden público.
-  [7] 2. Lo dispuesto en los apartados anteriores se aplicará a quienes inciten a la comisión de los delitos o actos mencionados en los mismos, o bien participen en su comisión.
-```
-
 ### Ley 12/2009, artículo 39 · `BOE-A-2009-17242__a39` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2009-17242#a39
-_recuperado por:_ e5-base/BASELINE#7 (0.865) · bge-m3/BASELINE#13 (0.590) · e5-large-instruct/I0_GENERIC#16 (0.877) · e5-large-instruct/I1_LEGAL#17 (0.896) · e5-large-instruct/I2_CITIZEN_LEGISLATION#19 (0.893)  [5 sistemas]
+_recuperado por:_ e5-base/BASELINE#7 (0.865) · bm25/lexical#11 (20.502) · hybrid_rrf/I0_GENERIC#11 (0.027) · bge-m3/BASELINE#13 (0.590) · e5-large-instruct/I0_GENERIC#16 (0.877) · e5-large-instruct/I1_LEGAL#17 (0.896) · e5-large-instruct/I2_CITIZEN_LEGISLATION#19 (0.893)  [7 sistemas]
 ```
   [1] Artículo 39. Mantenimiento de la unidad familiar.
   [2] 1. Se garantizará el mantenimiento de la familia de las personas refugiadas y beneficiarias de protección subsidiaria en los términos previstos los artículos 40 y 41 de la presente Ley.
   [3] 2. Cuando, durante la tramitación de una solicitud de protección internacional, los miembros de la familia de la persona interesada a los que se hace referencia en el artículo 40 se encontrasen también en España, y no hubiesen presentado una solicitud independiente de protección internacional, se les autorizará la residencia en España con carácter provisional, condicionada a la resolución de la solicitud de protección internacional y en los términos que reglamentariamente se determinen.
+```
+
+### Ley 12/2009, artículo 4 · `BOE-A-2009-17242__a4` [JUZGADO rel=2 reviewed]
+https://www.boe.es/buscar/act.php?id=BOE-A-2009-17242#a4
+_recuperado por:_ bge-m3/BASELINE#1 (0.698) · e5-base/BASELINE#1 (0.907) · e5-large-instruct/I0_GENERIC#1 (0.911) · e5-large-instruct/I1_LEGAL#1 (0.934) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.934) · hybrid_rrf/I0_GENERIC#4 (0.030) · bm25/lexical#12 (19.742)  [7 sistemas]
+```
+  [1] Artículo 4. La protección subsidiaria.
+  [2] El derecho a la protección subsidiaria es el dispensado a las personas de otros países y a los apátridas que, sin reunir los requisitos para obtener el asilo o ser reconocidas como refugiadas, pero respecto de las cuales se den motivos fundados para creer que si regresasen a su país de origen en el caso de los nacionales o, al de su anterior residencia habitual en el caso de los apátridas, se enfrentarían a un riesgo real de sufrir alguno de los daños graves previstos en el artículo 10 de esta Ley, y que no pueden o, a causa de dicho riesgo, no quieren, acogerse a la protección del país de que se trate, siempre que no concurra alguno de los supuestos mencionados en los artículos 11 y 12 de esta Ley.
+```
+
+### Ley 12/2009, disposición Transitoria Segunda · `BOE-A-2009-17242__dtsegunda` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2009-17242#dtsegunda
+_recuperado por:_ e5-large-instruct/I0_GENERIC#4 (0.891) · e5-large-instruct/I1_LEGAL#5 (0.913) · e5-large-instruct/I2_CITIZEN_LEGISLATION#5 (0.911) · bge-m3/BASELINE#6 (0.609) · hybrid_rrf/I0_GENERIC#7 (0.029) · e5-base/BASELINE#9 (0.864) · bm25/lexical#15 (18.831)  [7 sistemas]
+```
+  [1] Disposición Transitoria Segunda. Normativa aplicable a las personas autorizadas a residir en España por razones humanitarias.
+  [2] Las personas que hubieran obtenido una autorización para permanecer en España por razones humanitarias conforme a lo previsto en el artículo 17.2 de la Ley 5/1984, de 26 de marzo, reguladora del derecho de asilo y de la condición de refugiado, y en los términos de lo dispuesto en el apartado tercero del artículo 31 de su Reglamento de aplicación, aprobado por el Real Decreto 203/1995, de 10 de febrero, podrán beneficiarse del derecho a la protección subsidiaria previsto en esta Ley.
+```
+
+### Ley 12/2009, artículo 41 · `BOE-A-2009-17242__a41` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2009-17242#a41
+_recuperado por:_ bm25/lexical#5 (21.847) · hybrid_rrf/I0_GENERIC#8 (0.028) · bge-m3/BASELINE#10 (0.603) · e5-base/BASELINE#14 (0.854) · e5-large-instruct/I0_GENERIC#20 (0.873) · e5-large-instruct/I1_LEGAL#20 (0.894)  [6 sistemas]
+```
+  [1] Artículo 41. Reagrupación familiar.
+  [2] 1. Las personas refugiadas y beneficiarias de protección subsidiaria podrán optar por reagrupar a las enumeradas en el artículo anterior, aun cuando ya se encontrasen en España, sin solicitar la extensión del estatuto de que disfruten. Esta reagrupación será siempre aplicable cuando los beneficiarios sean de nacionalidad distinta a la persona refugiada o beneficiaria de protección subsidiaria.
+  [3] 2. En este supuesto, que se desarrollará reglamentariamente, no se exigirá a los refugiados o beneficiarios de la protección subsidiaria, ni tampoco a los beneficiarios de la reagrupación familiar, los requisitos establecidos en la normativa vigente de extranjería e inmigración.
+  [4] 3. La resolución por la que se acuerde la reagrupación familiar implicará la concesión de autorización de residencia y, en su caso, de trabajo, de análoga validez a la de la persona reagrupante.
+  [5] 4. La reagrupación familiar será ejercitable una sola vez, sin que las personas que hubiesen sido reagrupadas y obtenido autorización para residir en España en virtud de lo dispuesto en el apartado anterior puedan solicitar reagrupaciones sucesivas de sus familiares.
+  [6] 5. En ningún caso se concederá protección internacional por extensión familiar a las personas incursas en los supuestos previstos en los apartados 2 y 3 del artículo 8 y en los artículos 9, 11 y 12 de la presente Ley.
+```
+
+### Ley 12/2009, artículo 5 · `BOE-A-2009-17242__a5` [JUZGADO rel=0 draft]
+https://www.boe.es/buscar/act.php?id=BOE-A-2009-17242#a5
+_recuperado por:_ e5-base/BASELINE#2 (0.880) · e5-large-instruct/I0_GENERIC#2 (0.904) · e5-large-instruct/I1_LEGAL#3 (0.918) · e5-large-instruct/I2_CITIZEN_LEGISLATION#3 (0.916) · bge-m3/BASELINE#4 (0.622) · hybrid_rrf/I0_GENERIC#12 (0.027)  [6 sistemas]
+```
+  [1] Artículo 5. Derechos garantizados con el asilo y la protección subsidiaria.
+  [2] La protección concedida con el derecho de asilo y la protección subsidiaria consiste en la no devolución ni expulsión de las personas a quienes se les haya reconocido, así como en la adopción de las medidas contempladas en el artículo 36 de esta Ley y en las normas que lo desarrollen, en la normativa de la Unión Europea y en los Convenios internacionales ratificados por España.
+```
+
+### Ley 12/2009, artículo 43 · `BOE-A-2009-17242__a43` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2009-17242#a43
+_recuperado por:_ e5-large-instruct/I0_GENERIC#6 (0.886) · e5-large-instruct/I1_LEGAL#6 (0.908) · e5-large-instruct/I2_CITIZEN_LEGISLATION#6 (0.906) · bge-m3/BASELINE#7 (0.606) · e5-base/BASELINE#8 (0.865) · hybrid_rrf/I0_GENERIC#14 (0.026)  [6 sistemas]
+```
+  [1] Artículo 43. Cese de la protección subsidiaria.
+  [2] 1. La protección subsidiaria cesará cuando:
+  [3] a) se solicite expresamente por la persona beneficiaria;
+  [4] b) la persona beneficiaria haya abandonado el territorio español y fijado su residencia en otro país;
+  [5] c) las circunstancias que condujeron a su concesión dejen de existir o cambien de tal forma que dicha protección ya no sea necesaria. El Estado español tendrá en cuenta si el cambio de circunstancias es lo suficientemente significativo, sin ser de carácter temporal, como para que la persona con derecho a protección subsidiaria ya no corra un riesgo real de sufrir daños graves.
+  [6] 2. El cese en la protección subsidiaria no impedirá la continuación de la residencia en España conforme a la normativa vigente en materia de extranjería e inmigración. A estos efectos se tendrá en cuenta el período que los interesados hayan residido legalmente en nuestro país.
+```
+
+### Ley 12/2009, artículo 3 · `BOE-A-2009-17242__a3` [JUZGADO rel=2 reviewed]
+https://www.boe.es/buscar/act.php?id=BOE-A-2009-17242#a3
+_recuperado por:_ e5-large-instruct/I1_LEGAL#10 (0.900) · e5-large-instruct/I2_CITIZEN_LEGISLATION#10 (0.899) · e5-base/BASELINE#11 (0.861) · e5-large-instruct/I0_GENERIC#11 (0.880) · bge-m3/BASELINE#14 (0.581) · hybrid_rrf/I0_GENERIC#16 (0.026)  [6 sistemas]
+```
+  [1] Artículo 3. La condición de refugiado.
+  [2] La condición de refugiado se reconoce a toda persona que, debido a fundados temores de ser perseguida por motivos de raza, religión, nacionalidad, opiniones políticas, pertenencia a determinado grupo social, de género, orientación sexual o de identidad sexual, se encuentra fuera del país de su nacionalidad y no puede o, a causa de dichos temores, no quiere acogerse a la protección de tal país, o al apátrida que, careciendo de nacionalidad y hallándose fuera del país donde antes tuviera su residencia habitual, por los mismos motivos no puede o, a causa de dichos temores, no quiere regresar a él, y no esté incurso en alguna de las causas de exclusión del artículo 8 o de las causas de denegación o revocación del artículo 9.
 ```
 
 ### Ley 12/2009, artículo 10 · `BOE-A-2009-17242__a10` [JUZGADO rel=1 reviewed]
@@ -2231,7 +2350,7 @@ _split=test · difficulty=dificil · failure_mode=—_
 
 ### Ley 12/2009, artículo 21 · `BOE-A-2009-17242__a21` [JUZGADO rel=2 reviewed]
 https://www.boe.es/buscar/act.php?id=BOE-A-2009-17242#a21
-_recuperado por:_ bge-m3/BASELINE#1 (0.672) · e5-large-instruct/I1_LEGAL#1 (0.907) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.904) · e5-large-instruct/I0_GENERIC#2 (0.883) · e5-base/BASELINE#3 (0.859)  [5 sistemas]
+_recuperado por:_ bge-m3/BASELINE#1 (0.672) · e5-large-instruct/I1_LEGAL#1 (0.907) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.904) · bm25/lexical#1 (21.153) · hybrid_rrf/I0_GENERIC#1 (0.032) · e5-large-instruct/I0_GENERIC#2 (0.883) · e5-base/BASELINE#3 (0.859)  [7 sistemas]
 ```
   [1] Artículo 21. Solicitudes presentadas en puestos fronterizos.
   [2] 1. Cuando una persona extranjera que no reúna los requisitos necesarios para entrar en territorio español presente una solicitud de protección internacional en un puesto fronterizo, el Ministro del Interior podrá no admitir a trámite la solicitud mediante resolución motivada cuando en dicha solicitud concurra alguno de los supuestos previstos en el apartado primero del artículo 20. En todo caso, la resolución deberá ser notificada a la persona interesada en el plazo máximo de cuatro días desde su presentación.
@@ -2245,7 +2364,7 @@ _recuperado por:_ bge-m3/BASELINE#1 (0.672) · e5-large-instruct/I1_LEGAL#1 (0.9
 
 ### Ley 12/2009, artículo 19 · `BOE-A-2009-17242__a19` [JUZGADO rel=0 draft]
 https://www.boe.es/buscar/act.php?id=BOE-A-2009-17242#a19
-_recuperado por:_ e5-base/BASELINE#1 (0.860) · e5-large-instruct/I0_GENERIC#1 (0.886) · e5-large-instruct/I1_LEGAL#3 (0.903) · e5-large-instruct/I2_CITIZEN_LEGISLATION#3 (0.901) · bge-m3/BASELINE#10 (0.586)  [5 sistemas]
+_recuperado por:_ e5-base/BASELINE#1 (0.860) · e5-large-instruct/I0_GENERIC#1 (0.886) · e5-large-instruct/I1_LEGAL#3 (0.903) · e5-large-instruct/I2_CITIZEN_LEGISLATION#3 (0.901) · bm25/lexical#3 (19.918) · hybrid_rrf/I0_GENERIC#4 (0.030) · bge-m3/BASELINE#10 (0.586)  [7 sistemas]
 ```
   [1] Artículo 19. Efectos de la presentación de la solicitud.
   [2] 1. Solicitada la protección, la persona extranjera no podrá ser objeto de retorno, devolución o expulsión hasta que se resuelva sobre su solicitud o ésta no sea admitida. No obstante, por motivos de salud o seguridad públicas, la autoridad competente podrá adoptar medidas cautelares en aplicación de la normativa vigente en materia de extranjería e inmigración.
@@ -2259,7 +2378,7 @@ _recuperado por:_ e5-base/BASELINE#1 (0.860) · e5-large-instruct/I0_GENERIC#1 (
 
 ### Ley 12/2009, artículo 35 · `BOE-A-2009-17242__a35` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2009-17242#a35
-_recuperado por:_ e5-large-instruct/I1_LEGAL#6 (0.889) · e5-large-instruct/I2_CITIZEN_LEGISLATION#6 (0.886) · e5-large-instruct/I0_GENERIC#8 (0.866) · bge-m3/BASELINE#11 (0.586) · e5-base/BASELINE#11 (0.848)  [5 sistemas]
+_recuperado por:_ hybrid_rrf/I0_GENERIC#3 (0.030) · e5-large-instruct/I1_LEGAL#6 (0.889) · e5-large-instruct/I2_CITIZEN_LEGISLATION#6 (0.886) · bm25/lexical#6 (16.523) · e5-large-instruct/I0_GENERIC#8 (0.866) · bge-m3/BASELINE#11 (0.586) · e5-base/BASELINE#11 (0.848)  [7 sistemas]
 ```
   [1] Artículo 35. Intervención en la tramitación de protección internacional.
   [2] 1. El representante en España del ACNUR será convocado a las sesiones de la Comisión Interministerial de Asilo y Refugio.
@@ -2267,34 +2386,9 @@ _recuperado por:_ e5-large-instruct/I1_LEGAL#6 (0.889) · e5-large-instruct/I2_C
   [4] 3. En los casos que se tramiten las solicitudes mediante el procedimiento de urgencia, y en los casos de admisión a trámite del artículo 20, si la propuesta de resolución de la Oficina de Asilo y Refugio fuese desfavorable se dará un plazo de diez días al ACNUR para que, en su caso, informe.
 ```
 
-### Ley 12/2009, artículo 22 · `BOE-A-2009-17242__a22` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2009-17242#a22
-_recuperado por:_ e5-large-instruct/I0_GENERIC#4 (0.872) · e5-large-instruct/I1_LEGAL#4 (0.889) · e5-large-instruct/I2_CITIZEN_LEGISLATION#7 (0.885) · e5-base/BASELINE#12 (0.848)  [4 sistemas]
-```
-  [1] Artículo 22. Permanencia del solicitante de asilo durante la tramitación de la solicitud.
-  [2] En todo caso, durante la tramitación de la petición de reexamen y del recurso de reposición previstos en los apartados cuarto y quinto del artículo 21 de la presente Ley, así como en los supuestos en los que se solicite la adopción de las medidas a las que se refiere el apartado segundo de su artículo 29, la persona solicitante de asilo permanecerá en las dependencias habilitadas a tal efecto.
-```
-
-### Ley 12/2009, artículo 25 · `BOE-A-2009-17242__a25` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2009-17242#a25
-_recuperado por:_ e5-base/BASELINE#4 (0.854) · e5-large-instruct/I2_CITIZEN_LEGISLATION#4 (0.887) · e5-large-instruct/I0_GENERIC#6 (0.868) · e5-large-instruct/I1_LEGAL#7 (0.888)  [4 sistemas]
-```
-  [1] Artículo 25. Tramitación de urgencia.
-  [2] 1. El Ministerio del Interior, de oficio o a petición del interesado, acordará la aplicación de la tramitación de urgencia, previa notificación al interesado, en las solicitudes en las que concurra alguna de las siguientes circunstancias:
-  [3] a) que parezcan manifiestamente fundadas;
-  [4] b) que hayan sido formuladas por solicitantes que presenten necesidades específicas, especialmente, por menores no acompañados;
-  [5] c) que planteen exclusivamente cuestiones que no guarden relación con el examen de los requisitos para el reconocimiento de la condición de refugiado o la concesión de la protección subsidiaria;
-  [6] d) que la persona solicitante proceda de un país de origen considerado seguro, en los términos de lo dispuesto en el artículo 20.1.d), y del que posea la nacionalidad, o si fuere apátrida, en el que tuviera su residencia habitual;
-  [7] e) que la persona solicitante, sin motivo justificado, presente su solicitud transcurrido el plazo de un mes previsto en el apartado segundo del artículo 17;
-  [8] f) que la persona solicitante incurra en alguno de los supuestos de exclusión o de denegación previstos en los artículos 8, 9, 11 y 12 de la presente Ley.
-  [9] 2. Cuando la solicitud de protección internacional se hubiera presentado en un Centro de Internamiento para Extranjeros, su tramitación deberá adecuarse a lo dispuesto en el artículo 21 de esta Ley para las solicitudes en frontera. En todo caso, presentadas las solicitudes en estos términos, aquéllas que fuesen admitidas a trámite se ajustarán a la tramitación de urgencia prevista en el presente artículo.
-  [10] 3. La Comisión Interministerial de Asilo y Refugio será informada de los expedientes que vayan a ser tramitados con carácter de urgencia.
-  [11] 4. Será de aplicación al presente procedimiento lo dispuesto en el artículo 24 de la Ley, salvo en materia de plazos que se verán reducidos a la mitad.
-```
-
 ### Ley 12/2009, artículo 24 · `BOE-A-2009-17242__a24` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2009-17242#a24
-_recuperado por:_ e5-large-instruct/I1_LEGAL#8 (0.885) · e5-large-instruct/I2_CITIZEN_LEGISLATION#8 (0.884) · e5-large-instruct/I0_GENERIC#9 (0.863) · e5-base/BASELINE#10 (0.849)  [4 sistemas]
+_recuperado por:_ hybrid_rrf/I0_GENERIC#5 (0.029) · e5-large-instruct/I1_LEGAL#8 (0.885) · e5-large-instruct/I2_CITIZEN_LEGISLATION#8 (0.884) · bm25/lexical#8 (15.835) · e5-large-instruct/I0_GENERIC#9 (0.863) · e5-base/BASELINE#10 (0.849)  [6 sistemas]
 ```
   [1] Artículo 24. Procedimiento ordinario.
   [2] 1. Toda solicitud de protección internacional admitida a trámite dará lugar al inicio, por parte del Ministerio del Interior, del correspondiente procedimiento, al que se incorporarán las diligencias de instrucción del expediente. Si fuera procedente la realización de nuevas entrevistas a las personas solicitantes, aquéllas deberán reunir los requisitos previstos en el artículo 17.
@@ -2302,9 +2396,17 @@ _recuperado por:_ e5-large-instruct/I1_LEGAL#8 (0.885) · e5-large-instruct/I2_C
   [4] 3. Transcurridos seis meses desde la presentación de la solicitud sin que se haya notificado la correspondiente resolución, la misma podrá entenderse desestimada, sin perjuicio de la obligación de la Administración de resolver expresamente y de lo dispuesto en el apartado séptimo del artículo 19 de la presente Ley.
 ```
 
+### Ley 12/2009, artículo 22 · `BOE-A-2009-17242__a22` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2009-17242#a22
+_recuperado por:_ e5-large-instruct/I0_GENERIC#4 (0.872) · e5-large-instruct/I1_LEGAL#4 (0.889) · hybrid_rrf/I0_GENERIC#6 (0.028) · e5-large-instruct/I2_CITIZEN_LEGISLATION#7 (0.885) · e5-base/BASELINE#12 (0.848) · bm25/lexical#18 (13.589)  [6 sistemas]
+```
+  [1] Artículo 22. Permanencia del solicitante de asilo durante la tramitación de la solicitud.
+  [2] En todo caso, durante la tramitación de la petición de reexamen y del recurso de reposición previstos en los apartados cuarto y quinto del artículo 21 de la presente Ley, así como en los supuestos en los que se solicite la adopción de las medidas a las que se refiere el apartado segundo de su artículo 29, la persona solicitante de asilo permanecerá en las dependencias habilitadas a tal efecto.
+```
+
 ### Real Decreto 1155/2024, artículo 89 · `BOE-A-2024-24099__a8-11` [JUZGADO rel=0 draft]
 https://www.boe.es/buscar/act.php?id=BOE-A-2024-24099#a8-11
-_recuperado por:_ bge-m3/BASELINE#3 (0.601) · e5-large-instruct/I2_CITIZEN_LEGISLATION#13 (0.877) · e5-large-instruct/I1_LEGAL#16 (0.878) · e5-large-instruct/I0_GENERIC#17 (0.856)  [4 sistemas]
+_recuperado por:_ bge-m3/BASELINE#3 (0.601) · e5-large-instruct/I2_CITIZEN_LEGISLATION#13 (0.877) · hybrid_rrf/I0_GENERIC#13 (0.019) · e5-large-instruct/I1_LEGAL#16 (0.878) · e5-large-instruct/I0_GENERIC#17 (0.856)  [5 sistemas]
 ```
   [1] Artículo 89. Requisitos y procedimiento.
   [2] 1. La persona trabajadora extranjera no residente en España que esté exceptuada de la obligación de obtener autorización de trabajo para el ejercicio de una actividad lucrativa, laboral o profesional, y siempre que la duración prevista de la actividad sea superior a noventa días naturales, deberá presentar una solicitud de autorización de residencia temporal con excepción de la autorización de trabajo ante el órgano competente para su tramitación o, en el caso de encontrarse fuera de España, una solicitud de visado de residencia ante la oficina consular española correspondiente a su lugar de residencia.
@@ -2324,17 +2426,26 @@ _recuperado por:_ bge-m3/BASELINE#3 (0.601) · e5-large-instruct/I2_CITIZEN_LEGI
   [16] 7. La vigencia de la autorización de residencia temporal con excepción de la autorización de trabajo será igual a la duración de la actividad o programa que se desarrolle, con el límite máximo de un año la autorización inicial, y de cuatro en la prórroga, si subsisten las circunstancias que motivaron la excepción.
 ```
 
-### Ley Orgánica 4/2000, disposición adicional única · `BOE-A-2000-544__daunica` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2000-544#daunica
-_recuperado por:_ e5-large-instruct/I0_GENERIC#7 (0.867) · e5-large-instruct/I1_LEGAL#9 (0.882) · e5-large-instruct/I2_CITIZEN_LEGISLATION#9 (0.881)  [3 sistemas]
+### Ley 12/2009, artículo 25 · `BOE-A-2009-17242__a25` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2009-17242#a25
+_recuperado por:_ e5-base/BASELINE#4 (0.854) · e5-large-instruct/I2_CITIZEN_LEGISLATION#4 (0.887) · e5-large-instruct/I0_GENERIC#6 (0.868) · e5-large-instruct/I1_LEGAL#7 (0.888)  [4 sistemas]
 ```
-  [1] Disposición adicional única. Plazo máximo para resolución de expedientes.
-  [2] Las solicitudes de prórroga del permiso de residencia así como la renovación del permiso de trabajo que se formulen por los interesados a tenor de lo dispuesto en la presente Ley Orgánica se resolverán en el plazo máximo de tres meses contados a partir del día siguiente al de la presentación de la solicitud. Transcurrido dicho plazo sin que la Administración haya dado respuesta expresa, se entenderá que la prórroga o renovación han sido concedidas.
+  [1] Artículo 25. Tramitación de urgencia.
+  [2] 1. El Ministerio del Interior, de oficio o a petición del interesado, acordará la aplicación de la tramitación de urgencia, previa notificación al interesado, en las solicitudes en las que concurra alguna de las siguientes circunstancias:
+  [3] a) que parezcan manifiestamente fundadas;
+  [4] b) que hayan sido formuladas por solicitantes que presenten necesidades específicas, especialmente, por menores no acompañados;
+  [5] c) que planteen exclusivamente cuestiones que no guarden relación con el examen de los requisitos para el reconocimiento de la condición de refugiado o la concesión de la protección subsidiaria;
+  [6] d) que la persona solicitante proceda de un país de origen considerado seguro, en los términos de lo dispuesto en el artículo 20.1.d), y del que posea la nacionalidad, o si fuere apátrida, en el que tuviera su residencia habitual;
+  [7] e) que la persona solicitante, sin motivo justificado, presente su solicitud transcurrido el plazo de un mes previsto en el apartado segundo del artículo 17;
+  [8] f) que la persona solicitante incurra en alguno de los supuestos de exclusión o de denegación previstos en los artículos 8, 9, 11 y 12 de la presente Ley.
+  [9] 2. Cuando la solicitud de protección internacional se hubiera presentado en un Centro de Internamiento para Extranjeros, su tramitación deberá adecuarse a lo dispuesto en el artículo 21 de esta Ley para las solicitudes en frontera. En todo caso, presentadas las solicitudes en estos términos, aquéllas que fuesen admitidas a trámite se ajustarán a la tramitación de urgencia prevista en el presente artículo.
+  [10] 3. La Comisión Interministerial de Asilo y Refugio será informada de los expedientes que vayan a ser tramitados con carácter de urgencia.
+  [11] 4. Será de aplicación al presente procedimiento lo dispuesto en el artículo 24 de la Ley, salvo en materia de plazos que se verán reducidos a la mitad.
 ```
 
 ### Ley 12/2009, artículo 34 · `BOE-A-2009-17242__a34` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2009-17242#a34
-_recuperado por:_ e5-large-instruct/I0_GENERIC#5 (0.871) · e5-large-instruct/I1_LEGAL#10 (0.881) · e5-large-instruct/I2_CITIZEN_LEGISLATION#12 (0.877)  [3 sistemas]
+_recuperado por:_ e5-large-instruct/I0_GENERIC#5 (0.871) · hybrid_rrf/I0_GENERIC#7 (0.027) · e5-large-instruct/I1_LEGAL#10 (0.881) · e5-large-instruct/I2_CITIZEN_LEGISLATION#12 (0.877)  [4 sistemas]
 ```
   [1] Artículo 34. Intervención en el procedimiento de solicitud.
   [2] La presentación de las solicitudes de protección internacional se comunicará al ACNUR, quien podrá informarse de la situación de los expedientes, estar presente en las audiencias a la persona solicitante y presentar informes para su inclusión en el expediente.
@@ -2343,10 +2454,28 @@ _recuperado por:_ e5-large-instruct/I0_GENERIC#5 (0.871) · e5-large-instruct/I1
 
 ### Ley 12/2009, artículo 28 · `BOE-A-2009-17242__a28` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2009-17242#a28
-_recuperado por:_ e5-large-instruct/I0_GENERIC#11 (0.861) · e5-large-instruct/I1_LEGAL#13 (0.880) · e5-large-instruct/I2_CITIZEN_LEGISLATION#19 (0.875)  [3 sistemas]
+_recuperado por:_ hybrid_rrf/I0_GENERIC#9 (0.025) · e5-large-instruct/I0_GENERIC#11 (0.861) · e5-large-instruct/I1_LEGAL#13 (0.880) · e5-large-instruct/I2_CITIZEN_LEGISLATION#19 (0.875)  [4 sistemas]
 ```
   [1] Artículo 28. Notificación.
   [2] A efectos de comunicaciones y notificaciones, se tendrá en cuenta el último domicilio o residencia que conste en el expediente. Cuando no prospere este procedimiento de notificación, el trámite se realizará a través del Portal del Ciudadano, del portal electrónico de la Oficina de Asilo y Refugio y de los tablones de anuncios, accesibles al público, de la Comisaría de Policía correspondiente o de la Oficina de Extranjeros de la provincia en que conste el último lugar de residencia de la persona solicitante y, en todo caso, de la Oficina de Asilo y Refugio. De estos extremos se informará a los solicitantes al formalizar su solicitud, que podrán exigir que se cumpla la garantía del apartado 4 del artículo 16.
+```
+
+### Ley 12/2009, artículo 20 · `BOE-A-2009-17242__a20` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2009-17242#a20
+_recuperado por:_ hybrid_rrf/I0_GENERIC#11 (0.020) · e5-large-instruct/I1_LEGAL#14 (0.879) · e5-large-instruct/I2_CITIZEN_LEGISLATION#18 (0.875) · e5-large-instruct/I0_GENERIC#20 (0.856)  [4 sistemas]
+```
+  [1] Artículo 20. No admisión de solicitudes presentadas dentro del territorio español.
+  [2] 1. El Ministro del Interior, a propuesta de la Oficina de Asilo y Refugio, podrá, mediante resolución motivada, no admitir a trámite las solicitudes cuando concurra alguna de las circunstancias siguientes:
+  [3] – Por falta de competencia para el examen de las solicitudes:
+  [4] a) cuando no corresponda a España su examen con arreglo al Reglamento (CE) 343/2003, del Consejo, de 18 de febrero, por el que se establecen los criterios y mecanismos de determinación del Estado miembro responsable del examen de una solicitud de asilo presentada en uno de los Estados miembros por un nacional de un tercer país;
+  [5] b) cuando no corresponda a España su examen de conformidad con los Convenios Internacionales en que sea Parte. En la resolución por la que se acuerde la no admisión a trámite se indicará a la persona solicitante el Estado responsable de examinarla. En este caso, dicho Estado habrá aceptado explícitamente su responsabilidad y se obtendrán garantías suficientes de protección para la vida, libertad e integridad física de los interesados, así como del respeto a los demás principios indicados en la Convención de Ginebra, en el territorio de dicho Estado.
+  [6] – Por falta de requisitos:
+  [7] c) cuando, de conformidad con lo establecido en el artículo 25.2.b) y en el artículo 26 de la Directiva 2005/85/CE del Consejo, la persona solicitante se halle reconocida como refugiada y tenga derecho a residir o a obtener protección internacional efectiva en un tercer Estado, siempre que sea readmitida en ese país, no exista peligro para su vida o su libertad, ni esté expuesta a tortura o a trato inhumano o degradante y tenga protección efectiva contra la devolución al país perseguidor, con arreglo a la Convención de Ginebra;
+  [8] d) cuando la persona solicitante proceda de un tercer país seguro, de conformidad con lo establecido en el artículo 27 de la Directiva 2005/85/CE del Consejo y, en su caso con la lista que sea elaborada por la Unión Europea, donde, atendiendo a sus circunstancias particulares, reciba un trato en el que su vida, su integridad y su libertad no estén amenazadas por razón de raza, religión, nacionalidad, pertenencia a grupo social u opinión política, se respete el principio de no devolución, así como la prohibición de expulsión en caso de violación del derecho a no ser sometido a torturas ni a tratos crueles, inhumanos o degradantes, exista la posibilidad de solicitar el estatuto de refugiado y, en caso de ser refugiado, a recibir protección con arreglo a la Convención de Ginebra; siempre que el solicitante sea readmitido en ese país y existan vínculos por los cuales sería razonable que el solicitante fuera a ese país. Para la aplicación del concepto de tercer país seguro, también podrá requerirse la existencia de una relación entre el solicitante de asilo y el tercer país de que se trate por la que sería razonable que el solicitante fuera a ese país;
+  [9] e) cuando la persona solicitante hubiese reiterado una solicitud ya denegada en España o presentado una nueva solicitud con otros datos personales, siempre que no se planteen nuevas circunstancias relevantes en cuanto a las condiciones particulares o a la situación del país de origen o de residencia habitual de la persona interesada;
+  [10] f) cuando la persona solicitante sea nacional de un Estado miembro de la Unión Europea, de conformidad con lo dispuesto en el Protocolo al Tratado Constitutivo de la Comunidad Europea sobre el derecho de asilo a nacionales de Estados miembros de la Unión Europea.
+  [11] 2. La no admisión a trámite prevista en este artículo deberá notificarse en el plazo máximo de un mes contado a partir de la presentación de la solicitud. El transcurso de dicho plazo sin que se haya notificado la resolución a la persona interesada determinará la admisión a trámite de la solicitud y su permanencia provisional en territorio español, sin perjuicio de lo que pueda acordarse en la resolución definitiva del procedimiento. La no admisión a trámite conllevará los mismos efectos que la denegación de la solicitud.
+  [12] 3. La constatación, con posterioridad a la admisión a trámite de la solicitud de protección internacional, de alguna de las circunstancias que hubiesen justificado su no admisión será causa de denegación de aquélla.
 ```
 
 ---
@@ -2355,9 +2484,23 @@ _recuperado por:_ e5-large-instruct/I0_GENERIC#11 (0.861) · e5-large-instruct/I
 **Pregunta:** ¿Cómo regula la ley universitaria las becas y ayudas al estudio frente a cómo lo hace la ley de educación?
 _split=test · difficulty=dificil · failure_mode=—_
 
+### Ley Orgánica 2/2006, disposición adicional trigésima cuarta · `BOE-A-2006-7899__datrigesimacuaa` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#datrigesimacuaa
+_recuperado por:_ bm25/lexical#1 (44.687) · hybrid_rrf/I0_GENERIC#2 (0.032) · e5-base/BASELINE#4 (0.856) · e5-large-instruct/I0_GENERIC#5 (0.881) · bge-m3/BASELINE#6 (0.618) · e5-large-instruct/I1_LEGAL#6 (0.895) · e5-large-instruct/I2_CITIZEN_LEGISLATION#6 (0.897)  [7 sistemas]
+```
+  [1] Disposición adicional trigésima cuarta. Becas y ayudas al estudio convocadas por el Ministerio de Educación y Formación Profesional.
+  [2] 1. Las notificaciones y publicaciones que deban efectuarse con ocasión de la tramitación de los procedimientos de otorgamiento, resolución de recursos administrativos, revocación, revisión de oficio y reintegro de ingresos indebidos sobre becas y ayudas al estudio, financiadas con cargo a los Presupuestos Generales del Estado y cuya competencia esté atribuida al Ministerio de Educación y Formación Profesional, se practicarán por medios electrónicos en la forma que se establezca reglamentariamente en aplicación de lo previsto en el Capítulo II del Título III de la Ley 39/2015, de 1 de octubre del Procedimiento Administrativo Común de las Administraciones Públicas.
+  [3] De acuerdo con lo previsto en dicho Capítulo II, las notificaciones que se practiquen en relación con los procedimientos sobre becas y ayudas al estudio a que se refiere el párrafo anterior, irán precedidas de un aviso a las personas interesadas por los medios que se establezcan en la correspondiente convocatoria, de la puesta a disposición de dicha notificación.
+  [4] Transcurridos diez días naturales desde que la notificación se hubiese puesto a disposición del interesado sin que haya accedido a su contenido, se entenderá rechazada, dándose por cumplido dicho trámite y continuándose con el procedimiento.
+  [5] 2. Las becas y ayudas al estudio que se concedan para cursar estudios universitarios o no universitarios con validez académica oficial serán inembargables en todos los casos.
+  [6] 3. Procederá el reintegro de las cantidades percibidas en concepto de becas y ayudas al estudio, de conformidad con lo dispuesto en el artículo 37.1.i) de la Ley 38/2003, de 17 de noviembre, General de Subvenciones, en aquellos casos en los que las personas beneficiarias no reunieran alguno o algunos de los requisitos establecidos para la obtención de las becas o ayudas o no los hubieran acreditado debidamente.
+  [7] 4. La identificación de los solicitantes de becas y ayudas del sistema estatal de becas así como de los miembros computables de su unidad familiar, a que se refiere el artículo 9 de la Ley 39/2015, de 1 de octubre, del Procedimiento Administrativo Común de las Administraciones Públicas, podrá efectuarse mediante la consignación en la solicitud de beca, en la sede electrónica del Ministerio de Educación y Formación Profesional, de los datos del DNI o NIE que establezca la convocatoria. El Ministerio de Educación y Formación Profesional podrá verificar la autenticidad de dichos datos mediante consulta a la Dirección General de la Policía o requerir al solicitante y a los miembros computables de su unidad familiar, la presentación del documento identificativo original.
+  [8] De conformidad con lo establecido en el artículo 10 de la referida Ley 39/2015, el anterior sistema de identificación será asimismo admitido como sistema de firma tanto de la solicitud de beca y ayuda como de la autorización para obtener de las administraciones públicas la información que resulte precisa para la determinación, conocimiento y comprobación de los datos de identificación, personales, de residencia, académicos y familiares del solicitante, así como de los datos de renta y patrimonio de los miembros computables de su unidad familiar.
+```
+
 ### Ley Orgánica 2/2023, artículo 32 · `BOE-A-2023-7500__a3-4` [JUZGADO rel=2 reviewed]
 https://www.boe.es/buscar/act.php?id=BOE-A-2023-7500#a3-4
-_recuperado por:_ bge-m3/BASELINE#1 (0.671) · e5-large-instruct/I1_LEGAL#1 (0.906) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.910) · e5-base/BASELINE#3 (0.858) · e5-large-instruct/I0_GENERIC#3 (0.886)  [5 sistemas]
+_recuperado por:_ bge-m3/BASELINE#1 (0.671) · e5-large-instruct/I1_LEGAL#1 (0.906) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.910) · e5-base/BASELINE#3 (0.858) · e5-large-instruct/I0_GENERIC#3 (0.886) · bm25/lexical#3 (40.620) · hybrid_rrf/I0_GENERIC#3 (0.032)  [7 sistemas]
 ```
   [1] Artículo 32. Becas y ayudas al estudio.
   [2] 1. Se garantizará la igualdad de oportunidades en el acceso a la Universidad y en la continuidad en las enseñanzas universitarias del estudiantado, con independencia de la capacidad económica de las personas o familias y de su lugar de residencia. A tal fin, se reconoce el derecho subjetivo del estudiantado universitario a acceder a becas y ayudas al estudio, siempre que cumpla con los requisitos recogidos en las normas reguladoras de las mismas, y de conformidad con los principios fundamentales de igualdad y no discriminación.
@@ -2373,7 +2516,7 @@ _recuperado por:_ bge-m3/BASELINE#1 (0.671) · e5-large-instruct/I1_LEGAL#1 (0.9
 
 ### Ley Orgánica 2/2006, artículo 83 · `BOE-A-2006-7899__a83` [JUZGADO rel=2 reviewed]
 https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#a83
-_recuperado por:_ e5-base/BASELINE#1 (0.859) · e5-large-instruct/I0_GENERIC#1 (0.889) · bge-m3/BASELINE#2 (0.659) · e5-large-instruct/I1_LEGAL#2 (0.906) · e5-large-instruct/I2_CITIZEN_LEGISLATION#2 (0.908)  [5 sistemas]
+_recuperado por:_ e5-base/BASELINE#1 (0.859) · e5-large-instruct/I0_GENERIC#1 (0.889) · hybrid_rrf/I0_GENERIC#1 (0.032) · bge-m3/BASELINE#2 (0.659) · e5-large-instruct/I1_LEGAL#2 (0.906) · e5-large-instruct/I2_CITIZEN_LEGISLATION#2 (0.908) · bm25/lexical#4 (39.433)  [7 sistemas]
 ```
   [1] Artículo 83. Becas y ayudas al estudio.
   [2] 1. Para garantizar la igualdad de todas las personas en el ejercicio del derecho a la educación, los estudiantes con condiciones socioeconómicas desfavorables tendrán derecho a obtener becas y ayudas al estudio. En la enseñanza postobligatoria las becas y ayudas al estudio tendrán en cuenta además el rendimiento escolar de los alumnos.
@@ -2385,72 +2528,9 @@ _recuperado por:_ e5-base/BASELINE#1 (0.859) · e5-large-instruct/I0_GENERIC#1 (
   [8] 6. Con independencia del sistema general de becas a que se refieren los párrafos anteriores, las comunidades autónomas podrán ofertar becas y ayudas para el fomento del estudio con cargo a sus fondos propios, conforme a lo establecido en sus correspondientes Estatutos de Autonomía.
 ```
 
-### Ley Orgánica 2/2006, disposición adicional trigésima cuarta · `BOE-A-2006-7899__datrigesimacuaa` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#datrigesimacuaa
-_recuperado por:_ e5-base/BASELINE#4 (0.856) · e5-large-instruct/I0_GENERIC#5 (0.881) · bge-m3/BASELINE#6 (0.618) · e5-large-instruct/I1_LEGAL#6 (0.895) · e5-large-instruct/I2_CITIZEN_LEGISLATION#6 (0.897)  [5 sistemas]
-```
-  [1] Disposición adicional trigésima cuarta. Becas y ayudas al estudio convocadas por el Ministerio de Educación y Formación Profesional.
-  [2] 1. Las notificaciones y publicaciones que deban efectuarse con ocasión de la tramitación de los procedimientos de otorgamiento, resolución de recursos administrativos, revocación, revisión de oficio y reintegro de ingresos indebidos sobre becas y ayudas al estudio, financiadas con cargo a los Presupuestos Generales del Estado y cuya competencia esté atribuida al Ministerio de Educación y Formación Profesional, se practicarán por medios electrónicos en la forma que se establezca reglamentariamente en aplicación de lo previsto en el Capítulo II del Título III de la Ley 39/2015, de 1 de octubre del Procedimiento Administrativo Común de las Administraciones Públicas.
-  [3] De acuerdo con lo previsto en dicho Capítulo II, las notificaciones que se practiquen en relación con los procedimientos sobre becas y ayudas al estudio a que se refiere el párrafo anterior, irán precedidas de un aviso a las personas interesadas por los medios que se establezcan en la correspondiente convocatoria, de la puesta a disposición de dicha notificación.
-  [4] Transcurridos diez días naturales desde que la notificación se hubiese puesto a disposición del interesado sin que haya accedido a su contenido, se entenderá rechazada, dándose por cumplido dicho trámite y continuándose con el procedimiento.
-  [5] 2. Las becas y ayudas al estudio que se concedan para cursar estudios universitarios o no universitarios con validez académica oficial serán inembargables en todos los casos.
-  [6] 3. Procederá el reintegro de las cantidades percibidas en concepto de becas y ayudas al estudio, de conformidad con lo dispuesto en el artículo 37.1.i) de la Ley 38/2003, de 17 de noviembre, General de Subvenciones, en aquellos casos en los que las personas beneficiarias no reunieran alguno o algunos de los requisitos establecidos para la obtención de las becas o ayudas o no los hubieran acreditado debidamente.
-  [7] 4. La identificación de los solicitantes de becas y ayudas del sistema estatal de becas así como de los miembros computables de su unidad familiar, a que se refiere el artículo 9 de la Ley 39/2015, de 1 de octubre, del Procedimiento Administrativo Común de las Administraciones Públicas, podrá efectuarse mediante la consignación en la solicitud de beca, en la sede electrónica del Ministerio de Educación y Formación Profesional, de los datos del DNI o NIE que establezca la convocatoria. El Ministerio de Educación y Formación Profesional podrá verificar la autenticidad de dichos datos mediante consulta a la Dirección General de la Policía o requerir al solicitante y a los miembros computables de su unidad familiar, la presentación del documento identificativo original.
-  [8] De conformidad con lo establecido en el artículo 10 de la referida Ley 39/2015, el anterior sistema de identificación será asimismo admitido como sistema de firma tanto de la solicitud de beca y ayuda como de la autorización para obtener de las administraciones públicas la información que resulte precisa para la determinación, conocimiento y comprobación de los datos de identificación, personales, de residencia, académicos y familiares del solicitante, así como de los datos de renta y patrimonio de los miembros computables de su unidad familiar.
-```
-
-### Ley Orgánica 2/2023, [preambulo] · `BOE-A-2023-7500__pr` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2023-7500#pr
-_recuperado por:_ e5-base/BASELINE#7 (0.850) · e5-large-instruct/I1_LEGAL#8 (0.887) · e5-large-instruct/I2_CITIZEN_LEGISLATION#8 (0.890) · bge-m3/BASELINE#11 (0.573) · e5-large-instruct/I0_GENERIC#11 (0.870)  [5 sistemas]
-```
-  [1] FELIPE VI
-  [2] REY DE ESPAÑA
-  [3] A todos los que la presente vieren y entendieren.
-  [4] Sabed: Que las Cortes Generales han aprobado y Yo vengo en sancionar la siguiente ley orgánica:
-  [5] PREÁMBULO
-  [6] I
-  [7] La Universidad es una institución fundamental en la sociedad del conocimiento en la que vivimos. De la Universidad, y del sistema educativo en su conjunto, depende la educación avanzada de las personas, y lo que ello conlleva con relación a la igualdad de oportunidades para todas y el desarrollo económico, científico y tecnológico de nuestra sociedad en momentos de emergencia climática. Además, la comunidad universitaria ha constituido a través de la historia un espacio de libertad intelectual, de espíritu crítico, de tolerancia, de diálogo, de debate, de afirmación de valores éticos y humanistas, de aprendizaje del respeto al medio ambiente y de preservación y creación cultural, abierto a la diversidad de expresiones del espíritu humano.
-  [8] La Universidad ha sido, es y debe ser fuente de conocimiento, de bienestar material, de justicia social, de inclusión, de oportunidades y de libertad cultural para todas las edades.
-  [9] Como institución secular que es, ha demostrado su capacidad para combinar el mantenimiento de sus valores esenciales con la adecuación a los cambios que iban sucediéndose. Llega ahora el momento en que ha de volver a demostrar su fuerza adaptándose y acompañando las transformaciones y retos sociales, culturales, tecnológicos, medioambientales, científicos e institucionales que caracterizan el cambio de época que atravesamos.
-  [10] A partir de la restauración de la democracia, la sociedad ha experimentado una transformación multidimensional a escala global. Se ha profundizado la revolución científica y tecnológica, particularmente en el ámbito de la información y la comunicación. La sociedad se ha beneficiado de una digitalización creciente. La globalización ha acrecentado la interdependencia de los países y las regiones a todos los niveles. El feminismo ha modificado las relaciones humanas en términos de equidad de género, cambiando profundamente la educación de las personas y contribuyendo a la feminización mayoritaria del estudiantado de la Universidad. La transición ecológica, la emergencia climática y el reto demográfico han cobrado un protagonismo extraordinario. La movilidad internacional de personas y talento está ocasionando una interrelación cultural que revaloriza la diversidad y abre nuevas perspectivas a la creatividad. Han surgido nuevos modelos pedagógicos que incorporan metodologías digitales en la actividad docente, recualifican la educación a distancia y obligan a potenciar el valor de la presencialidad. La creciente importancia y significación social de la formación a lo largo de la vida complementa la formación universitaria en la juventud. La autonomía del aprendizaje en un entorno digital permite al profesorado centrarse en guiar la reflexión, e innovar la experiencia docente, complementando así el papel tradicional centrado fundamentalmente en el control de la memorización, habida cuenta de la disponibilidad y accesibilidad de la información a través de Internet.
-  [11] En consonancia con estas transformaciones, el sistema universitario del Estado, complejo y multinivel, ha protagonizado un continuado esfuerzo de transformación y democratización, alejándose de una concepción socialmente elitista para abarcar sectores cada vez más amplios de la población, y de una concepción intelectual cerrada y excluyente del saber, para entablar una relación de diálogo y colaboración, a través del conocimiento, el pensamiento crítico y la investigación, con el conjunto de la sociedad, con entidades, empresas y agentes sociales. Este diálogo y colaboración contribuyen a la construcción de una sociedad democrática avanzada en un marco normativo caracterizado por un Espacio Europeo de Educación Superior cada vez más presente y expansivo, y por la autonomía universitaria y el desarrollo competencial del Estado de las autonomías que ha ido enriqueciendo y diversificando nuestro sistema universitario. Las universidades son, hoy más que nunca, no sólo depositarias del conocimiento, sino productoras de dicho conocimiento. Docencia, investigación y capacidad de compartir y transferir ese conocimiento constituyen funciones centrales de su actividad. En efecto, la Universidad del siglo XXI no puede replegarse en una torre de marfil, sino que tiene que continuar la labor emprendida y seguir profundizando en su inserción, significación y capacidad de servicio con relación al tejido social, cultural y económico. Asimismo, la creciente gobernanza multinivel del sistema exige intensos esfuerzos de coordinación y cooperación entre los actores. El marco jurídico universitario ha ido desarrollándose en estas últimas cuatro décadas. Cabe destacar, principalmente, dos hitos: la Ley Orgánica 11/1983, de 25 de agosto, de Reforma Universitaria, y la Ley Orgánica 6/2001, de 21 de diciembre, de Universidades, incluida la modificación de ésta operada por la Ley Orgánica 4/2007, de 12 de abril. La primera de estas leyes sentó las bases de un sistema universitario propio de un Estado social y democrático de Derecho, garantizando la autonomía universitaria, mientras que la ley aprobada en 2001 desarrolló dicho sistema y reformó la organización de las enseñanzas universitarias en consonancia con el Espacio Europeo de Educación Superior.
-  [12] Han transcurrido ya dos décadas desde la promulgación de la Ley Orgánica 6/2001, de 21 de diciembre, habiéndose producido no sólo los cambios y transformaciones generales ya mencionados y que exigen una renovación de las bases del sistema, sino también evoluciones significativas en nuestro panorama universitario. En las últimas décadas se ha producido un incremento muy considerable del número de universidades, particularmente universidades privadas. Si bien ello ha permitido una ampliación de la oferta educativa, los requisitos para la creación y funcionamiento de dichas universidades han de poder asegurar los criterios de calidad exigibles en instituciones de este tipo. La crisis económica iniciada a finales de la primera década del siglo XXI planteó desafíos inéditos a todas las instituciones educativas, sometiendo, especialmente a las universidades públicas, a tensiones y limitaciones presupuestarias muy profundas cuyos efectos aún persisten. Si bien en estas últimas cuatro décadas se ha duplicado el estudiantado universitario, superando ampliamente el millón y medio de estudiantes, la insuficiente financiación pública, el aumento de las tasas universitarias, las disfunciones en la configuración de su profesorado debido a las bajas tasas de reposición, la precarización de parte del profesorado asociado, interino, sustituto o visitante y el envejecimiento de las plantillas universitarias, así como la profundización de las desigualdades sociales, han puesto en riesgo la sostenibilidad y la calidad del sistema.
-  [13] El gasto público en educación universitaria se redujo en la segunda década del presente siglo el doble que el gasto general educativo y tres veces más que el gasto en educación no universitaria. En efecto, la desinversión en educación universitaria ha sido más acentuada y prolongada en el tiempo que en la educación no universitaria. Además, en el ámbito universitario, se ha producido una reducción significativamente mayor de la financiación pública y, simultáneamente, un aumento de la financiación de origen privado de las universidades mediante el incremento notable de los precios públicos que soportan las familias. Así la financiación pública universitaria nos alejó de la media de la inversión de nuestro entorno europeo más cercano. Más financiación pública deberá implicar más capacidad de servicio y de alianzas con el conjunto de sectores sociales que puedan beneficiarse de esa fuente de formación y conocimiento que siempre ha sido y quiere seguir siendo la Universidad.
-  [14] Nuestro sistema universitario ha ido reforzando e intensificando su integración en el Espacio Europeo de Educación Superior. Ya no es posible imaginar que podamos articular y orientar el futuro de las universidades en España sin incorporar la perspectiva, las iniciativas y la regulación que procede de la Unión Europea. La europeización del sistema universitario español no debería impedirnos ampliar el proceso de internacionalización hacia otras áreas de cooperación, en especial con el Espacio Iberoamericano de Educación Superior y del Conocimiento que cuenta con una base idiomática común de cerca de 600 millones de personas. Todo ello ha conllevado y seguirá conllevando adaptaciones estructurales e institucionales en la oferta académica, la organización de las enseñanzas, el reconocimiento de las titulaciones, el aseguramiento de la calidad conforme a criterios compartidos o en el refuerzo de la cooperación interuniversitaria internacional. La Estrategia Europea más reciente al respecto, marca objetivos y ritmos muy concretos en esa línea. En este sentido conviene destacar que, si bien el Estado español es el primer destino del estudiantado del programa Erasmus en los últimos años y uno de los principales emisores de estudiantes de este programa, la cifra del estudiantado extranjero en España es, en términos relativos, inferior a la de muchos países de nuestro entorno europeo. Por otra parte, apenas el tres por ciento del personal docente e investigador universitario posee una nacionalidad distinta a la española cuando, en cambio, cerca del 15 por ciento de los residentes en España han nacido fuera del país. La significativa y creciente presencia de universidades españolas en las alianzas de universidades europeas nos indica el camino a seguir en ese proceso imparable de compartir conocimiento, docencia e investigación a escala europea, siendo las universidades la expresión más evidente de los valores de humanismo, defensa de los derechos y valores democráticos, de libertad de pensamiento y creación, que Europa quiere proyectar al mundo.
-  [15] II
-  [16] En este contexto, se deben abordar reformas esenciales relacionadas con los desajustes entre el sistema universitario y las necesidades de la sociedad.
-  [17] Para hacer frente a dichos retos estructurales, se revela necesario y oportuno abordar una reforma integral del marco jurídico del sistema universitario. En el contexto de la gobernanza multinivel, el sistema universitario debe, con base en la transformación digital a través de servicios y equipos multidisciplinares, promover una madurez organizativa y documental que favorezca dicha gobernanza y que le permita garantizar, ampliar y poner al día el conjunto de servicios públicos de educación superior de calidad, mediante una Universidad autónoma e internacionalizada, que garantice e incentive tanto la docencia como la investigación y el intercambio y transferencia del conocimiento, y que resulte efectivamente accesible, equitativa, democrática y participativa. Una Universidad que, como principal productora y difusora de conocimiento, esté al servicio de la sociedad, contribuya al desarrollo social y económico sostenible, promueva una sociedad inclusiva y diversa comprometida con los derechos de los colectivos más vulnerables y que constituya un espacio de libertad, de debate entre perspectivas culturales, sin jerarquías, impulsando el desarrollo personal, contando para ello con recursos humanos y financieros adecuados y suficientes.
-  [18] Las universidades son un lugar privilegiado de formación y de conocimiento y al mismo tiempo un espacio crítico en que pueden abordarse los retos a los que nos enfrentamos, experimentar respuestas y generar puentes de colaboración y acción con el entorno social más cercano y con otras muchas universidades y centros de investigación de todo el mundo. Esta ley orgánica pretende proporcionar instrumentos y habilitar espacios y dinámicas para que las universidades puedan seguir siendo un espacio de experimentación, innovación y participación. Se trata de lograr universidades al servicio de la sociedad en la que se insertan; universidades en red para vincular comunidades, compartir conocimiento, crear nuevas ideas e instrumentos para una nueva sociedad.
-  [19] Asimismo, esta ley orgánica desarrolla un modelo académico que asegura una formación integral avanzada y amplia y el desarrollo de habilidades personales y profesionales, tanto docentes como investigadoras, para desarrollar el pensamiento crítico y para acceder a empleos de calidad.
-  [20] Junto con la labor imprescindible de potenciar la investigación y de generar conocimiento, contribuyendo a su divulgación y contraste con la comunidad científica, se trata además de convertir ese conocimiento en socialmente útil, generando vínculos con los actores sociales más próximos a la temática de cada investigador, de cada grupo y centro de investigación, partiendo de la especialidad de cada uno, pero buscando en la interdisciplinariedad y la multidisciplinariedad las vías con las que responder a la complejidad creciente de los retos a los que nos enfrentamos como humanidad. Necesitamos una Ciencia Abierta, que asuma ese conocimiento como un bien común, accesible y no mercantilizado, una Ciencia Ciudadana en la que se construya conocimiento de manera compartida, asumiendo la complejidad de la investigación de manera colectiva. Por ello, esta ley orgánica promueve la labor conjunta con la sociedad de creación y difusión del conocimiento, fomentando la Ciencia Abierta y Ciudadana mediante el acceso a publicaciones, datos, códigos y metodologías que garanticen la comunicación de la investigación.
-  [21] Las universidades han venido siendo esencialmente espacios de formación para los jóvenes. Se debe ahora ir más allá, reforzando la capacidad de servicio al conjunto de la sociedad para lograr una Universidad para todas las edades; un lugar en el que la formación a lo largo de la vida para cualquier persona y colectivo sea un objetivo básico; una Universidad en la que la experiencia de una docencia presencial y compartida sea un valor central y diferencial; un lugar en el que converjan y se relacionen científicas y científicos, estudiantado, profesionales que buscan actualizar sus capacidades, especialistas y agentes sociales, buscando todas ellas y ellos reforzar conocimientos, construir competencias y plantear caminos de transformación e innovación de manera compartida.
-  [22] Por ello, esta ley orgánica incluye la formación permanente o a lo largo de toda la vida como dimensión esencial de la función docente de la Universidad. Igualmente, se establecen fórmulas de transferencia y conexión entre la formación profesional superior y la Universidad al servicio de los procesos de actualización laboral y personal del conjunto de la población.
-  [23] Además de la plena integración ya mencionada en el Espacio Europeo de Educación Superior, se entiende necesario incentivar las redes de conocimiento y de formación compartida con el Espacio Iberoamericano de Educación Superior y del Conocimiento, y reforzar las dinámicas de colaboración abiertas en la cuenca mediterránea o en la apertura de nuevos vínculos con los centros de educación superior de América del Norte, Asia y Oceanía. A tal fin, esta ley orgánica incorpora, por primera vez, un título dedicado a la internacionalización, y fomenta un sistema universitario de calidad, con mecanismos ágiles y fiables de evaluación de la misma, en línea con lo que la Unión Europea propone. Se prevé además la elaboración de estrategias de internacionalización por parte de las diferentes Administraciones Públicas y de las propias universidades, la creación de alianzas interuniversitarias y la participación en proyectos de carácter internacional, supranacional y eurorregional. Por otra parte, se impulsa la movilidad del conjunto de la comunidad universitaria, se incentivan los doctorados en cotutela internacional y se insta a las Administraciones Públicas a eliminar los obstáculos a la atracción de talento internacional, agilizando y facilitando los procedimientos de reconocimiento y homologación de títulos, de admisión en las universidades o de carácter migratorio.
-  [24] Esta ley orgánica no quiere imponer soluciones ni trazar caminos concretos en que todo ello deba resolverse. Busca abrir posibilidades, facilitar conexiones, desde un compromiso de los poderes públicos de financiar adecuadamente ese nuevo escenario de transformación y cambio. Las universidades públicas españolas han sufrido de manera persistente una insuficiente financiación pública en el último decenio, y una gran precarización y deterioro de las condiciones de trabajo, que han pasado socialmente inadvertidas sin que ello haya generado una reacción social a la altura del retroceso sufrido. Recuperar niveles de financiación adecuados deberá ir en consonancia con una mayor presencia de las universidades en los entornos sociales en los que se asientan y una mayor y más visible contribución a las necesidades que tiene planteadas el conjunto de personas y colectivos del país, más implicación en las dinámicas de desarrollo local, en la búsqueda de alternativas frente al reto demográfico o la emergencia climática. Alcanzar un mínimo de financiación pública del 1 % del PIB, como recoge esta ley orgánica, debería ser una exigencia de todos y todas. Pero también debería serlo reforzar la docencia, mejorar los procesos formativos de la ciudadanía sin distinción de edades, orígenes, género o capacidad económica, trabajar por la empleabilidad o generar más y mejor investigación desde una lógica de transferencia e intercambio.
-  [25] El estudiantado, sea cual sea su edad, ha de tener el papel de protagonista. Con este objetivo, esta ley orgánica refuerza la docencia, es decir, se preocupa por la formación y actualización de las capacidades del profesorado, por generar espacios para que se vele por la adecuación de contenidos y formatos de enseñanza, por facilitar que sea el propio estudiantado el que asuma labores de tutoría, mentoría y experiencias de prácticas efectivas, por la salud emocional del estudiantado, promoviendo asimismo su participación en el gobierno de la universidad en sus distintas unidades y en la propia gestión de servicios. Adicionalmente, y en defensa de los derechos del estudiantado, la ley permite avanzar hacia el horizonte de la gratuidad de la educación superior universitaria pública, mediante la reducción de precios públicos, así como la disminución de su disparidad entre Comunidades Autónomas y la concepción de la beca como un derecho subjetivo vinculado a la situación socioeconómica de las personas solicitantes. Asimismo, la ley incorpora modificaciones sustanciales en las disposiciones relativas al estudiantado. Por una parte, el estatuto del estudiantado se incorpora a esta norma, consolidando y ampliando un catálogo de derechos y deberes que hasta ahora venía recogido en una norma reglamentaria, y añadiendo el paro académico como derecho del estudiantado. Por otra, se otorga mayor publicidad a la oferta académica y se clarifica el régimen de acceso y admisión. Asimismo, se prevé que cada universidad fomente la participación estudiantil en todos los servicios y aspectos que les afecta en su trayectoria académica y vital, la calidad e intensidad de la experiencia universitaria y se propone el reconocimiento al estudiantado de créditos académicos por su implicación en actividades sociales y universitarias.
-  [26] La construcción de una Universidad equitativa impregna el contenido de toda la ley. Así, se establecen requisitos en materia de igualdad entre mujeres y hombres previos a la creación de una universidad como los planes de igualdad, o la eliminación de la brecha salarial y de toda forma de acoso. A su vez, la ley establece que los órganos colegiados y las comisiones de evaluación y selección en las universidades garantizarán una composición equilibrada entre mujeres y hombres, medidas de acción positiva en los concursos y a favor de la conciliación y el fomento de la corresponsabilidad de los cuidados, entre otras muchas actuaciones. En materia de accesibilidad las universidades deben garantizar a personas con discapacidad un acceso universal a los edificios y sus entornos físicos y virtuales, así como al proceso de enseñanza-aprendizaje y evaluación.
-  [27] Esta norma apuesta por una Universidad como espacio de libertad, de debate cultural y de desarrollo personal. A estos efectos, se fomenta la condición de las universidades como agentes de creación y reflexión cultural, así como de protección, conservación y difusión del patrimonio histórico y cultural del que son depositarias. Por otra parte, las universidades se configuran como actores clave en la promoción y fomento de la diversidad y riqueza lingüística del Estado, en el desarrollo local y en la cohesión territorial en un contexto de lucha contra el cambio climático.
-  [28] Esta norma parte del reconocimiento de los recursos humanos del sistema universitario como núcleo de su fortaleza. Respecto del personal docente e investigador, esta ley orgánica tiene como uno de sus objetivos prioritarios la eliminación de la precariedad en el empleo universitario y la implantación de una carrera académica estable y predecible. Se establecen tres niveles de progresión frente a los cuatro vigentes hasta ahora. Así, la carrera académica seguirá las etapas de incorporación, consolidación y promoción. Por otra parte, se reduce del 40 al 8 por ciento el máximo de contratos de carácter temporal del personal docente e investigador que pueden estar vigentes en las universidades públicas. Esta norma persigue poner fin a la precariedad asociada a determinadas figuras del profesorado laboral, ofreciendo a quienes se encuentran en dicha situación vías de entrada adecuadas para que continúen la carrera académica si cumplen determinados requisitos. Asimismo, se incentivan programas de estabilización y promoción de forma transitoria y se garantiza la equiparación de derechos y deberes académicos del profesorado funcionario y laboral permanente. Finalmente, en materia de personal investigador esta norma configura pasarelas entre la carrera investigadora y la Universidad. Entre otras cuestiones, se incentiva la atracción de personal investigador de programas de excelencia mediante la reserva de un porcentaje de determinadas plazas universitarias.
-  [29] Esta nueva ley revaloriza la figura del personal técnico, de gestión y de administración y servicios, como un actor clave para el funcionamiento eficiente y eficaz de la institución universitaria. En línea con este objetivo, se incorpora la carrera profesional horizontal de dicho personal, así como el marco para la evaluación de su desempeño. Igual que sucede con el personal docente e investigador, la norma persigue la reducción de la temporalidad y se fomenta la formación y la movilidad de dicho personal.
-  [30] Para asegurar una Universidad autónoma, democrática y participativa, en la que, simultáneamente, la toma de decisiones y su gestión pueda realizarse de forma eficaz y eficiente, la Ley consagra la transparencia y la rendición de cuentas de las universidades públicas, en correlación con el desarrollo y protección de su autonomía. Como parte del sector público institucional, el binomio autonomía-transparencia deberá regir toda su actividad, especialmente en lo relacionado con su régimen económico y financiero y la selección de su personal. Así, en este último caso, se refuerza la objetividad en el acceso a los cuerpos docentes y a las modalidades de contratación laboral estableciendo que la mayoría de los miembros de las comisiones de selección no pertenezca a la universidad convocante y que sean elegidos mayoritariamente mediante sorteo.
-  [31] En lo referente a las estructuras internas y la gobernanza de la Universidad, la ley refuerza la autonomía universitaria en el marco de las bases comunes del sistema universitario, la necesaria conexión y colaboración con el entorno en el que se inserta la universidad mediante el Consejo Social, al mismo tiempo que adopta novedades en relación con la elección de la Rectora o Rector, y en relación con los límites de los mandatos de las personas titulares de los órganos unipersonales electos. Finalmente, esta ley orgánica fomenta la multidisciplinariedad e interdisciplinariedad mediante una estructura interna que permita la cooperación entre sus diferentes elementos.
-  [32] Por otro lado, la participación de los diferentes sectores de la comunidad universitaria se erige como un componente definitorio de las universidades públicas. De esta forma, se apuesta por el desarrollo de procesos participativos, consultas y otros mecanismos de participación del conjunto de la comunidad universitaria asegurando la igualdad de oportunidades y la no discriminación. Además, entre otros aspectos, se aumenta la representación mínima del estudiantado en diversos órganos de gobierno de la universidad, y se mandata la creación de un Consejo de Estudiantes en cada universidad.
-  [33] El conjunto de reformas que se aprueba parte del pleno respeto al principio de autonomía universitaria, integrado en el derecho fundamental a la educación reconocido en el artículo 27 de la Constitución Española. Asimismo, estas reformas se fundamentan en el reconocimiento de la distribución competencial entre el Estado y las Comunidades Autónomas en materia de política y gestión universitarias. En esta línea, la ley establece un mínimo común denominador, habilitando un amplio margen al desarrollo de sus disposiciones mediante la labor normativa de las Comunidades Autónomas y las concreciones de los Estatutos y normas de organización y funcionamiento de las propias universidades.
-  [34] III
-  [35] El expresado contenido de esta ley orgánica se divide en 100 artículos, que se articulan en un título preliminar al que siguen diez títulos. El título I regula las funciones del sistema universitario y la autonomía de las universidades, mientras que el título II se dedica a su creación y reconocimiento, así como a la calidad del sistema universitario. El título III versa sobre la función docente y la organización de enseñanzas. Por su parte, el título IV aborda lo relativo a la investigación, la transferencia e intercambio del conocimiento y la innovación, y el título V organiza la coordinación, cooperación y participación en el sistema universitario. Los títulos VI y VII tratan de la imbricación de la Universidad en la sociedad y en la cultura, así como de la internacionalización del sistema universitario, respectivamente. El título VIII incorpora el estatuto del estudiantado en el sistema universitario, al que sigue el título relativo a las universidades públicas. Así, el título IX, en sus cinco capítulos, se ocupa del régimen jurídico y estructura de éstas, su gobernanza, su régimen económico y financiero, su personal docente e investigador y su personal técnico, de gestión y de administración y servicios, respectivamente. Por último, esta ley orgánica se ocupa en el título X del régimen específico de las universidades privadas.
-  [36] Por otro lado, la parte final de la ley orgánica se divide en diecisiete disposiciones adicionales, doce disposiciones transitorias, una disposición derogatoria y doce disposiciones finales. Así, las disposiciones adicionales recogen determinaciones particulares respecto a la regulación contenida en el articulado, que mayoritariamente se refieren a instituciones universitarias con elementos que las singularizan.
-  [37] A continuación, las disposiciones transitorias fundamentalmente persiguen facilitar el tránsito al régimen jurídico previsto por la nueva regulación tanto a las instituciones universitarias como al personal que en ellas desarrolla su labor.
-  [38] Por su parte, la disposición derogatoria deja sin vigencia expresamente, para mayor seguridad jurídica, tres normas de rango legal: la Ley Orgánica 6/2001, de 21 de diciembre, de Universidades; la Ley Orgánica 4/2007, de 12 de abril, por la que se modifica la Ley Orgánica 6/2001, de 21 de diciembre, de Universidades, salvo sus disposiciones finales segunda y cuarta, y el Real Decreto-ley 14/2012, de 20 de abril, de medidas urgentes de racionalización del gasto público en el ámbito educativo.
-  [39] Las disposiciones finales, además de las determinaciones típicas, incluyen la modificación de la Ley 53/1984, de 26 de diciembre, de Incompatibilidades del personal al servicio de las Administraciones Públicas, con la finalidad de autorizar la compatibilidad para el desempeño de un puesto de trabajo en la esfera docente como Profesor universitario asociado en régimen de dedicación no superior a la de tiempo parcial; la Ley 14/1986, de 25 de abril, General de Sanidad, en lo relativo a la vinculación asistencial del personal docente universitario laboral; la Ley Orgánica 4/2000, de 11 de enero, sobre derechos y libertades de los extranjeros en España y su integración social, en lo relativo a la vigencia de las autorizaciones iniciales de estancia por estudios superiores cuya duración se extienda más allá de un curso académico y a las prórrogas de las autorizaciones de otras categorías, así como respecto de los lugares de presentación de las solicitudes y exigencia de comparecencia personal; la Ley 33/2011, de 4 de octubre, General de Salud Pública, para clarificar la regulación relativa a los requisitos para el ejercicio profesional de la psicología en el ámbito sanitario y la Ley 14/2013, de 27 de septiembre, de apoyo a los emprendedores y su internacionalización, para ampliar los períodos de eficacia de las autorizaciones de residencia del estudiantado para búsqueda de empleo y la autorización de residencia para prácticas.
-  [40] IV
-  [41] En la elaboración y tramitación de esta ley orgánica se han observado los principios de necesidad, eficacia, proporcionalidad, seguridad jurídica, transparencia y eficiencia, exigidos por el artículo 129 de la Ley 39/2015, de 1 de octubre, del Procedimiento Administrativo Común de las Administraciones Públicas. Así, su necesidad resulta de los retos que debe afrontar el sistema universitario ya descritos. La ley cumple los principios de eficacia y proporcionalidad puesto que aborda tales retos a través de innovaciones normativas idóneas y necesarias para llevar a cabo las transformaciones que requiere el sistema universitario para adecuarse a lo que se le demanda en el siglo XXI. Igualmente cumple el principio de seguridad jurídica, pues su contenido es coherente con el resto del ordenamiento jurídico, nacional y de la Unión Europea, así como internacional, en particular con el Espacio Europeo de Educación Superior y, por otro, ofrece un marco normativo sistemático, ordenado y claro para facilitar la toma de decisiones por los particulares y la gestión de sus recursos por las Administraciones Públicas con competencias en la materia. Asimismo, en aplicación del principio de eficiencia, en esta ley orgánica se limitan las cargas administrativas a las imprescindibles para la consecución de los fines descritos previamente, siempre dentro del marco del ordenamiento jurídico nacional, de la Unión Europea e internacional. Por último, en aras del principio de transparencia, además de la realización de los trámites de consulta previa y audiencia e información públicas, y a fin de obtener la mayor participación posible de las partes interesadas, se ha posibilitado la participación de la sociedad y de las restantes Administraciones Públicas; participación que se ha visto reforzada con la información al Consejo de Universidades, la Conferencia General de Política Universitaria y el Consejo de Estudiantes Universitario del Estado.
-  [42] Esta ley orgánica se dicta al amparo de las reglas 30.ª y 1.ª del artículo 149.1 de la Constitución Española, que reservan al Estado la competencia para la aprobación de las normas básicas para el desarrollo del artículo 27 de la Constitución, a fin de garantizar el cumplimiento de las obligaciones de los poderes públicos en esta materia y la regulación de las condiciones básicas que garanticen la igualdad de todos los españoles en el ejercicio de los derechos, así como en el cumplimiento de los deberes constitucionales, respectivamente.
-  [43] De lo anterior se exceptúa el título IV, el artículo 56.4, el artículo 57.7 y los artículos 60, 61, 62 y 63 que se dictan al amparo del artículo 149.1.15.ª de la Constitución que atribuye al Estado el fomento y coordinación general de la investigación científica y técnica, así como la disposición final primera de modificación de la Ley 53/1984, de 26 de diciembre, de Incompatibilidades del personal al servicio de las Administraciones Públicas; la disposición final segunda de modificación de la Ley 14/1986, de 25 de abril, General de Sanidad; la disposición final tercera de modificación de la Ley Orgánica 4/2000, de 11 de enero, sobre derechos y libertades de los extranjeros en España y su integración social; la disposición final cuarta de modificación de la Ley 33/2011, de 4 de octubre, General de Salud Pública, y la disposición final quinta de modificación de Ley 14/2013, de 27 de septiembre, de apoyo a los emprendedores y su internacionalización, que se incardinan en las competencias expresadas en las leyes objeto de modificación.
-```
-
 ### Real Decreto 439/2007, artículo 2 · `BOE-A-2007-6820__a2` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2007-6820#a2
-_recuperado por:_ e5-large-instruct/I1_LEGAL#9 (0.882) · e5-large-instruct/I2_CITIZEN_LEGISLATION#9 (0.884) · e5-base/BASELINE#14 (0.832) · bge-m3/BASELINE#16 (0.569) · e5-large-instruct/I0_GENERIC#17 (0.866)  [5 sistemas]
+_recuperado por:_ e5-large-instruct/I1_LEGAL#9 (0.882) · e5-large-instruct/I2_CITIZEN_LEGISLATION#9 (0.884) · hybrid_rrf/I0_GENERIC#10 (0.027) · bm25/lexical#12 (28.507) · e5-base/BASELINE#14 (0.832) · bge-m3/BASELINE#16 (0.569) · e5-large-instruct/I0_GENERIC#17 (0.866)  [7 sistemas]
 ```
   [1] Artículo 2. Exención de becas al estudio y de formación de investigadores.
   [2] 1. A efectos de lo establecido en el artículo 7.j) de la Ley del Impuesto, estarán exentas las becas públicas percibidas para cursar estudios reglados cuando la concesión se ajuste a los principios de mérito y capacidad, generalidad y no discriminación en las condiciones de acceso y publicidad de la convocatoria. En ningún caso estarán exentas las ayudas para el estudio concedidas por un Ente Público en las que los destinatarios sean exclusiva o fundamentalmente sus trabajadores o sus cónyuges o parientes, en línea directa o colateral, consanguínea o por afinidad, hasta el tercer grado inclusive, de los mismos.
@@ -2470,7 +2550,7 @@ _recuperado por:_ e5-large-instruct/I1_LEGAL#9 (0.882) · e5-large-instruct/I2_C
 
 ### Ley Orgánica 2/2006, disposición adicional decimonovena · `BOE-A-2006-7899__dadecimonovena` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#dadecimonovena
-_recuperado por:_ e5-large-instruct/I0_GENERIC#9 (0.871) · e5-base/BASELINE#12 (0.839) · e5-large-instruct/I1_LEGAL#14 (0.874) · bge-m3/BASELINE#20 (0.565) · e5-large-instruct/I2_CITIZEN_LEGISLATION#20 (0.872)  [5 sistemas]
+_recuperado por:_ e5-large-instruct/I0_GENERIC#9 (0.871) · hybrid_rrf/I0_GENERIC#9 (0.028) · e5-base/BASELINE#12 (0.839) · e5-large-instruct/I1_LEGAL#14 (0.874) · bm25/lexical#16 (27.689) · bge-m3/BASELINE#20 (0.565) · e5-large-instruct/I2_CITIZEN_LEGISLATION#20 (0.872)  [7 sistemas]
 ```
   [1] Disposición adicional decimonovena. Alumnado extranjero.
   [2] Lo establecido en esta Ley en relación con la escolarización, obtención de títulos y acceso al sistema general de becas y ayudas al estudio será aplicable al alumnado extranjero en los términos establecidos en la Ley Orgánica 4/2000, de 11 de enero, sobre derechos y libertades de los Extranjeros en España y su integración social, modificada por la Ley Orgánica 8/2000, de 22 de diciembre, y en la normativa que las desarrolla.
@@ -2478,7 +2558,7 @@ _recuperado por:_ e5-large-instruct/I0_GENERIC#9 (0.871) · e5-base/BASELINE#12 
 
 ### Ley 35/2006, artículo 7 · `BOE-A-2006-20764__a7` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764#a7
-_recuperado por:_ bge-m3/BASELINE#9 (0.575) · e5-base/BASELINE#9 (0.843) · e5-large-instruct/I1_LEGAL#15 (0.872) · e5-large-instruct/I2_CITIZEN_LEGISLATION#18 (0.873)  [4 sistemas]
+_recuperado por:_ bge-m3/BASELINE#9 (0.575) · e5-base/BASELINE#9 (0.843) · bm25/lexical#11 (29.390) · e5-large-instruct/I1_LEGAL#15 (0.872) · hybrid_rrf/I0_GENERIC#15 (0.024) · e5-large-instruct/I2_CITIZEN_LEGISLATION#18 (0.873)  [6 sistemas]
 ```
   [1] Artículo 7. Rentas exentas.
   [2] Estarán exentas las siguientes rentas:
@@ -2531,56 +2611,91 @@ _recuperado por:_ bge-m3/BASELINE#9 (0.575) · e5-base/BASELINE#9 (0.843) · e5-
   [49] z) Las prestaciones y ayudas familiares percibidas de cualquiera de las Administraciones Públicas, ya sean vinculadas a nacimiento, adopción, acogimiento o cuidado de hijos menores.
 ```
 
-### Ley Orgánica 2/2023, artículo 57 · `BOE-A-2023-7500__a5-9` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2023-7500#a5-9
-_recuperado por:_ e5-large-instruct/I2_CITIZEN_LEGISLATION#15 (0.874) · e5-large-instruct/I1_LEGAL#20 (0.871)  [2 sistemas]
+### Ley Orgánica 2/2023, [preambulo] · `BOE-A-2023-7500__pr` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2023-7500#pr
+_recuperado por:_ e5-base/BASELINE#7 (0.850) · e5-large-instruct/I1_LEGAL#8 (0.887) · e5-large-instruct/I2_CITIZEN_LEGISLATION#8 (0.890) · bge-m3/BASELINE#11 (0.573) · e5-large-instruct/I0_GENERIC#11 (0.870) · hybrid_rrf/I0_GENERIC#11 (0.025)  [6 sistemas]
 ```
-  [1] Artículo 57. Presupuesto.
-  [2] 1. El presupuesto de las universidades será público, único, equilibrado, y comprenderá la totalidad de sus ingresos y gastos.
-  [3] 2. Las universidades deberán cumplir con las obligaciones establecidas en materia presupuestaria respecto de la aprobación de límites de gastos de carácter anual. Los presupuestos y sus liquidaciones harán una referencia expresa al cumplimiento del equilibrio y sostenibilidad financiera.
-  [4] 3. En el procedimiento de elaboración del presupuesto se incluirán informes de impacto por razón de género y de impacto medioambiental.
-  [5] 4. El presupuesto de las universidades contendrá en su estado de ingresos:
-  [6] a) Las transferencias para gastos corrientes y de capital fijadas, anualmente, por las Comunidades Autónomas dentro de un marco presupuestario a medio plazo.
-  [7] b) Los ingresos por los precios públicos por servicios académicos y demás derechos que legalmente se establezcan. En el caso de estudios conducentes a la obtención de títulos universitarios de carácter oficial, los precios públicos y derechos serán fijados por la Comunidad Autónoma o Administración correspondiente, dentro de un marco general de contención o reducción progresiva de los precios públicos.
-  [8] Asimismo, se consignarán las compensaciones correspondientes a los importes derivados de las exenciones y reducciones que legalmente se dispongan en materia de precios públicos y demás derechos.
-  [9] c) Los ingresos por los precios de las enseñanzas propias, la formación a lo largo de la vida y los referentes a las demás actividades autorizadas a las universidades, que deberán ser aprobados junto con los presupuestos anuales en los que se deban aplicar.
-  [10] d) Los ingresos procedentes de transferencias y subvenciones de organizaciones internacionales o supranacionales, de las distintas Administraciones Públicas y de otras entidades del sector público.
-  [11] e) Los ingresos procedentes de transferencias de entidades privadas, así como de herencias, legados o donaciones.
-  [12] f) Los ingresos derivados de actividades de mecenazgo, previstas en la Ley 49/2002, de 23 de diciembre, de régimen fiscal de las entidades sin fines lucrativos y de los incentivos fiscales al mecenazgo, incluidos los derivados de convenios de colaboración empresarial en actividades de interés general que hayan suscrito, a los efectos previstos en la citada ley.
-  [13] g) Los rendimientos procedentes de su patrimonio y de aquellas otras actividades económicas que desarrollen según lo previsto en esta ley orgánica y en sus propios Estatutos, incluyendo los ingresos procedentes de los contratos previstos en el artículo 60, así como los derivados de los contratos de patrocinio publicitario.
-  [14] h) Los remanentes de tesorería y cualquier otro ingreso.
-  [15] i) El producto de las operaciones de crédito que concierten, debiendo ser compensado para la consecución del necesario equilibrio presupuestario de la Comunidad Autónoma o Administración que corresponda, la cual, en todo caso, deberá autorizar cualquier operación de endeudamiento.
-  [16] 5. La estructura del presupuesto de las universidades, su sistema contable y los documentos que comprenden sus cuentas anuales deberán adaptarse, en todo caso, a las normas que con carácter general se establezcan para el sector público. En este marco, a los efectos de la normalización contable, las Comunidades Autónomas podrán establecer un plan de contabilidad para las universidades de su competencia, así como determinar el marco temporal de la liquidación del presupuesto y de las cuentas anuales.
-  [17] 6. Al estado de gastos corrientes se acompañará la relación de puestos de trabajo de todo el personal universitario, especificando la totalidad de los costes de aquélla y los elementos recogidos en el artículo 74 del texto refundido de la Ley del Estatuto del Empleado Público, aprobado por el Real Decreto Legislativo 5/2015, de 30 de octubre, e incluyendo los puestos de nuevo ingreso que se proponen. Las universidades podrán modificar la relación de puestos de trabajo de su personal por ampliación de las plazas existentes o por minoración o cambio de denominación de las plazas vacantes, en la forma que indiquen sus Estatutos, sin perjuicio de lo dispuesto en el artículo 71.
-  [18] Los costes del personal docente e investigador, así como del personal técnico, de gestión y de administración y servicios, deberán ser autorizados por la Comunidad Autónoma, en el marco de la normativa básica sobre Oferta de Empleo Público, salvo en el caso de los contratos previstos en la Ley 14/2011, de 1 de junio, de la Ciencia, la Tecnología y la Innovación, que no precisan dicha autorización.
-  [19] El nombramiento de personal funcionario interino y la contratación de personal laboral temporal por las universidades deberán respetar la normativa específica en la materia.
-  [20] 7. Las universidades dedicarán un porcentaje de su presupuesto no inferior al 5 por ciento a programas propios de investigación.
-  [21] 8. La elaboración, aprobación, ejecución y liquidación del presupuesto se regirán por las normas estatales y autonómicas aplicables a esta materia.
-  [22] En caso de liquidación del presupuesto con remanente de tesorería negativo, el Consejo Social deberá proceder a la reducción de gastos del nuevo presupuesto por cuantía igual al déficit producido. La expresada reducción sólo podrá revocarse por acuerdo de dicho órgano, a propuesta del Rector/a, previo informe del interventor/a y autorización del órgano correspondiente de la Comunidad Autónoma, cuando la disponibilidad presupuestaria y la situación de tesorería lo permitiesen. En todo caso, el Consejo de Gobierno deberá ser informado sobre los motivos de dicho déficit y las posibles alternativas para corregirlo.
-  [23] Las transferencias, con cargo a los presupuestos de la Comunidad Autónoma a favor, directa o indirectamente, de las universidades requerirán la aprobación y puesta en marcha de la reducción de gastos.
-  [24] 9. Las universidades remitirán a la Comunidad Autónoma o Administración correspondiente la información económico-financiera que deban suministrar en aplicación de la normativa de estabilidad presupuestaria u otras disposiciones de carácter estatal o autonómico. La falta de remisión de la liquidación del presupuesto, o la falta de adopción de medidas en caso de liquidación con remanente negativo, facultará a la Comunidad Autónoma para adoptar, en el ámbito de sus competencias, las medidas necesarias para garantizar la estabilidad presupuestaria de la universidad.
+  [1] FELIPE VI
+  [2] REY DE ESPAÑA
+  [3] A todos los que la presente vieren y entendieren.
+  [4] Sabed: Que las Cortes Generales han aprobado y Yo vengo en sancionar la siguiente ley orgánica:
+  [5] PREÁMBULO
+  [6] I
+  [7] La Universidad es una institución fundamental en la sociedad del conocimiento en la que vivimos. De la Universidad, y del sistema educativo en su conjunto, depende la educación avanzada de las personas, y lo que ello conlleva con relación a la igualdad de oportunidades para todas y el desarrollo económico, científico y tecnológico de nuestra sociedad en momentos de emergencia climática. Además, la comunidad universitaria ha constituido a través de la historia un espacio de libertad intelectual, de espíritu crítico, de tolerancia, de diálogo, de debate, de afirmación de valores éticos y humanistas, de aprendizaje del respeto al medio ambiente y de preservación y creación cultural, abierto a la diversidad de expresiones del espíritu humano.
+  [8] La Universidad ha sido, es y debe ser fuente de conocimiento, de bienestar material, de justicia social, de inclusión, de oportunidades y de libertad cultural para todas las edades.
+  [9] Como institución secular que es, ha demostrado su capacidad para combinar el mantenimiento de sus valores esenciales con la adecuación a los cambios que iban sucediéndose. Llega ahora el momento en que ha de volver a demostrar su fuerza adaptándose y acompañando las transformaciones y retos sociales, culturales, tecnológicos, medioambientales, científicos e institucionales que caracterizan el cambio de época que atravesamos.
+  [10] A partir de la restauración de la democracia, la sociedad ha experimentado una transformación multidimensional a escala global. Se ha profundizado la revolución científica y tecnológica, particularmente en el ámbito de la información y la comunicación. La sociedad se ha beneficiado de una digitalización creciente. La globalización ha acrecentado la interdependencia de los países y las regiones a todos los niveles. El feminismo ha modificado las relaciones humanas en términos de equidad de género, cambiando profundamente la educación de las personas y contribuyendo a la feminización mayoritaria del estudiantado de la Universidad. La transición ecológica, la emergencia climática y el reto demográfico han cobrado un protagonismo extraordinario. La movilidad internacional de personas y talento está ocasionando una interrelación cultural que revaloriza la diversidad y abre nuevas perspectivas a la creatividad. Han surgido nuevos modelos pedagógicos que incorporan metodologías digitales en la actividad docente, recualifican la educación a distancia y obligan a potenciar el valor de la presencialidad. La creciente importancia y significación social de la formación a lo largo de la vida complementa la formación universitaria en la juventud. La autonomía del aprendizaje en un entorno digital permite al profesorado centrarse en guiar la reflexión, e innovar la experiencia docente, complementando así el papel tradicional centrado fundamentalmente en el control de la memorización, habida cuenta de la disponibilidad y accesibilidad de la información a través de Internet.
+  [11] En consonancia con estas transformaciones, el sistema universitario del Estado, complejo y multinivel, ha protagonizado un continuado esfuerzo de transformación y democratización, alejándose de una concepción socialmente elitista para abarcar sectores cada vez más amplios de la población, y de una concepción intelectual cerrada y excluyente del saber, para entablar una relación de diálogo y colaboración, a través del conocimiento, el pensamiento crítico y la investigación, con el conjunto de la sociedad, con entidades, empresas y agentes sociales. Este diálogo y colaboración contribuyen a la construcción de una sociedad democrática avanzada en un marco normativo caracterizado por un Espacio Europeo de Educación Superior cada vez más presente y expansivo, y por la autonomía universitaria y el desarrollo competencial del Estado de las autonomías que ha ido enriqueciendo y diversificando nuestro sistema universitario. Las universidades son, hoy más que nunca, no sólo depositarias del conocimiento, sino productoras de dicho conocimiento. Docencia, investigación y capacidad de compartir y transferir ese conocimiento constituyen funciones centrales de su actividad. En efecto, la Universidad del siglo XXI no puede replegarse en una torre de marfil, sino que tiene que continuar la labor emprendida y seguir profundizando en su inserción, significación y capacidad de servicio con relación al tejido social, cultural y económico. Asimismo, la creciente gobernanza multinivel del sistema exige intensos esfuerzos de coordinación y cooperación entre los actores. El marco jurídico universitario ha ido desarrollándose en estas últimas cuatro décadas. Cabe destacar, principalmente, dos hitos: la Ley Orgánica 11/1983, de 25 de agosto, de Reforma Universitaria, y la Ley Orgánica 6/2001, de 21 de diciembre, de Universidades, incluida la modificación de ésta operada por la Ley Orgánica 4/2007, de 12 de abril. La primera de estas leyes sentó las bases de un sistema universitario propio de un Estado social y democrático de Derecho, garantizando la autonomía universitaria, mientras que la ley aprobada en 2001 desarrolló dicho sistema y reformó la organización de las enseñanzas universitarias en consonancia con el Espacio Europeo de Educación Superior.
+  [12] Han transcurrido ya dos décadas desde la promulgación de la Ley Orgánica 6/2001, de 21 de diciembre, habiéndose producido no sólo los cambios y transformaciones generales ya mencionados y que exigen una renovación de las bases del sistema, sino también evoluciones significativas en nuestro panorama universitario. En las últimas décadas se ha producido un incremento muy considerable del número de universidades, particularmente universidades privadas. Si bien ello ha permitido una ampliación de la oferta educativa, los requisitos para la creación y funcionamiento de dichas universidades han de poder asegurar los criterios de calidad exigibles en instituciones de este tipo. La crisis económica iniciada a finales de la primera década del siglo XXI planteó desafíos inéditos a todas las instituciones educativas, sometiendo, especialmente a las universidades públicas, a tensiones y limitaciones presupuestarias muy profundas cuyos efectos aún persisten. Si bien en estas últimas cuatro décadas se ha duplicado el estudiantado universitario, superando ampliamente el millón y medio de estudiantes, la insuficiente financiación pública, el aumento de las tasas universitarias, las disfunciones en la configuración de su profesorado debido a las bajas tasas de reposición, la precarización de parte del profesorado asociado, interino, sustituto o visitante y el envejecimiento de las plantillas universitarias, así como la profundización de las desigualdades sociales, han puesto en riesgo la sostenibilidad y la calidad del sistema.
+  [13] El gasto público en educación universitaria se redujo en la segunda década del presente siglo el doble que el gasto general educativo y tres veces más que el gasto en educación no universitaria. En efecto, la desinversión en educación universitaria ha sido más acentuada y prolongada en el tiempo que en la educación no universitaria. Además, en el ámbito universitario, se ha producido una reducción significativamente mayor de la financiación pública y, simultáneamente, un aumento de la financiación de origen privado de las universidades mediante el incremento notable de los precios públicos que soportan las familias. Así la financiación pública universitaria nos alejó de la media de la inversión de nuestro entorno europeo más cercano. Más financiación pública deberá implicar más capacidad de servicio y de alianzas con el conjunto de sectores sociales que puedan beneficiarse de esa fuente de formación y conocimiento que siempre ha sido y quiere seguir siendo la Universidad.
+  [14] Nuestro sistema universitario ha ido reforzando e intensificando su integración en el Espacio Europeo de Educación Superior. Ya no es posible imaginar que podamos articular y orientar el futuro de las universidades en España sin incorporar la perspectiva, las iniciativas y la regulación que procede de la Unión Europea. La europeización del sistema universitario español no debería impedirnos ampliar el proceso de internacionalización hacia otras áreas de cooperación, en especial con el Espacio Iberoamericano de Educación Superior y del Conocimiento que cuenta con una base idiomática común de cerca de 600 millones de personas. Todo ello ha conllevado y seguirá conllevando adaptaciones estructurales e institucionales en la oferta académica, la organización de las enseñanzas, el reconocimiento de las titulaciones, el aseguramiento de la calidad conforme a criterios compartidos o en el refuerzo de la cooperación interuniversitaria internacional. La Estrategia Europea más reciente al respecto, marca objetivos y ritmos muy concretos en esa línea. En este sentido conviene destacar que, si bien el Estado español es el primer destino del estudiantado del programa Erasmus en los últimos años y uno de los principales emisores de estudiantes de este programa, la cifra del estudiantado extranjero en España es, en términos relativos, inferior a la de muchos países de nuestro entorno europeo. Por otra parte, apenas el tres por ciento del personal docente e investigador universitario posee una nacionalidad distinta a la española cuando, en cambio, cerca del 15 por ciento de los residentes en España han nacido fuera del país. La significativa y creciente presencia de universidades españolas en las alianzas de universidades europeas nos indica el camino a seguir en ese proceso imparable de compartir conocimiento, docencia e investigación a escala europea, siendo las universidades la expresión más evidente de los valores de humanismo, defensa de los derechos y valores democráticos, de libertad de pensamiento y creación, que Europa quiere proyectar al mundo.
+  [15] II
+  [16] En este contexto, se deben abordar reformas esenciales relacionadas con los desajustes entre el sistema universitario y las necesidades de la sociedad.
+  [17] Para hacer frente a dichos retos estructurales, se revela necesario y oportuno abordar una reforma integral del marco jurídico del sistema universitario. En el contexto de la gobernanza multinivel, el sistema universitario debe, con base en la transformación digital a través de servicios y equipos multidisciplinares, promover una madurez organizativa y documental que favorezca dicha gobernanza y que le permita garantizar, ampliar y poner al día el conjunto de servicios públicos de educación superior de calidad, mediante una Universidad autónoma e internacionalizada, que garantice e incentive tanto la docencia como la investigación y el intercambio y transferencia del conocimiento, y que resulte efectivamente accesible, equitativa, democrática y participativa. Una Universidad que, como principal productora y difusora de conocimiento, esté al servicio de la sociedad, contribuya al desarrollo social y económico sostenible, promueva una sociedad inclusiva y diversa comprometida con los derechos de los colectivos más vulnerables y que constituya un espacio de libertad, de debate entre perspectivas culturales, sin jerarquías, impulsando el desarrollo personal, contando para ello con recursos humanos y financieros adecuados y suficientes.
+  [18] Las universidades son un lugar privilegiado de formación y de conocimiento y al mismo tiempo un espacio crítico en que pueden abordarse los retos a los que nos enfrentamos, experimentar respuestas y generar puentes de colaboración y acción con el entorno social más cercano y con otras muchas universidades y centros de investigación de todo el mundo. Esta ley orgánica pretende proporcionar instrumentos y habilitar espacios y dinámicas para que las universidades puedan seguir siendo un espacio de experimentación, innovación y participación. Se trata de lograr universidades al servicio de la sociedad en la que se insertan; universidades en red para vincular comunidades, compartir conocimiento, crear nuevas ideas e instrumentos para una nueva sociedad.
+  [19] Asimismo, esta ley orgánica desarrolla un modelo académico que asegura una formación integral avanzada y amplia y el desarrollo de habilidades personales y profesionales, tanto docentes como investigadoras, para desarrollar el pensamiento crítico y para acceder a empleos de calidad.
+  [20] Junto con la labor imprescindible de potenciar la investigación y de generar conocimiento, contribuyendo a su divulgación y contraste con la comunidad científica, se trata además de convertir ese conocimiento en socialmente útil, generando vínculos con los actores sociales más próximos a la temática de cada investigador, de cada grupo y centro de investigación, partiendo de la especialidad de cada uno, pero buscando en la interdisciplinariedad y la multidisciplinariedad las vías con las que responder a la complejidad creciente de los retos a los que nos enfrentamos como humanidad. Necesitamos una Ciencia Abierta, que asuma ese conocimiento como un bien común, accesible y no mercantilizado, una Ciencia Ciudadana en la que se construya conocimiento de manera compartida, asumiendo la complejidad de la investigación de manera colectiva. Por ello, esta ley orgánica promueve la labor conjunta con la sociedad de creación y difusión del conocimiento, fomentando la Ciencia Abierta y Ciudadana mediante el acceso a publicaciones, datos, códigos y metodologías que garanticen la comunicación de la investigación.
+  [21] Las universidades han venido siendo esencialmente espacios de formación para los jóvenes. Se debe ahora ir más allá, reforzando la capacidad de servicio al conjunto de la sociedad para lograr una Universidad para todas las edades; un lugar en el que la formación a lo largo de la vida para cualquier persona y colectivo sea un objetivo básico; una Universidad en la que la experiencia de una docencia presencial y compartida sea un valor central y diferencial; un lugar en el que converjan y se relacionen científicas y científicos, estudiantado, profesionales que buscan actualizar sus capacidades, especialistas y agentes sociales, buscando todas ellas y ellos reforzar conocimientos, construir competencias y plantear caminos de transformación e innovación de manera compartida.
+  [22] Por ello, esta ley orgánica incluye la formación permanente o a lo largo de toda la vida como dimensión esencial de la función docente de la Universidad. Igualmente, se establecen fórmulas de transferencia y conexión entre la formación profesional superior y la Universidad al servicio de los procesos de actualización laboral y personal del conjunto de la población.
+  [23] Además de la plena integración ya mencionada en el Espacio Europeo de Educación Superior, se entiende necesario incentivar las redes de conocimiento y de formación compartida con el Espacio Iberoamericano de Educación Superior y del Conocimiento, y reforzar las dinámicas de colaboración abiertas en la cuenca mediterránea o en la apertura de nuevos vínculos con los centros de educación superior de América del Norte, Asia y Oceanía. A tal fin, esta ley orgánica incorpora, por primera vez, un título dedicado a la internacionalización, y fomenta un sistema universitario de calidad, con mecanismos ágiles y fiables de evaluación de la misma, en línea con lo que la Unión Europea propone. Se prevé además la elaboración de estrategias de internacionalización por parte de las diferentes Administraciones Públicas y de las propias universidades, la creación de alianzas interuniversitarias y la participación en proyectos de carácter internacional, supranacional y eurorregional. Por otra parte, se impulsa la movilidad del conjunto de la comunidad universitaria, se incentivan los doctorados en cotutela internacional y se insta a las Administraciones Públicas a eliminar los obstáculos a la atracción de talento internacional, agilizando y facilitando los procedimientos de reconocimiento y homologación de títulos, de admisión en las universidades o de carácter migratorio.
+  [24] Esta ley orgánica no quiere imponer soluciones ni trazar caminos concretos en que todo ello deba resolverse. Busca abrir posibilidades, facilitar conexiones, desde un compromiso de los poderes públicos de financiar adecuadamente ese nuevo escenario de transformación y cambio. Las universidades públicas españolas han sufrido de manera persistente una insuficiente financiación pública en el último decenio, y una gran precarización y deterioro de las condiciones de trabajo, que han pasado socialmente inadvertidas sin que ello haya generado una reacción social a la altura del retroceso sufrido. Recuperar niveles de financiación adecuados deberá ir en consonancia con una mayor presencia de las universidades en los entornos sociales en los que se asientan y una mayor y más visible contribución a las necesidades que tiene planteadas el conjunto de personas y colectivos del país, más implicación en las dinámicas de desarrollo local, en la búsqueda de alternativas frente al reto demográfico o la emergencia climática. Alcanzar un mínimo de financiación pública del 1 % del PIB, como recoge esta ley orgánica, debería ser una exigencia de todos y todas. Pero también debería serlo reforzar la docencia, mejorar los procesos formativos de la ciudadanía sin distinción de edades, orígenes, género o capacidad económica, trabajar por la empleabilidad o generar más y mejor investigación desde una lógica de transferencia e intercambio.
+  [25] El estudiantado, sea cual sea su edad, ha de tener el papel de protagonista. Con este objetivo, esta ley orgánica refuerza la docencia, es decir, se preocupa por la formación y actualización de las capacidades del profesorado, por generar espacios para que se vele por la adecuación de contenidos y formatos de enseñanza, por facilitar que sea el propio estudiantado el que asuma labores de tutoría, mentoría y experiencias de prácticas efectivas, por la salud emocional del estudiantado, promoviendo asimismo su participación en el gobierno de la universidad en sus distintas unidades y en la propia gestión de servicios. Adicionalmente, y en defensa de los derechos del estudiantado, la ley permite avanzar hacia el horizonte de la gratuidad de la educación superior universitaria pública, mediante la reducción de precios públicos, así como la disminución de su disparidad entre Comunidades Autónomas y la concepción de la beca como un derecho subjetivo vinculado a la situación socioeconómica de las personas solicitantes. Asimismo, la ley incorpora modificaciones sustanciales en las disposiciones relativas al estudiantado. Por una parte, el estatuto del estudiantado se incorpora a esta norma, consolidando y ampliando un catálogo de derechos y deberes que hasta ahora venía recogido en una norma reglamentaria, y añadiendo el paro académico como derecho del estudiantado. Por otra, se otorga mayor publicidad a la oferta académica y se clarifica el régimen de acceso y admisión. Asimismo, se prevé que cada universidad fomente la participación estudiantil en todos los servicios y aspectos que les afecta en su trayectoria académica y vital, la calidad e intensidad de la experiencia universitaria y se propone el reconocimiento al estudiantado de créditos académicos por su implicación en actividades sociales y universitarias.
+  [26] La construcción de una Universidad equitativa impregna el contenido de toda la ley. Así, se establecen requisitos en materia de igualdad entre mujeres y hombres previos a la creación de una universidad como los planes de igualdad, o la eliminación de la brecha salarial y de toda forma de acoso. A su vez, la ley establece que los órganos colegiados y las comisiones de evaluación y selección en las universidades garantizarán una composición equilibrada entre mujeres y hombres, medidas de acción positiva en los concursos y a favor de la conciliación y el fomento de la corresponsabilidad de los cuidados, entre otras muchas actuaciones. En materia de accesibilidad las universidades deben garantizar a personas con discapacidad un acceso universal a los edificios y sus entornos físicos y virtuales, así como al proceso de enseñanza-aprendizaje y evaluación.
+  [27] Esta norma apuesta por una Universidad como espacio de libertad, de debate cultural y de desarrollo personal. A estos efectos, se fomenta la condición de las universidades como agentes de creación y reflexión cultural, así como de protección, conservación y difusión del patrimonio histórico y cultural del que son depositarias. Por otra parte, las universidades se configuran como actores clave en la promoción y fomento de la diversidad y riqueza lingüística del Estado, en el desarrollo local y en la cohesión territorial en un contexto de lucha contra el cambio climático.
+  [28] Esta norma parte del reconocimiento de los recursos humanos del sistema universitario como núcleo de su fortaleza. Respecto del personal docente e investigador, esta ley orgánica tiene como uno de sus objetivos prioritarios la eliminación de la precariedad en el empleo universitario y la implantación de una carrera académica estable y predecible. Se establecen tres niveles de progresión frente a los cuatro vigentes hasta ahora. Así, la carrera académica seguirá las etapas de incorporación, consolidación y promoción. Por otra parte, se reduce del 40 al 8 por ciento el máximo de contratos de carácter temporal del personal docente e investigador que pueden estar vigentes en las universidades públicas. Esta norma persigue poner fin a la precariedad asociada a determinadas figuras del profesorado laboral, ofreciendo a quienes se encuentran en dicha situación vías de entrada adecuadas para que continúen la carrera académica si cumplen determinados requisitos. Asimismo, se incentivan programas de estabilización y promoción de forma transitoria y se garantiza la equiparación de derechos y deberes académicos del profesorado funcionario y laboral permanente. Finalmente, en materia de personal investigador esta norma configura pasarelas entre la carrera investigadora y la Universidad. Entre otras cuestiones, se incentiva la atracción de personal investigador de programas de excelencia mediante la reserva de un porcentaje de determinadas plazas universitarias.
+  [29] Esta nueva ley revaloriza la figura del personal técnico, de gestión y de administración y servicios, como un actor clave para el funcionamiento eficiente y eficaz de la institución universitaria. En línea con este objetivo, se incorpora la carrera profesional horizontal de dicho personal, así como el marco para la evaluación de su desempeño. Igual que sucede con el personal docente e investigador, la norma persigue la reducción de la temporalidad y se fomenta la formación y la movilidad de dicho personal.
+  [30] Para asegurar una Universidad autónoma, democrática y participativa, en la que, simultáneamente, la toma de decisiones y su gestión pueda realizarse de forma eficaz y eficiente, la Ley consagra la transparencia y la rendición de cuentas de las universidades públicas, en correlación con el desarrollo y protección de su autonomía. Como parte del sector público institucional, el binomio autonomía-transparencia deberá regir toda su actividad, especialmente en lo relacionado con su régimen económico y financiero y la selección de su personal. Así, en este último caso, se refuerza la objetividad en el acceso a los cuerpos docentes y a las modalidades de contratación laboral estableciendo que la mayoría de los miembros de las comisiones de selección no pertenezca a la universidad convocante y que sean elegidos mayoritariamente mediante sorteo.
+  [31] En lo referente a las estructuras internas y la gobernanza de la Universidad, la ley refuerza la autonomía universitaria en el marco de las bases comunes del sistema universitario, la necesaria conexión y colaboración con el entorno en el que se inserta la universidad mediante el Consejo Social, al mismo tiempo que adopta novedades en relación con la elección de la Rectora o Rector, y en relación con los límites de los mandatos de las personas titulares de los órganos unipersonales electos. Finalmente, esta ley orgánica fomenta la multidisciplinariedad e interdisciplinariedad mediante una estructura interna que permita la cooperación entre sus diferentes elementos.
+  [32] Por otro lado, la participación de los diferentes sectores de la comunidad universitaria se erige como un componente definitorio de las universidades públicas. De esta forma, se apuesta por el desarrollo de procesos participativos, consultas y otros mecanismos de participación del conjunto de la comunidad universitaria asegurando la igualdad de oportunidades y la no discriminación. Además, entre otros aspectos, se aumenta la representación mínima del estudiantado en diversos órganos de gobierno de la universidad, y se mandata la creación de un Consejo de Estudiantes en cada universidad.
+  [33] El conjunto de reformas que se aprueba parte del pleno respeto al principio de autonomía universitaria, integrado en el derecho fundamental a la educación reconocido en el artículo 27 de la Constitución Española. Asimismo, estas reformas se fundamentan en el reconocimiento de la distribución competencial entre el Estado y las Comunidades Autónomas en materia de política y gestión universitarias. En esta línea, la ley establece un mínimo común denominador, habilitando un amplio margen al desarrollo de sus disposiciones mediante la labor normativa de las Comunidades Autónomas y las concreciones de los Estatutos y normas de organización y funcionamiento de las propias universidades.
+  [34] III
+  [35] El expresado contenido de esta ley orgánica se divide en 100 artículos, que se articulan en un título preliminar al que siguen diez títulos. El título I regula las funciones del sistema universitario y la autonomía de las universidades, mientras que el título II se dedica a su creación y reconocimiento, así como a la calidad del sistema universitario. El título III versa sobre la función docente y la organización de enseñanzas. Por su parte, el título IV aborda lo relativo a la investigación, la transferencia e intercambio del conocimiento y la innovación, y el título V organiza la coordinación, cooperación y participación en el sistema universitario. Los títulos VI y VII tratan de la imbricación de la Universidad en la sociedad y en la cultura, así como de la internacionalización del sistema universitario, respectivamente. El título VIII incorpora el estatuto del estudiantado en el sistema universitario, al que sigue el título relativo a las universidades públicas. Así, el título IX, en sus cinco capítulos, se ocupa del régimen jurídico y estructura de éstas, su gobernanza, su régimen económico y financiero, su personal docente e investigador y su personal técnico, de gestión y de administración y servicios, respectivamente. Por último, esta ley orgánica se ocupa en el título X del régimen específico de las universidades privadas.
+  [36] Por otro lado, la parte final de la ley orgánica se divide en diecisiete disposiciones adicionales, doce disposiciones transitorias, una disposición derogatoria y doce disposiciones finales. Así, las disposiciones adicionales recogen determinaciones particulares respecto a la regulación contenida en el articulado, que mayoritariamente se refieren a instituciones universitarias con elementos que las singularizan.
+  [37] A continuación, las disposiciones transitorias fundamentalmente persiguen facilitar el tránsito al régimen jurídico previsto por la nueva regulación tanto a las instituciones universitarias como al personal que en ellas desarrolla su labor.
+  [38] Por su parte, la disposición derogatoria deja sin vigencia expresamente, para mayor seguridad jurídica, tres normas de rango legal: la Ley Orgánica 6/2001, de 21 de diciembre, de Universidades; la Ley Orgánica 4/2007, de 12 de abril, por la que se modifica la Ley Orgánica 6/2001, de 21 de diciembre, de Universidades, salvo sus disposiciones finales segunda y cuarta, y el Real Decreto-ley 14/2012, de 20 de abril, de medidas urgentes de racionalización del gasto público en el ámbito educativo.
+  [39] Las disposiciones finales, además de las determinaciones típicas, incluyen la modificación de la Ley 53/1984, de 26 de diciembre, de Incompatibilidades del personal al servicio de las Administraciones Públicas, con la finalidad de autorizar la compatibilidad para el desempeño de un puesto de trabajo en la esfera docente como Profesor universitario asociado en régimen de dedicación no superior a la de tiempo parcial; la Ley 14/1986, de 25 de abril, General de Sanidad, en lo relativo a la vinculación asistencial del personal docente universitario laboral; la Ley Orgánica 4/2000, de 11 de enero, sobre derechos y libertades de los extranjeros en España y su integración social, en lo relativo a la vigencia de las autorizaciones iniciales de estancia por estudios superiores cuya duración se extienda más allá de un curso académico y a las prórrogas de las autorizaciones de otras categorías, así como respecto de los lugares de presentación de las solicitudes y exigencia de comparecencia personal; la Ley 33/2011, de 4 de octubre, General de Salud Pública, para clarificar la regulación relativa a los requisitos para el ejercicio profesional de la psicología en el ámbito sanitario y la Ley 14/2013, de 27 de septiembre, de apoyo a los emprendedores y su internacionalización, para ampliar los períodos de eficacia de las autorizaciones de residencia del estudiantado para búsqueda de empleo y la autorización de residencia para prácticas.
+  [40] IV
+  [41] En la elaboración y tramitación de esta ley orgánica se han observado los principios de necesidad, eficacia, proporcionalidad, seguridad jurídica, transparencia y eficiencia, exigidos por el artículo 129 de la Ley 39/2015, de 1 de octubre, del Procedimiento Administrativo Común de las Administraciones Públicas. Así, su necesidad resulta de los retos que debe afrontar el sistema universitario ya descritos. La ley cumple los principios de eficacia y proporcionalidad puesto que aborda tales retos a través de innovaciones normativas idóneas y necesarias para llevar a cabo las transformaciones que requiere el sistema universitario para adecuarse a lo que se le demanda en el siglo XXI. Igualmente cumple el principio de seguridad jurídica, pues su contenido es coherente con el resto del ordenamiento jurídico, nacional y de la Unión Europea, así como internacional, en particular con el Espacio Europeo de Educación Superior y, por otro, ofrece un marco normativo sistemático, ordenado y claro para facilitar la toma de decisiones por los particulares y la gestión de sus recursos por las Administraciones Públicas con competencias en la materia. Asimismo, en aplicación del principio de eficiencia, en esta ley orgánica se limitan las cargas administrativas a las imprescindibles para la consecución de los fines descritos previamente, siempre dentro del marco del ordenamiento jurídico nacional, de la Unión Europea e internacional. Por último, en aras del principio de transparencia, además de la realización de los trámites de consulta previa y audiencia e información públicas, y a fin de obtener la mayor participación posible de las partes interesadas, se ha posibilitado la participación de la sociedad y de las restantes Administraciones Públicas; participación que se ha visto reforzada con la información al Consejo de Universidades, la Conferencia General de Política Universitaria y el Consejo de Estudiantes Universitario del Estado.
+  [42] Esta ley orgánica se dicta al amparo de las reglas 30.ª y 1.ª del artículo 149.1 de la Constitución Española, que reservan al Estado la competencia para la aprobación de las normas básicas para el desarrollo del artículo 27 de la Constitución, a fin de garantizar el cumplimiento de las obligaciones de los poderes públicos en esta materia y la regulación de las condiciones básicas que garanticen la igualdad de todos los españoles en el ejercicio de los derechos, así como en el cumplimiento de los deberes constitucionales, respectivamente.
+  [43] De lo anterior se exceptúa el título IV, el artículo 56.4, el artículo 57.7 y los artículos 60, 61, 62 y 63 que se dictan al amparo del artículo 149.1.15.ª de la Constitución que atribuye al Estado el fomento y coordinación general de la investigación científica y técnica, así como la disposición final primera de modificación de la Ley 53/1984, de 26 de diciembre, de Incompatibilidades del personal al servicio de las Administraciones Públicas; la disposición final segunda de modificación de la Ley 14/1986, de 25 de abril, General de Sanidad; la disposición final tercera de modificación de la Ley Orgánica 4/2000, de 11 de enero, sobre derechos y libertades de los extranjeros en España y su integración social; la disposición final cuarta de modificación de la Ley 33/2011, de 4 de octubre, General de Salud Pública, y la disposición final quinta de modificación de Ley 14/2013, de 27 de septiembre, de apoyo a los emprendedores y su internacionalización, que se incardinan en las competencias expresadas en las leyes objeto de modificación.
 ```
 
-### Ley Orgánica 2/2023, disposición adicional primera · `BOE-A-2023-7500__da` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2023-7500#da
-_recuperado por:_ e5-large-instruct/I2_CITIZEN_LEGISLATION#16 (0.874) · e5-large-instruct/I1_LEGAL#17 (0.871)  [2 sistemas]
+### Ley Orgánica 2/2023, artículo 17 · `BOE-A-2023-7500__a1-9` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2023-7500#a1-9
+_recuperado por:_ bm25/lexical#9 (30.883) · e5-base/BASELINE#10 (0.841) · hybrid_rrf/I0_GENERIC#16 (0.023)  [3 sistemas]
 ```
-  [1] Disposición adicional primera. Universidad Nacional de Educación a Distancia.
-  [2] 1. La Universidad Nacional de Educación a Distancia es una institución que forma parte del sistema universitario español, cuyo objeto fundamental es el desarrollo de actividades académicas no presenciales e híbridas, siendo su ámbito de actuación el conjunto del Estado y aquellos lugares del extranjero donde pueda desarrollar legalmente su actividad.
-  [3] 2. Las Cortes Generales y el Gobierno ejercerán las competencias que esta ley orgánica atribuye, respectivamente, a la Asamblea Legislativa y al Consejo de Gobierno de las Comunidades Autónomas en cuanto se refiere a la Universidad Nacional de Educación a Distancia.
-  [4] 3. El Gobierno regulará las particularidades de los regímenes del personal docente e investigador, del personal técnico, de gestión y de administración y servicios, así como de las y los tutores, y las condiciones de los centros asociados de la Universidad Nacional de Educación a Distancia promoviendo su relación con el entorno en el que se ubiquen.
-  [5] Asimismo, sin perjuicio de lo establecido en el artículo 56.3, regulará su financiación teniendo en consideración las particularidades de la Universidad Nacional de Educación a Distancia, cuyos presupuestos se incluirán en los Presupuestos Generales del Estado. En todo caso, el recurso al endeudamiento por parte de la Universidad Nacional de Educación a Distancia habrá de autorizarse por la Ley de Presupuestos Generales del Estado. No obstante, a lo largo del ejercicio presupuestario, para atender desfases temporales de tesorería, la Universidad Nacional de Educación a Distancia podrá recurrir a la contratación de pólizas de crédito o préstamos, en una cuantía que no superará el 5 por ciento de su presupuesto, que habrán de quedar cancelados antes del 31 de diciembre de cada año.
-  [6] 4. En el resto de los ámbitos, la Universidad Nacional de Educación a Distancia tendrá los mismos derechos y obligaciones que el resto de las universidades públicas españolas, y se regirá por el principio de autonomía universitaria y por lo que estipulen sus Estatutos.
-  [7] 5. En el plazo de un año desde la aprobación de esta ley orgánica, el Gobierno regulará reglamentariamente el régimen del profesorado tutor de los centros asociados a la Universidad Nacional de Educación a Distancia.
+  [1] Artículo 17. El Consejo de Estudiantes Universitario del Estado.
+  [2] 1. El Consejo de Estudiantes Universitario del Estado es el órgano de participación, deliberación y consulta del estudiantado universitario ante el Ministerio de Universidades.
+  [3] 2. El Consejo de Estudiantes Universitario del Estado se adscribe al Ministerio de Universidades.
+  [4] 3. Corresponden al Consejo de Estudiantes Universitario del Estado las siguientes funciones:
+  [5] a) Ser interlocutor ante el Ministerio de Universidades, en los asuntos que conciernen al estudiantado.
+  [6] b) Informar los criterios de las propuestas del Gobierno en materia de estudiantes universitarios y en aquellas materias para las cuales le sea requerido informe.
+  [7] c) Contribuir activamente a la defensa de los derechos estudiantiles, cooperando con las asociaciones de estudiantes y los órganos de representación estudiantil.
+  [8] d) Velar por la adecuada actuación de los órganos de gobierno en las universidades en lo que se refiere a los derechos y deberes del estudiantado establecidos en los Estatutos de cada una de ellas.
+  [9] e) Elevar propuestas al Gobierno en materias relacionadas con la competencia de éste.
+  [10] f) Pronunciarse sobre cualquier asunto para el que sea requerido por el Ministerio de Universidades.
+  [11] g) Ostentar la representación del estudiantado universitario y participar en la fijación de criterios para la concesión de becas y otras ayudas, en el ámbito de las competencias del Estado.
+  [12] h) Fomentar el asociacionismo estudiantil y la participación del estudiantado en la vida universitaria.
+  [13] i) Desarrollar cualesquiera otras funciones que se le asignen legal o reglamentariamente.
+  [14] 4. La composición, así como la organización y el funcionamiento del Consejo de Estudiantes Universitario del Estado se determinarán reglamentariamente. En su composición se garantizará el principio de presencia equilibrada de mujeres y hombres, de forma que aquellas incluyan como mínimo un cuarenta por ciento de cada uno de los sexos. En todo caso, estarán representadas todas las universidades y estará presidido por el Ministro o Ministra de Universidades. El Secretario o Secretaria General de Universidades actuará como Vicepresidente o Vicepresidenta primera, correspondiendo la vicepresidencia segunda al estudiantado.
 ```
 
-### Ley Orgánica 2/2023, artículo 54 · `BOE-A-2023-7500__a5-6` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2023-7500#a5-6
-_recuperado por:_ e5-large-instruct/I0_GENERIC#10 (0.871) · e5-large-instruct/I1_LEGAL#16 (0.871)  [2 sistemas]
+### Ley Orgánica 2/2023, artículo 27 · `BOE-A-2023-7500__a2-9` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2023-7500#a2-9
+_recuperado por:_ bge-m3/BASELINE#15 (0.570) · bm25/lexical#18 (27.453)  [2 sistemas]
 ```
-  [1] Artículo 54. Autonomía económica y financiera.
-  [2] 1. Las universidades tendrán autonomía económica y financiera en los términos establecidos en esta ley orgánica y en las normas de las Comunidades Autónomas.
-  [3] 2. Corresponde a las universidades la elaboración, aprobación y gestión de sus presupuestos y la administración de sus bienes.
+  [1] Artículo 27. Movilidad internacional de la comunidad universitaria.
+  [2] 1. El Gobierno, las Comunidades Autónomas y las propias universidades promoverán programas de movilidad e intercambio del estudiantado, del personal docente e investigador y del personal técnico, de gestión y de administración y servicios, asegurando la igualdad de oportunidades y la no discriminación. A tal fin, fomentarán programas de becas y ayudas al estudio y a la formación a lo largo de la vida que podrán ir dirigidos a áreas geográficas y ámbitos de conocimiento estratégicos específicos.
+  [3] 2. El Ministerio de Universidades, las Comunidades Autónomas y las propias universidades promoverán y difundirán los programas de movilidad financiados con fondos de la Unión Europea, con particular referencia al programa Erasmus+, así como otros programas de movilidad que cuenten con financiación pública, asegurando la igualdad de oportunidades, la no discriminación y la inclusión de las lenguas oficiales del Estado español.
+  [4] 3. El Ministerio de Universidades, las Comunidades Autónomas y las propias universidades promoverán la presencia de universidades, estudiantes y las distintas instancias del sistema universitario español en los órganos y foros de representación internacional universitaria.
+```
+
+### Ley 44/2003, disposición adicional undécima · `BOE-A-2003-21340__daundecima` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2003-21340#daundecima
+_recuperado por:_ e5-large-instruct/I0_GENERIC#7 (0.879) · hybrid_rrf/I0_GENERIC#17 (0.023)  [2 sistemas]
+```
+  [1] Disposición adicional undécima.
+  [2] Las referencias que en esta ley se hacen a los licenciados y diplomados sanitarios se entenderán realizadas también a los graduados universitarios, de acuerdo con la normativa de ordenación de las enseñanzas universitarias oficiales.
 ```
 
 ---
@@ -2589,9 +2704,20 @@ _recuperado por:_ e5-large-instruct/I0_GENERIC#10 (0.871) · e5-large-instruct/I
 **Pregunta:** ¿Quién puede firmar un contrato predoctoral y qué requisitos académicos exige la Ley de la Ciencia?
 _split=test · difficulty=media · failure_mode=—_
 
+### Ley Orgánica 2/2023, disposición transitoria octava · `BOE-A-2023-7500__dt-8` [JUZGADO rel=0 draft]
+https://www.boe.es/buscar/act.php?id=BOE-A-2023-7500#dt-8
+_recuperado por:_ bm25/lexical#1 (23.387) · bge-m3/BASELINE#3 (0.593) · hybrid_rrf/I0_GENERIC#4 (0.031) · e5-large-instruct/I0_GENERIC#8 (0.885) · e5-large-instruct/I1_LEGAL#8 (0.889) · e5-large-instruct/I2_CITIZEN_LEGISLATION#11 (0.886) · e5-base/BASELINE#20 (0.826)  [7 sistemas]
+```
+  [1] Disposición transitoria octava. Mecanismos de adaptación para determinadas figuras de personal docente e investigador de las universidades públicas.
+  [2] En función de la implementación del plan de incremento del gasto público en educación para el periodo previsto en el artículo 155.2 de la Ley Orgánica 2/2006, de 3 de mayo, las universidades que tengan más de un 20 por ciento de su plantilla docente, computada en efectivos, con contratos laborales de Profesores y Profesoras Sustitutos/as, de Profesores y Profesoras Visitantes, Profesores y Profesoras Distinguidos/as y de Profesores y Profesoras Asociados/as, excluyendo al profesorado asociado de Ciencias de la Salud, implantarán los siguientes mecanismos de adaptación:
+  [3] a) Establecerán como mérito preferente, en los concursos de acceso a las plazas de Ayudante Doctor o figuras equivalentes de la normativa autonómica, haber desempeñado en la fecha de la publicación de la convocatoria actividades docentes en universidades públicas españolas durante al menos cinco cursos académicos de los últimos siete años a través de los contratos de profesorado asociado u otros contratos de duración igual o inferior a un año previstos en la Ley Orgánica 6/2001, de 21 de diciembre. Estas universidades determinarán el número de plazas sometidas a este régimen y las vincularán a los departamentos y centros que superen dicho porcentaje.
+  [4] b) Utilizarán la modalidad de contrato predoctoral para docentes no doctores que hayan estado vinculados a la universidad al menos cinco cursos académicos de los últimos siete años a través de los contratos de profesorado asociado u otros contratos de duración igual o inferior a un año previstos en la Ley Orgánica 6/2001, de 21 de diciembre.
+  [5] c) Establecerán un programa de promoción interna a Profesorado Permanente Laboral o figuras equivalentes de la normativa autonómica para quienes, estando contratados con carácter indefinido y cuenten con la acreditación, hayan desempeñado en la fecha de la publicación de la convocatoria actividades docentes en universidades públicas españolas durante al menos cinco cursos académicos de los últimos siete años a través de los contratos de profesorado asociado u otros contratos de duración igual o inferior a un año previstos en la Ley Orgánica 6/2001, de 21 de diciembre. Estas plazas de promoción no computarán a efectos de tasa de reposición.
+```
+
 ### Ley 14/2011, artículo 21 · `BOE-A-2011-9617__a21` [JUZGADO rel=2 reviewed]
 https://www.boe.es/buscar/act.php?id=BOE-A-2011-9617#a21
-_recuperado por:_ bge-m3/BASELINE#1 (0.672) · e5-base/BASELINE#1 (0.867) · e5-large-instruct/I0_GENERIC#1 (0.912) · e5-large-instruct/I1_LEGAL#1 (0.923) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.923)  [5 sistemas]
+_recuperado por:_ bge-m3/BASELINE#1 (0.672) · e5-base/BASELINE#1 (0.867) · e5-large-instruct/I0_GENERIC#1 (0.912) · e5-large-instruct/I1_LEGAL#1 (0.923) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.923) · hybrid_rrf/I0_GENERIC#1 (0.032) · bm25/lexical#3 (21.650)  [7 sistemas]
 ```
   [1] Artículo 21. Contrato predoctoral.
   [2] Los contratos de trabajo bajo la modalidad de contrato predoctoral se celebrarán de acuerdo con los siguientes requisitos:
@@ -2607,9 +2733,17 @@ _recuperado por:_ bge-m3/BASELINE#1 (0.672) · e5-base/BASELINE#1 (0.867) · e5-
   [12] e) A la finalización del contrato por expiración del tiempo convenido, la persona trabajadora tendrá derecho a recibir una indemnización de cuantía equivalente a la prevista para los contratos de duración determinada en el artículo 49 del texto refundido de la Ley del Estatuto de los Trabajadores.
 ```
 
+### Ley 14/2011, disposición adicional segunda · `BOE-A-2011-9617__dasegunda` [JUZGADO rel=0 draft]
+https://www.boe.es/buscar/act.php?id=BOE-A-2011-9617#dasegunda
+_recuperado por:_ e5-base/BASELINE#2 (0.851) · e5-large-instruct/I0_GENERIC#3 (0.891) · hybrid_rrf/I0_GENERIC#5 (0.030) · e5-large-instruct/I1_LEGAL#7 (0.893) · e5-large-instruct/I2_CITIZEN_LEGISLATION#7 (0.889) · bm25/lexical#9 (16.818) · bge-m3/BASELINE#17 (0.542)  [7 sistemas]
+```
+  [1] Disposición adicional segunda. Estatuto del personal investigador en formación.
+  [2] En el plazo de dos años desde la entrada en vigor de esta ley, el Gobierno elaborará un estatuto del personal investigador en formación, que deberá someterse a informe previo del Consejo de Política Científica, Tecnológica y de Innovación. Dicho estatuto sustituirá al actual Estatuto del personal investigador en formación, e incluirá las prescripciones recogidas en la presente ley para el contrato predoctoral.
+```
+
 ### Ley 14/2011 · `BOE-A-2011-9617__preambulo` [JUZGADO rel=0 draft]
 https://www.boe.es/buscar/act.php?id=BOE-A-2011-9617#preambulo
-_recuperado por:_ e5-large-instruct/I1_LEGAL#3 (0.899) · e5-large-instruct/I2_CITIZEN_LEGISLATION#3 (0.899) · bge-m3/BASELINE#4 (0.593) · e5-large-instruct/I0_GENERIC#5 (0.888) · e5-base/BASELINE#7 (0.837)  [5 sistemas]
+_recuperado por:_ e5-large-instruct/I1_LEGAL#3 (0.899) · e5-large-instruct/I2_CITIZEN_LEGISLATION#3 (0.899) · bge-m3/BASELINE#4 (0.593) · e5-large-instruct/I0_GENERIC#5 (0.888) · e5-base/BASELINE#7 (0.837) · hybrid_rrf/I0_GENERIC#7 (0.027)  [6 sistemas]
 ```
   [1] JUAN CARLOS I
   [2] REY DE ESPAÑA
@@ -2718,28 +2852,9 @@ _recuperado por:_ e5-large-instruct/I1_LEGAL#3 (0.899) · e5-large-instruct/I2_C
   [105] La ley concluye con tres disposiciones finales relativas al título competencial, desarrollo reglamentario y entrada en vigor.
 ```
 
-### Ley 14/2011, disposición adicional segunda · `BOE-A-2011-9617__dasegunda` [JUZGADO rel=0 draft]
-https://www.boe.es/buscar/act.php?id=BOE-A-2011-9617#dasegunda
-_recuperado por:_ e5-base/BASELINE#2 (0.851) · e5-large-instruct/I0_GENERIC#3 (0.891) · e5-large-instruct/I1_LEGAL#7 (0.893) · e5-large-instruct/I2_CITIZEN_LEGISLATION#7 (0.889) · bge-m3/BASELINE#17 (0.542)  [5 sistemas]
-```
-  [1] Disposición adicional segunda. Estatuto del personal investigador en formación.
-  [2] En el plazo de dos años desde la entrada en vigor de esta ley, el Gobierno elaborará un estatuto del personal investigador en formación, que deberá someterse a informe previo del Consejo de Política Científica, Tecnológica y de Innovación. Dicho estatuto sustituirá al actual Estatuto del personal investigador en formación, e incluirá las prescripciones recogidas en la presente ley para el contrato predoctoral.
-```
-
-### Ley Orgánica 2/2023, disposición transitoria octava · `BOE-A-2023-7500__dt-8` [JUZGADO rel=0 draft]
-https://www.boe.es/buscar/act.php?id=BOE-A-2023-7500#dt-8
-_recuperado por:_ bge-m3/BASELINE#3 (0.593) · e5-large-instruct/I0_GENERIC#8 (0.885) · e5-large-instruct/I1_LEGAL#8 (0.889) · e5-large-instruct/I2_CITIZEN_LEGISLATION#11 (0.886) · e5-base/BASELINE#20 (0.826)  [5 sistemas]
-```
-  [1] Disposición transitoria octava. Mecanismos de adaptación para determinadas figuras de personal docente e investigador de las universidades públicas.
-  [2] En función de la implementación del plan de incremento del gasto público en educación para el periodo previsto en el artículo 155.2 de la Ley Orgánica 2/2006, de 3 de mayo, las universidades que tengan más de un 20 por ciento de su plantilla docente, computada en efectivos, con contratos laborales de Profesores y Profesoras Sustitutos/as, de Profesores y Profesoras Visitantes, Profesores y Profesoras Distinguidos/as y de Profesores y Profesoras Asociados/as, excluyendo al profesorado asociado de Ciencias de la Salud, implantarán los siguientes mecanismos de adaptación:
-  [3] a) Establecerán como mérito preferente, en los concursos de acceso a las plazas de Ayudante Doctor o figuras equivalentes de la normativa autonómica, haber desempeñado en la fecha de la publicación de la convocatoria actividades docentes en universidades públicas españolas durante al menos cinco cursos académicos de los últimos siete años a través de los contratos de profesorado asociado u otros contratos de duración igual o inferior a un año previstos en la Ley Orgánica 6/2001, de 21 de diciembre. Estas universidades determinarán el número de plazas sometidas a este régimen y las vincularán a los departamentos y centros que superen dicho porcentaje.
-  [4] b) Utilizarán la modalidad de contrato predoctoral para docentes no doctores que hayan estado vinculados a la universidad al menos cinco cursos académicos de los últimos siete años a través de los contratos de profesorado asociado u otros contratos de duración igual o inferior a un año previstos en la Ley Orgánica 6/2001, de 21 de diciembre.
-  [5] c) Establecerán un programa de promoción interna a Profesorado Permanente Laboral o figuras equivalentes de la normativa autonómica para quienes, estando contratados con carácter indefinido y cuenten con la acreditación, hayan desempeñado en la fecha de la publicación de la convocatoria actividades docentes en universidades públicas españolas durante al menos cinco cursos académicos de los últimos siete años a través de los contratos de profesorado asociado u otros contratos de duración igual o inferior a un año previstos en la Ley Orgánica 6/2001, de 21 de diciembre. Estas plazas de promoción no computarán a efectos de tasa de reposición.
-```
-
 ### Ley 14/2011, artículo 22 · `BOE-A-2011-9617__a22` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2011-9617#a22
-_recuperado por:_ e5-large-instruct/I2_CITIZEN_LEGISLATION#10 (0.887) · bge-m3/BASELINE#11 (0.557) · e5-large-instruct/I1_LEGAL#11 (0.887) · e5-large-instruct/I0_GENERIC#13 (0.875) · e5-base/BASELINE#19 (0.826)  [5 sistemas]
+_recuperado por:_ e5-large-instruct/I2_CITIZEN_LEGISLATION#10 (0.887) · bge-m3/BASELINE#11 (0.557) · e5-large-instruct/I1_LEGAL#11 (0.887) · e5-large-instruct/I0_GENERIC#13 (0.875) · hybrid_rrf/I0_GENERIC#17 (0.021) · e5-base/BASELINE#19 (0.826)  [6 sistemas]
 ```
   [1] Artículo 22. Contrato de acceso de personal investigador doctor.
   [2] 1. Los contratos de acceso de personal investigador doctor se celebrarán en el marco de un itinerario de acceso estable al Sistema Español de Ciencia, Tecnología e Innovación, de acuerdo con los siguientes requisitos:
@@ -2770,23 +2885,9 @@ _recuperado por:_ e5-large-instruct/I2_CITIZEN_LEGISLATION#10 (0.887) · bge-m3/
   [27] El personal laboral postdoctoral contratado según lo dispuesto en este artículo por las universidades públicas tendrá la consideración de personal docente e investigador a los efectos del desarrollo de la función investigadora.
 ```
 
-### Ley 14/2011, artículo 23 bis · `BOE-A-2011-9617__a2-2` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2011-9617#a2-2
-_recuperado por:_ bge-m3/BASELINE#6 (0.571) · e5-base/BASELINE#8 (0.835) · e5-large-instruct/I1_LEGAL#13 (0.886) · e5-large-instruct/I2_CITIZEN_LEGISLATION#13 (0.886) · e5-large-instruct/I0_GENERIC#20 (0.870)  [5 sistemas]
-```
-  [1] Artículo 23 bis. Contrato de actividades científico-técnicas.
-  [2] 1. El objeto de los contratos de actividades científico-técnicas será la realización de actividades vinculadas a líneas de investigación o de servicios científico-técnicos, incluyendo la gestión científico-técnica de estas líneas que se definen como un conjunto de conocimientos, inquietudes, productos y proyectos, construidos de manera sistemática alrededor de un eje temático en el que confluyan actividades realizadas por uno o más grupos de investigación y requerirá su desarrollo siguiendo las pautas metodológicas adecuadas en forma de proyectos o contratos de I+D+I.
-  [3] 2. Los contratos de actividades científico-técnicas, de duración indefinida, no formarán parte de la Oferta de Empleo Público ni de los instrumentos similares de gestión de las necesidades de personal a que se refiere el artículo 70 del texto refundido de la Ley del Estatuto Básico del Empleado Público, ni su convocatoria estará limitada por la masa salarial del personal laboral.
-  [4] Para su celebración se exigirán los siguientes requisitos:
-  [5] a) El contrato se podrá celebrar con personal con título de Licenciatura, Ingeniería, Arquitectura, Diplomatura, Arquitectura Técnica, Ingeniería Técnica, Grado, Máster Universitario, Técnico/a Superior o Técnico/a, o con personal investigador con título de Doctor o Doctora. Asimismo, se podrá celebrar con personal cuya formación, experiencia y competencias sean acordes con los requisitos y tareas a desempeñar en la posición que se vaya a cubrir.
-  [6] b) Los procedimientos de selección del personal laboral previsto en este artículo se regirán en todo caso a través de convocatorias públicas en las que se garanticen los principios de igualdad, mérito, capacidad, publicidad y concurrencia.
-  [7] 3. En todo caso, cuando los contratos estén vinculados a financiación externa o financiación procedente de convocatorias de ayudas públicas en concurrencia competitiva en su totalidad, no requerirán del trámite de autorización previa.
-  [8] 4. En lo no previsto en este artículo, con especial referencia a sus derechos y obligaciones, serán de aplicación el texto refundido de la Ley del Estatuto Básico del Empleado Público y el texto refundido de la Ley del Estatuto de los Trabajadores, correspondiendo al personal contratado la indemnización que resulte procedente tras la finalización de la relación laboral.
-```
-
 ### Ley 14/2011, artículo 20 · `BOE-A-2011-9617__a20` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2011-9617#a20
-_recuperado por:_ e5-base/BASELINE#6 (0.842) · bge-m3/BASELINE#7 (0.570) · e5-large-instruct/I2_CITIZEN_LEGISLATION#15 (0.884) · e5-large-instruct/I0_GENERIC#16 (0.874) · e5-large-instruct/I1_LEGAL#16 (0.885)  [5 sistemas]
+_recuperado por:_ e5-base/BASELINE#6 (0.842) · bge-m3/BASELINE#7 (0.570) · hybrid_rrf/I0_GENERIC#11 (0.023) · e5-large-instruct/I2_CITIZEN_LEGISLATION#15 (0.884) · e5-large-instruct/I0_GENERIC#16 (0.874) · e5-large-instruct/I1_LEGAL#16 (0.885)  [6 sistemas]
 ```
   [1] Artículo 20. Modalidades contractuales.
   [2] 1. Las modalidades de contrato de trabajo específicas del personal investigador son las siguientes:
@@ -2803,6 +2904,33 @@ _recuperado por:_ e5-base/BASELINE#6 (0.842) · bge-m3/BASELINE#7 (0.570) · e5-
   [13] 3. En los Organismos Públicos de Investigación, los contratos laborales de duración determinada, en cualquiera de sus modalidades, estarán supeditados a las previsiones que las leyes anuales presupuestarias correspondientes determinen en relación con las autorizaciones para realizar este tipo de contratos. Los contratos fijos estarán supeditados a las previsiones de la Oferta de Empleo Público.
   [14] 4. La consecución de la titulación de doctorado pondrá fin a la etapa de formación del personal investigador, y a partir de ese momento dará comienzo la etapa postdoctoral. La fase inicial de esta etapa está orientada al perfeccionamiento y especialización profesional del personal investigador, y se podrá desarrollar, entre otros mecanismos, mediante procesos de movilidad y mediante contratación laboral.
   [15] 5. Los programas de ayudas de las Administraciones Públicas que tengan por objeto la realización de tareas de investigación en régimen de prestación de servicios por personal investigador que no sea laboral fijo o funcionario de carrera, deberán requerir la contratación laboral del personal por parte de las entidades beneficiarias de las ayudas para las que vaya a prestar servicios.
+```
+
+### Ley 14/2011, artículo 23 bis · `BOE-A-2011-9617__a2-2` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2011-9617#a2-2
+_recuperado por:_ bge-m3/BASELINE#6 (0.571) · e5-base/BASELINE#8 (0.835) · e5-large-instruct/I1_LEGAL#13 (0.886) · e5-large-instruct/I2_CITIZEN_LEGISLATION#13 (0.886) · e5-large-instruct/I0_GENERIC#20 (0.870)  [5 sistemas]
+```
+  [1] Artículo 23 bis. Contrato de actividades científico-técnicas.
+  [2] 1. El objeto de los contratos de actividades científico-técnicas será la realización de actividades vinculadas a líneas de investigación o de servicios científico-técnicos, incluyendo la gestión científico-técnica de estas líneas que se definen como un conjunto de conocimientos, inquietudes, productos y proyectos, construidos de manera sistemática alrededor de un eje temático en el que confluyan actividades realizadas por uno o más grupos de investigación y requerirá su desarrollo siguiendo las pautas metodológicas adecuadas en forma de proyectos o contratos de I+D+I.
+  [3] 2. Los contratos de actividades científico-técnicas, de duración indefinida, no formarán parte de la Oferta de Empleo Público ni de los instrumentos similares de gestión de las necesidades de personal a que se refiere el artículo 70 del texto refundido de la Ley del Estatuto Básico del Empleado Público, ni su convocatoria estará limitada por la masa salarial del personal laboral.
+  [4] Para su celebración se exigirán los siguientes requisitos:
+  [5] a) El contrato se podrá celebrar con personal con título de Licenciatura, Ingeniería, Arquitectura, Diplomatura, Arquitectura Técnica, Ingeniería Técnica, Grado, Máster Universitario, Técnico/a Superior o Técnico/a, o con personal investigador con título de Doctor o Doctora. Asimismo, se podrá celebrar con personal cuya formación, experiencia y competencias sean acordes con los requisitos y tareas a desempeñar en la posición que se vaya a cubrir.
+  [6] b) Los procedimientos de selección del personal laboral previsto en este artículo se regirán en todo caso a través de convocatorias públicas en las que se garanticen los principios de igualdad, mérito, capacidad, publicidad y concurrencia.
+  [7] 3. En todo caso, cuando los contratos estén vinculados a financiación externa o financiación procedente de convocatorias de ayudas públicas en concurrencia competitiva en su totalidad, no requerirán del trámite de autorización previa.
+  [8] 4. En lo no previsto en este artículo, con especial referencia a sus derechos y obligaciones, serán de aplicación el texto refundido de la Ley del Estatuto Básico del Empleado Público y el texto refundido de la Ley del Estatuto de los Trabajadores, correspondiendo al personal contratado la indemnización que resulte procedente tras la finalización de la relación laboral.
+```
+
+### Ley Orgánica 2/2023, artículo 77 · `BOE-A-2023-7500__a7-9` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2023-7500#a7-9
+_recuperado por:_ bm25/lexical#14 (16.290) · bge-m3/BASELINE#15 (0.548) · e5-base/BASELINE#16 (0.828) · hybrid_rrf/I0_GENERIC#16 (0.021)  [4 sistemas]
+```
+  [1] Artículo 77. Normas generales.
+  [2] 1. Las universidades públicas podrán contratar personal docente e investigador en régimen laboral, a través de las modalidades de contratación específicas del ámbito universitario que se regulan en esta ley orgánica.
+  [3] Asimismo, podrán contratar, con financiación interna de la universidad o con financiación externa, personal investigador en las modalidades de contrato predoctoral, contrato de acceso de personal investigador doctor, contrato de investigador/a distinguido/a y contrato de actividades científico-técnicas, en los términos previstos por la Ley 14/2011, de 1 de junio.
+  [4] 2. El régimen jurídico aplicable a estas modalidades de contratación laboral será el que se establece en esta ley orgánica y en sus normas de desarrollo y, supletoriamente, en el texto refundido de la Ley del Estatuto de los Trabajadores, aprobado por el Real Decreto Legislativo 2/2015, de 23 de octubre, y en sus normas de desarrollo, así como el derivado de los convenios colectivos aplicables y, en su caso, en el texto refundido de la Ley del Estatuto Básico del Empleado Público.
+  [5] 3. En relación con este personal, corresponde a las Comunidades Autónomas la regulación de las materias expresamente remitidas por esta ley orgánica y aquellas otras que pueden corresponderle en el ámbito de sus competencias.
+  [6] 4. El régimen de dedicación del personal laboral se ajustará, en todo caso, a los principios previstos en el artículo 75, salvo lo dispuesto en el artículo 79 respecto de la dedicación de las Profesoras y Profesores Asociados.
+  [7] 5. El personal docente e investigador laboral tendrá derecho a negociar sus condiciones retributivas con la universidad, quedando fijadas en los convenios y acuerdos específicos que se alcancen. Igualmente, tendrá derecho a tomar parte en las convocatorias que las Comunidades Autónomas establezcan para fijar retribuciones adicionales ligadas a méritos individuales por el ejercicio de actividades docentes, investigadoras, de transferencia del conocimiento, innovación o gestión.
 ```
 
 ### Ley 14/2011, artículo 23 · `BOE-A-2011-9617__a23` [sin juzgar]
@@ -2837,33 +2965,15 @@ _recuperado por:_ e5-large-instruct/I2_CITIZEN_LEGISLATION#9 (0.887) · bge-m3/B
   [10] Asimismo, cuando dichas situaciones dieran lugar a la reducción de la jornada, el contrato se prorrogará por el tiempo equivalente a la jornada que se hubiera reducido.
 ```
 
-### Ley 14/2011, artículo 32 bis · `BOE-A-2011-9617__a3-2` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2011-9617#a3-2
-_recuperado por:_ e5-base/BASELINE#10 (0.830) · e5-large-instruct/I0_GENERIC#14 (0.875)  [2 sistemas]
-```
-  [1] Artículo 32 bis. Contratos para la realización de proyectos y para la ejecución de planes y programas públicos de investigación científica y técnica o de innovación.
-  [2] Las universidades públicas podrán contratar personal técnico de apoyo a la investigación y a la transferencia de conocimiento de conformidad con lo dispuesto en el artículo 23 bis.
-```
-
 ---
 
 ## q92_050 · directa_articulo · single_parent
 **Pregunta:** Según la ley de servicios electrónicos de confianza, ¿cuánto puede durar como máximo la vigencia de un certificado electrónico cualificado?
 _split=test · difficulty=dificil · failure_mode=—_
 
-### Ley 6/2020, artículo 4 · `BOE-A-2020-14046__a4` [JUZGADO rel=2 reviewed]
-https://www.boe.es/buscar/act.php?id=BOE-A-2020-14046#a4
-_recuperado por:_ e5-base/BASELINE#1 (0.918) · e5-large-instruct/I0_GENERIC#1 (0.938) · e5-large-instruct/I1_LEGAL#1 (0.948) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.949) · bge-m3/BASELINE#3 (0.758)  [5 sistemas]
-```
-  [1] Artículo 4. Vigencia y caducidad de los certificados electrónicos.
-  [2] 1. Los certificados electrónicos se extinguen por caducidad a la expiración de su período de vigencia, o mediante revocación por los prestadores de servicios electrónicos de confianza en los supuestos previstos en el artículo siguiente.
-  [3] 2. El período de vigencia de los certificados cualificados no será superior a cinco años.
-  [4] Dicho período se fijará en atención a las características y tecnología empleada para generar los datos de creación de firma, sello, o autenticación de sitio web.
-```
-
 ### Ley 6/2020, [preambulo] · `BOE-A-2020-14046__pr` [JUZGADO rel=1 reviewed]
 https://www.boe.es/buscar/act.php?id=BOE-A-2020-14046#pr
-_recuperado por:_ bge-m3/BASELINE#1 (0.768) · e5-large-instruct/I0_GENERIC#2 (0.914) · e5-large-instruct/I1_LEGAL#2 (0.928) · e5-large-instruct/I2_CITIZEN_LEGISLATION#2 (0.929) · e5-base/BASELINE#3 (0.895)  [5 sistemas]
+_recuperado por:_ bge-m3/BASELINE#1 (0.768) · bm25/lexical#1 (47.161) · e5-large-instruct/I0_GENERIC#2 (0.914) · e5-large-instruct/I1_LEGAL#2 (0.928) · e5-large-instruct/I2_CITIZEN_LEGISLATION#2 (0.929) · e5-base/BASELINE#3 (0.895) · hybrid_rrf/I0_GENERIC#3 (0.030)  [7 sistemas]
 ```
   [1] FELIPE VI
   [2] REY DE ESPAÑA
@@ -2911,30 +3021,19 @@ _recuperado por:_ bge-m3/BASELINE#1 (0.768) · e5-large-instruct/I0_GENERIC#2 (0
   [44] Finalmente las disposiciones finales sexta y séptima se refieren al desarrollo reglamentario de la Ley y a su entrada en vigor, respectivamente.
 ```
 
-### Ley 6/2020, artículo 9 · `BOE-A-2020-14046__a9` [JUZGADO rel=0 draft]
-https://www.boe.es/buscar/act.php?id=BOE-A-2020-14046#a9
-_recuperado por:_ bge-m3/BASELINE#2 (0.760) · e5-base/BASELINE#2 (0.908) · e5-large-instruct/I0_GENERIC#3 (0.904) · e5-large-instruct/I1_LEGAL#3 (0.921) · e5-large-instruct/I2_CITIZEN_LEGISLATION#3 (0.923)  [5 sistemas]
+### Ley 6/2020, artículo 4 · `BOE-A-2020-14046__a4` [JUZGADO rel=2 reviewed]
+https://www.boe.es/buscar/act.php?id=BOE-A-2020-14046#a4
+_recuperado por:_ e5-base/BASELINE#1 (0.918) · e5-large-instruct/I0_GENERIC#1 (0.938) · e5-large-instruct/I1_LEGAL#1 (0.948) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.949) · hybrid_rrf/I0_GENERIC#1 (0.032) · bge-m3/BASELINE#3 (0.758) · bm25/lexical#3 (42.945)  [7 sistemas]
 ```
-  [1] Artículo 9. Obligaciones de los prestadores de servicios electrónicos de confianza.
-  [2] 1. Los prestadores de servicios electrónicos de confianza deberán:
-  [3] a) Publicar información veraz y acorde con esta Ley y el Reglamento (UE) 910/2014.
-  [4] b) No almacenar ni copiar, por sí o a través de un tercero, los datos de creación de firma, sello o autenticación de sitio web de la persona física o jurídica a la que hayan prestado sus servicios, salvo en caso de su gestión en nombre del titular.
-  [5] En este caso, utilizarán sistemas y productos fiables, incluidos canales de comunicación electrónica seguros, y se aplicarán procedimientos y mecanismos técnicos y organizativos adecuados, para garantizar que el entorno sea fiable y se utilice bajo el control exclusivo del titular del certificado. Además, deberán custodiar y proteger los datos de creación de firma, sello o autenticación de sitio web frente a cualquier alteración, destrucción o acceso no autorizado, así como garantizar su continua disponibilidad.
-  [6] 2. Los prestadores de servicios de confianza que expidan certificados electrónicos deberán disponer de un servicio de consulta sobre el estado de validez o revocación de los certificados emitidos accesible al público.
-  [7] 3. Los prestadores cualificados de servicios electrónicos de confianza deberán cumplir las siguientes obligaciones adicionales:
-  [8] a) El período de tiempo durante el que deberán conservar la información relativa a los servicios prestados de acuerdo con el artículo 24.2.h) del Reglamento (UE) 910/2014, será de 15 años desde la extinción del certificado o la finalización del servicio prestado.
-  [9] En caso de que expidan certificados cualificados de sello electrónico o autenticación de sitio web a personas jurídicas, los prestadores de servicios de confianza registrarán también la información que permita determinar la identidad de la persona física a la que se hayan entregado los citados certificados, para su identificación en procedimientos judiciales o administrativos.
-  [10] b) Constituir un seguro de responsabilidad civil por importe mínimo de 1.500.000 euros, excepto si el prestador pertenece al sector público. Si presta más de un servicio cualificado de los previstos en el Reglamento (UE) 910/2014, se añadirán 500.000 euros más por cada tipo de servicio.
-  [11] La citada garantía podrá ser sustituida total o parcialmente por una garantía mediante aval bancario o seguro de caución, de manera que la suma de las cantidades aseguradas sea coherente con lo dispuesto en el párrafo anterior.
-  [12] Las cuantías y los medios de aseguramiento y garantía establecidos en los dos párrafos anteriores podrán ser modificados mediante real decreto.
-  [13] c) El prestador cualificado que vaya a cesar en su actividad deberá comunicarlo a los clientes a los que preste sus servicios y al órgano de supervisión con una antelación mínima de dos meses al cese efectivo de la actividad, por un medio que acredite la entrega y recepción efectiva siempre que sea factible. El plan de cese del prestador de servicios puede incluir la transferencia de clientes, una vez acreditada la ausencia de oposición de los mismos, a otro prestador cualificado, el cual podrá conservar la información relativa a los servicios prestados hasta entonces.
-  [14] Igualmente, comunicará al órgano de supervisión cualquier otra circunstancia relevante que pueda impedir la continuación de su actividad. En especial, deberá comunicar, en cuanto tenga conocimiento de ello, la apertura de cualquier proceso concursal que se siga contra él.
-  [15] d) Enviar el informe de evaluación de la conformidad al Ministerio de Asuntos Económicos y Transformación Digital en los términos previstos en el artículo 20.1 del Reglamento (UE) 910/2014. El incumplimiento de esta obligación conllevará la retirada de la cualificación al prestador y al servicio que este presta, y su eliminación de la lista de confianza prevista en el artículo 22 del citado Reglamento, previo requerimiento al prestador del servicio para que cese en el citado incumplimiento.
+  [1] Artículo 4. Vigencia y caducidad de los certificados electrónicos.
+  [2] 1. Los certificados electrónicos se extinguen por caducidad a la expiración de su período de vigencia, o mediante revocación por los prestadores de servicios electrónicos de confianza en los supuestos previstos en el artículo siguiente.
+  [3] 2. El período de vigencia de los certificados cualificados no será superior a cinco años.
+  [4] Dicho período se fijará en atención a las características y tecnología empleada para generar los datos de creación de firma, sello, o autenticación de sitio web.
 ```
 
 ### Ley 6/2020, artículo 11 · `BOE-A-2020-14046__a1-3` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2020-14046#a1-3
-_recuperado por:_ e5-large-instruct/I0_GENERIC#4 (0.900) · e5-large-instruct/I1_LEGAL#5 (0.912) · e5-large-instruct/I2_CITIZEN_LEGISLATION#5 (0.912) · bge-m3/BASELINE#7 (0.700) · e5-base/BASELINE#10 (0.880)  [5 sistemas]
+_recuperado por:_ hybrid_rrf/I0_GENERIC#2 (0.031) · e5-large-instruct/I0_GENERIC#4 (0.900) · e5-large-instruct/I1_LEGAL#5 (0.912) · e5-large-instruct/I2_CITIZEN_LEGISLATION#5 (0.912) · bge-m3/BASELINE#7 (0.700) · bm25/lexical#7 (39.537) · e5-base/BASELINE#10 (0.880)  [7 sistemas]
 ```
   [1] Artículo 11. Limitaciones de responsabilidad de los prestadores de servicios electrónicos de confianza.
   [2] 1. El prestador de servicios electrónicos de confianza no será responsable de los daños y perjuicios ocasionados a la persona a la que ha prestado sus servicios o a terceros de buena fe, si esta incurre en alguno de los supuestos previstos en el Reglamento (UE) 910/2014 o en los siguientes:
@@ -2949,7 +3048,7 @@ _recuperado por:_ e5-large-instruct/I0_GENERIC#4 (0.900) · e5-large-instruct/I1
 
 ### Ley 6/2020, artículo 5 · `BOE-A-2020-14046__a5` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2020-14046#a5
-_recuperado por:_ e5-large-instruct/I0_GENERIC#5 (0.899) · e5-large-instruct/I1_LEGAL#6 (0.909) · e5-large-instruct/I2_CITIZEN_LEGISLATION#6 (0.909) · e5-base/BASELINE#7 (0.886) · bge-m3/BASELINE#8 (0.698)  [5 sistemas]
+_recuperado por:_ e5-large-instruct/I0_GENERIC#5 (0.899) · e5-large-instruct/I1_LEGAL#6 (0.909) · e5-large-instruct/I2_CITIZEN_LEGISLATION#6 (0.909) · e5-base/BASELINE#7 (0.886) · hybrid_rrf/I0_GENERIC#7 (0.028) · bge-m3/BASELINE#8 (0.698) · bm25/lexical#13 (38.346)  [7 sistemas]
 ```
   [1] Artículo 5. Revocación y suspensión de los certificados electrónicos.
   [2] 1. Los prestadores de servicios electrónicos de confianza extinguirán la vigencia de los certificados electrónicos mediante revocación en los siguientes supuestos:
@@ -2969,7 +3068,7 @@ _recuperado por:_ e5-large-instruct/I0_GENERIC#5 (0.899) · e5-large-instruct/I1
 
 ### Ley 6/2020, artículo 7 · `BOE-A-2020-14046__a7` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2020-14046#a7
-_recuperado por:_ e5-base/BASELINE#5 (0.890) · bge-m3/BASELINE#9 (0.694) · e5-large-instruct/I0_GENERIC#11 (0.888) · e5-large-instruct/I1_LEGAL#11 (0.901) · e5-large-instruct/I2_CITIZEN_LEGISLATION#11 (0.901)  [5 sistemas]
+_recuperado por:_ e5-base/BASELINE#5 (0.890) · bge-m3/BASELINE#9 (0.694) · e5-large-instruct/I0_GENERIC#11 (0.888) · e5-large-instruct/I1_LEGAL#11 (0.901) · e5-large-instruct/I2_CITIZEN_LEGISLATION#11 (0.901) · hybrid_rrf/I0_GENERIC#12 (0.027) · bm25/lexical#15 (36.859)  [7 sistemas]
 ```
   [1] Artículo 7. Comprobación de la identidad y otras circunstancias de los solicitantes de un certificado cualificado.
   [2] 1. La identificación de la persona física que solicite un certificado cualificado exigirá su personación ante los encargados de verificarla y se acreditará mediante el Documento Nacional de Identidad, pasaporte u otros medios admitidos en Derecho. Podrá prescindirse de la personación de la persona física que solicite un certificado cualificado si su firma en la solicitud de expedición de un certificado cualificado ha sido legitimada en presencia notarial.
@@ -2984,25 +3083,36 @@ _recuperado por:_ e5-base/BASELINE#5 (0.890) · bge-m3/BASELINE#9 (0.694) · e5-
 
 ### Ley 6/2020, artículo 10 · `BOE-A-2020-14046__a1-2` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2020-14046#a1-2
-_recuperado por:_ e5-large-instruct/I0_GENERIC#7 (0.896) · e5-large-instruct/I1_LEGAL#15 (0.895) · e5-large-instruct/I2_CITIZEN_LEGISLATION#17 (0.893) · e5-base/BASELINE#19 (0.869)  [4 sistemas]
+_recuperado por:_ hybrid_rrf/I0_GENERIC#4 (0.029) · e5-large-instruct/I0_GENERIC#7 (0.896) · bm25/lexical#10 (39.083) · e5-large-instruct/I1_LEGAL#15 (0.895) · e5-large-instruct/I2_CITIZEN_LEGISLATION#17 (0.893) · e5-base/BASELINE#19 (0.869)  [6 sistemas]
 ```
   [1] Artículo 10. Responsabilidad de los prestadores de servicios electrónicos de confianza.
   [2] Los prestadores de servicios electrónicos de confianza asumirán toda la responsabilidad frente a terceros por la actuación de las personas u otros prestadores en los que deleguen la ejecución de alguna o algunas de las funciones necesarias para la prestación de servicios electrónicos de confianza, incluyendo las actuaciones de comprobación de identidad previas a la expedición de un certificado cualificado.
 ```
 
-### Ley 6/2020, artículo 16 · `BOE-A-2020-14046__a1-8` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2020-14046#a1-8
-_recuperado por:_ e5-large-instruct/I1_LEGAL#13 (0.899) · e5-large-instruct/I2_CITIZEN_LEGISLATION#13 (0.899) · e5-large-instruct/I0_GENERIC#16 (0.883)  [3 sistemas]
+### Ley 6/2020, artículo 9 · `BOE-A-2020-14046__a9` [JUZGADO rel=0 draft]
+https://www.boe.es/buscar/act.php?id=BOE-A-2020-14046#a9
+_recuperado por:_ bge-m3/BASELINE#2 (0.760) · e5-base/BASELINE#2 (0.908) · e5-large-instruct/I0_GENERIC#3 (0.904) · e5-large-instruct/I1_LEGAL#3 (0.921) · e5-large-instruct/I2_CITIZEN_LEGISLATION#3 (0.923) · hybrid_rrf/I0_GENERIC#8 (0.028)  [6 sistemas]
 ```
-  [1] Artículo 16. Mantenimiento de la lista de confianza.
-  [2] 1. El Ministerio de Asuntos Económicos y Transformación Digital establecerá, mantendrá y publicará la lista de confianza con información relativa a los prestadores cualificados de servicios de confianza sujetos a esta Ley, junto con la información relacionada con los servicios de confianza cualificados prestados por ellos, según lo previsto en el artículo 22 del Reglamento (UE) 910/2014.
-  [3] 2. El plazo máximo para dictar y notificar resolución en el procedimiento de verificación previa de cumplimiento de los requisitos establecidos en el citado Reglamento será de 6 meses, transcurridos los cuales se podrá entender desestimada la solicitud.
-  [4] 3. La revocación de la cualificación a un prestador o a un servicio mediante su retirada de la lista de confianza es independiente de la aplicación del régimen sancionador.
+  [1] Artículo 9. Obligaciones de los prestadores de servicios electrónicos de confianza.
+  [2] 1. Los prestadores de servicios electrónicos de confianza deberán:
+  [3] a) Publicar información veraz y acorde con esta Ley y el Reglamento (UE) 910/2014.
+  [4] b) No almacenar ni copiar, por sí o a través de un tercero, los datos de creación de firma, sello o autenticación de sitio web de la persona física o jurídica a la que hayan prestado sus servicios, salvo en caso de su gestión en nombre del titular.
+  [5] En este caso, utilizarán sistemas y productos fiables, incluidos canales de comunicación electrónica seguros, y se aplicarán procedimientos y mecanismos técnicos y organizativos adecuados, para garantizar que el entorno sea fiable y se utilice bajo el control exclusivo del titular del certificado. Además, deberán custodiar y proteger los datos de creación de firma, sello o autenticación de sitio web frente a cualquier alteración, destrucción o acceso no autorizado, así como garantizar su continua disponibilidad.
+  [6] 2. Los prestadores de servicios de confianza que expidan certificados electrónicos deberán disponer de un servicio de consulta sobre el estado de validez o revocación de los certificados emitidos accesible al público.
+  [7] 3. Los prestadores cualificados de servicios electrónicos de confianza deberán cumplir las siguientes obligaciones adicionales:
+  [8] a) El período de tiempo durante el que deberán conservar la información relativa a los servicios prestados de acuerdo con el artículo 24.2.h) del Reglamento (UE) 910/2014, será de 15 años desde la extinción del certificado o la finalización del servicio prestado.
+  [9] En caso de que expidan certificados cualificados de sello electrónico o autenticación de sitio web a personas jurídicas, los prestadores de servicios de confianza registrarán también la información que permita determinar la identidad de la persona física a la que se hayan entregado los citados certificados, para su identificación en procedimientos judiciales o administrativos.
+  [10] b) Constituir un seguro de responsabilidad civil por importe mínimo de 1.500.000 euros, excepto si el prestador pertenece al sector público. Si presta más de un servicio cualificado de los previstos en el Reglamento (UE) 910/2014, se añadirán 500.000 euros más por cada tipo de servicio.
+  [11] La citada garantía podrá ser sustituida total o parcialmente por una garantía mediante aval bancario o seguro de caución, de manera que la suma de las cantidades aseguradas sea coherente con lo dispuesto en el párrafo anterior.
+  [12] Las cuantías y los medios de aseguramiento y garantía establecidos en los dos párrafos anteriores podrán ser modificados mediante real decreto.
+  [13] c) El prestador cualificado que vaya a cesar en su actividad deberá comunicarlo a los clientes a los que preste sus servicios y al órgano de supervisión con una antelación mínima de dos meses al cese efectivo de la actividad, por un medio que acredite la entrega y recepción efectiva siempre que sea factible. El plan de cese del prestador de servicios puede incluir la transferencia de clientes, una vez acreditada la ausencia de oposición de los mismos, a otro prestador cualificado, el cual podrá conservar la información relativa a los servicios prestados hasta entonces.
+  [14] Igualmente, comunicará al órgano de supervisión cualquier otra circunstancia relevante que pueda impedir la continuación de su actividad. En especial, deberá comunicar, en cuanto tenga conocimiento de ello, la apertura de cualquier proceso concursal que se siga contra él.
+  [15] d) Enviar el informe de evaluación de la conformidad al Ministerio de Asuntos Económicos y Transformación Digital en los términos previstos en el artículo 20.1 del Reglamento (UE) 910/2014. El incumplimiento de esta obligación conllevará la retirada de la cualificación al prestador y al servicio que este presta, y su eliminación de la lista de confianza prevista en el artículo 22 del citado Reglamento, previo requerimiento al prestador del servicio para que cese en el citado incumplimiento.
 ```
 
 ### Ley 39/2015, artículo 10 · `BOE-A-2015-10565__a10` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2015-10565#a10
-_recuperado por:_ e5-large-instruct/I2_CITIZEN_LEGISLATION#16 (0.895) · e5-large-instruct/I1_LEGAL#17 (0.894) · e5-large-instruct/I0_GENERIC#20 (0.881)  [3 sistemas]
+_recuperado por:_ bm25/lexical#6 (39.773) · e5-large-instruct/I2_CITIZEN_LEGISLATION#16 (0.895) · e5-large-instruct/I1_LEGAL#17 (0.894) · e5-large-instruct/I0_GENERIC#20 (0.881)  [4 sistemas]
 ```
   [1] Artículo 10. Sistemas de firma admitidos por las Administraciones Públicas.
   [2] 1. Los interesados podrán firmar a través de cualquier medio que permita acreditar la autenticidad de la expresión de su voluntad y consentimiento, así como la integridad e inalterabilidad del documento.
@@ -3017,33 +3127,48 @@ _recuperado por:_ e5-large-instruct/I2_CITIZEN_LEGISLATION#16 (0.895) · e5-larg
   [11] 5. Cuando los interesados utilicen un sistema de firma de los previstos en este artículo, su identidad se entenderá ya acreditada mediante el propio acto de la firma.
 ```
 
-### Ley 56/2007, artículo 5 · `BOE-A-2007-22440__a5` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2007-22440#a5
-_recuperado por:_ e5-large-instruct/I1_LEGAL#20 (0.889) · e5-large-instruct/I2_CITIZEN_LEGISLATION#20 (0.889)  [2 sistemas]
+### Ley 6/2020, artículo 16 · `BOE-A-2020-14046__a1-8` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2020-14046#a1-8
+_recuperado por:_ e5-large-instruct/I1_LEGAL#13 (0.899) · e5-large-instruct/I2_CITIZEN_LEGISLATION#13 (0.899) · e5-large-instruct/I0_GENERIC#16 (0.883) · hybrid_rrf/I0_GENERIC#19 (0.023)  [4 sistemas]
 ```
-  [1] Artículo 5. Modificaciones de la Ley 59/2003, de 19 de diciembre, de firma electrónica.
-  [2] Se modifica la Ley 59/2003, de 19 de diciembre, de firma electrónica, en los siguientes aspectos:
-  [3] Uno. Se da nueva redacción al apartado 5 del artículo 3, con el texto siguiente:
-  [4] «5. Se considera documento electrónico la información de cualquier naturaleza en forma electrónica, archivada en un soporte electrónico según un formato determinado y susceptible de identificación y tratamiento diferenciado.
-  [5] Sin perjuicio de lo dispuesto en el párrafo anterior, para que un documento electrónico tenga la naturaleza de documento público o de documento administrativo deberá cumplirse, respectivamente, con lo dispuesto en las letras a) o b) del apartado siguiente y, en su caso, en la normativa específica aplicable.»
-  [6] Dos. Se da nueva redacción al apartado 8 del artículo 3, con el texto siguiente:
-  [7] «8. El soporte en que se hallen los datos firmados electrónicamente será admisible como prueba documental en juicio. Si se impugnare la autenticidad de la firma electrónica reconocida con la que se hayan firmado los datos incorporados al documento electrónico se procederá a comprobar que se trata de una firma electrónica avanzada basada en un certificado reconocido, que cumple todos los requisitos y condiciones establecidos en esta Ley para este tipo de certificados, así como que la firma se ha generado mediante un dispositivo seguro de creación de firma electrónica.
-  [8] La carga de realizar las citadas comprobaciones corresponderá a quien haya presentado el documento electrónico firmado con firma electrónica reconocida. Si dichas comprobaciones obtienen un resultado positivo, se presumirá la autenticidad de la firma electrónica reconocida con la que se haya firmado dicho documento electrónico siendo las costas, gastos y derechos que origine la comprobación exclusivamente a cargo de quien hubiese formulado la impugnación. Si, a juicio del tribunal, la impugnación hubiese sido temeraria, podrá imponerle, además, una multa de 120 a 600 euros.
-  [9] Si se impugna la autenticidad de la firma electrónica avanzada, con la que se hayan firmado los datos incorporados al documento electrónico, se estará a lo establecido en el apartado 2 del artículo 326 de la Ley de Enjuiciamiento Civil.»
-  [10] Tres. Se da nueva redacción a los apartados 2 y 3 del artículo 13, con el texto siguiente:
-  [11] «2. En el caso de certificados reconocidos de personas jurídicas, los prestadores de servicios de certificación comprobarán, además, los datos relativos a la constitución y personalidad jurídica y a la extensión y vigencia de las facultades de representación del solicitante mediante los documentos públicos que sirvan para acreditar los extremos citados de manera fehaciente y su inscripción en el correspondiente registro público si así resulta exigible. La citada comprobación podrá realizarse, asimismo, mediante consulta en el registro público en el que estén inscritos los documentos de constitución y d4e apoderamiento, pudiendo emplear los medios telemáticos facilitados por los citados registros públicos.
-  [12] 3. Si los certificados reconocidos reflejan una relación de representación voluntaria, los prestadores de servicios de certificación comprobarán los datos relativos a la personalidad jurídica del representado y a la extensión y vigencia de las facultades del representante mediante los documentos públicos que sirvan para acreditar los extremos citados de manera fehaciente y su inscripción en el correspondiente registro público si así resulta exigible. La citada comprobación podrá realizarse, asimismo, mediante consulta en el registro público en el que estén inscritos los mencionados datos, pudiendo emplear los medios telemáticos facilitados por los citados registros públicos.
-  [13] Si los certificados reconocidos admiten otros supuestos de representación, los prestadores de servicios de certificación deberán exigir la acreditación de las circunstancias en las que se fundamenten, en la misma forma prevista anteriormente.
-  [14] Cuando el certificado reconocido contenga otras circunstancias personales o atributos del solicitante, como su condición de titular de un cargo público, su pertenencia a un colegio profesional o su titulación, éstas deberán comprobarse mediante los documentos oficiales que las acrediten, de conformidad con su normativa específica.»
-  [15] Cuatro. Se da nueva redacción al apartado 5 del artículo 23, con el texto siguiente:
-  [16] «5. El prestador de servicios de certificación no será responsable de los daños y perjuicios ocasionados al firmante o terceros de buena fe por la inexactitud de los datos que consten en el certificado electrónico si éstos le han sido acreditados mediante documento público, inscrito en un registro público si así resulta exigible. En caso de que dichos datos deban figurar inscritos en un registro público, el prestador de servicios de certificación podrá, en su caso, comprobarlos en el citado registro antes de la expedición del certificado, pudiendo emplear los medios telemáticos facilitados por los citados registros públicos.»
-  [17] Cinco. Se da nueva redacción al apartado 4 del artículo 31, con el texto siguiente:
-  [18] «4. Constituyen infracciones leves:
-  [19] El incumplimiento por los prestadores de servicios de certificación que no expidan certificados reconocidos de las obligaciones establecidas en el artículo 18; y el incumplimiento por los prestadores de servicios de certificación de las restantes obligaciones establecidas en esta Ley, cuando no constituya infracción grave o muy grave, con excepción de las obligaciones contenidas en el apartado 2 del artículo 30.»
-  [20] Seis. Se añade una disposición adicional, con la siguiente redacción:
-  [21] «Disposición adicional undécima. Resolución de conflictos.
-  [22] Los usuarios y prestadores de servicios de certificación podrán someter los conflictos que se susciten en sus relaciones al arbitraje.
-  [23] Cuando el usuario tenga la condición de consumidor o usuario, en los términos establecidos por la legislación de protección de los consumidores, el prestador y el usuario podrán someter sus conflictos al arbitraje de consumo, mediante la adhesión de aquéllos al Sistema Arbitral de Consumo competente.»
+  [1] Artículo 16. Mantenimiento de la lista de confianza.
+  [2] 1. El Ministerio de Asuntos Económicos y Transformación Digital establecerá, mantendrá y publicará la lista de confianza con información relativa a los prestadores cualificados de servicios de confianza sujetos a esta Ley, junto con la información relacionada con los servicios de confianza cualificados prestados por ellos, según lo previsto en el artículo 22 del Reglamento (UE) 910/2014.
+  [3] 2. El plazo máximo para dictar y notificar resolución en el procedimiento de verificación previa de cumplimiento de los requisitos establecidos en el citado Reglamento será de 6 meses, transcurridos los cuales se podrá entender desestimada la solicitud.
+  [4] 3. La revocación de la cualificación a un prestador o a un servicio mediante su retirada de la lista de confianza es independiente de la aplicación del régimen sancionador.
+```
+
+### Ley 6/2020, artículo 18 · `BOE-A-2020-14046__a1-10` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2020-14046#a1-10
+_recuperado por:_ bm25/lexical#4 (39.978) · e5-base/BASELINE#14 (0.873) · hybrid_rrf/I0_GENERIC#16 (0.025)  [3 sistemas]
+```
+  [1] Artículo 18. Infracciones.
+  [2] 1. Las infracciones de los preceptos del Reglamento (UE) 910/2014 y de esta Ley se clasifican en muy graves, graves y leves.
+  [3] 2. Son infracciones muy graves:
+  [4] a) La comisión de una infracción grave en el plazo de dos años desde que hubiese sido sancionado por una infracción grave de la misma naturaleza, contados desde que recaiga la resolución sancionadora firme.
+  [5] b) La expedición de certificados cualificados sin realizar todas las comprobaciones previas relativas a la identidad u otras circunstancias del titular del certificado o al poder de representación de quien lo solicita en su nombre, señaladas en el Reglamento (UE) 910/2014 y en esta Ley, cuando ello afecte a la mayoría de los certificados cualificados expedidos en el año anterior al inicio del procedimiento sancionador o desde el inicio de la actividad del prestador si este periodo es menor.
+  [6] 3. Son infracciones graves:
+  [7] a) La resistencia, obstrucción, excusa o negativa a la actuación inspectora de los órganos facultados para llevarla a cabo con arreglo a esta Ley.
+  [8] b) Actuar en el mercado como prestador cualificado de servicios de confianza, ofrecer servicios de confianza como cualificados o utilizar la etiqueta de confianza «UE» sin haber obtenido la cualificación de los citados servicios.
+  [9] c) En caso de que el prestador expida certificados electrónicos, almacenar o copiar, por sí o a través de un tercero, los datos de creación de firma, sello o autenticación de sitio web de la persona física o jurídica a la que hayan prestado sus servicios, salvo en caso de su gestión en nombre del titular.
+  [10] d) No proteger adecuadamente los datos de creación de firma, sello o autenticación de sitio web cuya gestión se le haya encomendado en la forma establecida en el artículo 9.1.b) de esta Ley.
+  [11] e) No registrar o conservar la información a la que se refiere el artículo 9.3.a) de esta Ley.
+  [12] f) El incumplimiento de la obligación de notificación de incidentes establecida en el artículo 19.2 del Reglamento (UE) 910/2014, en los términos previstos en el artículo 13 de esta Ley.
+  [13] g) En caso de prestadores cualificados de servicios de confianza, el incumplimiento de alguna de las obligaciones establecidas en los artículos 24.2, letras b), c), d), e), f), g), h), y k), 24.3 y 24.4 del Reglamento (UE) 910/2014, con las precisiones establecidas, en su caso, por esta Ley.
+  [14] h) La expedición de certificados cualificados sin realizar todas las comprobaciones previas relativas a la identidad u otras circunstancias del titular del certificado o al poder de representación de quien lo solicita en su nombre, señaladas en el Reglamento (UE) 910/2014 y en esta Ley, cuando no constituya infracción muy grave.
+  [15] i) La ausencia de adopción de medidas, o la adopción de medidas insuficientes, para la resolución de los incidentes de seguridad en los productos, redes y sistemas de información, en el plazo de diez días desde que aquellos se hubieren producido.
+  [16] j) El incumplimiento de las resoluciones dictadas por el Ministerio de Asuntos Económicos y Transformación Digital para requerir a un prestador de servicios de confianza que corrija cualquier incumplimiento de los requisitos establecidos en esta Ley y en el Reglamento (UE) 910/2014.
+  [17] k) La falta o deficiente presentación de información solicitada por parte del Ministerio de Asuntos Económicos y Transformación Digital en su función de inspección y control, a partir del segundo requerimiento.
+  [18] l) No cumplir con las obligaciones de constatar la verdadera identidad del titular de un certificado electrónico y de conservar la documentación que la acredite, en caso de consignación de un pseudónimo.
+  [19] m) El incumplimiento por parte de los prestadores cualificados y no cualificados de servicios de confianza de la obligación establecida en el artículo 19.1 del Reglamento (UE) 910/2014 de adoptar las medidas técnicas y organizativas adecuadas para gestionar los riesgos para la seguridad de los servicios de confianza que presten.
+  [20] n) No extinguir la vigencia de los certificados electrónicos en los supuestos señalados en esta Ley.
+  [21] o) La prestación de servicios cualificados careciendo del correspondiente seguro obligatorio, en los términos previstos en el artículo 9.3.b) de esta Ley.
+  [22] 4. Constituyen infracciones leves:
+  [23] a) Publicar información no veraz o no acorde con esta Ley y el Reglamento (UE) 910/2014.
+  [24] b) No comunicar el inicio de actividad, su modificación o cese por los prestadores de servicios no cualificados en el plazo establecido en el artículo 12 de esta Ley.
+  [25] c) El incumplimiento por los prestadores cualificados de servicios de confianza de alguna de las obligaciones establecidas en el artículo 24.2, letras a) e i) del Reglamento (UE) 910/2014.
+  [26] d) El incumplimiento por los prestadores cualificados de servicios de confianza de su obligación de remitir un informe anual de actividad al Ministerio de Asuntos Económicos y Transformación Digital antes del 1 de febrero de cada año.
+  [27] e) El incumplimiento del deber de comunicación establecido en el artículo 9.3.c) de esta Ley.
+  [28] f) La falta o deficiente presentación de información solicitada por parte del Ministerio de Asuntos Económicos y Transformación Digital en su función de inspección y control.
 ```
 
 ---
@@ -3054,7 +3179,7 @@ _split=test · difficulty=media · failure_mode=—_
 
 ### Ley Orgánica 10/1995, artículo 163 · `BOE-A-1995-25444__a163` [JUZGADO rel=0 draft]
 https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444#a163
-_recuperado por:_ bge-m3/BASELINE#1 (0.644) · e5-large-instruct/I1_LEGAL#1 (0.888) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.886) · e5-base/BASELINE#2 (0.844) · e5-large-instruct/I0_GENERIC#2 (0.862)  [5 sistemas]
+_recuperado por:_ bge-m3/BASELINE#1 (0.644) · e5-large-instruct/I1_LEGAL#1 (0.888) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.886) · e5-base/BASELINE#2 (0.844) · e5-large-instruct/I0_GENERIC#2 (0.862) · hybrid_rrf/I0_GENERIC#5 (0.016)  [6 sistemas]
 ```
   [1] Artículo 163.
   [2] 1. El particular que encerrare o detuviere a otro, privándole de su libertad, será castigado con la pena de prisión de cuatro a seis años.
@@ -3087,7 +3212,7 @@ _recuperado por:_ bge-m3/BASELINE#2 (0.628) · e5-large-instruct/I2_CITIZEN_LEGI
 
 ### Ley Orgánica 4/2015, artículo 16 · `BOE-A-2015-3442__a16` [JUZGADO rel=0 draft]
 https://www.boe.es/buscar/act.php?id=BOE-A-2015-3442#a16
-_recuperado por:_ e5-base/BASELINE#1 (0.846) · e5-large-instruct/I0_GENERIC#1 (0.866) · e5-large-instruct/I1_LEGAL#4 (0.886) · e5-large-instruct/I2_CITIZEN_LEGISLATION#4 (0.883)  [4 sistemas]
+_recuperado por:_ e5-base/BASELINE#1 (0.846) · e5-large-instruct/I0_GENERIC#1 (0.866) · e5-large-instruct/I1_LEGAL#4 (0.886) · e5-large-instruct/I2_CITIZEN_LEGISLATION#4 (0.883) · hybrid_rrf/I0_GENERIC#4 (0.016)  [5 sistemas]
 ```
   [1] Artículo 16. Identificación de personas.
   [2] 1. En el cumplimiento de sus funciones de indagación y prevención delictiva, así como para la sanción de infracciones penales y administrativas, los agentes de las Fuerzas y Cuerpos de Seguridad podrán requerir la identificación de las personas en los siguientes supuestos:
@@ -3104,10 +3229,34 @@ _recuperado por:_ e5-base/BASELINE#1 (0.846) · e5-large-instruct/I0_GENERIC#1 (
 
 ### Ley Orgánica 10/1995, artículo 531 · `BOE-A-1995-25444__a531` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444#a531
-_recuperado por:_ e5-large-instruct/I0_GENERIC#4 (0.861) · e5-large-instruct/I2_CITIZEN_LEGISLATION#6 (0.878) · e5-large-instruct/I1_LEGAL#7 (0.880) · bge-m3/BASELINE#12 (0.579)  [4 sistemas]
+_recuperado por:_ e5-large-instruct/I0_GENERIC#4 (0.861) · e5-large-instruct/I2_CITIZEN_LEGISLATION#6 (0.878) · e5-large-instruct/I1_LEGAL#7 (0.880) · hybrid_rrf/I0_GENERIC#10 (0.016) · bge-m3/BASELINE#12 (0.579)  [5 sistemas]
 ```
   [1] Artículo 531.
   [2] La autoridad o funcionario público que, mediando causa por delito, decretare, practicare o prolongare la incomunicación de un detenido, preso o sentenciado, con violación de los plazos o demás garantías constitucionales o legales, será castigado con la pena de inhabilitación especial para empleo o cargo público por tiempo de dos a seis años.
+```
+
+### Ley Orgánica 10/1995, artículo 635 · `BOE-A-1995-25444__a635` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444#a635
+_recuperado por:_ e5-large-instruct/I0_GENERIC#9 (0.860) · e5-base/BASELINE#12 (0.834) · e5-large-instruct/I1_LEGAL#12 (0.874) · e5-large-instruct/I2_CITIZEN_LEGISLATION#13 (0.871) · hybrid_rrf/I0_GENERIC#19 (0.014)  [5 sistemas]
+```
+  [1] Artículo 635.
+  [2] Será castigado con la pena de localización permanente de dos a 10 días o multa de uno a dos meses el que se mantuviere contra la voluntad de su titular, fuera de las horas de apertura, en el domicilio de una persona jurídica pública o privada, despacho profesional u oficina o establecimiento mercantil o local abierto al público.
+```
+
+### Ley Orgánica 10/1995, artículo 537 · `BOE-A-1995-25444__a537` [JUZGADO rel=0 draft]
+https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444#a537
+_recuperado por:_ e5-large-instruct/I0_GENERIC#3 (0.862) · e5-large-instruct/I1_LEGAL#6 (0.880) · hybrid_rrf/I0_GENERIC#7 (0.016) · e5-large-instruct/I2_CITIZEN_LEGISLATION#8 (0.877)  [4 sistemas]
+```
+  [1] Artículo 537.
+  [2] La autoridad o funcionario público que impida u obstaculice el derecho a la asistencia de abogado al detenido o preso, procure o favorezca la renuncia del mismo a dicha asistencia o no le informe de forma inmediata y de modo que le sea comprensible de sus derechos y de las razones de su detención, será castigado con la pena de multa de cuatro a diez meses e inhabilitación especial para empleo o cargo público de dos a cuatro años.
+```
+
+### Ley Orgánica 10/1995, artículo 530 · `BOE-A-1995-25444__a530` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444#a530
+_recuperado por:_ e5-large-instruct/I2_CITIZEN_LEGISLATION#7 (0.877) · e5-large-instruct/I0_GENERIC#8 (0.861) · e5-large-instruct/I1_LEGAL#8 (0.878) · hybrid_rrf/I0_GENERIC#18 (0.015)  [4 sistemas]
+```
+  [1] Artículo 530.
+  [2] La autoridad o funcionario público que, mediando causa por delito, acordare, practicare o prolongare cualquier privación de libertad de un detenido, preso o sentenciado, con violación de los plazos o demás garantías constitucionales o legales, será castigado con la pena de inhabilitación especial para empleo o cargo público por tiempo de cuatro a ocho años.
 ```
 
 ### Ley Orgánica 4/2015, artículo 19 · `BOE-A-2015-3442__a19` [sin juzgar]
@@ -3119,36 +3268,12 @@ _recuperado por:_ e5-base/BASELINE#7 (0.838) · e5-large-instruct/I1_LEGAL#11 (0
   [3] 2. La aprehensión durante las diligencias de identificación, registro y comprobación de armas, drogas tóxicas, estupefacientes, sustancias psicotrópicas u otros efectos procedentes de un delito o infracción administrativa se hará constar en el acta correspondiente, que habrá de ser firmada por el interesado; si éste se negara a firmarla, se dejará constancia expresa de su negativa. El acta que se extienda gozará de presunción de veracidad de los hechos en ella consignados, salvo prueba en contrario.
 ```
 
-### Ley Orgánica 10/1995, artículo 635 · `BOE-A-1995-25444__a635` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444#a635
-_recuperado por:_ e5-large-instruct/I0_GENERIC#9 (0.860) · e5-base/BASELINE#12 (0.834) · e5-large-instruct/I1_LEGAL#12 (0.874) · e5-large-instruct/I2_CITIZEN_LEGISLATION#13 (0.871)  [4 sistemas]
-```
-  [1] Artículo 635.
-  [2] Será castigado con la pena de localización permanente de dos a 10 días o multa de uno a dos meses el que se mantuviere contra la voluntad de su titular, fuera de las horas de apertura, en el domicilio de una persona jurídica pública o privada, despacho profesional u oficina o establecimiento mercantil o local abierto al público.
-```
-
 ### Ley Orgánica 10/1995, artículo 164 · `BOE-A-1995-25444__a164` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444#a164
 _recuperado por:_ bge-m3/BASELINE#6 (0.591) · e5-large-instruct/I2_CITIZEN_LEGISLATION#11 (0.872) · e5-large-instruct/I1_LEGAL#13 (0.874) · e5-large-instruct/I0_GENERIC#19 (0.855)  [4 sistemas]
 ```
   [1] Artículo 164.
   [2] El secuestro de una persona exigiendo alguna condición para ponerla en libertad, será castigado con la pena de prisión de seis a diez años. Si en el secuestro se hubiera dado la circunstancia del artículo 163.3, se impondrá la pena superior en grado, y la inferior en grado si se dieren las condiciones del artículo 163.2.
-```
-
-### Ley Orgánica 10/1995, artículo 537 · `BOE-A-1995-25444__a537` [JUZGADO rel=0 draft]
-https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444#a537
-_recuperado por:_ e5-large-instruct/I0_GENERIC#3 (0.862) · e5-large-instruct/I1_LEGAL#6 (0.880) · e5-large-instruct/I2_CITIZEN_LEGISLATION#8 (0.877)  [3 sistemas]
-```
-  [1] Artículo 537.
-  [2] La autoridad o funcionario público que impida u obstaculice el derecho a la asistencia de abogado al detenido o preso, procure o favorezca la renuncia del mismo a dicha asistencia o no le informe de forma inmediata y de modo que le sea comprensible de sus derechos y de las razones de su detención, será castigado con la pena de multa de cuatro a diez meses e inhabilitación especial para empleo o cargo público de dos a cuatro años.
-```
-
-### Ley Orgánica 10/1995, artículo 530 · `BOE-A-1995-25444__a530` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444#a530
-_recuperado por:_ e5-large-instruct/I2_CITIZEN_LEGISLATION#7 (0.877) · e5-large-instruct/I0_GENERIC#8 (0.861) · e5-large-instruct/I1_LEGAL#8 (0.878)  [3 sistemas]
-```
-  [1] Artículo 530.
-  [2] La autoridad o funcionario público que, mediando causa por delito, acordare, practicare o prolongare cualquier privación de libertad de un detenido, preso o sentenciado, con violación de los plazos o demás garantías constitucionales o legales, será castigado con la pena de inhabilitación especial para empleo o cargo público por tiempo de cuatro a ocho años.
 ```
 
 ---
@@ -3159,7 +3284,7 @@ _split=test · difficulty=media · failure_mode=—_
 
 ### BOE-A-1978-31229, artículo 18 · `BOE-A-1978-31229__a18` [JUZGADO rel=2 reviewed]
 https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a18
-_recuperado por:_ bge-m3/BASELINE#1 (0.707) · e5-base/BASELINE#1 (0.880) · e5-large-instruct/I0_GENERIC#1 (0.921) · e5-large-instruct/I1_LEGAL#1 (0.929) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.930)  [5 sistemas]
+_recuperado por:_ bge-m3/BASELINE#1 (0.707) · e5-base/BASELINE#1 (0.880) · e5-large-instruct/I0_GENERIC#1 (0.921) · e5-large-instruct/I1_LEGAL#1 (0.929) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.930) · bm25/lexical#1 (35.137) · hybrid_rrf/I0_GENERIC#1 (0.033)  [7 sistemas]
 ```
   [1] Artículo 18
   [2] 1. Se garantiza el derecho al honor, a la intimidad personal y familiar y a la propia imagen.
@@ -3170,7 +3295,7 @@ _recuperado por:_ bge-m3/BASELINE#1 (0.707) · e5-base/BASELINE#1 (0.880) · e5-
 
 ### Ley Orgánica 10/1995 · `BOE-A-1995-25444__preambulo` [JUZGADO rel=0 draft]
 https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444#preambulo
-_recuperado por:_ e5-base/BASELINE#2 (0.860) · e5-large-instruct/I0_GENERIC#2 (0.887) · e5-large-instruct/I1_LEGAL#2 (0.895) · e5-large-instruct/I2_CITIZEN_LEGISLATION#2 (0.893) · bge-m3/BASELINE#16 (0.546)  [5 sistemas]
+_recuperado por:_ e5-base/BASELINE#2 (0.860) · e5-large-instruct/I0_GENERIC#2 (0.887) · e5-large-instruct/I1_LEGAL#2 (0.895) · e5-large-instruct/I2_CITIZEN_LEGISLATION#2 (0.893) · hybrid_rrf/I0_GENERIC#2 (0.032) · bm25/lexical#4 (20.920) · bge-m3/BASELINE#16 (0.546)  [7 sistemas]
 ```
   [1] JUAN CARLOS I
   [2] REY DE ESPAÑA
@@ -3195,7 +3320,7 @@ _recuperado por:_ e5-base/BASELINE#2 (0.860) · e5-large-instruct/I0_GENERIC#2 (
 
 ### Ley Orgánica 10/1995, artículo 534 · `BOE-A-1995-25444__a534` [JUZGADO rel=0 draft]
 https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444#a534
-_recuperado por:_ e5-base/BASELINE#3 (0.852) · e5-large-instruct/I0_GENERIC#3 (0.886) · e5-large-instruct/I1_LEGAL#3 (0.893) · e5-large-instruct/I2_CITIZEN_LEGISLATION#3 (0.891) · bge-m3/BASELINE#7 (0.577)  [5 sistemas]
+_recuperado por:_ e5-base/BASELINE#3 (0.852) · e5-large-instruct/I0_GENERIC#3 (0.886) · e5-large-instruct/I1_LEGAL#3 (0.893) · e5-large-instruct/I2_CITIZEN_LEGISLATION#3 (0.891) · hybrid_rrf/I0_GENERIC#3 (0.031) · bge-m3/BASELINE#7 (0.577) · bm25/lexical#7 (20.153)  [7 sistemas]
 ```
   [1] Artículo 534.
   [2] 1. Será castigado con las penas de multa de seis a doce meses e inhabilitación especial para empleo o cargo público de dos a seis años la autoridad o funcionario público que, mediando causa por delito, y sin respetar las garantías constitucionales o legales:
@@ -3205,48 +3330,9 @@ _recuperado por:_ e5-base/BASELINE#3 (0.852) · e5-large-instruct/I0_GENERIC#3 (
   [6] 2. La autoridad o funcionario público que, con ocasión de lícito registro de papeles, documentos o efectos de una persona, cometa cualquier vejación injusta o daño innecesario en sus bienes, será castigado con las penas previstas para estos hechos, impuestas en su mitad superior, y, además, con la pena de inhabilitación especial para empleo o cargo público por tiempo de dos a seis años.
 ```
 
-### Ley Orgánica 10/1995, disposición final cuarta · `BOE-A-1995-25444__dfcuarta` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444#dfcuarta
-_recuperado por:_ e5-large-instruct/I1_LEGAL#4 (0.891) · e5-large-instruct/I2_CITIZEN_LEGISLATION#4 (0.889) · bge-m3/BASELINE#5 (0.578) · e5-large-instruct/I0_GENERIC#7 (0.877) · e5-base/BASELINE#15 (0.832)  [5 sistemas]
-```
-  [1] Disposición final cuarta.
-  [2] La Ley Orgánica 1/1982, de 5 de mayo, de Protección del Derecho al Honor, a la Intimidad Personal y Familiar y a la Propia Imagen, quedará modificada en los siguientes términos:
-  [3] «Artículo 1.º
-  [4] 2. El carácter delictivo de la intromisión no impedirá el recurso al procedimiento de tutela judicial previsto en el artículo 9.º de esta Ley. En cualquier caso, serán aplicables los criterios de esta Ley para la determinación de la responsabilidad civil derivada de delito.»
-  [5] «Artículo 7.º
-  [6] 7. La imputación de hechos o la manifestación de juicios de valor a través de acciones o expresiones que de cualquier modo lesionen la dignidad de otra persona, menoscabando su fama o atentando contra su propia estimación.»
-```
-
-### Ley Orgánica 10/1995, artículo 535 · `BOE-A-1995-25444__a535` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444#a535
-_recuperado por:_ e5-large-instruct/I0_GENERIC#5 (0.879) · e5-large-instruct/I1_LEGAL#6 (0.885) · e5-large-instruct/I2_CITIZEN_LEGISLATION#6 (0.882) · e5-base/BASELINE#10 (0.842) · bge-m3/BASELINE#17 (0.545)  [5 sistemas]
-```
-  [1] Artículo 535.
-  [2] La autoridad o funcionario público que, mediando causa por delito, interceptare cualquier clase de correspondencia privada, postal o telegráfica, con violación de las garantías constitucionales o legales, incurrirá en la pena de inhabilitación especial para empleo o cargo público de dos a seis años.
-  [3] Si divulgara o revelara la información obtenida, se impondrá la pena de inhabilitación especial, en su mitad superior, y, además, la de multa de seis a dieciocho meses.
-```
-
-### Ley 33/2011, artículo 7 · `BOE-A-2011-15623__a7` [JUZGADO rel=0 draft]
-https://www.boe.es/buscar/act.php?id=BOE-A-2011-15623#a7
-_recuperado por:_ bge-m3/BASELINE#2 (0.593) · e5-large-instruct/I1_LEGAL#7 (0.884) · e5-large-instruct/I2_CITIZEN_LEGISLATION#7 (0.882) · e5-base/BASELINE#8 (0.845) · e5-large-instruct/I0_GENERIC#11 (0.874)  [5 sistemas]
-```
-  [1] Artículo 7. Derecho a la intimidad, confidencialidad y respeto de la dignidad.
-  [2] 1. Todas las personas tienen derecho al respeto de su dignidad e intimidad personal y familiar en relación con su participación en actuaciones de salud pública.
-  [3] 2. La información personal que se emplee en las actuaciones de salud pública se regirá por lo dispuesto en la Ley Orgánica 15/1999, de 13 de diciembre, de Protección de Datos de Carácter Personal y en la Ley 41/2002, de 14 de noviembre, básica reguladora de la Autonomía del Paciente y de Derechos y Obligaciones en materia de Información y Documentación Clínica.
-```
-
-### Ley Orgánica 10/1995, artículo 536 · `BOE-A-1995-25444__a536` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444#a536
-_recuperado por:_ e5-large-instruct/I1_LEGAL#8 (0.881) · e5-large-instruct/I0_GENERIC#10 (0.875) · e5-large-instruct/I2_CITIZEN_LEGISLATION#10 (0.879) · e5-base/BASELINE#20 (0.831)  [4 sistemas]
-```
-  [1] Artículo 536.
-  [2] La autoridad, funcionario público o agente de éstos que, mediando causa por delito, interceptare las telecomunicaciones o utilizare artificios técnicos de escuchas, transmisión, grabación o reproducción del sonido, de la imagen o de cualquier otra señal de comunicación, con violación de las garantías constitucionales o legales, incurrirá en la pena de inhabilitación especial para empleo o cargo público de dos a seis años.
-  [3] Si divulgare o revelare la información obtenida, se impondrán las penas de inhabilitación especial, en su mitad superior y, además, la de multa de seis a dieciocho meses.
-```
-
 ### Ley 12/2023, [preambulo] · `BOE-A-2023-12203__pr` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2023-12203#pr
-_recuperado por:_ e5-base/BASELINE#6 (0.845) · e5-large-instruct/I2_CITIZEN_LEGISLATION#9 (0.880) · e5-large-instruct/I1_LEGAL#11 (0.880) · bge-m3/BASELINE#15 (0.549)  [4 sistemas]
+_recuperado por:_ bm25/lexical#5 (20.309) · e5-base/BASELINE#6 (0.845) · e5-large-instruct/I2_CITIZEN_LEGISLATION#9 (0.880) · e5-large-instruct/I1_LEGAL#11 (0.880) · bge-m3/BASELINE#15 (0.549) · hybrid_rrf/I0_GENERIC#18 (0.015)  [6 sistemas]
 ```
   [1] FELIPE VI
   [2] REY DE ESPAÑA
@@ -3350,29 +3436,109 @@ _recuperado por:_ e5-base/BASELINE#6 (0.845) · e5-large-instruct/I2_CITIZEN_LEG
   [100] En cuanto al principio de seguridad jurídica y de transparencia, la ley ha seguido en su tramitación los trámites de consulta pública previa, así como de audiencia e información pública, previstos en el artículo 26 de la Ley 50/1997, de 27 de noviembre, del Gobierno, si bien, tal principio se refuerza a través de la exposición clara y accesible de los motivos y de los objetivos de la norma, que se recogen en esta parte expositiva y en la preceptiva memoria de análisis de impacto normativo.
 ```
 
-### Ley Orgánica 4/2000, artículo 16 · `BOE-A-2000-544__a16` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2000-544#a16
-_recuperado por:_ e5-large-instruct/I1_LEGAL#9 (0.880) · e5-base/BASELINE#11 (0.841) · e5-large-instruct/I0_GENERIC#12 (0.873) · e5-large-instruct/I2_CITIZEN_LEGISLATION#12 (0.879)  [4 sistemas]
+### Ley Orgánica 10/1995, disposición final cuarta · `BOE-A-1995-25444__dfcuarta` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444#dfcuarta
+_recuperado por:_ e5-large-instruct/I1_LEGAL#4 (0.891) · e5-large-instruct/I2_CITIZEN_LEGISLATION#4 (0.889) · bge-m3/BASELINE#5 (0.578) · hybrid_rrf/I0_GENERIC#5 (0.027) · e5-large-instruct/I0_GENERIC#7 (0.877) · e5-base/BASELINE#15 (0.832)  [6 sistemas]
 ```
-  [1] Artículo 16. Derecho a la intimidad familiar.
-  [2] 1. Los extranjeros residentes tienen derecho a la vida en familia y a la intimidad familiar en la forma prevista en esta Ley Orgánica y de acuerdo con lo dispuesto en los Tratados internacionales suscritos por España.
-  [3] 2. Los extranjeros residentes en España tienen derecho a reagrupar con ellos a los familiares que se determinan en el artículo 17.
-  [4] 3. El cónyuge que hubiera adquirido la residencia en España por causa familiar y sus familiares con él agrupados conservarán la residencia aunque se rompa el vínculo matrimonial que dio lugar a la adquisición.
-  [5] Reglamentariamente se podrá determinar el tiempo previo de convivencia en España que se tenga que acreditar en estos supuestos.
+  [1] Disposición final cuarta.
+  [2] La Ley Orgánica 1/1982, de 5 de mayo, de Protección del Derecho al Honor, a la Intimidad Personal y Familiar y a la Propia Imagen, quedará modificada en los siguientes términos:
+  [3] «Artículo 1.º
+  [4] 2. El carácter delictivo de la intromisión no impedirá el recurso al procedimiento de tutela judicial previsto en el artículo 9.º de esta Ley. En cualquier caso, serán aplicables los criterios de esta Ley para la determinación de la responsabilidad civil derivada de delito.»
+  [5] «Artículo 7.º
+  [6] 7. La imputación de hechos o la manifestación de juicios de valor a través de acciones o expresiones que de cualquier modo lesionen la dignidad de otra persona, menoscabando su fama o atentando contra su propia estimación.»
 ```
 
-### BOE-A-1978-31229, artículo 10 · `BOE-A-1978-31229__a10` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a10
-_recuperado por:_ e5-large-instruct/I0_GENERIC#4 (0.881) · e5-large-instruct/I1_LEGAL#5 (0.885) · e5-large-instruct/I2_CITIZEN_LEGISLATION#5 (0.887)  [3 sistemas]
+### Ley Orgánica 10/1995, artículo 535 · `BOE-A-1995-25444__a535` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444#a535
+_recuperado por:_ e5-large-instruct/I0_GENERIC#5 (0.879) · e5-large-instruct/I1_LEGAL#6 (0.885) · e5-large-instruct/I2_CITIZEN_LEGISLATION#6 (0.882) · hybrid_rrf/I0_GENERIC#6 (0.027) · e5-base/BASELINE#10 (0.842) · bge-m3/BASELINE#17 (0.545)  [6 sistemas]
 ```
-  [1] Artículo 10
-  [2] 1. La dignidad de la persona, los derechos inviolables que le son inherentes, el libre desarrollo de la personalidad, el respeto a la ley y a los derechos de los demás son fundamento del orden político y de la paz social.
-  [3] 2. Las normas relativas a los derechos fundamentales y a las libertades que la Constitución reconoce se interpretarán de conformidad con la Declaración Universal de Derechos Humanos y los tratados y acuerdos internacionales sobre las mismas materias ratificados por España.
+  [1] Artículo 535.
+  [2] La autoridad o funcionario público que, mediando causa por delito, interceptare cualquier clase de correspondencia privada, postal o telegráfica, con violación de las garantías constitucionales o legales, incurrirá en la pena de inhabilitación especial para empleo o cargo público de dos a seis años.
+  [3] Si divulgara o revelara la información obtenida, se impondrá la pena de inhabilitación especial, en su mitad superior, y, además, la de multa de seis a dieciocho meses.
+```
+
+### Ley 33/2011, artículo 7 · `BOE-A-2011-15623__a7` [JUZGADO rel=0 draft]
+https://www.boe.es/buscar/act.php?id=BOE-A-2011-15623#a7
+_recuperado por:_ bge-m3/BASELINE#2 (0.593) · e5-large-instruct/I1_LEGAL#7 (0.884) · e5-large-instruct/I2_CITIZEN_LEGISLATION#7 (0.882) · e5-base/BASELINE#8 (0.845) · e5-large-instruct/I0_GENERIC#11 (0.874) · hybrid_rrf/I0_GENERIC#11 (0.022)  [6 sistemas]
+```
+  [1] Artículo 7. Derecho a la intimidad, confidencialidad y respeto de la dignidad.
+  [2] 1. Todas las personas tienen derecho al respeto de su dignidad e intimidad personal y familiar en relación con su participación en actuaciones de salud pública.
+  [3] 2. La información personal que se emplee en las actuaciones de salud pública se regirá por lo dispuesto en la Ley Orgánica 15/1999, de 13 de diciembre, de Protección de Datos de Carácter Personal y en la Ley 41/2002, de 14 de noviembre, básica reguladora de la Autonomía del Paciente y de Derechos y Obligaciones en materia de Información y Documentación Clínica.
+```
+
+### Real Decreto Legislativo 2/2015, artículo 18 · `BOE-A-2015-11430__a18` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430#a18
+_recuperado por:_ bm25/lexical#3 (21.159) · hybrid_rrf/I0_GENERIC#4 (0.029) · bge-m3/BASELINE#9 (0.557) · e5-base/BASELINE#14 (0.835) · e5-large-instruct/I0_GENERIC#14 (0.869)  [5 sistemas]
+```
+  [1] Artículo 18. Inviolabilidad de la persona del trabajador.
+  [2] Solo podrán realizarse registros sobre la persona del trabajador, en sus taquillas y efectos particulares, cuando sean necesarios para la protección del patrimonio empresarial y del de los demás trabajadores de la empresa, dentro del centro de trabajo y en horas de trabajo. En su realización se respetará al máximo la dignidad e intimidad del trabajador y se contará con la asistencia de un representante legal de los trabajadores o, en su ausencia del centro de trabajo, de otro trabajador de la empresa, siempre que ello fuera posible.
+```
+
+### Ley Orgánica 3/2018, [preambulo] · `BOE-A-2018-16673__pr` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2018-16673#pr
+_recuperado por:_ bge-m3/BASELINE#4 (0.582) · bm25/lexical#8 (20.109) · hybrid_rrf/I0_GENERIC#13 (0.021) · e5-large-instruct/I1_LEGAL#16 (0.875) · e5-large-instruct/I2_CITIZEN_LEGISLATION#16 (0.873)  [5 sistemas]
+```
+  [1] FELIPE VI
+  [2] REY DE ESPAÑA
+  [3] A todos los que la presente vieren y entendieren.
+  [4] Sabed: Que las Cortes Generales han aprobado y Yo vengo en sancionar la siguiente ley orgánica.
+  [5] PREÁMBULO
+  [6] I
+  [7] La protección de las personas físicas en relación con el tratamiento de datos personales es un derecho fundamental protegido por el artículo 18.4 de la Constitución española. De esta manera, nuestra Constitución fue pionera en el reconocimiento del derecho fundamental a la protección de datos personales cuando dispuso que «la ley limitará el uso de la informática para garantizar el honor y la intimidad personal y familiar de los ciudadanos y el pleno ejercicio de sus derechos». Se hacía así eco de los trabajos desarrollados desde finales de la década de 1960 en el Consejo de Europa y de las pocas disposiciones legales adoptadas en países de nuestro entorno.
+  [8] El Tribunal Constitucional señaló en su Sentencia 94/1998, de 4 de mayo, que nos encontramos ante un derecho fundamental a la protección de datos por el que se garantiza a la persona el control sobre sus datos, cualesquiera datos personales, y sobre su uso y destino, para evitar el tráfico ilícito de los mismos o lesivo para la dignidad y los derechos de los afectados; de esta forma, el derecho a la protección de datos se configura como una facultad del ciudadano para oponerse a que determinados datos personales sean usados para fines distintos a aquel que justificó su obtención. Por su parte, en la Sentencia 292/2000, de 30 de noviembre, lo considera como un derecho autónomo e independiente que consiste en un poder de disposición y de control sobre los datos personales que faculta a la persona para decidir cuáles de esos datos proporcionar a un tercero, sea el Estado o un particular, o cuáles puede este tercero recabar, y que también permite al individuo saber quién posee esos datos personales y para qué, pudiendo oponerse a esa posesión o uso.
+  [9] A nivel legislativo, la concreción y desarrollo del derecho fundamental de protección de las personas físicas en relación con el tratamiento de datos personales tuvo lugar en sus orígenes mediante la aprobación de la Ley Orgánica 5/1992, de 29 de octubre, reguladora del tratamiento automatizado de datos personales, conocida como LORTAD. La Ley Orgánica 5/1992 fue reemplazada por la Ley Orgánica 15/1999, de 13 de diciembre, de protección de datos personales, a fin de trasponer a nuestro derecho a la Directiva 95/46/CE del Parlamento Europeo y del Consejo, de 24 de octubre de 1995, relativa a la protección de las personas físicas en lo que respecta al tratamiento de datos personales y a la libre circulación de estos datos. Esta ley orgánica supuso un segundo hito en la evolución de la regulación del derecho fundamental a la protección de datos en España y se complementó con una cada vez más abundante jurisprudencia procedente de los órganos de la jurisdicción contencioso-administrativa.
+  [10] Por otra parte, también se recoge en el artículo 8 de la Carta de los Derechos Fundamentales de la Unión Europea y en el artículo 16.1 del Tratado de Funcionamiento de la Unión Europea. Anteriormente, a nivel europeo, se había adoptado la Directiva 95/46/CE citada, cuyo objeto era procurar que la garantía del derecho a la protección de datos personales no supusiese un obstáculo a la libre circulación de los datos en el seno de la Unión, estableciendo así un espacio común de garantía del derecho que, al propio tiempo, asegurase que en caso de transferencia internacional de los datos, su tratamiento en el país de destino estuviese protegido por salvaguardas adecuadas a las previstas en la propia directiva.
+  [11] II
+  [12] En los últimos años de la pasada década se intensificaron los impulsos tendentes a lograr una regulación más uniforme del derecho fundamental a la protección de datos en el marco de una sociedad cada vez más globalizada. Así, se fueron adoptando en distintas instancias internacionales propuestas para la reforma del marco vigente. Y en este marco la Comisión lanzó el 4 de noviembre de 2010 su Comunicación titulada «Un enfoque global de la protección de los datos personales en la Unión Europea», que constituye el germen de la posterior reforma del marco de la Unión Europea. Al propio tiempo, el Tribunal de Justicia de la Unión ha venido adoptando a lo largo de los últimos años una jurisprudencia que resulta fundamental en su interpretación.
+  [13] El último hito en esta evolución tuvo lugar con la adopción del Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protección de las personas físicas en lo que respecta al tratamiento de sus datos personales y a la libre circulación de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protección de datos), así como de la Directiva (UE) 2016/680 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativa a la protección de las personas físicas en lo que respecta al tratamiento de datos personales por parte de las autoridades competentes para fines de prevención, investigación, detección o enjuiciamiento de infracciones penales o de ejecución de sanciones penales, y a la libre circulación de dichos datos y por la que se deroga la Decisión Marco 2008/977/JAI del Consejo.
+  [14] III
+  [15] El Reglamento general de protección de datos pretende con su eficacia directa superar los obstáculos que impidieron la finalidad armonizadora de la Directiva 95/46/CE del Parlamento Europeo y del Consejo, de 24 de octubre de 1995, relativa a la protección de las personas físicas en lo que respecta al tratamiento de datos personales y a la libre circulación de esos datos. La transposición de la directiva por los Estados miembros se ha plasmado en un mosaico normativo con perfiles irregulares en el conjunto de la Unión Europea lo que, en último extremo, ha conducido a que existan diferencias apreciables en la protección de los derechos de los ciudadanos.
+  [16] Asimismo, se atiende a nuevas circunstancias, principalmente el aumento de los flujos transfronterizos de datos personales como consecuencia del funcionamiento del mercado interior, los retos planteados por la rápida evolución tecnológica y la globalización, que ha hecho que los datos personales sean el recurso fundamental de la sociedad de la información. El carácter central de la información personal tiene aspectos positivos, porque permite nuevos y mejores servicios, productos o hallazgos científicos. Pero tiene también riesgos, pues las informaciones sobre los individuos se multiplican exponencialmente, son más accesibles, por más actores, y cada vez son más fáciles de procesar mientras que es más difícil el control de su destino y uso.
+  [17] El Reglamento general de protección de datos supone la revisión de las bases legales del modelo europeo de protección de datos más allá de una mera actualización de la vigente normativa. Procede a reforzar la seguridad jurídica y transparencia a la vez que permite que sus normas sean especificadas o restringidas por el Derecho de los Estados miembros en la medida en que sea necesario por razones de coherencia y para que las disposiciones nacionales sean comprensibles para sus destinatarios. Así, el Reglamento general de protección de datos contiene un buen número de habilitaciones, cuando no imposiciones, a los Estados miembros, a fin de regular determinadas materias, permitiendo incluso en su considerando 8, y a diferencia de lo que constituye principio general del Derecho de la Unión Europea que, cuando sus normas deban ser especificadas, interpretadas o, excepcionalmente, restringidas por el Derecho de los Estados miembros, estos tengan la posibilidad de incorporar al derecho nacional previsiones contenidas específicamente en el reglamento, en la medida en que sea necesario por razones de coherencia y comprensión.
+  [18] En este punto hay que subrayar que no se excluye toda intervención del Derecho interno en los ámbitos concernidos por los reglamentos europeos. Al contrario, tal intervención puede ser procedente, incluso necesaria, tanto para la depuración del ordenamiento nacional como para el desarrollo o complemento del reglamento de que se trate. Así, el principio de seguridad jurídica, en su vertiente positiva, obliga a los Estados miembros a integrar el ordenamiento europeo en el interno de una manera lo suficientemente clara y pública como para permitir su pleno conocimiento tanto por los operadores jurídicos como por los propios ciudadanos, en tanto que, en su vertiente negativa, implica la obligación para tales Estados de eliminar situaciones de incertidumbre derivadas de la existencia de normas en el Derecho nacional incompatibles con el europeo. De esta segunda vertiente se colige la consiguiente obligación de depurar el ordenamiento jurídico. En definitiva, el principio de seguridad jurídica obliga a que la normativa interna que resulte incompatible con el Derecho de la Unión Europea quede definitivamente eliminada «mediante disposiciones internas de carácter obligatorio que tengan el mismo valor jurídico que las disposiciones internas que deban modificarse» (Sentencias del Tribunal de Justicia de 23 de febrero de 2006, asunto Comisión vs. España; de 13 de julio de 2000, asunto Comisión vs. Francia; y de 15 de octubre de 1986, asunto Comisión vs. Italia). Por último, los reglamentos, pese a su característica de aplicabilidad directa, en la práctica pueden exigir otras normas internas complementarias para hacer plenamente efectiva su aplicación. En este sentido, más que de incorporación cabría hablar de «desarrollo» o complemento del Derecho de la Unión Europea.
+  [19] La adaptación al Reglamento general de protección de datos, que será aplicable a partir del 25 de mayo de 2018, según establece su artículo 99, requiere, en suma, la elaboración de una nueva ley orgánica que sustituya a la actual. En esta labor se han preservado los principios de buena regulación, al tratarse de una norma necesaria para la adaptación del ordenamiento español a la citada disposición europea y proporcional a este objetivo, siendo su razón última procurar seguridad jurídica.
+  [20] IV
+  [21] Internet, por otra parte, se ha convertido en una realidad omnipresente tanto en nuestra vida personal como colectiva. Una gran parte de nuestra actividad profesional, económica y privada se desarrolla en la Red y adquiere una importancia fundamental tanto para la comunicación humana como para el desarrollo de nuestra vida en sociedad. Ya en los años noventa, y conscientes del impacto que iba a producir Internet en nuestras vidas, los pioneros de la Red propusieron elaborar una Declaración de los Derechos del Hombre y del Ciudadano en Internet.
+  [22] Hoy identificamos con bastante claridad los riesgos y oportunidades que el mundo de las redes ofrece a la ciudadanía. Corresponde a los poderes públicos impulsar políticas que hagan efectivos los derechos de la ciudadanía en Internet promoviendo la igualdad de los ciudadanos y de los grupos en los que se integran para hacer posible el pleno ejercicio de los derechos fundamentales en la realidad digital. La transformación digital de nuestra sociedad es ya una realidad en nuestro desarrollo presente y futuro tanto a nivel social como económico. En este contexto, países de nuestro entorno ya han aprobado normativa que refuerza los derechos digitales de la ciudadanía.
+  [23] Los constituyentes de 1978 ya intuyeron el enorme impacto que los avances tecnológicos provocarían en nuestra sociedad y, en particular, en el disfrute de los derechos fundamentales. Una deseable futura reforma de la Constitución debería incluir entre sus prioridades la actualización de la Constitución a la era digital y, específicamente, elevar a rango constitucional una nueva generación de derechos digitales. Pero, en tanto no se acometa este reto, el legislador debe abordar el reconocimiento de un sistema de garantía de los derechos digitales que, inequívocamente, encuentra su anclaje en el mandato impuesto por el apartado cuarto del artículo 18 de la Constitución Española y que, en algunos casos, ya han sido perfilados por la jurisprudencia ordinaria, constitucional y europea.
+  [24] V
+  [25] Esta ley orgánica consta de noventa y siete artículos estructurados en diez títulos, veintidós disposiciones adicionales, seis disposiciones transitorias, una disposición derogatoria y dieciséis disposiciones finales.
+  [26] El Título I, relativo a las disposiciones generales, comienza regulando el objeto de la ley orgánica, que es, conforme a lo que se ha indicado, doble. Así, en primer lugar, se pretende lograr la adaptación del ordenamiento jurídico español al Reglamento (UE) 2016/679 del Parlamento Europeo y el Consejo, de 27 de abril de 2016, Reglamento general de protección de datos, y completar sus disposiciones. A su vez, establece que el derecho fundamental de las personas físicas a la protección de datos personales, amparado por el artículo 18.4 de la Constitución, se ejercerá con arreglo a lo establecido en el Reglamento (UE) 2016/679 y en esta ley orgánica. Las comunidades autónomas ostentan competencias de desarrollo normativo y ejecución del derecho fundamental a la protección de datos personales en su ámbito de actividad y a las autoridades autonómicas de protección de datos que se creen les corresponde contribuir a garantizar este derecho fundamental de la ciudadanía. En segundo lugar, es también objeto de la ley garantizar los derechos digitales de la ciudadanía, al amparo de lo dispuesto en el artículo 18.4 de la Constitución.
+  [27] Destaca la novedosa regulación de los datos referidos a las personas fallecidas, pues, tras excluir del ámbito de aplicación de la ley su tratamiento, se permite que las personas vinculadas al fallecido por razones familiares o de hecho o sus herederos puedan solicitar el acceso a los mismos, así como su rectificación o supresión, en su caso con sujeción a las instrucciones del fallecido. También excluye del ámbito de aplicación los tratamientos que se rijan por disposiciones específicas, en referencia, entre otras, a la normativa que transponga la citada Directiva (UE) 2016/680, previéndose en la disposición transitoria cuarta la aplicación a estos tratamientos de la Ley Orgánica 15/1999, de 13 de diciembre, hasta que se apruebe la citada normativa.
+  [28] En el Título II, «Principios de protección de datos», se establece que a efectos del Reglamento (UE) 2016/679 no serán imputables al responsable del tratamiento, siempre que este haya adoptado todas las medidas razonables para que se supriman o rectifiquen sin dilación, la inexactitud de los datos obtenidos directamente del afectado, cuando hubiera recibido los datos de otro responsable en virtud del ejercicio por el afectado del derecho a la portabilidad, o cuando el responsable los obtuviese del mediador o intermediario cuando las normas aplicables al sector de actividad al que pertenezca el responsable del tratamiento establezcan la posibilidad de intervención de un intermediario o mediador o cuando los datos hubiesen sido obtenidos de un registro público. También se recoge expresamente el deber de confidencialidad, el tratamiento de datos amparado por la ley, las categorías especiales de datos y el tratamiento de datos de naturaleza penal, se alude específicamente al consentimiento, que ha de proceder de una declaración o de una clara acción afirmativa del afectado, excluyendo lo que se conocía como «consentimiento tácito», se indica que el consentimiento del afectado para una pluralidad de finalidades será preciso que conste de manera específica e inequívoca que se otorga para todas ellas, y se mantiene en catorce años la edad a partir de la cual el menor puede prestar su consentimiento.
+  [29] Se regulan asimismo las posibles habilitaciones legales para el tratamiento fundadas en el cumplimiento de una obligación legal exigible al responsable, en los términos previstos en el Reglamento (UE) 2016/679, cuando así lo prevea una norma de Derecho de la Unión Europea o una ley, que podrá determinar las condiciones generales del tratamiento y los tipos de datos objeto del mismo así como las cesiones que procedan como consecuencia del cumplimiento de la obligación legal, Este es el caso, por ejemplo, de las bases de datos reguladas por ley y gestionadas por autoridades públicas que responden a objetivos específicos de control de riesgos y solvencia, supervisión e inspección del tipo de la Central de Información de Riesgos del Banco de España regulada por la Ley 44/2002, de 22 de noviembre, de Medidas de Reforma del Sistema Financiero, o de los datos, documentos e informaciones de carácter reservado que obren en poder de la Dirección General de Seguros y Fondos de Pensiones de conformidad con lo previsto en la Ley 20/2015, de 14 de julio, de ordenación, supervisión y solvencia de las entidades aseguradoras y reaseguradoras.
+  [30] Se podrán igualmente imponer condiciones especiales al tratamiento, tales como la adopción de medidas adicionales de seguridad u otras, cuando ello derive del ejercicio de potestades públicas o del cumplimiento de una obligación legal y solo podrá considerarse fundado en el cumplimiento de una misión realizada en interés público o en el ejercicio de poderes públicos conferidos al responsable, en los términos previstos en el reglamento europeo, cuando derive de una competencia atribuida por la ley. Y se mantiene la prohibición de consentir tratamientos con la finalidad principal de almacenar información identificativa de determinadas categorías de datos especialmente protegidos, lo que no impide que los mismos puedan ser objeto de tratamiento en los demás supuestos previstos en el Reglamento (UE) 2016/679. Así, por ejemplo, la prestación del consentimiento no dará cobertura a la creación de «listas negras» de sindicalistas, si bien los datos de afiliación sindical podrán ser tratados por el empresario para hacer posible el ejercicio de los derechos de los trabajadores al amparo del artículo 9.2.b) del Reglamento (UE) 2016/679 o por los propios sindicatos en los términos del artículo 9.2.d) de la misma norma europea.
+  [31] También en relación con el tratamiento de categorías especiales de datos, el artículo 9.2 consagra el principio de reserva de ley para su habilitación en los supuestos previstos en el Reglamento (UE) 2016/679. Dicha previsión no sólo alcanza a las disposiciones que pudieran adoptarse en el futuro, sino que permite dejar a salvo las distintas habilitaciones legales actualmente existentes, tal y como se indica específicamente, respecto de la legislación sanitaria y aseguradora, en la disposición adicional decimoséptima. El Reglamento general de protección de datos no afecta a dichas habilitaciones, que siguen plenamente vigentes, permitiendo incluso llevar a cabo una interpretación extensiva de las mismas, como sucede, en particular, en cuanto al alcance del consentimiento del afectado o el uso de sus datos sin consentimiento en el ámbito de la investigación biomédica. A tal efecto, el apartado 2 de la Disposición adicional decimoséptima introduce una serie de previsiones encaminadas a garantizar el adecuado desarrollo de la investigación en materia de salud, y en particular la biomédica, ponderando los indudables beneficios que la misma aporta a la sociedad con las debidas garantías del derecho fundamental a la protección de datos.
+  [32] El Título III, dedicado a los derechos de las personas, adapta al Derecho español el principio de transparencia en el tratamiento del reglamento europeo, que regula el derecho de los afectados a ser informados acerca del tratamiento y recoge la denominada «información por capas» ya generalmente aceptada en ámbitos como el de la videovigilancia o la instalación de dispositivos de almacenamiento masivo de datos (tales como las «cookies»), facilitando al afectado la información básica, si bien, indicándole una dirección electrónica u otro medio que permita acceder de forma sencilla e inmediata a la restante información.
+  [33] Se hace uso en este Título de la habilitación permitida por el considerando 8 del Reglamento (UE) 2016/679 para complementar su régimen, garantizando la adecuada estructura sistemática del texto. A continuación, la ley orgánica contempla los derechos de acceso, rectificación, supresión, oposición, derecho a la limitación del tratamiento y derecho a la portabilidad.
+  [34] En el Título IV se recogen «Disposiciones aplicables a tratamientos concretos», incorporando una serie de supuestos que en ningún caso debe considerarse exhaustiva de todos los tratamientos lícitos. Dentro de ellos cabe apreciar, en primer lugar, aquellos respecto de los que el legislador establece una presunción «iuris tantum» de prevalencia del interés legítimo del responsable cuando se lleven a cabo con una serie de requisitos, lo que no excluye la licitud de este tipo de tratamientos cuando no se cumplen estrictamente las condiciones previstas en el texto, si bien en este caso el responsable deberá llevar a cabo la ponderación legalmente exigible, al no presumirse la prevalencia de su interés legítimo. Junto a estos supuestos se recogen otros, tales como la videovigilancia, los ficheros de exclusión publicitaria o los sistemas de denuncias internas en que la licitud del tratamiento proviene de la existencia de un interés público, en los términos establecidos en el artículo 6.1.e) del Reglamento (UE) 2016/679. Finalmente, se hace referencia en este Título a la licitud de otros tratamientos regulados en el Capítulo IX del reglamento, como los relacionados con la función estadística o con fines de archivo de interés general. En todo caso, el hecho de que el legislador se refiera a la licitud de los tratamientos no enerva la obligación de los responsables de adoptar todas las medidas de responsabilidad activa establecidas en el Capítulo IV del reglamento europeo y en el Título V de esta ley orgánica.
+  [35] El Título V se refiere al responsable y al encargado del tratamiento. Es preciso tener en cuenta que la mayor novedad que presenta el Reglamento (UE) 2016/679 es la evolución de un modelo basado, fundamentalmente, en el control del cumplimiento a otro que descansa en el principio de responsabilidad activa, lo que exige una previa valoración por el responsable o por el encargado del tratamiento del riesgo que pudiera generar el tratamiento de los datos personales para, a partir de dicha valoración, adoptar las medidas que procedan. Con el fin de aclarar estas novedades, la ley orgánica mantiene la misma denominación del Capítulo IV del Reglamento, dividiendo el articulado en cuatro capítulos dedicados, respectivamente, a las medidas generales de responsabilidad activa, al régimen del encargado del tratamiento, a la figura del delegado de protección de datos y a los mecanismos de autorregulación y certificación. La figura del delegado de protección de datos adquiere una destacada importancia en el Reglamento (UE) 2016/679 y así lo recoge la ley orgánica, que parte del principio de que puede tener un carácter obligatorio o voluntario, estar o no integrado en la organización del responsable o encargado y ser tanto una persona física como una persona jurídica. La designación del delegado de protección de datos ha de comunicarse a la autoridad de protección de datos competente. La Agencia Española de Protección de Datos mantendrá una relación pública y actualizada de los delegados de protección de datos, accesible por cualquier persona. Los conocimientos en la materia se podrán acreditar mediante esquemas de certificación. Asimismo, no podrá ser removido, salvo en los supuestos de dolo o negligencia grave. Es de destacar que el delegado de protección de datos permite configurar un medio para la resolución amistosa de reclamaciones, pues el interesado podrá reproducir ante él la reclamación que no sea atendida por el responsable o encargado del tratamiento.
+  [36] El Título VI, relativo a las transferencias internacionales de datos, procede a la adaptación de lo previsto en el Reglamento (UE) 2016/679 y se refiere a las especialidades relacionadas con los procedimientos a través de los cuales las autoridades de protección de datos pueden aprobar modelos contractuales o normas corporativas vinculantes, supuestos de autorización de una determinada transferencia, o información previa.
+  [37] El Título VII se dedica a las autoridades de protección de datos, que siguiendo el mandato del Reglamento (UE) 2016/679 se han de establecer por ley nacional. Manteniendo el esquema que se venía recogiendo en sus antecedentes normativos, la ley orgánica regula el régimen de la Agencia Española de Protección de Datos y refleja la existencia de las autoridades autonómicas de protección de datos y la necesaria cooperación entre las autoridades de control. La Agencia Española de Protección de Datos se configura como una autoridad administrativa independiente con arreglo a la Ley 40/2015, de 1 de octubre, de Régimen Jurídico del Sector Público, que se relaciona con el Gobierno a través del Ministerio de Justicia.
+  [38] El Título VIII regula el «Procedimientos en caso de posible vulneración de la normativa de protección de datos». El Reglamento (UE) 2016/679 establece un sistema novedoso y complejo, evolucionando hacia un modelo de «ventanilla única» en el que existe una autoridad de control principal y otras autoridades interesadas. También se establece un procedimiento de cooperación entre autoridades de los Estados miembros y, en caso de discrepancia, se prevé la decisión vinculante del Comité Europeo de Protección de Datos. En consecuencia, con carácter previo a la tramitación de cualquier procedimiento, será preciso determinar si el tratamiento tiene o no carácter transfronterizo y, en caso de tenerlo, qué autoridad de protección de datos ha de considerarse principal.
+  [39] La regulación se limita a delimitar el régimen jurídico; la iniciación de los procedimientos, siendo posible que la Agencia Española de Protección de Datos remita la reclamación al delegado de protección de datos o a los órganos o entidades que tengan a su cargo la resolución extrajudicial de conflictos conforme a lo establecido en un código de conducta; la inadmisión de las reclamaciones; las actuaciones previas de investigación; las medidas provisionales, entre las que destaca la orden de bloqueo de los datos; y el plazo de tramitación de los procedimientos y, en su caso, su suspensión. Las especialidades del procedimiento se remiten al desarrollo reglamentario.
+  [40] El Título IX, que contempla el régimen sancionador, parte de que el Reglamento (UE) 2016/679 establece un sistema de sanciones o actuaciones correctivas que permite un amplio margen de apreciación. En este marco, la ley orgánica procede a describir las conductas típicas, estableciendo la distinción entre infracciones muy graves, graves y leves, tomando en consideración la diferenciación que el Reglamento general de protección de datos establece al fijar la cuantía de las sanciones. La categorización de las infracciones se introduce a los solos efectos de determinar los plazos de prescripción, teniendo la descripción de las conductas típicas como único objeto la enumeración de manera ejemplificativa de algunos de los actos sancionables que deben entenderse incluidos dentro de los tipos generales establecidos en la norma europea. La ley orgánica regula los supuestos de interrupción de la prescripción partiendo de la exigencia constitucional del conocimiento de los hechos que se imputan a la persona, pero teniendo en cuenta la problemática derivada de los procedimientos establecidos en el reglamento europeo, en función de si el procedimiento se tramita exclusivamente por la Agencia Española de Protección de Datos o si se acude al procedimiento coordinado del artículo 60 del Reglamento general de protección de datos.
+  [41] El Reglamento (UE) 2016/679 establece amplios márgenes para la determinación de la cuantía de las sanciones. La ley orgánica aprovecha la cláusula residual del artículo 83.2 de la norma europea, referida a los factores agravantes o atenuantes, para aclarar que entre los elementos a tener en cuenta podrán incluirse los que ya aparecían en el artículo 45.4 y 5 de la Ley Orgánica 15/1999, y que son conocidos por los operadores jurídicos.
+  [42] Finalmente, el Título X de esta ley acomete la tarea de reconocer y garantizar un elenco de derechos digitales de los ciudadanos conforme al mandato establecido en la Constitución. En particular, son objeto de regulación los derechos y libertades predicables al entorno de Internet como la neutralidad de la Red y el acceso universal o los derechos a la seguridad y educación digital así como los derechos al olvido, a la portabilidad y al testamento digital. Ocupa un lugar relevante el reconocimiento del derecho a la desconexión digital en el marco del derecho a la intimidad en el uso de dispositivos digitales en el ámbito laboral y la protección de los menores en Internet. Finalmente, resulta destacable la garantía de la libertad de expresión y el derecho a la aclaración de informaciones en medios de comunicación digitales.
+  [43] Las disposiciones adicionales se refieren a cuestiones como las medidas de seguridad en el ámbito del sector público, protección de datos y transparencia y acceso a la información pública, cómputo de plazos, autorización judicial en materia de transferencias internacionales de datos, la protección frente a prácticas abusivas que pudieran desarrollar ciertos operadores, o los tratamientos de datos de salud, entre otras.
+  [44] De conformidad con la disposición adicional decimocuarta, la normativa relativa a las excepciones y limitaciones en el ejercicio de los derechos que hubiese entrado en vigor con anterioridad a la fecha de aplicación del reglamento europeo y en particular los artículos 23 y 24 de la Ley Orgánica 15/1999, de 13 de diciembre, de Protección de Datos de Carácter Personal, seguirá vigente en tanto no sea expresamente modificada, sustituida o derogada. La pervivencia de esta normativa supone la continuidad de las excepciones y limitaciones que en ella se contienen hasta que se produzca su reforma o abrogación, si bien referida a los derechos tal y como se regulan en el Reglamento (UE) 2016/679 y en esta ley orgánica. Así, por ejemplo, en virtud de la referida disposición adicional, las Administraciones tributarias responsables de los ficheros de datos con trascendencia tributaria a que se refiere el artículo 95 de la Ley 58/2003, de 17 de diciembre, General Tributaria, podrán, en relación con dichos datos, denegar el ejercicio de los derechos a que se refieren los artículos 15 a 22 del Reglamento (UE) 2016/679, cuando el mismo obstaculice las actuaciones administrativas tendentes a asegurar el cumplimiento de las obligaciones tributarias y, en todo caso, cuando el afectado esté siendo objeto de actuaciones inspectoras.
+  [45] Las disposiciones transitorias están dedicadas, entre otras cuestiones, al estatuto de la Agencia Española de Protección de Datos, el régimen transitorio de los procedimientos o los tratamientos sometidos a la Directiva (UE) 2016/680. Se recoge una disposición derogatoria y, a continuación, figuran las disposiciones finales sobre los preceptos con carácter de ley ordinaria, el título competencial y la entrada en vigor.
+  [46] Asimismo, se introducen las modificaciones necesarias de la Ley 1/2000, de 7 de enero, de Enjuiciamiento Civil y la Ley 29/1998, de 13 de julio, reguladora de la Jurisdicción Contencioso-administrativa, la Ley Orgánica, 6/1985, de 1 de julio, del Poder Judicial, la Ley 19/2013, de 9 de diciembre, de transparencia, acceso a la información pública y buen gobierno, la Ley Orgánica 5/1985, de 19 de junio, del Régimen Electoral General, la Ley 14/1986, de 25 de abril, General de Sanidad, la Ley 41/2002, de 14 de noviembre, básica reguladora de la autonomía del paciente y de derechos y obligaciones en materia de información y documentación clínica y la Ley 39/2015, de 1 de octubre, del Procedimiento Administrativo Común de las Administraciones Públicas.
+  [47] Finalmente, y en relación con la garantía de los derechos digitales, también se introducen modificaciones en la Ley Orgánica 2/2006, de 3 de mayo, de Educación, la Ley Orgánica 6/2001, de 21 de diciembre, de Universidades, así como en el Texto Refundido de la Ley del Estatuto de los Trabajadores y en el Texto Refundido de la Ley del Estatuto Básico del Empleado Público.
+```
+
+### Ley Orgánica 10/1995, artículo 536 · `BOE-A-1995-25444__a536` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444#a536
+_recuperado por:_ e5-large-instruct/I1_LEGAL#8 (0.881) · hybrid_rrf/I0_GENERIC#8 (0.025) · e5-large-instruct/I0_GENERIC#10 (0.875) · e5-large-instruct/I2_CITIZEN_LEGISLATION#10 (0.879) · e5-base/BASELINE#20 (0.831)  [5 sistemas]
+```
+  [1] Artículo 536.
+  [2] La autoridad, funcionario público o agente de éstos que, mediando causa por delito, interceptare las telecomunicaciones o utilizare artificios técnicos de escuchas, transmisión, grabación o reproducción del sonido, de la imagen o de cualquier otra señal de comunicación, con violación de las garantías constitucionales o legales, incurrirá en la pena de inhabilitación especial para empleo o cargo público de dos a seis años.
+  [3] Si divulgare o revelare la información obtenida, se impondrán las penas de inhabilitación especial, en su mitad superior y, además, la de multa de seis a dieciocho meses.
 ```
 
 ### Ley Orgánica 4/2015, artículo 15 · `BOE-A-2015-3442__a15` [JUZGADO rel=0 draft]
 https://www.boe.es/buscar/act.php?id=BOE-A-2015-3442#a15
-_recuperado por:_ bge-m3/BASELINE#3 (0.586) · e5-base/BASELINE#9 (0.845)  [2 sistemas]
+_recuperado por:_ bge-m3/BASELINE#3 (0.586) · e5-base/BASELINE#9 (0.845) · hybrid_rrf/I0_GENERIC#14 (0.021)  [3 sistemas]
 ```
   [1] Artículo 15. Entrada y registro en domicilio y edificios de organismos oficiales.
   [2] 1. Los agentes de las Fuerzas y Cuerpos de Seguridad sólo podrán proceder a la entrada y registro en domicilio en los casos permitidos por la Constitución y en los términos que fijen las Leyes.
@@ -3387,17 +3553,9 @@ _recuperado por:_ bge-m3/BASELINE#3 (0.586) · e5-base/BASELINE#9 (0.845)  [2 si
 **Pregunta:** ¿Qué reconoce el artículo 20 de la Constitución española?
 _split=test · difficulty=dificil · failure_mode=—_
 
-### BOE-A-1978-31229, artículo 2 · `BOE-A-1978-31229__a2` [JUZGADO rel=0 draft]
-https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a2
-_recuperado por:_ e5-large-instruct/I0_GENERIC#2 (0.877) · e5-base/BASELINE#4 (0.838) · e5-large-instruct/I2_CITIZEN_LEGISLATION#4 (0.882) · bge-m3/BASELINE#5 (0.538) · e5-large-instruct/I1_LEGAL#11 (0.877)  [5 sistemas]
-```
-  [1] Artículo 2
-  [2] La Constitución se fundamenta en la indisoluble unidad de la Nación española, patria común e indivisible de todos los españoles, y reconoce y garantiza el derecho a la autonomía de las nacionalidades y regiones que la integran y la solidaridad entre todas ellas.
-```
-
 ### Ley 20/2007 · `BOE-A-2007-13409__preambulo` [JUZGADO rel=0 draft]
 https://www.boe.es/buscar/act.php?id=BOE-A-2007-13409#preambulo
-_recuperado por:_ bge-m3/BASELINE#1 (0.590) · e5-base/BASELINE#2 (0.839) · e5-large-instruct/I0_GENERIC#13 (0.865) · e5-large-instruct/I1_LEGAL#16 (0.876) · e5-large-instruct/I2_CITIZEN_LEGISLATION#20 (0.873)  [5 sistemas]
+_recuperado por:_ bge-m3/BASELINE#1 (0.590) · bm25/lexical#1 (16.824) · e5-base/BASELINE#2 (0.839) · hybrid_rrf/I0_GENERIC#3 (0.030) · e5-large-instruct/I0_GENERIC#13 (0.865) · e5-large-instruct/I1_LEGAL#16 (0.876) · e5-large-instruct/I2_CITIZEN_LEGISLATION#20 (0.873)  [7 sistemas]
 ```
   [1] JUAN CARLOS I
   [2] REY DE ESPAÑA
@@ -3467,9 +3625,25 @@ _recuperado por:_ bge-m3/BASELINE#1 (0.590) · e5-base/BASELINE#2 (0.839) · e5-
   [66] La disposición final sexta establece una «vacatio legis» de tres meses, plazo que se considera adecuado para la entrada en vigor de la Ley.
 ```
 
+### BOE-A-1978-31229, artículo 2 · `BOE-A-1978-31229__a2` [JUZGADO rel=0 draft]
+https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a2
+_recuperado por:_ hybrid_rrf/I0_GENERIC#1 (0.032) · e5-large-instruct/I0_GENERIC#2 (0.877) · bm25/lexical#3 (15.688) · e5-base/BASELINE#4 (0.838) · e5-large-instruct/I2_CITIZEN_LEGISLATION#4 (0.882) · bge-m3/BASELINE#5 (0.538) · e5-large-instruct/I1_LEGAL#11 (0.877)  [7 sistemas]
+```
+  [1] Artículo 2
+  [2] La Constitución se fundamenta en la indisoluble unidad de la Nación española, patria común e indivisible de todos los españoles, y reconoce y garantiza el derecho a la autonomía de las nacionalidades y regiones que la integran y la solidaridad entre todas ellas.
+```
+
+### Ley 20/2011, disposición final octava · `BOE-A-2011-12628__dfoctava` [JUZGADO rel=0 draft]
+https://www.boe.es/buscar/act.php?id=BOE-A-2011-12628#dfoctava
+_recuperado por:_ bm25/lexical#2 (16.541) · hybrid_rrf/I0_GENERIC#2 (0.032) · e5-large-instruct/I1_LEGAL#3 (0.881) · e5-large-instruct/I0_GENERIC#4 (0.871) · e5-large-instruct/I2_CITIZEN_LEGISLATION#6 (0.879) · bge-m3/BASELINE#16 (0.519)  [6 sistemas]
+```
+  [1] Disposición final octava. Título competencial.
+  [2] La presente Ley se dicta al amparo del artículo 149.1.5.ª y 8.ª de la Constitución Española, con excepción de la disposición final cuarta, que lo hace con base en el artículo 149.1.6.ª de la Constitución Española, que atribuye al Estado competencia exclusiva para dictar la legislación procesal.
+```
+
 ### BOE-A-1978-31229, artículo 20 · `BOE-A-1978-31229__a20` [JUZGADO rel=2 reviewed]
 https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a20
-_recuperado por:_ e5-large-instruct/I0_GENERIC#1 (0.882) · e5-large-instruct/I1_LEGAL#1 (0.897) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.901) · bge-m3/BASELINE#6 (0.535)  [4 sistemas]
+_recuperado por:_ e5-large-instruct/I0_GENERIC#1 (0.882) · e5-large-instruct/I1_LEGAL#1 (0.897) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.901) · bge-m3/BASELINE#6 (0.535) · hybrid_rrf/I0_GENERIC#16 (0.016)  [5 sistemas]
 ```
   [1] Artículo 20
   [2] 1. Se reconocen y protegen los derechos:
@@ -3483,17 +3657,9 @@ _recuperado por:_ e5-large-instruct/I0_GENERIC#1 (0.882) · e5-large-instruct/I1
   [10] 5. Sólo podrá acordarse el secuestro de publicaciones, grabaciones y otros medios de información en virtud de resolución judicial.
 ```
 
-### Ley 20/2011, disposición final octava · `BOE-A-2011-12628__dfoctava` [JUZGADO rel=0 draft]
-https://www.boe.es/buscar/act.php?id=BOE-A-2011-12628#dfoctava
-_recuperado por:_ e5-large-instruct/I1_LEGAL#3 (0.881) · e5-large-instruct/I0_GENERIC#4 (0.871) · e5-large-instruct/I2_CITIZEN_LEGISLATION#6 (0.879) · bge-m3/BASELINE#16 (0.519)  [4 sistemas]
-```
-  [1] Disposición final octava. Título competencial.
-  [2] La presente Ley se dicta al amparo del artículo 149.1.5.ª y 8.ª de la Constitución Española, con excepción de la disposición final cuarta, que lo hace con base en el artículo 149.1.6.ª de la Constitución Española, que atribuye al Estado competencia exclusiva para dictar la legislación procesal.
-```
-
 ### Ley 20/2013 · `BOE-A-2013-12888__preambulo` [JUZGADO rel=0 draft]
 https://www.boe.es/buscar/act.php?id=BOE-A-2013-12888#preambulo
-_recuperado por:_ bge-m3/BASELINE#3 (0.566) · e5-large-instruct/I1_LEGAL#4 (0.880) · e5-large-instruct/I2_CITIZEN_LEGISLATION#9 (0.877) · e5-base/BASELINE#14 (0.829)  [4 sistemas]
+_recuperado por:_ bge-m3/BASELINE#3 (0.566) · e5-large-instruct/I1_LEGAL#4 (0.880) · e5-large-instruct/I2_CITIZEN_LEGISLATION#9 (0.877) · hybrid_rrf/I0_GENERIC#9 (0.018) · e5-base/BASELINE#14 (0.829)  [5 sistemas]
 ```
   [1] JUAN CARLOS I
   [2] REY DE ESPAÑA
@@ -3537,6 +3703,42 @@ _recuperado por:_ bge-m3/BASELINE#3 (0.566) · e5-large-instruct/I1_LEGAL#4 (0.8
   [40] Esta Ley se dicta al amparo del artículo 149 1.ª, 6.ª, 13.ª y 18.ª de la Constitución Española que establece que el Estado tiene competencia exclusiva sobre las siguientes materias: regulación de condiciones básicas que garanticen la igualdad de todos los españoles en el ejercicio de los derechos y el cumplimiento de los deberes constitucionales, así como sobre la legislación mercantil y procesal, las bases y la coordinación de la planificación general de la actividad económica, las bases del régimen jurídico de las Administraciones Públicas y la legislación básica sobre contratos administrativos.
 ```
 
+### Ley 39/2006, disposición final octava · `BOE-A-2006-21990__dfoctava` [JUZGADO rel=0 draft]
+https://www.boe.es/buscar/act.php?id=BOE-A-2006-21990#dfoctava
+_recuperado por:_ e5-large-instruct/I0_GENERIC#3 (0.872) · e5-large-instruct/I1_LEGAL#5 (0.880) · e5-large-instruct/I2_CITIZEN_LEGISLATION#5 (0.880) · hybrid_rrf/I0_GENERIC#19 (0.016)  [4 sistemas]
+```
+  [1] Disposición final octava. Fundamento constitucional.
+  [2] Esta Ley se dicta al amparo de la competencia exclusiva del Estado para regular las condiciones básicas que garanticen la igualdad de todos los españoles en el ejercicio de los derechos y el cumplimiento de los deberes constitucionales, conforme al artículo 149.1.1.ª de la Constitución.
+```
+
+### Ley 20/2007, disposición final primera · `BOE-A-2007-13409__dfprimera` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2007-13409#dfprimera
+_recuperado por:_ e5-large-instruct/I0_GENERIC#6 (0.868) · hybrid_rrf/I0_GENERIC#6 (0.022) · e5-large-instruct/I1_LEGAL#7 (0.879) · e5-large-instruct/I2_CITIZEN_LEGISLATION#10 (0.877)  [4 sistemas]
+```
+  [1] Disposición final primera. Título competencial.
+  [2] La presente Ley se dicta al amparo de la competencia que corresponde al Estado conforme al artículo 149.1.5.ª, 6.ª, 7.ª, 8.ª y 17.ª de la Constitución.
+```
+
+### Real Decreto Legislativo 5/2000, disposición final única · `BOE-A-2000-15060__dfunica-2` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2000-15060#dfunica-2
+_recuperado por:_ hybrid_rrf/I0_GENERIC#8 (0.020) · e5-large-instruct/I1_LEGAL#14 (0.876) · e5-large-instruct/I2_CITIZEN_LEGISLATION#15 (0.875) · e5-large-instruct/I0_GENERIC#16 (0.864)  [4 sistemas]
+```
+  [1] Disposición final única. Carácter de esta Ley.
+  [2] La presente Ley, así como sus normas reglamentarias de desarrollo, constituyen legislación dictada al amparo del artículo 149.1.2.ª, 7.ª, 17.ª y 18.ª de la Constitución Española.
+```
+
+### Ley 20/2011, artículo 68 · `BOE-A-2011-12628__a68` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2011-12628#a68
+_recuperado por:_ e5-base/BASELINE#15 (0.828) · bm25/lexical#15 (13.193) · bge-m3/BASELINE#20 (0.508)  [3 sistemas]
+```
+  [1] Artículo 68. Inscripción de la nacionalidad y de la vecindad civil.
+  [2] 1. La adquisición de la nacionalidad española por residencia, carta de naturaleza y opción, así como su recuperación y las declaraciones de voluntad relativas a la vecindad, se inscribirán en el registro individual. Estas inscripciones tendrán carácter constitutivo.
+  [3] No podrá inscribirse la nacionalidad española adquirida por cualquiera de las vías que reconoce el ordenamiento jurídico si no se ha efectuado la inscripción previa de nacimiento.
+  [4] La inscripción de la pérdida de la nacionalidad tendrá carácter meramente declarativo.
+  [5] 2. Para efectuar las inscripciones relativas a la nacionalidad y a la vecindad civil será título suficiente aquél a través del cual se haya reconocido la nacionalidad española o la vecindad civil que corresponda.
+  [6] 3. Las declaraciones de voluntad relativas a la adquisición de la nacionalidad española por residencia, carta de naturaleza y opción, así como su recuperación, conservación o pérdida, y las declaraciones de voluntad relativas a la vecindad, podrán realizarse ante el Encargado del Registro Civil, notario, o funcionario diplomático o consular encargado del Registro Civil.
+```
+
 ### Ley Orgánica 4/2000, artículo 20 · `BOE-A-2000-544__a20` [JUZGADO rel=0 draft]
 https://www.boe.es/buscar/act.php?id=BOE-A-2000-544#a20
 _recuperado por:_ e5-large-instruct/I1_LEGAL#2 (0.883) · e5-large-instruct/I2_CITIZEN_LEGISLATION#2 (0.886) · e5-large-instruct/I0_GENERIC#11 (0.865)  [3 sistemas]
@@ -3555,39 +3757,6 @@ _recuperado por:_ e5-large-instruct/I2_CITIZEN_LEGISLATION#3 (0.882) · e5-large
   [1] Artículo 10
   [2] 1. La dignidad de la persona, los derechos inviolables que le son inherentes, el libre desarrollo de la personalidad, el respeto a la ley y a los derechos de los demás son fundamento del orden político y de la paz social.
   [3] 2. Las normas relativas a los derechos fundamentales y a las libertades que la Constitución reconoce se interpretarán de conformidad con la Declaración Universal de Derechos Humanos y los tratados y acuerdos internacionales sobre las mismas materias ratificados por España.
-```
-
-### Ley 39/2006, disposición final octava · `BOE-A-2006-21990__dfoctava` [JUZGADO rel=0 draft]
-https://www.boe.es/buscar/act.php?id=BOE-A-2006-21990#dfoctava
-_recuperado por:_ e5-large-instruct/I0_GENERIC#3 (0.872) · e5-large-instruct/I1_LEGAL#5 (0.880) · e5-large-instruct/I2_CITIZEN_LEGISLATION#5 (0.880)  [3 sistemas]
-```
-  [1] Disposición final octava. Fundamento constitucional.
-  [2] Esta Ley se dicta al amparo de la competencia exclusiva del Estado para regular las condiciones básicas que garanticen la igualdad de todos los españoles en el ejercicio de los derechos y el cumplimiento de los deberes constitucionales, conforme al artículo 149.1.1.ª de la Constitución.
-```
-
-### Ley 20/2007, disposición final primera · `BOE-A-2007-13409__dfprimera` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2007-13409#dfprimera
-_recuperado por:_ e5-large-instruct/I0_GENERIC#6 (0.868) · e5-large-instruct/I1_LEGAL#7 (0.879) · e5-large-instruct/I2_CITIZEN_LEGISLATION#10 (0.877)  [3 sistemas]
-```
-  [1] Disposición final primera. Título competencial.
-  [2] La presente Ley se dicta al amparo de la competencia que corresponde al Estado conforme al artículo 149.1.5.ª, 6.ª, 7.ª, 8.ª y 17.ª de la Constitución.
-```
-
-### Ley 20/2007, artículo 1 · `BOE-A-2007-13409__a1` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2007-13409#a1
-_recuperado por:_ e5-large-instruct/I1_LEGAL#8 (0.879) · e5-large-instruct/I2_CITIZEN_LEGISLATION#8 (0.877) · e5-large-instruct/I0_GENERIC#15 (0.864)  [3 sistemas]
-```
-  [1] Artículo 1. Supuestos incluidos.
-  [2] 1. La presente ley se aplicará a las personas físicas que realicen de forma habitual, personal, directa, por cuenta propia y fuera del ámbito de dirección y organización de otra persona, una actividad económica o profesional a título lucrativo, den o no ocupación a trabajadores por cuenta ajena.
-  [3] También será de aplicación esta ley a los trabajos, realizados de forma habitual, por familiares de las personas definidas en el párrafo anterior que no tengan la condición de trabajadores por cuenta ajena, conforme a lo establecido en el artículo 1.3.e) del texto refundido de la Ley del Estatuto de los Trabajadores, aprobado por el Real Decreto Legislativo 2/2015, de 23 de octubre.
-  [4] 2. Se declaran expresamente comprendidos en el ámbito de aplicación de esta Ley, siempre que cumplan los requisitos a los que se refiere el apartado anterior:
-  [5] a) Los socios industriales de sociedades regulares colectivas y de sociedades comanditarias.
-  [6] b) Los comuneros de las comunidades de bienes y los socios de sociedades civiles irregulares, salvo que su actividad se limite a la mera administración de los bienes puestos en común.
-  [7] c) Quienes ejerzan las funciones de dirección y gerencia que conlleva el desempeño del cargo de consejero o administrador, o presten otros servicios para una sociedad mercantil capitalista, a título lucrativo y de forma habitual, personal y directa, cuando posean el control efectivo, directo o indirecto de aquélla, en los términos previstos en la disposición adicional vigésima séptima del texto refundido de la Ley General de la Seguridad Social aprobado por Real Decreto Legislativo 1/1994, de 20 de junio.
-  [8] d) Los trabajadores autónomos económicamente dependientes a los que se refiere el Capítulo III del Título II de la presente Ley.
-  [9] e) Cualquier otra persona que cumpla con los requisitos establecidos en el artículo 1.1 de la presente Ley.
-  [10] 3. Las inclusiones a las que se refiere el apartado anterior se entenderán sin perjuicio de la aplicación de sus respectivas normas específicas.
-  [11] 4. La presente Ley será de aplicación a los trabajadores autónomos extranjeros que reúnan los requisitos previstos en la Ley Orgánica 4/2000, de 11 de enero, de derechos y libertades de los extranjeros en España y su integración social.
 ```
 
 ### Ley 20/2011 · `BOE-A-2011-12628__preambulo` [JUZGADO rel=0 draft]
@@ -3650,7 +3819,7 @@ _split=test · difficulty=media · failure_mode=—_
 
 ### Ley 12/2023, [preambulo] · `BOE-A-2023-12203__pr` [JUZGADO rel=0 draft]
 https://www.boe.es/buscar/act.php?id=BOE-A-2023-12203#pr
-_recuperado por:_ bge-m3/BASELINE#1 (0.680) · e5-base/BASELINE#1 (0.856) · e5-large-instruct/I0_GENERIC#1 (0.886) · e5-large-instruct/I1_LEGAL#1 (0.912) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.913)  [5 sistemas]
+_recuperado por:_ bge-m3/BASELINE#1 (0.680) · e5-base/BASELINE#1 (0.856) · e5-large-instruct/I0_GENERIC#1 (0.886) · e5-large-instruct/I1_LEGAL#1 (0.912) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.913) · bm25/lexical#1 (29.565) · hybrid_rrf/I0_GENERIC#1 (0.032)  [7 sistemas]
 ```
   [1] FELIPE VI
   [2] REY DE ESPAÑA
@@ -3756,7 +3925,7 @@ _recuperado por:_ bge-m3/BASELINE#1 (0.680) · e5-base/BASELINE#1 (0.856) · e5-
 
 ### Ley 12/2023, artículo 8 · `BOE-A-2023-12203__a8` [JUZGADO rel=0 draft]
 https://www.boe.es/buscar/act.php?id=BOE-A-2023-12203#a8
-_recuperado por:_ e5-base/BASELINE#2 (0.851) · e5-large-instruct/I1_LEGAL#8 (0.889) · e5-large-instruct/I2_CITIZEN_LEGISLATION#8 (0.891) · bge-m3/BASELINE#9 (0.601) · e5-large-instruct/I0_GENERIC#16 (0.862)  [5 sistemas]
+_recuperado por:_ e5-base/BASELINE#2 (0.851) · bm25/lexical#4 (24.907) · hybrid_rrf/I0_GENERIC#6 (0.029) · e5-large-instruct/I1_LEGAL#8 (0.889) · e5-large-instruct/I2_CITIZEN_LEGISLATION#8 (0.891) · bge-m3/BASELINE#9 (0.601) · e5-large-instruct/I0_GENERIC#16 (0.862)  [7 sistemas]
 ```
   [1] Artículo 8. Derechos del ciudadano en relación con la vivienda.
   [2] Todos los ciudadanos tienen derecho a:
@@ -3768,41 +3937,16 @@ _recuperado por:_ e5-base/BASELINE#2 (0.851) · e5-large-instruct/I1_LEGAL#8 (0.
 
 ### Ley 12/2023, artículo 7 · `BOE-A-2023-12203__a7` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2023-12203#a7
-_recuperado por:_ bge-m3/BASELINE#4 (0.624) · e5-base/BASELINE#4 (0.846) · e5-large-instruct/I2_CITIZEN_LEGISLATION#13 (0.886) · e5-large-instruct/I1_LEGAL#14 (0.884)  [4 sistemas]
+_recuperado por:_ bge-m3/BASELINE#4 (0.624) · e5-base/BASELINE#4 (0.846) · bm25/lexical#11 (22.240) · hybrid_rrf/I0_GENERIC#11 (0.025) · e5-large-instruct/I2_CITIZEN_LEGISLATION#13 (0.886) · e5-large-instruct/I1_LEGAL#14 (0.884)  [6 sistemas]
 ```
   [1] Artículo 7. Principios rectores de la garantía de la función social de la vivienda.
   [2] 1. Atendiendo a la delimitación que del derecho a una vivienda digna y adecuada efectúa el artículo 47 de la Constitución Española, y considerando que la vivienda cumple una función social dado que constituye un bien destinado a satisfacer las necesidades básicas de alojamiento de las personas, familias y unidades de convivencia, corresponde a las administraciones públicas competentes velar por promover las condiciones necesarias para garantizar el ejercicio efectivo de dicho derecho en condiciones asequibles y con especial atención a familias, hogares y unidades de convivencia con menores a cargo, a través del estatuto de derechos y deberes asociados a la vivienda, en los términos dispuestos en la presente ley.
   [3] 2. Para el cumplimiento de lo previsto en el apartado anterior, los poderes públicos, en el ámbito de sus respectivas competencias, deben articular los mecanismos efectivos para asegurar su debida protección, conservación, rehabilitación y mejora, en los términos dispuestos por esta ley y de acuerdo con la legislación y normativa vigente en materia de vivienda.
 ```
 
-### BOE-A-1978-31229, artículo 27 · `BOE-A-1978-31229__a27` [JUZGADO rel=2 reviewed]
-https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a27
-_recuperado por:_ bge-m3/BASELINE#3 (0.630) · e5-base/BASELINE#9 (0.840) · e5-large-instruct/I0_GENERIC#17 (0.861) · e5-large-instruct/I2_CITIZEN_LEGISLATION#19 (0.881)  [4 sistemas]
-```
-  [1] Artículo 27
-  [2] 1. Todos tienen el derecho a la educación. Se reconoce la libertad de enseñanza.
-  [3] 2. La educación tendrá por objeto el pleno desarrollo de la personalidad humana en el respeto a los principios democráticos de convivencia y a los derechos y libertades fundamentales.
-  [4] 3. Los poderes públicos garantizan el derecho que asiste a los padres para que sus hijos reciban la formación religiosa y moral que esté de acuerdo con sus propias convicciones.
-  [5] 4. La enseñanza básica es obligatoria y gratuita.
-  [6] 5. Los poderes públicos garantizan el derecho de todos a la educación, mediante una programación general de la enseñanza, con participación efectiva de todos los sectores afectados y la creación de centros docentes.
-  [7] 6. Se reconoce a las personas físicas y jurídicas la libertad de creación de centros docentes, dentro del respeto a los principios constitucionales.
-  [8] 7. Los profesores, los padres y, en su caso, los alumnos intervendrán en el control y gestión de todos los centros sostenidos por la Administración con fondos públicos, en los términos que la ley establezca.
-  [9] 8. Los poderes públicos inspeccionarán y homologarán el sistema educativo para garantizar el cumplimiento de las leyes.
-  [10] 9. Los poderes públicos ayudarán a los centros docentes que reúnan los requisitos que la ley establezca.
-  [11] 10. Se reconoce la autonomía de las Universidades, en los términos que la ley establezca.
-```
-
-### BOE-A-1978-31229, artículo 47 · `BOE-A-1978-31229__a47` [JUZGADO rel=2 reviewed]
-https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a47
-_recuperado por:_ e5-large-instruct/I0_GENERIC#2 (0.882) · e5-large-instruct/I1_LEGAL#10 (0.887) · e5-large-instruct/I2_CITIZEN_LEGISLATION#14 (0.886)  [3 sistemas]
-```
-  [1] Artículo 47
-  [2] Todos los españoles tienen derecho a disfrutar de una vivienda digna y adecuada. Los poderes públicos promoverán las condiciones necesarias y establecerán las normas pertinentes para hacer efectivo este derecho, regulando la utilización del suelo de acuerdo con el interés general para impedir la especulación. La comunidad participará en las plusvalías que genere la acción urbanística de los entes públicos.
-```
-
 ### Ley 12/2023, artículo 3 · `BOE-A-2023-12203__a3` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2023-12203#a3
-_recuperado por:_ e5-large-instruct/I2_CITIZEN_LEGISLATION#16 (0.884) · e5-large-instruct/I1_LEGAL#17 (0.882)  [2 sistemas]
+_recuperado por:_ hybrid_rrf/I0_GENERIC#15 (0.024) · e5-large-instruct/I2_CITIZEN_LEGISLATION#16 (0.884) · e5-large-instruct/I1_LEGAL#17 (0.882) · bm25/lexical#20 (19.853)  [4 sistemas]
 ```
   [1] Artículo 3. Definiciones.
   [2] A los efectos de lo dispuesto en esta ley, y en tanto no entren en contradicción con las reguladas por las administraciones competentes en materia de vivienda, en cuyo caso, y a los efectos de su regulación, prevalecerán aquéllas, se establecen las siguientes definiciones:
@@ -3826,12 +3970,65 @@ _recuperado por:_ e5-large-instruct/I2_CITIZEN_LEGISLATION#16 (0.884) · e5-larg
   [20] Podrá calificarse como sinhogarismo cronificado, cuando la situación de sinhogarismo continúe o se produzca a lo largo de un periodo de tiempo igual o superior a un año.
 ```
 
+### BOE-A-1978-31229, artículo 47 · `BOE-A-1978-31229__a47` [JUZGADO rel=2 reviewed]
+https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a47
+_recuperado por:_ e5-large-instruct/I0_GENERIC#2 (0.882) · hybrid_rrf/I0_GENERIC#8 (0.027) · e5-large-instruct/I1_LEGAL#10 (0.887) · e5-large-instruct/I2_CITIZEN_LEGISLATION#14 (0.886)  [4 sistemas]
+```
+  [1] Artículo 47
+  [2] Todos los españoles tienen derecho a disfrutar de una vivienda digna y adecuada. Los poderes públicos promoverán las condiciones necesarias y establecerán las normas pertinentes para hacer efectivo este derecho, regulando la utilización del suelo de acuerdo con el interés general para impedir la especulación. La comunidad participará en las plusvalías que genere la acción urbanística de los entes públicos.
+```
+
+### BOE-A-1978-31229, artículo 27 · `BOE-A-1978-31229__a27` [JUZGADO rel=2 reviewed]
+https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a27
+_recuperado por:_ bge-m3/BASELINE#3 (0.630) · e5-base/BASELINE#9 (0.840) · e5-large-instruct/I0_GENERIC#17 (0.861) · e5-large-instruct/I2_CITIZEN_LEGISLATION#19 (0.881)  [4 sistemas]
+```
+  [1] Artículo 27
+  [2] 1. Todos tienen el derecho a la educación. Se reconoce la libertad de enseñanza.
+  [3] 2. La educación tendrá por objeto el pleno desarrollo de la personalidad humana en el respeto a los principios democráticos de convivencia y a los derechos y libertades fundamentales.
+  [4] 3. Los poderes públicos garantizan el derecho que asiste a los padres para que sus hijos reciban la formación religiosa y moral que esté de acuerdo con sus propias convicciones.
+  [5] 4. La enseñanza básica es obligatoria y gratuita.
+  [6] 5. Los poderes públicos garantizan el derecho de todos a la educación, mediante una programación general de la enseñanza, con participación efectiva de todos los sectores afectados y la creación de centros docentes.
+  [7] 6. Se reconoce a las personas físicas y jurídicas la libertad de creación de centros docentes, dentro del respeto a los principios constitucionales.
+  [8] 7. Los profesores, los padres y, en su caso, los alumnos intervendrán en el control y gestión de todos los centros sostenidos por la Administración con fondos públicos, en los términos que la ley establezca.
+  [9] 8. Los poderes públicos inspeccionarán y homologarán el sistema educativo para garantizar el cumplimiento de las leyes.
+  [10] 9. Los poderes públicos ayudarán a los centros docentes que reúnan los requisitos que la ley establezca.
+  [11] 10. Se reconoce la autonomía de las Universidades, en los términos que la ley establezca.
+```
+
+### Ley 12/2023, artículo 15 · `BOE-A-2023-12203__a1-7` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2023-12203#a1-7
+_recuperado por:_ bm25/lexical#15 (21.231) · bge-m3/BASELINE#17 (0.557) · hybrid_rrf/I0_GENERIC#17 (0.023)  [3 sistemas]
+```
+  [1] Artículo 15. Derecho de acceso a la vivienda y ordenación territorial y urbanística.
+  [2] 1. Para asegurar la efectividad de las condiciones básicas de igualdad en el ejercicio de los pertinentes derechos establecidos por esta ley, y en el marco de lo dispuesto en el texto refundido de la Ley de Suelo y Rehabilitación Urbana aprobado por Real Decreto Legislativo 7/2015, de 30 de octubre, se establecen los siguientes criterios básicos en el ámbito de la ordenación territorial y urbanística:
+  [3] a) Con la finalidad de ampliar la oferta de vivienda social o dotacional, los instrumentos de ordenación territorial y urbanística:
+  [4] 1.º Podrán establecer como uso compatible de los suelos dotacionales, el destinado a la construcción de viviendas dotacionales públicas.
+  [5] 2.º Podrán establecer la obtención de suelo con destino a vivienda social o dotacional, con cargo a las actuaciones de transformación urbanística que prevean los instrumentos correspondientes, cuando así lo establezca la legislación de ordenación territorial y urbanística y en las condiciones por ella fijadas.
+  [6] b) Con la finalidad de adaptar la vivienda a la demanda y facilitar el acceso a una vivienda digna y adecuada, la ordenación territorial y urbanística promoverá la aplicación de tipologías edificatorias y de modalidades de viviendas y alojamientos que se adapten a las diferentes formas de convivencia, habitación y a las exigencias del ciclo de vida de los hogares, atendiendo, en su caso, a la casuística del medio rural. Estas actuaciones podrán ser, tanto de transformación urbanística como edificatorias, de acuerdo con el artículo 7 del texto refundido de la Ley de Suelo y Rehabilitación urbana, aprobado por Real Decreto Legislativo 7/2015, de 30 de octubre.
+  [7] c) La calificación de un suelo como de reserva para vivienda sujeta a un régimen de protección pública, a que se refiere la letra b) del apartado 1 del artículo 20, del texto refundido de la Ley de Suelo y Rehabilitación Urbana, aprobado por Real Decreto Legislativo 7/2015, de 30 de octubre, no podrá modificarse, salvo en los casos excepcionales en los que el instrumento de ordenación urbanística justifique la innecesariedad de este tipo de viviendas o la imposibilidad sobrevenida de dicho destino, con independencia de que puedan modificarse las condiciones o características de la vivienda protegida para atender a la demanda y necesidades del ámbito territorial.
+  [8] d) La legislación sobre ordenación territorial o urbanística establecerá, para el suelo de reserva para vivienda sujeta a algún régimen de protección pública, recogido en la letra b) del apartado 1 del artículo 20, del texto refundido de la Ley de Suelo y Rehabilitación Urbana, aprobado por Real Decreto Legislativo 7/2015, de 30 de octubre, el porcentaje que deberá ser destinado a vivienda sujeta a algún régimen de protección pública de alquiler. Este porcentaje no podrá ser inferior al 50 %, salvo en casos excepcionales en los que el instrumento de ordenación urbanística lo justifique, atendiendo a las características de las personas demandantes de vivienda u otras circunstancias de la realidad económica y social.
+  [9] e) Con la finalidad de garantizar el derecho de acceso a la vivienda en los municipios en los que se hayan declarado uno o más ámbitos como zonas de mercado residencial tensionado, de acuerdo con el procedimiento establecido en el artículo 18.2 de esta ley, el suelo obtenido en cumplimiento del deber regulado por la letra b) del apartado 1 del artículo 18 del texto refundido de la Ley de Suelo y Rehabilitación Urbana, aprobado por Real Decreto Legislativo 7/2015, de 30 de octubre, deberá destinarse necesariamente a la construcción y gestión de viviendas sociales o dotacionales, y no podrá sustituirse por ningún otro uso público o de interés social ni por otras formas de cumplimiento del deber, salvo que se acredite la necesidad de destinarlo a otros usos de interés social.
+  [10] 2. En las actuaciones de reforma o renovación de la urbanización en suelo urbanizado establecidas en el artículo 7 del texto refundido de la Ley de Suelo y Rehabilitación Urbana, aprobado por Real Decreto Legislativo 7/2015, de 30 de octubre, que afecten a entornos residenciales, se buscarán fórmulas que aseguren la cohesión territorial y atiendan a la realidad social y económica de los hogares residentes, en los términos establecidos por la legislación sobre ordenación territorial y urbanística de las administraciones competentes.
+  [11] 3. En la regulación de los usos en entornos residenciales en el medio urbano, la legislación sobre ordenación territorial y urbanística establecerá instrumentos efectivos para asegurar el equilibrio, preservar la calidad de vida y el acceso a la vivienda, y asegurar el cumplimiento del principio de desarrollo territorial y urbano sostenible recogido en el artículo 3 del texto refundido de la Ley de Suelo y Rehabilitación Urbana, aprobado por Real Decreto Legislativo 7/2015, de 30 de octubre.
+  [12] 4. Para el desarrollo efectivo de las actuaciones referidas en el apartado 2, las Comunidades Autónomas y los Ayuntamientos podrán acordar justificadamente, de oficio o a petición de interesado, la aplicación del procedimiento de tramitación de urgencia en los instrumentos de planeamiento urbanístico que prevea expresamente la legislación de ordenación territorial y urbanística que corresponda.
+```
+
 ### Ley 29/1994, disposición adicional cuarta · `BOE-A-1994-26003__dacuaa` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-1994-26003#dacuaa
-_recuperado por:_ e5-large-instruct/I0_GENERIC#8 (0.870) · e5-large-instruct/I1_LEGAL#18 (0.881)  [2 sistemas]
+_recuperado por:_ e5-large-instruct/I0_GENERIC#8 (0.870) · e5-large-instruct/I1_LEGAL#18 (0.881) · hybrid_rrf/I0_GENERIC#18 (0.023)  [3 sistemas]
 ```
   [1] Disposición adicional cuarta. Ayudas para acceso a vivienda.
   [2] Las personas que, en aplicación de lo establecido en la disposición transitoria segunda de la presente ley, se vean privadas del derecho a la subrogación mortis causa que les reconocía el texto refundido de la Ley de Arrendamientos Urbanos, aprobado por Decreto 4104/1964, de 24 de diciembre, serán sujeto preferente de los programas de ayudas públicas para el acceso a vivienda, siempre que cumplan los requisitos en cuanto a ingresos máximos que se establezcan en dichos programas.
+```
+
+### Ley 12/2023, artículo 1 · `BOE-A-2023-12203__a1` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2023-12203#a1
+_recuperado por:_ bm25/lexical#16 (20.859) · bge-m3/BASELINE#19 (0.552)  [2 sistemas]
+```
+  [1] Artículo 1. Objeto de la ley.
+  [2] 1. Esta ley tiene por objeto regular, en el ámbito de competencias del Estado, las condiciones básicas que garantizan la igualdad en el ejercicio de los derechos y en el cumplimiento de los deberes constitucionales relacionados con la vivienda y, en particular, el derecho a acceder a una vivienda digna y adecuada y al disfrute de la misma en condiciones asequibles, atendiendo al cumplimiento de lo dispuesto en los instrumentos internacionales ratificados por España y respetando en todo caso las competencias de las comunidades autónomas y, específicamente, las que tienen atribuidas en materia de vivienda.
+  [3] 2. Con objeto de asegurar el ejercicio del derecho a la vivienda, será asimismo objeto de esta ley la regulación del contenido básico del derecho de propiedad de la vivienda en relación con su función social, que incluye el deber de destinar la misma al uso habitacional previsto por el ordenamiento jurídico, en el marco de los instrumentos de ordenación territorial y urbanística, así como de mantener, conservar y rehabilitar la vivienda, atribuyendo a los poderes públicos la función de asegurar su adecuado cumplimiento, en el ámbito de sus respectivas competencias, a través de la aplicación de las medidas que legalmente procedan.
+  [4] 3. La ley también tiene por objeto reforzar la protección del acceso a información completa, objetiva, veraz, clara, comprensible y accesible, en las operaciones de compra y arrendamiento de vivienda.
 ```
 
 ### Ley Orgánica 4/2000, artículo 13 · `BOE-A-2000-544__a13` [JUZGADO rel=0 draft]
@@ -3842,43 +4039,26 @@ _recuperado por:_ e5-large-instruct/I0_GENERIC#3 (0.876) · e5-base/BASELINE#19 
   [2] Los extranjeros residentes tienen derecho a acceder a los sistemas públicos de ayudas en materia de vivienda en los términos que establezcan las leyes y las Administraciones competentes. En todo caso, los extranjeros residentes de larga duración tienen derecho a dichas ayudas en las mismas condiciones que los españoles.
 ```
 
-### Ley 15/2022, artículo 20 · `BOE-A-2022-11589__a2-2` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2022-11589#a2-2
-_recuperado por:_ e5-large-instruct/I1_LEGAL#20 (0.880)  [1 sistemas]
-```
-  [1] Artículo 20. Derecho a la igualdad de trato y no discriminación en el acceso a la vivienda.
-  [2] 1. Las administraciones públicas, en el ámbito de sus competencias, garantizarán que las políticas de urbanismo y vivienda respeten el derecho a la igualdad de trato y prevengan la discriminación, incluida la segregación residencial, y cualquier forma de exclusión por cualquiera de las causas previstas en la presente ley. De manera específica, se tendrán en cuenta las necesidades de las personas sin hogar y de las que se encuentren en situación de mayor vulnerabilidad o sean más susceptibles de sufrir alguna forma de discriminación.
-  [3] Asimismo, tendrán en cuenta, en su elaboración, las necesidades de los grupos con mayores dificultades para el acceso y permanencia en la vivienda por razón de las expresadas causas, promoviendo políticas que garanticen la autonomía y la vida independiente de las personas mayores y de las personas con discapacidad, así como el soporte necesario a las personas que sufran o tengan mayor riesgo o predisposición a sufrir patologías y trastornos de la salud graves o inhabilitantes.
-  [4] 2. Los prestadores de servicios de venta, arrendamiento, intermediación inmobiliaria, portales de anuncios, o cualquier otra persona física o jurídica que haga una oferta disponible para el público, estarán igualmente obligados a respetar en sus operaciones comerciales el derecho a la igualdad de trato y no discriminación.
-  [5] En particular, queda prohibido:
-  [6] a) Rehusar una oferta de compra o arrendamiento, o rehusar el inicio de las negociaciones o de cualquier otra manera de impedir o denegar la compra o arrendamiento de una vivienda, por razón de alguna de las causas de discriminación previstas en la presente ley, cuando se hubiere realizado una oferta pública de venta o arrendamiento.
-  [7] b) Discriminar a una persona en cuanto a los términos o condiciones de la venta o arrendamiento de una vivienda con fundamento en las referidas causas.
-  [8] La obligación de no discriminación se mantendrá durante todo el periodo posterior de uso de la vivienda, en el caso de los arrendamientos u otras situaciones asimilables.
-  [9] 3. Lo previsto en los párrafos anteriores será de aplicación también a los locales de negocio.
-```
-
-### Ley 12/2023, artículo 23 · `BOE-A-2023-12203__a2-5` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2023-12203#a2-5
-_recuperado por:_ e5-large-instruct/I0_GENERIC#11 (0.868)  [1 sistemas]
-```
-  [1] Artículo 23. Planificación y programación estatal en materia de vivienda.
-  [2] 1. La Administración General del Estado contribuirá, en colaboración con las demás Administraciones públicas en cualquiera de las formas admitidas por la legislación reguladora del régimen del sector público, a garantizar el derecho constitucional a disfrutar de una vivienda digna y adecuada mediante los instrumentos de política fiscal, económica, social y de planificación o de programación de su competencia, atendiendo a la realidad económica, financiera y social, en favor de la cohesión territorial y la lucha contra la despoblación.
-  [3] 2. Para cumplir con el objeto de la ley, los instrumentos de planificación y programación de la Administración General del Estado apoyarán a las Administraciones territoriales competentes en la ejecución de las políticas de vivienda que, previo análisis y determinación de las necesidades, aseguren la existencia de una oferta suficiente y adecuada de vivienda en condiciones asequibles, fomentando la utilización racional del suelo y propiciando la ocupación eficiente del parque residencial, y asegurando que tales instrumentos cuenten con una adecuada dotación presupuestaria.
-  [4] Para ello, la planificación y programación de la Administración General del Estado, en el marco de la consecución de los fines establecidos en esta ley, favorecerá e impulsará de forma prioritaria:
-  [5] a) La rehabilitación y la mejora de las viviendas existentes, así como la promoción de vivienda encaminada a la formación de parques públicos de vivienda.
-  [6] b) La existencia de modalidades de vivienda que se adapten a las necesidades sociales.
-  [7] c) La adecuada dotación de programas de ayuda específicamente dirigidos a las personas y hogares con mayores dificultades para acceder a una vivienda, con especial atención a las personas jóvenes y hogares sujetos a mayor vulnerabilidad, así como las familias, hogares y unidades de convivencia con menores a cargo.
-```
-
 ---
 
 ## q92_055 · ciudadana · single_parent
 **Pregunta:** Me han quitado la cartera sin que me diera cuenta, sin violencia. ¿Eso qué delito es y de qué depende la pena?
 _split=test · difficulty=media · failure_mode=—_
 
+### Ley Orgánica 10/1995, artículo 242 · `BOE-A-1995-25444__a242` [JUZGADO rel=0 draft]
+https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444#a242
+_recuperado por:_ hybrid_rrf/I0_GENERIC#1 (0.031) · bm25/lexical#2 (17.595) · e5-large-instruct/I1_LEGAL#3 (0.893) · e5-large-instruct/I2_CITIZEN_LEGISLATION#3 (0.893) · e5-large-instruct/I0_GENERIC#7 (0.880) · e5-base/BASELINE#18 (0.835)  [6 sistemas]
+```
+  [1] Artículo 242.
+  [2] 1. El culpable de robo con violencia o intimidación en las personas será castigado con la pena de prisión de dos a cinco años, sin perjuicio de la que pudiera corresponder a los actos de violencia física que realizase.
+  [3] 2. Cuando el robo se cometa en casa habitada, edificio o local abiertos al público o en cualquiera de sus dependencias, se impondrá la pena de prisión de tres años y seis meses a cinco años.
+  [4] 3. Las penas señaladas en los apartados anteriores se impondrán en su mitad superior cuando el delincuente hiciere uso de armas u otros medios igualmente peligrosos, sea al cometer el delito o para proteger la huida, y cuando atacare a los que acudiesen en auxilio de la víctima o a los que le persiguieren.
+  [5] 4. En atención a la menor entidad de la violencia o intimidación ejercidas y valorando además las restantes circunstancias del hecho, podrá imponerse la pena inferior en grado a la prevista en los apartados anteriores.
+```
+
 ### Ley Orgánica 10/1995, artículo 234 · `BOE-A-1995-25444__a234` [JUZGADO rel=2 reviewed]
 https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444#a234
-_recuperado por:_ bge-m3/BASELINE#1 (0.569) · e5-large-instruct/I1_LEGAL#1 (0.894) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.895) · e5-large-instruct/I0_GENERIC#5 (0.881) · e5-base/BASELINE#13 (0.836)  [5 sistemas]
+_recuperado por:_ bge-m3/BASELINE#1 (0.569) · e5-large-instruct/I1_LEGAL#1 (0.894) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.895) · e5-large-instruct/I0_GENERIC#5 (0.881) · e5-base/BASELINE#13 (0.836) · hybrid_rrf/I0_GENERIC#16 (0.015)  [6 sistemas]
 ```
   [1] Artículo 234.
   [2] 1. El que, con ánimo de lucro, tomare las cosas muebles ajenas sin la voluntad de su dueño será castigado, como reo de hurto, con la pena de prisión de seis a dieciocho meses si la cuantía de lo sustraído excediese de 400 euros.
@@ -3917,15 +4097,29 @@ _recuperado por:_ e5-large-instruct/I1_LEGAL#5 (0.890) · e5-large-instruct/I2_C
   [5] b) Que el autor hubiera llevado a cabo la detención ilegal o secuestro con la intención de atentar contra la libertad o la indemnidad sexual de la víctima, o hubiera actuado posteriormente con esa finalidad.
 ```
 
-### Ley Orgánica 10/1995, artículo 242 · `BOE-A-1995-25444__a242` [JUZGADO rel=0 draft]
-https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444#a242
-_recuperado por:_ e5-large-instruct/I1_LEGAL#3 (0.893) · e5-large-instruct/I2_CITIZEN_LEGISLATION#3 (0.893) · e5-large-instruct/I0_GENERIC#7 (0.880) · e5-base/BASELINE#18 (0.835)  [4 sistemas]
+### Ley Orgánica 10/1995, artículo 236 · `BOE-A-1995-25444__a236` [JUZGADO rel=0 draft]
+https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444#a236
+_recuperado por:_ e5-large-instruct/I0_GENERIC#1 (0.886) · e5-large-instruct/I1_LEGAL#2 (0.893) · e5-large-instruct/I2_CITIZEN_LEGISLATION#4 (0.892) · hybrid_rrf/I0_GENERIC#10 (0.016)  [4 sistemas]
 ```
-  [1] Artículo 242.
-  [2] 1. El culpable de robo con violencia o intimidación en las personas será castigado con la pena de prisión de dos a cinco años, sin perjuicio de la que pudiera corresponder a los actos de violencia física que realizase.
-  [3] 2. Cuando el robo se cometa en casa habitada, edificio o local abiertos al público o en cualquiera de sus dependencias, se impondrá la pena de prisión de tres años y seis meses a cinco años.
-  [4] 3. Las penas señaladas en los apartados anteriores se impondrán en su mitad superior cuando el delincuente hiciere uso de armas u otros medios igualmente peligrosos, sea al cometer el delito o para proteger la huida, y cuando atacare a los que acudiesen en auxilio de la víctima o a los que le persiguieren.
-  [5] 4. En atención a la menor entidad de la violencia o intimidación ejercidas y valorando además las restantes circunstancias del hecho, podrá imponerse la pena inferior en grado a la prevista en los apartados anteriores.
+  [1] Artículo 236.
+  [2] 1. Será castigado con multa de tres a doce meses el que, siendo dueño de una cosa mueble o actuando con el consentimiento de éste, la sustrajere de quien la tenga legítimamente en su poder, con perjuicio del mismo o de un tercero.
+  [3] 2. Si el valor de la cosa sustraída no excediera de 400 euros, se impondrá la pena de multa de uno a tres meses.
+```
+
+### Ley Orgánica 10/1995, artículo 413 · `BOE-A-1995-25444__a413` [JUZGADO rel=0 draft]
+https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444#a413
+_recuperado por:_ e5-large-instruct/I0_GENERIC#3 (0.883) · e5-large-instruct/I1_LEGAL#6 (0.890) · e5-large-instruct/I2_CITIZEN_LEGISLATION#6 (0.891) · hybrid_rrf/I0_GENERIC#13 (0.016)  [4 sistemas]
+```
+  [1] Artículo 413.
+  [2] La autoridad o funcionario público que, a sabiendas, sustrajere, destruyere, inutilizare u ocultare, total o parcialmente, documentos cuya custodia le esté encomendada por razón de su cargo, incurrirá en las penas de prisión de uno a cuatro años, multa de siete a veinticuatro meses, e inhabilitación especial para empleo o cargo público por tiempo de tres a seis años.
+```
+
+### Ley Orgánica 10/1995, artículo 541 · `BOE-A-1995-25444__a541` [JUZGADO rel=0 draft]
+https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444#a541
+_recuperado por:_ e5-large-instruct/I0_GENERIC#2 (0.883) · e5-large-instruct/I2_CITIZEN_LEGISLATION#7 (0.891) · e5-large-instruct/I1_LEGAL#8 (0.890) · hybrid_rrf/I0_GENERIC#12 (0.016)  [4 sistemas]
+```
+  [1] Artículo 541.
+  [2] La autoridad o funcionario público que expropie a una persona de sus bienes fuera de los casos permitidos y sin cumplir los requisitos legales, incurrirá en las penas de inhabilitación especial para empleo o cargo público de uno a cuatro años y multa de seis a doce meses.
 ```
 
 ### Ley Orgánica 10/1995, artículo 301 · `BOE-A-1995-25444__a301` [sin juzgar]
@@ -3977,31 +4171,6 @@ _recuperado por:_ e5-base/BASELINE#1 (0.843) · bge-m3/BASELINE#8 (0.535) · e5-
   [10] 5. Los que realicen los hechos descritos en el párrafo segundo de los artículos 270.1 y 274.2, cuando el beneficio no sea superior a 400 euros, salvo que concurra alguna de las circunstancias prevenidas en los artículos 271 y 276, respectivamente.
 ```
 
-### Ley Orgánica 10/1995, artículo 236 · `BOE-A-1995-25444__a236` [JUZGADO rel=0 draft]
-https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444#a236
-_recuperado por:_ e5-large-instruct/I0_GENERIC#1 (0.886) · e5-large-instruct/I1_LEGAL#2 (0.893) · e5-large-instruct/I2_CITIZEN_LEGISLATION#4 (0.892)  [3 sistemas]
-```
-  [1] Artículo 236.
-  [2] 1. Será castigado con multa de tres a doce meses el que, siendo dueño de una cosa mueble o actuando con el consentimiento de éste, la sustrajere de quien la tenga legítimamente en su poder, con perjuicio del mismo o de un tercero.
-  [3] 2. Si el valor de la cosa sustraída no excediera de 400 euros, se impondrá la pena de multa de uno a tres meses.
-```
-
-### Ley Orgánica 10/1995, artículo 413 · `BOE-A-1995-25444__a413` [JUZGADO rel=0 draft]
-https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444#a413
-_recuperado por:_ e5-large-instruct/I0_GENERIC#3 (0.883) · e5-large-instruct/I1_LEGAL#6 (0.890) · e5-large-instruct/I2_CITIZEN_LEGISLATION#6 (0.891)  [3 sistemas]
-```
-  [1] Artículo 413.
-  [2] La autoridad o funcionario público que, a sabiendas, sustrajere, destruyere, inutilizare u ocultare, total o parcialmente, documentos cuya custodia le esté encomendada por razón de su cargo, incurrirá en las penas de prisión de uno a cuatro años, multa de siete a veinticuatro meses, e inhabilitación especial para empleo o cargo público por tiempo de tres a seis años.
-```
-
-### Ley Orgánica 10/1995, artículo 541 · `BOE-A-1995-25444__a541` [JUZGADO rel=0 draft]
-https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444#a541
-_recuperado por:_ e5-large-instruct/I0_GENERIC#2 (0.883) · e5-large-instruct/I2_CITIZEN_LEGISLATION#7 (0.891) · e5-large-instruct/I1_LEGAL#8 (0.890)  [3 sistemas]
-```
-  [1] Artículo 541.
-  [2] La autoridad o funcionario público que expropie a una persona de sus bienes fuera de los casos permitidos y sin cumplir los requisitos legales, incurrirá en las penas de inhabilitación especial para empleo o cargo público de uno a cuatro años y multa de seis a doce meses.
-```
-
 ### Ley Orgánica 10/1995, artículo 244 · `BOE-A-1995-25444__a244` [JUZGADO rel=0 draft]
 https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444#a244
 _recuperado por:_ bge-m3/BASELINE#2 (0.555) · e5-base/BASELINE#7 (0.837) · e5-large-instruct/I2_CITIZEN_LEGISLATION#18 (0.885)  [3 sistemas]
@@ -4032,9 +4201,30 @@ _recuperado por:_ bge-m3/BASELINE#3 (0.553) · e5-large-instruct/I2_CITIZEN_LEGI
 **Pregunta:** Me engañaron para que transfiriera dinero a cambio de algo que nunca recibí. ¿Qué delito describe esa conducta?
 _split=test · difficulty=media · failure_mode=—_
 
+### Ley Orgánica 10/1995, artículo 284 · `BOE-A-1995-25444__a284` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444#a284
+_recuperado por:_ bm25/lexical#1 (14.883) · hybrid_rrf/I0_GENERIC#1 (0.031) · e5-large-instruct/I2_CITIZEN_LEGISLATION#4 (0.895) · e5-large-instruct/I1_LEGAL#5 (0.893) · e5-large-instruct/I0_GENERIC#9 (0.874) · bge-m3/BASELINE#18 (0.519)  [6 sistemas]
+```
+  [1] Artículo 284.
+  [2] 1. Se impondrá la pena de prisión de seis meses a seis años, multa de dos a cinco años, o del tanto al triplo del beneficio obtenido o favorecido, o de los perjuicios evitados, si la cantidad resultante fuese más elevada, e inhabilitación especial para intervenir en el mercado financiero como actor, agente o mediador o informador por tiempo de dos a cinco años, a los que:
+  [3] 1.º Empleando violencia, amenaza, engaño o cualquier otro artificio, alterasen los precios que hubieren de resultar de la libre concurrencia de productos, mercancías, instrumentos financieros, contratos de contado sobre materias primas relacionadas con ellos, índices de referencia, servicios o cualesquiera otras cosas muebles o inmuebles que sean objeto de contratación, sin perjuicio de la pena que pudiere corresponderles por otros delitos cometidos.
+  [4] 2.º Por sí, de manera directa o indirecta o a través de un medio de comunicación, por medio de internet o mediante el uso de tecnologías de la información y la comunicación, o por cualquier otro medio, difundieren noticias o rumores o transmitieren señales falsas o engañosas sobre personas o empresas, ofreciendo a sabiendas datos económicos total o parcialmente falsos con el fin de alterar o preservar el precio de cotización de un instrumento financiero o un contrato de contado sobre materias primas relacionado o de manipular el cálculo de un índice de referencia, cuando obtuvieran, para sí o para tercero, un beneficio, siempre que concurra alguna de las siguientes circunstancias:
+  [5] a) que dicho beneficio fuera superior a doscientos cincuenta mil euros o se causara un perjuicio de idéntica cantidad;
+  [6] b) que el importe de los fondos empleados fuera superior a dos millones de euros;
+  [7] c) que se causara un grave impacto en la integridad del mercado.
+  [8] 3.º Realizaren transacciones, transmitieren señales falsas o engañosas, o dieren órdenes de operación susceptibles de proporcionar indicios falsos o engañosos sobre la oferta, la demanda o el precio de un instrumento financiero, un contrato de contado sobre materias primas relacionado o índices de referencia, o se aseguraren, utilizando la misma información, por sí o en concierto con otros, una posición dominante en el mercado de dichos instrumentos o contratos con la finalidad de fijar sus precios en niveles anormales o artificiales, siempre que concurra alguna de las siguientes circunstancias:
+  [9] a) que como consecuencia de su conducta obtuvieran, para sí o para tercero, un beneficio superior a doscientos cincuenta mil euros o causara un perjuicio de idéntica cantidad;
+  [10] b) que el importe de los fondos empleados fuera superior a dos millones de euros;
+  [11] c) que se causara un grave impacto en la integridad del mercado.
+  [12] 2. Se impondrá la pena en su mitad superior si concurriera alguna de las siguientes circunstancias:
+  [13] 1.ª Que el sujeto se dedique de forma habitual a las anteriores prácticas abusivas.
+  [14] 2.ª Que el beneficio obtenido, la pérdida evitada o el perjuicio causado sea de notoria importancia.
+  [15] 3. Si el responsable del hecho fuera trabajador o empleado de una empresa de servicios de inversión, entidad de crédito, autoridad supervisora o reguladora, o entidad rectora de mercados regulados o centros de negociación, las penas se impondrán en su mitad superior.
+```
+
 ### Ley Orgánica 10/1995, artículo 251 · `BOE-A-1995-25444__a251` [JUZGADO rel=0 draft]
 https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444#a251
-_recuperado por:_ bge-m3/BASELINE#1 (0.576) · e5-base/BASELINE#1 (0.850) · e5-large-instruct/I0_GENERIC#1 (0.887) · e5-large-instruct/I1_LEGAL#1 (0.905) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.906)  [5 sistemas]
+_recuperado por:_ bge-m3/BASELINE#1 (0.576) · e5-base/BASELINE#1 (0.850) · e5-large-instruct/I0_GENERIC#1 (0.887) · e5-large-instruct/I1_LEGAL#1 (0.905) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.906) · hybrid_rrf/I0_GENERIC#12 (0.016)  [6 sistemas]
 ```
   [1] Artículo 251.
   [2] Será castigado con la pena de prisión de uno a cuatro años:
@@ -4045,7 +4235,7 @@ _recuperado por:_ bge-m3/BASELINE#1 (0.576) · e5-base/BASELINE#1 (0.850) · e5-
 
 ### Ley Orgánica 10/1995, artículo 249 · `BOE-A-1995-25444__a249` [JUZGADO rel=0 draft]
 https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444#a249
-_recuperado por:_ bge-m3/BASELINE#2 (0.552) · e5-large-instruct/I0_GENERIC#2 (0.879) · e5-large-instruct/I1_LEGAL#2 (0.897) · e5-large-instruct/I2_CITIZEN_LEGISLATION#2 (0.898) · e5-base/BASELINE#4 (0.836)  [5 sistemas]
+_recuperado por:_ bge-m3/BASELINE#2 (0.552) · e5-large-instruct/I0_GENERIC#2 (0.879) · e5-large-instruct/I1_LEGAL#2 (0.897) · e5-large-instruct/I2_CITIZEN_LEGISLATION#2 (0.898) · e5-base/BASELINE#4 (0.836) · hybrid_rrf/I0_GENERIC#13 (0.016)  [6 sistemas]
 ```
   [1] Artículo 249.
   [2] 1. También se consideran reos de estafa y serán castigados con la pena de prisión de seis meses a tres años:
@@ -4055,6 +4245,16 @@ _recuperado por:_ bge-m3/BASELINE#2 (0.552) · e5-large-instruct/I0_GENERIC#2 (0
   [6] a) Los que fabricaren, importaren, obtuvieren, poseyeren, transportaren, comerciaren o de otro modo facilitaren a terceros dispositivos, instrumentos o datos o programas informáticos, o cualquier otro medio diseñado o adaptado específicamente para la comisión de las estafas previstas en este artículo.
   [7] b) Los que, para su utilización fraudulenta, sustraigan, se apropiaren o adquieran de forma ilícita tarjetas de crédito o débito, cheques de viaje o cualquier otro instrumento de pago material o inmaterial distinto del efectivo.
   [8] 3. Se impondrá la pena en su mitad inferior a los que, para su utilización fraudulenta y sabiendo que fueron obtenidos ilícitamente, posean, adquieran, transfieran, distribuyan o pongan a disposición de terceros tarjetas de crédito o débito, cheques de viaje o cualesquiera otros instrumentos de pago materiales o inmateriales distintos del efectivo.
+```
+
+### Ley Orgánica 10/1995, artículo 248 · `BOE-A-1995-25444__a248` [JUZGADO rel=2 reviewed]
+https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444#a248
+_recuperado por:_ e5-base/BASELINE#2 (0.839) · hybrid_rrf/I0_GENERIC#4 (0.024) · e5-large-instruct/I2_CITIZEN_LEGISLATION#5 (0.894) · bge-m3/BASELINE#6 (0.545) · e5-large-instruct/I0_GENERIC#6 (0.875) · e5-large-instruct/I1_LEGAL#6 (0.893)  [6 sistemas]
+```
+  [1] Artículo 248.
+  [2] Cometen estafa los que, con ánimo de lucro, utilizaren engaño bastante para producir error en otro, induciéndolo a realizar un acto de disposición en perjuicio propio o ajeno.
+  [3] Los reos de estafa serán castigados con la pena de prisión de seis meses a tres años. Para la fijación de la pena se tendrá en cuenta el importe de lo defraudado, el quebranto económico causado al perjudicado, las relaciones entre este y el defraudador, los medios empleados por este y cuantas otras circunstancias sirvan para valorar la gravedad de la infracción.
+  [4] Si la cuantía de lo defraudado no excediere de 400 euros, se impondrá la pena de multa de uno a tres meses, salvo si concurriere alguna de las circunstancias del artículo 250. No obstante, en el caso de que el culpable hubiera sido condenado ejecutoriamente al menos por tres delitos de la misma naturaleza, comprendidos en este capítulo, y siendo al menos uno de ellos leve, se impondrá la pena prevista en el párrafo segundo del presente artículo. No se tendrán en cuenta los antecedentes penales cancelados o que debieran serlo.
 ```
 
 ### Ley Orgánica 10/1995, artículo 250 · `BOE-A-1995-25444__a250` [JUZGADO rel=0 draft]
@@ -4074,16 +4274,6 @@ _recuperado por:_ e5-large-instruct/I2_CITIZEN_LEGISLATION#3 (0.896) · e5-large
   [11] 2. Si concurrieran las circunstancias incluidas en los numerales 4.º, 5.º, 6.º o 7.º con la del numeral 1.º del apartado anterior, se impondrán las penas de prisión de cuatro a ocho años y multa de doce a veinticuatro meses. La misma pena se impondrá cuando el valor de la defraudación supere los 250.000 euros.
 ```
 
-### Ley Orgánica 10/1995, artículo 248 · `BOE-A-1995-25444__a248` [JUZGADO rel=2 reviewed]
-https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444#a248
-_recuperado por:_ e5-base/BASELINE#2 (0.839) · e5-large-instruct/I2_CITIZEN_LEGISLATION#5 (0.894) · bge-m3/BASELINE#6 (0.545) · e5-large-instruct/I0_GENERIC#6 (0.875) · e5-large-instruct/I1_LEGAL#6 (0.893)  [5 sistemas]
-```
-  [1] Artículo 248.
-  [2] Cometen estafa los que, con ánimo de lucro, utilizaren engaño bastante para producir error en otro, induciéndolo a realizar un acto de disposición en perjuicio propio o ajeno.
-  [3] Los reos de estafa serán castigados con la pena de prisión de seis meses a tres años. Para la fijación de la pena se tendrá en cuenta el importe de lo defraudado, el quebranto económico causado al perjudicado, las relaciones entre este y el defraudador, los medios empleados por este y cuantas otras circunstancias sirvan para valorar la gravedad de la infracción.
-  [4] Si la cuantía de lo defraudado no excediere de 400 euros, se impondrá la pena de multa de uno a tres meses, salvo si concurriere alguna de las circunstancias del artículo 250. No obstante, en el caso de que el culpable hubiera sido condenado ejecutoriamente al menos por tres delitos de la misma naturaleza, comprendidos en este capítulo, y siendo al menos uno de ellos leve, se impondrá la pena prevista en el párrafo segundo del presente artículo. No se tendrán en cuenta los antecedentes penales cancelados o que debieran serlo.
-```
-
 ### Ley Orgánica 10/1995, artículo 419 · `BOE-A-1995-25444__a419` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444#a419
 _recuperado por:_ bge-m3/BASELINE#5 (0.547) · e5-large-instruct/I1_LEGAL#7 (0.889) · e5-large-instruct/I2_CITIZEN_LEGISLATION#7 (0.890) · e5-large-instruct/I0_GENERIC#11 (0.874) · e5-base/BASELINE#15 (0.829)  [5 sistemas]
@@ -4092,25 +4282,32 @@ _recuperado por:_ bge-m3/BASELINE#5 (0.547) · e5-large-instruct/I1_LEGAL#7 (0.8
   [2] La autoridad o funcionario público que, en provecho propio o de un tercero, recibiere o solicitare, por sí o por persona interpuesta, dádiva, favor o retribución de cualquier clase o aceptare ofrecimiento o promesa para realizar en el ejercicio de su cargo un acto contrario a los deberes inherentes al mismo o para no realizar o retrasar injustificadamente el que debiera practicar, incurrirá en la pena de prisión de tres a seis años, multa de doce a veinticuatro meses, e inhabilitación especial para empleo o cargo público y para el ejercicio del derecho de sufragio pasivo por tiempo de nueve a doce años, sin perjuicio de la pena correspondiente al acto realizado, omitido o retrasado en razón de la retribución o promesa, si fuera constitutivo de delito.
 ```
 
-### Ley Orgánica 10/1995, artículo 284 · `BOE-A-1995-25444__a284` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444#a284
-_recuperado por:_ e5-large-instruct/I2_CITIZEN_LEGISLATION#4 (0.895) · e5-large-instruct/I1_LEGAL#5 (0.893) · e5-large-instruct/I0_GENERIC#9 (0.874) · bge-m3/BASELINE#18 (0.519)  [4 sistemas]
+### Ley Orgánica 10/1995, artículo 430 · `BOE-A-1995-25444__a430` [JUZGADO rel=0 draft]
+https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444#a430
+_recuperado por:_ bge-m3/BASELINE#3 (0.549) · e5-large-instruct/I1_LEGAL#10 (0.888) · hybrid_rrf/I0_GENERIC#10 (0.020) · e5-large-instruct/I2_CITIZEN_LEGISLATION#12 (0.888) · e5-large-instruct/I0_GENERIC#20 (0.870)  [5 sistemas]
 ```
-  [1] Artículo 284.
-  [2] 1. Se impondrá la pena de prisión de seis meses a seis años, multa de dos a cinco años, o del tanto al triplo del beneficio obtenido o favorecido, o de los perjuicios evitados, si la cantidad resultante fuese más elevada, e inhabilitación especial para intervenir en el mercado financiero como actor, agente o mediador o informador por tiempo de dos a cinco años, a los que:
-  [3] 1.º Empleando violencia, amenaza, engaño o cualquier otro artificio, alterasen los precios que hubieren de resultar de la libre concurrencia de productos, mercancías, instrumentos financieros, contratos de contado sobre materias primas relacionadas con ellos, índices de referencia, servicios o cualesquiera otras cosas muebles o inmuebles que sean objeto de contratación, sin perjuicio de la pena que pudiere corresponderles por otros delitos cometidos.
-  [4] 2.º Por sí, de manera directa o indirecta o a través de un medio de comunicación, por medio de internet o mediante el uso de tecnologías de la información y la comunicación, o por cualquier otro medio, difundieren noticias o rumores o transmitieren señales falsas o engañosas sobre personas o empresas, ofreciendo a sabiendas datos económicos total o parcialmente falsos con el fin de alterar o preservar el precio de cotización de un instrumento financiero o un contrato de contado sobre materias primas relacionado o de manipular el cálculo de un índice de referencia, cuando obtuvieran, para sí o para tercero, un beneficio, siempre que concurra alguna de las siguientes circunstancias:
-  [5] a) que dicho beneficio fuera superior a doscientos cincuenta mil euros o se causara un perjuicio de idéntica cantidad;
-  [6] b) que el importe de los fondos empleados fuera superior a dos millones de euros;
-  [7] c) que se causara un grave impacto en la integridad del mercado.
-  [8] 3.º Realizaren transacciones, transmitieren señales falsas o engañosas, o dieren órdenes de operación susceptibles de proporcionar indicios falsos o engañosos sobre la oferta, la demanda o el precio de un instrumento financiero, un contrato de contado sobre materias primas relacionado o índices de referencia, o se aseguraren, utilizando la misma información, por sí o en concierto con otros, una posición dominante en el mercado de dichos instrumentos o contratos con la finalidad de fijar sus precios en niveles anormales o artificiales, siempre que concurra alguna de las siguientes circunstancias:
-  [9] a) que como consecuencia de su conducta obtuvieran, para sí o para tercero, un beneficio superior a doscientos cincuenta mil euros o causara un perjuicio de idéntica cantidad;
-  [10] b) que el importe de los fondos empleados fuera superior a dos millones de euros;
-  [11] c) que se causara un grave impacto en la integridad del mercado.
-  [12] 2. Se impondrá la pena en su mitad superior si concurriera alguna de las siguientes circunstancias:
-  [13] 1.ª Que el sujeto se dedique de forma habitual a las anteriores prácticas abusivas.
-  [14] 2.ª Que el beneficio obtenido, la pérdida evitada o el perjuicio causado sea de notoria importancia.
-  [15] 3. Si el responsable del hecho fuera trabajador o empleado de una empresa de servicios de inversión, entidad de crédito, autoridad supervisora o reguladora, o entidad rectora de mercados regulados o centros de negociación, las penas se impondrán en su mitad superior.
+  [1] Artículo 430.
+  [2] Los que, ofreciéndose a realizar las conductas descritas en los dos artículos anteriores, solicitaren de terceros dádivas, presentes o cualquier otra remuneración, o aceptaren ofrecimiento o promesa, serán castigados con la pena de prisión de seis meses a un año. Si el delito fuere cometido por autoridad o funcionario público se le impondrá, además, la pena de inhabilitación especial para cargo o empleo público y para el ejercicio del derecho de sufragio pasivo por tiempo de uno a cuatro años.
+  [3] Cuando de acuerdo con lo establecido en el artículo 31 bis una persona jurídica sea responsable de los delitos recogidos en este Capítulo, se le impondrá la pena de multa de seis meses a dos años.
+  [4] Atendidas las reglas establecidas en el artículo 66 bis, los jueces y tribunales podrán asimismo imponer las penas recogidas en las letras b) a g) del apartado 7 del artículo 33.
+```
+
+### Ley Orgánica 10/1995, artículo 307 ter · `BOE-A-1995-25444__a307ter` [JUZGADO rel=0 draft]
+https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444#a307ter
+_recuperado por:_ hybrid_rrf/I0_GENERIC#2 (0.028) · e5-large-instruct/I0_GENERIC#3 (0.877) · e5-large-instruct/I1_LEGAL#3 (0.894) · e5-large-instruct/I2_CITIZEN_LEGISLATION#6 (0.893)  [4 sistemas]
+```
+  [1] Artículo 307 ter.
+  [2] 1. Quien obtenga, para sí o para otro, el disfrute de prestaciones del Sistema de la Seguridad Social, la prolongación indebida del mismo, o facilite a otros su obtención, por medio del error provocado mediante la simulación o tergiversación de hechos, o la ocultación consciente de hechos de los que tenía el deber de informar, causando con ello un perjuicio a la Administración Pública, será castigado con la pena de seis meses a tres años de prisión.
+  [3] Cuando los hechos, a la vista del importe defraudado, de los medios empleados y de las circunstancias personales del autor, no revistan especial gravedad, serán castigados con una pena de multa del tanto al séxtuplo.
+  [4] Además de las penas señaladas, se impondrá al responsable la pérdida de la posibilidad de obtener subvenciones y del derecho a gozar de los beneficios o incentivos fiscales o de la Seguridad Social durante el período de tres a seis años.
+  [5] 2. Cuando el valor de las prestaciones fuera superior a cincuenta mil euros o hubiera concurrido cualquiera de las circunstancias a que se refieren las letras b) o c) del apartado 1 del artículo 307 bis, se impondrá una pena de prisión de dos a seis años y multa del tanto al séxtuplo.
+  [6] En estos casos, además de las penas señaladas, se impondrá al responsable la pérdida de la posibilidad de obtener subvenciones y del derecho a gozar de los beneficios o incentivos fiscales o de la Seguridad Social durante el período de cuatro a ocho años.
+  [7] 3. Quedará exento de responsabilidad criminal en relación con las conductas descritas en los apartados anteriores el que reintegre una cantidad equivalente al valor de la prestación recibida incrementada en un interés anual equivalente al interés legal del dinero aumentado en dos puntos porcentuales, desde el momento en que las percibió, antes de que se le haya notificado la iniciación de actuaciones de inspección y control en relación con las mismas o, en el caso de que tales actuaciones no se hubieran producido, antes de que el Ministerio Fiscal, el Abogado del Estado, el Letrado de la Seguridad Social, o el representante de la Administración autonómica o local de que se trate, interponga querella o denuncia contra aquél dirigida o antes de que el Ministerio Fiscal o el Juez de Instrucción realicen actuaciones que le permitan tener conocimiento formal de la iniciación de diligencias.
+  [8] La exención de responsabilidad penal contemplada en el párrafo anterior alcanzará igualmente a dicho sujeto por las posibles falsedades instrumentales que, exclusivamente en relación a las prestaciones defraudadas objeto de reintegro, el mismo pudiera haber cometido con carácter previo a la regularización de su situación.
+  [9] 4. La existencia de un procedimiento penal por alguno de los delitos de los apartados 1 y 2 de este artículo, no impedirá que la Administración competente exija el reintegro por vía administrativa de las prestaciones indebidamente obtenidas. El importe que deba ser reintegrado se entenderá fijado provisionalmente por la Administración, y se ajustará después a lo que finalmente se resuelva en el proceso penal.
+  [10] El procedimiento penal tampoco paralizará la acción de cobro de la Administración competente, que podrá iniciar las actuaciones dirigidas al cobro salvo que el Juez, de oficio o a instancia de parte, hubiere acordado la suspensión de las actuaciones de ejecución previa prestación de garantía. Si no se pudiere prestar garantía en todo o en parte, excepcionalmente el Juez podrá acordar la suspensión con dispensa total o parcial de garantías si apreciare que la ejecución pudiese ocasionar daños irreparables o de muy difícil reparación.
+  [11] 5. En los procedimientos por el delito contemplado en este artículo, para la ejecución de la pena de multa y de la responsabilidad civil, los Jueces y Tribunales recabarán el auxilio de los servicios de la Administración de la Seguridad Social que las exigirá por el procedimiento administrativo de apremio.
+  [12] 6. Resultará aplicable a los supuestos regulados en este artículo lo dispuesto en el apartado 5 del artículo 307 del Código Penal.
 ```
 
 ### Ley Orgánica 10/1995, artículo 305 · `BOE-A-1995-25444__a305` [sin juzgar]
@@ -4136,48 +4333,12 @@ _recuperado por:_ e5-large-instruct/I1_LEGAL#8 (0.889) · e5-large-instruct/I2_C
   [17] 7. En los procedimientos por el delito contemplado en este artículo, para la ejecución de la pena de multa y la responsabilidad civil, que comprenderá el importe de la deuda tributaria que la Administración Tributaria no haya liquidado por prescripción u otra causa legal en los términos previstos en la Ley 58/2003, General Tributaria, de 17 de diciembre, incluidos sus intereses de demora, los Jueces y Tribunales recabarán el auxilio de los servicios de la Administración Tributaria que las exigirá por el procedimiento administrativo de apremio en los términos establecidos en la citada Ley.
 ```
 
-### Ley Orgánica 10/1995, artículo 430 · `BOE-A-1995-25444__a430` [JUZGADO rel=0 draft]
-https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444#a430
-_recuperado por:_ bge-m3/BASELINE#3 (0.549) · e5-large-instruct/I1_LEGAL#10 (0.888) · e5-large-instruct/I2_CITIZEN_LEGISLATION#12 (0.888) · e5-large-instruct/I0_GENERIC#20 (0.870)  [4 sistemas]
+### Ley Orgánica 10/1995, artículo 243 · `BOE-A-1995-25444__a243` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444#a243
+_recuperado por:_ e5-large-instruct/I0_GENERIC#4 (0.876) · hybrid_rrf/I0_GENERIC#16 (0.016) · e5-large-instruct/I1_LEGAL#17 (0.884) · e5-large-instruct/I2_CITIZEN_LEGISLATION#19 (0.883)  [4 sistemas]
 ```
-  [1] Artículo 430.
-  [2] Los que, ofreciéndose a realizar las conductas descritas en los dos artículos anteriores, solicitaren de terceros dádivas, presentes o cualquier otra remuneración, o aceptaren ofrecimiento o promesa, serán castigados con la pena de prisión de seis meses a un año. Si el delito fuere cometido por autoridad o funcionario público se le impondrá, además, la pena de inhabilitación especial para cargo o empleo público y para el ejercicio del derecho de sufragio pasivo por tiempo de uno a cuatro años.
-  [3] Cuando de acuerdo con lo establecido en el artículo 31 bis una persona jurídica sea responsable de los delitos recogidos en este Capítulo, se le impondrá la pena de multa de seis meses a dos años.
-  [4] Atendidas las reglas establecidas en el artículo 66 bis, los jueces y tribunales podrán asimismo imponer las penas recogidas en las letras b) a g) del apartado 7 del artículo 33.
-```
-
-### Ley Orgánica 10/1995, artículo 308 · `BOE-A-1995-25444__a308` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444#a308
-_recuperado por:_ bge-m3/BASELINE#12 (0.524) · e5-base/BASELINE#12 (0.830) · e5-large-instruct/I2_CITIZEN_LEGISLATION#17 (0.884) · e5-large-instruct/I1_LEGAL#19 (0.883)  [4 sistemas]
-```
-  [1] Artículo 308.
-  [2] 1. El que obtenga subvenciones o ayudas de las Administraciones Públicas, incluida la Unión Europea, en una cantidad o por un valor superior a cien mil euros falseando las condiciones requeridas para su concesión u ocultando las que la hubiesen impedido será castigado con la pena de prisión de uno a cinco años y multa del tanto al séxtuplo de su importe, salvo que lleve a cabo el reintegro a que se refiere el apartado 6.
-  [3] 2. Las mismas penas se impondrán al que, en el desarrollo de una actividad sufragada total o parcialmente con fondos de las Administraciones públicas, incluida la Unión Europea, los aplique en una cantidad superior a cien mil euros a fines distintos de aquéllos para los que la subvención o ayuda fue concedida, salvo que lleve a cabo el reintegro a que se refiere el apartado 6.
-  [4] 3. Además de las penas señaladas, se impondrá al responsable la pérdida de la posibilidad de obtener subvenciones o ayudas públicas y del derecho a gozar de beneficios o incentivos fiscales o de la Seguridad Social durante un período de tres a seis años.
-  [5] 4. Si la cuantía obtenida, defraudada o aplicada indebidamente no superase los cien mil euros pero excediere de diez mil, se impondrá una pena de prisión de tres meses a un año o multa del tanto al triplo de la citada cuantía y la pérdida de la posibilidad de obtener subvenciones o ayudas públicas y del derecho a gozar de los beneficios o incentivos fiscales o de la Seguridad Social durante el período de seis meses a dos años, salvo que lleve a cabo el reintegro a que se refiere el apartado 6.
-  [6] 5. A los efectos de determinar la cuantía a que se refiere este artículo, se atenderá al total de lo obtenido, defraudado o indebidamente aplicado, con independencia de si procede de una o de varias Administraciones Públicas conjuntamente.
-  [7] 6. Se entenderá realizado el reintegro al que se refieren los apartados 1, 2 y 4 cuando por el perceptor de la subvención o ayuda se proceda a devolver las subvenciones o ayudas indebidamente percibidas o aplicadas, incrementadas en el interés de demora aplicable en materia de subvenciones desde el momento en que las percibió, y se lleve a cabo antes de que se haya notificado la iniciación de actuaciones de comprobación o control en relación con dichas subvenciones o ayudas o, en el caso de que tales actuaciones no se hubieran producido, antes de que el Ministerio Fiscal, el Abogado del Estado o el representante de la Administración autonómica o local de que se trate, interponga querella o denuncia contra aquél dirigida o antes de que el Ministerio Fiscal o el juez de instrucción realicen actuaciones que le permitan tener conocimiento formal de la iniciación de diligencias. El reintegro impedirá que a dicho sujeto se le persiga por las posibles falsedades instrumentales que, exclusivamente en relación a la deuda objeto de regularización, el mismo pudiera haber cometido con carácter previo a la regularización de su situación.
-  [8] 7. La existencia de un procedimiento penal por alguno de los delitos de los apartados 1, 2 y 4 de este artículo, no impedirá que la Administración competente exija el reintegro por vía administrativa de las subvenciones o ayudas indebidamente aplicadas. El importe que deba ser reintegrado se entenderá fijado provisionalmente por la Administración, y se ajustará después a lo que finalmente se resuelva en el proceso penal.
-  [9] El procedimiento penal tampoco paralizará la acción de cobro de la Administración, que podrá iniciar las actuaciones dirigidas al cobro salvo que el juez, de oficio o a instancia de parte, hubiere acordado la suspensión de las actuaciones de ejecución previa prestación de garantía. Si no se pudiere prestar garantía en todo o en parte, excepcionalmente el juez podrá acordar la suspensión con dispensa total o parcial de garantías si apreciare que la ejecución pudiese ocasionar daños irreparables o de muy difícil reparación.
-  [10] 8. Los jueces y tribunales podrán imponer al responsable de este delito la pena inferior en uno o dos grados, siempre que, antes de que transcurran dos meses desde la citación judicial como investigado, lleve a cabo el reintegro a que se refiere el apartado 6 y reconozca judicialmente los hechos. Lo anterior será igualmente aplicable respecto de otros partícipes en el delito distintos del obligado al reintegro o del autor del delito, cuando colaboren activamente para la obtención de pruebas decisivas para la identificación o captura de otros responsables, para el completo esclarecimiento de los hechos delictivos o para la averiguación del patrimonio del obligado o del responsable del delito.
-```
-
-### Ley Orgánica 10/1995, artículo 307 ter · `BOE-A-1995-25444__a307ter` [JUZGADO rel=0 draft]
-https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444#a307ter
-_recuperado por:_ e5-large-instruct/I0_GENERIC#3 (0.877) · e5-large-instruct/I1_LEGAL#3 (0.894) · e5-large-instruct/I2_CITIZEN_LEGISLATION#6 (0.893)  [3 sistemas]
-```
-  [1] Artículo 307 ter.
-  [2] 1. Quien obtenga, para sí o para otro, el disfrute de prestaciones del Sistema de la Seguridad Social, la prolongación indebida del mismo, o facilite a otros su obtención, por medio del error provocado mediante la simulación o tergiversación de hechos, o la ocultación consciente de hechos de los que tenía el deber de informar, causando con ello un perjuicio a la Administración Pública, será castigado con la pena de seis meses a tres años de prisión.
-  [3] Cuando los hechos, a la vista del importe defraudado, de los medios empleados y de las circunstancias personales del autor, no revistan especial gravedad, serán castigados con una pena de multa del tanto al séxtuplo.
-  [4] Además de las penas señaladas, se impondrá al responsable la pérdida de la posibilidad de obtener subvenciones y del derecho a gozar de los beneficios o incentivos fiscales o de la Seguridad Social durante el período de tres a seis años.
-  [5] 2. Cuando el valor de las prestaciones fuera superior a cincuenta mil euros o hubiera concurrido cualquiera de las circunstancias a que se refieren las letras b) o c) del apartado 1 del artículo 307 bis, se impondrá una pena de prisión de dos a seis años y multa del tanto al séxtuplo.
-  [6] En estos casos, además de las penas señaladas, se impondrá al responsable la pérdida de la posibilidad de obtener subvenciones y del derecho a gozar de los beneficios o incentivos fiscales o de la Seguridad Social durante el período de cuatro a ocho años.
-  [7] 3. Quedará exento de responsabilidad criminal en relación con las conductas descritas en los apartados anteriores el que reintegre una cantidad equivalente al valor de la prestación recibida incrementada en un interés anual equivalente al interés legal del dinero aumentado en dos puntos porcentuales, desde el momento en que las percibió, antes de que se le haya notificado la iniciación de actuaciones de inspección y control en relación con las mismas o, en el caso de que tales actuaciones no se hubieran producido, antes de que el Ministerio Fiscal, el Abogado del Estado, el Letrado de la Seguridad Social, o el representante de la Administración autonómica o local de que se trate, interponga querella o denuncia contra aquél dirigida o antes de que el Ministerio Fiscal o el Juez de Instrucción realicen actuaciones que le permitan tener conocimiento formal de la iniciación de diligencias.
-  [8] La exención de responsabilidad penal contemplada en el párrafo anterior alcanzará igualmente a dicho sujeto por las posibles falsedades instrumentales que, exclusivamente en relación a las prestaciones defraudadas objeto de reintegro, el mismo pudiera haber cometido con carácter previo a la regularización de su situación.
-  [9] 4. La existencia de un procedimiento penal por alguno de los delitos de los apartados 1 y 2 de este artículo, no impedirá que la Administración competente exija el reintegro por vía administrativa de las prestaciones indebidamente obtenidas. El importe que deba ser reintegrado se entenderá fijado provisionalmente por la Administración, y se ajustará después a lo que finalmente se resuelva en el proceso penal.
-  [10] El procedimiento penal tampoco paralizará la acción de cobro de la Administración competente, que podrá iniciar las actuaciones dirigidas al cobro salvo que el Juez, de oficio o a instancia de parte, hubiere acordado la suspensión de las actuaciones de ejecución previa prestación de garantía. Si no se pudiere prestar garantía en todo o en parte, excepcionalmente el Juez podrá acordar la suspensión con dispensa total o parcial de garantías si apreciare que la ejecución pudiese ocasionar daños irreparables o de muy difícil reparación.
-  [11] 5. En los procedimientos por el delito contemplado en este artículo, para la ejecución de la pena de multa y de la responsabilidad civil, los Jueces y Tribunales recabarán el auxilio de los servicios de la Administración de la Seguridad Social que las exigirá por el procedimiento administrativo de apremio.
-  [12] 6. Resultará aplicable a los supuestos regulados en este artículo lo dispuesto en el apartado 5 del artículo 307 del Código Penal.
+  [1] Artículo 243.
+  [2] El que, con ánimo de lucro, obligare a otro, con violencia o intimidación, a realizar u omitir un acto o negocio jurídico en perjuicio de su patrimonio o del de un tercero, será castigado con la pena de prisión de uno a cinco años, sin perjuicio de las que pudieran imponerse por los actos de violencia física realizados.
 ```
 
 ### Ley Orgánica 10/1995, artículo 269 · `BOE-A-1995-25444__a269` [JUZGADO rel=0 draft]
@@ -4194,36 +4355,9 @@ _recuperado por:_ e5-base/BASELINE#3 (0.837) · e5-large-instruct/I0_GENERIC#8 (
 **Pregunta:** ¿Qué es un trabajador autónomo económicamente dependiente (TRADE) y qué requisitos tiene esa figura?
 _split=test · difficulty=dificil · failure_mode=—_
 
-### Ley 20/2007, artículo 11 · `BOE-A-2007-13409__a11` [JUZGADO rel=2 reviewed]
-https://www.boe.es/buscar/act.php?id=BOE-A-2007-13409#a11
-_recuperado por:_ bge-m3/BASELINE#1 (0.648) · e5-base/BASELINE#1 (0.860) · e5-large-instruct/I0_GENERIC#1 (0.902) · e5-large-instruct/I1_LEGAL#1 (0.920) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.916)  [5 sistemas]
-```
-  [1] Artículo 11. Concepto y ámbito subjetivo.
-  [2] 1. Los trabajadores autónomos económicamente dependientes a los que se refiere el artículo 1.2.d) de la presente Ley son aquéllos que realizan una actividad económica o profesional a título lucrativo y de forma habitual, personal, directa y predominante para una persona física o jurídica, denominada cliente, del que dependen económicamente por percibir de él, al menos, el 75 por ciento de sus ingresos por rendimientos de trabajo y de actividades económicas o profesionales.
-  [3] 2. Para el desempeño de la actividad económica o profesional como trabajador autónomo económicamente dependiente, éste deberá reunir simultáneamente las siguientes condiciones:
-  [4] a) No tener a su cargo trabajadores por cuenta ajena ni contratar o subcontratar parte o toda la actividad con terceros, tanto respecto de la actividad contratada con el cliente del que depende económicamente como de las actividades que pudiera contratar con otros clientes.
-  [5] Lo dispuesto en el párrafo anterior, respecto de la prohibición de tener a su cargo trabajadores por cuenta ajena, no será de aplicación en los siguientes supuestos y situaciones, en los que se permitirá la contratación de un único trabajador:
-  [6] 1. Supuestos de riesgo durante el embarazo y riesgo durante la lactancia natural de un menor de nueve meses.
-  [7] 2. Períodos de descanso por nacimiento, adopción, guarda con fines de adopción y acogimiento familiar.
-  [8] 3. Por cuidado de menores de siete años que tengan a su cargo.
-  [9] 4. Por tener a su cargo un familiar, por consanguinidad o afinidad hasta el segundo grado inclusive, en situación de dependencia, debidamente acreditada.
-  [10] 5. Por tener a su cargo un familiar, por consanguinidad o afinidad hasta el segundo grado inclusive, con una discapacidad igual o superior al 33 por ciento, debidamente acreditada.
-  [11] En estos supuestos, el Trabajador Autónomo Económicamente Dependiente tendrá el carácter de empresario, en los términos previstos por el artículo 1.2 del texto refundido de la Ley del Estatuto de los Trabajadores.
-  [12] En lo no previsto expresamente, la contratación del trabajador por cuenta ajena se regirá por lo previsto por el artículo 15.1.c) del texto refundido de la Ley del Estatuto de los Trabajadores y sus normas de desarrollo. Para los supuestos previstos en los números 3, 4 y 5 anteriores, el contrato se celebrará por una jornada equivalente a la reducción de la actividad efectuada por el trabajador autónomo sin que pueda superar el 75 por ciento de la jornada de un trabajador a tiempo completo comparable, en cómputo anual. A estos efectos se entenderá por trabajador a tiempo completo comparable lo establecido en el artículo 12 del texto refundido de la Ley del Estatuto de los Trabajadores. En estos supuestos, la duración del contrato estará vinculada al mantenimiento de la situación de cuidado de menor de siete años o persona en situación de dependencia o discapacidad a cargo del trabajador autónomo, con una duración máxima, en todo caso, de doce meses.
-  [13] Solamente se permitirá la contratación de un único trabajador por cuenta ajena aunque concurran dos o más de los supuestos previstos. Finalizada la causa que dio lugar a dicha contratación, el trabajador autónomo podrá celebrar un nuevo contrato con un trabajador por cuenta ajena por cualquiera de las causas previstas anteriormente, siempre que, en todo caso, entre el final de un contrato y la nueva contratación transcurra un periodo mínimo de doce meses, salvo que el nuevo contrato tuviera como causa alguna de las previstas en los números 1 y 2.
-  [14] No obstante, en los supuestos de suspensión del contrato de trabajo por incapacidad temporal, nacimiento, adopción, guarda con fines de adopción o acogimiento familiar, riesgo durante el embarazo o lactancia natural o protección de mujer víctima de violencia de género, así como en los supuestos de extinción del contrato por causas procedentes, la persona trabajadora autónoma podrá contratar a un trabajador o trabajadora para sustituir a la persona inicialmente contratada, sin que, en ningún momento, ambas personas trabajadoras por cuenta ajena puedan prestar sus servicios de manera simultánea y sin que, en ningún caso, se supere el período máximo de duración de la contratación previsto en el presente apartado.
-  [15] En los supuestos previstos en los números 3, 4 y 5, solamente se permitirá la contratación de un trabajador por cuenta ajena por cada menor de siete años o familiar en situación de dependencia o discapacidad igual o superior al 33 por ciento.
-  [16] La contratación por cuenta ajena reglada por el presente apartado será compatible con la bonificación por conciliación de la vida profesional y familiar vinculada a la contratación, prevista en el artículo 30 de esta Ley.
-  [17] b) No ejecutar su actividad de manera indiferenciada con los trabajadores que presten servicios bajo cualquier modalidad de contratación laboral por cuenta del cliente.
-  [18] c) Disponer de infraestructura productiva y material propios, necesarios para el ejercicio de la actividad e independientes de los de su cliente, cuando en dicha actividad sean relevantes económicamente.
-  [19] d) Desarrollar su actividad con criterios organizativos propios, sin perjuicio de las indicaciones técnicas que pudiese recibir de su cliente.
-  [20] e) Percibir una contraprestación económica en función del resultado de su actividad, de acuerdo con lo pactado con el cliente y asumiendo riesgo y ventura de aquélla.
-  [21] 3. Los titulares de establecimientos o locales comerciales e industriales y de oficinas y despachos abiertos al público y los profesionales que ejerzan su profesión conjuntamente con otros en régimen societario o bajo cualquier otra forma jurídica admitida en derecho no tendrán en ningún caso la consideración de trabajadores autónomos económicamente dependientes.
-```
-
 ### Ley 20/2007 · `BOE-A-2007-13409__preambulo` [JUZGADO rel=0 draft]
 https://www.boe.es/buscar/act.php?id=BOE-A-2007-13409#preambulo
-_recuperado por:_ e5-base/BASELINE#2 (0.855) · e5-large-instruct/I0_GENERIC#2 (0.896) · e5-large-instruct/I1_LEGAL#2 (0.916) · e5-large-instruct/I2_CITIZEN_LEGISLATION#2 (0.911) · bge-m3/BASELINE#3 (0.610)  [5 sistemas]
+_recuperado por:_ bm25/lexical#1 (22.854) · hybrid_rrf/I0_GENERIC#1 (0.032) · e5-base/BASELINE#2 (0.855) · e5-large-instruct/I0_GENERIC#2 (0.896) · e5-large-instruct/I1_LEGAL#2 (0.916) · e5-large-instruct/I2_CITIZEN_LEGISLATION#2 (0.911) · bge-m3/BASELINE#3 (0.610)  [7 sistemas]
 ```
   [1] JUAN CARLOS I
   [2] REY DE ESPAÑA
@@ -4293,18 +4427,9 @@ _recuperado por:_ e5-base/BASELINE#2 (0.855) · e5-large-instruct/I0_GENERIC#2 (
   [66] La disposición final sexta establece una «vacatio legis» de tres meses, plazo que se considera adecuado para la entrada en vigor de la Ley.
 ```
 
-### Ley 20/2007, artículo 11 bis · `BOE-A-2007-13409__a11bis` [JUZGADO rel=0 draft]
-https://www.boe.es/buscar/act.php?id=BOE-A-2007-13409#a11bis
-_recuperado por:_ bge-m3/BASELINE#2 (0.627) · e5-large-instruct/I1_LEGAL#4 (0.910) · e5-large-instruct/I2_CITIZEN_LEGISLATION#4 (0.905) · e5-base/BASELINE#5 (0.852) · e5-large-instruct/I0_GENERIC#5 (0.893)  [5 sistemas]
-```
-  [1] Artículo 11 bis. Reconocimiento de la condición de trabajador autónomo económicamente dependiente.
-  [2] El trabajador autónomo que reúna las condiciones establecidas en el artículo anterior podrá solicitar a su cliente la formalización de un contrato de trabajador autónomo económicamente dependiente a través de una comunicación fehaciente. En el caso de que el cliente se niegue a la formalización del contrato o cuando transcurrido un mes desde la comunicación no se haya formalizado dicho contrato, el trabajador autónomo podrá solicitar el reconocimiento de la condición de trabajador autónomo económicamente dependiente ante los órganos jurisdiccionales del orden social. Todo ello sin perjuicio de lo establecido en el apartado 3 del artículo 12 de la presente Ley.
-  [3] En el caso de que el órgano jurisdiccional del orden social reconozca la condición de trabajador autónomo económicamente dependiente al entenderse cumplidas las condiciones recogidas en el artículo 11 apartados 1 y 2, el trabajador solo podrá ser considerado como tal desde el momento en que se hubiere recibido por el cliente la comunicación mencionada en el párrafo anterior. El reconocimiento judicial de la condición de trabajador autónomo económicamente dependiente no tendrá ningún efecto sobre la relación contractual entre las partes anterior al momento de dicha comunicación.
-```
-
 ### Real Decreto Legislativo 8/2015, artículo 333 · `BOE-A-2015-11724__a333` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2015-11724#a333
-_recuperado por:_ e5-large-instruct/I1_LEGAL#5 (0.906) · e5-large-instruct/I2_CITIZEN_LEGISLATION#5 (0.901) · bge-m3/BASELINE#7 (0.580) · e5-large-instruct/I0_GENERIC#9 (0.885) · e5-base/BASELINE#16 (0.839)  [5 sistemas]
+_recuperado por:_ e5-large-instruct/I1_LEGAL#5 (0.906) · e5-large-instruct/I2_CITIZEN_LEGISLATION#5 (0.901) · bge-m3/BASELINE#7 (0.580) · hybrid_rrf/I0_GENERIC#7 (0.028) · bm25/lexical#8 (18.032) · e5-large-instruct/I0_GENERIC#9 (0.885) · e5-base/BASELINE#16 (0.839)  [7 sistemas]
 ```
   [1] Artículo 333. Trabajadores autónomos económicamente dependientes.
   [2] 1. Se encontrarán en situación legal de cese de actividad los trabajadores autónomos económicamente dependientes que, sin perjuicio de lo previsto en el primer apartado del artículo 331, cesen su actividad por extinción del contrato suscrito con el cliente del que dependan económicamente, en los siguientes supuestos:
@@ -4323,9 +4448,18 @@ _recuperado por:_ e5-large-instruct/I1_LEGAL#5 (0.906) · e5-large-instruct/I2_C
   [15] 4. Reglamentariamente se desarrollará la documentación a presentar por los trabajadores autónomos con objeto de acreditar la situación legal de cese de actividad prevista en este artículo.
 ```
 
+### Ley 20/2007, artículo 11 bis · `BOE-A-2007-13409__a11bis` [JUZGADO rel=0 draft]
+https://www.boe.es/buscar/act.php?id=BOE-A-2007-13409#a11bis
+_recuperado por:_ bge-m3/BASELINE#2 (0.627) · e5-large-instruct/I1_LEGAL#4 (0.910) · e5-large-instruct/I2_CITIZEN_LEGISLATION#4 (0.905) · e5-base/BASELINE#5 (0.852) · e5-large-instruct/I0_GENERIC#5 (0.893) · hybrid_rrf/I0_GENERIC#5 (0.030) · bm25/lexical#9 (17.984)  [7 sistemas]
+```
+  [1] Artículo 11 bis. Reconocimiento de la condición de trabajador autónomo económicamente dependiente.
+  [2] El trabajador autónomo que reúna las condiciones establecidas en el artículo anterior podrá solicitar a su cliente la formalización de un contrato de trabajador autónomo económicamente dependiente a través de una comunicación fehaciente. En el caso de que el cliente se niegue a la formalización del contrato o cuando transcurrido un mes desde la comunicación no se haya formalizado dicho contrato, el trabajador autónomo podrá solicitar el reconocimiento de la condición de trabajador autónomo económicamente dependiente ante los órganos jurisdiccionales del orden social. Todo ello sin perjuicio de lo establecido en el apartado 3 del artículo 12 de la presente Ley.
+  [3] En el caso de que el órgano jurisdiccional del orden social reconozca la condición de trabajador autónomo económicamente dependiente al entenderse cumplidas las condiciones recogidas en el artículo 11 apartados 1 y 2, el trabajador solo podrá ser considerado como tal desde el momento en que se hubiere recibido por el cliente la comunicación mencionada en el párrafo anterior. El reconocimiento judicial de la condición de trabajador autónomo económicamente dependiente no tendrá ningún efecto sobre la relación contractual entre las partes anterior al momento de dicha comunicación.
+```
+
 ### Ley 20/2007, artículo 12 · `BOE-A-2007-13409__a12` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2007-13409#a12
-_recuperado por:_ e5-large-instruct/I1_LEGAL#11 (0.898) · e5-large-instruct/I2_CITIZEN_LEGISLATION#11 (0.894) · e5-base/BASELINE#13 (0.842) · e5-large-instruct/I0_GENERIC#16 (0.878) · bge-m3/BASELINE#17 (0.546)  [5 sistemas]
+_recuperado por:_ e5-large-instruct/I1_LEGAL#11 (0.898) · e5-large-instruct/I2_CITIZEN_LEGISLATION#11 (0.894) · e5-base/BASELINE#13 (0.842) · hybrid_rrf/I0_GENERIC#13 (0.026) · e5-large-instruct/I0_GENERIC#16 (0.878) · bge-m3/BASELINE#17 (0.546) · bm25/lexical#19 (16.324)  [7 sistemas]
 ```
   [1] Artículo 12. Contrato.
   [2] 1. El contrato para la realización de la actividad profesional del trabajador autónomo económicamente dependiente celebrado entre éste y su cliente se formalizará siempre por escrito y deberá ser registrado en la oficina pública correspondiente. Dicho registro no tendrá carácter publico.
@@ -4334,88 +4468,9 @@ _recuperado por:_ e5-large-instruct/I1_LEGAL#11 (0.898) · e5-large-instruct/I2_
   [5] 4. Cuando el contrato no se formalice por escrito o no se hubiera fijado una duración o un servicio determinado, se presumirá, salvo prueba en contrario, que el contrato ha sido pactado por tiempo indefinido.
 ```
 
-### Real Decreto Legislativo 8/2015, disposición adicional cuadragésima novena · `BOE-A-2015-11724__da-25` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2015-11724#da-25
-_recuperado por:_ e5-large-instruct/I2_CITIZEN_LEGISLATION#9 (0.898) · e5-large-instruct/I0_GENERIC#10 (0.883) · e5-large-instruct/I1_LEGAL#10 (0.901) · bge-m3/BASELINE#11 (0.570)  [4 sistemas]
-```
-  [1] Disposición adicional cuadragésima novena. Prestación para la sostenibilidad de la actividad de las personas trabajadoras autónomas de un sector de actividad afectado por el Mecanismo RED de Flexibilidad y Estabilización del Empleo en su modalidad sectorial, regulado en el artículo 47 bis del texto refundido de la Ley del Estatuto de los Trabajadores.
-  [2] Uno. Podrán causar derecho a la prestación para la sostenibilidad de la actividad regulada en esta disposición, las personas trabajadoras autónomas que desarrollen su actividad en un sector afectado por el Acuerdo del Consejo de Ministros que active el Mecanismo RED en su modalidad sectorial, previsto en el artículo 47 bis del texto refundido de la Ley del Estatuto de los Trabajadores.
-  [3] Dos. Son requisitos para causar derecho a esta prestación los siguientes:
-  [4] 1. Comunes a todos los trabajadores autónomos:
-  [5] 1.1 Estar de alta en el régimen especial al que se encuentre adscrita la actividad.
-  [6] 1.2 Tener cubierto el periodo mínimo de cotización por cese de actividad a que se refiere el artículo 338.
-  [7] 1.3 Estar al corriente en el pago de obligaciones tributarias y de Seguridad Social.
-  [8] 1.4 No prestar servicios por cuenta ajena o por cuenta propia en otra actividad no afectada por el mecanismo RED o siéndolo no haber adoptado las medidas previstas en el artículo 47 bis del texto refundido de la Ley del Estatuto de los Trabajadores salvo lo dispuesto en el apartado cuatro de esta Disposición adicional sobre incompatibilidades.
-  [9] 1.5 No percibir una prestación de cese de actividad o para la sostenibilidad de la actividad.
-  [10] 1.6 El acceso a la prestación requerirá la suscripción del compromiso de actividad al que se refiere el artículo 300.
-  [11] 1.7 No haber cumplido la edad ordinaria para causar derecho a la pensión contributiva de jubilación, salvo que el trabajador autónomo no tuviera acreditado el período de cotización requerido para ello.
-  [12] 2. En los supuestos de trabajadores autónomos, trabajadores autónomos por su condición de socios de sociedades de capital, trabajadores de cooperativas de trabajo asociado o trabajadores autónomos que ejercen su actividad profesional conjuntamente, cuyas empresas tengan trabajadores asalariados, se exigirá igualmente:
-  [13] 2.1 Resolución de la autoridad laboral autorizando la aplicación del mecanismo RED en su modalidad sectorial para los trabajadores de la empresa.
-  [14] 2.2 Que la adopción de las medidas del mecanismo RED afecte al 75 por ciento de la plantilla de la empresa.
-  [15] 2.3 Que se produzca una reducción de ingresos ordinarios o ventas durante los dos trimestres fiscales previos a la solicitud presentados ante la Administración tributaria del 75 por ciento respecto de los registrados en los mismos periodos del ejercicio o ejercicios anteriores.
-  [16] 2.4 Que los rendimientos netos mensuales del trabajador autónomo durante los dos trimestres fiscales anteriores a la solicitud de la prestación, por todas las actividades económicas, empresariales o profesionales que desarrolle, no alcancen la cuantía del salario mínimo interprofesional o el de la base por la que viniera cotizando, si esta fuera inferior.
-  [17] 2.5 Cumplir la empresa con las obligaciones laborales adquiridas como consecuencia de la adopción de medidas al amparo del Mecanismo RED y estar al corriente en el pago de salarios de los trabajadores.
-  [18] 2.6 Presentar a la entidad gestora de la prestación un proyecto de inversión y actividad a desarrollar.
-  [19] 2.7 Participar en el plan de recualificación presentado a la autoridad laboral para los trabajadores por cuenta ajena.
-  [20] 3. En los supuestos de trabajadores autónomos, trabajadores autónomos por su condición de socios de sociedades de capital, trabajadores de cooperativas de trabajo asociado o trabajadores autónomos que ejercen su actividad profesional conjuntamente, cuyas empresas no tengan trabajadores asalariados, se exigirá igualmente:
-  [21] 3.1 Que se produzca una reducción de ingresos ordinarios o ventas durante los dos trimestres fiscales previos a la solicitud presentados ante la Administración tributaria del 75 por ciento respecto de los registrados en los mismos periodos del ejercicio o ejercicios anteriores.
-  [22] 3.2 Que los rendimientos netos mensuales del trabajador autónomo durante los dos trimestres fiscales anteriores a la solicitud de la prestación, por todas las actividades económicas, empresariales o profesionales que desarrolle, no alcancen la cuantía del salario mínimo interprofesional o el de la base por la que viniera cotizando, si esta fuera inferior.
-  [23] 3.3 Presentar a la entidad gestora de la prestación un proyecto de inversión y actividad a desarrollar.
-  [24] 3.4 Participar en un plan de recualificación que deberá ser presentado a la entidad gestora de la prestación.
-  [25] Tres. Acción protectora. El sistema de protección para la sostenibilidad de la actividad comprende las prestaciones siguientes:
-  [26] 1. Una prestación económica de pago único, calculada teniendo en cuenta que:
-  [27] 1.1 En los supuestos de trabajadores autónomos, trabajadores autónomos por su condición de socios de sociedades de capital, trabajadores de cooperativas de trabajo asociado o trabajadores autónomos que ejercen su actividad profesional conjuntamente, cuyas empresas tengan trabajadores asalariados, la cuantía de la prestación será el 70 por ciento de la base reguladora y su determinación estará vinculada al tiempo de duración del mecanismo RED y en ningún caso podrá exceder de la que le corresponda atendiendo a lo previsto en el artículo 338.1.
-  [28] 1.2 En los supuestos de trabajadores autónomos, trabajadores autónomos por su condición de socios de sociedades de capital, trabajadores de cooperativas de trabajo asociado o trabajadores autónomos que ejercen su actividad profesional conjuntamente, cuyas empresas no tengan trabajadores asalariados, la cuantía de la prestación será el 70 por ciento de la base reguladora teniendo en cuenta los periodos de cotización de conformidad con lo previsto en el artículo 338.
-  [29] 1.3 La base reguladora de la prestación económica será el promedio de las bases de cotización de los doce meses continuados e inmediatamente anteriores al acuerdo del Consejo de Ministros.
-  [30] 2. El abono por la entidad gestora de la prestación del 50 por ciento de la cotización a la Seguridad Social del trabajador autónomo al régimen correspondiente calculada sobre la base reguladora de la prestación, siendo a cargo del trabajador el otro 50 por ciento. La entidad gestora abonará a la persona trabajadora autónoma, junto con la prestación por cese de la actividad, el importe de la cuota que le corresponda, siendo la persona trabajadora autónoma la responsable del ingreso de la totalidad de las cotizaciones a la Seguridad Social.
-  [31] Cuatro. Incompatibilidades.
-  [32] 1. El percibo de esta prestación es incompatible con la percepción de una prestación de desempleo, de mecanismo RED, de cese de actividad, con la renta activa de inserción regulada por el Real Decreto 1369/2006, de 24 de noviembre, o con cualquier otra prestación del sistema de Seguridad Social, distintas de las anteriores, salvo que fueran compatibles con el trabajo.
-  [33] 2. Las personas trabajadoras no podrán percibir, de forma simultánea, prestaciones derivadas de dos o más Mecanismos RED de Flexibilidad y Estabilización del Empleo, ya sea como consecuencia del trabajo por cuenta propia como por el trabajo por cuenta ajena, en caso de concurrir el derecho a causar dos prestaciones podrá elegir la más beneficiosa.
-  [34] 3. Es incompatible con otro trabajo por cuenta propia o por cuenta ajena. En los supuestos en los que el trabajador autónomo se encuentre en situación de pluriactividad, en el momento del hecho causante de la prestación por cese de actividad, la prestación por cese será compatible con la percepción de la remuneración por el trabajo por cuenta ajena que se venía desarrollando, siempre y cuando de la suma de la retribución mensual media de los últimos cuatro meses inmediatamente anteriores al nacimiento del derecho y la prestación para la sostenibilidad de la actividad en cómputo mensual resulte una cantidad media mensual inferior al importe del salario mínimo interprofesional vigente en el momento del nacimiento del derecho.
-  [35] Cinco. Obligaciones.
-  [36] 1. El trabajador autónomo con trabajadores por cuenta ajena perceptor de esta prestación deberá incorporarse a la actividad cuando se acuerde el levantamiento de las medidas adoptada en el mecanismo RED al menos a uno de los trabajadores de la empresa, y mantenerse en el desarrollo de la actividad al menos seis meses consecutivos.
-  [37] 2. Se mantiene la obligación de cotizar el 50 por ciento por todas las contingencias, incluido el cese de actividad.
-  [38] 3. También deberá mantenerse al corriente en las cotizaciones a la Seguridad Social, tanto de las propias, como la de los trabajadores o asimilados, de su empresa.
-  [39] 4. Invertir el importe de la prestación en una actividad económica o profesional como trabajadores autónomos o destinar el 100 por ciento de su importe a realizar una aportación al capital social de una entidad mercantil de nueva constitución o constituida en el plazo máximo de doce meses anteriores a la aportación, siempre que vayan a poseer el control efectivo de la misma, conforme a lo previsto en el texto refundido de la Ley General de la Seguridad Social y a ejercer en ella una actividad, encuadrados como trabajadores por cuenta propia en el régimen especial de la Seguridad Social correspondiente por razón de su actividad.
-  [40] Seis. Prestación para la sostenibilidad de la actividad de las personas trabajadoras autónomas e incapacidad temporal. La percepción de la prestación por incapacidad temporal es incompatible con la percepción de la prestación para la sostenibilidad de la actividad de las personas trabajadoras autónomas. El tiempo en que se perciba la prestación por incapacidad temporal se descontará del tiempo de acceso a esta prestación.
-  [41] Siete. Prestación por nacimiento y cuidado de menor.
-  [42] 1. En el supuesto de que el hecho causante del acceso a esta prestación se produzca cuando el trabajador autónomo se encuentre en situación de nacimiento, adopción, guarda con fines de adopción o acogimiento familiar, se seguirá percibiendo la prestación por nacimiento y cuidado de menor hasta que las mismas se extingan, en cuyo momento se pasará a percibir esta prestación, siempre que reúnan los requisitos legalmente establecidos.
-  [43] 2. Si durante la percepción de esta prestación económica la persona beneficiaria se encontrase en situación de nacimiento, adopción, guarda con fines de adopción o acogimiento familiar, pasará a percibir la prestación por nacimiento y cuidado de menor. Una vez extinguida la prestación por nacimiento y cuidado de menor, el órgano gestor, de oficio, reanudará el abono de la prestación para la sostenibilidad de la actividad de las personas trabajadoras autónomas hasta el agotamiento del período de duración a que se tenga derecho.
-  [44] Ocho. Trabajadores autónomos económicamente dependientes.
-  [45] Los trabajadores autónomos económicamente dependientes podrán causar derecho a la prestación para la sostenibilidad de la actividad de las personas trabajadoras autónomas siempre que no presten servicios en otras empresas y la empresa para la que preste servicios se haya acogido a alguna de las medidas del 47 bis del texto refundido de la Ley del Estatuto de los Trabajadores para el mecanismo RED en su modalidad sectorial.
-  [46] El trabajador autónomo deberá estar incluido en el plan de recualificación de las personas afectadas que la empresa deberá presentar a la autoridad laboral de conformidad con lo dispuesto en el artículo 47 bis.3 del texto refundido de la Ley del Estatuto de los Trabajadores.
-  [47] En todo caso se exigirá que se produzca una reducción de ingresos ordinarios o ventas durante los dos trimestres fiscales previos a la solicitud presentados ante la Administración tributaria del 50 por ciento respecto de los registrados en los mismos periodos del ejercicio o ejercicios anteriores, y que los rendimientos netos mensuales por todas las actividades económicas o profesionales que desarrolle, durante dicho período, no alcancen la cuantía del salario mínimo interprofesional o el de la base por la que viniera cotizando, si esta fuera inferior.
-  [48] La prestación económica del trabajador autónomo económicamente dependiente se regirá por lo dispuesto en el texto refundido de la Ley General de la Seguridad Social.
-  [49] Nueve. Órgano gestor.
-  [50] El órgano gestor de la prestación será la mutua colaboradora o el Instituto Social de la Marina.
-  [51] Diez. Solicitud de la adopción de medidas por los trabajadores autónomos, autónomos por su condición de socios de sociedades de capital, trabajadores de cooperativas de trabajo asociado o trabajadores autónomos que ejercen su actividad profesional conjuntamente cuyas empresas tengan trabajadores asalariados.
-  [52] Los trabajadores autónomos a los que hace referencia este apartado que hayan solicitado la adopción del mecanismo RED en su modalidad sectorial previstas en el artículo 47 bis del texto refundido de la Ley del Estatuto de los Trabajadores de al menos el 75 por ciento de la plantilla de la empresa, deberán solicitar a la autoridad laboral su inclusión en las medidas para poder tener acceso a esta prestación.
-  [53] El informe que deba emitir la Inspección de Trabajo de conformidad con el artículo 47 bis del texto refundido de la Ley del Estatuto de los Trabajadores analizará la situación de estos trabajadores autónomos.
-  [54] Once. Solicitud de la prestación.
-  [55] 1. Los trabajadores autónomos, trabajadores autónomos por su condición de socios de sociedades de capital, trabajadores de cooperativas de trabajo asociado o trabajadores autónomos que ejercen su actividad profesional conjuntamente cuyas empresas tengan trabajadores asalariados y hayan solicitado la adopción del mecanismo RED en su modalidad sectorial previstas en el artículo 47 bis del texto refundido de la Ley del Estatuto de los Trabajadores, podrán solicitar esta prestación dentro del plazo de quince días a contar del día siguiente a la recepción de la resolución de la Autoridad Laboral autorizando la misma ante la Mutua colaboradora con la que tenga cubierta la protección de cese de actividad o el Instituto Social de la Marina. Los efectos económicos serán desde la fecha de la solicitud.
-  [56] No obstante, si la solicitud se presentara transcurrida el plazo previsto en el apartado anterior los efectos de económicos se producirán a partir del día primero del mes siguiente a la solicitud.
-  [57] La solicitud deberá ir acompañada de la resolución de la autoridad laboral donde se haga constar el trabajador o los trabajadores autónomos que están afectados y el período en el que se producirá la reducción de la actividad o suspensión, así como del porcentaje de afectación de la plantilla que debe ser de al menos el 75 por ciento de los trabajadores de la empresa.
-  [58] Junto a la solicitud se acompañarán el proyecto de inversión y actividad a desarrollar, así como el plan de recualificación en el que participará.
-  [59] Presentada la solicitud las mutuas colaboradoras o el Instituto Social de la Marina recabarán los datos necesarios de la empresa o de las administraciones públicas para comprobar la concurrencia de los requisitos exigidos.
-  [60] 2. Los trabajadores autónomos, trabajadores autónomos por su condición de socios de sociedades de capital, trabajadores de cooperativas de trabajo asociado o trabajadores autónomos que ejercen su actividad profesional conjuntamente cuyas empresas no tengan trabajadores asalariados deberán presentar la solicitud a la mutua o al Instituto Social de la Marina con una autorización para que la entidad gestora de la prestación pueda comprobar la concurrencia de los requisitos exigidos.
-  [61] La entidad gestora de la prestación dará traslado de las resoluciones reconociendo la prestación a la Inspección de Trabajo y Seguridad Social.
-  [62] Presentada la solicitud las mutuas colaboradoras o el Instituto Social de la Marina recabarán los datos necesarios de la empresa o del trabajador o de las administraciones públicas para comprobar la concurrencia de los requisitos exigidos.
-  [63] 3. Los trabajadores autónomos económicamente dependientes podrán solicitar esta prestación dentro del plazo de quince días a contar del día siguiente a la recepción de la resolución de la Autoridad Laboral autorizando las medidas previstas en el artículo 47 bis ante la Mutua colaboradora con la que tenga cubierta la protección de cese de actividad o el Instituto Social de la Marina. Los efectos económicos de la solicitud serán desde la fecha de la solicitud.
-  [64] La solicitud del trabajador autónomo deberá ir acompañada de la solicitud y el plan de recualificación de las personas afectadas que la empresa deberá presentar a la autoridad laboral de conformidad con lo dispuesto en el artículo 47 bis.3 del texto refundido de la Ley del Estatuto de los Trabajadores donde deberá estar incluido el trabajador autónomo económicamente dependiente.
-  [65] Asimismo, deberá presentar los documentos contables en el que se registren la reducción de ingresos ordinarios o ventas exigido, y las declaraciones del Impuesto sobre el Valor Añadido, del Impuesto sobre la Renta de las Personas Físicas y demás documentos preceptivos que, a su vez, justifiquen los rendimientos netos mensuales y las partidas correspondientes consignadas en las cuentas aportadas.
-  [66] Presentada la solicitud las mutuas colaboradoras o el Instituto Social de la Marina. recabarán los datos necesarios de la empresa o del trabajador o de las administraciones públicas para comprobar la concurrencia de los requisitos exigidos.
-  [67] Doce. Reintegro de prestaciones indebidamente percibidas.
-  [68] Sin perjuicio de lo dispuesto en el artículo 47.3 del texto refundido de la Ley sobre Infracciones y Sanciones en el Orden Social, será aplicable para el reintegro de prestaciones indebidamente percibidas lo establecido en el artículo 55 del texto refundido de la Ley General de la Seguridad Social y en el artículo 80 del Reglamento General de Recaudación de la Seguridad Social, correspondiendo al órgano gestor la declaración como indebida de la prestación.
-  [69] Trece. Infracciones.
-  [70] En materia de infracciones y sanciones se estará a lo dispuesto en esta ley y en el texto refundido de la Ley sobre Infracciones y Sanciones en el Orden Social.
-  [71] Catorce. Jurisdicción competente y reclamación previa.
-  [72] Los órganos jurisdiccionales del orden social serán los competentes para conocer de las decisiones del órgano gestor relativas al reconocimiento, suspensión o extinción de esta prestación, así como al pago de estas. El interesado deberá formular reclamación previa ante el órgano gestor antes de acudir al órgano jurisdiccional del orden social competente. La resolución del órgano gestor habrá de indicar expresamente la posibilidad de presentar reclamación, el órgano ante el que se debe interponer, así como el plazo para su interposición.
-  [73] Quince. Esta protección por cese de actividad se financiará con cargo a la cotización por dicha contingencia.
-```
-
 ### Real Decreto Legislativo 8/2015, disposición adicional cuadragésima octava · `BOE-A-2015-11724__da-24` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2015-11724#da-24
-_recuperado por:_ bge-m3/BASELINE#12 (0.568) · e5-large-instruct/I2_CITIZEN_LEGISLATION#13 (0.892) · e5-large-instruct/I1_LEGAL#14 (0.896) · e5-large-instruct/I0_GENERIC#18 (0.877)  [4 sistemas]
+_recuperado por:_ bm25/lexical#11 (17.491) · bge-m3/BASELINE#12 (0.568) · e5-large-instruct/I2_CITIZEN_LEGISLATION#13 (0.892) · e5-large-instruct/I1_LEGAL#14 (0.896) · e5-large-instruct/I0_GENERIC#18 (0.877) · hybrid_rrf/I0_GENERIC#18 (0.024)  [6 sistemas]
 ```
   [1] Disposición adicional cuadragésima octava. Prestación para la sostenibilidad de la actividad de las personas trabajadoras autónomas de un sector de actividad afectado por el Mecanismo RED de Flexibilidad y Estabilización del Empleo en su modalidad cíclica, regulado en el artículo 47 bis del texto refundido de la Ley del Estatuto de los Trabajadores.
   [2] Uno. Podrán causar derecho a la prestación para la sostenibilidad de la actividad regulada en esta disposición, las personas trabajadoras autónomas que desarrollen su actividad en un sector afectado por el Acuerdo del Consejo de Ministros que active el Mecanismo RED en su modalidad cíclica, previsto en el artículo 47 bis del texto refundido de la Ley del Estatuto de los Trabajadores.
@@ -4504,12 +4559,141 @@ _recuperado por:_ bge-m3/BASELINE#12 (0.568) · e5-large-instruct/I2_CITIZEN_LEG
   [85] Esta protección por cese de actividad se financiará con cargo a la cotización por dicha contingencia.
 ```
 
+### Ley 20/2007, artículo 11 · `BOE-A-2007-13409__a11` [JUZGADO rel=2 reviewed]
+https://www.boe.es/buscar/act.php?id=BOE-A-2007-13409#a11
+_recuperado por:_ bge-m3/BASELINE#1 (0.648) · e5-base/BASELINE#1 (0.860) · e5-large-instruct/I0_GENERIC#1 (0.902) · e5-large-instruct/I1_LEGAL#1 (0.920) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.916) · hybrid_rrf/I0_GENERIC#11 (0.027)  [6 sistemas]
+```
+  [1] Artículo 11. Concepto y ámbito subjetivo.
+  [2] 1. Los trabajadores autónomos económicamente dependientes a los que se refiere el artículo 1.2.d) de la presente Ley son aquéllos que realizan una actividad económica o profesional a título lucrativo y de forma habitual, personal, directa y predominante para una persona física o jurídica, denominada cliente, del que dependen económicamente por percibir de él, al menos, el 75 por ciento de sus ingresos por rendimientos de trabajo y de actividades económicas o profesionales.
+  [3] 2. Para el desempeño de la actividad económica o profesional como trabajador autónomo económicamente dependiente, éste deberá reunir simultáneamente las siguientes condiciones:
+  [4] a) No tener a su cargo trabajadores por cuenta ajena ni contratar o subcontratar parte o toda la actividad con terceros, tanto respecto de la actividad contratada con el cliente del que depende económicamente como de las actividades que pudiera contratar con otros clientes.
+  [5] Lo dispuesto en el párrafo anterior, respecto de la prohibición de tener a su cargo trabajadores por cuenta ajena, no será de aplicación en los siguientes supuestos y situaciones, en los que se permitirá la contratación de un único trabajador:
+  [6] 1. Supuestos de riesgo durante el embarazo y riesgo durante la lactancia natural de un menor de nueve meses.
+  [7] 2. Períodos de descanso por nacimiento, adopción, guarda con fines de adopción y acogimiento familiar.
+  [8] 3. Por cuidado de menores de siete años que tengan a su cargo.
+  [9] 4. Por tener a su cargo un familiar, por consanguinidad o afinidad hasta el segundo grado inclusive, en situación de dependencia, debidamente acreditada.
+  [10] 5. Por tener a su cargo un familiar, por consanguinidad o afinidad hasta el segundo grado inclusive, con una discapacidad igual o superior al 33 por ciento, debidamente acreditada.
+  [11] En estos supuestos, el Trabajador Autónomo Económicamente Dependiente tendrá el carácter de empresario, en los términos previstos por el artículo 1.2 del texto refundido de la Ley del Estatuto de los Trabajadores.
+  [12] En lo no previsto expresamente, la contratación del trabajador por cuenta ajena se regirá por lo previsto por el artículo 15.1.c) del texto refundido de la Ley del Estatuto de los Trabajadores y sus normas de desarrollo. Para los supuestos previstos en los números 3, 4 y 5 anteriores, el contrato se celebrará por una jornada equivalente a la reducción de la actividad efectuada por el trabajador autónomo sin que pueda superar el 75 por ciento de la jornada de un trabajador a tiempo completo comparable, en cómputo anual. A estos efectos se entenderá por trabajador a tiempo completo comparable lo establecido en el artículo 12 del texto refundido de la Ley del Estatuto de los Trabajadores. En estos supuestos, la duración del contrato estará vinculada al mantenimiento de la situación de cuidado de menor de siete años o persona en situación de dependencia o discapacidad a cargo del trabajador autónomo, con una duración máxima, en todo caso, de doce meses.
+  [13] Solamente se permitirá la contratación de un único trabajador por cuenta ajena aunque concurran dos o más de los supuestos previstos. Finalizada la causa que dio lugar a dicha contratación, el trabajador autónomo podrá celebrar un nuevo contrato con un trabajador por cuenta ajena por cualquiera de las causas previstas anteriormente, siempre que, en todo caso, entre el final de un contrato y la nueva contratación transcurra un periodo mínimo de doce meses, salvo que el nuevo contrato tuviera como causa alguna de las previstas en los números 1 y 2.
+  [14] No obstante, en los supuestos de suspensión del contrato de trabajo por incapacidad temporal, nacimiento, adopción, guarda con fines de adopción o acogimiento familiar, riesgo durante el embarazo o lactancia natural o protección de mujer víctima de violencia de género, así como en los supuestos de extinción del contrato por causas procedentes, la persona trabajadora autónoma podrá contratar a un trabajador o trabajadora para sustituir a la persona inicialmente contratada, sin que, en ningún momento, ambas personas trabajadoras por cuenta ajena puedan prestar sus servicios de manera simultánea y sin que, en ningún caso, se supere el período máximo de duración de la contratación previsto en el presente apartado.
+  [15] En los supuestos previstos en los números 3, 4 y 5, solamente se permitirá la contratación de un trabajador por cuenta ajena por cada menor de siete años o familiar en situación de dependencia o discapacidad igual o superior al 33 por ciento.
+  [16] La contratación por cuenta ajena reglada por el presente apartado será compatible con la bonificación por conciliación de la vida profesional y familiar vinculada a la contratación, prevista en el artículo 30 de esta Ley.
+  [17] b) No ejecutar su actividad de manera indiferenciada con los trabajadores que presten servicios bajo cualquier modalidad de contratación laboral por cuenta del cliente.
+  [18] c) Disponer de infraestructura productiva y material propios, necesarios para el ejercicio de la actividad e independientes de los de su cliente, cuando en dicha actividad sean relevantes económicamente.
+  [19] d) Desarrollar su actividad con criterios organizativos propios, sin perjuicio de las indicaciones técnicas que pudiese recibir de su cliente.
+  [20] e) Percibir una contraprestación económica en función del resultado de su actividad, de acuerdo con lo pactado con el cliente y asumiendo riesgo y ventura de aquélla.
+  [21] 3. Los titulares de establecimientos o locales comerciales e industriales y de oficinas y despachos abiertos al público y los profesionales que ejerzan su profesión conjuntamente con otros en régimen societario o bajo cualquier otra forma jurídica admitida en derecho no tendrán en ningún caso la consideración de trabajadores autónomos económicamente dependientes.
+```
+
+### Real Decreto Legislativo 8/2015, disposición adicional cuadragésima novena · `BOE-A-2015-11724__da-25` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2015-11724#da-25
+_recuperado por:_ e5-large-instruct/I2_CITIZEN_LEGISLATION#9 (0.898) · e5-large-instruct/I0_GENERIC#10 (0.883) · e5-large-instruct/I1_LEGAL#10 (0.901) · bge-m3/BASELINE#11 (0.570) · hybrid_rrf/I0_GENERIC#15 (0.025)  [5 sistemas]
+```
+  [1] Disposición adicional cuadragésima novena. Prestación para la sostenibilidad de la actividad de las personas trabajadoras autónomas de un sector de actividad afectado por el Mecanismo RED de Flexibilidad y Estabilización del Empleo en su modalidad sectorial, regulado en el artículo 47 bis del texto refundido de la Ley del Estatuto de los Trabajadores.
+  [2] Uno. Podrán causar derecho a la prestación para la sostenibilidad de la actividad regulada en esta disposición, las personas trabajadoras autónomas que desarrollen su actividad en un sector afectado por el Acuerdo del Consejo de Ministros que active el Mecanismo RED en su modalidad sectorial, previsto en el artículo 47 bis del texto refundido de la Ley del Estatuto de los Trabajadores.
+  [3] Dos. Son requisitos para causar derecho a esta prestación los siguientes:
+  [4] 1. Comunes a todos los trabajadores autónomos:
+  [5] 1.1 Estar de alta en el régimen especial al que se encuentre adscrita la actividad.
+  [6] 1.2 Tener cubierto el periodo mínimo de cotización por cese de actividad a que se refiere el artículo 338.
+  [7] 1.3 Estar al corriente en el pago de obligaciones tributarias y de Seguridad Social.
+  [8] 1.4 No prestar servicios por cuenta ajena o por cuenta propia en otra actividad no afectada por el mecanismo RED o siéndolo no haber adoptado las medidas previstas en el artículo 47 bis del texto refundido de la Ley del Estatuto de los Trabajadores salvo lo dispuesto en el apartado cuatro de esta Disposición adicional sobre incompatibilidades.
+  [9] 1.5 No percibir una prestación de cese de actividad o para la sostenibilidad de la actividad.
+  [10] 1.6 El acceso a la prestación requerirá la suscripción del compromiso de actividad al que se refiere el artículo 300.
+  [11] 1.7 No haber cumplido la edad ordinaria para causar derecho a la pensión contributiva de jubilación, salvo que el trabajador autónomo no tuviera acreditado el período de cotización requerido para ello.
+  [12] 2. En los supuestos de trabajadores autónomos, trabajadores autónomos por su condición de socios de sociedades de capital, trabajadores de cooperativas de trabajo asociado o trabajadores autónomos que ejercen su actividad profesional conjuntamente, cuyas empresas tengan trabajadores asalariados, se exigirá igualmente:
+  [13] 2.1 Resolución de la autoridad laboral autorizando la aplicación del mecanismo RED en su modalidad sectorial para los trabajadores de la empresa.
+  [14] 2.2 Que la adopción de las medidas del mecanismo RED afecte al 75 por ciento de la plantilla de la empresa.
+  [15] 2.3 Que se produzca una reducción de ingresos ordinarios o ventas durante los dos trimestres fiscales previos a la solicitud presentados ante la Administración tributaria del 75 por ciento respecto de los registrados en los mismos periodos del ejercicio o ejercicios anteriores.
+  [16] 2.4 Que los rendimientos netos mensuales del trabajador autónomo durante los dos trimestres fiscales anteriores a la solicitud de la prestación, por todas las actividades económicas, empresariales o profesionales que desarrolle, no alcancen la cuantía del salario mínimo interprofesional o el de la base por la que viniera cotizando, si esta fuera inferior.
+  [17] 2.5 Cumplir la empresa con las obligaciones laborales adquiridas como consecuencia de la adopción de medidas al amparo del Mecanismo RED y estar al corriente en el pago de salarios de los trabajadores.
+  [18] 2.6 Presentar a la entidad gestora de la prestación un proyecto de inversión y actividad a desarrollar.
+  [19] 2.7 Participar en el plan de recualificación presentado a la autoridad laboral para los trabajadores por cuenta ajena.
+  [20] 3. En los supuestos de trabajadores autónomos, trabajadores autónomos por su condición de socios de sociedades de capital, trabajadores de cooperativas de trabajo asociado o trabajadores autónomos que ejercen su actividad profesional conjuntamente, cuyas empresas no tengan trabajadores asalariados, se exigirá igualmente:
+  [21] 3.1 Que se produzca una reducción de ingresos ordinarios o ventas durante los dos trimestres fiscales previos a la solicitud presentados ante la Administración tributaria del 75 por ciento respecto de los registrados en los mismos periodos del ejercicio o ejercicios anteriores.
+  [22] 3.2 Que los rendimientos netos mensuales del trabajador autónomo durante los dos trimestres fiscales anteriores a la solicitud de la prestación, por todas las actividades económicas, empresariales o profesionales que desarrolle, no alcancen la cuantía del salario mínimo interprofesional o el de la base por la que viniera cotizando, si esta fuera inferior.
+  [23] 3.3 Presentar a la entidad gestora de la prestación un proyecto de inversión y actividad a desarrollar.
+  [24] 3.4 Participar en un plan de recualificación que deberá ser presentado a la entidad gestora de la prestación.
+  [25] Tres. Acción protectora. El sistema de protección para la sostenibilidad de la actividad comprende las prestaciones siguientes:
+  [26] 1. Una prestación económica de pago único, calculada teniendo en cuenta que:
+  [27] 1.1 En los supuestos de trabajadores autónomos, trabajadores autónomos por su condición de socios de sociedades de capital, trabajadores de cooperativas de trabajo asociado o trabajadores autónomos que ejercen su actividad profesional conjuntamente, cuyas empresas tengan trabajadores asalariados, la cuantía de la prestación será el 70 por ciento de la base reguladora y su determinación estará vinculada al tiempo de duración del mecanismo RED y en ningún caso podrá exceder de la que le corresponda atendiendo a lo previsto en el artículo 338.1.
+  [28] 1.2 En los supuestos de trabajadores autónomos, trabajadores autónomos por su condición de socios de sociedades de capital, trabajadores de cooperativas de trabajo asociado o trabajadores autónomos que ejercen su actividad profesional conjuntamente, cuyas empresas no tengan trabajadores asalariados, la cuantía de la prestación será el 70 por ciento de la base reguladora teniendo en cuenta los periodos de cotización de conformidad con lo previsto en el artículo 338.
+  [29] 1.3 La base reguladora de la prestación económica será el promedio de las bases de cotización de los doce meses continuados e inmediatamente anteriores al acuerdo del Consejo de Ministros.
+  [30] 2. El abono por la entidad gestora de la prestación del 50 por ciento de la cotización a la Seguridad Social del trabajador autónomo al régimen correspondiente calculada sobre la base reguladora de la prestación, siendo a cargo del trabajador el otro 50 por ciento. La entidad gestora abonará a la persona trabajadora autónoma, junto con la prestación por cese de la actividad, el importe de la cuota que le corresponda, siendo la persona trabajadora autónoma la responsable del ingreso de la totalidad de las cotizaciones a la Seguridad Social.
+  [31] Cuatro. Incompatibilidades.
+  [32] 1. El percibo de esta prestación es incompatible con la percepción de una prestación de desempleo, de mecanismo RED, de cese de actividad, con la renta activa de inserción regulada por el Real Decreto 1369/2006, de 24 de noviembre, o con cualquier otra prestación del sistema de Seguridad Social, distintas de las anteriores, salvo que fueran compatibles con el trabajo.
+  [33] 2. Las personas trabajadoras no podrán percibir, de forma simultánea, prestaciones derivadas de dos o más Mecanismos RED de Flexibilidad y Estabilización del Empleo, ya sea como consecuencia del trabajo por cuenta propia como por el trabajo por cuenta ajena, en caso de concurrir el derecho a causar dos prestaciones podrá elegir la más beneficiosa.
+  [34] 3. Es incompatible con otro trabajo por cuenta propia o por cuenta ajena. En los supuestos en los que el trabajador autónomo se encuentre en situación de pluriactividad, en el momento del hecho causante de la prestación por cese de actividad, la prestación por cese será compatible con la percepción de la remuneración por el trabajo por cuenta ajena que se venía desarrollando, siempre y cuando de la suma de la retribución mensual media de los últimos cuatro meses inmediatamente anteriores al nacimiento del derecho y la prestación para la sostenibilidad de la actividad en cómputo mensual resulte una cantidad media mensual inferior al importe del salario mínimo interprofesional vigente en el momento del nacimiento del derecho.
+  [35] Cinco. Obligaciones.
+  [36] 1. El trabajador autónomo con trabajadores por cuenta ajena perceptor de esta prestación deberá incorporarse a la actividad cuando se acuerde el levantamiento de las medidas adoptada en el mecanismo RED al menos a uno de los trabajadores de la empresa, y mantenerse en el desarrollo de la actividad al menos seis meses consecutivos.
+  [37] 2. Se mantiene la obligación de cotizar el 50 por ciento por todas las contingencias, incluido el cese de actividad.
+  [38] 3. También deberá mantenerse al corriente en las cotizaciones a la Seguridad Social, tanto de las propias, como la de los trabajadores o asimilados, de su empresa.
+  [39] 4. Invertir el importe de la prestación en una actividad económica o profesional como trabajadores autónomos o destinar el 100 por ciento de su importe a realizar una aportación al capital social de una entidad mercantil de nueva constitución o constituida en el plazo máximo de doce meses anteriores a la aportación, siempre que vayan a poseer el control efectivo de la misma, conforme a lo previsto en el texto refundido de la Ley General de la Seguridad Social y a ejercer en ella una actividad, encuadrados como trabajadores por cuenta propia en el régimen especial de la Seguridad Social correspondiente por razón de su actividad.
+  [40] Seis. Prestación para la sostenibilidad de la actividad de las personas trabajadoras autónomas e incapacidad temporal. La percepción de la prestación por incapacidad temporal es incompatible con la percepción de la prestación para la sostenibilidad de la actividad de las personas trabajadoras autónomas. El tiempo en que se perciba la prestación por incapacidad temporal se descontará del tiempo de acceso a esta prestación.
+  [41] Siete. Prestación por nacimiento y cuidado de menor.
+  [42] 1. En el supuesto de que el hecho causante del acceso a esta prestación se produzca cuando el trabajador autónomo se encuentre en situación de nacimiento, adopción, guarda con fines de adopción o acogimiento familiar, se seguirá percibiendo la prestación por nacimiento y cuidado de menor hasta que las mismas se extingan, en cuyo momento se pasará a percibir esta prestación, siempre que reúnan los requisitos legalmente establecidos.
+  [43] 2. Si durante la percepción de esta prestación económica la persona beneficiaria se encontrase en situación de nacimiento, adopción, guarda con fines de adopción o acogimiento familiar, pasará a percibir la prestación por nacimiento y cuidado de menor. Una vez extinguida la prestación por nacimiento y cuidado de menor, el órgano gestor, de oficio, reanudará el abono de la prestación para la sostenibilidad de la actividad de las personas trabajadoras autónomas hasta el agotamiento del período de duración a que se tenga derecho.
+  [44] Ocho. Trabajadores autónomos económicamente dependientes.
+  [45] Los trabajadores autónomos económicamente dependientes podrán causar derecho a la prestación para la sostenibilidad de la actividad de las personas trabajadoras autónomas siempre que no presten servicios en otras empresas y la empresa para la que preste servicios se haya acogido a alguna de las medidas del 47 bis del texto refundido de la Ley del Estatuto de los Trabajadores para el mecanismo RED en su modalidad sectorial.
+  [46] El trabajador autónomo deberá estar incluido en el plan de recualificación de las personas afectadas que la empresa deberá presentar a la autoridad laboral de conformidad con lo dispuesto en el artículo 47 bis.3 del texto refundido de la Ley del Estatuto de los Trabajadores.
+  [47] En todo caso se exigirá que se produzca una reducción de ingresos ordinarios o ventas durante los dos trimestres fiscales previos a la solicitud presentados ante la Administración tributaria del 50 por ciento respecto de los registrados en los mismos periodos del ejercicio o ejercicios anteriores, y que los rendimientos netos mensuales por todas las actividades económicas o profesionales que desarrolle, durante dicho período, no alcancen la cuantía del salario mínimo interprofesional o el de la base por la que viniera cotizando, si esta fuera inferior.
+  [48] La prestación económica del trabajador autónomo económicamente dependiente se regirá por lo dispuesto en el texto refundido de la Ley General de la Seguridad Social.
+  [49] Nueve. Órgano gestor.
+  [50] El órgano gestor de la prestación será la mutua colaboradora o el Instituto Social de la Marina.
+  [51] Diez. Solicitud de la adopción de medidas por los trabajadores autónomos, autónomos por su condición de socios de sociedades de capital, trabajadores de cooperativas de trabajo asociado o trabajadores autónomos que ejercen su actividad profesional conjuntamente cuyas empresas tengan trabajadores asalariados.
+  [52] Los trabajadores autónomos a los que hace referencia este apartado que hayan solicitado la adopción del mecanismo RED en su modalidad sectorial previstas en el artículo 47 bis del texto refundido de la Ley del Estatuto de los Trabajadores de al menos el 75 por ciento de la plantilla de la empresa, deberán solicitar a la autoridad laboral su inclusión en las medidas para poder tener acceso a esta prestación.
+  [53] El informe que deba emitir la Inspección de Trabajo de conformidad con el artículo 47 bis del texto refundido de la Ley del Estatuto de los Trabajadores analizará la situación de estos trabajadores autónomos.
+  [54] Once. Solicitud de la prestación.
+  [55] 1. Los trabajadores autónomos, trabajadores autónomos por su condición de socios de sociedades de capital, trabajadores de cooperativas de trabajo asociado o trabajadores autónomos que ejercen su actividad profesional conjuntamente cuyas empresas tengan trabajadores asalariados y hayan solicitado la adopción del mecanismo RED en su modalidad sectorial previstas en el artículo 47 bis del texto refundido de la Ley del Estatuto de los Trabajadores, podrán solicitar esta prestación dentro del plazo de quince días a contar del día siguiente a la recepción de la resolución de la Autoridad Laboral autorizando la misma ante la Mutua colaboradora con la que tenga cubierta la protección de cese de actividad o el Instituto Social de la Marina. Los efectos económicos serán desde la fecha de la solicitud.
+  [56] No obstante, si la solicitud se presentara transcurrida el plazo previsto en el apartado anterior los efectos de económicos se producirán a partir del día primero del mes siguiente a la solicitud.
+  [57] La solicitud deberá ir acompañada de la resolución de la autoridad laboral donde se haga constar el trabajador o los trabajadores autónomos que están afectados y el período en el que se producirá la reducción de la actividad o suspensión, así como del porcentaje de afectación de la plantilla que debe ser de al menos el 75 por ciento de los trabajadores de la empresa.
+  [58] Junto a la solicitud se acompañarán el proyecto de inversión y actividad a desarrollar, así como el plan de recualificación en el que participará.
+  [59] Presentada la solicitud las mutuas colaboradoras o el Instituto Social de la Marina recabarán los datos necesarios de la empresa o de las administraciones públicas para comprobar la concurrencia de los requisitos exigidos.
+  [60] 2. Los trabajadores autónomos, trabajadores autónomos por su condición de socios de sociedades de capital, trabajadores de cooperativas de trabajo asociado o trabajadores autónomos que ejercen su actividad profesional conjuntamente cuyas empresas no tengan trabajadores asalariados deberán presentar la solicitud a la mutua o al Instituto Social de la Marina con una autorización para que la entidad gestora de la prestación pueda comprobar la concurrencia de los requisitos exigidos.
+  [61] La entidad gestora de la prestación dará traslado de las resoluciones reconociendo la prestación a la Inspección de Trabajo y Seguridad Social.
+  [62] Presentada la solicitud las mutuas colaboradoras o el Instituto Social de la Marina recabarán los datos necesarios de la empresa o del trabajador o de las administraciones públicas para comprobar la concurrencia de los requisitos exigidos.
+  [63] 3. Los trabajadores autónomos económicamente dependientes podrán solicitar esta prestación dentro del plazo de quince días a contar del día siguiente a la recepción de la resolución de la Autoridad Laboral autorizando las medidas previstas en el artículo 47 bis ante la Mutua colaboradora con la que tenga cubierta la protección de cese de actividad o el Instituto Social de la Marina. Los efectos económicos de la solicitud serán desde la fecha de la solicitud.
+  [64] La solicitud del trabajador autónomo deberá ir acompañada de la solicitud y el plan de recualificación de las personas afectadas que la empresa deberá presentar a la autoridad laboral de conformidad con lo dispuesto en el artículo 47 bis.3 del texto refundido de la Ley del Estatuto de los Trabajadores donde deberá estar incluido el trabajador autónomo económicamente dependiente.
+  [65] Asimismo, deberá presentar los documentos contables en el que se registren la reducción de ingresos ordinarios o ventas exigido, y las declaraciones del Impuesto sobre el Valor Añadido, del Impuesto sobre la Renta de las Personas Físicas y demás documentos preceptivos que, a su vez, justifiquen los rendimientos netos mensuales y las partidas correspondientes consignadas en las cuentas aportadas.
+  [66] Presentada la solicitud las mutuas colaboradoras o el Instituto Social de la Marina. recabarán los datos necesarios de la empresa o del trabajador o de las administraciones públicas para comprobar la concurrencia de los requisitos exigidos.
+  [67] Doce. Reintegro de prestaciones indebidamente percibidas.
+  [68] Sin perjuicio de lo dispuesto en el artículo 47.3 del texto refundido de la Ley sobre Infracciones y Sanciones en el Orden Social, será aplicable para el reintegro de prestaciones indebidamente percibidas lo establecido en el artículo 55 del texto refundido de la Ley General de la Seguridad Social y en el artículo 80 del Reglamento General de Recaudación de la Seguridad Social, correspondiendo al órgano gestor la declaración como indebida de la prestación.
+  [69] Trece. Infracciones.
+  [70] En materia de infracciones y sanciones se estará a lo dispuesto en esta ley y en el texto refundido de la Ley sobre Infracciones y Sanciones en el Orden Social.
+  [71] Catorce. Jurisdicción competente y reclamación previa.
+  [72] Los órganos jurisdiccionales del orden social serán los competentes para conocer de las decisiones del órgano gestor relativas al reconocimiento, suspensión o extinción de esta prestación, así como al pago de estas. El interesado deberá formular reclamación previa ante el órgano gestor antes de acudir al órgano jurisdiccional del orden social competente. La resolución del órgano gestor habrá de indicar expresamente la posibilidad de presentar reclamación, el órgano ante el que se debe interponer, así como el plazo para su interposición.
+  [73] Quince. Esta protección por cese de actividad se financiará con cargo a la cotización por dicha contingencia.
+```
+
 ### Ley 20/2007, disposición transitoria cuarta · `BOE-A-2007-13409__dtcuarta` [JUZGADO rel=0 draft]
 https://www.boe.es/buscar/act.php?id=BOE-A-2007-13409#dtcuarta
-_recuperado por:_ e5-base/BASELINE#3 (0.853) · e5-large-instruct/I0_GENERIC#7 (0.888) · bge-m3/BASELINE#15 (0.549) · e5-large-instruct/I1_LEGAL#17 (0.895)  [4 sistemas]
+_recuperado por:_ e5-base/BASELINE#3 (0.853) · e5-large-instruct/I0_GENERIC#7 (0.888) · bge-m3/BASELINE#15 (0.549) · hybrid_rrf/I0_GENERIC#16 (0.025) · e5-large-instruct/I1_LEGAL#17 (0.895)  [5 sistemas]
 ```
   [1] Disposición transitoria cuarta. Régimen transitorio del reconocimiento previsto en el artículo 11 bis.
   [2] El reconocimiento de la condición de trabajador autónomo económicamente dependiente previsto en el artículo 11 bis de esta Ley, sólo podrá producirse para las relaciones contractuales entre clientes y trabajadores autónomos que se formalicen a partir de la entrada en vigor de la Ley reguladora de la jurisdicción social.
+```
+
+### Real Decreto 1155/2024, artículo 86 · `BOE-A-2024-24099__a8-8` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2024-24099#a8-8
+_recuperado por:_ bm25/lexical#6 (18.265) · e5-base/BASELINE#11 (0.842)  [2 sistemas]
+```
+  [1] Artículo 86. Renovación de la autorización de residencia y trabajo por cuenta propia.
+  [2] 1. La renovación de las autorizaciones de residencia temporal y trabajo por cuenta propia deberá solicitarse, en modelo oficial, durante los dos meses previos a la fecha de expiración de la vigencia de su autorización. La presentación de la solicitud en este plazo prorrogará la validez de la autorización anterior hasta la resolución del procedimiento. También se prorrogará hasta la resolución del procedimiento en el supuesto en que la solicitud se presentase dentro de los tres meses posteriores a la fecha en que hubiera finalizado la vigencia de la anterior autorización, sin perjuicio de la incoación del correspondiente procedimiento sancionador por la infracción prevista en el artículo 52.b) de la Ley Orgánica 4/2000.
+  [3] 2. La autorización de residencia y trabajo por cuenta propia podrá ser renovada en los siguientes supuestos:
+  [4] a) Cuando se acredite la continuidad en la actividad que dio lugar a la autorización que se renueva, previa comprobación de oficio del cumplimiento de sus obligaciones tributarias y de Seguridad Social.
+  [5] Los descubiertos en la cotización a la Seguridad Social no impedirán la renovación de la autorización, siempre que se acredite la realización habitual de la actividad. El órgano competente pondrá en conocimiento de la Inspección de Trabajo y Seguridad Social la situación de descubierto de cotización, a los efectos de que se lleven a cabo las actuaciones que procedan.
+  [6] b) Cuando un familiar, definido en los términos del artículo 66, cumpliera con los requisitos económicos para reagrupar a la persona trabajadora.
+  [7] c) Cuando por el órgano gestor competente, conforme a la normativa sobre la materia, se hubiera reconocido a la persona extranjera trabajadora autónoma la protección por cese de actividad.
+  [8] d) En el caso de trabajadores autónomos económicamente dependientes, cuando se produzca la interrupción o extinción del contrato por causas ajenas a la persona trabajadora autónoma, incluida la trabajadora autónoma económicamente dependiente que sea víctima de violencia de género o víctima de violencia sexual.
+  [9] e) Cuando la persona trabajadora se encuentre en alguna de las situaciones previstas en el artículo 38.6 b) y c) de la Ley Orgánica 4/2000, de 11 de enero.
+  [10] 3. A la solicitud, en modelo oficial, deberá acompañar la documentación que acredite que sigue cumpliendo los requisitos que se exigen para la concesión inicial o, en su caso, de que concurre alguno de los supuestos previstos en los puntos b), c) y d) del apartado 2 de este artículo. En todo caso, la solicitud irá acompañada de informe emitido por las autoridades autonómicas competentes que acredite la escolarización de los menores a su cargo en edad de escolarización obligatoria.
+  [11] 4. En caso de que a partir de la documentación presentada junto a la solicitud no quede acreditada la escolarización de los menores en edad de escolarización obligatoria que estén a cargo de la persona solicitante, la oficina de extranjería pondrá esta circunstancia en conocimiento de las autoridades educativas competentes, y advertirá expresamente y por escrito a la persona extranjera solicitante de que en caso de no producirse la escolarización y presentarse el correspondiente informe en el plazo de un mes, la autorización no será renovada.
+  [12] 5. La oficina de extranjería para la tramitación del procedimiento comprobará de oficio la información sobre que la persona interesada está al corriente en el cumplimiento de sus obligaciones tributarias y de Seguridad Social, así como recabará el certificado de antecedentes penales y el informe policial de los servicios competentes y resolverá.
+  [13] Se valorará, en función de las circunstancias de cada supuesto, la posibilidad de renovar la autorización de residencia y trabajo a las personas extranjeras que hubieran sido condenadas por la comisión de un delito y hayan cumplido la condena, los que han sido indultadas o que se encuentren en la situación de remisión condicional de la pena o suspensión de la pena.
+  [14] 6. Igualmente se valorará el esfuerzo de integración de la persona extranjera. Esta circunstancia se acreditará mediante la aportación, por parte de la persona extranjera, entre otros medios de prueba, de un informe favorable de los órganos competentes de la Comunidad Autónoma de su lugar de residencia que recomienden la renovación, principalmente en caso de que no acredite el cumplimiento de alguno de los requisitos previstos para la renovación de la autorización.
+  [15] El informe, de ser favorable, certificará el conocimiento y respeto de los valores constitucionales de España, los valores estatutarios de la Comunidad Autónoma en que se resida, los valores de la Unión Europea, los derechos humanos, las libertades públicas, la democracia, la tolerancia y la igualdad entre mujeres y hombres, y en su caso, el aprendizaje de las lenguas oficiales del lugar de residencia.
+  [16] En caso de que el informe no haya sido emitido en el plazo de un mes, circunstancia que habrá de ser debidamente acreditada por el interesado, podrá justificarse este requisito por cualquier medio de prueba admitido en Derecho.
+  [17] Dicho esfuerzo de integración podrá ser alegado por la persona extranjera como información a valorar en caso de no acreditar el cumplimiento de alguno de los requisitos previstos para la renovación de la autorización.
 ```
 
 ### Ley 20/2007, disposición adicional undécima · `BOE-A-2007-13409__daundecima` [sin juzgar]
@@ -4521,50 +4705,15 @@ _recuperado por:_ bge-m3/BASELINE#13 (0.556) · e5-base/BASELINE#20 (0.838)  [2 
   [3] En este caso, serán trabajadores autónomos económicamente dependientes a los que se refiere el artículo 1.2 d) de la presente Ley aquellos que cumplan con lo dispuesto en el artículo 11.1 y 11.2 a) de la misma.
 ```
 
-### Real Decreto Legislativo 8/2015, artículo 336 · `BOE-A-2015-11724__a336` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2015-11724#a336
-_recuperado por:_ e5-large-instruct/I0_GENERIC#13 (0.880)  [1 sistemas]
-```
-  [1] Artículo 336. Trabajadores autónomos que ejercen su actividad profesional conjuntamente.
-  [2] Se considerarán en situación legal de cese de actividad los trabajadores autónomos profesionales que hubieren cesado, con carácter definitivo o temporal en la profesión desarrollada conjuntamente con otros, por alguna de las siguientes causas:
-  [3] a) Por la concurrencia de motivos económicos, técnicos, productivos u organizativos a que se refiere el artículo 331.1.a), y determinantes de la inviabilidad de proseguir con la profesión, con independencia de que acarree o no el cese total de la actividad de la sociedad o forma jurídica en la que estuviera ejerciendo su profesión.
-  [4] No se exigirá el cierre de establecimiento abierto al público en los casos en los que no cesen la totalidad de los profesionales de la entidad, salvo en aquellos casos en los que el establecimiento esté a cargo exclusivamente del profesional. No obstante, en este caso no podrá declararse la situación legal de cese de actividad cuando el trabajador autónomo, tras cesar en su actividad y percibir la prestación por cese de actividad, vuelva a ejercer la actividad profesional en la misma entidad en un plazo de un año, a contar desde el momento en que se extinguió la prestación. En caso de incumplimiento de esta cláusula, deberá reintegrar la prestación percibida.
-  [5] b) Por fuerza mayor, determinante del cese temporal o definitivo de la profesión.
-  [6] c) Por pérdida de la licencia administrativa, siempre que la misma constituya un requisito para el ejercicio de la actividad económica o profesional y no venga motivada por la comisión de infracciones penales.
-  [7] d) La violencia de género o violencia sexual determinante del cese temporal o definitivo de la profesión de la trabajadora autónoma.
-  [8] e) Por divorcio o acuerdo de separación matrimonial, mediante la correspondiente resolución judicial, en los supuestos en que el autónomo divorciado o separado ejerciera funciones de ayuda familiar en el negocio de su excónyuge o de la persona de la que se ha separado, en función de las cuales estaba incluido en el correspondiente régimen de la Seguridad Social, y que dejan de ejercerse a causa de la ruptura o separación matrimoniales.
-```
-
 ---
 
 ## q92_070 · ciudadana · multi_parent
 **Pregunta:** Compré una lavadora y ha dejado de funcionar a los dos años y medio, ¿el vendedor todavía responde?
 _split=test · difficulty=media · failure_mode=—_
 
-### Real Decreto Legislativo 1/2007, artículo 127 bis · `BOE-A-2007-20555__a1-14` [JUZGADO rel=0 draft]
-https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a1-14
-_recuperado por:_ bge-m3/BASELINE#1 (0.532) · e5-large-instruct/I0_GENERIC#1 (0.853) · e5-large-instruct/I1_LEGAL#1 (0.902) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.902) · e5-base/BASELINE#4 (0.817)  [5 sistemas]
-```
-  [1] Artículo 127 bis. Reparación y servicios posventa.
-  [2] 1. El productor garantizará, en todo caso, la existencia de un adecuado servicio técnico, así como de repuestos durante el plazo mínimo de diez años a partir de la fecha en que el bien deje de fabricarse.
-  [3] 2. Queda prohibido incrementar los precios de los repuestos al aplicarlos en las reparaciones. La lista de precios de los repuestos deberá estar a disposición del público así como la del resto de servicios aparejados, debiéndose diferenciar en la factura los diferentes conceptos.
-  [4] 3. La acción o derecho de recuperación de los bienes entregados por el consumidor o usuario al empresario para su reparación prescribirá un año después del momento de la entrega. Reglamentariamente, se establecerán los datos que deberá hacer constar el empresario en el momento en que se le entrega un bien para su reparación y las formas en que podrá acreditarse la mencionada entrega.
-```
-
-### Ley 9/2017, artículo 305 · `BOE-A-2017-12902__a3-17` [JUZGADO rel=0 draft]
-https://www.boe.es/buscar/act.php?id=BOE-A-2017-12902#a3-17
-_recuperado por:_ e5-large-instruct/I1_LEGAL#3 (0.882) · e5-large-instruct/I2_CITIZEN_LEGISLATION#3 (0.883) · e5-large-instruct/I0_GENERIC#4 (0.834) · e5-base/BASELINE#11 (0.813) · bge-m3/BASELINE#18 (0.463)  [5 sistemas]
-```
-  [1] Artículo 305. Vicios o defectos durante el plazo de garantía.
-  [2] 1. Si durante el plazo de garantía se acreditase la existencia de vicios o defectos en los bienes suministrados tendrá derecho la Administración a reclamar del contratista la reposición de los que resulten inadecuados o la reparación de los mismos si fuese suficiente.
-  [3] 2. Durante este plazo de garantía tendrá derecho el contratista a conocer y ser oído sobre la aplicación de los bienes suministrados.
-  [4] 3. Si el órgano de contratación estimase, durante el plazo de garantía, que los bienes suministrados no son aptos para el fin pretendido, como consecuencia de los vicios o defectos observados en ellos e imputables al contratista y exista la presunción de que la reposición o reparación de dichos bienes no serán bastantes para lograr aquel fin, podrá, antes de expirar dicho plazo, rechazar los bienes dejándolos de cuenta del contratista y quedando exento de la obligación de pago o teniendo derecho, en su caso, a la recuperación del precio satisfecho.
-  [5] 4. Terminado el plazo de garantía sin que la Administración haya formalizado alguno de los reparos o la denuncia a que se refieren los apartados 1 y 3 de este artículo, el contratista quedará exento de responsabilidad por razón de los bienes suministrados.
-```
-
 ### Ley 28/1998, artículo 9 · `BOE-A-1998-16717__a9` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-1998-16717#a9
-_recuperado por:_ e5-large-instruct/I2_CITIZEN_LEGISLATION#5 (0.879) · e5-large-instruct/I1_LEGAL#6 (0.879) · e5-base/BASELINE#9 (0.814) · e5-large-instruct/I0_GENERIC#9 (0.832) · bge-m3/BASELINE#17 (0.464)  [5 sistemas]
+_recuperado por:_ hybrid_rrf/I0_GENERIC#2 (0.029) · e5-large-instruct/I2_CITIZEN_LEGISLATION#5 (0.879) · e5-large-instruct/I1_LEGAL#6 (0.879) · e5-base/BASELINE#9 (0.814) · e5-large-instruct/I0_GENERIC#9 (0.832) · bm25/lexical#11 (12.105) · bge-m3/BASELINE#17 (0.464)  [7 sistemas]
 ```
   [1] Artículo 9. Facultad de desistimiento.
   [2] 1. El consumidor podrá desistir del contrato dentro de los siete días hábiles siguientes a la entrega del bien, comunicándolo mediante carta certificada u otro medio fehaciente al vendedor y, en su caso, al financiador, siempre que se cumplan todos los requisitos siguientes:
@@ -4580,9 +4729,43 @@ _recuperado por:_ e5-large-instruct/I2_CITIZEN_LEGISLATION#5 (0.879) · e5-large
   [12] 4. En caso de adquisición de vehículos de motor susceptibles de matriculación podrá excluirse mediante pacto el derecho de desistimiento, o modalizarse su ejercicio de forma distinta a lo previsto en esta Ley.
 ```
 
+### Ley 28/1998, artículo 10 · `BOE-A-1998-16717__a10` [JUZGADO rel=0 draft]
+https://www.boe.es/buscar/act.php?id=BOE-A-1998-16717#a10
+_recuperado por:_ bm25/lexical#1 (14.624) · hybrid_rrf/I0_GENERIC#1 (0.031) · bge-m3/BASELINE#2 (0.522) · e5-large-instruct/I1_LEGAL#5 (0.879) · e5-large-instruct/I2_CITIZEN_LEGISLATION#6 (0.878) · e5-large-instruct/I0_GENERIC#8 (0.833)  [6 sistemas]
+```
+  [1] Artículo 10. Incumplimiento del comprador.
+  [2] 1. Si el comprador demora el pago de dos plazos o del último de ellos, el vendedor, sin perjuicio de lo que dispone el artículo siguiente, podrá optar entre exigir el pago de todos los plazos pendientes de abono o la resolución del contrato.
+  [3] Cuando el vendedor optare por la resolución del contrato, las partes deberán restituirse recíprocamente las prestaciones realizadas. El vendedor o prestamista tendrá derecho:
+  [4] a) Al 10 por 100 de los plazos vencidos en concepto de indemnización por la tenencia de las cosas por el comprador.
+  [5] b) A una cantidad igual al desembolso inicial, si existiera, por la depreciación comercial del objeto. Cuando no exista el desembolso inicial, o éste sea superior a la quinta parte del precio de venta al contado, la deducción se reducirá a esta última.
+  [6] Por el deterioro de la cosa vendida, si lo hubiere, podrá exigir el vendedor, además, la indemnización que en derecho proceda.
+  [7] 2. La falta de pago de dos plazos o del último de ellos dará derecho al tercero que hubiere financiado la adquisición en los términos del artículo 4 para exigir el abono de la totalidad de los plazos que estuvieren pendientes, sin perjuicio de los derechos que le correspondan como cesionario del vendedor y de lo dispuesto en el artículo siguiente.
+```
+
+### Real Decreto Legislativo 1/2007, artículo 127 bis · `BOE-A-2007-20555__a1-14` [JUZGADO rel=0 draft]
+https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a1-14
+_recuperado por:_ bge-m3/BASELINE#1 (0.532) · e5-large-instruct/I0_GENERIC#1 (0.853) · e5-large-instruct/I1_LEGAL#1 (0.902) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.902) · hybrid_rrf/I0_GENERIC#3 (0.016) · e5-base/BASELINE#4 (0.817)  [6 sistemas]
+```
+  [1] Artículo 127 bis. Reparación y servicios posventa.
+  [2] 1. El productor garantizará, en todo caso, la existencia de un adecuado servicio técnico, así como de repuestos durante el plazo mínimo de diez años a partir de la fecha en que el bien deje de fabricarse.
+  [3] 2. Queda prohibido incrementar los precios de los repuestos al aplicarlos en las reparaciones. La lista de precios de los repuestos deberá estar a disposición del público así como la del resto de servicios aparejados, debiéndose diferenciar en la factura los diferentes conceptos.
+  [4] 3. La acción o derecho de recuperación de los bienes entregados por el consumidor o usuario al empresario para su reparación prescribirá un año después del momento de la entrega. Reglamentariamente, se establecerán los datos que deberá hacer constar el empresario en el momento en que se le entrega un bien para su reparación y las formas en que podrá acreditarse la mencionada entrega.
+```
+
+### Ley 9/2017, artículo 305 · `BOE-A-2017-12902__a3-17` [JUZGADO rel=0 draft]
+https://www.boe.es/buscar/act.php?id=BOE-A-2017-12902#a3-17
+_recuperado por:_ e5-large-instruct/I1_LEGAL#3 (0.882) · e5-large-instruct/I2_CITIZEN_LEGISLATION#3 (0.883) · e5-large-instruct/I0_GENERIC#4 (0.834) · hybrid_rrf/I0_GENERIC#8 (0.016) · e5-base/BASELINE#11 (0.813) · bge-m3/BASELINE#18 (0.463)  [6 sistemas]
+```
+  [1] Artículo 305. Vicios o defectos durante el plazo de garantía.
+  [2] 1. Si durante el plazo de garantía se acreditase la existencia de vicios o defectos en los bienes suministrados tendrá derecho la Administración a reclamar del contratista la reposición de los que resulten inadecuados o la reparación de los mismos si fuese suficiente.
+  [3] 2. Durante este plazo de garantía tendrá derecho el contratista a conocer y ser oído sobre la aplicación de los bienes suministrados.
+  [4] 3. Si el órgano de contratación estimase, durante el plazo de garantía, que los bienes suministrados no son aptos para el fin pretendido, como consecuencia de los vicios o defectos observados en ellos e imputables al contratista y exista la presunción de que la reposición o reparación de dichos bienes no serán bastantes para lograr aquel fin, podrá, antes de expirar dicho plazo, rechazar los bienes dejándolos de cuenta del contratista y quedando exento de la obligación de pago o teniendo derecho, en su caso, a la recuperación del precio satisfecho.
+  [5] 4. Terminado el plazo de garantía sin que la Administración haya formalizado alguno de los reparos o la denuncia a que se refieren los apartados 1 y 3 de este artículo, el contratista quedará exento de responsabilidad por razón de los bienes suministrados.
+```
+
 ### Real Decreto Legislativo 1/2007, artículo 120 · `BOE-A-2007-20555__a120` [JUZGADO rel=2 reviewed]
 https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a120
-_recuperado por:_ e5-large-instruct/I1_LEGAL#2 (0.885) · e5-large-instruct/I2_CITIZEN_LEGISLATION#2 (0.884) · bge-m3/BASELINE#6 (0.494) · e5-large-instruct/I0_GENERIC#6 (0.833)  [4 sistemas]
+_recuperado por:_ e5-large-instruct/I1_LEGAL#2 (0.885) · e5-large-instruct/I2_CITIZEN_LEGISLATION#2 (0.884) · bge-m3/BASELINE#6 (0.494) · e5-large-instruct/I0_GENERIC#6 (0.833) · hybrid_rrf/I0_GENERIC#12 (0.015)  [5 sistemas]
 ```
   [1] Artículo 120. Plazo para la manifestación de la falta de conformidad.
   [2] 1. En el caso de contrato de compraventa de bienes o de suministro de contenidos o servicios digitales suministrados en un acto único o en una serie de actos individuales, el empresario será responsable de las faltas de conformidad que existan en el momento de la entrega o del suministro y se manifiesten en un plazo de tres años desde la entrega en el caso de bienes o de dos años en el caso de contenidos o servicios digitales, sin perjuicio de lo dispuesto en el artículo 115 ter, apartado 2, letras a) y b).
@@ -4592,23 +4775,10 @@ _recuperado por:_ e5-large-instruct/I1_LEGAL#2 (0.885) · e5-large-instruct/I2_C
 
 ### Real Decreto Legislativo 1/2007, artículo 146 · `BOE-A-2007-20555__a146` [JUZGADO rel=0 draft]
 https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a146
-_recuperado por:_ e5-large-instruct/I0_GENERIC#2 (0.849) · e5-large-instruct/I1_LEGAL#4 (0.881) · e5-large-instruct/I2_CITIZEN_LEGISLATION#4 (0.879) · bge-m3/BASELINE#7 (0.483)  [4 sistemas]
+_recuperado por:_ e5-large-instruct/I0_GENERIC#2 (0.849) · e5-large-instruct/I1_LEGAL#4 (0.881) · e5-large-instruct/I2_CITIZEN_LEGISLATION#4 (0.879) · hybrid_rrf/I0_GENERIC#4 (0.016) · bge-m3/BASELINE#7 (0.483)  [5 sistemas]
 ```
   [1] Artículo 146. Responsabilidad del proveedor.
   [2] El proveedor del producto defectuoso responderá, como si fuera el productor, cuando haya suministrado el producto a sabiendas de la existencia del defecto. En este caso, el proveedor podrá ejercitar la acción de repetición contra el productor.
-```
-
-### Ley 28/1998, artículo 10 · `BOE-A-1998-16717__a10` [JUZGADO rel=0 draft]
-https://www.boe.es/buscar/act.php?id=BOE-A-1998-16717#a10
-_recuperado por:_ bge-m3/BASELINE#2 (0.522) · e5-large-instruct/I1_LEGAL#5 (0.879) · e5-large-instruct/I2_CITIZEN_LEGISLATION#6 (0.878) · e5-large-instruct/I0_GENERIC#8 (0.833)  [4 sistemas]
-```
-  [1] Artículo 10. Incumplimiento del comprador.
-  [2] 1. Si el comprador demora el pago de dos plazos o del último de ellos, el vendedor, sin perjuicio de lo que dispone el artículo siguiente, podrá optar entre exigir el pago de todos los plazos pendientes de abono o la resolución del contrato.
-  [3] Cuando el vendedor optare por la resolución del contrato, las partes deberán restituirse recíprocamente las prestaciones realizadas. El vendedor o prestamista tendrá derecho:
-  [4] a) Al 10 por 100 de los plazos vencidos en concepto de indemnización por la tenencia de las cosas por el comprador.
-  [5] b) A una cantidad igual al desembolso inicial, si existiera, por la depreciación comercial del objeto. Cuando no exista el desembolso inicial, o éste sea superior a la quinta parte del precio de venta al contado, la deducción se reducirá a esta última.
-  [6] Por el deterioro de la cosa vendida, si lo hubiere, podrá exigir el vendedor, además, la indemnización que en derecho proceda.
-  [7] 2. La falta de pago de dos plazos o del último de ellos dará derecho al tercero que hubiere financiado la adquisición en los términos del artículo 4 para exigir el abono de la totalidad de los plazos que estuvieren pendientes, sin perjuicio de los derechos que le correspondan como cesionario del vendedor y de lo dispuesto en el artículo siguiente.
 ```
 
 ### Real Decreto Legislativo 1/2007, disposición transitoria primera · `BOE-A-2007-20555__dtprimera` [sin juzgar]
@@ -4626,6 +4796,14 @@ _recuperado por:_ e5-base/BASELINE#5 (0.817) · e5-large-instruct/I1_LEGAL#7 (0.
   [9] c) El titular de la garantía.
   [10] d) Los derechos del titular de la garantía.
   [11] e) El plazo de duración de la garantía que, en ningún caso será inferior a 6 meses desde la fecha de entrega, salvo cuando la naturaleza del bien lo impidiera y sin perjuicio de las disposiciones legales o reglamentarias para bienes o servicios concretos.
+```
+
+### Real Decreto Legislativo 1/2007, artículo 144 · `BOE-A-2007-20555__a144` [JUZGADO rel=0 draft]
+https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a144
+_recuperado por:_ e5-large-instruct/I0_GENERIC#3 (0.837) · hybrid_rrf/I0_GENERIC#7 (0.016) · e5-large-instruct/I1_LEGAL#11 (0.872) · e5-large-instruct/I2_CITIZEN_LEGISLATION#13 (0.871)  [4 sistemas]
+```
+  [1] Artículo 144. Extinción de la responsabilidad.
+  [2] Los derechos reconocidos al perjudicado en este capítulo se extinguirán transcurridos 10 años, a contar desde la fecha en que se hubiera puesto en circulación el producto concreto causante del daño, a menos que, durante ese período, se hubiese iniciado la correspondiente reclamación judicial.
 ```
 
 ### Real Decreto Legislativo 1/2007, artículo 125 · `BOE-A-2007-20555__a125` [sin juzgar]
@@ -4651,34 +4829,9 @@ _recuperado por:_ bge-m3/BASELINE#5 (0.494) · e5-large-instruct/I1_LEGAL#9 (0.8
   [7] 5. Los apartados 3 y 4 del presente artículo no serán de aplicación a los bienes con elementos digitales.
 ```
 
-### Ley 4/2012, artículo 15 · `BOE-A-2012-9111__a15` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2012-9111#a15
-_recuperado por:_ e5-large-instruct/I2_CITIZEN_LEGISLATION#9 (0.872) · e5-large-instruct/I1_LEGAL#10 (0.872) · e5-large-instruct/I0_GENERIC#17 (0.826)  [3 sistemas]
-```
-  [1] Artículo 15. Ineficacia de contratos accesorios.
-  [2] 1. Si el consumidor ejerce su derecho de desistimiento del contrato de aprovechamiento por turno de bienes de uso turístico o de producto vacacional de larga duración, los contratos accesorios quedarán automáticamente sin eficacia, incluidos los de intercambio o de reventa, sin coste alguno para aquél.
-  [3] Se entiende por contrato accesorio todo contrato en virtud del cual el consumidor adquiere servicios relacionados con uno de los contratos enumerados en el párrafo anterior, cuando dichos servicios son prestados por el empresario o un tercero según lo convenido entre este y el empresario.
-  [4] 2. En caso de que el precio haya sido total o parcialmente cubierto mediante un préstamo concedido al consumidor por el empresario o por un tercero, según lo convenido entre el tercero y el empresario, el contrato de préstamo quedará sin efecto, sin coste alguno para el consumidor, si este ejerce su derecho a desistir del contrato de aprovechamiento por turno de bienes de uso turístico, de producto vacacional de larga duración, de reventa o de intercambio.
-  [5] 3. No podrán incluirse en los préstamos cláusulas que impliquen una sanción o pena impuesta al consumidor para el caso de desistimiento. Si el consumidor se hubiera subrogado en un préstamo concedido al transmitente, ejercitado el desistimiento, quedará sin efecto la subrogación.
-  [6] 4. Para la anulación del contrato accesorio, corresponde al consumidor probar que ha ejercitado el derecho de desistimiento del correspondiente contrato de aprovechamiento por turno de bienes de uso turístico o de producto vacacional de larga duración.
-  [7] 5. El plazo para ejercitar la acción de anulación es de dos años a contar desde la fecha del ejercicio del derecho de desistimiento del contrato a que se refiere el apartado anterior.
-  [8] 6. Dentro de igual plazo, el consumidor podrá también ejercitar extrajudicialmente la facultad de anulación, mediante notificación fehaciente dirigida al empresario parte del contrato accesorio, con expresión de la fecha en que ha ejercitado el derecho de desistimiento del correspondiente contrato de aprovechamiento por turno de bienes de uso turístico o de producto vacacional de larga duración.
-  [9] 7. Anulado el contrato accesorio, los contratantes deberán restituirse recíprocamente las prestaciones que hubieran recibido en virtud del mismo. Si la devolución en especie no es posible, deberá restituirse su valor.
-  [10] Mientras uno de los contratantes no realice la devolución de aquello a lo que esté obligado, no puede el otro ser compelido a cumplir por su parte lo que le incumba.
-  [11] El consumidor no tendrá que reembolsar cantidad alguna por la disminución del valor del bien, que sea consecuencia de su uso conforme a lo pactado o a su naturaleza.
-```
-
-### Real Decreto Legislativo 1/2007, artículo 144 · `BOE-A-2007-20555__a144` [JUZGADO rel=0 draft]
-https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a144
-_recuperado por:_ e5-large-instruct/I0_GENERIC#3 (0.837) · e5-large-instruct/I1_LEGAL#11 (0.872) · e5-large-instruct/I2_CITIZEN_LEGISLATION#13 (0.871)  [3 sistemas]
-```
-  [1] Artículo 144. Extinción de la responsabilidad.
-  [2] Los derechos reconocidos al perjudicado en este capítulo se extinguirán transcurridos 10 años, a contar desde la fecha en que se hubiera puesto en circulación el producto concreto causante del daño, a menos que, durante ese período, se hubiese iniciado la correspondiente reclamación judicial.
-```
-
 ### Real Decreto Legislativo 1/2007, artículo 124 · `BOE-A-2007-20555__a124` [JUZGADO rel=1 reviewed]
 https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a124
-_recuperado por:_ e5-large-instruct/I0_GENERIC#11 (0.830)  [1 sistemas]
+_recuperado por:_ e5-large-instruct/I0_GENERIC#11 (0.830) · hybrid_rrf/I0_GENERIC#20 (0.014)  [2 sistemas]
 ```
   [1] Artículo 124. Prescripción de la acción.
   [2] La acción para reclamar el cumplimiento de lo previsto en el capítulo II de este título prescribirá a los cinco años desde la manifestación de la falta de conformidad.
@@ -4692,7 +4845,7 @@ _split=test · difficulty=media · failure_mode=—_
 
 ### Real Decreto Legislativo 1/2007, artículo 120 · `BOE-A-2007-20555__a120` [JUZGADO rel=2 reviewed]
 https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a120
-_recuperado por:_ bge-m3/BASELINE#1 (0.765) · e5-base/BASELINE#1 (0.861) · e5-large-instruct/I0_GENERIC#1 (0.905) · e5-large-instruct/I1_LEGAL#1 (0.924) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.925)  [5 sistemas]
+_recuperado por:_ bge-m3/BASELINE#1 (0.765) · e5-base/BASELINE#1 (0.861) · e5-large-instruct/I0_GENERIC#1 (0.905) · e5-large-instruct/I1_LEGAL#1 (0.924) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.925) · hybrid_rrf/I0_GENERIC#1 (0.033) · bm25/lexical#2 (29.778)  [7 sistemas]
 ```
   [1] Artículo 120. Plazo para la manifestación de la falta de conformidad.
   [2] 1. En el caso de contrato de compraventa de bienes o de suministro de contenidos o servicios digitales suministrados en un acto único o en una serie de actos individuales, el empresario será responsable de las faltas de conformidad que existan en el momento de la entrega o del suministro y se manifiesten en un plazo de tres años desde la entrega en el caso de bienes o de dos años en el caso de contenidos o servicios digitales, sin perjuicio de lo dispuesto en el artículo 115 ter, apartado 2, letras a) y b).
@@ -4702,7 +4855,7 @@ _recuperado por:_ bge-m3/BASELINE#1 (0.765) · e5-base/BASELINE#1 (0.861) · e5-
 
 ### Real Decreto Legislativo 1/2007, artículo 121 · `BOE-A-2007-20555__a121` [JUZGADO rel=0 draft]
 https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a121
-_recuperado por:_ e5-large-instruct/I1_LEGAL#2 (0.896) · e5-large-instruct/I2_CITIZEN_LEGISLATION#2 (0.897) · e5-base/BASELINE#3 (0.851) · bge-m3/BASELINE#4 (0.654) · e5-large-instruct/I0_GENERIC#4 (0.878)  [5 sistemas]
+_recuperado por:_ e5-large-instruct/I1_LEGAL#2 (0.896) · e5-large-instruct/I2_CITIZEN_LEGISLATION#2 (0.897) · hybrid_rrf/I0_GENERIC#2 (0.031) · e5-base/BASELINE#3 (0.851) · bge-m3/BASELINE#4 (0.654) · e5-large-instruct/I0_GENERIC#4 (0.878) · bm25/lexical#4 (23.816)  [7 sistemas]
 ```
   [1] Artículo 121. Carga de la prueba.
   [2] 1. Salvo prueba en contrario, se presumirá que las faltas de conformidad que se manifiesten en los dos años siguientes a la entrega del bien o en el año siguiente al suministro del contenido o servicio digital suministrado en un acto único o en una serie de actos individuales, ya existían cuando el bien se entregó o el contenido o servicio digital se suministró, excepto cuando para los bienes esta presunción sea incompatible con su naturaleza o la índole de la falta de conformidad.
@@ -4713,9 +4866,38 @@ _recuperado por:_ e5-large-instruct/I1_LEGAL#2 (0.896) · e5-large-instruct/I2_C
   [7] 5. Los apartados 3 y 4 del presente artículo no serán de aplicación a los bienes con elementos digitales.
 ```
 
+### Real Decreto Legislativo 1/2007, artículo 125 · `BOE-A-2007-20555__a125` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a125
+_recuperado por:_ hybrid_rrf/I0_GENERIC#3 (0.030) · bge-m3/BASELINE#5 (0.647) · e5-large-instruct/I1_LEGAL#5 (0.887) · bm25/lexical#5 (22.920) · e5-large-instruct/I2_CITIZEN_LEGISLATION#6 (0.889) · e5-base/BASELINE#8 (0.838) · e5-large-instruct/I0_GENERIC#9 (0.871)  [7 sistemas]
+```
+  [1] Artículo 125. Acción contra el productor y de repetición.
+  [2] 1. Cuando al consumidor o usuario le resulte imposible o le suponga una carga excesiva dirigirse al empresario por la falta de conformidad, podrá reclamar directamente al productor con el fin de conseguir que el bien o el contenido o servicio digital sea puesto en conformidad.
+  [3] Con carácter general, y sin perjuicio de que cese la responsabilidad del productor, a los efectos de este título, en los mismos plazos y condiciones que los establecidos para el empresario, el productor responderá por la falta de conformidad cuando esta se refiera al origen, identidad o idoneidad de los bienes o de los contenidos o servicios digitales, de acuerdo con su naturaleza y finalidad y con las normas que los regulan.
+  [4] 2. Quien haya respondido frente al consumidor o usuario dispondrá del plazo de un año para repetir frente al responsable de la falta de conformidad. Dicho plazo se computará a partir del momento en que se ejecutó la medida correctora.
+```
+
+### Real Decreto Legislativo 1/2007, artículo 118 · `BOE-A-2007-20555__a118` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a118
+_recuperado por:_ hybrid_rrf/I0_GENERIC#6 (0.028) · bm25/lexical#7 (21.098) · bge-m3/BASELINE#13 (0.607) · e5-large-instruct/I0_GENERIC#16 (0.866) · e5-large-instruct/I1_LEGAL#16 (0.880) · e5-large-instruct/I2_CITIZEN_LEGISLATION#16 (0.882) · e5-base/BASELINE#18 (0.831)  [7 sistemas]
+```
+  [1] Artículo 118. Régimen jurídico de la puesta en conformidad.
+  [2] 1. Si el bien no fuera conforme con el contrato, para ponerlo en conformidad, el consumidor o usuario tendrá derecho a elegir entre la reparación o la sustitución, salvo que una de estas dos opciones resultare imposible o que, en comparación con la otra medida correctora, suponga costes desproporcionados para el empresario, teniendo en cuenta todas las circunstancias y, entre ellas las recogidas en el apartado 3 de este artículo, así como si la medida correctora alternativa se podría proporcionar sin mayores inconvenientes para el consumidor o usuario.
+  [3] 2. Si los contenidos o servicios digitales no fueran conformes con el contrato, el consumidor o usuario tendrá derecho a exigir que sean puestos en conformidad.
+  [4] 3. El empresario podrá negarse a poner los bienes o los contenidos o servicios digitales en conformidad cuando resulte imposible o suponga costes desproporcionados, teniendo en cuenta todas las circunstancias, y entre ellas:
+  [5] a) El valor que tendrían los bienes o los contenidos o servicios digitales si no hubiera existido falta de conformidad.
+  [6] b) La relevancia de la falta de conformidad.
+  [7] 4. Las medidas correctoras para la puesta en conformidad se ajustarán a las siguientes reglas:
+  [8] a) Serán gratuitas para el consumidor o usuario. Dicha gratuidad comprenderá los gastos necesarios en que se incurra para que los bienes sean puestos en conformidad, especialmente los gastos de envío, transporte, mano de obra o materiales.
+  [9] b) Deberán llevarse a cabo en un plazo razonable a partir del momento en que el empresario haya sido informado por el consumidor o usuario de la falta de conformidad.
+  [10] c) Deberán realizarse sin mayores inconvenientes para el consumidor o usuario, habida cuenta de la naturaleza de los bienes o de los contenidos o servicios digitales y de la finalidad que tuvieran para el consumidor o usuario.
+  [11] 5. Cuando proceda la reparación o la sustitución del bien, el consumidor o usuario lo pondrá a disposición del empresario y este, en su caso, recuperará el bien sustituido a sus expensas de la forma que menos inconvenientes genere para el consumidor o usuario dependiendo del tipo de bien.
+  [12] 6. Cuando una reparación requiera la retirada de bienes que hayan sido instalados de forma coherente con su naturaleza y finalidad antes de manifestarse la falta de conformidad o, cuando se sustituyan, la obligación de repararlos o sustituirlos incluirá la retirada de los no conformes y la instalación de los bienes sustituidos o reparados, o la asunción de los costes de dicha retirada e instalación por cuenta del empresario.
+  [13] 7. El consumidor o usuario no será responsable de ningún pago por el uso normal de los bienes sustituidos durante el período previo a su sustitución.
+```
+
 ### Real Decreto Legislativo 1/2007, artículo 115 ter · `BOE-A-2007-20555__a1-8` [JUZGADO rel=0 draft]
 https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a1-8
-_recuperado por:_ bge-m3/BASELINE#2 (0.659) · e5-base/BASELINE#2 (0.852) · e5-large-instruct/I1_LEGAL#4 (0.890) · e5-large-instruct/I2_CITIZEN_LEGISLATION#4 (0.891) · e5-large-instruct/I0_GENERIC#7 (0.873)  [5 sistemas]
+_recuperado por:_ bge-m3/BASELINE#2 (0.659) · e5-base/BASELINE#2 (0.852) · e5-large-instruct/I1_LEGAL#4 (0.890) · e5-large-instruct/I2_CITIZEN_LEGISLATION#4 (0.891) · hybrid_rrf/I0_GENERIC#4 (0.030) · e5-large-instruct/I0_GENERIC#7 (0.873) · bm25/lexical#8 (21.072)  [7 sistemas]
 ```
   [1] Artículo 115 ter. Requisitos objetivos para la conformidad.
   [2] 1. Además de cumplir cualesquiera requisitos subjetivos para la conformidad, los bienes y los contenidos o servicios digitales deberán cumplir todos los siguientes requisitos:
@@ -4737,19 +4919,9 @@ _recuperado por:_ bge-m3/BASELINE#2 (0.659) · e5-base/BASELINE#2 (0.852) · e5-
   [18] 6. Salvo que las partes lo hayan acordado de otro modo, los contenidos o servicios digitales se suministrarán de conformidad con la versión más reciente disponible en el momento de la celebración del contrato.
 ```
 
-### Real Decreto Legislativo 1/2007, artículo 125 · `BOE-A-2007-20555__a125` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a125
-_recuperado por:_ bge-m3/BASELINE#5 (0.647) · e5-large-instruct/I1_LEGAL#5 (0.887) · e5-large-instruct/I2_CITIZEN_LEGISLATION#6 (0.889) · e5-base/BASELINE#8 (0.838) · e5-large-instruct/I0_GENERIC#9 (0.871)  [5 sistemas]
-```
-  [1] Artículo 125. Acción contra el productor y de repetición.
-  [2] 1. Cuando al consumidor o usuario le resulte imposible o le suponga una carga excesiva dirigirse al empresario por la falta de conformidad, podrá reclamar directamente al productor con el fin de conseguir que el bien o el contenido o servicio digital sea puesto en conformidad.
-  [3] Con carácter general, y sin perjuicio de que cese la responsabilidad del productor, a los efectos de este título, en los mismos plazos y condiciones que los establecidos para el empresario, el productor responderá por la falta de conformidad cuando esta se refiera al origen, identidad o idoneidad de los bienes o de los contenidos o servicios digitales, de acuerdo con su naturaleza y finalidad y con las normas que los regulan.
-  [4] 2. Quien haya respondido frente al consumidor o usuario dispondrá del plazo de un año para repetir frente al responsable de la falta de conformidad. Dicho plazo se computará a partir del momento en que se ejecutó la medida correctora.
-```
-
 ### Real Decreto Legislativo 1/2007, artículo 66 bis · `BOE-A-2007-20555__a66bis` [JUZGADO rel=0 draft]
 https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a66bis
-_recuperado por:_ bge-m3/BASELINE#3 (0.657) · e5-base/BASELINE#5 (0.841) · e5-large-instruct/I1_LEGAL#12 (0.882) · e5-large-instruct/I2_CITIZEN_LEGISLATION#15 (0.882) · e5-large-instruct/I0_GENERIC#17 (0.866)  [5 sistemas]
+_recuperado por:_ bge-m3/BASELINE#3 (0.657) · e5-base/BASELINE#5 (0.841) · e5-large-instruct/I1_LEGAL#12 (0.882) · e5-large-instruct/I2_CITIZEN_LEGISLATION#15 (0.882) · e5-large-instruct/I0_GENERIC#17 (0.866) · hybrid_rrf/I0_GENERIC#17 (0.021)  [6 sistemas]
 ```
   [1] Artículo 66 bis. Entrega de bienes y suministro de contenidos o servicios digitales que no se presten en soporte material.
   [2] 1. Salvo que las partes acuerden otra cosa, el empresario entregará los bienes mediante la transmisión de su posesión material o control al consumidor o usuario, sin ninguna demora indebida y en un plazo máximo de 30 días naturales a partir de la celebración del contrato y suministrará los contenidos o servicios digitales sin demora indebida tras la celebración del contrato.
@@ -4767,23 +4939,32 @@ _recuperado por:_ bge-m3/BASELINE#3 (0.657) · e5-base/BASELINE#5 (0.841) · e5-
   [14] 6. Este artículo no será aplicable a los contratos excluidos del ámbito del Título IV de este Libro que aparecen relacionados en el apartado 2 del artículo 114, a excepción de los señalados en su apartado a).
 ```
 
-### Real Decreto Legislativo 1/2007, artículo 118 · `BOE-A-2007-20555__a118` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a118
-_recuperado por:_ bge-m3/BASELINE#13 (0.607) · e5-large-instruct/I0_GENERIC#16 (0.866) · e5-large-instruct/I1_LEGAL#16 (0.880) · e5-large-instruct/I2_CITIZEN_LEGISLATION#16 (0.882) · e5-base/BASELINE#18 (0.831)  [5 sistemas]
+### Real Decreto Legislativo 1/2007, artículo 117 · `BOE-A-2007-20555__a117` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a117
+_recuperado por:_ bm25/lexical#3 (24.879) · bge-m3/BASELINE#7 (0.632) · hybrid_rrf/I0_GENERIC#7 (0.028) · e5-large-instruct/I1_LEGAL#13 (0.881) · e5-large-instruct/I2_CITIZEN_LEGISLATION#13 (0.884)  [5 sistemas]
 ```
-  [1] Artículo 118. Régimen jurídico de la puesta en conformidad.
-  [2] 1. Si el bien no fuera conforme con el contrato, para ponerlo en conformidad, el consumidor o usuario tendrá derecho a elegir entre la reparación o la sustitución, salvo que una de estas dos opciones resultare imposible o que, en comparación con la otra medida correctora, suponga costes desproporcionados para el empresario, teniendo en cuenta todas las circunstancias y, entre ellas las recogidas en el apartado 3 de este artículo, así como si la medida correctora alternativa se podría proporcionar sin mayores inconvenientes para el consumidor o usuario.
-  [3] 2. Si los contenidos o servicios digitales no fueran conformes con el contrato, el consumidor o usuario tendrá derecho a exigir que sean puestos en conformidad.
-  [4] 3. El empresario podrá negarse a poner los bienes o los contenidos o servicios digitales en conformidad cuando resulte imposible o suponga costes desproporcionados, teniendo en cuenta todas las circunstancias, y entre ellas:
-  [5] a) El valor que tendrían los bienes o los contenidos o servicios digitales si no hubiera existido falta de conformidad.
-  [6] b) La relevancia de la falta de conformidad.
-  [7] 4. Las medidas correctoras para la puesta en conformidad se ajustarán a las siguientes reglas:
-  [8] a) Serán gratuitas para el consumidor o usuario. Dicha gratuidad comprenderá los gastos necesarios en que se incurra para que los bienes sean puestos en conformidad, especialmente los gastos de envío, transporte, mano de obra o materiales.
-  [9] b) Deberán llevarse a cabo en un plazo razonable a partir del momento en que el empresario haya sido informado por el consumidor o usuario de la falta de conformidad.
-  [10] c) Deberán realizarse sin mayores inconvenientes para el consumidor o usuario, habida cuenta de la naturaleza de los bienes o de los contenidos o servicios digitales y de la finalidad que tuvieran para el consumidor o usuario.
-  [11] 5. Cuando proceda la reparación o la sustitución del bien, el consumidor o usuario lo pondrá a disposición del empresario y este, en su caso, recuperará el bien sustituido a sus expensas de la forma que menos inconvenientes genere para el consumidor o usuario dependiendo del tipo de bien.
-  [12] 6. Cuando una reparación requiera la retirada de bienes que hayan sido instalados de forma coherente con su naturaleza y finalidad antes de manifestarse la falta de conformidad o, cuando se sustituyan, la obligación de repararlos o sustituirlos incluirá la retirada de los no conformes y la instalación de los bienes sustituidos o reparados, o la asunción de los costes de dicha retirada e instalación por cuenta del empresario.
-  [13] 7. El consumidor o usuario no será responsable de ningún pago por el uso normal de los bienes sustituidos durante el período previo a su sustitución.
+  [1] Artículo 117. Responsabilidad del empresario y derechos del consumidor y usuario en caso de falta de conformidad de los bienes, contenidos o servicios digitales. Derechos de terceros.
+  [2] 1. El empresario responderá ante el consumidor o usuario de cualquier falta de conformidad que exista en el momento de la entrega del bien, contenido o servicio digital, pudiendo el consumidor o usuario, mediante una simple declaración, exigir al empresario la subsanación de dicha falta de conformidad, la reducción del precio o la resolución del contrato. En cualquiera de estos supuestos el consumidor o usuario podrá exigir, además, la indemnización de daños y perjuicios, si procede.
+  [3] El consumidor o usuario tendrá derecho a suspender el pago de cualquier parte pendiente del precio del bien o del contenido o servicio digital adquirido hasta que el empresario cumpla con las obligaciones establecidas en el presente título.
+  [4] 2. Cuando, a consecuencia de una vulneración de derechos de terceros, en particular de los derechos de propiedad intelectual, se impida o limite la utilización de los bienes o de los contenidos o servicios digitales, el consumidor o usuario podrá exigir igualmente, en el supuesto de su falta de conformidad, las medidas correctoras previstas en el apartado anterior, salvo que una ley establezca en esos casos la rescisión o nulidad del contrato.
+```
+
+### Real Decreto Legislativo 1/2007, artículo 124 · `BOE-A-2007-20555__a124` [JUZGADO rel=0 draft]
+https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a124
+_recuperado por:_ e5-large-instruct/I0_GENERIC#3 (0.881) · hybrid_rrf/I0_GENERIC#5 (0.029) · e5-large-instruct/I1_LEGAL#8 (0.886) · e5-large-instruct/I2_CITIZEN_LEGISLATION#10 (0.884) · bm25/lexical#14 (17.738)  [5 sistemas]
+```
+  [1] Artículo 124. Prescripción de la acción.
+  [2] La acción para reclamar el cumplimiento de lo previsto en el capítulo II de este título prescribirá a los cinco años desde la manifestación de la falta de conformidad.
+```
+
+### Real Decreto Legislativo 1/2007, artículo 127 bis · `BOE-A-2007-20555__a1-14` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a1-14
+_recuperado por:_ e5-large-instruct/I1_LEGAL#7 (0.887) · e5-large-instruct/I2_CITIZEN_LEGISLATION#7 (0.889) · hybrid_rrf/I0_GENERIC#8 (0.027) · e5-large-instruct/I0_GENERIC#11 (0.870) · bm25/lexical#19 (16.826)  [5 sistemas]
+```
+  [1] Artículo 127 bis. Reparación y servicios posventa.
+  [2] 1. El productor garantizará, en todo caso, la existencia de un adecuado servicio técnico, así como de repuestos durante el plazo mínimo de diez años a partir de la fecha en que el bien deje de fabricarse.
+  [3] 2. Queda prohibido incrementar los precios de los repuestos al aplicarlos en las reparaciones. La lista de precios de los repuestos deberá estar a disposición del público así como la del resto de servicios aparejados, debiéndose diferenciar en la factura los diferentes conceptos.
+  [4] 3. La acción o derecho de recuperación de los bienes entregados por el consumidor o usuario al empresario para su reparación prescribirá un año después del momento de la entrega. Reglamentariamente, se establecerán los datos que deberá hacer constar el empresario en el momento en que se le entrega un bien para su reparación y las formas en que podrá acreditarse la mencionada entrega.
 ```
 
 ### Ley 9/2017, artículo 305 · `BOE-A-2017-12902__a3-17` [JUZGADO rel=0 draft]
@@ -4795,41 +4976,6 @@ _recuperado por:_ e5-large-instruct/I1_LEGAL#3 (0.891) · e5-large-instruct/I2_C
   [3] 2. Durante este plazo de garantía tendrá derecho el contratista a conocer y ser oído sobre la aplicación de los bienes suministrados.
   [4] 3. Si el órgano de contratación estimase, durante el plazo de garantía, que los bienes suministrados no son aptos para el fin pretendido, como consecuencia de los vicios o defectos observados en ellos e imputables al contratista y exista la presunción de que la reposición o reparación de dichos bienes no serán bastantes para lograr aquel fin, podrá, antes de expirar dicho plazo, rechazar los bienes dejándolos de cuenta del contratista y quedando exento de la obligación de pago o teniendo derecho, en su caso, a la recuperación del precio satisfecho.
   [5] 4. Terminado el plazo de garantía sin que la Administración haya formalizado alguno de los reparos o la denuncia a que se refieren los apartados 1 y 3 de este artículo, el contratista quedará exento de responsabilidad por razón de los bienes suministrados.
-```
-
-### Ley 9/2017, artículo 243 · `BOE-A-2017-12902__a2-55` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2017-12902#a2-55
-_recuperado por:_ e5-large-instruct/I2_CITIZEN_LEGISLATION#5 (0.890) · e5-large-instruct/I1_LEGAL#6 (0.887) · e5-large-instruct/I0_GENERIC#12 (0.869) · bge-m3/BASELINE#15 (0.602)  [4 sistemas]
-```
-  [1] Artículo 243. Recepción y plazo de garantía.
-  [2] 1. A la recepción de las obras a su terminación y a los efectos establecidos en esta Ley, concurrirá un facultativo designado por la Administración representante de esta, el facultativo encargado de la dirección de las obras y el contratista asistido, si lo estima oportuno, de su facultativo.
-  [3] Dentro del plazo de tres meses contados a partir de la recepción, el órgano de contratación deberá aprobar la certificación final de las obras ejecutadas, que será abonada al contratista a cuenta de la liquidación del contrato en el plazo previsto en esta Ley.
-  [4] En el caso de obras cuyo valor estimado supere los doce millones de euros en las que las operaciones de liquidación y medición fueran especialmente complejas, los pliegos podrán prever que el plazo de tres meses para la aprobación de la certificación final al que se refiere el párrafo anterior, podrá ser ampliado, siempre que no supere en ningún caso los cinco meses.
-  [5] 2. Si se encuentran las obras en buen estado y con arreglo a las prescripciones previstas, el funcionario técnico designado por la Administración contratante y representante de esta, las dará por recibidas, levantándose la correspondiente acta y comenzando entonces el plazo de garantía.
-  [6] Cuando las obras no se hallen en estado de ser recibidas se hará constar así en el acta y el Director de las mismas señalará los defectos observados y detallará las instrucciones precisas fijando un plazo para remediar aquellos. Si transcurrido dicho plazo el contratista no lo hubiere efectuado, podrá concedérsele otro nuevo plazo improrrogable o declarar resuelto el contrato.
-  [7] 3. El plazo de garantía se establecerá en el pliego de cláusulas administrativas particulares atendiendo a la naturaleza y complejidad de la obra y no podrá ser inferior a un año salvo casos especiales.
-  [8] Dentro del plazo de quince días anteriores al cumplimiento del plazo de garantía, el director facultativo de la obra, de oficio o a instancia del contratista, redactará un informe sobre el estado de las obras. Si este fuera favorable, el contratista quedará exonerado de toda responsabilidad, salvo lo dispuesto en el artículo siguiente, procediéndose a la devolución o cancelación de la garantía, a la liquidación del contrato y, en su caso, al pago de las obligaciones pendientes que deberá efectuarse en el plazo de sesenta días. En el caso de que el informe no fuera favorable y los defectos observados se debiesen a deficiencias en la ejecución de la obra y no al uso de lo construido, durante el plazo de garantía, el director facultativo procederá a dictar las oportunas instrucciones al contratista para la debida reparación de lo construido, concediéndole un plazo para ello durante el cual continuará encargado de la conservación de las obras, sin derecho a percibir cantidad alguna por ampliación del plazo de garantía.
-  [9] 4. No obstante, en aquellas obras cuya perduración no tenga finalidad práctica como las de sondeos y prospecciones que hayan resultado infructuosas o que por su naturaleza exijan trabajos que excedan el concepto de mera conservación como los de dragados no se exigirá plazo de garantía.
-  [10] 5. Podrán ser objeto de recepción parcial aquellas partes de obra susceptibles de ser ejecutadas por fases que puedan ser entregadas al uso público, según lo establecido en el contrato.
-  [11] 6. Siempre que por razones excepcionales de interés público debidamente motivadas en el expediente el órgano de contratación acuerde la ocupación efectiva de las obras o su puesta en servicio para el uso público, aun sin el cumplimiento del acto formal de recepción, desde que concurran dichas circunstancias se producirán los efectos y consecuencias propios del acto de recepción de las obras y en los términos en que reglamentariamente se establezcan.
-```
-
-### Real Decreto Legislativo 1/2007, artículo 127 bis · `BOE-A-2007-20555__a1-14` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a1-14
-_recuperado por:_ e5-large-instruct/I1_LEGAL#7 (0.887) · e5-large-instruct/I2_CITIZEN_LEGISLATION#7 (0.889) · e5-large-instruct/I0_GENERIC#11 (0.870)  [3 sistemas]
-```
-  [1] Artículo 127 bis. Reparación y servicios posventa.
-  [2] 1. El productor garantizará, en todo caso, la existencia de un adecuado servicio técnico, así como de repuestos durante el plazo mínimo de diez años a partir de la fecha en que el bien deje de fabricarse.
-  [3] 2. Queda prohibido incrementar los precios de los repuestos al aplicarlos en las reparaciones. La lista de precios de los repuestos deberá estar a disposición del público así como la del resto de servicios aparejados, debiéndose diferenciar en la factura los diferentes conceptos.
-  [4] 3. La acción o derecho de recuperación de los bienes entregados por el consumidor o usuario al empresario para su reparación prescribirá un año después del momento de la entrega. Reglamentariamente, se establecerán los datos que deberá hacer constar el empresario en el momento en que se le entrega un bien para su reparación y las formas en que podrá acreditarse la mencionada entrega.
-```
-
-### Real Decreto Legislativo 1/2007, artículo 124 · `BOE-A-2007-20555__a124` [JUZGADO rel=0 draft]
-https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a124
-_recuperado por:_ e5-large-instruct/I0_GENERIC#3 (0.881) · e5-large-instruct/I1_LEGAL#8 (0.886) · e5-large-instruct/I2_CITIZEN_LEGISLATION#10 (0.884)  [3 sistemas]
-```
-  [1] Artículo 124. Prescripción de la acción.
-  [2] La acción para reclamar el cumplimiento de lo previsto en el capítulo II de este título prescribirá a los cinco años desde la manifestación de la falta de conformidad.
 ```
 
 ### Real Decreto Legislativo 1/2007, artículo 146 · `BOE-A-2007-20555__a146` [JUZGADO rel=0 draft]
@@ -4848,7 +4994,7 @@ _split=test · difficulty=dificil · failure_mode=—_
 
 ### Real Decreto Legislativo 1/2007, artículo 120 · `BOE-A-2007-20555__a120` [JUZGADO rel=2 reviewed]
 https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a120
-_recuperado por:_ bge-m3/BASELINE#1 (0.673) · e5-large-instruct/I0_GENERIC#1 (0.904) · e5-large-instruct/I1_LEGAL#1 (0.916) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.913) · e5-base/BASELINE#2 (0.867)  [5 sistemas]
+_recuperado por:_ bge-m3/BASELINE#1 (0.673) · e5-large-instruct/I0_GENERIC#1 (0.904) · e5-large-instruct/I1_LEGAL#1 (0.916) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.913) · bm25/lexical#1 (26.358) · hybrid_rrf/I0_GENERIC#1 (0.033) · e5-base/BASELINE#2 (0.867)  [7 sistemas]
 ```
   [1] Artículo 120. Plazo para la manifestación de la falta de conformidad.
   [2] 1. En el caso de contrato de compraventa de bienes o de suministro de contenidos o servicios digitales suministrados en un acto único o en una serie de actos individuales, el empresario será responsable de las faltas de conformidad que existan en el momento de la entrega o del suministro y se manifiesten en un plazo de tres años desde la entrega en el caso de bienes o de dos años en el caso de contenidos o servicios digitales, sin perjuicio de lo dispuesto en el artículo 115 ter, apartado 2, letras a) y b).
@@ -4856,9 +5002,17 @@ _recuperado por:_ bge-m3/BASELINE#1 (0.673) · e5-large-instruct/I0_GENERIC#1 (0
   [4] 2. En el caso de contenidos o servicios digitales o de bienes con elementos digitales, cuando el contrato prevea el suministro continuo de contenidos o servicios digitales durante un período de tiempo determinado, el empresario será responsable de cualquier falta de conformidad de los contenidos o servicios digitales que se produzca o se manifieste dentro del plazo durante el cual deben suministrarse los contenidos o servicios digitales de acuerdo con el contrato. No obstante, si el contrato de compraventa de bienes con elementos digitales establece el suministro continuo de los contenidos o servicios digitales durante un período inferior a tres años, el plazo de responsabilidad será de tres años a partir del momento de la entrega.
 ```
 
+### Real Decreto Legislativo 1/2007, artículo 124 · `BOE-A-2007-20555__a124` [JUZGADO rel=1 reviewed]
+https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a124
+_recuperado por:_ e5-base/BASELINE#1 (0.868) · e5-large-instruct/I0_GENERIC#2 (0.887) · hybrid_rrf/I0_GENERIC#2 (0.031) · e5-large-instruct/I1_LEGAL#4 (0.891) · e5-large-instruct/I2_CITIZEN_LEGISLATION#4 (0.890) · bge-m3/BASELINE#7 (0.567) · bm25/lexical#7 (17.738)  [7 sistemas]
+```
+  [1] Artículo 124. Prescripción de la acción.
+  [2] La acción para reclamar el cumplimiento de lo previsto en el capítulo II de este título prescribirá a los cinco años desde la manifestación de la falta de conformidad.
+```
+
 ### Ley 9/2017, artículo 305 · `BOE-A-2017-12902__a3-17` [JUZGADO rel=0 draft]
 https://www.boe.es/buscar/act.php?id=BOE-A-2017-12902#a3-17
-_recuperado por:_ e5-large-instruct/I1_LEGAL#3 (0.894) · e5-large-instruct/I2_CITIZEN_LEGISLATION#3 (0.892) · bge-m3/BASELINE#4 (0.583) · e5-large-instruct/I0_GENERIC#4 (0.885) · e5-base/BASELINE#5 (0.855)  [5 sistemas]
+_recuperado por:_ e5-large-instruct/I1_LEGAL#3 (0.894) · e5-large-instruct/I2_CITIZEN_LEGISLATION#3 (0.892) · hybrid_rrf/I0_GENERIC#3 (0.024) · bge-m3/BASELINE#4 (0.583) · e5-large-instruct/I0_GENERIC#4 (0.885) · e5-base/BASELINE#5 (0.855)  [6 sistemas]
 ```
   [1] Artículo 305. Vicios o defectos durante el plazo de garantía.
   [2] 1. Si durante el plazo de garantía se acreditase la existencia de vicios o defectos en los bienes suministrados tendrá derecho la Administración a reclamar del contratista la reposición de los que resulten inadecuados o la reparación de los mismos si fuese suficiente.
@@ -4867,17 +5021,9 @@ _recuperado por:_ e5-large-instruct/I1_LEGAL#3 (0.894) · e5-large-instruct/I2_C
   [5] 4. Terminado el plazo de garantía sin que la Administración haya formalizado alguno de los reparos o la denuncia a que se refieren los apartados 1 y 3 de este artículo, el contratista quedará exento de responsabilidad por razón de los bienes suministrados.
 ```
 
-### Real Decreto Legislativo 1/2007, artículo 124 · `BOE-A-2007-20555__a124` [JUZGADO rel=1 reviewed]
-https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a124
-_recuperado por:_ e5-base/BASELINE#1 (0.868) · e5-large-instruct/I0_GENERIC#2 (0.887) · e5-large-instruct/I1_LEGAL#4 (0.891) · e5-large-instruct/I2_CITIZEN_LEGISLATION#4 (0.890) · bge-m3/BASELINE#7 (0.567)  [5 sistemas]
-```
-  [1] Artículo 124. Prescripción de la acción.
-  [2] La acción para reclamar el cumplimiento de lo previsto en el capítulo II de este título prescribirá a los cinco años desde la manifestación de la falta de conformidad.
-```
-
 ### Ley 9/2017, artículo 243 · `BOE-A-2017-12902__a2-55` [JUZGADO rel=0 draft]
 https://www.boe.es/buscar/act.php?id=BOE-A-2017-12902#a2-55
-_recuperado por:_ bge-m3/BASELINE#2 (0.595) · e5-large-instruct/I1_LEGAL#2 (0.897) · e5-large-instruct/I2_CITIZEN_LEGISLATION#2 (0.897) · e5-large-instruct/I0_GENERIC#3 (0.885)  [4 sistemas]
+_recuperado por:_ bge-m3/BASELINE#2 (0.595) · e5-large-instruct/I1_LEGAL#2 (0.897) · e5-large-instruct/I2_CITIZEN_LEGISLATION#2 (0.897) · e5-large-instruct/I0_GENERIC#3 (0.885) · hybrid_rrf/I0_GENERIC#10 (0.016)  [5 sistemas]
 ```
   [1] Artículo 243. Recepción y plazo de garantía.
   [2] 1. A la recepción de las obras a su terminación y a los efectos establecidos en esta Ley, concurrirá un facultativo designado por la Administración representante de esta, el facultativo encargado de la dirección de las obras y el contratista asistido, si lo estima oportuno, de su facultativo.
@@ -4894,7 +5040,7 @@ _recuperado por:_ bge-m3/BASELINE#2 (0.595) · e5-large-instruct/I1_LEGAL#2 (0.8
 
 ### Ley 33/2003, disposición transitoria quinta · `BOE-A-2003-20254__dtquinta` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2003-20254#dtquinta
-_recuperado por:_ e5-large-instruct/I0_GENERIC#6 (0.882) · e5-large-instruct/I1_LEGAL#8 (0.887) · e5-large-instruct/I2_CITIZEN_LEGISLATION#10 (0.885) · e5-base/BASELINE#15 (0.847)  [4 sistemas]
+_recuperado por:_ e5-large-instruct/I0_GENERIC#6 (0.882) · e5-large-instruct/I1_LEGAL#8 (0.887) · e5-large-instruct/I2_CITIZEN_LEGISLATION#10 (0.885) · e5-base/BASELINE#15 (0.847) · hybrid_rrf/I0_GENERIC#15 (0.015)  [5 sistemas]
 ```
   [1] Disposición transitoria quinta. Inscripción en el Registro de la Propiedad de los bienes demaniales.
   [2] Para el cumplimiento de la obligación de inscripción establecida en el artículo 36 de esta ley respecto de los bienes demaniales de los que las Administraciones públicas sean actualmente titulares, éstas tendrán un plazo de cinco años, contados a partir de la entrada en vigor de esta ley.
@@ -4902,7 +5048,7 @@ _recuperado por:_ e5-large-instruct/I0_GENERIC#6 (0.882) · e5-large-instruct/I1
 
 ### Ley 33/2003, artículo 134 · `BOE-A-2003-20254__a134` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2003-20254#a134
-_recuperado por:_ e5-base/BASELINE#7 (0.852) · e5-large-instruct/I0_GENERIC#13 (0.877) · e5-large-instruct/I1_LEGAL#18 (0.881) · e5-large-instruct/I2_CITIZEN_LEGISLATION#18 (0.879)  [4 sistemas]
+_recuperado por:_ hybrid_rrf/I0_GENERIC#6 (0.022) · e5-base/BASELINE#7 (0.852) · e5-large-instruct/I0_GENERIC#13 (0.877) · e5-large-instruct/I1_LEGAL#18 (0.881) · e5-large-instruct/I2_CITIZEN_LEGISLATION#18 (0.879)  [5 sistemas]
 ```
   [1] Artículo 134. Aplazamiento de pago.
   [2] El órgano competente para enajenar los bienes o derechos podrá admitir el pago aplazado del precio de venta, por un período no superior a 10 años y siempre que el pago de las cantidades aplazadas se garantice suficientemente mediante condición resolutoria explícita, hipoteca, aval bancario, seguro de caución u otra garantía suficiente usual en el mercado. El interés de aplazamiento no podrá ser inferior al interés legal del dinero.
@@ -4910,7 +5056,7 @@ _recuperado por:_ e5-base/BASELINE#7 (0.852) · e5-large-instruct/I0_GENERIC#13 
 
 ### Ley 28/1998, artículo 15 · `BOE-A-1998-16717__a15` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-1998-16717#a15
-_recuperado por:_ e5-large-instruct/I0_GENERIC#5 (0.882) · e5-large-instruct/I1_LEGAL#5 (0.889) · e5-large-instruct/I2_CITIZEN_LEGISLATION#6 (0.889)  [3 sistemas]
+_recuperado por:_ e5-large-instruct/I0_GENERIC#5 (0.882) · e5-large-instruct/I1_LEGAL#5 (0.889) · e5-large-instruct/I2_CITIZEN_LEGISLATION#6 (0.889) · hybrid_rrf/I0_GENERIC#12 (0.015)  [4 sistemas]
 ```
   [1] Artículo 15. Registro de Venta a Plazos de Bienes Muebles.
   [2] 1. Para que sean oponibles frente a terceros las reservas de dominio o las prohibiciones de disponer que se inserten en los contratos sujetos a la presente Ley, será necesaria su inscripción en el Registro a que se refiere el párrafo siguiente. La inscripción se practicará sin necesidad de que conste en los contratos nota administrativa sobre su situación fiscal.
@@ -4922,34 +5068,76 @@ _recuperado por:_ e5-large-instruct/I0_GENERIC#5 (0.882) · e5-large-instruct/I1
   [8] El que remate bienes sujetos a prohibición de disponer inscrita en el Registro en los términos de esta Ley los adquirirá con subsistencia de la obligación de pago garantizada con dicha prohibición, de la que responderá solidariamente con el primitivo deudor hasta su vencimiento.
 ```
 
-### Ley 4/2012, disposición adicional segunda · `BOE-A-2012-9111__da-2` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2012-9111#da-2
-_recuperado por:_ e5-large-instruct/I1_LEGAL#7 (0.887) · e5-large-instruct/I2_CITIZEN_LEGISLATION#8 (0.886) · e5-large-instruct/I0_GENERIC#19 (0.874)  [3 sistemas]
+### Ley 28/1998, artículo 16 · `BOE-A-1998-16717__a16` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-1998-16717#a16
+_recuperado por:_ e5-large-instruct/I0_GENERIC#9 (0.879) · e5-large-instruct/I1_LEGAL#11 (0.885) · e5-large-instruct/I2_CITIZEN_LEGISLATION#12 (0.884) · hybrid_rrf/I0_GENERIC#19 (0.014)  [4 sistemas]
 ```
-  [1] Disposición adicional segunda. Plazo para el ejercicio de acciones de invalidez de los contratos suscritos desde el 5 de enero de 1999 mediante los que se hayan transmitido o comercializado derechos regidos con arreglo a regímenes jurídicos preexistentes a la Ley 42/1998, de 15 de diciembre, sobre derechos de aprovechamiento por turno de bienes inmuebles de uso turístico y normas tributarias, y de los contratos mediante los que se hayan transmitido o comercializado derechos sujetos a la misma, cuando dichas acciones estén fundadas en el carácter determinable o flotante de los derechos adquiridos.
-  [2] 1. El plazo de prescripción para el ejercicio de cualesquiera acciones dirigidas a la declaración de invalidez de los contratos suscritos desde el 5 de enero de 1999 mediante los que se hayan transmitido o comercializado derechos regidos con arreglo a regímenes jurídicos preexistentes a la Ley 42/1998, de 15 de diciembre, cuando dichas acciones estén fundadas en la contravención de normas imperativas contenidas en dicha norma, será de cinco años a contar desde la entrada en vigor de esta disposición.
-  [3] 2. El plazo de prescripción al que se refiere el apartado anterior será también de aplicación al ejercicio de cualesquiera acciones que se dirijan a la declaración de invalidez de los contratos mediante los que se hayan transmitido o comercializado derechos sujetos a la Ley 42/1998 de 15 de diciembre, cuando dichas acciones estén fundadas en el carácter determinable o flotante de los derechos adquiridos.
-  [4] 3. La declaración de invalidez conllevará la devolución al adquirente o cesionario del precio de compra satisfecho, así como a la indemnización de los daños y perjuicios sufridos, en la medida en que estas cantidades excedan del coste asociado a cualquier uso que hubiera efectuado de los derechos y de las prestaciones de las que hubiera podido disfrutar en virtud del contrato, calculado atendiendo al valor de mercado en que se estime dicho uso.
-  [5] 4. Transcurrido el plazo de ejercicio de las acciones, se entenderán convalidados los contratos a los que se refiere la presente disposición, rigiéndose por los términos que resulten del régimen inscrito o publicado en el Registro de la Propiedad o del título constitutivo.
+  [1] Artículo 16. Incumplimiento del deudor.
+  [2] 1. El acreedor podrá recabar el cumplimiento de las obligaciones derivadas de los contratos regulados por la presente Ley mediante el ejercicio de las acciones que correspondan en procesos de declaración ordinarios, en el proceso monitorio o en el proceso de ejecución, conforme a la Ley de Enjuiciamiento Civil.
+  [3] Únicamente constituirán título suficiente para fundar la acción ejecutiva sobre el patrimonio del deudor los contratos de venta a plazos de bienes muebles que consten en alguno de los documentos a que se refieren los números 4.º y 5.º del apartado segundo del artículo 517 de la Ley de Enjuiciamiento Civil.
+  [4] 2. En caso de incumplimiento de un contrato inscrito en el Registro de Venta a Plazos de Bienes Muebles y formalizado en el modelo oficial establecido al efecto, el acreedor podrá dirigirse directa y exclusivamente contra los bienes adquiridos a plazos, con arreglo al siguiente procedimiento:
+  [5] a) El acreedor, a través de fedatario público competente para actuar en el lugar donde se hallen los bienes, donde haya de realizarse el pago o en el lugar donde se encuentre el domicilio del deudor, requerirá de pago a éste, expresando la cantidad total reclamada y la causa del vencimiento de la obligación. Asimismo, se apercibirá al deudor de que, en el supuesto de no atender al pago de la obligación, se procederá contra los bienes adquiridos a plazos en la forma establecida en el presente artículo.
+  [6] Salvo pacto en contrario, la suma líquida exigible en caso de ejecución será la especificada en la certificación expedida por el acreedor, siempre que se acredite, por fedatario público, haberse practicado aquella liquidación en la forma pactada por las partes en el contrato y que el saldo coincide con el que aparece en la cuenta abierta al deudor.
+  [7] b) El deudor, dentro de los tres días hábiles siguientes a aquel en que sea requerido, deberá pagar la cantidad exigida o entregar la posesión de los bienes al acreedor o a la persona que éste hubiera designado en el requerimiento.
+  [8] c) Si el deudor no pagase, pero voluntariamente hiciera entrega de los bienes adquiridos a plazos, se procederá a su enajenación en pública subasta, con intervención de Notario o Corredor de Comercio colegiado, según sus respectivas competencias.
+  [9] En la subasta se seguirán, en cuanto fuesen de aplicación, las reglas establecidas en el artículo 1.872 del Código Civil y disposiciones complementarias, así como las normas reguladoras de la actividad profesional de Notarios y Corredores de Comercio. En la primera subasta servirá como tipo el valor fijado a tal efecto por las partes en el contrato.
+  [10] No obstante lo dispuesto en los párrafos anteriores, el acreedor podrá optar por la adjudicación de los bienes para pago de la deuda sin necesidad de acudir a la pública subasta. En tal caso, será de aplicación lo dispuesto en la letra e) de este apartado.
+  [11] d) Cuando el deudor no pagare la cantidad exigida ni entregare los bienes para la enajenación en pública subasta a que se refiere la letra anterior, el acreedor podrá reclamar del tribunal competente la tutela sumaria de su derecho, mediante el ejercicio de las acciones previstas en los números 10.º y 11.º del apartado primero del artículo 250 de la Ley de Enjuiciamiento Civil.
+  [12] e) La adquisición por el acreedor de los bienes entregados por el deudor no impedirá la reclamación entre las partes de las cantidades que correspondan, si el valor del bien en el momento de su entrega por el deudor, conforme a las tablas o índices referenciales de depreciación establecidos en el contrato, fuese inferior o superior a la deuda reclamada.
+  [13] En caso de no haberse pactado un procedimiento para el cálculo de la depreciación del bien, el acreedor deberá acreditarla en el correspondiente proceso declarativo.
+  [14] f) La adquisición de los bienes subastados no impedirá la reclamación de las cantidades que correspondan, si el valor del bien obtenido en la subasta fuese inferior o superior a la deuda reclamada.
+  [15] 3. Cuando el bien vendido con pacto de reserva de dominio o prohibición de disponer, inscrito en el Registro de Venta a Plazos de Bienes Muebles, se hallare en poder de persona distinta al comprador, se requerirá a ésta, a través de fedatario público, para que, en un plazo de tres días hábiles, pague el importe reclamado o desampare el bien.
+  [16] Si pagare, se subrogará en el lugar del acreedor satisfecho contra el comprador. Si desamparase el bien, se entenderán con él todas las diligencias del trámite ejecutorio, se siga éste ante fedatario público o en vía judicial, entregándosele el remanente que pudiera resultar después de pagado el actor.
+  [17] Si el poseedor del bien se opone al pago o al desamparo, se procederá conforme a lo dispuesto en la letra d) y siguientes del apartado anterior.
+  [18] 4. Los requerimientos y notificaciones previstos en los apartados anteriores se efectuarán en el domicilio que a este efecto haya designado el comprador en el contrato inicial. Dicho domicilio podrá ser modificado ulteriormente, siempre que de ello se dé conocimiento al vendedor o acreedor y se haga constar en el Registro de Venta a Plazos de Bienes Muebles.
+  [19] 5. El acreedor, para el cobro de los créditos nacidos de los contratos otorgados en escritura pública o en póliza intervenida por Corredor de Comercio colegiado, así como de aquellos contratos formalizados en el modelo oficial establecido al efecto e inscritos en el Registro de Venta a Plazos de Bienes Muebles, gozará de la preferencia y prelación establecidos en los artículos 1.922.2. o y 1.926.1. a del Código Civil.
+  [20] Cuando los contratos reúnan estos mismos requisitos formales, y se hubiera inscrito la reserva de dominio pactada, en los supuestos de quiebra o concurso de acreedores no se incluirán en la masa los bienes comprados a plazos mientras no esté satisfecho el crédito garantizado, sin perjuicio de llevar a aquélla el sobrante del precio obtenido en la subasta. En los supuestos de suspensión de pagos el acreedor tendrá la condición de singularmente privilegiado, con derecho de abstención según los artículos 15 y 22 de la Ley de Suspensión de Pagos.
 ```
 
-### Real Decreto Legislativo 1/2007, artículo 143 · `BOE-A-2007-20555__a143` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a143
-_recuperado por:_ e5-large-instruct/I2_CITIZEN_LEGISLATION#7 (0.886) · e5-large-instruct/I1_LEGAL#9 (0.886) · e5-large-instruct/I0_GENERIC#20 (0.874)  [3 sistemas]
+### Ley 1/2000, artículo 439 · `BOE-A-2000-323__a439` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2000-323#a439
+_recuperado por:_ e5-large-instruct/I0_GENERIC#7 (0.879) · e5-large-instruct/I1_LEGAL#13 (0.884) · e5-large-instruct/I2_CITIZEN_LEGISLATION#13 (0.882) · hybrid_rrf/I0_GENERIC#16 (0.015)  [4 sistemas]
 ```
-  [1] Artículo 143. Prescripción de la acción.
-  [2] 1. La acción de reparación de los daños y perjuicios previstos en este capítulo prescribirá a los tres años, a contar desde la fecha en que el perjudicado sufrió el perjuicio, ya sea por defecto del producto o por el daño que dicho defecto le ocasionó, siempre que se conozca al responsable de dicho perjuicio. La acción del que hubiese satisfecho la indemnización contra todos los demás responsables del daño prescribirá al año, a contar desde el día del pago de la indemnización.
-  [3] 2. La interrupción de la prescripción se rige por lo establecido en el Código Civil.
+  [1] Artículo 439. Inadmisión de la demanda en casos especiales.
+  [2] 1. No se admitirán las demandas que pretendan retener o recobrar la posesión si se interponen transcurrido el plazo de un año a contar desde el acto de la perturbación o el despojo.
+  [3] 2. En los casos del número 7.º del apartado 1 del artículo 250, no se admitirán las demandas en los casos siguientes:
+  [4] 1.º Cuando en ellas no se expresen las medidas que se consideren necesarias para asegurar la eficacia de la sentencia que recayere.
+  [5] 2.º Si, salvo renuncia del demandante, que hará constar en la demanda, no se señalase en ésta la caución que, conforme a lo previsto en el párrafo segundo del apartado 2 del artículo 64, ha de prestar el demandado, en caso de comparecer y contestar, para responder de los frutos que haya percibido indebidamente, de los daños y perjuicios que hubiere irrogado y de las costas del juicio.
+  [6] 3.º Si no se acompañase a la demanda certificación literal del Registro de la Propiedad que acredite expresamente la vigencia, sin contradicción alguna, del asiento que legitima al demandante.
+  [7] 3. No se admitirán las demandas de desahucio de finca urbana por falta de pago de las rentas o cantidades debidas por el arrendatario si el arrendador no indicare las circunstancias concurrentes que puedan permitir o no, en el caso concreto, la enervación del desahucio.
+  [8] 4. En los casos de los números 10.º y 11.º del apartado 1 del artículo 250, cuando la acción ejercitada se base en el incumplimiento de un contrato de venta de bienes muebles a plazos, no se admitirán las demandas a las que no se acompañe la acreditación del requerimiento de pago al deudor, con diligencia expresiva del impago y de la no entrega del bien, en los términos previstos en el apartado segundo del artículo 16 de la Ley de Venta a Plazos de Bienes Muebles, así como certificación de la inscripción de los bienes en el Registro de Venta a Plazos de Bienes Muebles, si se tratase de bienes susceptibles de inscripción en el mismo. Cuando se ejerciten acciones basadas en el incumplimiento de un contrato de arrendamiento financiero o de bienes muebles, no se admitirán las demandas a las que no se acompañe la acreditación del requerimiento de pago al deudor, con diligencia expresiva del impago y de la no entrega del bien, en los términos previstos en el apartado tercero de la disposición adicional primera de la Ley de Venta a Plazos de Bienes Muebles.
+  [9] 5. No se admitirán las demandas que tengan por objeto las acciones de reclamación de devolución de las cantidades indebidamente satisfechas por el consumidor en aplicación de determinadas cláusulas suelo o de cualesquiera otras cláusulas que se consideren abusivas contenidas en contratos de préstamo o crédito garantizados con hipoteca inmobiliaria cuando no se acompañe a la demanda documento que justifique haber practicado el consumidor una reclamación previa extrajudicial a la persona física o jurídica que realice la actividad de concesión de préstamos o créditos de manera profesional, con el fin de que reconozca expresamente el carácter abusivo de dichas cláusulas, con la consiguiente devolución de las cantidades indebidamente satisfechas por el consumidor.
+  [10] 6. En los casos de los números 1.º, 2.º, 4.º y 7.º del apartado 1 del artículo 250, no se admitirán las demandas, que pretendan la recuperación de la posesión de una finca, en que no se especifique:
+  [11] a) Si el inmueble objeto de las mismas constituye vivienda habitual de la persona ocupante.
+  [12] b) Si concurre en la parte demandante la condición de gran tenedora de vivienda, en los términos que establece el artículo 3.k) de la Ley 12/2023, de 24 de mayo, por el derecho a la vivienda.
+  [13] En el caso de indicarse que no se tiene la condición de gran tenedor, a efectos de corroborar tal extremo, se deberá adjuntar a la demanda certificación del Registro de la Propiedad en el que consten la relación de propiedades a nombre de la parte actora.
+  [14] c) (Anulado)
+  [15] 7. (Anulado)
+  [16] 8. Tampoco se admitirán las demandas de juicio verbal cuando no se cumplan los requisitos de admisibilidad, que, para casos especiales, puedan establecer las leyes.
 ```
 
-### Ley 29/1998, artículo 138 · `BOE-A-1998-16718__a138` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-1998-16718#a138
-_recuperado por:_ e5-large-instruct/I2_CITIZEN_LEGISLATION#9 (0.886) · e5-large-instruct/I1_LEGAL#12 (0.885) · e5-large-instruct/I0_GENERIC#17 (0.876)  [3 sistemas]
+### Real Decreto Legislativo 1/2007, artículo 115 ter · `BOE-A-2007-20555__a1-8` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a1-8
+_recuperado por:_ hybrid_rrf/I0_GENERIC#4 (0.023) · bm25/lexical#6 (17.837) · e5-base/BASELINE#9 (0.850)  [3 sistemas]
 ```
-  [1] Artículo 138.
-  [2] 1. Cuando se alegue que alguno de los actos de las partes no reúne los requisitos establecidos por la presente Ley, la que se halle en tal supuesto podrá subsanar el defecto u oponer lo que estime pertinente dentro de los diez días siguientes al de la notificación del escrito que contenga la alegación.
-  [3] 2. Cuando el Juzgado o Tribunal de oficio aprecie la existencia de algún defecto subsanable, el Secretario judicial dictará diligencia de ordenación en que lo reseñe y otorgue el mencionado plazo para la subsanación, con suspensión, en su caso, del fijado para dictar sentencia.
-  [4] 3. Sólo cuando el defecto sea insubsanable o no se subsane debidamente en plazo, podrá ser decidido el recurso con fundamento en tal defecto.
+  [1] Artículo 115 ter. Requisitos objetivos para la conformidad.
+  [2] 1. Además de cumplir cualesquiera requisitos subjetivos para la conformidad, los bienes y los contenidos o servicios digitales deberán cumplir todos los siguientes requisitos:
+  [3] a) Ser aptos para los fines a los que normalmente se destinen bienes o contenidos o servicios digitales del mismo tipo, teniendo en cuenta, cuando sea de aplicación, toda norma vigente, toda norma técnica existente o, a falta de dicha norma técnica, todo código de conducta específico de la industria del sector.
+  [4] b) Cuando sea de aplicación, poseer la calidad y corresponder con la descripción de la muestra o modelo del bien o ser conformes con la versión de prueba o vista previa del contenido o servicio digital que el empresario hubiese puesto a disposición del consumidor o usuario antes de la celebración del contrato.
+  [5] c) Cuando sea de aplicación, entregarse o suministrarse junto con los accesorios, en particular el embalaje, y las instrucciones que el consumidor y usuario pueda razonablemente esperar recibir.
+  [6] d) Presentar la cantidad y poseer las cualidades y otras características, en particular respecto de la durabilidad del bien, la accesibilidad y continuidad del contenido o servicio digital y la funcionalidad, compatibilidad y seguridad que presentan normalmente los bienes y los contenidos o servicios digitales del mismo tipo y que el consumidor o usuario pueda razonablemente esperar, dada la naturaleza de los mismos y teniendo en cuenta cualquier declaración pública realizada por el empresario, o en su nombre, o por otras personas en fases previas de la cadena de transacciones, incluido el productor, especialmente en la publicidad o el etiquetado. El empresario no quedará obligado por tales declaraciones públicas, si demuestra alguno de los siguientes hechos:
+  [7] 1.º Que desconocía y no cabía razonablemente esperar que conociera la declaración en cuestión.
+  [8] 2.º Que, en el momento de la celebración del contrato, la declaración pública había sido corregida del mismo o similar modo en el que había sido realizada.
+  [9] 3.º Que la declaración pública no pudo influir en la decisión de adquirir el bien o el contenido o servicio digital.
+  [10] 2. En el caso de contratos de compraventa de bienes con elementos digitales o de suministro de contenidos o servicios digitales, el empresario velará por que se comuniquen y suministren al consumidor o usuario las actualizaciones, incluidas las relativas a la seguridad, que sean necesarias para mantener la conformidad, durante cualquiera de los siguientes períodos:
+  [11] a) Aquel que el consumidor o usuario pueda razonablemente esperar habida cuenta del tipo y la finalidad de los bienes con elementos digitales o de los contenidos o servicios digitales, y teniendo en cuenta las circunstancias y la naturaleza del contrato, cuando el contrato establezca un único acto de suministro o una serie de actos de suministro separados, en su caso.
+  [12] b) Aquel en el que deba suministrarse el contenido o servicio digital con arreglo al contrato de compraventa de bienes con elementos digitales o al contrato de suministro, cuando este prevea un plazo de suministro continuo durante un período de tiempo. No obstante, cuando el contrato de compraventa de bienes con elementos digitales prevea un plazo de suministro continuo igual o inferior a tres años, el período de responsabilidad será de tres años a partir del momento de la entrega del bien.
+  [13] 3. En caso de que el consumidor o usuario no instale en un plazo razonable las actualizaciones proporcionadas de conformidad con el apartado anterior, el empresario no será responsable de ninguna falta de conformidad causada únicamente por la ausencia de la correspondiente actualización, siempre que se cumplan las siguientes condiciones:
+  [14] a) El empresario hubiese informado al consumidor o usuario acerca de la disponibilidad de la actualización y de las consecuencias de su no instalación; y
+  [15] b) El hecho de que el consumidor o usuario no instalase la actualización o no lo hiciese correctamente no se debiera a deficiencias en las instrucciones facilitadas.
+  [16] 4. Cuando el contrato prevea el suministro continuo de contenidos o servicios digitales a lo largo de un período, estos serán conformes durante todo ese período.
+  [17] 5. No habrá lugar a responsabilidad por faltas de conformidad en el sentido de lo dispuesto en los apartados 1 o 2 cuando, en el momento de la celebración del contrato, el consumidor o usuario hubiese sido informado de manera específica de que una determinada característica de los bienes o de los contenidos o servicios digitales se apartaba de los requisitos objetivos de conformidad establecidos en los apartados 1 o 2 y el consumidor o usuario hubiese aceptado de forma expresa y por separado dicha divergencia.
+  [18] 6. Salvo que las partes lo hayan acordado de otro modo, los contenidos o servicios digitales se suministrarán de conformidad con la versión más reciente disponible en el momento de la celebración del contrato.
 ```
 
 ### Ley Orgánica 10/1995, artículo 258 · `BOE-A-1995-25444__a258` [JUZGADO rel=0 draft]
@@ -4968,11 +5156,10 @@ _recuperado por:_ e5-base/BASELINE#3 (0.859) · bge-m3/BASELINE#6 (0.571)  [2 si
 ## q92_073 · ciudadana · multi_parent
 **Pregunta:** Firmé un contrato fuera de la tienda y me he arrepentido, ¿cuántos días tengo para echarme atrás sin penalización?
 _split=test · difficulty=facil · failure_mode=—_
-> ⚠️ Parents ya juzgados que NINGÚN sistema recuperó (revisar recall o gold): BOE-A-2007-20555__a68
 
 ### Real Decreto Legislativo 1/2007, artículo 102 · `BOE-A-2007-20555__a102` [JUZGADO rel=2 reviewed]
 https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a102
-_recuperado por:_ e5-large-instruct/I1_LEGAL#2 (0.893) · e5-large-instruct/I2_CITIZEN_LEGISLATION#2 (0.892) · bge-m3/BASELINE#6 (0.600) · e5-large-instruct/I0_GENERIC#9 (0.875) · e5-base/BASELINE#13 (0.841)  [5 sistemas]
+_recuperado por:_ e5-large-instruct/I1_LEGAL#2 (0.893) · e5-large-instruct/I2_CITIZEN_LEGISLATION#2 (0.892) · hybrid_rrf/I0_GENERIC#3 (0.028) · bge-m3/BASELINE#6 (0.600) · e5-large-instruct/I0_GENERIC#9 (0.875) · e5-base/BASELINE#13 (0.841) · bm25/lexical#15 (13.847)  [7 sistemas]
 ```
   [1] Artículo 102. Derecho de desistimiento.
   [2] 1. Salvo las excepciones previstas en el artículo 103, el consumidor o usuario tendrá derecho a desistir del contrato durante un periodo de catorce días naturales sin indicar el motivo y sin incurrir en ningún coste distinto de los previstos en los artículos 107.2 y 108.
@@ -4982,7 +5169,7 @@ _recuperado por:_ e5-large-instruct/I1_LEGAL#2 (0.893) · e5-large-instruct/I2_C
 
 ### Ley 22/2007, artículo 10 · `BOE-A-2007-13411__a10` [JUZGADO rel=0 draft]
 https://www.boe.es/buscar/act.php?id=BOE-A-2007-13411#a10
-_recuperado por:_ e5-large-instruct/I1_LEGAL#1 (0.900) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.899) · e5-large-instruct/I0_GENERIC#2 (0.884) · bge-m3/BASELINE#8 (0.594)  [4 sistemas]
+_recuperado por:_ e5-large-instruct/I1_LEGAL#1 (0.900) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.899) · hybrid_rrf/I0_GENERIC#1 (0.029) · e5-large-instruct/I0_GENERIC#2 (0.884) · bge-m3/BASELINE#8 (0.594) · bm25/lexical#20 (12.786)  [6 sistemas]
 ```
   [1] Artículo 10. Derecho de desistimiento.
   [2] 1. El consumidor dispondrá de un plazo de catorce días naturales para desistir del contrato a distancia, sin indicación de los motivos y sin penalización alguna.
@@ -5013,6 +5200,89 @@ _recuperado por:_ e5-large-instruct/I1_LEGAL#1 (0.900) · e5-large-instruct/I2_C
   [27] 3. El consumidor que ejerza el derecho de desistimiento lo habrá de comunicar al proveedor en los términos previstos por el contrato, antes de que finalice el plazo correspondiente, por un procedimiento que permita dejar constancia de la notificación de cualquier modo admitido en Derecho. Se considerará que la notificación ha sido hecha dentro de plazo si se hace en un soporte de papel o sobre otro soporte duradero, disponible y accesible al destinatario, y se envía antes de expirar el plazo.
   [28] 4. En el caso de que al contrato a distancia sobre el que se haya ejercido el derecho de desistimiento, se le haya vinculado otro contrato a distancia de servicios financieros prestados por el mismo proveedor o por un tercero, previo acuerdo con el proveedor, dicho contrato adicional también quedará resuelto, sin penalización alguna.
   [29] 5. Las previsiones contenidas en la presente Ley en relación con el derecho de desistimiento no serán de aplicación a los contratos resueltos como consecuencia del ejercicio del derecho de desistimiento reconocido en otra norma.
+```
+
+### Real Decreto Legislativo 1/2007, artículo 62 · `BOE-A-2007-20555__a62` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a62
+_recuperado por:_ hybrid_rrf/I0_GENERIC#5 (0.025) · e5-large-instruct/I1_LEGAL#12 (0.887) · e5-large-instruct/I0_GENERIC#13 (0.874) · e5-large-instruct/I2_CITIZEN_LEGISLATION#13 (0.886) · e5-base/BASELINE#14 (0.841)  [5 sistemas]
+```
+  [1] Artículo 62. Contrato.
+  [2] 1. En la contratación con consumidores y usuarios debe constar de forma inequívoca su voluntad de contratar o, en su caso, de poner fin al contrato.
+  [3] Se presumirá que no existe voluntad de contratar, deviniendo nulo el contrato, en aquellos contratos suscritos vía telefónica con incumplimiento de lo previsto en la normativa relativa a llamadas no solicitadas. En cualquier caso, se entenderá que no existe consentimiento para la realización de la llamada que da lugar a la contratación si este no ha sido obtenido o renovado de forma expresa en los dos años anteriores a la comunicación.
+  [4] Como excepción a lo previsto en el párrafo anterior, en la contratación de préstamos o créditos con entidades financieras en los que se haya perfeccionado el contrato y entregado las sumas prestadas, el incumplimiento de lo previsto en la normativa relativa a llamadas no solicitadas supondrá la aplicación al contrato de los intereses legales del dinero. Si el interés pactado fuese inferior al legal, se mantendrán los intereses pactados.
+  [5] 2. Se prohíben, en los contratos con consumidores y usuarios, las cláusulas que impongan obstáculos onerosos o desproporcionados para el ejercicio de los derechos reconocidos al consumidor en el contrato.
+  [6] 3. En particular, en los contratos de prestación de servicios o suministro de productos de tracto sucesivo o continuado se prohíben las cláusulas que establezcan plazos de duración excesiva o limitaciones que excluyan u obstaculicen el derecho del consumidor y usuario a poner fin al contrato.
+  [7] El consumidor y usuario podrá ejercer su derecho a poner fin al contrato en la misma forma en que lo celebró, sin ningún tipo de sanción o de cargas onerosas o desproporcionadas, tales como la pérdida de las cantidades abonadas por adelantado, el abono de cantidades por servicios no prestados efectivamente, la ejecución unilateral de las cláusulas penales que se hubieran fijado contractualmente o la fijación de indemnizaciones que no se correspondan con los daños efectivamente causados.
+  [8] 4. Los contratos de prestación de servicios o suministro de productos de tracto sucesivo o continuado deberán contemplar expresamente el procedimiento a través del cual el consumidor y usuario puede ejercer su derecho a poner fin al contrato.
+  [9] 5. En caso de que el usuario incumpla el compromiso de permanencia adquirido con la empresa, la penalización por baja o cese prematuro de la relación contractual, será proporcional al número de días no efectivos del compromiso de permanencia acordado.
+```
+
+### Ley 4/2012, ANEXO II · `BOE-A-2012-9111__anii` [JUZGADO rel=0 draft] · flags: anexo
+https://www.boe.es/buscar/act.php?id=BOE-A-2012-9111#anii
+_recuperado por:_ e5-base/BASELINE#1 (0.846) · bm25/lexical#1 (17.316) · hybrid_rrf/I0_GENERIC#2 (0.028) · bge-m3/BASELINE#10 (0.591)  [4 sistemas]
+```
+  [1] ANEXO II
+  [2] Formulario de información normalizado para contratos de productos vacacionales de larga duración
+  [3] Parte 1:
+  [4] Identidad, domicilio y estatuto jurídico del comerciante o comerciantes que serán parte en el contrato:
+  [5] Breve descripción del producto:
+  [6] Naturaleza y contenido exactos del derecho o derechos:
+  [7] Período exacto durante el cual podrá ejercerse el derecho objeto del contrato y, si es necesario, su duración:
+  [8] Fecha a partir de la cual el consumidor podrá ejercer el derecho objeto del contrato:
+  [9] Precio que deberá pagar el consumidor por la adquisición del derecho o derechos, incluido todo coste recurrente que previsiblemente vaya a soportar el consumidor como consecuencia de su derecho a disfrutar del alojamiento, del viaje y de cualesquiera productos y servicios conexos que se especifican:
+  [10] Calendario de pago escalonado en el que se fijan plazos de igual cuantía para cada año de duración del contrato y fechas en que deben pagarse los plazos:
+  [11] Después del primer año, los importes posteriores podrán ajustarse para garantizar que se mantiene el valor real de dichos plazos, por ejemplo para tener en cuenta la inflación.
+  [12] Reseña de los costes obligatorios adicionales impuestos en virtud del contrato; tipo de costes e indicación de los importes respectivos (por ejemplo, cotizaciones anuales):
+  [13] Resumen de los principales servicios de que puede disfrutar el consumidor (por ejemplo, estancias en hotel y vuelos con descuento):
+  [14] ¿Están incluidos en los costes indicados anteriormente?:
+  [15] En caso negativo, especifíquese lo que está incluido y lo que debe pagarse aparte (por ejemplo: estancia de tres noches incluida en la cotización anual, cualquier otro alojamiento deberá pagarse por separado):
+  [16] ¿Se ha adherido el comerciante a uno o más códigos de conducta y, en caso afirmativo, dónde puede o pueden localizarse?:
+  [17] Parte 2:
+  [18] Información general:
+  [19] El consumidor tiene derecho a desistir del presente contrato, sin necesidad de justificación alguna, en un plazo de catorce días naturales a partir de la fecha de celebración del contrato o de cualquier contrato preliminar vinculante, o a partir de la fecha de su recepción si esta es posterior.
+  [20] Durante ese plazo de desistimiento, se prohíbe todo pago de anticipos por el consumidor. La prohibición afecta a cualquier contrapartida, incluido el pago, la constitución de garantías, la reserva de dinero en cuentas, el reconocimiento explícito de deuda, etc. Incluye no solo los pagos al comerciante, sino también a terceros.
+  [21] El consumidor tiene derecho a poner término al contrato, sin incurrir en penalización alguna, notificándolo al comerciante en un plazo de catorce días naturales a partir de la recepción de la solicitud de pago correspondiente a cada plazo anual.
+  [22] El consumidor no soportará costes ni obligaciones distintos de los que se especifican en el contrato.
+  [23] De conformidad con el Derecho internacional privado, el contrato podrá regirse por una legislación distinta de la del Estado miembro en que el consumidor tenga su residencia o domicilio habitual y los posibles litigios podrán remitirse a órganos jurisdiccionales distintos de los del Estado miembro en que el consumidor tenga su residencia o domicilio habitual.
+  [24] Firma del consumidor:
+  [25] Parte 3:
+  [26] Información adicional a la que tiene derecho el consumidor y lugar concreto en que puede obtenerse (por ejemplo, la sección correspondiente de un folleto general) si no se facilita a continuación:
+  [27] 1. Información sobre los derechos adquiridos:
+  [28] Una descripción adecuada y correcta de los descuentos existentes para futuras reservas, ilustrada con una serie de ejemplos de ofertas recientes,
+  [29] información sobre las restricciones a que está sometida la capacidad del consumidor de utilizar los derechos, como la disponibilidad limitada de las ofertas que se adjudican al primer cliente o los límites de tiempo en que están vigentes los descuentos especiales o debidos a promociones específicas.
+  [30] 2. Información sobre la rescisión del contrato:
+  [31] Cuando proceda, información sobre las modalidades de rescisión de contratos accesorios y consecuencias de dicha rescisión,
+  [32] condiciones de rescisión del contrato, consecuencias de la misma e información sobre la responsabilidad del consumidor por todo coste que pueda derivarse de dicha rescisión.
+  [33] 3. Información adicional:
+  [34] Indicación de la lengua o lenguas que podrán utilizarse para la comunicación con el comerciante relativa al contrato, por ejemplo en relación con el tratamiento de las solicitudes de información y las reclamaciones,
+  [35] cuando proceda, la posibilidad de recurrir a un medio de resolución extrajudicial de litigios.
+  [36] Acuse de recibo de la información:
+  [37] Firma del consumidor:
+```
+
+### Ley 16/2011, artículo 28 · `BOE-A-2011-10970__a28` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2011-10970#a28
+_recuperado por:_ e5-base/BASELINE#11 (0.842) · bm25/lexical#12 (14.333) · hybrid_rrf/I0_GENERIC#13 (0.021) · bge-m3/BASELINE#20 (0.569)  [4 sistemas]
+```
+  [1] Artículo 28. Derecho de desistimiento.
+  [2] 1. El derecho de desistimiento de un contrato de crédito es la facultad del consumidor de dejar sin efecto el contrato celebrado, comunicándoselo así a la otra parte contratante en un plazo de catorce días naturales sin necesidad de indicar los motivos y sin penalización alguna.
+  [3] El plazo para ejercer el derecho de desistimiento se iniciará en la fecha de suscripción del contrato de crédito o bien, si fuera posterior, en la fecha en que el consumidor reciba las condiciones contractuales y la información recogida en el artículo 16.
+  [4] 2. El consumidor que ejerza el derecho de desistimiento tendrá las obligaciones siguientes:
+  [5] a) Comunicarlo al prestamista antes de que expire el plazo previsto en el apartado 1, ateniéndose a la información facilitada por este último de acuerdo con la letra p) del apartado 2 del artículo 16, por medios que permitan dejar constancia de la notificación de cualquier modo admitido en Derecho.
+  [6] Se considerará que se ha respetado el plazo si la notificación se ha enviado antes de la expiración del plazo, siempre que haya sido efectuada mediante documento en papel o cualquier otro soporte duradero a disposición del prestamista y accesible para él.
+  [7] b) Pagar al prestamista el capital y el interés acumulado sobre dicho capital entre la fecha de disposición del crédito y la fecha de reembolso del capital, sin ningún retraso indebido y a más tardar a los treinta días naturales de haber enviado la notificación de desistimiento al prestamista.
+  [8] Los intereses adeudados se calcularán sobre la base del tipo deudor acordado.
+  [9] El prestamista no tendrá derecho a reclamar al consumidor ninguna otra compensación en caso de desistimiento, excepto la compensación de los gastos no reembolsables abonados por el prestamista a la Administración Pública.
+  [10] 3. En caso de que un prestamista o un tercero proporcione un servicio accesorio relacionado con el contrato de crédito sobre la base de un acuerdo entre ese tercero y el prestamista, el consumidor dejará de estar vinculado por dicho servicio accesorio si ejerce su derecho de desistimiento respecto del contrato de crédito conforme a lo dispuesto en el presente artículo. En caso de que este servicio accesorio sea un contrato de seguro de vida, el derecho de desistimiento se regirá en lo que sea aplicable por lo establecido en el artículo 83.a) de la Ley 50/1980, de 8 de octubre, de Contrato de Seguro, y en el resto de casos, el consumidor tendrá derecho al reembolso de la parte de prima no consumida.
+  [11] 4. Si el consumidor tiene derecho de desistimiento con arreglo a los apartados anteriores, no se aplicarán los artículos 10 y 11 de la Ley 22/2007, de 11 de julio, sobre comercialización a distancia de servicios financieros destinados a los consumidores, ni el artículo 110 del texto refundido de la Ley General para la Defensa de los Consumidores y Usuarios y otras leyes complementarias, aprobado por el Real Decreto Legislativo 1/2007, de 16 de noviembre.
+```
+
+### Ley 29/1994, artículo 11 · `BOE-A-1994-26003__a11` [JUZGADO rel=0 draft]
+https://www.boe.es/buscar/act.php?id=BOE-A-1994-26003#a11
+_recuperado por:_ e5-large-instruct/I0_GENERIC#1 (0.884) · e5-large-instruct/I1_LEGAL#4 (0.892) · e5-large-instruct/I2_CITIZEN_LEGISLATION#4 (0.891) · hybrid_rrf/I0_GENERIC#15 (0.016)  [4 sistemas]
+```
+  [1] Artículo 11. Desistimiento del contrato.
+  [2] El arrendatario podrá desistir del contrato de arrendamiento, una vez que hayan transcurrido al menos seis meses, siempre que se lo comunique al arrendador con una antelación mínima de treinta días. Las partes podrán pactar en el contrato que, para el caso de desistimiento, deba el arrendatario indemnizar al arrendador con una cantidad equivalente a una mensualidad de la renta en vigor por cada año del contrato que reste por cumplir. Los períodos de tiempo inferiores al año darán lugar a la parte proporcional de la indemnización.
 ```
 
 ### Real Decreto Legislativo 1/2007, artículo 76 · `BOE-A-2007-20555__a76` [sin juzgar]
@@ -5065,19 +5335,20 @@ _recuperado por:_ bge-m3/BASELINE#5 (0.602) · e5-large-instruct/I1_LEGAL#11 (0.
   [16] 6. Con excepción de lo dispuesto en el artículo 107.2, y en este artículo, el consumidor y usuario no incurrirá en ninguna responsabilidad como consecuencia del ejercicio del derecho de desistimiento.
 ```
 
-### Real Decreto Legislativo 1/2007, artículo 62 · `BOE-A-2007-20555__a62` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a62
-_recuperado por:_ e5-large-instruct/I1_LEGAL#12 (0.887) · e5-large-instruct/I0_GENERIC#13 (0.874) · e5-large-instruct/I2_CITIZEN_LEGISLATION#13 (0.886) · e5-base/BASELINE#14 (0.841)  [4 sistemas]
+### Ley 4/2012, artículo 10 · `BOE-A-2012-9111__a10` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2012-9111#a10
+_recuperado por:_ e5-large-instruct/I0_GENERIC#4 (0.882) · e5-large-instruct/I1_LEGAL#13 (0.887) · e5-large-instruct/I2_CITIZEN_LEGISLATION#14 (0.885) · hybrid_rrf/I0_GENERIC#19 (0.016)  [4 sistemas]
 ```
-  [1] Artículo 62. Contrato.
-  [2] 1. En la contratación con consumidores y usuarios debe constar de forma inequívoca su voluntad de contratar o, en su caso, de poner fin al contrato.
-  [3] Se presumirá que no existe voluntad de contratar, deviniendo nulo el contrato, en aquellos contratos suscritos vía telefónica con incumplimiento de lo previsto en la normativa relativa a llamadas no solicitadas. En cualquier caso, se entenderá que no existe consentimiento para la realización de la llamada que da lugar a la contratación si este no ha sido obtenido o renovado de forma expresa en los dos años anteriores a la comunicación.
-  [4] Como excepción a lo previsto en el párrafo anterior, en la contratación de préstamos o créditos con entidades financieras en los que se haya perfeccionado el contrato y entregado las sumas prestadas, el incumplimiento de lo previsto en la normativa relativa a llamadas no solicitadas supondrá la aplicación al contrato de los intereses legales del dinero. Si el interés pactado fuese inferior al legal, se mantendrán los intereses pactados.
-  [5] 2. Se prohíben, en los contratos con consumidores y usuarios, las cláusulas que impongan obstáculos onerosos o desproporcionados para el ejercicio de los derechos reconocidos al consumidor en el contrato.
-  [6] 3. En particular, en los contratos de prestación de servicios o suministro de productos de tracto sucesivo o continuado se prohíben las cláusulas que establezcan plazos de duración excesiva o limitaciones que excluyan u obstaculicen el derecho del consumidor y usuario a poner fin al contrato.
-  [7] El consumidor y usuario podrá ejercer su derecho a poner fin al contrato en la misma forma en que lo celebró, sin ningún tipo de sanción o de cargas onerosas o desproporcionadas, tales como la pérdida de las cantidades abonadas por adelantado, el abono de cantidades por servicios no prestados efectivamente, la ejecución unilateral de las cláusulas penales que se hubieran fijado contractualmente o la fijación de indemnizaciones que no se correspondan con los daños efectivamente causados.
-  [8] 4. Los contratos de prestación de servicios o suministro de productos de tracto sucesivo o continuado deberán contemplar expresamente el procedimiento a través del cual el consumidor y usuario puede ejercer su derecho a poner fin al contrato.
-  [9] 5. En caso de que el usuario incumpla el compromiso de permanencia adquirido con la empresa, la penalización por baja o cese prematuro de la relación contractual, será proporcional al número de días no efectivos del compromiso de permanencia acordado.
+  [1] Artículo 10. Advertencia sobre el derecho de desistimiento y prohibición de pago de anticipos.
+  [2] Antes de la celebración del contrato, en la forma prevista en el artículo anterior, el empresario pondrá explícitamente en conocimiento del consumidor la existencia del derecho de desistimiento y la duración del plazo para ejercerlo, así como la prohibición del pago de anticipos durante dicho plazo, contemplada en el artículo 13.
+```
+
+### Real Decreto Legislativo 1/2007, artículo 109 · `BOE-A-2007-20555__a109` [JUZGADO rel=0 draft]
+https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a109
+_recuperado por:_ e5-large-instruct/I0_GENERIC#3 (0.882) · e5-large-instruct/I1_LEGAL#16 (0.886) · e5-large-instruct/I2_CITIZEN_LEGISLATION#16 (0.884) · hybrid_rrf/I0_GENERIC#17 (0.016)  [4 sistemas]
+```
+  [1] Artículo 109. Ejecución del contrato a distancia.
+  [2] Salvo que las partes hayan acordado otra cosa, el empresario deberá ejecutar el pedido sin ninguna demora indebida y a más tardar en el plazo de 30 días naturales a partir de la celebración del contrato.
 ```
 
 ### Real Decreto Legislativo 1/2007, artículo 71 · `BOE-A-2007-20555__a71` [JUZGADO rel=2 reviewed]
@@ -5090,28 +5361,6 @@ _recuperado por:_ e5-large-instruct/I1_LEGAL#3 (0.893) · e5-large-instruct/I2_C
   [4] 3. Si el empresario no hubiera cumplido con el deber de información y documentación sobre el derecho de desistimiento, el plazo para su ejercicio finalizará doce meses después de la fecha de expiración del periodo de desistimiento inicial, a contar desde que se entregó el bien contratado o se hubiera celebrado el contrato, si el objeto de éste fuera la prestación de servicios.
   [5] Si el deber de información y documentación se cumple durante el citado plazo de doce meses, el plazo legalmente previsto para el ejercicio del derecho de desistimiento empezará a contar desde ese momento.
   [6] 4. Para determinar la observancia del plazo para desistir se tendrá en cuenta la fecha de expedición de la declaración de desistimiento.
-```
-
-### Ley 29/1994, artículo 11 · `BOE-A-1994-26003__a11` [JUZGADO rel=0 draft]
-https://www.boe.es/buscar/act.php?id=BOE-A-1994-26003#a11
-_recuperado por:_ e5-large-instruct/I0_GENERIC#1 (0.884) · e5-large-instruct/I1_LEGAL#4 (0.892) · e5-large-instruct/I2_CITIZEN_LEGISLATION#4 (0.891)  [3 sistemas]
-```
-  [1] Artículo 11. Desistimiento del contrato.
-  [2] El arrendatario podrá desistir del contrato de arrendamiento, una vez que hayan transcurrido al menos seis meses, siempre que se lo comunique al arrendador con una antelación mínima de treinta días. Las partes podrán pactar en el contrato que, para el caso de desistimiento, deba el arrendatario indemnizar al arrendador con una cantidad equivalente a una mensualidad de la renta en vigor por cada año del contrato que reste por cumplir. Los períodos de tiempo inferiores al año darán lugar a la parte proporcional de la indemnización.
-```
-
-### Real Decreto Legislativo 1/2007, artículo 104 · `BOE-A-2007-20555__a104` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a104
-_recuperado por:_ e5-large-instruct/I1_LEGAL#7 (0.889) · e5-large-instruct/I2_CITIZEN_LEGISLATION#8 (0.888) · e5-large-instruct/I0_GENERIC#14 (0.873)  [3 sistemas]
-```
-  [1] Artículo 104. Plazo para el ejercicio del derecho de desistimiento.
-  [2] Sin perjuicio de lo dispuesto en el artículo 105, el plazo de desistimiento concluirá a los catorce días naturales o, en su caso, a los treinta días naturales, contados a partir de:
-  [3] a) El día de la celebración del contrato, en el caso de los contratos de servicios.
-  [4] b) El día que el consumidor y usuario o un tercero por él indicado, distinto del transportista, adquiera la posesión material de los bienes solicitados, en el caso de los contratos de venta, o bien:
-  [5] 1.º En caso de entrega de múltiples bienes encargados por el consumidor o usuario en el mismo pedido y entregados por separado, el día que el consumidor o usuario o un tercero por él indicado, distinto del transportista, adquiera la posesión material del último de los bienes.
-  [6] 2.º En caso de entrega de un bien compuesto por múltiples componentes o piezas, el día que el consumidor o usuario o un tercero por él indicado, distinto del transportista, adquiera la posesión material del último componente o pieza.
-  [7] 3.º En caso de contratos para la entrega periódica de bienes durante un plazo determinado, el día que el consumidor o usuario o un tercero por él indicado, distinto del transportista, adquiera la posesión material del primero de esos bienes.
-  [8] c) En el caso de los contratos para el suministro de agua, gas o electricidad –cuando no estén envasados para la venta en un volumen delimitado o en cantidades determinadas–, o de calefacción mediante sistemas urbanos o de contenido digital que no se preste en un soporte material, el día en que se celebre el contrato.
 ```
 
 ### Ley 28/1998, artículo 9 · `BOE-A-1998-16717__a9` [JUZGADO rel=0 draft]
@@ -5132,17 +5381,9 @@ _recuperado por:_ bge-m3/BASELINE#1 (0.628) · e5-large-instruct/I2_CITIZEN_LEGI
   [12] 4. En caso de adquisición de vehículos de motor susceptibles de matriculación podrá excluirse mediante pacto el derecho de desistimiento, o modalizarse su ejercicio de forma distinta a lo previsto en esta Ley.
 ```
 
-### Real Decreto Legislativo 1/2007, artículo 109 · `BOE-A-2007-20555__a109` [JUZGADO rel=0 draft]
-https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a109
-_recuperado por:_ e5-large-instruct/I0_GENERIC#3 (0.882) · e5-large-instruct/I1_LEGAL#16 (0.886) · e5-large-instruct/I2_CITIZEN_LEGISLATION#16 (0.884)  [3 sistemas]
-```
-  [1] Artículo 109. Ejecución del contrato a distancia.
-  [2] Salvo que las partes hayan acordado otra cosa, el empresario deberá ejecutar el pedido sin ninguna demora indebida y a más tardar en el plazo de 30 días naturales a partir de la celebración del contrato.
-```
-
 ### Ley 4/2012, ANEXO IV · `BOE-A-2012-9111__aniv` [JUZGADO rel=0 draft] · flags: anexo
 https://www.boe.es/buscar/act.php?id=BOE-A-2012-9111#aniv
-_recuperado por:_ bge-m3/BASELINE#3 (0.605) · e5-large-instruct/I0_GENERIC#6 (0.876)  [2 sistemas]
+_recuperado por:_ bge-m3/BASELINE#3 (0.605) · hybrid_rrf/I0_GENERIC#4 (0.026) · e5-large-instruct/I0_GENERIC#6 (0.876)  [3 sistemas]
 ```
   [1] ANEXO IV
   [2] Formulario de información normalizado para contratos de intercambio
@@ -5182,49 +5423,6 @@ _recuperado por:_ bge-m3/BASELINE#3 (0.605) · e5-large-instruct/I0_GENERIC#6 (0
   [36] cuando proceda, la posibilidad de recurrir a un medio de resolución extrajudicial de litigios.
   [37] Acuse de recibo de la información:
   [38] Firma del consumidor:
-```
-
-### Ley 4/2012, ANEXO II · `BOE-A-2012-9111__anii` [JUZGADO rel=0 draft] · flags: anexo
-https://www.boe.es/buscar/act.php?id=BOE-A-2012-9111#anii
-_recuperado por:_ e5-base/BASELINE#1 (0.846) · bge-m3/BASELINE#10 (0.591)  [2 sistemas]
-```
-  [1] ANEXO II
-  [2] Formulario de información normalizado para contratos de productos vacacionales de larga duración
-  [3] Parte 1:
-  [4] Identidad, domicilio y estatuto jurídico del comerciante o comerciantes que serán parte en el contrato:
-  [5] Breve descripción del producto:
-  [6] Naturaleza y contenido exactos del derecho o derechos:
-  [7] Período exacto durante el cual podrá ejercerse el derecho objeto del contrato y, si es necesario, su duración:
-  [8] Fecha a partir de la cual el consumidor podrá ejercer el derecho objeto del contrato:
-  [9] Precio que deberá pagar el consumidor por la adquisición del derecho o derechos, incluido todo coste recurrente que previsiblemente vaya a soportar el consumidor como consecuencia de su derecho a disfrutar del alojamiento, del viaje y de cualesquiera productos y servicios conexos que se especifican:
-  [10] Calendario de pago escalonado en el que se fijan plazos de igual cuantía para cada año de duración del contrato y fechas en que deben pagarse los plazos:
-  [11] Después del primer año, los importes posteriores podrán ajustarse para garantizar que se mantiene el valor real de dichos plazos, por ejemplo para tener en cuenta la inflación.
-  [12] Reseña de los costes obligatorios adicionales impuestos en virtud del contrato; tipo de costes e indicación de los importes respectivos (por ejemplo, cotizaciones anuales):
-  [13] Resumen de los principales servicios de que puede disfrutar el consumidor (por ejemplo, estancias en hotel y vuelos con descuento):
-  [14] ¿Están incluidos en los costes indicados anteriormente?:
-  [15] En caso negativo, especifíquese lo que está incluido y lo que debe pagarse aparte (por ejemplo: estancia de tres noches incluida en la cotización anual, cualquier otro alojamiento deberá pagarse por separado):
-  [16] ¿Se ha adherido el comerciante a uno o más códigos de conducta y, en caso afirmativo, dónde puede o pueden localizarse?:
-  [17] Parte 2:
-  [18] Información general:
-  [19] El consumidor tiene derecho a desistir del presente contrato, sin necesidad de justificación alguna, en un plazo de catorce días naturales a partir de la fecha de celebración del contrato o de cualquier contrato preliminar vinculante, o a partir de la fecha de su recepción si esta es posterior.
-  [20] Durante ese plazo de desistimiento, se prohíbe todo pago de anticipos por el consumidor. La prohibición afecta a cualquier contrapartida, incluido el pago, la constitución de garantías, la reserva de dinero en cuentas, el reconocimiento explícito de deuda, etc. Incluye no solo los pagos al comerciante, sino también a terceros.
-  [21] El consumidor tiene derecho a poner término al contrato, sin incurrir en penalización alguna, notificándolo al comerciante en un plazo de catorce días naturales a partir de la recepción de la solicitud de pago correspondiente a cada plazo anual.
-  [22] El consumidor no soportará costes ni obligaciones distintos de los que se especifican en el contrato.
-  [23] De conformidad con el Derecho internacional privado, el contrato podrá regirse por una legislación distinta de la del Estado miembro en que el consumidor tenga su residencia o domicilio habitual y los posibles litigios podrán remitirse a órganos jurisdiccionales distintos de los del Estado miembro en que el consumidor tenga su residencia o domicilio habitual.
-  [24] Firma del consumidor:
-  [25] Parte 3:
-  [26] Información adicional a la que tiene derecho el consumidor y lugar concreto en que puede obtenerse (por ejemplo, la sección correspondiente de un folleto general) si no se facilita a continuación:
-  [27] 1. Información sobre los derechos adquiridos:
-  [28] Una descripción adecuada y correcta de los descuentos existentes para futuras reservas, ilustrada con una serie de ejemplos de ofertas recientes,
-  [29] información sobre las restricciones a que está sometida la capacidad del consumidor de utilizar los derechos, como la disponibilidad limitada de las ofertas que se adjudican al primer cliente o los límites de tiempo en que están vigentes los descuentos especiales o debidos a promociones específicas.
-  [30] 2. Información sobre la rescisión del contrato:
-  [31] Cuando proceda, información sobre las modalidades de rescisión de contratos accesorios y consecuencias de dicha rescisión,
-  [32] condiciones de rescisión del contrato, consecuencias de la misma e información sobre la responsabilidad del consumidor por todo coste que pueda derivarse de dicha rescisión.
-  [33] 3. Información adicional:
-  [34] Indicación de la lengua o lenguas que podrán utilizarse para la comunicación con el comerciante relativa al contrato, por ejemplo en relación con el tratamiento de las solicitudes de información y las reclamaciones,
-  [35] cuando proceda, la posibilidad de recurrir a un medio de resolución extrajudicial de litigios.
-  [36] Acuse de recibo de la información:
-  [37] Firma del consumidor:
 ```
 
 ### Real Decreto Legislativo 1/2007, ANEXO · `BOE-A-2007-20555__an` [JUZGADO rel=0 draft] · flags: anexo
@@ -5278,7 +5476,7 @@ _recuperado por:_ bge-m3/BASELINE#2 (0.607) · e5-base/BASELINE#5 (0.844)  [2 si
 
 ### Real Decreto Legislativo 1/2007, artículo 68 · `BOE-A-2007-20555__a68` [JUZGADO rel=1 reviewed]
 https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a68
-_recuperado por:_ — (solo juzgado; ningún sistema lo recuperó)
+_recuperado por:_ bm25/lexical#18 (13.040)  [1 sistemas]
 ```
   [1] Artículo 68. Contenido y régimen del derecho de desistimiento.
   [2] 1. El derecho de desistimiento de un contrato es la facultad del consumidor y usuario de dejar sin efecto el contrato celebrado, notificándoselo así a la otra parte contratante en el plazo establecido para el ejercicio de ese derecho, sin necesidad de justificar su decisión y sin penalización de ninguna clase.
@@ -5293,35 +5491,9 @@ _recuperado por:_ — (solo juzgado; ningún sistema lo recuperó)
 **Pregunta:** ¿De qué plazo dispone el consumidor para ejercer el derecho de desistimiento y desde cuándo empieza a contar?
 _split=test · difficulty=media · failure_mode=—_
 
-### Real Decreto Legislativo 1/2007, artículo 71 · `BOE-A-2007-20555__a71` [JUZGADO rel=2 reviewed]
-https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a71
-_recuperado por:_ bge-m3/BASELINE#1 (0.774) · e5-large-instruct/I0_GENERIC#1 (0.932) · e5-large-instruct/I1_LEGAL#1 (0.951) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.951) · e5-base/BASELINE#3 (0.891)  [5 sistemas]
-```
-  [1] Artículo 71. Plazo para el ejercicio del derecho de desistimiento.
-  [2] 1. El consumidor y usuario dispondrá de un plazo mínimo de catorce días naturales para ejercer el derecho de desistimiento.
-  [3] 2. Siempre que el empresario haya cumplido con el deber de información y documentación establecido en el artículo 69.1, el plazo a que se refiere el apartado anterior se computará desde la recepción del bien objeto del contrato o desde la celebración de éste si el objeto del contrato fuera la prestación de servicios.
-  [4] 3. Si el empresario no hubiera cumplido con el deber de información y documentación sobre el derecho de desistimiento, el plazo para su ejercicio finalizará doce meses después de la fecha de expiración del periodo de desistimiento inicial, a contar desde que se entregó el bien contratado o se hubiera celebrado el contrato, si el objeto de éste fuera la prestación de servicios.
-  [5] Si el deber de información y documentación se cumple durante el citado plazo de doce meses, el plazo legalmente previsto para el ejercicio del derecho de desistimiento empezará a contar desde ese momento.
-  [6] 4. Para determinar la observancia del plazo para desistir se tendrá en cuenta la fecha de expedición de la declaración de desistimiento.
-```
-
-### Real Decreto Legislativo 1/2007, artículo 104 · `BOE-A-2007-20555__a104` [JUZGADO rel=2 reviewed]
-https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a104
-_recuperado por:_ e5-large-instruct/I1_LEGAL#2 (0.942) · e5-large-instruct/I2_CITIZEN_LEGISLATION#2 (0.941) · e5-large-instruct/I0_GENERIC#3 (0.925) · bge-m3/BASELINE#6 (0.739) · e5-base/BASELINE#14 (0.873)  [5 sistemas]
-```
-  [1] Artículo 104. Plazo para el ejercicio del derecho de desistimiento.
-  [2] Sin perjuicio de lo dispuesto en el artículo 105, el plazo de desistimiento concluirá a los catorce días naturales o, en su caso, a los treinta días naturales, contados a partir de:
-  [3] a) El día de la celebración del contrato, en el caso de los contratos de servicios.
-  [4] b) El día que el consumidor y usuario o un tercero por él indicado, distinto del transportista, adquiera la posesión material de los bienes solicitados, en el caso de los contratos de venta, o bien:
-  [5] 1.º En caso de entrega de múltiples bienes encargados por el consumidor o usuario en el mismo pedido y entregados por separado, el día que el consumidor o usuario o un tercero por él indicado, distinto del transportista, adquiera la posesión material del último de los bienes.
-  [6] 2.º En caso de entrega de un bien compuesto por múltiples componentes o piezas, el día que el consumidor o usuario o un tercero por él indicado, distinto del transportista, adquiera la posesión material del último componente o pieza.
-  [7] 3.º En caso de contratos para la entrega periódica de bienes durante un plazo determinado, el día que el consumidor o usuario o un tercero por él indicado, distinto del transportista, adquiera la posesión material del primero de esos bienes.
-  [8] c) En el caso de los contratos para el suministro de agua, gas o electricidad –cuando no estén envasados para la venta en un volumen delimitado o en cantidades determinadas–, o de calefacción mediante sistemas urbanos o de contenido digital que no se preste en un soporte material, el día en que se celebre el contrato.
-```
-
 ### Ley 22/2007, artículo 10 · `BOE-A-2007-13411__a10` [JUZGADO rel=0 draft]
 https://www.boe.es/buscar/act.php?id=BOE-A-2007-13411#a10
-_recuperado por:_ bge-m3/BASELINE#2 (0.766) · e5-large-instruct/I0_GENERIC#2 (0.926) · e5-large-instruct/I1_LEGAL#3 (0.940) · e5-large-instruct/I2_CITIZEN_LEGISLATION#3 (0.939) · e5-base/BASELINE#11 (0.875)  [5 sistemas]
+_recuperado por:_ bge-m3/BASELINE#2 (0.766) · e5-large-instruct/I0_GENERIC#2 (0.926) · bm25/lexical#2 (27.906) · hybrid_rrf/I0_GENERIC#2 (0.032) · e5-large-instruct/I1_LEGAL#3 (0.940) · e5-large-instruct/I2_CITIZEN_LEGISLATION#3 (0.939) · e5-base/BASELINE#11 (0.875)  [7 sistemas]
 ```
   [1] Artículo 10. Derecho de desistimiento.
   [2] 1. El consumidor dispondrá de un plazo de catorce días naturales para desistir del contrato a distancia, sin indicación de los motivos y sin penalización alguna.
@@ -5354,9 +5526,21 @@ _recuperado por:_ bge-m3/BASELINE#2 (0.766) · e5-large-instruct/I0_GENERIC#2 (0
   [29] 5. Las previsiones contenidas en la presente Ley en relación con el derecho de desistimiento no serán de aplicación a los contratos resueltos como consecuencia del ejercicio del derecho de desistimiento reconocido en otra norma.
 ```
 
+### Real Decreto Legislativo 1/2007, artículo 71 · `BOE-A-2007-20555__a71` [JUZGADO rel=2 reviewed]
+https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a71
+_recuperado por:_ bge-m3/BASELINE#1 (0.774) · e5-large-instruct/I0_GENERIC#1 (0.932) · e5-large-instruct/I1_LEGAL#1 (0.951) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.951) · hybrid_rrf/I0_GENERIC#1 (0.032) · e5-base/BASELINE#3 (0.891) · bm25/lexical#3 (26.180)  [7 sistemas]
+```
+  [1] Artículo 71. Plazo para el ejercicio del derecho de desistimiento.
+  [2] 1. El consumidor y usuario dispondrá de un plazo mínimo de catorce días naturales para ejercer el derecho de desistimiento.
+  [3] 2. Siempre que el empresario haya cumplido con el deber de información y documentación establecido en el artículo 69.1, el plazo a que se refiere el apartado anterior se computará desde la recepción del bien objeto del contrato o desde la celebración de éste si el objeto del contrato fuera la prestación de servicios.
+  [4] 3. Si el empresario no hubiera cumplido con el deber de información y documentación sobre el derecho de desistimiento, el plazo para su ejercicio finalizará doce meses después de la fecha de expiración del periodo de desistimiento inicial, a contar desde que se entregó el bien contratado o se hubiera celebrado el contrato, si el objeto de éste fuera la prestación de servicios.
+  [5] Si el deber de información y documentación se cumple durante el citado plazo de doce meses, el plazo legalmente previsto para el ejercicio del derecho de desistimiento empezará a contar desde ese momento.
+  [6] 4. Para determinar la observancia del plazo para desistir se tendrá en cuenta la fecha de expedición de la declaración de desistimiento.
+```
+
 ### Ley 4/2012, artículo 12 · `BOE-A-2012-9111__a12` [JUZGADO rel=0 draft]
 https://www.boe.es/buscar/act.php?id=BOE-A-2012-9111#a12
-_recuperado por:_ e5-base/BASELINE#2 (0.894) · e5-large-instruct/I1_LEGAL#4 (0.934) · e5-large-instruct/I2_CITIZEN_LEGISLATION#4 (0.935) · e5-large-instruct/I0_GENERIC#5 (0.915) · bge-m3/BASELINE#7 (0.739)  [5 sistemas]
+_recuperado por:_ e5-base/BASELINE#2 (0.894) · hybrid_rrf/I0_GENERIC#3 (0.031) · e5-large-instruct/I1_LEGAL#4 (0.934) · e5-large-instruct/I2_CITIZEN_LEGISLATION#4 (0.935) · bm25/lexical#4 (25.327) · e5-large-instruct/I0_GENERIC#5 (0.915) · bge-m3/BASELINE#7 (0.739)  [7 sistemas]
 ```
   [1] Artículo 12. Derecho de desistimiento.
   [2] 1. En los contratos regulados en esta Ley, el consumidor tendrá derecho de desistimiento sin necesidad de justificación alguna.
@@ -5374,7 +5558,7 @@ _recuperado por:_ e5-base/BASELINE#2 (0.894) · e5-large-instruct/I1_LEGAL#4 (0.
 
 ### Real Decreto Legislativo 1/2007, artículo 106 · `BOE-A-2007-20555__a106` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a106
-_recuperado por:_ e5-large-instruct/I1_LEGAL#6 (0.930) · e5-large-instruct/I2_CITIZEN_LEGISLATION#6 (0.930) · e5-large-instruct/I0_GENERIC#8 (0.911) · bge-m3/BASELINE#11 (0.733) · e5-base/BASELINE#12 (0.875)  [5 sistemas]
+_recuperado por:_ e5-large-instruct/I1_LEGAL#6 (0.930) · e5-large-instruct/I2_CITIZEN_LEGISLATION#6 (0.930) · bm25/lexical#6 (24.454) · hybrid_rrf/I0_GENERIC#6 (0.030) · e5-large-instruct/I0_GENERIC#8 (0.911) · bge-m3/BASELINE#11 (0.733) · e5-base/BASELINE#12 (0.875)  [7 sistemas]
 ```
   [1] Artículo 106. Ejercicio y efectos del derecho de desistimiento.
   [2] 1. Antes de que venza el plazo de desistimiento, el consumidor y usuario comunicará al empresario su decisión de desistir del contrato. A tal efecto, el consumidor y usuario podrá utilizar el modelo de formulario de desistimiento que figura en el anexo B de esta ley; o bien realizar otro tipo de declaración inequívoca en la que señale su decisión de desistir del contrato.
@@ -5385,9 +5569,54 @@ _recuperado por:_ e5-large-instruct/I1_LEGAL#6 (0.930) · e5-large-instruct/I2_C
   [7] 6. En caso de contratos para el suministro de agua, gas, electricidad –cuando no estén envasados para la venta en un volumen delimitado o en cantidades determinadas–, o calefacción mediante sistemas urbanos, en los que el suministro ya se estuviera realizando previamente a la contratación del servicio, salvo que expresamente se indique lo contrario, se entenderá el interés del consumidor en continuar con el suministro del servicio, volviendo a ser suministrado por su suministrador anterior. Por el contrario, si previamente a la contratación del servicio no se estuviera realizando el suministro, la solicitud de desistimiento supondrá la baja del servicio.
 ```
 
+### Ley 16/2011, artículo 28 · `BOE-A-2011-10970__a28` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2011-10970#a28
+_recuperado por:_ bge-m3/BASELINE#4 (0.749) · e5-base/BASELINE#7 (0.880) · hybrid_rrf/I0_GENERIC#10 (0.027) · e5-large-instruct/I1_LEGAL#11 (0.921) · e5-large-instruct/I2_CITIZEN_LEGISLATION#11 (0.922) · bm25/lexical#11 (21.799) · e5-large-instruct/I0_GENERIC#18 (0.902)  [7 sistemas]
+```
+  [1] Artículo 28. Derecho de desistimiento.
+  [2] 1. El derecho de desistimiento de un contrato de crédito es la facultad del consumidor de dejar sin efecto el contrato celebrado, comunicándoselo así a la otra parte contratante en un plazo de catorce días naturales sin necesidad de indicar los motivos y sin penalización alguna.
+  [3] El plazo para ejercer el derecho de desistimiento se iniciará en la fecha de suscripción del contrato de crédito o bien, si fuera posterior, en la fecha en que el consumidor reciba las condiciones contractuales y la información recogida en el artículo 16.
+  [4] 2. El consumidor que ejerza el derecho de desistimiento tendrá las obligaciones siguientes:
+  [5] a) Comunicarlo al prestamista antes de que expire el plazo previsto en el apartado 1, ateniéndose a la información facilitada por este último de acuerdo con la letra p) del apartado 2 del artículo 16, por medios que permitan dejar constancia de la notificación de cualquier modo admitido en Derecho.
+  [6] Se considerará que se ha respetado el plazo si la notificación se ha enviado antes de la expiración del plazo, siempre que haya sido efectuada mediante documento en papel o cualquier otro soporte duradero a disposición del prestamista y accesible para él.
+  [7] b) Pagar al prestamista el capital y el interés acumulado sobre dicho capital entre la fecha de disposición del crédito y la fecha de reembolso del capital, sin ningún retraso indebido y a más tardar a los treinta días naturales de haber enviado la notificación de desistimiento al prestamista.
+  [8] Los intereses adeudados se calcularán sobre la base del tipo deudor acordado.
+  [9] El prestamista no tendrá derecho a reclamar al consumidor ninguna otra compensación en caso de desistimiento, excepto la compensación de los gastos no reembolsables abonados por el prestamista a la Administración Pública.
+  [10] 3. En caso de que un prestamista o un tercero proporcione un servicio accesorio relacionado con el contrato de crédito sobre la base de un acuerdo entre ese tercero y el prestamista, el consumidor dejará de estar vinculado por dicho servicio accesorio si ejerce su derecho de desistimiento respecto del contrato de crédito conforme a lo dispuesto en el presente artículo. En caso de que este servicio accesorio sea un contrato de seguro de vida, el derecho de desistimiento se regirá en lo que sea aplicable por lo establecido en el artículo 83.a) de la Ley 50/1980, de 8 de octubre, de Contrato de Seguro, y en el resto de casos, el consumidor tendrá derecho al reembolso de la parte de prima no consumida.
+  [11] 4. Si el consumidor tiene derecho de desistimiento con arreglo a los apartados anteriores, no se aplicarán los artículos 10 y 11 de la Ley 22/2007, de 11 de julio, sobre comercialización a distancia de servicios financieros destinados a los consumidores, ni el artículo 110 del texto refundido de la Ley General para la Defensa de los Consumidores y Usuarios y otras leyes complementarias, aprobado por el Real Decreto Legislativo 1/2007, de 16 de noviembre.
+```
+
+### Ley 22/2007, artículo 11 · `BOE-A-2007-13411__a11` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2007-13411#a11
+_recuperado por:_ bm25/lexical#10 (22.259) · bge-m3/BASELINE#15 (0.718) · e5-large-instruct/I2_CITIZEN_LEGISLATION#15 (0.915) · hybrid_rrf/I0_GENERIC#15 (0.026) · e5-large-instruct/I1_LEGAL#17 (0.914) · e5-base/BASELINE#20 (0.868)  [6 sistemas]
+```
+  [1] Artículo 11. Pago del servicio prestado antes del desistimiento.
+  [2] 1. El consumidor que ejerza el derecho de desistimiento solamente estará obligado a pagar, a la mayor brevedad, el servicio financiero realmente prestado por el proveedor de conformidad con el contrato, hasta el momento del desistimiento.
+  [3] El importe que el consumidor deba pagar no rebasará el importe proporcional de la parte ya prestada del servicio comparada con la cobertura total del contrato, ni será en ningún caso de tal magnitud que equivalga a una penalización.
+  [4] 2. El proveedor no podrá exigir pago alguno al consumidor en cualquiera de las siguientes situaciones:
+  [5] a) Si no demuestra que le ha facilitado la información exigida en el artículo 7.1.3), a).
+  [6] b) Si inicia la ejecución del contrato, sin haberlo solicitado el consumidor, antes de que expire el periodo de desistimiento.
+  [7] 3. El proveedor reembolsará al consumidor a la mayor brevedad, y dentro de un plazo máximo de treinta días naturales, cualquier cantidad que haya percibido de éste con arreglo a lo establecido en el contrato a distancia, salvo el importe mencionado en el apartado 1. Dicho plazo se iniciará el día en que el proveedor reciba la notificación del desistimiento.
+  [8] 4. El consumidor devolverá al proveedor cualquier cantidad que haya recibido de éste, a la mayor brevedad, y, en todo caso, en el plazo máximo de treinta días naturales, a contar desde la notificación del desistimiento.
+```
+
+### Real Decreto Legislativo 1/2007, artículo 104 · `BOE-A-2007-20555__a104` [JUZGADO rel=2 reviewed]
+https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a104
+_recuperado por:_ e5-large-instruct/I1_LEGAL#2 (0.942) · e5-large-instruct/I2_CITIZEN_LEGISLATION#2 (0.941) · e5-large-instruct/I0_GENERIC#3 (0.925) · bge-m3/BASELINE#6 (0.739) · hybrid_rrf/I0_GENERIC#11 (0.027) · e5-base/BASELINE#14 (0.873)  [6 sistemas]
+```
+  [1] Artículo 104. Plazo para el ejercicio del derecho de desistimiento.
+  [2] Sin perjuicio de lo dispuesto en el artículo 105, el plazo de desistimiento concluirá a los catorce días naturales o, en su caso, a los treinta días naturales, contados a partir de:
+  [3] a) El día de la celebración del contrato, en el caso de los contratos de servicios.
+  [4] b) El día que el consumidor y usuario o un tercero por él indicado, distinto del transportista, adquiera la posesión material de los bienes solicitados, en el caso de los contratos de venta, o bien:
+  [5] 1.º En caso de entrega de múltiples bienes encargados por el consumidor o usuario en el mismo pedido y entregados por separado, el día que el consumidor o usuario o un tercero por él indicado, distinto del transportista, adquiera la posesión material del último de los bienes.
+  [6] 2.º En caso de entrega de un bien compuesto por múltiples componentes o piezas, el día que el consumidor o usuario o un tercero por él indicado, distinto del transportista, adquiera la posesión material del último componente o pieza.
+  [7] 3.º En caso de contratos para la entrega periódica de bienes durante un plazo determinado, el día que el consumidor o usuario o un tercero por él indicado, distinto del transportista, adquiera la posesión material del primero de esos bienes.
+  [8] c) En el caso de los contratos para el suministro de agua, gas o electricidad –cuando no estén envasados para la venta en un volumen delimitado o en cantidades determinadas–, o de calefacción mediante sistemas urbanos o de contenido digital que no se preste en un soporte material, el día en que se celebre el contrato.
+```
+
 ### Real Decreto Legislativo 1/2007, artículo 102 · `BOE-A-2007-20555__a102` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a102
-_recuperado por:_ e5-base/BASELINE#6 (0.880) · e5-large-instruct/I0_GENERIC#7 (0.911) · e5-large-instruct/I1_LEGAL#7 (0.929) · e5-large-instruct/I2_CITIZEN_LEGISLATION#7 (0.929) · bge-m3/BASELINE#12 (0.733)  [5 sistemas]
+_recuperado por:_ e5-base/BASELINE#6 (0.880) · e5-large-instruct/I0_GENERIC#7 (0.911) · e5-large-instruct/I1_LEGAL#7 (0.929) · e5-large-instruct/I2_CITIZEN_LEGISLATION#7 (0.929) · bge-m3/BASELINE#12 (0.733) · hybrid_rrf/I0_GENERIC#14 (0.026)  [6 sistemas]
 ```
   [1] Artículo 102. Derecho de desistimiento.
   [2] 1. Salvo las excepciones previstas en el artículo 103, el consumidor o usuario tendrá derecho a desistir del contrato durante un periodo de catorce días naturales sin indicar el motivo y sin incurrir en ningún coste distinto de los previstos en los artículos 107.2 y 108.
@@ -5397,7 +5626,7 @@ _recuperado por:_ e5-base/BASELINE#6 (0.880) · e5-large-instruct/I0_GENERIC#7 (
 
 ### Real Decreto Legislativo 1/2007, artículo 105 · `BOE-A-2007-20555__a105` [JUZGADO rel=1 reviewed]
 https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a105
-_recuperado por:_ e5-base/BASELINE#1 (0.896) · e5-large-instruct/I0_GENERIC#4 (0.916) · bge-m3/BASELINE#5 (0.743) · e5-large-instruct/I1_LEGAL#8 (0.927) · e5-large-instruct/I2_CITIZEN_LEGISLATION#8 (0.925)  [5 sistemas]
+_recuperado por:_ e5-base/BASELINE#1 (0.896) · e5-large-instruct/I0_GENERIC#4 (0.916) · bge-m3/BASELINE#5 (0.743) · e5-large-instruct/I1_LEGAL#8 (0.927) · e5-large-instruct/I2_CITIZEN_LEGISLATION#8 (0.925) · hybrid_rrf/I0_GENERIC#9 (0.028)  [6 sistemas]
 ```
   [1] Artículo 105. Omisión de información sobre el derecho de desistimiento.
   [2] 1. Si el empresario no ha facilitado al consumidor o usuario la información sobre el derecho de desistimiento, tal como se establece en el artículo 97.1.j), el periodo de desistimiento finalizará doce meses después de la fecha de expiración del periodo de desistimiento inicial, determinada de conformidad con el artículo 104.
@@ -5406,7 +5635,7 @@ _recuperado por:_ e5-base/BASELINE#1 (0.896) · e5-large-instruct/I0_GENERIC#4 (
 
 ### Real Decreto Legislativo 1/2007, artículo 108 · `BOE-A-2007-20555__a108` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a108
-_recuperado por:_ e5-base/BASELINE#4 (0.889) · e5-large-instruct/I0_GENERIC#9 (0.911) · e5-large-instruct/I1_LEGAL#9 (0.924) · bge-m3/BASELINE#10 (0.734) · e5-large-instruct/I2_CITIZEN_LEGISLATION#10 (0.923)  [5 sistemas]
+_recuperado por:_ e5-base/BASELINE#4 (0.889) · e5-large-instruct/I0_GENERIC#9 (0.911) · e5-large-instruct/I1_LEGAL#9 (0.924) · bge-m3/BASELINE#10 (0.734) · e5-large-instruct/I2_CITIZEN_LEGISLATION#10 (0.923) · hybrid_rrf/I0_GENERIC#19 (0.025)  [6 sistemas]
 ```
   [1] Artículo 108. Obligaciones y responsabilidad del consumidor y usuario en caso de desistimiento.
   [2] 1. Salvo si el propio empresario se ofrece a recoger los bienes, el consumidor y usuario deberá devolverlos o entregarlos al empresario, o a una persona autorizada por el empresario a recibirlos, sin ninguna demora indebida y, en cualquier caso, a más tardar en el plazo de 14 días naturales a partir de la fecha en que comunique su decisión de desistimiento del contrato al empresario, de conformidad con el artículo 106. Se considerará cumplido el plazo si el consumidor y usuario efectúa la devolución de los bienes antes de que haya concluido el plazo de 14 días naturales.
@@ -5426,37 +5655,9 @@ _recuperado por:_ e5-base/BASELINE#4 (0.889) · e5-large-instruct/I0_GENERIC#9 (
   [16] 6. Con excepción de lo dispuesto en el artículo 107.2, y en este artículo, el consumidor y usuario no incurrirá en ninguna responsabilidad como consecuencia del ejercicio del derecho de desistimiento.
 ```
 
-### Real Decreto Legislativo 1/2007, artículo 68 · `BOE-A-2007-20555__a68` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a68
-_recuperado por:_ e5-large-instruct/I2_CITIZEN_LEGISLATION#9 (0.923) · e5-large-instruct/I1_LEGAL#10 (0.923) · e5-large-instruct/I0_GENERIC#13 (0.904) · e5-base/BASELINE#18 (0.870) · bge-m3/BASELINE#19 (0.695)  [5 sistemas]
-```
-  [1] Artículo 68. Contenido y régimen del derecho de desistimiento.
-  [2] 1. El derecho de desistimiento de un contrato es la facultad del consumidor y usuario de dejar sin efecto el contrato celebrado, notificándoselo así a la otra parte contratante en el plazo establecido para el ejercicio de ese derecho, sin necesidad de justificar su decisión y sin penalización de ninguna clase.
-  [3] Serán nulas de pleno de derecho las cláusulas que impongan al consumidor y usuario una penalización por el ejercicio de su derecho de desistimiento.
-  [4] 2. El consumidor tendrá derecho a desistir del contrato en los supuestos previstos legal o reglamentariamente y cuando así se le reconozca en la oferta, promoción publicidad o en el propio contrato.
-  [5] 3. El derecho de desistimiento atribuido legalmente al consumidor y usuario se regirá en primer término por las disposiciones legales que lo establezcan en cada caso y en su defecto por lo dispuesto en este Título.
-```
-
-### Ley 16/2011, artículo 28 · `BOE-A-2011-10970__a28` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2011-10970#a28
-_recuperado por:_ bge-m3/BASELINE#4 (0.749) · e5-base/BASELINE#7 (0.880) · e5-large-instruct/I1_LEGAL#11 (0.921) · e5-large-instruct/I2_CITIZEN_LEGISLATION#11 (0.922) · e5-large-instruct/I0_GENERIC#18 (0.902)  [5 sistemas]
-```
-  [1] Artículo 28. Derecho de desistimiento.
-  [2] 1. El derecho de desistimiento de un contrato de crédito es la facultad del consumidor de dejar sin efecto el contrato celebrado, comunicándoselo así a la otra parte contratante en un plazo de catorce días naturales sin necesidad de indicar los motivos y sin penalización alguna.
-  [3] El plazo para ejercer el derecho de desistimiento se iniciará en la fecha de suscripción del contrato de crédito o bien, si fuera posterior, en la fecha en que el consumidor reciba las condiciones contractuales y la información recogida en el artículo 16.
-  [4] 2. El consumidor que ejerza el derecho de desistimiento tendrá las obligaciones siguientes:
-  [5] a) Comunicarlo al prestamista antes de que expire el plazo previsto en el apartado 1, ateniéndose a la información facilitada por este último de acuerdo con la letra p) del apartado 2 del artículo 16, por medios que permitan dejar constancia de la notificación de cualquier modo admitido en Derecho.
-  [6] Se considerará que se ha respetado el plazo si la notificación se ha enviado antes de la expiración del plazo, siempre que haya sido efectuada mediante documento en papel o cualquier otro soporte duradero a disposición del prestamista y accesible para él.
-  [7] b) Pagar al prestamista el capital y el interés acumulado sobre dicho capital entre la fecha de disposición del crédito y la fecha de reembolso del capital, sin ningún retraso indebido y a más tardar a los treinta días naturales de haber enviado la notificación de desistimiento al prestamista.
-  [8] Los intereses adeudados se calcularán sobre la base del tipo deudor acordado.
-  [9] El prestamista no tendrá derecho a reclamar al consumidor ninguna otra compensación en caso de desistimiento, excepto la compensación de los gastos no reembolsables abonados por el prestamista a la Administración Pública.
-  [10] 3. En caso de que un prestamista o un tercero proporcione un servicio accesorio relacionado con el contrato de crédito sobre la base de un acuerdo entre ese tercero y el prestamista, el consumidor dejará de estar vinculado por dicho servicio accesorio si ejerce su derecho de desistimiento respecto del contrato de crédito conforme a lo dispuesto en el presente artículo. En caso de que este servicio accesorio sea un contrato de seguro de vida, el derecho de desistimiento se regirá en lo que sea aplicable por lo establecido en el artículo 83.a) de la Ley 50/1980, de 8 de octubre, de Contrato de Seguro, y en el resto de casos, el consumidor tendrá derecho al reembolso de la parte de prima no consumida.
-  [11] 4. Si el consumidor tiene derecho de desistimiento con arreglo a los apartados anteriores, no se aplicarán los artículos 10 y 11 de la Ley 22/2007, de 11 de julio, sobre comercialización a distancia de servicios financieros destinados a los consumidores, ni el artículo 110 del texto refundido de la Ley General para la Defensa de los Consumidores y Usuarios y otras leyes complementarias, aprobado por el Real Decreto Legislativo 1/2007, de 16 de noviembre.
-```
-
 ### Ley 4/2012, ANEXO V · `BOE-A-2012-9111__anv` [JUZGADO rel=0 draft] · flags: anexo
 https://www.boe.es/buscar/act.php?id=BOE-A-2012-9111#anv
-_recuperado por:_ bge-m3/BASELINE#3 (0.763) · e5-base/BASELINE#8 (0.878) · e5-large-instruct/I0_GENERIC#14 (0.904)  [3 sistemas]
+_recuperado por:_ bm25/lexical#1 (28.978) · bge-m3/BASELINE#3 (0.763) · hybrid_rrf/I0_GENERIC#5 (0.030) · e5-base/BASELINE#8 (0.878) · e5-large-instruct/I0_GENERIC#14 (0.904)  [5 sistemas]
 ```
   [1] ANEXO V
   [2] Formulario normalizado de desistimiento en documento aparte destinado a facilitar el derecho de desistimiento
@@ -5491,9 +5692,91 @@ _recuperado por:_ bge-m3/BASELINE#3 (0.763) · e5-base/BASELINE#8 (0.878) · e5-
 **Pregunta:** ¿Qué artículo recoge el concepto de cláusula abusiva en los contratos con consumidores?
 _split=test · difficulty=media · failure_mode=—_
 
+### Ley 7/1998 · `BOE-A-1998-8789__preambulo` [JUZGADO rel=0 draft]
+https://www.boe.es/buscar/act.php?id=BOE-A-1998-8789#preambulo
+_recuperado por:_ bm25/lexical#1 (35.221) · hybrid_rrf/I0_GENERIC#1 (0.033) · bge-m3/BASELINE#2 (0.727) · e5-large-instruct/I0_GENERIC#2 (0.931) · e5-large-instruct/I1_LEGAL#3 (0.933) · e5-base/BASELINE#5 (0.874) · e5-large-instruct/I2_CITIZEN_LEGISLATION#5 (0.931)  [7 sistemas]
+```
+  [1] JUAN CARLOS I
+  [2] REY DE ESPAÑA
+  [3] A todos los que la presente vieren y entendieren.
+  [4] Sabed: Que las Cortes Generales han aprobado y Yo vengo en sancionar la siguiente Ley.
+  [5] EXPOSICIÓN DE MOTIVOS
+  [6] Preámbulo
+  [7] La presente Ley tiene por objeto la transposición de la Directiva 93/13/CEE, del Consejo, de 5 de abril de 1993, sobre cláusulas abusivas en los contratos celebrados con consumidores, así como la regulación de las condiciones generales de la contratación, y se dicta en virtud de los títulos competenciales que la Constitución Española atribuye en exclusiva al Estado en el artículo 149.1.6.ª y 8.ª, por afectar a la legislación mercantil y civil.
+  [8] Se ha optado por llevar a cabo la incorporación de la Directiva citada mediante una Ley de Condiciones Generales de la Contratación, que al mismo tiempo, a través de su disposición adicional primera, modifique el marco jurídico preexistente de protección al consumidor, constituido por la Ley 26/1984, de 19 de julio, General para la Defensa de los Consumidores y Usuarios.
+  [9] La protección de la igualdad de los contratantes es presupuesto necesario de la justicia de los contenidos contractuales y constituye uno de los imperativos de la política jurídica en el ámbito de la actividad económica. Por ello la Ley pretende proteger los legítimos intereses de los consumidores y usuarios, pero también de cualquiera que contrate con una persona que utilice condiciones generales en su actividad contractual.
+  [10] Se pretende así distinguir lo que son cláusulas abusivas de lo que son condiciones generales de la contratación.
+  [11] Una cláusula es condición general cuando está predispuesta e incorporada a una pluralidad de contratos exclusivamente por una de las partes, y no tiene por qué ser abusiva. Cláusula abusiva es la que en contra de las exigencias de la buena fe causa en detrimento del consumidor un desequilibrio importante e injustificado de las obligaciones contractuales y puede tener o no el carácter de condición general, ya que también puede darse en contratos particulares cuando no existe negociación individual de sus cláusulas, esto es, en contratos de adhesión particulares.
+  [12] Las condiciones generales de la contratación se pueden dar tanto en las relaciones de profesionales entre sí como de éstos con los consumidores. En uno y otro caso, se exige que las condiciones generales formen parte del contrato, sean conocidas o -en ciertos casos de contratación no escrita- exista posibilidad real de ser conocidas, y que se redacten de forma transparente, con claridad, concreción y sencillez. Pero, además, se exige, cuando se contrata con un consumidor, que no sean abusivas.
+  [13] El concepto de cláusula contractual abusiva tiene así su ámbito propio en la relación con los consumidores. Y puede darse tanto en condiciones generales como en cláusulas predispuestas para un contrato particular al que el consumidor se limita a adherirse. Es decir, siempre que no ha existido negociación individual.
+  [14] Esto no quiere decir que en las condiciones generales entre profesionales no pueda existir abuso de una posición dominante. Pero tal concepto se sujetará a las normas generales de nulidad contractual. Es decir, nada impide que también judicialmente pueda declararse la nulidad de una condición general que sea abusiva cuando sea contraria a la buena fe y cause un desequilibrio importante entre los derechos y obligaciones de las partes, incluso aunque se trate de contratos entre profesionales o empresarios. Pero habrá de tener en cuenta en cada caso las características específicas de la contratación entre empresas.
+  [15] En este sentido, sólo cuando exista un consumidor frente a un profesional es cuando operan plenamente la lista de cláusulas contractuales abusivas recogidas en la Ley, en concreto en la disposición adicional primera de la Ley 26/1984, de 19 de julio, General para la Defensa de los Consumidores y Usuarios, que ahora se introduce. De conformidad con la Directiva transpuesta, el consumidor protegido será no sólo el destinatario final de los bienes y servicios objeto del contrato, sino cualquier persona que actúe con un propósito ajeno a su actividad profesional.
+  [16] En el artículo 10 bis y en la disposición adicional primera de la misma Ley, que lo desarrolla, se han recogido las cláusulas declaradas nulas por la Directiva y además las que con arreglo a nuestro Derecho se han considerado claramente abusivas.
+  [17] Con ello se ejercita la facultad del Estado obligado a transponer la Directiva comunitaria de poder incrementar el nivel de protección más allá de las obligaciones mínimas que aquélla impone.
+  [18] La Ley se estructura en siete capítulos, tres disposiciones adicionales, una disposición transitoria, una disposición derogatoria y tres disposiciones finales.
+  [19] I
+  [20] El capítulo I relativo a «Disposiciones generales», recoge el concepto de condición general de la contratación basado en la predisposición e incorporación unilateral de las mismas al contrato. En su formulación se han tenido en cuenta orientaciones jurisprudenciales anteriores, las aportaciones doctrinales sobre la materia y los criterios utilizados por el Derecho comparado.
+  [21] Se regula también su ámbito de aplicación tanto desde un punto de vista territorial como objetivo, siguiendo en lo primero el criterio de inclusión no sólo de los contratos sometidos a la legislación española sino también de aquellos contratos en los que, aun sometidos a la legislación extranjera, la adhesión se ha realizado en España por quien tiene en su territorio la residencia o domicilio. En definitiva, cuando la declaración negocial se haya producido en territorio español regirá (en cuanto a las condiciones generales) la ley española, conforme al Convenio sobre la Ley aplicable a las Obligaciones Contractuales, abierto a la firma en Roma el 19 de junio de 1980, ratificado por Instrumento de 7 de mayo de 1993 («Boletín Oficial del Estado» de 19 de julio), al atribuirle el carácter de disposición imperativa (artícu los 3 y 5.2 de dicho Convenio).
+  [22] Desde el punto de vista objetivo se excluyen ciertos contratos que por sus características específicas, por la materia que tratan y por la alienidad de la idea de predisposición contractual, no deben estar comprendidos en la Ley, como son los administrativos, los de trabajo, los de constitución de sociedades, los que regulen relaciones familiares y los sucesorios. Tampoco se extiende la Ley -siguiendo el criterio de la Directiva- a aquellos contratos en los que las condiciones generales ya vengan determinadas por un Convenio internacional en que España sea parte o por una disposición legal o administrativa de carácter general y de aplicación obligatoria para los contratantes. Conforme al criterio del considerando décimo de la Directiva, todos estos supuestos de exclusión deben entenderse referidos no sólo al ámbito de las condiciones generales, sino también al de cláusulas abusivas regulados en la Ley 26/1984, que ahora se modifica.
+  [23] La Ley regula además en este capítulo los requisitos para que la incorporación de una cláusula general se considere ajustada a Derecho y opta por la interpretación de las cláusulas oscuras en la forma más ventajosa para el adherente.
+  [24] II
+  [25] El capítulo II sanciona con nulidad las cláusulas generales no ajustadas a la Ley, determina la ineficacia por no incorporación de las cláusulas que no reúnan los requisitos exigidos en el capítulo anterior para que puedan entenderse incorporadas al contrato. Esta nulidad, al igual que la contravención de cualquier otra norma imperativa o prohibitiva, podrá ser invocada, en su caso, por los contratantes conforme a las reglas generales de la nulidad contractual, sin que puedan confundirse tales acciones individuales con las acciones colectivas de cesación o retractación reconocidas con carácter general a las entidades o corporaciones legitimadas para ello en el capítulo IV y que tienen un breve plazo de prescripción.
+  [26] III
+  [27] En el capítulo III la Ley crea un Registro de Condiciones Generales de la Contratación, de acuerdo con lo previsto en el artículo 7 de la Directiva y conforme a los preceptos legales de otros Estados miembros de la Unión Europea. Registro que se estima sumamente conveniente como medio para hacer efectivo el ejercicio de acciones contra las condiciones generales no ajustadas a la Ley. Se trata de un Registro jurídico, regulado por el Ministerio de Justicia, que aprovechará la estructura dispensada por los Registradores de la Propiedad y Mercantiles. Ello no obstante, las funciones calificadoras nunca se extenderán a lo que es competencia judicial, como es la apreciación de la nulidad de las cláusulas, sin perjuicio de las funciones estrictamente jurídicas encaminadas a la práctica de las anotaciones preventivas reguladas en la Ley, a la inscripción de las resoluciones judiciales y a la publicidad de las cláusulas en los términos en que resulten de los correspondientes asientos. La inscripción en este Registro, para buscar un equilibrio entre seguridad jurídica y agilidad en la contratación, se configura como voluntaria, si bien legitimando ampliamente para solicitar su inscripción a cualquier persona o entidad interesada, como fórmula para permitir la posibilidad efectiva de un conocimiento de las condiciones generales. Ello no obstante, se admite que en sectores específicos el Ministerio de Justicia, a instancia de parte interesada o de oficio, y en propuesta conjunta con otros departamentos ministeriales, pueda configurar la inscripción como obligatoria.
+  [28] El carácter eminentemente jurídico de este Registro deriva de los efectos «erga omnes» que la inscripción va a atribuir a la declaración judicial de nulidad, los efectos prejudiciales que van a producir los asientos relativos a sentencias firmes en otros procedimientos referentes a cláusulas idénticas, así como del cómputo del plazo de prescripción de las acciones colectivas, además del dictamen de conciliación que tendrá que emitir su titular. En definitiva, el Registro de Condiciones Generales va a posibilitar el ejercicio de las acciones colectivas y a coordinar la actuación judicial, permitiendo que ésta sea uniforme y no se produzca una multiplicidad de procesos sobre la misma materia descoordinados y sin posibilidad de acumulación.
+  [29] IV
+  [30] El capítulo IV regula las acciones colectivas encaminadas a impedir la utilización de condiciones generales que sean contrarias a la Ley, como son la acción de cesación, dirigida a impedir la utilización de tales condiciones generales; la de retractación, dirigida a prohibir y retractarse de su recomendación, siempre que en algún momento hayan sido efectivamente utilizadas, y que permitirá actuar no sólo frente al predisponente que utilice condiciones generales nulas, sino también frente a las organizaciones que las recomienden, y la declarativa, dirigida a reconocer su cualidad de condición general e instar la inscripción de las mismas en el Registro de Condiciones Generales de la Contratación. Todo ello sin perjuicio de la posibilidad de ejercitar las acciones individuales de nulidad conforme a las reglas comunes de la nulidad contractual o la de no incorporación de determinadas cláusulas generales.
+  [31] La Ley parte de que el control de la validez de las cláusulas generales tan sólo corresponde a Jueces y Tribunales, sin perjuicio de la publicidad registral de las resoluciones judiciales relativas a aquéllas a través del Registro regulado en el capítulo III y del deber de colaboración de los profesionales ejercientes de funciones públicas.
+  [32] Este capítulo IV también regula la legitimación activa para la interposición de las acciones colectivas de cesación, retractación y declarativa, incluyendo entre las entidades legitimadas a las asociaciones de consumidores y usuarios, aunque sin ser las únicas por ser mayor el campo de actuación que tiene la Ley.
+  [33] También se regula la legitimación pasiva, el plazo de prescripción (considerándose suficiente a efectos de seguridad jurídica dos años desde la inscripción de las condiciones generales en el correspondiente Registro, sin perjuicio de su posible ejercicio en todo caso si no hubiera transcurrido un año desde que se dictase una resolución judicial declarativa de la nulidad de las cláusulas), las reglas de su tramitación y la eficacia de las sentencias, que podrán ser no sólo invocadas en otros procedimientos sino que directamente vincularán al Juez en otros procedimientos dirigidos a obtener la nulidad contractual de cláusulas idénticas utilizadas por el mismo predisponente.
+  [34] V
+  [35] El capítulo V regula la publicidad, por decisión judicial, de las sentencias de cesación o retractación (aunque limitando la publicidad al fallo y a las cláusulas afectadas para no encarecer el proceso) y su necesaria inscripción en el Registro de Condiciones Generales de la Contratación.
+  [36] VI
+  [37] El capítulo VI regula la obligación profesional de los Notarios y de los Registradores de la Propiedad y Mercantiles en orden al cumplimiento de esta Ley, así como de los Corredores de Comercio en el ámbito de sus respectivas competencias.
+  [38] VII
+  [39] El capítulo VII regula el régimen sancionador por el incumplimiento de la normativa sobre condiciones generales de la contratación, en particular la persistencia en la utilización o recomendación de cláusulas generales nulas.
+  [40] VIII
+  [41] La disposición adicional primera de la Ley está dirigida a la modificación de la Ley 26/1984, de 19 de julio, General para la Defensa de los Consumidores y Usuarios.
+  [42] En la línea de incremento de protección respecto de los mínimos establecidos en la Directiva, la Ley mantiene el concepto amplio de consumidor hasta ahora existente, abarcando tanto a la persona física como a la jurídica que sea destinataria final de los bienes y servicios, si bien debe entenderse incluida también -según el criterio de la Directiva- a toda aquella persona que actúe con un propósito ajeno a su actividad profesional aunque no fuera destinataria final de los bienes o servicios objeto del contrato.
+  [43] A diferencia de las condiciones generales, se estima procedente que también las Administraciones públicas queden incluidas, como estaban hasta ahora, en el régimen de protección de consumidores y usuarios frente a la utilización de cláusulas abusivas.
+  [44] La Ley introduce una definición de cláusula abusiva, añadiendo un artículo 10 bis a la Ley 26/1984, considerando como tal la que en contra de las exigencias de la buena fe cause, en detrimento del consumidor, un desequilibrio importante de los derechos y obligaciones contractuales.
+  [45] Al mismo tiempo se añade una disposición adicional primera a la citada Ley 26/1984, haciendo una enumeración enunciativa de las cláusulas abusivas, extraídas en sus líneas generales de la Directiva, pero añadiendo también aquellas otras que aún sin estar previstas en ella se estima necesario que estén incluidas en el Derecho español por su carácter claramente abusivo.
+  [46] La regulación específica de las cláusulas contractuales en el ámbito de los consumidores, cuando no se han negociado individualmente (por tanto también los contratos de adhesión particulares), no impide que cuando tengan el carácter de condiciones generales se rijan también por los preceptos de la Ley de Condiciones Generales de la Contratación.
+  [47] IX
+  [48] La disposición adicional segunda modifica la Ley Hipotecaria para acomodar las obligaciones profesionales de los Registradores de la Propiedad a la normativa sobre protección al consumidor y sobre condiciones generales, adecuando a las mismas y a la legislación sobre protección de datos de las labores de calificación, información y publicidad formal. Dentro del ámbito de la seguridad jurídica extrajudicial, bajo la autoridad suprema y salvaguardia de Jueces y Tribunales, las normas registrales, dirigidas a la actuación profesional del Registrador, dados los importantes efectos de los asientos que practican, deben acomodarse a los nuevos requerimientos sociales, con la garantía añadida del recurso gubernativo contra la calificación, que goza de la naturaleza jurídica de los actos de jurisdicción voluntaria, todo lo cual contribuirá a la desjudicialización de la contratación privada y del tráfico jurídico civil y mercantil, sobre la base de que la inscripción asegura los derechos, actos y hechos jurídicos objeto de publicidad.
+  [49] X
+  [50] La disposición transitoria prevé la inscripción voluntaria de los contratos celebrados con anterioridad a la entrada en vigor de esta Ley, salvo que norma expresa determine la obligatoriedad de su inscripción en el Registro de Condiciones Generales de la Contratación, y ello sin perjuicio de la inmediata aplicación de los preceptos relativos a las acciones de cesación y retractación.
+  [51] XI
+  [52] La disposición derogatoria deja sin efecto el punto 2 de la disposición adicional segunda de la Ley 36/1988, de 5 de diciembre, de Arbitraje, como consecuencia de la reforma del artículo 10, número 3, de la Ley 26/1984, de 19 de julio, General para la Defensa de los Consumidores y Usuarios.
+  [53] XII
+  [54] La disposición final primera regula el título competencial, atribuyendo aplicación plena a los preceptos de la Ley por tratarse de materias afectantes al Derecho civil y mercantil, y por la regulación de un Registro jurídico estatal.
+  [55] XIII
+  [56] La disposición final segunda regula la autorización al Gobierno para el desarrollo reglamentario de la Ley.
+  [57] XIV
+  [58] La disposición final tercera determina la fecha de entrada en vigor de la Ley.
+```
+
+### Real Decreto Legislativo 1/2007, artículo 82 · `BOE-A-2007-20555__a82` [JUZGADO rel=2 reviewed]
+https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a82
+_recuperado por:_ bge-m3/BASELINE#1 (0.730) · e5-base/BASELINE#2 (0.879) · e5-large-instruct/I1_LEGAL#2 (0.936) · e5-large-instruct/I2_CITIZEN_LEGISLATION#2 (0.937) · bm25/lexical#2 (32.225) · e5-large-instruct/I0_GENERIC#3 (0.927) · hybrid_rrf/I0_GENERIC#3 (0.032)  [7 sistemas]
+```
+  [1] Artículo 82. Concepto de cláusulas abusivas.
+  [2] 1. Se considerarán cláusulas abusivas todas aquellas estipulaciones no negociadas individualmente y todas aquéllas prácticas no consentidas expresamente que, en contra de las exigencias de la buena fe causen, en perjuicio del consumidor y usuario, un desequilibrio importante de los derechos y obligaciones de las partes que se deriven del contrato.
+  [3] 2. El hecho de que ciertos elementos de una cláusula o que una cláusula aislada se hayan negociado individualmente no excluirá la aplicación de las normas sobre cláusulas abusivas al resto del contrato.
+  [4] El empresario que afirme que una determinada cláusula ha sido negociada individualmente, asumirá la carga de la prueba.
+  [5] 3. El carácter abusivo de una cláusula se apreciará teniendo en cuenta la naturaleza de los bienes o servicios objeto del contrato y considerando todas las circunstancias concurrentes en el momento de su celebración, así como todas las demás cláusulas del contrato o de otro del que éste dependa.
+  [6] 4. No obstante lo previsto en los apartados precedentes, en todo caso son abusivas las cláusulas que, conforme a lo dispuesto en los artículos 85 a 90, ambos inclusive:
+  [7] a) vinculen el contrato a la voluntad del empresario,
+  [8] b) limiten los derechos del consumidor y usuario,
+  [9] c) determinen la falta de reciprocidad en el contrato,
+  [10] d) impongan al consumidor y usuario garantías desproporcionadas o le impongan indebidamente la carga de la prueba,
+  [11] e) resulten desproporcionadas en relación con el perfeccionamiento y ejecución del contrato, o
+  [12] f) contravengan las reglas sobre competencia y derecho aplicable.
+```
+
 ### Ley 7/1998, disposición adicional primera · `BOE-A-1998-8789__daprimera` [JUZGADO rel=0 draft]
 https://www.boe.es/buscar/act.php?id=BOE-A-1998-8789#daprimera
-_recuperado por:_ e5-large-instruct/I0_GENERIC#1 (0.931) · e5-large-instruct/I1_LEGAL#1 (0.940) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.941) · e5-base/BASELINE#3 (0.879) · bge-m3/BASELINE#6 (0.710)  [5 sistemas]
+_recuperado por:_ e5-large-instruct/I0_GENERIC#1 (0.931) · e5-large-instruct/I1_LEGAL#1 (0.940) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.941) · hybrid_rrf/I0_GENERIC#2 (0.032) · e5-base/BASELINE#3 (0.879) · bm25/lexical#4 (28.532) · bge-m3/BASELINE#6 (0.710)  [7 sistemas]
 ```
   [1] Disposición adicional primera. Modificación de la Ley 26/1984, de 19 de julio, General para la Defensa de los Consumidores y Usuarios.
   [2] Se introducen las siguientes modificaciones en la Ley 26/1984, de 19 de julio, General para la Defensa de los Consumidores y Usuarios:
@@ -5571,118 +5854,24 @@ _recuperado por:_ e5-large-instruct/I0_GENERIC#1 (0.931) · e5-large-instruct/I1
   [74] Lo dispuesto en la presente Ley será de aplicación a todo tipo de contratos en los que intervengan consumidores, con las condiciones y requisitos en ella establecidos, a falta de normativa sectorial específica, que en cualquier caso respetará el nivel de protección del consumidor previsto en aquélla.»
 ```
 
-### Real Decreto Legislativo 1/2007, artículo 82 · `BOE-A-2007-20555__a82` [JUZGADO rel=2 reviewed]
-https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a82
-_recuperado por:_ bge-m3/BASELINE#1 (0.730) · e5-base/BASELINE#2 (0.879) · e5-large-instruct/I1_LEGAL#2 (0.936) · e5-large-instruct/I2_CITIZEN_LEGISLATION#2 (0.937) · e5-large-instruct/I0_GENERIC#3 (0.927)  [5 sistemas]
+### Real Decreto Legislativo 1/2007, artículo 87 · `BOE-A-2007-20555__a87` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a87
+_recuperado por:_ bge-m3/BASELINE#5 (0.710) · bm25/lexical#7 (27.704) · hybrid_rrf/I0_GENERIC#8 (0.029) · e5-large-instruct/I0_GENERIC#10 (0.918) · e5-large-instruct/I1_LEGAL#10 (0.923) · e5-large-instruct/I2_CITIZEN_LEGISLATION#10 (0.924) · e5-base/BASELINE#19 (0.858)  [7 sistemas]
 ```
-  [1] Artículo 82. Concepto de cláusulas abusivas.
-  [2] 1. Se considerarán cláusulas abusivas todas aquellas estipulaciones no negociadas individualmente y todas aquéllas prácticas no consentidas expresamente que, en contra de las exigencias de la buena fe causen, en perjuicio del consumidor y usuario, un desequilibrio importante de los derechos y obligaciones de las partes que se deriven del contrato.
-  [3] 2. El hecho de que ciertos elementos de una cláusula o que una cláusula aislada se hayan negociado individualmente no excluirá la aplicación de las normas sobre cláusulas abusivas al resto del contrato.
-  [4] El empresario que afirme que una determinada cláusula ha sido negociada individualmente, asumirá la carga de la prueba.
-  [5] 3. El carácter abusivo de una cláusula se apreciará teniendo en cuenta la naturaleza de los bienes o servicios objeto del contrato y considerando todas las circunstancias concurrentes en el momento de su celebración, así como todas las demás cláusulas del contrato o de otro del que éste dependa.
-  [6] 4. No obstante lo previsto en los apartados precedentes, en todo caso son abusivas las cláusulas que, conforme a lo dispuesto en los artículos 85 a 90, ambos inclusive:
-  [7] a) vinculen el contrato a la voluntad del empresario,
-  [8] b) limiten los derechos del consumidor y usuario,
-  [9] c) determinen la falta de reciprocidad en el contrato,
-  [10] d) impongan al consumidor y usuario garantías desproporcionadas o le impongan indebidamente la carga de la prueba,
-  [11] e) resulten desproporcionadas en relación con el perfeccionamiento y ejecución del contrato, o
-  [12] f) contravengan las reglas sobre competencia y derecho aplicable.
-```
-
-### Ley 7/1998 · `BOE-A-1998-8789__preambulo` [JUZGADO rel=0 draft]
-https://www.boe.es/buscar/act.php?id=BOE-A-1998-8789#preambulo
-_recuperado por:_ bge-m3/BASELINE#2 (0.727) · e5-large-instruct/I0_GENERIC#2 (0.931) · e5-large-instruct/I1_LEGAL#3 (0.933) · e5-base/BASELINE#5 (0.874) · e5-large-instruct/I2_CITIZEN_LEGISLATION#5 (0.931)  [5 sistemas]
-```
-  [1] JUAN CARLOS I
-  [2] REY DE ESPAÑA
-  [3] A todos los que la presente vieren y entendieren.
-  [4] Sabed: Que las Cortes Generales han aprobado y Yo vengo en sancionar la siguiente Ley.
-  [5] EXPOSICIÓN DE MOTIVOS
-  [6] Preámbulo
-  [7] La presente Ley tiene por objeto la transposición de la Directiva 93/13/CEE, del Consejo, de 5 de abril de 1993, sobre cláusulas abusivas en los contratos celebrados con consumidores, así como la regulación de las condiciones generales de la contratación, y se dicta en virtud de los títulos competenciales que la Constitución Española atribuye en exclusiva al Estado en el artículo 149.1.6.ª y 8.ª, por afectar a la legislación mercantil y civil.
-  [8] Se ha optado por llevar a cabo la incorporación de la Directiva citada mediante una Ley de Condiciones Generales de la Contratación, que al mismo tiempo, a través de su disposición adicional primera, modifique el marco jurídico preexistente de protección al consumidor, constituido por la Ley 26/1984, de 19 de julio, General para la Defensa de los Consumidores y Usuarios.
-  [9] La protección de la igualdad de los contratantes es presupuesto necesario de la justicia de los contenidos contractuales y constituye uno de los imperativos de la política jurídica en el ámbito de la actividad económica. Por ello la Ley pretende proteger los legítimos intereses de los consumidores y usuarios, pero también de cualquiera que contrate con una persona que utilice condiciones generales en su actividad contractual.
-  [10] Se pretende así distinguir lo que son cláusulas abusivas de lo que son condiciones generales de la contratación.
-  [11] Una cláusula es condición general cuando está predispuesta e incorporada a una pluralidad de contratos exclusivamente por una de las partes, y no tiene por qué ser abusiva. Cláusula abusiva es la que en contra de las exigencias de la buena fe causa en detrimento del consumidor un desequilibrio importante e injustificado de las obligaciones contractuales y puede tener o no el carácter de condición general, ya que también puede darse en contratos particulares cuando no existe negociación individual de sus cláusulas, esto es, en contratos de adhesión particulares.
-  [12] Las condiciones generales de la contratación se pueden dar tanto en las relaciones de profesionales entre sí como de éstos con los consumidores. En uno y otro caso, se exige que las condiciones generales formen parte del contrato, sean conocidas o -en ciertos casos de contratación no escrita- exista posibilidad real de ser conocidas, y que se redacten de forma transparente, con claridad, concreción y sencillez. Pero, además, se exige, cuando se contrata con un consumidor, que no sean abusivas.
-  [13] El concepto de cláusula contractual abusiva tiene así su ámbito propio en la relación con los consumidores. Y puede darse tanto en condiciones generales como en cláusulas predispuestas para un contrato particular al que el consumidor se limita a adherirse. Es decir, siempre que no ha existido negociación individual.
-  [14] Esto no quiere decir que en las condiciones generales entre profesionales no pueda existir abuso de una posición dominante. Pero tal concepto se sujetará a las normas generales de nulidad contractual. Es decir, nada impide que también judicialmente pueda declararse la nulidad de una condición general que sea abusiva cuando sea contraria a la buena fe y cause un desequilibrio importante entre los derechos y obligaciones de las partes, incluso aunque se trate de contratos entre profesionales o empresarios. Pero habrá de tener en cuenta en cada caso las características específicas de la contratación entre empresas.
-  [15] En este sentido, sólo cuando exista un consumidor frente a un profesional es cuando operan plenamente la lista de cláusulas contractuales abusivas recogidas en la Ley, en concreto en la disposición adicional primera de la Ley 26/1984, de 19 de julio, General para la Defensa de los Consumidores y Usuarios, que ahora se introduce. De conformidad con la Directiva transpuesta, el consumidor protegido será no sólo el destinatario final de los bienes y servicios objeto del contrato, sino cualquier persona que actúe con un propósito ajeno a su actividad profesional.
-  [16] En el artículo 10 bis y en la disposición adicional primera de la misma Ley, que lo desarrolla, se han recogido las cláusulas declaradas nulas por la Directiva y además las que con arreglo a nuestro Derecho se han considerado claramente abusivas.
-  [17] Con ello se ejercita la facultad del Estado obligado a transponer la Directiva comunitaria de poder incrementar el nivel de protección más allá de las obligaciones mínimas que aquélla impone.
-  [18] La Ley se estructura en siete capítulos, tres disposiciones adicionales, una disposición transitoria, una disposición derogatoria y tres disposiciones finales.
-  [19] I
-  [20] El capítulo I relativo a «Disposiciones generales», recoge el concepto de condición general de la contratación basado en la predisposición e incorporación unilateral de las mismas al contrato. En su formulación se han tenido en cuenta orientaciones jurisprudenciales anteriores, las aportaciones doctrinales sobre la materia y los criterios utilizados por el Derecho comparado.
-  [21] Se regula también su ámbito de aplicación tanto desde un punto de vista territorial como objetivo, siguiendo en lo primero el criterio de inclusión no sólo de los contratos sometidos a la legislación española sino también de aquellos contratos en los que, aun sometidos a la legislación extranjera, la adhesión se ha realizado en España por quien tiene en su territorio la residencia o domicilio. En definitiva, cuando la declaración negocial se haya producido en territorio español regirá (en cuanto a las condiciones generales) la ley española, conforme al Convenio sobre la Ley aplicable a las Obligaciones Contractuales, abierto a la firma en Roma el 19 de junio de 1980, ratificado por Instrumento de 7 de mayo de 1993 («Boletín Oficial del Estado» de 19 de julio), al atribuirle el carácter de disposición imperativa (artícu los 3 y 5.2 de dicho Convenio).
-  [22] Desde el punto de vista objetivo se excluyen ciertos contratos que por sus características específicas, por la materia que tratan y por la alienidad de la idea de predisposición contractual, no deben estar comprendidos en la Ley, como son los administrativos, los de trabajo, los de constitución de sociedades, los que regulen relaciones familiares y los sucesorios. Tampoco se extiende la Ley -siguiendo el criterio de la Directiva- a aquellos contratos en los que las condiciones generales ya vengan determinadas por un Convenio internacional en que España sea parte o por una disposición legal o administrativa de carácter general y de aplicación obligatoria para los contratantes. Conforme al criterio del considerando décimo de la Directiva, todos estos supuestos de exclusión deben entenderse referidos no sólo al ámbito de las condiciones generales, sino también al de cláusulas abusivas regulados en la Ley 26/1984, que ahora se modifica.
-  [23] La Ley regula además en este capítulo los requisitos para que la incorporación de una cláusula general se considere ajustada a Derecho y opta por la interpretación de las cláusulas oscuras en la forma más ventajosa para el adherente.
-  [24] II
-  [25] El capítulo II sanciona con nulidad las cláusulas generales no ajustadas a la Ley, determina la ineficacia por no incorporación de las cláusulas que no reúnan los requisitos exigidos en el capítulo anterior para que puedan entenderse incorporadas al contrato. Esta nulidad, al igual que la contravención de cualquier otra norma imperativa o prohibitiva, podrá ser invocada, en su caso, por los contratantes conforme a las reglas generales de la nulidad contractual, sin que puedan confundirse tales acciones individuales con las acciones colectivas de cesación o retractación reconocidas con carácter general a las entidades o corporaciones legitimadas para ello en el capítulo IV y que tienen un breve plazo de prescripción.
-  [26] III
-  [27] En el capítulo III la Ley crea un Registro de Condiciones Generales de la Contratación, de acuerdo con lo previsto en el artículo 7 de la Directiva y conforme a los preceptos legales de otros Estados miembros de la Unión Europea. Registro que se estima sumamente conveniente como medio para hacer efectivo el ejercicio de acciones contra las condiciones generales no ajustadas a la Ley. Se trata de un Registro jurídico, regulado por el Ministerio de Justicia, que aprovechará la estructura dispensada por los Registradores de la Propiedad y Mercantiles. Ello no obstante, las funciones calificadoras nunca se extenderán a lo que es competencia judicial, como es la apreciación de la nulidad de las cláusulas, sin perjuicio de las funciones estrictamente jurídicas encaminadas a la práctica de las anotaciones preventivas reguladas en la Ley, a la inscripción de las resoluciones judiciales y a la publicidad de las cláusulas en los términos en que resulten de los correspondientes asientos. La inscripción en este Registro, para buscar un equilibrio entre seguridad jurídica y agilidad en la contratación, se configura como voluntaria, si bien legitimando ampliamente para solicitar su inscripción a cualquier persona o entidad interesada, como fórmula para permitir la posibilidad efectiva de un conocimiento de las condiciones generales. Ello no obstante, se admite que en sectores específicos el Ministerio de Justicia, a instancia de parte interesada o de oficio, y en propuesta conjunta con otros departamentos ministeriales, pueda configurar la inscripción como obligatoria.
-  [28] El carácter eminentemente jurídico de este Registro deriva de los efectos «erga omnes» que la inscripción va a atribuir a la declaración judicial de nulidad, los efectos prejudiciales que van a producir los asientos relativos a sentencias firmes en otros procedimientos referentes a cláusulas idénticas, así como del cómputo del plazo de prescripción de las acciones colectivas, además del dictamen de conciliación que tendrá que emitir su titular. En definitiva, el Registro de Condiciones Generales va a posibilitar el ejercicio de las acciones colectivas y a coordinar la actuación judicial, permitiendo que ésta sea uniforme y no se produzca una multiplicidad de procesos sobre la misma materia descoordinados y sin posibilidad de acumulación.
-  [29] IV
-  [30] El capítulo IV regula las acciones colectivas encaminadas a impedir la utilización de condiciones generales que sean contrarias a la Ley, como son la acción de cesación, dirigida a impedir la utilización de tales condiciones generales; la de retractación, dirigida a prohibir y retractarse de su recomendación, siempre que en algún momento hayan sido efectivamente utilizadas, y que permitirá actuar no sólo frente al predisponente que utilice condiciones generales nulas, sino también frente a las organizaciones que las recomienden, y la declarativa, dirigida a reconocer su cualidad de condición general e instar la inscripción de las mismas en el Registro de Condiciones Generales de la Contratación. Todo ello sin perjuicio de la posibilidad de ejercitar las acciones individuales de nulidad conforme a las reglas comunes de la nulidad contractual o la de no incorporación de determinadas cláusulas generales.
-  [31] La Ley parte de que el control de la validez de las cláusulas generales tan sólo corresponde a Jueces y Tribunales, sin perjuicio de la publicidad registral de las resoluciones judiciales relativas a aquéllas a través del Registro regulado en el capítulo III y del deber de colaboración de los profesionales ejercientes de funciones públicas.
-  [32] Este capítulo IV también regula la legitimación activa para la interposición de las acciones colectivas de cesación, retractación y declarativa, incluyendo entre las entidades legitimadas a las asociaciones de consumidores y usuarios, aunque sin ser las únicas por ser mayor el campo de actuación que tiene la Ley.
-  [33] También se regula la legitimación pasiva, el plazo de prescripción (considerándose suficiente a efectos de seguridad jurídica dos años desde la inscripción de las condiciones generales en el correspondiente Registro, sin perjuicio de su posible ejercicio en todo caso si no hubiera transcurrido un año desde que se dictase una resolución judicial declarativa de la nulidad de las cláusulas), las reglas de su tramitación y la eficacia de las sentencias, que podrán ser no sólo invocadas en otros procedimientos sino que directamente vincularán al Juez en otros procedimientos dirigidos a obtener la nulidad contractual de cláusulas idénticas utilizadas por el mismo predisponente.
-  [34] V
-  [35] El capítulo V regula la publicidad, por decisión judicial, de las sentencias de cesación o retractación (aunque limitando la publicidad al fallo y a las cláusulas afectadas para no encarecer el proceso) y su necesaria inscripción en el Registro de Condiciones Generales de la Contratación.
-  [36] VI
-  [37] El capítulo VI regula la obligación profesional de los Notarios y de los Registradores de la Propiedad y Mercantiles en orden al cumplimiento de esta Ley, así como de los Corredores de Comercio en el ámbito de sus respectivas competencias.
-  [38] VII
-  [39] El capítulo VII regula el régimen sancionador por el incumplimiento de la normativa sobre condiciones generales de la contratación, en particular la persistencia en la utilización o recomendación de cláusulas generales nulas.
-  [40] VIII
-  [41] La disposición adicional primera de la Ley está dirigida a la modificación de la Ley 26/1984, de 19 de julio, General para la Defensa de los Consumidores y Usuarios.
-  [42] En la línea de incremento de protección respecto de los mínimos establecidos en la Directiva, la Ley mantiene el concepto amplio de consumidor hasta ahora existente, abarcando tanto a la persona física como a la jurídica que sea destinataria final de los bienes y servicios, si bien debe entenderse incluida también -según el criterio de la Directiva- a toda aquella persona que actúe con un propósito ajeno a su actividad profesional aunque no fuera destinataria final de los bienes o servicios objeto del contrato.
-  [43] A diferencia de las condiciones generales, se estima procedente que también las Administraciones públicas queden incluidas, como estaban hasta ahora, en el régimen de protección de consumidores y usuarios frente a la utilización de cláusulas abusivas.
-  [44] La Ley introduce una definición de cláusula abusiva, añadiendo un artículo 10 bis a la Ley 26/1984, considerando como tal la que en contra de las exigencias de la buena fe cause, en detrimento del consumidor, un desequilibrio importante de los derechos y obligaciones contractuales.
-  [45] Al mismo tiempo se añade una disposición adicional primera a la citada Ley 26/1984, haciendo una enumeración enunciativa de las cláusulas abusivas, extraídas en sus líneas generales de la Directiva, pero añadiendo también aquellas otras que aún sin estar previstas en ella se estima necesario que estén incluidas en el Derecho español por su carácter claramente abusivo.
-  [46] La regulación específica de las cláusulas contractuales en el ámbito de los consumidores, cuando no se han negociado individualmente (por tanto también los contratos de adhesión particulares), no impide que cuando tengan el carácter de condiciones generales se rijan también por los preceptos de la Ley de Condiciones Generales de la Contratación.
-  [47] IX
-  [48] La disposición adicional segunda modifica la Ley Hipotecaria para acomodar las obligaciones profesionales de los Registradores de la Propiedad a la normativa sobre protección al consumidor y sobre condiciones generales, adecuando a las mismas y a la legislación sobre protección de datos de las labores de calificación, información y publicidad formal. Dentro del ámbito de la seguridad jurídica extrajudicial, bajo la autoridad suprema y salvaguardia de Jueces y Tribunales, las normas registrales, dirigidas a la actuación profesional del Registrador, dados los importantes efectos de los asientos que practican, deben acomodarse a los nuevos requerimientos sociales, con la garantía añadida del recurso gubernativo contra la calificación, que goza de la naturaleza jurídica de los actos de jurisdicción voluntaria, todo lo cual contribuirá a la desjudicialización de la contratación privada y del tráfico jurídico civil y mercantil, sobre la base de que la inscripción asegura los derechos, actos y hechos jurídicos objeto de publicidad.
-  [49] X
-  [50] La disposición transitoria prevé la inscripción voluntaria de los contratos celebrados con anterioridad a la entrada en vigor de esta Ley, salvo que norma expresa determine la obligatoriedad de su inscripción en el Registro de Condiciones Generales de la Contratación, y ello sin perjuicio de la inmediata aplicación de los preceptos relativos a las acciones de cesación y retractación.
-  [51] XI
-  [52] La disposición derogatoria deja sin efecto el punto 2 de la disposición adicional segunda de la Ley 36/1988, de 5 de diciembre, de Arbitraje, como consecuencia de la reforma del artículo 10, número 3, de la Ley 26/1984, de 19 de julio, General para la Defensa de los Consumidores y Usuarios.
-  [53] XII
-  [54] La disposición final primera regula el título competencial, atribuyendo aplicación plena a los preceptos de la Ley por tratarse de materias afectantes al Derecho civil y mercantil, y por la regulación de un Registro jurídico estatal.
-  [55] XIII
-  [56] La disposición final segunda regula la autorización al Gobierno para el desarrollo reglamentario de la Ley.
-  [57] XIV
-  [58] La disposición final tercera determina la fecha de entrada en vigor de la Ley.
-```
-
-### Real Decreto Legislativo 1/2007, artículo 86 · `BOE-A-2007-20555__a86` [JUZGADO rel=0 draft]
-https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a86
-_recuperado por:_ bge-m3/BASELINE#3 (0.721) · e5-large-instruct/I2_CITIZEN_LEGISLATION#4 (0.933) · e5-large-instruct/I0_GENERIC#5 (0.922) · e5-large-instruct/I1_LEGAL#5 (0.931) · e5-base/BASELINE#18 (0.859)  [5 sistemas]
-```
-  [1] Artículo 86. Cláusulas abusivas por limitar los derechos básicos del consumidor y usuario.
-  [2] En cualquier caso serán abusivas las cláusulas que limiten o priven al consumidor y usuario de los derechos reconocidos por normas dispositivas o imperativas y, en particular, aquellas estipulaciones que prevean:
-  [3] 1. La exclusión o limitación de forma inadecuada de los derechos legales del consumidor y usuario por incumplimiento total o parcial o cumplimiento defectuoso del empresario.
-  [4] En particular las cláusulas que modifiquen, en perjuicio del consumidor y usuario, las normas legales sobre conformidad con el contrato de los bienes o servicios puestos a su disposición o limiten el derecho del consumidor y usuario a la indemnización por los daños y perjuicios ocasionados por dicha falta de conformidad.
-  [5] 2. La exclusión o limitación de la responsabilidad del empresario en el cumplimiento del contrato, por los daños o por la muerte o por las lesiones causadas al consumidor y usuario por una acción u omisión de aquél.
-  [6] 3. La liberación de responsabilidad del empresario por cesión del contrato a tercero, sin consentimiento del deudor, si puede engendrar merma de las garantías de éste.
-  [7] 4. La privación o restricción al consumidor y usuario de las facultades de compensación de créditos, retención o consignación.
-  [8] 5. La limitación o exclusión de la facultad del consumidor y usuario de resolver el contrato por incumplimiento del empresario.
-  [9] 6. La imposición de renuncias a la entrega de documento acreditativo de la operación.
-  [10] 7. La imposición de cualquier otra renuncia o limitación de los derechos del consumidor y usuario.
-```
-
-### Real Decreto Legislativo 1/2007, artículo 90 · `BOE-A-2007-20555__a90` [JUZGADO rel=0 draft]
-https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a90
-_recuperado por:_ e5-base/BASELINE#1 (0.889) · e5-large-instruct/I0_GENERIC#4 (0.925) · e5-large-instruct/I1_LEGAL#6 (0.931) · e5-large-instruct/I2_CITIZEN_LEGISLATION#7 (0.930) · bge-m3/BASELINE#10 (0.682)  [5 sistemas]
-```
-  [1] Artículo 90. Cláusulas abusivas sobre competencia y derecho aplicable.
-  [2] Son, asimismo, abusivas las cláusulas que establezcan:
-  [3] 1. La sumisión a arbitrajes distintos del arbitraje de consumo, salvo que se trate de órganos de arbitraje institucionales creados por normas legales para un sector o un supuesto específico.
-  [4] 2. La previsión de pactos de sumisión expresa a Juez o Tribunal distinto del que corresponda al domicilio del consumidor y usuario, al lugar del cumplimiento de la obligación o aquél en que se encuentre el bien si éste fuera inmueble.
-  [5] 3. La sumisión del contrato a un Derecho extranjero con respecto al lugar donde el consumidor y usuario emita su declaración negocial o donde el empresario desarrolle la actividad dirigida a la promoción de contratos de igual o similar naturaleza.
+  [1] Artículo 87. Cláusulas abusivas por falta de reciprocidad.
+  [2] Son abusivas las cláusulas que determinen la falta de reciprocidad en el contrato, contraria a la buena fe, en perjuicio del consumidor y usuario y, en particular:
+  [3] 1. La imposición de obligaciones al consumidor y usuario para el cumplimiento de todos sus deberes y contraprestaciones, aun cuando el empresario no hubiere cumplido los suyos.
+  [4] 2. La retención de cantidades abonadas por el consumidor y usuario por renuncia, sin contemplar la indemnización por una cantidad equivalente si renuncia el empresario.
+  [5] 3. La autorización al empresario para resolver el contrato discrecionalmente, si al consumidor y usuario no se le reconoce la misma facultad.
+  [6] 4. La posibilidad de que el empresario se quede con las cantidades abonadas en concepto de prestaciones aún no efectuadas cuando sea él mismo quien resuelva el contrato.
+  [7] 5. Las estipulaciones que prevean el redondeo al alza en el tiempo consumido o en el precio de los bienes o servicios o cualquier otra estipulación que prevea el cobro por productos o servicios no efectivamente usados o consumidos de manera efectiva.
+  [8] En aquellos sectores en los que el inicio del servicio conlleve indisolublemente unido un coste para las empresas o los profesionales no repercutido en el precio, no se considerará abusiva la facturación por separado de tales costes, cuando se adecuen al servicio efectivamente prestado.
+  [9] 6. Las estipulaciones que impongan obstáculos onerosos o desproporcionados para el ejercicio de los derechos reconocidos al consumidor y usuario en el contrato, en particular en los contratos de prestación de servicios o suministro de productos de tracto sucesivo o continuado, la imposición de plazos de duración excesiva, la renuncia o el establecimiento de limitaciones que excluyan u obstaculicen el derecho del consumidor y usuario a poner fin a estos contratos, así como la obstaculización al ejercicio de este derecho a través del procedimiento pactado, cual es el caso de las que prevean la imposición de formalidades distintas de las previstas para contratar o la pérdida de las cantidades abonadas por adelantado, el abono de cantidades por servicios no prestados efectivamente, la atribución al empresario de la facultad de ejecución unilateral de las cláusulas penales que se hubieran fijado contractualmente o la fijación de indemnizaciones que no se correspondan con los daños efectivamente causados.
 ```
 
 ### Real Decreto Legislativo 1/2007, artículo 85 · `BOE-A-2007-20555__a85` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a85
-_recuperado por:_ bge-m3/BASELINE#8 (0.700) · e5-large-instruct/I1_LEGAL#8 (0.924) · e5-large-instruct/I2_CITIZEN_LEGISLATION#8 (0.925) · e5-base/BASELINE#9 (0.868) · e5-large-instruct/I0_GENERIC#11 (0.917)  [5 sistemas]
+_recuperado por:_ bge-m3/BASELINE#8 (0.700) · e5-large-instruct/I1_LEGAL#8 (0.924) · e5-large-instruct/I2_CITIZEN_LEGISLATION#8 (0.925) · e5-base/BASELINE#9 (0.868) · e5-large-instruct/I0_GENERIC#11 (0.917) · bm25/lexical#11 (25.999) · hybrid_rrf/I0_GENERIC#12 (0.028)  [7 sistemas]
 ```
   [1] Artículo 85. Cláusulas abusivas por vincular el contrato a la voluntad del empresario.
   [2] Las cláusulas que vinculen cualquier aspecto del contrato a la voluntad del empresario serán abusivas y, en todo caso, las siguientes:
@@ -5705,7 +5894,7 @@ _recuperado por:_ bge-m3/BASELINE#8 (0.700) · e5-large-instruct/I1_LEGAL#8 (0.9
 
 ### Real Decreto Legislativo 1/2007, artículo 88 · `BOE-A-2007-20555__a88` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a88
-_recuperado por:_ e5-base/BASELINE#4 (0.876) · e5-large-instruct/I0_GENERIC#9 (0.918) · e5-large-instruct/I1_LEGAL#9 (0.924) · e5-large-instruct/I2_CITIZEN_LEGISLATION#11 (0.924) · bge-m3/BASELINE#12 (0.680)  [5 sistemas]
+_recuperado por:_ e5-base/BASELINE#4 (0.876) · e5-large-instruct/I0_GENERIC#9 (0.918) · e5-large-instruct/I1_LEGAL#9 (0.924) · e5-large-instruct/I2_CITIZEN_LEGISLATION#11 (0.924) · hybrid_rrf/I0_GENERIC#11 (0.028) · bge-m3/BASELINE#12 (0.680) · bm25/lexical#12 (25.761)  [7 sistemas]
 ```
   [1] Artículo 88. Cláusulas abusivas sobre garantías.
   [2] En todo caso se consideraran abusivas las cláusulas que supongan:
@@ -5715,24 +5904,45 @@ _recuperado por:_ e5-base/BASELINE#4 (0.876) · e5-large-instruct/I0_GENERIC#9 (
   [6] 3. La imposición al consumidor de la carga de la prueba sobre el incumplimiento, total o parcial, del empresario proveedor a distancia de servicios financieros de las obligaciones impuestas por la normativa específica sobre la materia.
 ```
 
-### Real Decreto Legislativo 1/2007, artículo 87 · `BOE-A-2007-20555__a87` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a87
-_recuperado por:_ bge-m3/BASELINE#5 (0.710) · e5-large-instruct/I0_GENERIC#10 (0.918) · e5-large-instruct/I1_LEGAL#10 (0.923) · e5-large-instruct/I2_CITIZEN_LEGISLATION#10 (0.924) · e5-base/BASELINE#19 (0.858)  [5 sistemas]
+### Real Decreto Legislativo 1/2007, artículo 86 · `BOE-A-2007-20555__a86` [JUZGADO rel=0 draft]
+https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a86
+_recuperado por:_ bge-m3/BASELINE#3 (0.721) · e5-large-instruct/I2_CITIZEN_LEGISLATION#4 (0.933) · e5-large-instruct/I0_GENERIC#5 (0.922) · e5-large-instruct/I1_LEGAL#5 (0.931) · hybrid_rrf/I0_GENERIC#10 (0.029) · bm25/lexical#15 (24.780) · e5-base/BASELINE#18 (0.859)  [7 sistemas]
 ```
-  [1] Artículo 87. Cláusulas abusivas por falta de reciprocidad.
-  [2] Son abusivas las cláusulas que determinen la falta de reciprocidad en el contrato, contraria a la buena fe, en perjuicio del consumidor y usuario y, en particular:
-  [3] 1. La imposición de obligaciones al consumidor y usuario para el cumplimiento de todos sus deberes y contraprestaciones, aun cuando el empresario no hubiere cumplido los suyos.
-  [4] 2. La retención de cantidades abonadas por el consumidor y usuario por renuncia, sin contemplar la indemnización por una cantidad equivalente si renuncia el empresario.
-  [5] 3. La autorización al empresario para resolver el contrato discrecionalmente, si al consumidor y usuario no se le reconoce la misma facultad.
-  [6] 4. La posibilidad de que el empresario se quede con las cantidades abonadas en concepto de prestaciones aún no efectuadas cuando sea él mismo quien resuelva el contrato.
-  [7] 5. Las estipulaciones que prevean el redondeo al alza en el tiempo consumido o en el precio de los bienes o servicios o cualquier otra estipulación que prevea el cobro por productos o servicios no efectivamente usados o consumidos de manera efectiva.
-  [8] En aquellos sectores en los que el inicio del servicio conlleve indisolublemente unido un coste para las empresas o los profesionales no repercutido en el precio, no se considerará abusiva la facturación por separado de tales costes, cuando se adecuen al servicio efectivamente prestado.
-  [9] 6. Las estipulaciones que impongan obstáculos onerosos o desproporcionados para el ejercicio de los derechos reconocidos al consumidor y usuario en el contrato, en particular en los contratos de prestación de servicios o suministro de productos de tracto sucesivo o continuado, la imposición de plazos de duración excesiva, la renuncia o el establecimiento de limitaciones que excluyan u obstaculicen el derecho del consumidor y usuario a poner fin a estos contratos, así como la obstaculización al ejercicio de este derecho a través del procedimiento pactado, cual es el caso de las que prevean la imposición de formalidades distintas de las previstas para contratar o la pérdida de las cantidades abonadas por adelantado, el abono de cantidades por servicios no prestados efectivamente, la atribución al empresario de la facultad de ejecución unilateral de las cláusulas penales que se hubieran fijado contractualmente o la fijación de indemnizaciones que no se correspondan con los daños efectivamente causados.
+  [1] Artículo 86. Cláusulas abusivas por limitar los derechos básicos del consumidor y usuario.
+  [2] En cualquier caso serán abusivas las cláusulas que limiten o priven al consumidor y usuario de los derechos reconocidos por normas dispositivas o imperativas y, en particular, aquellas estipulaciones que prevean:
+  [3] 1. La exclusión o limitación de forma inadecuada de los derechos legales del consumidor y usuario por incumplimiento total o parcial o cumplimiento defectuoso del empresario.
+  [4] En particular las cláusulas que modifiquen, en perjuicio del consumidor y usuario, las normas legales sobre conformidad con el contrato de los bienes o servicios puestos a su disposición o limiten el derecho del consumidor y usuario a la indemnización por los daños y perjuicios ocasionados por dicha falta de conformidad.
+  [5] 2. La exclusión o limitación de la responsabilidad del empresario en el cumplimiento del contrato, por los daños o por la muerte o por las lesiones causadas al consumidor y usuario por una acción u omisión de aquél.
+  [6] 3. La liberación de responsabilidad del empresario por cesión del contrato a tercero, sin consentimiento del deudor, si puede engendrar merma de las garantías de éste.
+  [7] 4. La privación o restricción al consumidor y usuario de las facultades de compensación de créditos, retención o consignación.
+  [8] 5. La limitación o exclusión de la facultad del consumidor y usuario de resolver el contrato por incumplimiento del empresario.
+  [9] 6. La imposición de renuncias a la entrega de documento acreditativo de la operación.
+  [10] 7. La imposición de cualquier otra renuncia o limitación de los derechos del consumidor y usuario.
+```
+
+### Real Decreto Legislativo 1/2007, artículo 90 · `BOE-A-2007-20555__a90` [JUZGADO rel=0 draft]
+https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a90
+_recuperado por:_ e5-base/BASELINE#1 (0.889) · e5-large-instruct/I0_GENERIC#4 (0.925) · e5-large-instruct/I1_LEGAL#6 (0.931) · e5-large-instruct/I2_CITIZEN_LEGISLATION#7 (0.930) · hybrid_rrf/I0_GENERIC#9 (0.029) · bge-m3/BASELINE#10 (0.682) · bm25/lexical#16 (24.694)  [7 sistemas]
+```
+  [1] Artículo 90. Cláusulas abusivas sobre competencia y derecho aplicable.
+  [2] Son, asimismo, abusivas las cláusulas que establezcan:
+  [3] 1. La sumisión a arbitrajes distintos del arbitraje de consumo, salvo que se trate de órganos de arbitraje institucionales creados por normas legales para un sector o un supuesto específico.
+  [4] 2. La previsión de pactos de sumisión expresa a Juez o Tribunal distinto del que corresponda al domicilio del consumidor y usuario, al lugar del cumplimiento de la obligación o aquél en que se encuentre el bien si éste fuera inmueble.
+  [5] 3. La sumisión del contrato a un Derecho extranjero con respecto al lugar donde el consumidor y usuario emita su declaración negocial o donde el empresario desarrolle la actividad dirigida a la promoción de contratos de igual o similar naturaleza.
+```
+
+### Real Decreto Legislativo 1/2007, artículo 83 · `BOE-A-2007-20555__a83` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a83
+_recuperado por:_ bm25/lexical#5 (28.045) · hybrid_rrf/I0_GENERIC#7 (0.029) · e5-base/BASELINE#11 (0.867) · e5-large-instruct/I0_GENERIC#14 (0.914) · e5-large-instruct/I1_LEGAL#16 (0.918) · e5-large-instruct/I2_CITIZEN_LEGISLATION#16 (0.919)  [6 sistemas]
+```
+  [1] Artículo 83. Nulidad de las cláusulas abusivas y subsistencia del contrato.
+  [2] Las cláusulas abusivas serán nulas de pleno derecho y se tendrán por no puestas. A estos efectos, el Juez, previa audiencia de las partes, declarará la nulidad de las cláusulas abusivas incluidas en el contrato, el cual, no obstante, seguirá siendo obligatorio para las partes en los mismos términos, siempre que pueda subsistir sin dichas cláusulas.
+  [3] Las condiciones incorporadas de modo no transparente en los contratos en perjuicio de los consumidores serán nulas de pleno derecho.
 ```
 
 ### Real Decreto Legislativo 1/2007, artículo 89 · `BOE-A-2007-20555__a89` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a89
-_recuperado por:_ bge-m3/BASELINE#4 (0.713) · e5-large-instruct/I1_LEGAL#14 (0.920) · e5-large-instruct/I2_CITIZEN_LEGISLATION#14 (0.920) · e5-large-instruct/I0_GENERIC#15 (0.913)  [4 sistemas]
+_recuperado por:_ bge-m3/BASELINE#4 (0.713) · bm25/lexical#13 (24.817) · e5-large-instruct/I1_LEGAL#14 (0.920) · e5-large-instruct/I2_CITIZEN_LEGISLATION#14 (0.920) · hybrid_rrf/I0_GENERIC#14 (0.027) · e5-large-instruct/I0_GENERIC#15 (0.913)  [6 sistemas]
 ```
   [1] Artículo 89. Cláusulas abusivas que afectan al perfeccionamiento y ejecución del contrato.
   [2] En todo caso tienen la consideración de cláusulas abusivas:
@@ -5750,24 +5960,27 @@ _recuperado por:_ bge-m3/BASELINE#4 (0.713) · e5-large-instruct/I1_LEGAL#14 (0.
   [14] 8. La previsión de pactos de renuncia o transacción respecto al derecho del consumidor y usuario a la elección de fedatario competente según la ley para autorizar el documento público en que inicial o ulteriormente haya de formalizarse el contrato.
 ```
 
-### Real Decreto Legislativo 1/2007, artículo 83 · `BOE-A-2007-20555__a83` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555#a83
-_recuperado por:_ e5-base/BASELINE#11 (0.867) · e5-large-instruct/I0_GENERIC#14 (0.914) · e5-large-instruct/I1_LEGAL#16 (0.918) · e5-large-instruct/I2_CITIZEN_LEGISLATION#16 (0.919)  [4 sistemas]
-```
-  [1] Artículo 83. Nulidad de las cláusulas abusivas y subsistencia del contrato.
-  [2] Las cláusulas abusivas serán nulas de pleno derecho y se tendrán por no puestas. A estos efectos, el Juez, previa audiencia de las partes, declarará la nulidad de las cláusulas abusivas incluidas en el contrato, el cual, no obstante, seguirá siendo obligatorio para las partes en los mismos términos, siempre que pueda subsistir sin dichas cláusulas.
-  [3] Las condiciones incorporadas de modo no transparente en los contratos en perjuicio de los consumidores serán nulas de pleno derecho.
-```
-
 ---
 
 ## q92_077 · directa_articulo · single_parent
 **Pregunta:** ¿En qué artículo se define qué bienes integran el dominio público hidráulico del Estado?
 _split=test · difficulty=media · failure_mode=—_
 
+### Real Decreto Legislativo 1/2001, artículo 17 · `BOE-A-2001-14276__a17` [JUZGADO rel=0 draft]
+https://www.boe.es/buscar/act.php?id=BOE-A-2001-14276#a17
+_recuperado por:_ hybrid_rrf/I0_GENERIC#1 (0.031) · e5-large-instruct/I1_LEGAL#2 (0.904) · e5-large-instruct/I2_CITIZEN_LEGISLATION#2 (0.902) · bge-m3/BASELINE#3 (0.663) · e5-base/BASELINE#3 (0.861) · e5-large-instruct/I0_GENERIC#3 (0.893) · bm25/lexical#8 (21.805)  [7 sistemas]
+```
+  [1] Artículo 17. Funciones del Estado en relación con el dominio público hidráulico.
+  [2] En relación con el dominio público hidráulico y en el marco de las competencias que le son atribuidas por la Constitución, el Estado ejercerá, especialmente, las funciones siguientes:
+  [3] a) La planificación hidrológica y la realización de los planes estatales de infraestructuras hidráulicas o cualquier otro estatal que forme parte de aquéllas.
+  [4] b) La adopción de las medidas precisas para el cumplimiento de los acuerdos y Convenios internacionales en materia de aguas.
+  [5] c) El otorgamiento de concesiones referentes al dominio público hidráulico en las cuencas hidrográficas que excedan del ámbito territorial de una sola Comunidad Autónoma.
+  [6] d) El otorgamiento de autorizaciones referentes al dominio público hidráulico, así como la tutela de éste, en las cuencas hidrográficas que excedan del ámbito territorial, de una sola Comunidad Autónoma. La tramitación de las mismas podrá, no obstante, ser encomendada a las Comunidades Autónomas.
+```
+
 ### Real Decreto Legislativo 1/2001, artículo 2 · `BOE-A-2001-14276__a2` [JUZGADO rel=2 reviewed]
 https://www.boe.es/buscar/act.php?id=BOE-A-2001-14276#a2
-_recuperado por:_ bge-m3/BASELINE#1 (0.735) · e5-base/BASELINE#1 (0.891) · e5-large-instruct/I0_GENERIC#1 (0.913) · e5-large-instruct/I1_LEGAL#1 (0.924) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.922)  [5 sistemas]
+_recuperado por:_ bge-m3/BASELINE#1 (0.735) · e5-base/BASELINE#1 (0.891) · e5-large-instruct/I0_GENERIC#1 (0.913) · e5-large-instruct/I1_LEGAL#1 (0.924) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.922) · hybrid_rrf/I0_GENERIC#2 (0.030) · bm25/lexical#11 (21.083)  [7 sistemas]
 ```
   [1] Artículo 2. Definición de dominio público hidráulico.
   [2] Constituyen el dominio público hidráulico del Estado, con las salvedades expresamente establecidas en esta Ley:
@@ -5778,78 +5991,9 @@ _recuperado por:_ bge-m3/BASELINE#1 (0.735) · e5-base/BASELINE#1 (0.891) · e5-
   [7] e) Las aguas procedentes de la desalación de agua de mar.
 ```
 
-### Real Decreto Legislativo 1/2001, artículo 17 · `BOE-A-2001-14276__a17` [JUZGADO rel=0 draft]
-https://www.boe.es/buscar/act.php?id=BOE-A-2001-14276#a17
-_recuperado por:_ e5-large-instruct/I1_LEGAL#2 (0.904) · e5-large-instruct/I2_CITIZEN_LEGISLATION#2 (0.902) · bge-m3/BASELINE#3 (0.663) · e5-base/BASELINE#3 (0.861) · e5-large-instruct/I0_GENERIC#3 (0.893)  [5 sistemas]
-```
-  [1] Artículo 17. Funciones del Estado en relación con el dominio público hidráulico.
-  [2] En relación con el dominio público hidráulico y en el marco de las competencias que le son atribuidas por la Constitución, el Estado ejercerá, especialmente, las funciones siguientes:
-  [3] a) La planificación hidrológica y la realización de los planes estatales de infraestructuras hidráulicas o cualquier otro estatal que forme parte de aquéllas.
-  [4] b) La adopción de las medidas precisas para el cumplimiento de los acuerdos y Convenios internacionales en materia de aguas.
-  [5] c) El otorgamiento de concesiones referentes al dominio público hidráulico en las cuencas hidrográficas que excedan del ámbito territorial de una sola Comunidad Autónoma.
-  [6] d) El otorgamiento de autorizaciones referentes al dominio público hidráulico, así como la tutela de éste, en las cuencas hidrográficas que excedan del ámbito territorial, de una sola Comunidad Autónoma. La tramitación de las mismas podrá, no obstante, ser encomendada a las Comunidades Autónomas.
-```
-
-### Real Decreto Legislativo 1/2001, artículo 12 · `BOE-A-2001-14276__a12` [JUZGADO rel=0 draft]
-https://www.boe.es/buscar/act.php?id=BOE-A-2001-14276#a12
-_recuperado por:_ e5-large-instruct/I0_GENERIC#2 (0.894) · e5-large-instruct/I1_LEGAL#4 (0.896) · e5-large-instruct/I2_CITIZEN_LEGISLATION#5 (0.891) · e5-base/BASELINE#18 (0.849) · bge-m3/BASELINE#19 (0.571)  [5 sistemas]
-```
-  [1] Artículo 12. El dominio público de los acuíferos.
-  [2] El dominio público de los acuíferos o formaciones geológicas por las que circulan aguas subterráneas, se entiende sin perjuicio de que el propietario del fundo pueda realizar cualquier obra que no tenga por finalidad la extracción o aprovechamiento del agua, ni perturbe su régimen ni deteriore su calidad, con la salvedad prevista en el apartado 2 del artículo 54.
-```
-
-### Ley 33/2003, artículo 5 · `BOE-A-2003-20254__a5` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2003-20254#a5
-_recuperado por:_ e5-large-instruct/I2_CITIZEN_LEGISLATION#4 (0.892) · e5-large-instruct/I1_LEGAL#5 (0.894) · bge-m3/BASELINE#15 (0.586) · e5-large-instruct/I0_GENERIC#16 (0.879) · e5-base/BASELINE#20 (0.848)  [5 sistemas]
-```
-  [1] Artículo 5. Bienes y derechos de dominio público o demaniales.
-  [2] 1. Son bienes y derechos de dominio público los que, siendo de titularidad pública, se encuentren afectados al uso general o al servicio público, así como aquellos a los que una ley otorgue expresamente el carácter de demaniales.
-  [3] 2. Son bienes de dominio público estatal, en todo caso, los mencionados en el artículo 132.2 de la Constitución.
-  [4] 3. Los inmuebles de titularidad de la Administración General del Estado o de los organismos públicos vinculados a ella o dependientes de la misma en que se alojen servicios, oficinas o dependencias de sus órganos o de los órganos constitucionales del Estado se considerarán, en todo caso, bienes de dominio público.
-  [5] 4. Los bienes y derechos de dominio público se regirán por las leyes y disposiciones especiales que les sean de aplicación y, a falta de normas especiales, por esta ley y las disposiciones que la desarrollen o complementen. Las normas generales del derecho administrativo y, en su defecto, las normas del derecho privado, se aplicarán como derecho supletorio.
-```
-
-### BOE-A-1978-31229, artículo 132 · `BOE-A-1978-31229__a132` [JUZGADO rel=0 draft]
-https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a132
-_recuperado por:_ e5-large-instruct/I1_LEGAL#3 (0.903) · e5-large-instruct/I2_CITIZEN_LEGISLATION#3 (0.902) · e5-large-instruct/I0_GENERIC#6 (0.890) · bge-m3/BASELINE#14 (0.587)  [4 sistemas]
-```
-  [1] Artículo 132
-  [2] 1. La ley regulará el régimen jurídico de los bienes de dominio público y de los comunales, inspirándose en los principios de inalienabilidad, imprescriptibilidad e inembargabilidad, así como su desafectación.
-  [3] 2. Son bienes de dominio público estatal los que determine la ley y, en todo caso, la zona marítimo-terrestre, las playas, el mar territorial y los recursos naturales de la zona económica y la plataforma continental.
-  [4] 3. Por ley se regularán el Patrimonio del Estado y el Patrimonio Nacional, su administración, defensa y conservación.
-```
-
-### Real Decreto Legislativo 1/2001, artículo 1 · `BOE-A-2001-14276__a1` [JUZGADO rel=0 draft]
-https://www.boe.es/buscar/act.php?id=BOE-A-2001-14276#a1
-_recuperado por:_ bge-m3/BASELINE#2 (0.670) · e5-base/BASELINE#2 (0.863) · e5-large-instruct/I2_CITIZEN_LEGISLATION#6 (0.890) · e5-large-instruct/I1_LEGAL#7 (0.890)  [4 sistemas]
-```
-  [1] Artículo 1. Objeto de la Ley.
-  [2] 1. Es objeto de esta Ley la regulación del dominio público hidráulico, del uso del agua y del ejercicio de las competencias atribuidas al Estado en las materias relacionadas con dicho dominio en el marco de las competencias delimitadas en el artículo 149 de la Constitución.
-  [3] 2. Es también objeto de esta ley el establecimiento de las normas básicas de protección de las aguas continentales, costeras y de transición, sin perjuicio de su calificación jurídica y de la legislación específica que les sea de aplicación.
-  [4] 3. Las aguas continentales superficiales, así como las subterráneas renovables, integradas todas ellas en el ciclo hidrológico, constituyen un recurso unitario, subordinado al interés general, que forma parte del dominio público estatal como dominio público hidráulico.
-  [5] 4. Corresponde al Estado, en todo caso, y en los términos que se establecen en esta Ley, la planificación hidrológica a la que deberá someterse toda actuación sobre el dominio público hidráulico.
-  [6] 5. Las aguas minerales y termales se regularán por su legislación específica, sin perjuicio de la aplicación de lo dispuesto en el apartado 2.
-```
-
-### Ley 33/2003, artículo 4 · `BOE-A-2003-20254__a4` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2003-20254#a4
-_recuperado por:_ e5-base/BASELINE#4 (0.861) · e5-large-instruct/I0_GENERIC#5 (0.890) · e5-large-instruct/I1_LEGAL#10 (0.886) · e5-large-instruct/I2_CITIZEN_LEGISLATION#13 (0.881)  [4 sistemas]
-```
-  [1] Artículo 4. Clasificación.
-  [2] Por razón del régimen jurídico al que están sujetos, los bienes y derechos que integran el patrimonio de las Administraciones públicas pueden ser de dominio público o demaniales y de dominio privado o patrimoniales.
-```
-
-### Ley Orgánica 10/1995, artículo 433 ter · `BOE-A-1995-25444__a4-4` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444#a4-4
-_recuperado por:_ e5-large-instruct/I0_GENERIC#7 (0.887) · e5-large-instruct/I1_LEGAL#8 (0.889) · e5-large-instruct/I2_CITIZEN_LEGISLATION#10 (0.884) · e5-base/BASELINE#14 (0.851)  [4 sistemas]
-```
-  [1] Artículo 433 ter.
-  [2] A los efectos del presente Código, se entenderá por patrimonio público todo el conjunto de bienes y derechos, de contenido económico-patrimonial, pertenecientes a las Administraciones públicas.
-```
-
 ### Real Decreto Legislativo 1/2001, artículo 112 · `BOE-A-2001-14276__a112` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2001-14276#a112
-_recuperado por:_ bge-m3/BASELINE#5 (0.629) · e5-large-instruct/I2_CITIZEN_LEGISLATION#9 (0.884) · e5-base/BASELINE#11 (0.852) · e5-large-instruct/I1_LEGAL#11 (0.886)  [4 sistemas]
+_recuperado por:_ bm25/lexical#1 (24.762) · bge-m3/BASELINE#5 (0.629) · hybrid_rrf/I0_GENERIC#5 (0.028) · e5-large-instruct/I2_CITIZEN_LEGISLATION#9 (0.884) · e5-base/BASELINE#11 (0.852) · e5-large-instruct/I1_LEGAL#11 (0.886)  [6 sistemas]
 ```
   [1] Artículo 112. Canon de utilización de los bienes del dominio público hidráulico.
   [2] 1. La ocupación, utilización y aprovechamiento de los bienes del dominio público hidráulico incluidos en los párrafos b) y c) del artículo 2 de la presente Ley, que requieran concesión o autorización administrativa, devengarán a favor del Organismo de cuenca competente una tasa denominada canon de utilización de bienes del dominio público hidráulico, destinada a la protección y mejora de dicho dominio. Los concesionarios de aguas estarán exentos del pago del canon por la ocupación o utilización de los terrenos de dominio público necesarios para llevar a cabo la concesión.
@@ -5864,13 +6008,79 @@ _recuperado por:_ bge-m3/BASELINE#5 (0.629) · e5-large-instruct/I2_CITIZEN_LEGI
   [11] 6. En el supuesto de cuencas intercomunitarias este canon será recaudado por el Organismo de cuenca o bien por la Administración Tributaria del Estado, en virtud de convenio con aquél. En este segundo caso la Agencia Estatal de la Administración Tributaria recibirá del Organismo de cuenca los datos y censos pertinentes que faciliten su gestión, e informará periódicamente a éste en la forma que se determine por vía reglamentaria. El canon recaudado será puesto a disposición del Organismo de cuenca correspondiente.
 ```
 
+### Real Decreto Legislativo 1/2001, artículo 1 · `BOE-A-2001-14276__a1` [JUZGADO rel=0 draft]
+https://www.boe.es/buscar/act.php?id=BOE-A-2001-14276#a1
+_recuperado por:_ bge-m3/BASELINE#2 (0.670) · e5-base/BASELINE#2 (0.863) · bm25/lexical#2 (23.575) · e5-large-instruct/I2_CITIZEN_LEGISLATION#6 (0.890) · e5-large-instruct/I1_LEGAL#7 (0.890) · hybrid_rrf/I0_GENERIC#7 (0.027)  [6 sistemas]
+```
+  [1] Artículo 1. Objeto de la Ley.
+  [2] 1. Es objeto de esta Ley la regulación del dominio público hidráulico, del uso del agua y del ejercicio de las competencias atribuidas al Estado en las materias relacionadas con dicho dominio en el marco de las competencias delimitadas en el artículo 149 de la Constitución.
+  [3] 2. Es también objeto de esta ley el establecimiento de las normas básicas de protección de las aguas continentales, costeras y de transición, sin perjuicio de su calificación jurídica y de la legislación específica que les sea de aplicación.
+  [4] 3. Las aguas continentales superficiales, así como las subterráneas renovables, integradas todas ellas en el ciclo hidrológico, constituyen un recurso unitario, subordinado al interés general, que forma parte del dominio público estatal como dominio público hidráulico.
+  [5] 4. Corresponde al Estado, en todo caso, y en los términos que se establecen en esta Ley, la planificación hidrológica a la que deberá someterse toda actuación sobre el dominio público hidráulico.
+  [6] 5. Las aguas minerales y termales se regularán por su legislación específica, sin perjuicio de la aplicación de lo dispuesto en el apartado 2.
+```
+
 ### Real Decreto Legislativo 1/2001, artículo 52 · `BOE-A-2001-14276__a52` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2001-14276#a52
-_recuperado por:_ e5-base/BASELINE#5 (0.860) · e5-large-instruct/I0_GENERIC#9 (0.885) · bge-m3/BASELINE#18 (0.574) · e5-large-instruct/I1_LEGAL#18 (0.883)  [4 sistemas]
+_recuperado por:_ hybrid_rrf/I0_GENERIC#3 (0.028) · e5-base/BASELINE#5 (0.860) · e5-large-instruct/I0_GENERIC#9 (0.885) · bm25/lexical#12 (21.032) · bge-m3/BASELINE#18 (0.574) · e5-large-instruct/I1_LEGAL#18 (0.883)  [6 sistemas]
 ```
   [1] Artículo 52. Formas de adquirir el derecho al uso privativo.
   [2] 1. El derecho al uso privativo, sea o no consuntivo, del dominio público hidráulico se adquiere por disposición legal o por concesión administrativa.
   [3] 2. No podrá adquirirse por prescripción el derecho al uso privativo del dominio público hidráulico.
+```
+
+### Ley 33/2003, artículo 5 · `BOE-A-2003-20254__a5` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2003-20254#a5
+_recuperado por:_ e5-large-instruct/I2_CITIZEN_LEGISLATION#4 (0.892) · e5-large-instruct/I1_LEGAL#5 (0.894) · hybrid_rrf/I0_GENERIC#13 (0.023) · bge-m3/BASELINE#15 (0.586) · e5-large-instruct/I0_GENERIC#16 (0.879) · e5-base/BASELINE#20 (0.848)  [6 sistemas]
+```
+  [1] Artículo 5. Bienes y derechos de dominio público o demaniales.
+  [2] 1. Son bienes y derechos de dominio público los que, siendo de titularidad pública, se encuentren afectados al uso general o al servicio público, así como aquellos a los que una ley otorgue expresamente el carácter de demaniales.
+  [3] 2. Son bienes de dominio público estatal, en todo caso, los mencionados en el artículo 132.2 de la Constitución.
+  [4] 3. Los inmuebles de titularidad de la Administración General del Estado o de los organismos públicos vinculados a ella o dependientes de la misma en que se alojen servicios, oficinas o dependencias de sus órganos o de los órganos constitucionales del Estado se considerarán, en todo caso, bienes de dominio público.
+  [5] 4. Los bienes y derechos de dominio público se regirán por las leyes y disposiciones especiales que les sean de aplicación y, a falta de normas especiales, por esta ley y las disposiciones que la desarrollen o complementen. Las normas generales del derecho administrativo y, en su defecto, las normas del derecho privado, se aplicarán como derecho supletorio.
+```
+
+### BOE-A-1978-31229, artículo 132 · `BOE-A-1978-31229__a132` [JUZGADO rel=0 draft]
+https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a132
+_recuperado por:_ e5-large-instruct/I1_LEGAL#3 (0.903) · e5-large-instruct/I2_CITIZEN_LEGISLATION#3 (0.902) · e5-large-instruct/I0_GENERIC#6 (0.890) · bge-m3/BASELINE#14 (0.587) · hybrid_rrf/I0_GENERIC#15 (0.023)  [5 sistemas]
+```
+  [1] Artículo 132
+  [2] 1. La ley regulará el régimen jurídico de los bienes de dominio público y de los comunales, inspirándose en los principios de inalienabilidad, imprescriptibilidad e inembargabilidad, así como su desafectación.
+  [3] 2. Son bienes de dominio público estatal los que determine la ley y, en todo caso, la zona marítimo-terrestre, las playas, el mar territorial y los recursos naturales de la zona económica y la plataforma continental.
+  [4] 3. Por ley se regularán el Patrimonio del Estado y el Patrimonio Nacional, su administración, defensa y conservación.
+```
+
+### Real Decreto Legislativo 1/2001, artículo 12 · `BOE-A-2001-14276__a12` [JUZGADO rel=0 draft]
+https://www.boe.es/buscar/act.php?id=BOE-A-2001-14276#a12
+_recuperado por:_ e5-large-instruct/I0_GENERIC#2 (0.894) · e5-large-instruct/I1_LEGAL#4 (0.896) · e5-large-instruct/I2_CITIZEN_LEGISLATION#5 (0.891) · e5-base/BASELINE#18 (0.849) · bge-m3/BASELINE#19 (0.571)  [5 sistemas]
+```
+  [1] Artículo 12. El dominio público de los acuíferos.
+  [2] El dominio público de los acuíferos o formaciones geológicas por las que circulan aguas subterráneas, se entiende sin perjuicio de que el propietario del fundo pueda realizar cualquier obra que no tenga por finalidad la extracción o aprovechamiento del agua, ni perturbe su régimen ni deteriore su calidad, con la salvedad prevista en el apartado 2 del artículo 54.
+```
+
+### Ley 33/2003, artículo 4 · `BOE-A-2003-20254__a4` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2003-20254#a4
+_recuperado por:_ e5-base/BASELINE#4 (0.861) · hybrid_rrf/I0_GENERIC#4 (0.028) · e5-large-instruct/I0_GENERIC#5 (0.890) · e5-large-instruct/I1_LEGAL#10 (0.886) · e5-large-instruct/I2_CITIZEN_LEGISLATION#13 (0.881)  [5 sistemas]
+```
+  [1] Artículo 4. Clasificación.
+  [2] Por razón del régimen jurídico al que están sujetos, los bienes y derechos que integran el patrimonio de las Administraciones públicas pueden ser de dominio público o demaniales y de dominio privado o patrimoniales.
+```
+
+### Real Decreto Legislativo 1/2001, artículo 77 bis · `BOE-A-2001-14276__a7-2` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2001-14276#a7-2
+_recuperado por:_ bm25/lexical#4 (22.936) · hybrid_rrf/I0_GENERIC#6 (0.027) · e5-large-instruct/I0_GENERIC#14 (0.880) · e5-large-instruct/I1_LEGAL#15 (0.884)  [4 sistemas]
+```
+  [1] Artículo 77 bis. Instalación de plantas fotovoltaicas flotantes en el dominio público hidráulico.
+  [2] 1. Las instalaciones de generación eléctrica solar fotovoltaica flotante en el dominio público hidráulico serán objeto de concesión, quedando sometidas a lo dispuesto en esta ley y su normativa de desarrollo. El otorgamiento de la concesión se regirá por los principios de objetividad, transparencia, concurrencia y no discriminación.
+  [3] La concesión tendrá carácter temporal y plazo máximo de duración, incluidas las prórrogas, no superior a 25 años.
+  [4] 2. A los efectos de este artículo, se entiende por:
+  [5] a) Plantas fotovoltaicas flotantes: todo proyecto de producción de energía eléctrica que se materialice en la instalación integrada de un sistema fotovoltaico flotante instalado en una plataforma flotante y ubicada físicamente en el dominio público hidráulico.
+  [6] b) Superficie útil total del embalse: superficie media mensual del embalse de los 10 últimos años a utilizar para el dimensionamiento de la superficie de las potenciales instalaciones.
+  [7] 3. Las plantas fotovoltaicas flotantes en el dominio público hidráulico estarán sometidas:
+  [8] a) En el ámbito eléctrico, al régimen de autorizaciones previsto en el título IX de la Ley 24/2013, de 26 de diciembre, del Sector eléctrico y su normativa de desarrollo.
+  [9] Con respecto a las competencias en materia de las autorizaciones administrativas en el ámbito del sector eléctrico se estará a lo dispuesto en la Ley 24/2013, de 26 de diciembre, en particular a lo recogido en el artículo 3.13 de la misma.
+  [10] b) En el ámbito del dominio público hidráulico, a lo establecido en esta ley y su normativa de desarrollo.
+  [11] 4. La evaluación de impacto ambiental para la realización de estas actividades se regirá por lo establecido en el Ley 21/2013, de 9 de diciembre, de evaluación ambiental y su normativa de desarrollo.
 ```
 
 ---
@@ -5881,7 +6091,7 @@ _split=test · difficulty=media · failure_mode=—_
 
 ### Ley 24/2013, artículo 9 · `BOE-A-2013-13645__a9` [JUZGADO rel=2 reviewed]
 https://www.boe.es/buscar/act.php?id=BOE-A-2013-13645#a9
-_recuperado por:_ bge-m3/BASELINE#1 (0.702) · e5-base/BASELINE#1 (0.884) · e5-large-instruct/I0_GENERIC#1 (0.904) · e5-large-instruct/I1_LEGAL#1 (0.930) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.930)  [5 sistemas]
+_recuperado por:_ bge-m3/BASELINE#1 (0.702) · e5-base/BASELINE#1 (0.884) · e5-large-instruct/I0_GENERIC#1 (0.904) · e5-large-instruct/I1_LEGAL#1 (0.930) · e5-large-instruct/I2_CITIZEN_LEGISLATION#1 (0.930) · bm25/lexical#1 (46.635) · hybrid_rrf/I0_GENERIC#1 (0.033)  [7 sistemas]
 ```
   [1] Artículo 9. Autoconsumo de energía eléctrica.
   [2] 1. A los efectos de esta Ley, se entenderá por autoconsumo el consumo por parte de uno o varios consumidores de energía eléctrica proveniente de instalaciones de producción próximas a las de consumo y asociadas a los mismos.
@@ -5901,9 +6111,72 @@ _recuperado por:_ bge-m3/BASELINE#1 (0.702) · e5-base/BASELINE#1 (0.884) · e5-
   [16] Las configuraciones de medida que sean de aplicación en las instalaciones de autoconsumo serán definidas reglamentariamente por el Gobierno. En todo caso, estas configuraciones deberán contener los equipos de medida estrictamente necesarios para la correcta facturación de los precios, tarifas, cargos o peajes que le resulten de aplicación.
 ```
 
+### Ley 38/1992, artículo 94 · `BOE-A-1992-28741__a94` [JUZGADO rel=0 draft]
+https://www.boe.es/buscar/act.php?id=BOE-A-1992-28741#a94
+_recuperado por:_ bge-m3/BASELINE#3 (0.635) · bm25/lexical#4 (40.660) · hybrid_rrf/I0_GENERIC#5 (0.030) · e5-large-instruct/I1_LEGAL#6 (0.901) · e5-large-instruct/I2_CITIZEN_LEGISLATION#6 (0.899) · e5-base/BASELINE#7 (0.849) · e5-large-instruct/I0_GENERIC#8 (0.873)  [7 sistemas]
+```
+  [1] Artículo 94. Exenciones.
+  [2] Estará exenta en las condiciones que reglamentariamente se establezcan:
+  [3] 1. La energía eléctrica suministrada en el marco de las relaciones diplomáticas o consulares.
+  [4] 2. La energía eléctrica suministrada a organizaciones internacionales reconocidas como tales en España y por los miembros de dichas organizaciones, dentro de los límites y en las condiciones que se determinen en los convenios internacionales constitutivos de dichas organizaciones o en los acuerdos de sede.
+  [5] 3. La energía eléctrica suministrada a las fuerzas armadas de cualquier Estado, distinto de España, que sea parte del Tratado del Atlántico Norte o por el personal civil a su servicio, o en sus comedores y cantinas.
+  [6] 4. La energía eléctrica suministrada en el marco de un acuerdo celebrado con países terceros u organizaciones internacionales, siempre que dicho acuerdo se admita o autorice en materia de exención del Impuesto sobre el Valor Añadido.
+  [7] 5. La energía eléctrica consumida por los titulares de las instalaciones de producción de energía eléctrica de tecnología renovable, cogeneración y residuos cuya potencia instalada no supere los 50 megavatios (MW).
+  [8] 6. La energía eléctrica consumida que haya sido generada por pilas de combustibles.
+  [9] 7. La energía eléctrica consumida en las instalaciones de producción de electricidad para la realización de dicha actividad, así como la energía eléctrica suministrada a las instalaciones de producción, transporte y distribución de energía eléctrica para la realización en las mismas de estas actividades.
+  [10] 8. La energía eléctrica consumida en las embarcaciones por haber sido generada a bordo de las mismas.
+  [11] 9. La energía eléctrica suministrada que sea objeto de compensación con la energía horaria excedentaria, en la modalidad de autoconsumo con excedentes acogida a compensación, conforme a lo establecido en el Real Decreto 244/2019, de 5 de abril, por el que se regulan las condiciones administrativas, técnicas y económicas del autoconsumo de energía eléctrica.
+  [12] 10. La energía eléctrica suministrada a las fuerzas armadas de cualquier Estado miembro distinto de España, para uso de dichas fuerzas o del personal civil a su servicio, o para el abastecimiento de sus comedores o cantinas, siempre que dichas fuerzas estén afectadas a un esfuerzo de defensa realizado para llevar a cabo una actividad de la Unión en el ámbito de la política común de seguridad y defensa.
+```
+
+### Ley 27/2014, disposición adicional decimoséptima · `BOE-A-2014-12328__da-2` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2014-12328#da-2
+_recuperado por:_ e5-base/BASELINE#5 (0.857) · bm25/lexical#7 (28.580) · hybrid_rrf/I0_GENERIC#10 (0.025) · e5-large-instruct/I1_LEGAL#11 (0.889) · e5-large-instruct/I2_CITIZEN_LEGISLATION#11 (0.887) · e5-large-instruct/I0_GENERIC#17 (0.863) · bge-m3/BASELINE#18 (0.556)  [7 sistemas]
+```
+  [1] Disposición adicional decimoséptima. Libertad de amortización en inversiones que utilicen energía procedente de fuentes renovables.
+  [2] 1. Las inversiones en instalaciones destinadas al autoconsumo de energía eléctrica que utilicen energía procedente de fuentes renovables de acuerdo con lo definido en el Real Decreto 244/2019, de 5 de abril, por el que se regulan las condiciones administrativas, técnicas y económicas del autoconsumo de energía eléctrica, así como aquellas instalaciones para uso térmico de consumo propio que utilicen energía procedente de fuentes renovables, que sustituyan instalaciones que utilicen energía procedente de fuentes no renovables fósiles y que sean puestas a disposición del contribuyente a partir de la entrada en vigor del Real Decreto-ley 18/2022, de 18 de octubre, por el que se aprueban medidas de refuerzo de la protección de los consumidores de energía y de contribución a la reducción del consumo de gas natural en aplicación del ‘’Plan + seguridad para tu energía (+SE)’’, así como medidas en materia de retribuciones del personal al servicio del sector público y de protección de las personas trabajadoras agrarias eventuales afectadas por la sequía, y entren funcionamiento en 2023, 2024, 2025 y 2026 podrán ser amortizadas libremente en los períodos impositivos:
+  [3] a) Que se inicien o concluyan en 2023, cuando la entrada en funcionamiento de los elementos a que se refiere este apartado se produzca en 2023.
+  [4] b) Que se inicien o concluyan en 2024, cuando la entrada en funcionamiento de los elementos a que se refiere este apartado se produzca en 2024.
+  [5] c) Que se inicien o concluyan en 2025, cuando la entrada en funcionamiento de los elementos a que se refiere este apartado se produzca en 2025.
+  [6] d) Que se inicien o concluyan en 2026, cuando la entrada en funcionamiento de los elementos a que se refiere este apartado se produzca en 2026.
+  [7] Lo establecido en este apartado estará condicionado a que durante los 24 meses siguientes a la fecha de inicio del período impositivo en que los elementos adquiridos entren en funcionamiento, la plantilla media total de la entidad se mantenga respecto de la plantilla media de los doce meses anteriores.
+  [8] Los edificios no podrán acogerse a la libertad de amortización regulada en esta disposición.
+  [9] La cuantía máxima de la inversión que podrá beneficiarse del régimen de libertad de amortización será de 500.000 euros.
+  [10] Para el cálculo de la plantilla media total de la entidad se tomarán las personas empleadas, en los términos que disponga la legislación laboral, teniendo en cuenta la jornada contratada en relación a la jornada completa.
+  [11] 2. A efectos de la presente disposición, se considerará energía renovable la procedente de fuentes renovables no fósiles, es decir, energía eólica, energía solar (solar térmica y solar fotovoltaica) y energía geotérmica, energía ambiente, energía mareomotriz, energía undimotriz y otros tipos de energía oceánica, energía hidráulica y energía procedente de biomasa, gases de vertedero, gases de plantas de depuración, y biogás, tal y como se definen en la Directiva (UE) 2018/2001 del Parlamento Europeo y del Consejo de 11 de diciembre de 2018, relativa al fomento del uso de energía procedente de fuentes renovables.
+  [12] En el caso de las instalaciones de producción de energía eléctrica, solo se considerará energía renovable aquella que proceda de instalaciones de la categoría b) del artículo 2.1 del Real Decreto 413/2014, de 6 de junio, por el que se regula la actividad de producción de energía eléctrica a partir de fuentes de energía renovables, cogeneración y residuos.
+  [13] 3. En el caso de instalaciones que empleen bombas de calor accionadas eléctricamente solo se considerará energía renovable su uso para calor a partir de un rendimiento de factor estacional (SCOPnet) de 2,5 de acuerdo con la Decisión 2013/114/UE de la Comisión de 1 de marzo de 2013, por la que se establecen las directrices para el cálculo por los Estados miembros de la energía renovable procedente de las bombas de calor de diferentes tecnologías, conforme a lo dispuesto en el artículo 5 de la Directiva 2009/28/CE del Parlamento Europeo y del Consejo.
+  [14] En el caso de que tales bombas se usen para frío, solo se considerará que producen energía renovable cuando el sistema de refrigeración funcione por encima del requisito de eficiencia mínimo expresado como factor de rendimiento estacional primario y este sea al menos 1,4 (SPFplow), de conformidad con lo dispuesto en el Reglamento Delegado (UE) 2022/759 de la Comisión de 14 de diciembre de 2021 por el que se modifica el anexo VII de la Directiva (UE) 2018/2001 del Parlamento Europeo y del Consejo con respecto a una metodología para calcular la cantidad de energías renovables utilizada para la refrigeración y los sistemas urbanos de refrigeración.
+  [15] 4. En el caso de sistemas de generación de energía renovable térmica (calor y frío) para climatización o generación de agua caliente sanitaria, únicamente se entenderá que se ha mejorado el consumo de energía primaria no renovable cuando se reduzca al menos un 30 por ciento el indicador de consumo de energía primaria no renovable, o bien se consiga una mejora de la calificación energética de las instalaciones para obtener una clase energética «A» o «B», en la misma escala de calificación.
+  [16] 5. No podrán acogerse a la libertad de amortización a que se refiere esta disposición aquellas instalaciones que tengan carácter obligatorio en virtud de la normativa del Código Técnico de la Edificación, aprobado por el Real Decreto 314/2006, de 17 de marzo, salvo que la instalación tenga una potencia nominal superior a la mínima exigida, en cuyo caso podrá ser objeto de la libertad de amortización aquella parte del coste de la instalación proporcional a la potencia instalada por encima de ese mínimo exigido.
+  [17] 6. Para la aplicación de la libertad de amortización regulada en esta disposición, los contribuyentes deberán estar en posesión, según proceda, de la siguiente documentación que acredite que la inversión utiliza energía procedente de fuentes renovables:
+  [18] a) En el caso de generación de energía eléctrica, la Autorización de Explotación y, en el caso de las instalaciones con excedentes, la acreditación de la inscripción en el Registro administrativo de instalaciones de producción de energía eléctrica (RAIPREE) o, en el caso de instalaciones de menos de 100kW, el Certificado de Instalaciones Eléctricas (CIE) de acuerdo con el Reglamento Electrotécnico de Baja Tensión, de conformidad con lo establecido en el Real Decreto 244/2019, de 5 de abril, por el que se regulan las condiciones administrativas, técnicas y económicas del autoconsumo de energía eléctrica.
+  [19] b) En el caso de sistemas de producción de gases renovables (biogás, biometano, hidrógeno renovable), la acreditación de inscripción en el Registro de instalaciones de producción de gas procedente de fuentes renovables regulado en el artículo 19 del Real Decreto 376/2022, de 17 de mayo, por el que se regulan los criterios de sostenibilidad y de reducción de las emisiones de gases de efecto invernadero de los biocarburantes, biolíquidos y combustibles de biomasa, así como el sistema de garantías de origen de los gases renovables.
+  [20] c) En el caso de sistemas de generación de energía renovable térmica (calor y frío) industrial o de proceso, acreditación de la inscripción en registro o informe del órgano competente en la Comunidad Autónoma.
+  [21] d) En el caso de sistemas de generación de energía renovable térmica (calor y frío) para climatización o generación de agua caliente sanitaria, certificado de eficiencia energética expedido por el técnico competente después de la realización de las inversiones, que indique la incorporación de estos sistemas respecto del certificado expedido antes del inicio de las mismas.
+  [22] 7. En el supuesto de que se incumpliese la obligación de mantenimiento de la plantilla en los términos establecidos en el apartado 1 de esta disposición, se deberá proceder a ingresar la cuota íntegra que hubiere correspondido a la cantidad deducida en exceso más los intereses de demora correspondientes. El ingreso de la cuota íntegra y de los intereses de demora se realizará conjuntamente con la autoliquidación correspondiente al período impositivo en el que se haya incumplido la obligación.
+  [23] 8. Las entidades a las que, de acuerdo con lo establecido en el artículo 101 de esta Ley, les sean de aplicación los incentivos fiscales para las empresas de reducida dimensión previstos en el capítulo XI del título VII de esta Ley, podrán optar entre aplicar el régimen de libertad de amortización previsto en el artículo 102 de esta Ley o aplicar el régimen de libertad de amortización regulado en esta disposición.
+```
+
+### Ley 35/2006, disposición adicional sexagésima segunda · `BOE-A-2006-20764__da-16` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764#da-16
+_recuperado por:_ bge-m3/BASELINE#6 (0.575) · e5-base/BASELINE#6 (0.849) · hybrid_rrf/I0_GENERIC#8 (0.027) · e5-large-instruct/I1_LEGAL#9 (0.893) · e5-large-instruct/I2_CITIZEN_LEGISLATION#9 (0.891) · e5-large-instruct/I0_GENERIC#10 (0.870) · bm25/lexical#13 (23.987)  [7 sistemas]
+```
+  [1] Disposición adicional sexagésima segunda. Deducción por la instalación de sistemas de autoconsumo renovable.
+  [2] 1. Los contribuyentes podrán deducirse el 10 por ciento de las cantidades satisfechas desde el 1 de enero hasta el 31 de diciembre de 2026 para la instalación durante dicho período en un inmueble de su propiedad de sistemas destinados al autoconsumo de energía eléctrica que utilicen energía procedente de fuentes renovables de acuerdo con lo definido en el Real Decreto 244/2019, de 5 de abril, por el que se regulan las condiciones administrativas, técnicas y económicas del autoconsumo de energía eléctrica, que podrán incluir sistemas de almacenamiento.
+  [3] 2. Los contribuyentes propietarios de viviendas ubicadas en edificios de uso predominante residencial en el que se haya llevado a cabo desde el 1 de enero hasta el 31 de diciembre de 2026 la instalación de sistemas destinados al autoconsumo de energía eléctrica que utilicen energía procedente de fuentes renovables de acuerdo con lo definido en el Real Decreto 244/2019, de 5 de abril, podrán deducirse el 20 por ciento de las cantidades satisfechas durante dicho período por tal instalación.
+  [4] 3. La base máxima anual de las deducciones indicadas en los apartados anteriores será de 5.000 euros anuales. En ningún caso, una misma instalación realizada en un inmueble dará derecho a las deducciones previstas en los apartados 1 y 2 anteriores.
+  [5] La base de las deducciones previstas en los apartados 1 y 2 anteriores estará constituida por las cantidades satisfechas, mediante tarjeta de crédito o débito, transferencia bancaria, cheque nominativo o ingreso en cuentas en entidades de crédito, a las personas o entidades que realicen la instalación, debiendo descontar aquellas cuantías que, en su caso, hubieran sido subvencionadas a través de un programa de ayudas públicas o fueran a serlo en virtud de resolución definitiva de la concesión de tales ayudas. En ningún caso, darán derecho a practicar deducción las cantidades satisfechas mediante entregas de dinero de curso legal.
+  [6] A estos efectos, se considerarán como cantidades satisfechas para la instalación de los sistemas de autoconsumo las necesarias para llevarla a cabo, tales como, la inversión en equipos y materiales, gastos de instalación de los mismos y las obras necesarias para su desarrollo.
+  [7] La deducción se practicará en el periodo impositivo en el que finalice la instalación, que no podrá ser posterior a 2026. Para la aplicación de la deducción deberá contarse con las autorizaciones y permisos establecidos en la legislación vigente, y en particular con el Certificado de Instalaciones Eléctricas (CIE) de acuerdo con el Reglamento Electrotécnico de Baja Tensión, de conformidad con lo establecido en el Real Decreto 244/2019, de 5 de abril.
+  [8] 4. No darán derecho a practicar las deducciones previstas en los apartados 1 y 2 anteriores, cuando los sistemas de autoconsumo estén afectos a una actividad económica. En caso de que con posterioridad a su adquisición o instalación, se afectaran a una actividad económica, se perderá el derecho a la deducción practicada.
+  [9] 5. En ningún caso, el contribuyente tendrá derecho a las deducciones previstas en esta disposición adicional y en la disposición adicional quincuagésima de esta Ley respecto de una misma instalación llevada a cabo en un mismo inmueble.
+  [10] 6. El importe de estas deducciones se restará de la cuota íntegra estatal después de las deducciones previstas en los apartados 1, 2, 3, 4, y 5 del artículo 68 de esta ley.
+```
+
 ### Ley 24/2013 · `BOE-A-2013-13645__preambulo` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2013-13645#preambulo
-_recuperado por:_ e5-large-instruct/I2_CITIZEN_LEGISLATION#4 (0.908) · e5-large-instruct/I0_GENERIC#5 (0.878) · e5-large-instruct/I1_LEGAL#5 (0.908) · bge-m3/BASELINE#8 (0.567) · e5-base/BASELINE#8 (0.847)  [5 sistemas]
+_recuperado por:_ e5-large-instruct/I2_CITIZEN_LEGISLATION#4 (0.908) · e5-large-instruct/I0_GENERIC#5 (0.878) · e5-large-instruct/I1_LEGAL#5 (0.908) · hybrid_rrf/I0_GENERIC#7 (0.028) · bge-m3/BASELINE#8 (0.567) · e5-base/BASELINE#8 (0.847) · bm25/lexical#18 (20.990)  [7 sistemas]
 ```
   [1] JUAN CARLOS I
   [2] REY DE ESPAÑA
@@ -5990,72 +6263,9 @@ _recuperado por:_ e5-large-instruct/I2_CITIZEN_LEGISLATION#4 (0.908) · e5-large
   [83] En cuanto a la parte final, la ley se completa con veinte disposiciones adicionales, dieciséis disposiciones transitorias, una disposición derogatoria, y seis disposiciones finales.
 ```
 
-### Ley 38/1992, artículo 94 · `BOE-A-1992-28741__a94` [JUZGADO rel=0 draft]
-https://www.boe.es/buscar/act.php?id=BOE-A-1992-28741#a94
-_recuperado por:_ bge-m3/BASELINE#3 (0.635) · e5-large-instruct/I1_LEGAL#6 (0.901) · e5-large-instruct/I2_CITIZEN_LEGISLATION#6 (0.899) · e5-base/BASELINE#7 (0.849) · e5-large-instruct/I0_GENERIC#8 (0.873)  [5 sistemas]
-```
-  [1] Artículo 94. Exenciones.
-  [2] Estará exenta en las condiciones que reglamentariamente se establezcan:
-  [3] 1. La energía eléctrica suministrada en el marco de las relaciones diplomáticas o consulares.
-  [4] 2. La energía eléctrica suministrada a organizaciones internacionales reconocidas como tales en España y por los miembros de dichas organizaciones, dentro de los límites y en las condiciones que se determinen en los convenios internacionales constitutivos de dichas organizaciones o en los acuerdos de sede.
-  [5] 3. La energía eléctrica suministrada a las fuerzas armadas de cualquier Estado, distinto de España, que sea parte del Tratado del Atlántico Norte o por el personal civil a su servicio, o en sus comedores y cantinas.
-  [6] 4. La energía eléctrica suministrada en el marco de un acuerdo celebrado con países terceros u organizaciones internacionales, siempre que dicho acuerdo se admita o autorice en materia de exención del Impuesto sobre el Valor Añadido.
-  [7] 5. La energía eléctrica consumida por los titulares de las instalaciones de producción de energía eléctrica de tecnología renovable, cogeneración y residuos cuya potencia instalada no supere los 50 megavatios (MW).
-  [8] 6. La energía eléctrica consumida que haya sido generada por pilas de combustibles.
-  [9] 7. La energía eléctrica consumida en las instalaciones de producción de electricidad para la realización de dicha actividad, así como la energía eléctrica suministrada a las instalaciones de producción, transporte y distribución de energía eléctrica para la realización en las mismas de estas actividades.
-  [10] 8. La energía eléctrica consumida en las embarcaciones por haber sido generada a bordo de las mismas.
-  [11] 9. La energía eléctrica suministrada que sea objeto de compensación con la energía horaria excedentaria, en la modalidad de autoconsumo con excedentes acogida a compensación, conforme a lo establecido en el Real Decreto 244/2019, de 5 de abril, por el que se regulan las condiciones administrativas, técnicas y económicas del autoconsumo de energía eléctrica.
-  [12] 10. La energía eléctrica suministrada a las fuerzas armadas de cualquier Estado miembro distinto de España, para uso de dichas fuerzas o del personal civil a su servicio, o para el abastecimiento de sus comedores o cantinas, siempre que dichas fuerzas estén afectadas a un esfuerzo de defensa realizado para llevar a cabo una actividad de la Unión en el ámbito de la política común de seguridad y defensa.
-```
-
-### Ley 35/2006, disposición adicional sexagésima segunda · `BOE-A-2006-20764__da-16` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764#da-16
-_recuperado por:_ bge-m3/BASELINE#6 (0.575) · e5-base/BASELINE#6 (0.849) · e5-large-instruct/I1_LEGAL#9 (0.893) · e5-large-instruct/I2_CITIZEN_LEGISLATION#9 (0.891) · e5-large-instruct/I0_GENERIC#10 (0.870)  [5 sistemas]
-```
-  [1] Disposición adicional sexagésima segunda. Deducción por la instalación de sistemas de autoconsumo renovable.
-  [2] 1. Los contribuyentes podrán deducirse el 10 por ciento de las cantidades satisfechas desde el 1 de enero hasta el 31 de diciembre de 2026 para la instalación durante dicho período en un inmueble de su propiedad de sistemas destinados al autoconsumo de energía eléctrica que utilicen energía procedente de fuentes renovables de acuerdo con lo definido en el Real Decreto 244/2019, de 5 de abril, por el que se regulan las condiciones administrativas, técnicas y económicas del autoconsumo de energía eléctrica, que podrán incluir sistemas de almacenamiento.
-  [3] 2. Los contribuyentes propietarios de viviendas ubicadas en edificios de uso predominante residencial en el que se haya llevado a cabo desde el 1 de enero hasta el 31 de diciembre de 2026 la instalación de sistemas destinados al autoconsumo de energía eléctrica que utilicen energía procedente de fuentes renovables de acuerdo con lo definido en el Real Decreto 244/2019, de 5 de abril, podrán deducirse el 20 por ciento de las cantidades satisfechas durante dicho período por tal instalación.
-  [4] 3. La base máxima anual de las deducciones indicadas en los apartados anteriores será de 5.000 euros anuales. En ningún caso, una misma instalación realizada en un inmueble dará derecho a las deducciones previstas en los apartados 1 y 2 anteriores.
-  [5] La base de las deducciones previstas en los apartados 1 y 2 anteriores estará constituida por las cantidades satisfechas, mediante tarjeta de crédito o débito, transferencia bancaria, cheque nominativo o ingreso en cuentas en entidades de crédito, a las personas o entidades que realicen la instalación, debiendo descontar aquellas cuantías que, en su caso, hubieran sido subvencionadas a través de un programa de ayudas públicas o fueran a serlo en virtud de resolución definitiva de la concesión de tales ayudas. En ningún caso, darán derecho a practicar deducción las cantidades satisfechas mediante entregas de dinero de curso legal.
-  [6] A estos efectos, se considerarán como cantidades satisfechas para la instalación de los sistemas de autoconsumo las necesarias para llevarla a cabo, tales como, la inversión en equipos y materiales, gastos de instalación de los mismos y las obras necesarias para su desarrollo.
-  [7] La deducción se practicará en el periodo impositivo en el que finalice la instalación, que no podrá ser posterior a 2026. Para la aplicación de la deducción deberá contarse con las autorizaciones y permisos establecidos en la legislación vigente, y en particular con el Certificado de Instalaciones Eléctricas (CIE) de acuerdo con el Reglamento Electrotécnico de Baja Tensión, de conformidad con lo establecido en el Real Decreto 244/2019, de 5 de abril.
-  [8] 4. No darán derecho a practicar las deducciones previstas en los apartados 1 y 2 anteriores, cuando los sistemas de autoconsumo estén afectos a una actividad económica. En caso de que con posterioridad a su adquisición o instalación, se afectaran a una actividad económica, se perderá el derecho a la deducción practicada.
-  [9] 5. En ningún caso, el contribuyente tendrá derecho a las deducciones previstas en esta disposición adicional y en la disposición adicional quincuagésima de esta Ley respecto de una misma instalación llevada a cabo en un mismo inmueble.
-  [10] 6. El importe de estas deducciones se restará de la cuota íntegra estatal después de las deducciones previstas en los apartados 1, 2, 3, 4, y 5 del artículo 68 de esta ley.
-```
-
-### Ley 27/2014, disposición adicional decimoséptima · `BOE-A-2014-12328__da-2` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2014-12328#da-2
-_recuperado por:_ e5-base/BASELINE#5 (0.857) · e5-large-instruct/I1_LEGAL#11 (0.889) · e5-large-instruct/I2_CITIZEN_LEGISLATION#11 (0.887) · e5-large-instruct/I0_GENERIC#17 (0.863) · bge-m3/BASELINE#18 (0.556)  [5 sistemas]
-```
-  [1] Disposición adicional decimoséptima. Libertad de amortización en inversiones que utilicen energía procedente de fuentes renovables.
-  [2] 1. Las inversiones en instalaciones destinadas al autoconsumo de energía eléctrica que utilicen energía procedente de fuentes renovables de acuerdo con lo definido en el Real Decreto 244/2019, de 5 de abril, por el que se regulan las condiciones administrativas, técnicas y económicas del autoconsumo de energía eléctrica, así como aquellas instalaciones para uso térmico de consumo propio que utilicen energía procedente de fuentes renovables, que sustituyan instalaciones que utilicen energía procedente de fuentes no renovables fósiles y que sean puestas a disposición del contribuyente a partir de la entrada en vigor del Real Decreto-ley 18/2022, de 18 de octubre, por el que se aprueban medidas de refuerzo de la protección de los consumidores de energía y de contribución a la reducción del consumo de gas natural en aplicación del ‘’Plan + seguridad para tu energía (+SE)’’, así como medidas en materia de retribuciones del personal al servicio del sector público y de protección de las personas trabajadoras agrarias eventuales afectadas por la sequía, y entren funcionamiento en 2023, 2024, 2025 y 2026 podrán ser amortizadas libremente en los períodos impositivos:
-  [3] a) Que se inicien o concluyan en 2023, cuando la entrada en funcionamiento de los elementos a que se refiere este apartado se produzca en 2023.
-  [4] b) Que se inicien o concluyan en 2024, cuando la entrada en funcionamiento de los elementos a que se refiere este apartado se produzca en 2024.
-  [5] c) Que se inicien o concluyan en 2025, cuando la entrada en funcionamiento de los elementos a que se refiere este apartado se produzca en 2025.
-  [6] d) Que se inicien o concluyan en 2026, cuando la entrada en funcionamiento de los elementos a que se refiere este apartado se produzca en 2026.
-  [7] Lo establecido en este apartado estará condicionado a que durante los 24 meses siguientes a la fecha de inicio del período impositivo en que los elementos adquiridos entren en funcionamiento, la plantilla media total de la entidad se mantenga respecto de la plantilla media de los doce meses anteriores.
-  [8] Los edificios no podrán acogerse a la libertad de amortización regulada en esta disposición.
-  [9] La cuantía máxima de la inversión que podrá beneficiarse del régimen de libertad de amortización será de 500.000 euros.
-  [10] Para el cálculo de la plantilla media total de la entidad se tomarán las personas empleadas, en los términos que disponga la legislación laboral, teniendo en cuenta la jornada contratada en relación a la jornada completa.
-  [11] 2. A efectos de la presente disposición, se considerará energía renovable la procedente de fuentes renovables no fósiles, es decir, energía eólica, energía solar (solar térmica y solar fotovoltaica) y energía geotérmica, energía ambiente, energía mareomotriz, energía undimotriz y otros tipos de energía oceánica, energía hidráulica y energía procedente de biomasa, gases de vertedero, gases de plantas de depuración, y biogás, tal y como se definen en la Directiva (UE) 2018/2001 del Parlamento Europeo y del Consejo de 11 de diciembre de 2018, relativa al fomento del uso de energía procedente de fuentes renovables.
-  [12] En el caso de las instalaciones de producción de energía eléctrica, solo se considerará energía renovable aquella que proceda de instalaciones de la categoría b) del artículo 2.1 del Real Decreto 413/2014, de 6 de junio, por el que se regula la actividad de producción de energía eléctrica a partir de fuentes de energía renovables, cogeneración y residuos.
-  [13] 3. En el caso de instalaciones que empleen bombas de calor accionadas eléctricamente solo se considerará energía renovable su uso para calor a partir de un rendimiento de factor estacional (SCOPnet) de 2,5 de acuerdo con la Decisión 2013/114/UE de la Comisión de 1 de marzo de 2013, por la que se establecen las directrices para el cálculo por los Estados miembros de la energía renovable procedente de las bombas de calor de diferentes tecnologías, conforme a lo dispuesto en el artículo 5 de la Directiva 2009/28/CE del Parlamento Europeo y del Consejo.
-  [14] En el caso de que tales bombas se usen para frío, solo se considerará que producen energía renovable cuando el sistema de refrigeración funcione por encima del requisito de eficiencia mínimo expresado como factor de rendimiento estacional primario y este sea al menos 1,4 (SPFplow), de conformidad con lo dispuesto en el Reglamento Delegado (UE) 2022/759 de la Comisión de 14 de diciembre de 2021 por el que se modifica el anexo VII de la Directiva (UE) 2018/2001 del Parlamento Europeo y del Consejo con respecto a una metodología para calcular la cantidad de energías renovables utilizada para la refrigeración y los sistemas urbanos de refrigeración.
-  [15] 4. En el caso de sistemas de generación de energía renovable térmica (calor y frío) para climatización o generación de agua caliente sanitaria, únicamente se entenderá que se ha mejorado el consumo de energía primaria no renovable cuando se reduzca al menos un 30 por ciento el indicador de consumo de energía primaria no renovable, o bien se consiga una mejora de la calificación energética de las instalaciones para obtener una clase energética «A» o «B», en la misma escala de calificación.
-  [16] 5. No podrán acogerse a la libertad de amortización a que se refiere esta disposición aquellas instalaciones que tengan carácter obligatorio en virtud de la normativa del Código Técnico de la Edificación, aprobado por el Real Decreto 314/2006, de 17 de marzo, salvo que la instalación tenga una potencia nominal superior a la mínima exigida, en cuyo caso podrá ser objeto de la libertad de amortización aquella parte del coste de la instalación proporcional a la potencia instalada por encima de ese mínimo exigido.
-  [17] 6. Para la aplicación de la libertad de amortización regulada en esta disposición, los contribuyentes deberán estar en posesión, según proceda, de la siguiente documentación que acredite que la inversión utiliza energía procedente de fuentes renovables:
-  [18] a) En el caso de generación de energía eléctrica, la Autorización de Explotación y, en el caso de las instalaciones con excedentes, la acreditación de la inscripción en el Registro administrativo de instalaciones de producción de energía eléctrica (RAIPREE) o, en el caso de instalaciones de menos de 100kW, el Certificado de Instalaciones Eléctricas (CIE) de acuerdo con el Reglamento Electrotécnico de Baja Tensión, de conformidad con lo establecido en el Real Decreto 244/2019, de 5 de abril, por el que se regulan las condiciones administrativas, técnicas y económicas del autoconsumo de energía eléctrica.
-  [19] b) En el caso de sistemas de producción de gases renovables (biogás, biometano, hidrógeno renovable), la acreditación de inscripción en el Registro de instalaciones de producción de gas procedente de fuentes renovables regulado en el artículo 19 del Real Decreto 376/2022, de 17 de mayo, por el que se regulan los criterios de sostenibilidad y de reducción de las emisiones de gases de efecto invernadero de los biocarburantes, biolíquidos y combustibles de biomasa, así como el sistema de garantías de origen de los gases renovables.
-  [20] c) En el caso de sistemas de generación de energía renovable térmica (calor y frío) industrial o de proceso, acreditación de la inscripción en registro o informe del órgano competente en la Comunidad Autónoma.
-  [21] d) En el caso de sistemas de generación de energía renovable térmica (calor y frío) para climatización o generación de agua caliente sanitaria, certificado de eficiencia energética expedido por el técnico competente después de la realización de las inversiones, que indique la incorporación de estos sistemas respecto del certificado expedido antes del inicio de las mismas.
-  [22] 7. En el supuesto de que se incumpliese la obligación de mantenimiento de la plantilla en los términos establecidos en el apartado 1 de esta disposición, se deberá proceder a ingresar la cuota íntegra que hubiere correspondido a la cantidad deducida en exceso más los intereses de demora correspondientes. El ingreso de la cuota íntegra y de los intereses de demora se realizará conjuntamente con la autoliquidación correspondiente al período impositivo en el que se haya incumplido la obligación.
-  [23] 8. Las entidades a las que, de acuerdo con lo establecido en el artículo 101 de esta Ley, les sean de aplicación los incentivos fiscales para las empresas de reducida dimensión previstos en el capítulo XI del título VII de esta Ley, podrán optar entre aplicar el régimen de libertad de amortización previsto en el artículo 102 de esta Ley o aplicar el régimen de libertad de amortización regulado en esta disposición.
-```
-
 ### Ley 24/2013, artículo 6 · `BOE-A-2013-13645__a6` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2013-13645#a6
-_recuperado por:_ e5-large-instruct/I1_LEGAL#8 (0.896) · e5-large-instruct/I2_CITIZEN_LEGISLATION#8 (0.895) · e5-base/BASELINE#9 (0.845) · e5-large-instruct/I0_GENERIC#9 (0.870)  [4 sistemas]
+_recuperado por:_ e5-large-instruct/I1_LEGAL#8 (0.896) · e5-large-instruct/I2_CITIZEN_LEGISLATION#8 (0.895) · e5-base/BASELINE#9 (0.845) · e5-large-instruct/I0_GENERIC#9 (0.870) · hybrid_rrf/I0_GENERIC#19 (0.019)  [5 sistemas]
 ```
   [1] Artículo 6. Sujetos.
   [2] 1. Las actividades destinadas al suministro de energía eléctrica a que se refiere el artículo 1.2 serán desarrolladas por los siguientes sujetos:
@@ -6080,7 +6290,7 @@ _recuperado por:_ e5-large-instruct/I1_LEGAL#8 (0.896) · e5-large-instruct/I2_C
 
 ### Ley 38/1992, artículo 51 · `BOE-A-1992-28741__a51` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-1992-28741#a51
-_recuperado por:_ bge-m3/BASELINE#10 (0.563) · e5-large-instruct/I1_LEGAL#12 (0.889) · e5-large-instruct/I2_CITIZEN_LEGISLATION#14 (0.886) · e5-large-instruct/I0_GENERIC#20 (0.861)  [4 sistemas]
+_recuperado por:_ bge-m3/BASELINE#10 (0.563) · e5-large-instruct/I1_LEGAL#12 (0.889) · e5-large-instruct/I2_CITIZEN_LEGISLATION#14 (0.886) · hybrid_rrf/I0_GENERIC#17 (0.020) · e5-large-instruct/I0_GENERIC#20 (0.861)  [5 sistemas]
 ```
   [1] Artículo 51. Exenciones.
   [2] Además de las operaciones a que se refiere el artículo 9 de esta Ley, estarán exentas, en las condiciones que reglamentariamente se establezcan y sin perjuicio de lo dispuesto en el apartado 4 del artículo 53, las siguientes operaciones:
@@ -6114,33 +6324,35 @@ _recuperado por:_ e5-large-instruct/I0_GENERIC#7 (0.874) · e5-base/BASELINE#16 
   [2] No estará sujeto al impuesto el consumo por los generadores o conjunto de generadores de potencia total no superior a 100 kilovatios (kW) de la energía eléctrica producida por ellos mismos.
 ```
 
-### Ley 24/2013, artículo 67 · `BOE-A-2013-13645__a67` [sin juzgar]
-https://www.boe.es/buscar/act.php?id=BOE-A-2013-13645#a67
-_recuperado por:_ e5-large-instruct/I1_LEGAL#17 (0.885) · e5-large-instruct/I2_CITIZEN_LEGISLATION#18 (0.884)  [2 sistemas]
+### Ley 24/2013, artículo 66 · `BOE-A-2013-13645__a66` [sin juzgar]
+https://www.boe.es/buscar/act.php?id=BOE-A-2013-13645#a66
+_recuperado por:_ bge-m3/BASELINE#7 (0.570) · bm25/lexical#8 (27.268) · hybrid_rrf/I0_GENERIC#9 (0.025)  [3 sistemas]
 ```
-  [1] Artículo 67. Sanciones.
-  [2] 1. Las infracciones establecidas en el capítulo I de este título serán sancionadas del modo siguiente:
-  [3] a) Por la comisión de las infracciones muy graves se impondrá al infractor multa por importe no inferior a 6.000.001 euros ni superior a 60.000.000 de euros.
-  [4] b) Por la comisión de infracciones graves se impondrá al infractor multa por importe no inferior a 600.001 euros ni superior a 6.000.000 euros.
-  [5] c) Por la comisión de infracciones leves se impondrá al infractor una multa por importe de hasta 600.000 euros.
-  [6] 2. En cualquier caso la cuantía de la sanción no podrá superar el 10 por ciento del importe neto anual de la cifra de negocios del sujeto infractor, o el 10 por ciento del importe neto anual de la cifra de negocios consolidada de la sociedad matriz del grupo al que pertenezca dicha empresa, según los casos.
-  [7] En los casos en los cuales la infracción esté relacionada con el autoconsumo, la sanción máxima será la mayor de entre las dos cuantías siguientes: el 10 % de la facturación anual por consumo de energía eléctrica o el 10 % de la facturación por la energía vertida a la red.
-  [8] 3. Si, en razón de las circunstancias concurrentes, se apreciara una cualificada disminución de la culpabilidad del infractor o de la antijuridicidad del hecho, o si atendida la situación económica del infractor, en razón de su patrimonio, de sus ingresos, de sus cargas familiares y de las demás circunstancias personales que resulten acreditadas, la sanción resultase manifiestamente desproporcionada, el órgano sancionador podrá determinar la cuantía de la sanción aplicando la escala correspondiente a la clase o clases de infracciones que precedan en gravedad a aquella en que se integra la considerada en el caso de que se trate.
-  [9] 4. En todo caso, la cuantía de la sanción que se imponga, dentro de los límites indicados, se graduará teniendo en cuenta los siguientes criterios:
-  [10] a) El peligro resultante de la infracción para la vida y salud de las personas, la seguridad de las cosas y el medio ambiente.
-  [11] b) La importancia del daño o deterioro causado.
-  [12] c) Los perjuicios producidos en la continuidad y regularidad del suministro.
-  [13] d) El grado de participación en la acción u omisión tipificada como infracción y el beneficio obtenido de la misma.
-  [14] e) La intencionalidad en la comisión de la infracción y la reiteración en la misma.
-  [15] f) La reincidencia por comisión en el término de un año de más de una infracción de la misma entidad cuando así haya sido declarado por resolución firme en vía administrativa.
-  [16] g) El impacto en la sostenibilidad económica y financiera del sistema eléctrico.
-  [17] h) Cualquier otra circunstancia que pueda incidir en el mayor o menor grado de reprobabilidad de la infracción.
-  [18] 5. A los efectos de esta ley se considerará que un incumplimiento es reiterado cuando dentro del año inmediatamente anterior a su comisión el sujeto hubiera sido sancionado mediante resolución firme en vía administrativa con arreglo a la misma infracción.
+  [1] Artículo 66. Infracciones leves.
+  [2] Son infracciones leves:
+  [3] 1. El incumplimiento por parte de los sujetos obligados a ello de sus obligaciones en relación con la formalización de los contratos de suministro cuando no tenga consideración de infracción grave o muy grave.
+  [4] 2. El incumplimiento de las obligaciones derivadas de las Reglas del Mercado o de los Procedimientos de Operación, que no tengan la consideración de infracción muy grave o grave de conformidad con los artículos 64 o 65, cuando de dicho incumplimiento no derive perjuicio para el funcionamiento del mercado o del sistema eléctrico.
+  [5] 3. El incumplimiento injustificado de los plazos establecidos para las comunicaciones con los comercializadores y clientes y para llevar a cabo el cambio de suministrador, así como para realizar cualquier modificación de las condiciones de los contratos.
+  [6] 4. El incumplimiento por parte de los comercializadores de los requisitos de contratación y apoderamiento con los clientes.
+  [7] 5. El incumplimiento por parte de los comercializadores y distribuidores de cualquier requisito de información exigible en sus facturas.
+  [8] 6. La aplicación irregular de precios, cargos, tarifas regulados en la presente ley o en las disposiciones de desarrollo de la misma, de manera que se produzca una alteración en el precio, cuando no tenga consideración de infracción grave o muy grave.
+  [9] 6 bis. La aplicación irregular de peajes de los regulados en la presente ley o en las disposiciones de desarrollo dictadas por la Comisión Nacional de los Mercados y la Competencia, de manera que se produzca una alteración en el precio, cuando no tenga consideración de infracción grave o muy grave.
+  [10] 7. La inexactitud o falsedad en cualquier dato, manifestación o documento que se presente a la Administración Pública, así como su no presentación en forma y plazo, al objeto de la determinación o percepción del régimen retributivo de las actividades con retribución regulada, que suponga un impacto en los costes del sistema que no exceda del 1 por ciento de la retribución regulada anual del sujeto.
+  [11] 8. Dejar de ingresar dentro de los plazos legal o reglamentariamente establecidos las cuantías que correspondan al reparto del coste del bono social y de la cuantía definidos en el artículo 45.4, cuando la cantidad anual a aportar sea igual o inferior a 500.000 euros.
+  [12] 9. La comunicación de datos inexactos sobre número de clientes o energía eléctrica suministrada o de cualquier otra información que se solicite por la Administración a efectos de la aplicación del mecanismo de financiación del bono social y de la cuantía definidos en el artículo 45.4, cuando no suponga un beneficio para el infractor.
+  [13] 10. El retraso en la comunicación de los datos sobre número de clientes o energía eléctrica suministrada o de cualquier otra información que se solicite por la Administración, que no impida la determinación o fijación de los porcentajes de financiación del bono social y de la cuantía definidos en el artículo 45.4.
+  [14] 11. Cualquier otro incumplimiento de los deberes y obligaciones derivados del mecanismo de reparto del coste del bono social y de la cuantía complementaria definidos en el artículo 45, que no constituya infracción muy grave o grave.
+  [15] 12. El incumplimiento del plazo máximo para comunicar al solicitante del bono social la documentación acreditativa de la que adolezca su solicitud en el caso de que esta fuera incompleta, siempre y cuando se causara un perjuicio al solicitante.
+  [16] 13. Exigir al solicitante del bono social, la presentación de documentación o acreditación de requisitos adicionales no establecidos en la normativa reguladora del bono social.
+  [17] 14. En relación con el autoconsumo, el incumplimiento de los requisitos y obligaciones establecidos, cuando no estuviera tipificado como muy grave; así como la aplicación incorrecta de las modalidades y de sus regímenes económicos asociados contemplados en esta Ley y su normativa de desarrollo.
+  [18] 15. El incumplimiento, por parte de los consumidores que presten servicios de recarga energética de vehículos eléctricos, o de los restantes sujetos que participen en la prestación de dicho servicio, de los requisitos u obligaciones que les sean establecidos reglamentariamente.
+  [19] 16. El incumplimiento de los plazos máximos para comunicar al consumidor cualquier omisión o requisito adicional en la tramitación de los contratos de acceso en las modalidades de autoconsumo o de los contratos de suministro de energía en las modalidades de autoconsumo, siempre y cuando se causara un perjuicio al consumidor.
+  [20] 17. El incumplimiento, por parte de los distribuidores de energía eléctrica, de los plazos de respuesta previstos en la normativa sectorial, imponer injustificadamente condiciones, dificultades o retrasos en relación con la tramitación de los permisos de acceso y conexión, y entronque y conexión de las nuevas instalaciones a la red de los consumidores, en particular de los puntos de recarga de vehículos eléctricos y sus infraestructuras asociadas, siempre y cuando se causara un perjuicio al consumidor.
 ```
 
 ### Ley 24/2013, disposición adicional duodécima · `BOE-A-2013-13645__daduodecima` [sin juzgar]
 https://www.boe.es/buscar/act.php?id=BOE-A-2013-13645#daduodecima
-_recuperado por:_ e5-large-instruct/I1_LEGAL#19 (0.885) · e5-large-instruct/I2_CITIZEN_LEGISLATION#19 (0.883)  [2 sistemas]
+_recuperado por:_ e5-large-instruct/I1_LEGAL#19 (0.885) · e5-large-instruct/I2_CITIZEN_LEGISLATION#19 (0.883) · hybrid_rrf/I0_GENERIC#20 (0.019)  [3 sistemas]
 ```
   [1] Disposición adicional duodécima. Consumidores autorizados a verter energía a la red.
   [2] 1. El Ministerio de Industria, Energía y Turismo podrá autorizar, en los términos que se establezcan reglamentariamente y con carácter excepcional, a determinados consumidores de energía eléctrica conectados en alta tensión que debido a la implantación de un sistema de ahorro y eficiencia energética dispongan en determinados momentos de energía eléctrica recuperada que no pueda ser consumida en su propia instalación, a verter energía a la red.
