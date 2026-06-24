@@ -60,6 +60,11 @@ def main() -> int:
     )
     parser.add_argument("--threads", type=int, default=8)
     parser.add_argument("--batch-size", type=int, default=32)
+    parser.add_argument(
+        "--device",
+        default="cpu",
+        help="dispositivo de torch para el encoder: 'cpu' (default) o 'cuda' (GPU).",
+    )
     parser.add_argument("--no-progress", action="store_true")
     parser.add_argument("--output-root", default="data/indexes/dense")
     parser.add_argument(
@@ -125,12 +130,13 @@ def main() -> int:
     set_cpu_threads(args.threads)
     encoder = DenseEncoder(
         contract,
+        device=args.device,
         batch_size=args.batch_size,
         allow_unpinned_revision=args.allow_unpinned_revision,
     )
     print(
         f"\n[encoding] {contract.alias} {args.view}  ({len(prepared.texts)} inputs, "
-        f"threads={args.threads}, batch={args.batch_size})"
+        f"device={args.device}, threads={args.threads}, batch={args.batch_size})"
     )
     t0 = time.perf_counter()
     embeddings = encoder.encode_documents(prepared.texts, show_progress=not args.no_progress)
@@ -138,7 +144,7 @@ def main() -> int:
 
     # 4) Publicación (Gate B + rename atómico).
     execution = ExecutionMeta(
-        device="cpu",
+        device=args.device,
         threads=args.threads,
         batch_size=args.batch_size,
         duration_seconds=duration,
