@@ -38,6 +38,9 @@ from src.evaluation.dataset import (  # noqa: E402
     load_jsonl,
 )
 from src.retrieval.dense_retriever import DenseRetriever  # noqa: E402
+from src.retrieval.hybrid_retriever import HybridRetriever  # noqa: E402
+from src.retrieval.lexical_retriever import LexicalRetriever  # noqa: E402
+from src.retrieval.text_analysis import SpanishAnalyzer  # noqa: E402
 
 SPLITS = ("development", "test", "out_of_corpus")
 
@@ -84,6 +87,66 @@ def _collect_systems(
             systems.append(
                 {"bundle_id": bundle_id, "query_profile_id": profile_id, "hits_by_qid": hits_by_qid}
             )
+    return systems
+
+
+def _lexical_hybrid_systems(
+    args: argparse.Namespace,
+    corpus: dict,
+    target_questions: list[dict],
+    bundle_dirs: list[Path],
+) -> list[dict]:
+    """Añade BM25 y/o híbrido RRF como sistemas del pool → de-sesga el gold (pooleado dense-only).
+
+    Es el paso anti-sesgo del flagship: sin esto, los parents que solo BM25 recupera (p. ej. el
+    artículo exacto de las preguntas `directa_articulo`) nunca se juzgan y se contarían como rel=0.
+    """
+    if not (args.with_bm25 or args.with_hybrid):
+        return []
+    bdir = Path(args.lexical_bundle) if args.lexical_bundle else bundle_dirs[0]
+    lexical = LexicalRetriever.from_bundle(
+        bdir, corpus=corpus, analyzer=SpanishAnalyzer(), heading_boost=args.bm25_heading_boost
+    )
+
+    def _hits(retriever: object, profile_id: str | None) -> dict[str, list[dict]]:
+        out: dict[str, list[dict]] = {}
+        for q in target_questions:
+            hits = retriever.retrieve(
+                q["query"], query_profile_id=profile_id, top_k=args.pool_depth
+            )
+            out[q["query_id"]] = [
+                {"parent_id": h.parent_id, "rank": h.rank, "score": h.score} for h in hits
+            ]
+        return out
+
+    systems: list[dict] = []
+    if args.with_bm25:
+        print(f"  [bm25] heading_boost={args.bm25_heading_boost}: {len(target_questions)} q")
+        systems.append(
+            {
+                "bundle_id": "bm25",
+                "query_profile_id": "lexical",
+                "hits_by_qid": _hits(lexical, None),
+            }
+        )
+    if args.with_hybrid:
+        dense = DenseRetriever.from_bundle(bdir, corpus=corpus, batch_size=args.batch_size)
+        prof = effective_query_profile_ids(dense.contract, args.query_profile_id)[0]
+        hybrid = HybridRetriever(
+            dense=dense,
+            lexical=lexical,
+            fusion="rrf",
+            rrf_k=args.rrf_k,
+            candidates=max(100, args.pool_depth),
+        )
+        print(f"  [hybrid_rrf] rrf_k={args.rrf_k} perfil={prof}: {len(target_questions)} q")
+        systems.append(
+            {
+                "bundle_id": "hybrid_rrf",
+                "query_profile_id": prof,
+                "hits_by_qid": _hits(hybrid, prof),
+            }
+        )
     return systems
 
 
@@ -137,6 +200,15 @@ def main() -> int:
     parser.add_argument("--max-paragraph-chars", type=int, default=0, help="recorte de párrafo.")
     parser.add_argument("--threads", type=int, default=8)
     parser.add_argument("--batch-size", type=int, default=32)
+    parser.add_argument(
+        "--with-bm25", action="store_true", help="añade BM25 como sistema del pool."
+    )
+    parser.add_argument("--with-hybrid", action="store_true", help="añade híbrido RRF al pool.")
+    parser.add_argument(
+        "--lexical-bundle", default=None, help="bundle para BM25/híbrido (default: el primero)."
+    )
+    parser.add_argument("--bm25-heading-boost", type=int, default=0)
+    parser.add_argument("--rrf-k", type=int, default=60)
     args = parser.parse_args()
     if args.output_dir is None:
         args.output_dir = str(Path(args.dataset_dir) / "_candidates")
@@ -164,6 +236,7 @@ def main() -> int:
     print(f"Bundles: {len(bundle_dirs)} | preguntas objetivo: {len(target_questions)} | "
           f"pool-depth={args.pool_depth}")
     systems = _collect_systems(bundle_dirs, target_questions, corpus, args)
+    systems += _lexical_hybrid_systems(args, corpus, target_questions, bundle_dirs)
     if not systems:
         print("Ningún sistema produjo candidatos (revisa perfiles/bundles).", file=sys.stderr)
         return 1

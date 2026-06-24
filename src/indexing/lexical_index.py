@@ -70,6 +70,8 @@ class LexicalIndex:
         heading_boost: int = 0,
         manifest: dict | None = None,
         analyzer: SpanishAnalyzer | None = None,
+        k1: float = 1.5,
+        b: float = 0.75,
     ) -> None:
         if len(rows) != len(texts):
             raise ValueError(
@@ -96,7 +98,11 @@ class LexicalIndex:
             if heading_boost and heading:
                 toks = toks + self.analyzer.analyze(heading) * heading_boost
             tokenized.append(toks)
-        self._bm25 = BM25Okapi(tokenized)
+        # k1 (saturación de frecuencia) y b (normalización por longitud) expuestos para el barrido
+        # de la ablación BM25; defaults de rank_bm25 (1.5 / 0.75). Quedan en la firma del report.
+        self.k1 = float(k1)
+        self.b = float(b)
+        self._bm25 = BM25Okapi(tokenized, k1=k1, b=b)
         # Conjunto de tokens por doc: el "match" se decide por SOLAPE léxico real, no por el signo
         # del score (el IDF de Okapi puede ser 0 o negativo y dejar a 0 un solape legítimo cuando un
         # término aparece en ~la mitad de los docs o el corpus es pequeño). El boost no altera el
@@ -111,6 +117,8 @@ class LexicalIndex:
         corpus: dict,
         analyzer: SpanishAnalyzer | None = None,
         heading_boost: int = 0,
+        k1: float = 1.5,
+        b: float = 0.75,
     ) -> LexicalIndex:
         """Construye el índice léxico sobre las rows del bundle denso (mismo orden/ids)."""
         manifest, rows, _embeddings = load_validated_bundle(Path(bundle_dir), corpus=corpus)
@@ -121,6 +129,8 @@ class LexicalIndex:
             heading_boost=heading_boost,
             manifest=manifest,
             analyzer=analyzer,
+            k1=k1,
+            b=b,
         )
 
     def __len__(self) -> int:
