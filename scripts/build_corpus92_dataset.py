@@ -129,7 +129,7 @@ INCORPUS = [
         "credinmob_tae",
         "¿Cómo se calcula la TAE de un préstamo hipotecario?",
         "lexica",
-        "single_parent",
+        "multi_parent",
         "media",
         [(p(CIN, "ar-8"), 2)],
     ),
@@ -139,7 +139,7 @@ INCORPUS = [
         "ciudadana",
         "single_parent",
         "media",
-        [(p(TRF, "a14"), 2)],
+        [(p(TRF, "a14"), 1)],
     ),
     (
         "dependencia_concepto",
@@ -670,7 +670,7 @@ INCORPUS = [
         "consumo_desistimiento",
         "¿De qué plazo dispone el consumidor para ejercer el derecho de desistimiento y desde cuándo empieza a contar?",
         "procedimental",
-        "single_parent",
+        "multi_parent",
         "media",
         [(p(TRLG, "a71"), 2)],
     ),
@@ -1050,6 +1050,37 @@ def main() -> int:
                     ),
                 }
             )
+    # Juicios descubiertos por pooling TREC de los 3 modelos densos (sospechosos juzgados por
+    # subagentes), persistidos en `_candidates/_pool_judgments/*.json`. Completan el gold más allá
+    # de las dianas known-item con lo que recuperaron los recuperadores. Se añaden como `draft`
+    # (rel 0/1/2); dedup contra las dianas; las quote se verifican como literales al final.
+    seen = {(j["query_id"], j["parent_id"]) for j in jrecs}
+    pjdir = OUT / "_candidates" / "_pool_judgments"
+    if pjdir.is_dir():
+        for f in sorted(pjdir.glob("*.json")):
+            for e in json.loads(f.read_text(encoding="utf-8")):
+                key = (e["query_id"], e["parent_id"])
+                if key in seen:
+                    continue
+                seen.add(key)
+                jrecs.append(
+                    {
+                        "query_id": e["query_id"],
+                        "parent_id": e["parent_id"],
+                        "relevance": e["relevance"],
+                        "evidence": {"paragraph_orders": e.get("paragraph_orders") or []},
+                        "quote": e.get("quote"),
+                        "review_status": "reviewed" if e["relevance"] >= 1 else "draft",
+                        "notes": (
+                            (
+                                "pooling 3 densos, aprobada en revisión del autor: "
+                                if e["relevance"] >= 1
+                                else "pooling 3 densos (negativo documentado): "
+                            )
+                            + (e.get("motivo") or "")
+                        ).strip(),
+                    }
+                )
     for i, (fam, q, reason) in enumerate(OOC, 1):
         qid = f"q92o_{i:03d}"
         draft_reason = OOC_DRAFT.get(qid)
