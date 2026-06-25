@@ -1,39 +1,133 @@
 \chapter{Diseño e implementación}
 \label{chap:diseño}
 
+Este capítulo describe el sistema tal y como se ha construido: sus componentes, cómo se conectan entre sí, qué datos intercambian y por qué se ha decidido organizarlo de esta manera. Si el capítulo de estado del arte (Capítulo~\ref{chap:estado-arte}) presentaba las alternativas que existen en el mundo, este se ocupa de las concretas que se han adoptado en el prototipo. La justificación empírica de las decisiones que dependen de medir —qué modelo de \emph{embeddings} recupera mejor, si la fusión híbrida aporta algo o qué umbral de abstención conviene— se reserva para el capítulo de experimentos (Capítulo~\ref{chap:experimentos}); aquí se explica la maquinaria y el razonamiento de diseño que la sustenta.
 
-Aquí viene todo lo que has hecho tú (tecnológicamente). 
-Puedes entrar hasta el detalle. 
-Es la parte más importante de la memoria, porque describe lo que has hecho tú.
-Eso sí, normalmente aconsejo no poner código, sino diagramas.
+La exposición avanza de fuera hacia dentro. Primero se ofrece una visión de conjunto de la arquitectura y de los principios que la gobiernan. A continuación se recorren, en el mismo orden en que fluyen los datos, las etapas del sistema: la adquisición y construcción del corpus, el procesamiento documental, la fragmentación, la indexación, la recuperación, el ensamblado de contexto y la generación de respuestas. El capítulo se cierra con el marco de evaluación entendido como software. En esta entrega se desarrollan las dos primeras piezas —la arquitectura general y el corpus—, sobre las que se apoya todo lo demás.
 
-\section{Arquitectura general} 
+\section{Arquitectura general}
 \label{sec:arquitectura}
 
-Si tu proyecto es un software, siempre es bueno poner la arquitectura (que es cómo se estructura tu programa a ``vista de pájaro'').
+El sistema no es un programa monolítico, sino una \textbf{cadena de etapas independientes} conectadas por artefactos de datos versionados. Cada etapa toma como entrada el artefacto que produjo la anterior, realiza una transformación bien delimitada y persiste su resultado en disco antes de ceder el turno a la siguiente. Esta organización, próxima a la idea de \emph{tubería} (\emph{pipeline}) de procesamiento, no es un capricho estético: es la que permite analizar el sistema por partes, reproducir cualquier resultado a partir de sus entradas y sustituir o ampliar una etapa sin rehacer las demás.
 
-Por ejemplo, puedes verlo en la Figura~\ref{fig:arquitectura}.
-\LaTeX \ pone las figuras donde mejor cuadran. 
-Y eso quiere decir que quizás no lo haga donde lo hemos puesto\ldots
-Eso no es malo.
-A veces queda un poco raro, pero es la filosofía de \LaTeX: tú al contenido, que yo me encargo de la maquetación.
+\subsection{Principios de diseño}
+\label{subsec:principios-diseno}
 
-\begin{figure}
-    \centering
-    \includegraphics[width=9cm, keepaspectratio]{img/arquitectura.png}
-    \caption{Estructura del parser básico.}\label{fig:arquitectura}
-\end{figure}
+Cinco principios atraviesan todas las decisiones del proyecto y conviene enunciarlos antes de entrar en el detalle, porque explican el porqué de muchas elecciones que de otro modo parecerían sobrecargadas.
 
-\begin{figure}
-    \centering
-    \includegraphics[bb=0 0 800 600, width=12cm, keepaspectratio]{img/foro1}
-    \caption{Página con enlaces a hilos}\label{fig:_arquitectura}
-\end{figure}
+\begin{description}
+  \item[Separación de responsabilidades.] Cada componente hace una sola cosa y la expone con una frontera clara de entrada y salida. La ingesta descarga, el \emph{parser} interpreta, el fragmentador trocea, el índice recupera, el generador redacta. Ningún componente conoce los detalles internos de otro: se comunican a través de contratos de datos, no de estructuras compartidas en memoria. Esto responde directamente al requisito de mantenibilidad y hace que cada pieza sea comprobable de forma aislada.
 
+  \item[Los contratos de datos como frontera.] Lo que viaja entre etapas no es un objeto cualquiera, sino un documento que cumple un \emph{contrato} explícito y validado. Esa frontera tipada es la que garantiza que un cambio en una etapa no corrompa silenciosamente a las siguientes y la que sostiene la trazabilidad de extremo a extremo.
 
-Recuerda que toda figura que añadas a tu memoria debe ser explicada.
-Sí, aunque te parezca evidente lo que se ve en la Figura~\ref{fig:arquitectura}, la figura en sí solamente es un apoyo a tu texto.
-Así que explica lo que se ve en la Figura, haciendo referencia a la misma tal y como ves aquí.
-Por ejemplo: En la Figura~\ref{fig:arquitectura} se puede ver que la estructura del \emph{parser} básico, que consta de seis componentes diferentes: los datos se obtienen de la red, y según el tipo de dato, se pasará a un \emph{parser} específico y bla, bla, bla\ldots
+  \item[Reproducibilidad por construcción.] Todo artefacto relevante —los XML descargados, los documentos procesados, los índices— se acompaña de la información necesaria para reconstruirlo y verificar que no ha cambiado: sumas de comprobación, manifiestos y huellas digitales. Un resultado del que no se puede rehacer el camino no se considera válido.
 
-Si utilizas una base de datos, no te olvides de incluir también un diagrama de entidad-relación.
+  \item[Ejecución local y abierta.] El sistema funciona íntegramente con software y modelos de código abierto ejecutados en un servidor propio, sin depender de servicios externos de pago ni de \emph{APIs} comerciales. Esta decisión, lejos de ser una mera restricción de recursos, refuerza la reproducibilidad, elimina el coste por consulta y mantiene las preguntas y los documentos bajo control, algo especialmente pertinente al trabajar con información jurídica.
+
+  \item[Fallo seguro y validación de salidas.] Ante la duda, el sistema se detiene o se abstiene en lugar de inventar. Las salidas se validan contra su contrato antes de aceptarse y, como se verá, el generador no responde si no dispone de evidencias suficientes. Es preferible un «no tengo información para responder» honesto a una respuesta fluida pero infundada.
+\end{description}
+
+\subsection{El flujo de datos de extremo a extremo}
+\label{subsec:flujo-datos}
+
+La forma más clara de entender la arquitectura es seguir el camino que recorre la información, desde que una norma vive en el portal del BOE hasta que el usuario recibe una respuesta fundamentada. El sistema encadena las siguientes etapas, cada una materializada en un \emph{script} de orquestación y respaldada por uno o varios módulos de la biblioteca \texttt{src/}:
+
+\begin{enumerate}
+  \item \textbf{Ingesta cruda.} Se descargan de la API del BOE los documentos de una norma y se guardan tal cual, junto con un manifiesto que registra su huella digital. Produce los XML inmutables en \texttt{data/raw/} y los manifiestos en \texttt{data/manifests/}.
+
+  \item \textbf{Procesamiento documental.} El \emph{parser} interpreta esos XML y construye la representación estructurada de la norma: su descriptor, su historial de versiones y el texto vigente de cada bloque. Produce los documentos procesados en \texttt{data/processed/}.
+
+  \item \textbf{Fragmentación.} El texto vigente se trocea en unidades recuperables que conservan el vínculo con su artículo o disposición de origen. Produce los \emph{chunks} listos para vectorizar.
+
+  \item \textbf{Auditoría.} Una comprobación de solo lectura verifica la coherencia relacional del corpus procesado y decide si está en condiciones de indexarse. Actúa como una puerta de calidad previa a las cargas pesadas.
+
+  \item \textbf{Indexación densa.} Los \emph{chunks} se transforman en vectores mediante un modelo de \emph{embeddings} y se empaquetan en un índice inmutable y verificable.
+
+  \item \textbf{Recuperación.} Ante una consulta, los recuperadores —léxico, denso e híbrido— seleccionan las evidencias candidatas del corpus.
+
+  \item \textbf{Ensamblado de contexto.} Las evidencias recuperadas se deduplican, se ordenan, se acotan a un presupuesto y se etiquetan con identificadores antes de entregarse al modelo generativo.
+
+  \item \textbf{Generación fundamentada.} El modelo de lenguaje redacta una respuesta a partir de ese contexto, citando únicamente las evidencias proporcionadas, o se abstiene si no las hay.
+
+  \item \textbf{Evaluación.} De forma transversal, un conjunto de métricas y un modelo juez miden por separado la calidad de cada eslabón sobre un banco de consultas anotadas.
+\end{enumerate}
+
+El rasgo decisivo de esta cadena es que cada etapa lee de disco el artefacto persistido por la anterior y escribe el suyo antes de continuar. No hay un proceso largo que lo haga todo de una vez: hay una sucesión de transformaciones reproducibles. Gracias a ello, las etapas costosas (la descarga real, la vectorización o la llamada al modelo generativo) pueden ejecutarse cuando conviene y en la máquina adecuada, y las pruebas automáticas pueden ejercitar cada componente de forma aislada y sin red, sustituyendo las dependencias pesadas por dobles de prueba.
+
+\subsection{Los contratos de datos como fuente única de verdad}
+\label{subsec:contratos}
+
+El elemento que cohesiona toda la arquitectura es el conjunto de \textbf{contratos de datos}, definidos como modelos \emph{Pydantic} (versión~2) en el paquete \texttt{src/contracts}. Cada contrato describe con precisión la forma de un artefacto: qué campos contiene, de qué tipo son y cuáles son obligatorios. Dos rasgos los convierten en una verdadera fuente de verdad. El primero es que prohíben los campos no declarados (\texttt{extra="forbid"}): si un documento trae información ajena al contrato —por una deriva del formato o por un error de otra etapa—, la validación lo rechaza en lugar de dejarlo pasar. El segundo es que cada contrato raíz fija una versión de esquema explícita (\texttt{schema\_version}), de modo que un artefacto generado con una versión antigua se detecta de inmediato.
+
+A partir de estos modelos se generan, de forma determinista, los esquemas JSON publicados en el repositorio, y una prueba automática comprueba byte a byte que el esquema versionado coincide con el que producen los modelos. Así, ningún cambio en un contrato puede colarse sin quedar reflejado y revisado.
+
+La representación procesada de una norma se reparte entre cuatro contratos, con una regla estricta de \textbf{propiedad única del texto}: cada pieza de información tiene un solo dueño y las demás la referencian, en lugar de duplicarla.
+
+\begin{description}
+  \item[El descriptor (\texttt{boe\_legal\_document\_v2}).] Es la ficha de la norma: sus metadatos, la lista de bloques que la componen, qué bloques son indexables y la clasificación por materias. Es el dueño de la estructura y de las decisiones de indexabilidad.
+
+  \item[El historial (\texttt{boe\_legal\_history\_v2}).] Guarda las distintas versiones de cada bloque, las notas de modificación y la resolución temporal que determina qué redacción está vigente. Es el dueño de la dimensión temporal de la norma.
+
+  \item[Los textos padre (\texttt{boe\_legal\_parents\_v2}).] Contienen el texto vigente de cada bloque y sus párrafos. Son el único dueño del texto pesado: el resto de artefactos no lo duplican, sino que lo recuperan por referencia.
+
+  \item[Los \emph{chunks} (\texttt{boe\_legal\_chunks\_v2}).] Son la proyección lista para recuperación: el texto del fragmento, una variante enriquecida para la búsqueda (\texttt{retrieval\_text}), la cita autoritativa con su enlace oficial y los filtros de metadatos. Es lo único que se vectoriza.
+\end{description}
+
+Todo lo demás se resuelve mediante \emph{join} por identificadores (\texttt{chunk\_id}, \texttt{parent\_id}), igual que en una base de datos relacional. Esta disciplina evita el peor enemigo de la trazabilidad —que la misma información viva, divergente, en varios sitios— y deja claro, para cada dato, dónde está la versión canónica. A estos contratos se añaden los de las capas posteriores: el de la respuesta fundamentada que produce el generador y los que describen los modelos de \emph{embeddings} y sus parámetros, descritos en sus secciones correspondientes.
+
+\subsection{Mapa de componentes}
+\label{subsec:mapa-componentes}
+
+La biblioteca del proyecto se organiza, bajo \texttt{src/}, en paquetes que se corresponden uno a uno con las responsabilidades de la cadena de datos. Esta correspondencia directa entre la estructura del código y las etapas del \emph{pipeline} facilita situar cualquier pieza:
+
+\begin{description}
+  \item[\texttt{boe}] Cliente HTTP de la API del BOE, \emph{parser} de los XML y gestión del corpus semilla.
+  \item[\texttt{contracts}] Los modelos de datos descritos arriba y la exportación de sus esquemas JSON.
+  \item[\texttt{preprocessing}] El fragmentador que convierte el texto vigente en \emph{chunks}.
+  \item[\texttt{embeddings}] El registro de modelos, el codificador, la preparación de entradas, el empaquetado del índice inmutable y sus huellas digitales.
+  \item[\texttt{indexing}] Los índices propiamente dichos: el índice denso exacto y el índice léxico.
+  \item[\texttt{retrieval}] Los recuperadores (denso, léxico e híbrido), el constructor de evidencias y el ensamblador de contexto.
+  \item[\texttt{generation}] La construcción del \emph{prompt}, el cliente del modelo local y el generador de respuestas.
+  \item[\texttt{evaluation}] Las métricas por componente, el modelo juez, el banco de consultas anotadas y los informes.
+  \item[\texttt{quality}] La auditoría del corpus procesado.
+  \item[\texttt{config} y \texttt{core}] La configuración del sistema y la jerarquía de excepciones propia, de la que heredan todos los errores del proyecto.
+\end{description}
+
+Existe además un paquete \texttt{app} reservado a una futura interfaz web o API de servicio; queda fuera del alcance de esta entrega, en coherencia con los objetivos (Capítulo~\ref{chap:objetivos}), donde la interfaz de usuario se plantea como trabajo futuro y el sistema se demuestra mediante línea de comandos y cuadernos reproducibles.
+
+\section{Adquisición y construcción del corpus}
+\label{sec:corpus}
+
+La primera etapa del sistema responde al objetivo de construir un corpus normativo reproducible y ampliable. Antes de poder recuperar o generar nada, hace falta una colección de normas obtenida de una fuente fiable, almacenada de forma que pueda verificarse y reconstruirse, y seleccionada con criterios explícitos. Esta sección describe cómo se adquieren los documentos, cómo se garantiza su trazabilidad y qué normas componen el corpus del trabajo.
+
+\subsection{Fuente documental: la API de legislación consolidada del BOE}
+\label{subsec:fuente-api}
+
+La fuente es la colección de legislación consolidada del \emph{Boletín Oficial del Estado}, accesible a través de su API de datos abiertos~\cite{boeApiConsolidada}. Como se argumentó en el estado del arte (§\ref{sec:informacion-juridica}), la consolidación integra en un único texto las modificaciones que ha recibido una norma, lo que la hace especialmente adecuada para un sistema de consulta; conviene recordar, no obstante, que estos textos tienen carácter informativo y no sustituyen a la publicación oficial~\cite{boeLegislacionActualizada}.
+
+Para cada norma, identificada por su código \texttt{BOE-A-AAAA-NNNNN}, el cliente de ingesta solicita seis recursos complementarios de la API: el texto completo (\texttt{full}), los metadatos (\texttt{metadatos}), el análisis jurídico (\texttt{analisis}), los metadatos en formato europeo ELI (\texttt{metadata-eli}), el texto estructurado (\texttt{texto}) y el índice de bloques (\texttt{indice}). De ellos, los metadatos, el texto y el índice se consideran obligatorios, porque sin ellos no se puede construir la representación de la norma; el resto son opcionales y, si la API no los ofrece para una norma concreta, se omiten sin detener la ingesta. Esta combinación de recursos es la que permite, más adelante, preservar la procedencia de cada fragmento y construir enlaces verificables a la fuente oficial.
+
+\subsection{Ingesta cruda inmutable y trazabilidad}
+\label{subsec:ingesta-cruda}
+
+La etapa de ingesta tiene una responsabilidad deliberadamente estrecha: descargar y guardar, sin interpretar nada. El cliente del BOE recupera los recursos de una norma y escribe los bytes \emph{tal cual} los devuelve la API, como ficheros XML bajo \texttt{data/raw/boe/<norma>/}. No se realiza ningún \emph{parsing} en este punto; la interpretación se delega por completo a la etapa siguiente. Esta separación mantiene la ingesta desacoplada del resto del sistema y, sobre todo, preserva el dato original intacto: el \emph{raw} es inmutable y nunca se vuelve a tocar.
+
+Junto a los XML, el cliente genera un \textbf{manifiesto} por norma (\texttt{data/manifests/<norma>.json}) que actúa como acta de la descarga. Para cada fichero registra su ruta, su tamaño en bytes (\texttt{size\_bytes}) y, sobre todo, su suma de comprobación criptográfica SHA-256; y para la norma en conjunto anota la fuente, la URL base de la API y el instante exacto de la descarga en formato UTC. Esa huella digital cumple una función esencial: permite comprobar en cualquier momento que los XML almacenados son exactamente los que se descargaron, sin alteraciones ni corrupción. La integridad del corpus deja así de ser una promesa y pasa a ser una propiedad verificable, base de la reproducibilidad de todo lo que se construye después.
+
+\subsection{Selección del corpus semilla}
+\label{subsec:seleccion-corpus}
+
+El corpus del trabajo está definido de forma declarativa en un catálogo semilla (\texttt{seed\_corpus\_ampliado.json}), que enumera las normas a incorporar con su identificador, su denominación, su rango esperado y el área temática a la que pertenecen. Mantener la composición del corpus en un fichero de datos —y no dispersa por el código— es lo que hace la colección \emph{ampliable}: añadir o quitar normas es editar una lista y volver a ejecutar el proceso, sin rediseñar la arquitectura.
+
+La colección reúne \textbf{92 normas estatales consolidadas} de alto uso ciudadano, distribuidas en doce áreas temáticas. Parte de un núcleo administrativo y del sector público —procedimiento administrativo común, régimen jurídico del sector público, régimen local, transparencia, subvenciones, contratación pública o protección de datos— y se abre a las materias que más afectan a la vida cotidiana: tributaria, laboral y de seguridad social, consumo, vivienda, sanidad, educación, extranjería o tráfico, entre otras. Esta diversidad temática y de estilo de redacción no es casual: un corpus heterogéneo es el banco de pruebas adecuado para comparar después estrategias de recuperación de naturaleza distinta.
+
+La inclusión de una norma no es discrecional, sino que responde a criterios verificables comprobados sobre sus metadatos. Una norma entra en el corpus si, y solo si, está \textbf{vigente} (ni derogada ni con su vigencia agotada), su estado de consolidación figura como «Finalizado» —es decir, su texto consolidado está al día— y dispone de los recursos obligatorios de la API. Las normas que no cumplen estos criterios se excluyen y se reportan, nunca se sustituyen de forma automática. Los identificadores se verificaron además manualmente contra el portal del BOE, comprobando su vigencia y su última actualización, para no fiar la composición del corpus a la memoria ni a referencias antiguas.
+
+Algunas exclusiones merecen mención porque ilustran los criterios en acción. Se descartaron normas derogadas que un sistema ingenuo podría haber incluido por inercia. La Ley 35/2015 quedó fuera porque no posee texto consolidado propio —es una ley de reforma cuyo contenido vive en el anexo de otra norma— y la API devolvía un error para ella. Y dos textos de gran tamaño y formato antiguo, el Código Civil y la Ley Orgánica del Poder Judicial, se difirieron de forma consciente por su riesgo para el \emph{parser} y su peso desproporcionado en el índice, una decisión que prioriza la fiabilidad del conjunto sobre la mera acumulación de volumen.
+
+\subsection{Construcción, validación y auditoría}
+\label{subsec:construccion-validacion}
+
+Sobre ese catálogo operan varios procesos con responsabilidades separadas, que reflejan en el plano operativo los principios de diseño enunciados antes. La construcción \emph{con red} recorre el corpus semilla y, para cada norma, descarga su \emph{raw} y su manifiesto, la verifica contra los criterios de inclusión y, si los cumple, genera ya su documento procesado y sus \emph{chunks}; las normas que no los cumplen se dejan fuera y se documentan en un informe de verificación. A partir de ahí, todas las operaciones habituales son \emph{sin red}: un reprocesado local que regenera los artefactos procesados a partir del \emph{raw} ya descargado —útil cada vez que mejora el \emph{parser} o el fragmentador, sin volver a molestar a la API—, una validación estructural que comprueba que cada documento y cada conjunto de \emph{chunks} cumplen sus contratos, y una auditoría de calidad, de solo lectura, que revisa la coherencia relacional del corpus y produce un informe de \emph{readiness} que actúa como puerta previa a la indexación.
+
+Esta arquitectura de etapas y comprobaciones consigue que la incorporación de nueva normativa sea un proceso administrativo reproducible y de bajo riesgo: se amplía la lista semilla, se descarga lo nuevo, se reprocesa todo en local y las validaciones avisan si algo no encaja antes de seguir adelante. El corpus deja de ser un punto de partida frágil para convertirse en un artefacto reconstruible y verificable, que es justamente lo que exige el resto del sistema.
