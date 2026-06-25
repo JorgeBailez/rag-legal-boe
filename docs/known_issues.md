@@ -23,14 +23,15 @@ Lista de puntos abiertos a confirmar antes de avanzar. Documento vivo.
       dense-only con **índice exacto** (numpy + mmap, sin servicio externo). Se eliminaron de la
       configuración los defaults `vector_store_provider`/`chroma_persist_dir`/`qdrant_*`. Chroma/
       Qdrant quedan como posible ruta de migración futura, **no** parte de esta fase.
-- [ ] Confirmar el **modelo local de Ollama** cuando llegue la fase de generación
-      (default actual: `mistral`).
-- [ ] Confirmar la **estrategia de evaluación** antes de añadir RAGAS.
-- [ ] Definir el **umbral de abstención** sobre el dataset real.
-- [ ] Evaluar **embeddings en español** (e5-base/large/large-instruct, bge-m3, qwen3-0.6b,
-      gte-multilingual-base): shortlist en `src/embeddings/model_registry.py`. **Ya no hay default
-      global** de embeddings; el modelo se elige con `--model` (Fase 2). Pendiente: fijar los commit
-      hashes (revisiones) y ejecutar el benchmark en el servidor.
+- [x] ~~Confirmar el **modelo local de Ollama**~~ **Resuelto:** generador `qwen2.5:7b-instruct`,
+      juez `gemma3:12b` (familia distinta, anti self-preference).
+- [x] ~~Confirmar la **estrategia de evaluación**~~ **Resuelto:** marco de 6 capas L1–L6
+      (`docs/evaluacion_gold_y_metricas.md`); flagship de retrieval L1 cerrado (OE-04). RAGAS no se adopta.
+- [x] ~~Definir el **umbral de abstención**~~ **Medido:** ROC-AUC del score top-1 (en corpus-92,
+      e5-large/I1 AUC≈0.97); falta calibrar el umbral operativo en la fase de generación.
+- [x] ~~Evaluar **embeddings en español**~~ **Resuelto (OE-03, bake-off-92):** ganador
+      `e5-large-instruct·J1·I1_LEGAL`; revisiones pinneadas por commit hash. gte/qwen3 quedan fuera
+      (ver «Campaña de embeddings» abajo).
 
 ## Riesgos / pendientes del parser v0
 
@@ -100,6 +101,11 @@ Tras la corrección previa a embeddings y la **corrección de integridad tempora
       `image_only_block_without_text` / `table_without_textual_representation` (no bloqueantes).
 
 ## Campaña de embeddings / bake-off (Fase C–E)
+
+> ⚠️ **HISTÓRICO MVP corpus-10.** Superado por el **bake-off-92 (OE-03, 2026-06-24):** ganador
+> `e5-large-instruct·J1·I1_LEGAL` (bundle `c46c7042f563`), bge-m3 y e5-base dominados (ver ledger
+> §Fase 5 y `RESULTADOS.md`). **Los hallazgos de gte/qwen3 de abajo SIGUEN VIGENTES** (por eso se
+> mantienen en el bake-off recortado a 3).
 
 Estado tras la campaña en `dslab01` (2026-06-18): **4 bundles válidos** sobre el corpus limpio
 (`e5-base`, `e5-large`, `e5-large-instruct`, `bge-m3`; Gate B OK, 3263–3301 vectores). Dos modelos

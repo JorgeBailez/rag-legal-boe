@@ -1,5 +1,9 @@
 # Dataset de evaluación — dense_retrieval_v1
 
+> 🗄️ **HISTÓRICO (MVP corpus-10).** El dataset vigente del TFG es **`corpus92_v1`**
+> (`data/evaluation/corpus92_v1/`): 111 preguntas, split dev/test/ooc, gold de-sesgado por pooling
+> + re-pooling BM25/híbrido. Este (`dense_retrieval_v1`) se conserva como el banco del MVP.
+
 Dataset de evaluación del sistema RAG sobre el corpus MVP (10 normas). Versionable y pensado para
 **revisión jurídica manual**. Tres ficheros JSONL (una entrada por línea):
 

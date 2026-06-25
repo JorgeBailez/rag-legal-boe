@@ -5,7 +5,36 @@
 > denso/BM25/híbrido (`dense/benchmarks/retrieval_20260619T084908Z`).
 > Contexto estable: `CLAUDE.md` · norte del TFG: `PLAN.md` · plan de cierre: `CIERRE_MVP.md`.
 
-## 0 · Validez (LEER PRIMERO)
+---
+
+## ★ ACTUALIZACIÓN corpus-92 (AUTORITATIVA, 2026-06-25) — supersede el MVP de §1–§2
+
+> Lo de §1–§2 es el **MVP sobre corpus-10** (queda como histórico). Los resultados **vigentes** del
+> TFG son sobre el **corpus-92** con gold `corpus92_v1` (de-sesgado por re-pooling con BM25+híbrido).
+> Detalle, números y reproducción en el ledger `docs/decisiones_de_diseno.md` (Fases 5 y 4).
+
+- **OE-03 · modelo denso (bake-off-92, dev n=53, report `bench_20260624T181000Z`):** ganador
+  **`e5-large-instruct · J1 · I1_LEGAL`** (ParentnDCG@10 **0.802**) > bge-m3 (0.719) > e5-base (0.627),
+  **significativo en pareado**, **Pareto-óptimo** (bge-m3 dominado). La **instrucción de query es
+  palanca** (I1_LEGAL +0.070 SIG sobre I0_GENERIC). *(Deroga la elección de I2 del checkpoint MVP.)*
+- **OE-04 · flagship denso vs BM25 vs híbrido (test held-out n=28, `retrieval_20260625T111234Z`):**
+  **denso 0.797 GANA**; convexa α0.7 0.769 (Δ−0.028 **n.s.**); RRF 0.706 (Δ−0.091 **SIG peor**);
+  BM25 0.507 (SIG peor). Ablaciones en dev: BM25 → **`heading_boost` es el único knob significativo**
+  (`directa_articulo` 0.18→0.35); fusión → **convexa α alto > RRF** pero solo empata al denso.
+- **⚠️ El corpus-92 REFUTA la tesis de flagship del corpus-10 (§2).** En corpus-10 el híbrido rescataba
+  `directa_articulo` (0.41→0.75) y superaba al denso en dev; **en corpus-92 NO**: con 92 normas la
+  **colisión de nº de artículo** dispara los falsos positivos wrong-law de BM25 (lo confirmó el
+  re-pooling: 127/138 candidatos de BM25 = rel=0) y ni `heading_boost=3` lo limpia lo bastante para
+  superar al denso. **Conclusión vigente: el sistema usa recuperación DENSA**; la complementariedad
+  sparse/denso es **débil** en este corpus. Es un hallazgo honesto y de tamaño-de-corpus (más normas →
+  más colisión léxica), buen material de discusión.
+- Lo que SÍ se mantiene del MVP: el denso falla `directa_articulo` (universal); la abstención por
+  umbral de score funciona (en 92, e5-large/I1 AUC 0.97); e5-large-instruct = mejor calidad/coste,
+  bge-m3 dominado.
+
+---
+
+## 0 · Validez (LEER PRIMERO) — [§1–§2 = MVP corpus-10, histórico]
 
 > ✅ **POST-FIX.** El bake-off de §1 está medido sobre el **corpus reprocesado** (parser endurecido:
 > aparato editorial `<blockquote>` + tablas forma A/B linealizadas) y el **gold de relevancia

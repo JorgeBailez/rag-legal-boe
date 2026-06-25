@@ -1,5 +1,10 @@
 # Fase 2 — Baseline denso (dense-only)
 
+> 🗄️ **Diseño de ingeniería (vigente) con cifras del MVP corpus-10 (históricas).** La arquitectura
+> del índice denso sigue siendo la actual; los **números/baseline** (bundles, modelo elegido) están
+> superados por el corpus-92: el modelo es `e5-large-instruct·J1·I1_LEGAL` (OE-03) y el recuperador
+> del sistema es el denso (OE-04). Decisiones vivas en `docs/decisiones_de_diseno.md`.
+
 Documentación de la Fase 2: embeddings densos reproducibles, índice exacto, consulta, ensamblado de
 contexto y evaluación. Documento vivo.
 

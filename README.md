@@ -4,17 +4,18 @@ Sistema RAG para consulta **informativa** de legislación consolidada del BOE, o
 ciudadanos no expertos. **No** es asesoramiento jurídico vinculante: los textos
 consolidados del BOE tienen carácter informativo y no valor jurídico oficial.
 
-> **Estado: Fase 2 densa cerrada a checkpoint · Fase 3 (generación MVP) implementada.**
-> Flujo extremo a extremo sobre 10 normas: raw XML inmutable → manifest → parser →
+> **Estado (2026-06-25): pata de RECUPERACIÓN cerrada con evidencia (OE-01..OE-04).**
+> Flujo extremo a extremo sobre **92 normas**: raw XML inmutable → manifest → parser →
 > `documents + histories + parents` → chunks vector-ready → auditoría con *gate* →
 > **embeddings densos reproducibles → bundle inmutable → índice exacto (numpy + mmap) →
-> retrieval dense-only evaluado** → **generación fundamentada con LLM local (Ollama) → JSON
-> estructurado validado con citas oficiales o abstención**. Falta la API (FastAPI), prevista
-> para una fase posterior.
+> recuperación evaluada (denso vs BM25 vs híbrido)** → **generación fundamentada con LLM local
+> (Ollama) → JSON estructurado validado con citas oficiales o abstención**.
 >
-> El baseline denso seleccionado (checkpoint) es `e5-large-instruct · vista J1 ·
-> I2_CITIZEN_LEGISLATION`. Los bundles densos y los pesos de los modelos **no se versionan**
-> (ver `.gitignore`): se generan en un servidor CPU.
+> **Recuperador del sistema: denso `e5-large-instruct · vista J1 · I1_LEGAL`** (bake-off-92, OE-03).
+> El **flagship** denso vs BM25 vs híbrido (OE-04) está **cerrado: el denso gana**; la fusión con
+> BM25 no mejora en este corpus (evidencia y números en `docs/decisiones_de_diseno.md`). Núcleo
+> restante: **generación + validación del juez** (OE-05/06/07). Falta la API (FastAPI), fase
+> posterior. Los bundles densos y los pesos **no se versionan** (`.gitignore`): se generan en GPU/CPU.
 >
 > La **vigencia** de cada bloque se decide por la `fecha_actualizacion` de `indice.xml`
 > (coincidencia exacta y única con una versión, que además es la de fecha máxima); el orden de
@@ -129,11 +130,12 @@ con texto, firmas, notas iniciales) conservan **parent** pero no generan chunks.
 lleva `parent_id`, `citation`, `filters` mínimos y `retrieval_text` con contexto jurídico —
 **sin** `parent_text` ni metadatos documentales (se resuelven por join). Aún no hace embeddings.
 
-## Corpus MVP (10 normas)
+## Corpus (92 normas)
 
-El corpus semilla está en `data/corpus/seed_corpus.json`. Este comando descarga, **verifica**
-(vigente + `estado_consolidacion = Finalizado` + endpoints obligatorios) y procesa
-(parser + chunking) todas las normas que cumplen criterios. Llama a la API del BOE:
+El corpus actual son **92 normas** en `data/corpus/seed_corpus_ampliado.json` (el `seed_corpus.json`
+de 10 normas fue el MVP, histórico). Este comando descarga, **verifica** (vigente +
+`estado_consolidacion = Finalizado` + endpoints obligatorios) y procesa (parser + chunking) las
+normas que cumplen criterios (con `--seed data/corpus/seed_corpus_ampliado.json`). Llama a la API del BOE:
 
 ```bash
 uv run python scripts/build_corpus.py
@@ -145,7 +147,7 @@ tabla. Las normas que **no** cumplen criterios se excluyen del procesado y se re
 
 ## Auditoría de calidad del corpus
 
-Audita (solo lectura) que parser y chunker generan lo esperado sobre las 10 normas
+Audita (solo lectura) que parser y chunker generan lo esperado sobre el corpus
 (integridad, trazabilidad XML→documento→chunk, `retrieval_text`, overlap, oversized,
 jerarquía, eficiencia). Escribe `data/processed/reports/mvp_chunking_audit.{json,csv}`:
 
@@ -180,9 +182,10 @@ uv run jupyter notebook notebooks/01_exploracion_api_boe.ipynb
 ## Fase 2 — Índice denso (dense-only)
 
 Embeddings densos reproducibles + índice exacto + consulta + evaluación, partiendo de
-`data/processed/chunks/<norm_id>.json`. **Dense-only**: BM25, híbrido y reranking quedan para fases
-posteriores (no son parte de esta fase). El modelo de embeddings **no** es un default global: se
-elige con `--model`.
+`data/processed/chunks/<norm_id>.json`. El índice es **denso** (numpy + mmap). La comparación con
+BM25/híbrido (flagship OE-04) se ejecuta aparte con `scripts/benchmark_retrieval_strategies.py` y
+**concluyó que el denso gana** (la fusión no mejora; ver `docs/decisiones_de_diseno.md`). El reranking
+queda como trabajo futuro. El modelo de embeddings **no** es un default global: se elige con `--model`.
 
 ```bash
 uv run python scripts/generate_dense_index.py --list-models        # aliases disponibles
@@ -209,7 +212,8 @@ citas oficiales **o abstención**. Las URL y etiquetas finales provienen del cor
 autoritativos), nunca del texto generado; el aviso jurídico se añade de forma estática.
 
 **Dependencia externa (solo en ejecución real):** un Ollama local en `127.0.0.1:11434` con el
-modelo configurado (por defecto `qwen3:4b-instruct`). No hace falta para los tests (offline).
+modelo configurado (generador del TFG: `qwen2.5:7b-instruct`; juez de evaluación `gemma3:12b`, de
+familia distinta). No hace falta para los tests (offline).
 
 Configuración en `.env` (ver `.env.example`): `OLLAMA_*` (URL loopback por defecto, modelo,
 timeout, `keep_alive`, `num_ctx`, etc.) y `GENERATION_*` (bundle denso, perfil de consulta,

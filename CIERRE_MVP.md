@@ -1,5 +1,9 @@
 # CIERRE_MVP — plan ordenado y criterios de aceptación
 
+> 🗄️ **HISTÓRICO (MVP corpus-10, cerrado).** El proyecto avanzó a **corpus-92** y la pata de
+> recuperación (OE-01..OE-04) ya está cerrada (el denso gana el flagship). Estado vivo en
+> `PROGRESO.md`; evidencia en `docs/decisiones_de_diseno.md`. Este doc se conserva como registro.
+
 > **Qué es esto:** el plan para **cerrar el MVP con nota** — dejar la base (F1 pipeline + F2 índice
 > denso + F3 generación + P0 evaluación) **validada y reproducible** sobre el corpus de **10 normas**.
 > **Fuera de alcance** (es la fase siguiente, ver `PLAN.md`): comparación **BM25/denso/híbrido** y

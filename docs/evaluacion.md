@@ -2,7 +2,12 @@
 
 Métricas, dataset y protocolo de evaluación. Documento vivo.
 
-## Estado: Fase 2 (retrieval denso)
+> ⚠️ **Estado/dataset desactualizados abajo.** El dataset vigente es **`corpus92_v1`** (no
+> `dense_retrieval_v1`) y el retrieval (L1) está **cerrado** (flagship OE-04: el denso gana). El
+> **marco de métricas** sigue válido; el diseño completo de las 6 capas está en
+> `docs/evaluacion_gold_y_metricas.md`. Estado vivo: `PROGRESO.md` + ledger `docs/decisiones_de_diseno.md`.
+
+## Estado: Fase 2 (retrieval denso) — [histórico]
 
 Implementadas las **métricas de retrieval denso** (`src/evaluation/metrics.py`) y el **dataset
 versionable** `data/evaluation/dense_retrieval_v1/` (`questions.jsonl` + `judgments.jsonl` +
