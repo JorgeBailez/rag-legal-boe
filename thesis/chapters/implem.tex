@@ -8,15 +8,15 @@ La exposición avanza de fuera hacia dentro. Primero se ofrece una visión de co
 \section{Arquitectura general}
 \label{sec:arquitectura}
 
-El sistema no es un programa monolítico, sino una \textbf{cadena de etapas independientes} conectadas por artefactos de datos versionados. Cada etapa toma como entrada el artefacto que produjo la anterior, realiza una transformación bien delimitada y persiste su resultado en disco antes de ceder el turno a la siguiente. Esta organización, próxima a la idea de \emph{tubería} (\emph{pipeline}) de procesamiento, no es un capricho estético: es la que permite analizar el sistema por partes, reproducir cualquier resultado a partir de sus entradas y sustituir o ampliar una etapa sin rehacer las demás.
+El sistema no es un programa monolítico, sino una \textbf{cadena de etapas independientes} conectadas por artefactos de datos versionados. Cada etapa toma como entrada el artefacto que produjo la anterior, realiza una transformación bien delimitada y persiste su resultado en disco antes de ceder el turno a la siguiente. Esta organización, próxima a la idea de \emph{tubería} (\emph{pipeline}) de procesamiento,  permite analizar el sistema por partes, reproducir cualquier resultado a partir de sus entradas y sustituir o ampliar una etapa sin rehacer las demás.
 
 \subsection{Principios de diseño}
 \label{subsec:principios-diseno}
 
-Cinco principios atraviesan todas las decisiones del proyecto y conviene enunciarlos antes de entrar en el detalle, porque explican el porqué de muchas elecciones que de otro modo parecerían sobrecargadas.
+Cinco principios atraviesan todas las decisiones del proyecto y conviene enunciarlos antes de entrar en el detalle.
 
 \begin{description}
-  \item[Separación de responsabilidades.] Cada componente hace una sola cosa y la expone con una frontera clara de entrada y salida. La ingesta descarga, el \emph{parser} interpreta, el fragmentador trocea, el índice recupera, el generador redacta. Ningún componente conoce los detalles internos de otro: se comunican a través de contratos de datos, no de estructuras compartidas en memoria. Esto responde directamente al requisito de mantenibilidad y hace que cada pieza sea comprobable de forma aislada.
+  \item[Separación de responsabilidades.] Cada componente hace una sola cosa y la expone con una frontera clara de entrada y salida. La ingesta descarga, el \emph{parser} interpreta, el chuncker trocea, el índice recupera, el generador redacta. Ningún componente conoce los detalles internos de otro: se comunican a través de contratos de datos, no de estructuras compartidas en memoria. Esto responde directamente al requisito de mantenibilidad y hace que cada pieza sea comprobable de forma aislada.
 
   \item[Los contratos de datos como frontera.] Lo que viaja entre etapas no es un objeto cualquiera, sino un documento que cumple un \emph{contrato} explícito y validado. Esa frontera tipada es la que garantiza que un cambio en una etapa no corrompa silenciosamente a las siguientes y la que sostiene la trazabilidad de extremo a extremo.
 
@@ -31,7 +31,6 @@ Cinco principios atraviesan todas las decisiones del proyecto y conviene enuncia
 \label{subsec:flujo-datos}
 
 La forma más clara de entender la arquitectura es seguir el camino que recorre la información, desde que una norma vive en el portal del BOE hasta que el usuario recibe una respuesta fundamentada. El sistema encadena las siguientes etapas, cada una materializada en un \emph{script} de orquestación y respaldada por uno o varios módulos de la biblioteca \texttt{src/}:
-
 \begin{enumerate}
   \item \textbf{Ingesta cruda.} Se descargan de la API del BOE los documentos de una norma y se guardan tal cual, junto con un manifiesto que registra su huella digital. Produce los XML inmutables en \texttt{data/raw/} y los manifiestos en \texttt{data/manifests/}.
 
@@ -93,8 +92,6 @@ La biblioteca del proyecto se organiza, bajo \texttt{src/}, en paquetes que se c
   \item[\texttt{config} y \texttt{core}] La configuración del sistema y la jerarquía de excepciones propia, de la que heredan todos los errores del proyecto.
 \end{description}
 
-Existe además un paquete \texttt{app} reservado a una futura interfaz web o API de servicio; queda fuera del alcance de esta entrega, en coherencia con los objetivos (Capítulo~\ref{chap:objetivos}), donde la interfaz de usuario se plantea como trabajo futuro y el sistema se demuestra mediante línea de comandos y cuadernos reproducibles.
-
 \section{Adquisición y construcción del corpus}
 \label{sec:corpus}
 
@@ -103,7 +100,7 @@ La primera etapa del sistema responde al objetivo de construir un corpus normati
 \subsection{Fuente documental: la API de legislación consolidada del BOE}
 \label{subsec:fuente-api}
 
-La fuente es la colección de legislación consolidada del \emph{Boletín Oficial del Estado}, accesible a través de su API de datos abiertos~\cite{boeApiConsolidada}. Como se argumentó en el estado del arte (§\ref{sec:informacion-juridica}), la consolidación integra en un único texto las modificaciones que ha recibido una norma, lo que la hace especialmente adecuada para un sistema de consulta; conviene recordar, no obstante, que estos textos tienen carácter informativo y no sustituyen a la publicación oficial~\cite{boeLegislacionActualizada}.
+La fuente es la colección de legislación consolidada del \emph{Boletín Oficial del Estado}, accesible a través de su API de datos abiertos~\cite{boeApiConsolidada}. Como se argumentó en el estado del arte (\ref{sec:informacion-juridica}), la consolidación integra en un único texto las modificaciones que ha recibido una norma, lo que la hace especialmente adecuada para un sistema de consulta; conviene recordar, no obstante, que estos textos tienen carácter informativo y no sustituyen a la publicación oficial~\cite{boeLegislacionActualizada}.
 
 Para cada norma, identificada por su código \texttt{BOE-A-AAAA-NNNNN}, el cliente de ingesta solicita seis recursos complementarios de la API: el texto completo (\texttt{full}), los metadatos (\texttt{metadatos}), el análisis jurídico (\texttt{analisis}), los metadatos en formato europeo ELI (\texttt{metadata-eli}), el texto estructurado (\texttt{texto}) y el índice de bloques (\texttt{indice}). De ellos, los metadatos, el texto y el índice se consideran obligatorios, porque sin ellos no se puede construir la representación de la norma; el resto son opcionales y, si la API no los ofrece para una norma concreta, se omiten sin detener la ingesta. Esta combinación de recursos es la que permite, más adelante, preservar la procedencia de cada fragmento y construir enlaces verificables a la fuente oficial.
 
@@ -123,11 +120,9 @@ La colección reúne \textbf{92 normas estatales consolidadas} de alto uso ciuda
 
 La inclusión de una norma no es discrecional, sino que responde a criterios verificables comprobados sobre sus metadatos. Una norma entra en el corpus si, y solo si, está \textbf{vigente} (ni derogada ni con su vigencia agotada), su estado de consolidación figura como «Finalizado» —es decir, su texto consolidado está al día— y dispone de los recursos obligatorios de la API. Las normas que no cumplen estos criterios se excluyen y se reportan, nunca se sustituyen de forma automática. Los identificadores se verificaron además manualmente contra el portal del BOE, comprobando su vigencia y su última actualización, para no fiar la composición del corpus a la memoria ni a referencias antiguas.
 
-Algunas exclusiones merecen mención porque ilustran los criterios en acción. Se descartaron normas derogadas que un sistema ingenuo podría haber incluido por inercia. La Ley 35/2015 quedó fuera porque no posee texto consolidado propio —es una ley de reforma cuyo contenido vive en el anexo de otra norma— y la API devolvía un error para ella. Y dos textos de gran tamaño y formato antiguo, el Código Civil y la Ley Orgánica del Poder Judicial, se difirieron de forma consciente por su riesgo para el \emph{parser} y su peso desproporcionado en el índice, una decisión que prioriza la fiabilidad del conjunto sobre la mera acumulación de volumen.
-
 \subsection{Construcción, validación y auditoría}
 \label{subsec:construccion-validacion}
 
-Sobre ese catálogo operan varios procesos con responsabilidades separadas, que reflejan en el plano operativo los principios de diseño enunciados antes. La construcción \emph{con red} recorre el corpus semilla y, para cada norma, descarga su \emph{raw} y su manifiesto, la verifica contra los criterios de inclusión y, si los cumple, genera ya su documento procesado y sus \emph{chunks}; las normas que no los cumplen se dejan fuera y se documentan en un informe de verificación. A partir de ahí, todas las operaciones habituales son \emph{sin red}: un reprocesado local que regenera los artefactos procesados a partir del \emph{raw} ya descargado —útil cada vez que mejora el \emph{parser} o el fragmentador, sin volver a molestar a la API—, una validación estructural que comprueba que cada documento y cada conjunto de \emph{chunks} cumplen sus contratos, y una auditoría de calidad, de solo lectura, que revisa la coherencia relacional del corpus y produce un informe de \emph{readiness} que actúa como puerta previa a la indexación.
+Sobre ese catálogo operan varios procesos con responsabilidades separadas, que reflejan en el plano operativo los principios de diseño enunciados antes. La construcción \emph{con red} recorre el corpus semilla y, para cada norma, descarga su \emph{raw} y su manifiesto, la verifica contra los criterios de inclusión y, si los cumple, genera ya su documento procesado y sus \emph{chunks}; las normas que no los cumplen se dejan fuera y se documentan en un informe de verificación. A partir de ahí, todas las operaciones habituales son \emph{sin red}: un reprocesado local que regenera los artefactos procesados a partir del \emph{raw} ya descargado —útil cada vez que mejora el \emph{parser} o el fragmentador, sin volver a llamar a la API—, una validación estructural que comprueba que cada documento y cada conjunto de \emph{chunks} cumplen sus contratos, y una auditoría de calidad, de solo lectura, que revisa la coherencia relacional del corpus y produce un informe de \emph{readiness} que actúa como puerta previa a la indexación.
 
 Esta arquitectura de etapas y comprobaciones consigue que la incorporación de nueva normativa sea un proceso administrativo reproducible y de bajo riesgo: se amplía la lista semilla, se descarga lo nuevo, se reprocesa todo en local y las validaciones avisan si algo no encaja antes de seguir adelante. El corpus deja de ser un punto de partida frágil para convertirse en un artefacto reconstruible y verificable, que es justamente lo que exige el resto del sistema.
