@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TFG · RAG sobre legislación del BOE — Avances al 26/06/2026</title>
+<style>
+  :root{
+    --bg:#0f1720; --panel:#ffffff; --ink:#1c2430; --muted:#5a6b7b;
+    --brand:#1f6feb; --brand-dark:#144a9e; --accent:#0c8f6b;
+    --warn:#b4690e; --danger:#b3261e; --line:#e4e9f0;
+    --code-bg:#0d1b2a; --code-ink:#dbe7f3;
+    --soft:#f4f7fb; --soft2:#eef3f9;
+    --maxw:980px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:#eceff3; color:var(--ink);
+    font-family:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;
+    line-height:1.62; font-size:16.5px;
+  }
+  .wrap{display:flex; max-width:1320px; margin:0 auto; gap:0}
+  nav.toc{
+    position:sticky; top:0; align-self:flex-start; height:100vh; overflow-y:auto;
+    width:300px; min-width:300px; padding:26px 18px 60px 26px;
+    background:var(--bg); color:#cdd9e5;
+  }
+  nav.toc h2{color:#fff; font-size:15px; letter-spacing:.04em; text-transform:uppercase; margin:0 0 14px}
+  nav.toc a{display:block; color:#b7c6d6; text-decoration:none; padding:5px 10px; border-radius:7px; font-size:14.2px; margin:2px 0}
+  nav.toc a:hover{background:#1d2a38; color:#fff}
+  nav.toc a.sub{padding-left:24px; font-size:13.4px; color:#92a4b6}
+  nav.toc .tag{display:block; margin-top:20px; font-size:11.5px; color:#7d909f; letter-spacing:.05em}
+  main{flex:1; min-width:0; padding:0 0 90px}
+  .inner{max-width:var(--maxw); margin:0 auto; padding:0 30px}
+
+  header.hero{
+    background:linear-gradient(135deg,#13315c 0%,#1f6feb 100%);
+    color:#fff; padding:54px 30px 46px; margin-bottom:36px;
+  }
+  header.hero .inner{max-width:var(--maxw); margin:0 auto; padding:0 30px}
+  header.hero .kicker{font-size:13px; letter-spacing:.18em; text-transform:uppercase; opacity:.85; margin:0 0 10px}
+  header.hero h1{font-size:32px; line-height:1.22; margin:0 0 14px; font-weight:700}
+  header.hero p{font-size:18px; opacity:.95; margin:0; max-width:740px}
+  header.hero .meta{margin-top:22px; display:flex; gap:10px; flex-wrap:wrap}
+  header.hero .meta span{background:rgba(255,255,255,.16); padding:6px 13px; border-radius:999px; font-size:13.5px}
+
+  section{margin:0 0 12px}
+  h2.sec{font-size:26px; margin:46px 0 6px; padding-top:14px; color:#13315c; border-top:3px solid var(--line)}
+  h2.sec .n{color:var(--brand); font-weight:800; margin-right:8px}
+  h3{font-size:20px; margin:30px 0 8px; color:#15324f}
+  h4{font-size:16.5px; margin:20px 0 6px; color:#1d3a59; text-transform:none}
+  p{margin:10px 0}
+  ul,ol{margin:10px 0 10px 4px; padding-left:22px}
+  li{margin:5px 0}
+  b,strong{color:#0f2740}
+  a{color:var(--brand)}
+
+  .box{border-radius:12px; padding:16px 18px; margin:16px 0; border:1px solid var(--line); background:var(--panel)}
+  .plain{background:#eef9f3; border:1px solid #bfe6d4}
+  .plain .h{color:var(--accent); font-weight:700; font-size:13px; letter-spacing:.06em; text-transform:uppercase; margin:0 0 6px; display:flex; align-items:center; gap:7px}
+  .term{background:#fff7ea; border:1px solid #f0d9ab}
+  .term .h{color:var(--warn); font-weight:700; font-size:13px; letter-spacing:.04em; text-transform:uppercase; margin:0 0 4px}
+  .danger{background:#fdecea; border:1px solid #f3bdb8}
+  .danger .h{color:var(--danger); font-weight:700; font-size:13px; text-transform:uppercase; letter-spacing:.04em; margin:0 0 4px}
+  .info{background:#eaf2fe; border:1px solid #bcd6fb}
+  .info .h{color:var(--brand-dark); font-weight:700; font-size:13px; text-transform:uppercase; letter-spacing:.04em; margin:0 0 4px}
+
+  pre{background:var(--code-bg); color:var(--code-ink); padding:15px 16px; border-radius:11px; overflow-x:auto; font-size:13.6px; line-height:1.55; margin:14px 0}
+  code{font-family:"Cascadia Code",ui-monospace,"SF Mono",Consolas,monospace}
+  p code,li code,td code{background:#e7edf4; color:#0b3a73; padding:1px 6px; border-radius:5px; font-size:13.5px}
+  pre code{background:none; color:inherit; padding:0}
+  .cmt{color:#7fa9d6}
+  .str{color:#9ae6b4}
+  .kw{color:#f6a96b}
+
+  table{border-collapse:collapse; width:100%; margin:16px 0; font-size:14.6px; background:#fff; border-radius:10px; overflow:hidden}
+  th,td{border:1px solid var(--line); padding:9px 12px; text-align:left; vertical-align:top}
+  th{background:#13315c; color:#fff; font-weight:600}
+  tr:nth-child(even) td{background:#f7fafd}
+  td.win{background:#dcf5e8 !important; font-weight:700; color:#0a6f4f}
+  td.lose{background:#fde3e0 !important; color:#a3271f}
+
+  .pipe{display:flex; flex-wrap:wrap; gap:0; align-items:stretch; margin:20px 0}
+  .step{flex:1; min-width:150px; background:#fff; border:1px solid var(--line); border-radius:11px; padding:13px 12px; position:relative; margin:6px}
+  .step .num{position:absolute; top:-11px; left:12px; background:var(--brand); color:#fff; font-size:12px; font-weight:700; border-radius:999px; width:23px; height:23px; display:flex; align-items:center; justify-content:center}
+  .step h5{margin:8px 0 4px; font-size:14.5px; color:#13315c}
+  .step p{margin:0; font-size:12.8px; color:var(--muted); line-height:1.45}
+
+  .flow{margin:18px 0}
+  .flow .row{display:flex; align-items:center; gap:10px; margin:7px 0; flex-wrap:wrap}
+  .flow .node{background:#13315c; color:#fff; padding:8px 14px; border-radius:9px; font-size:14px; font-weight:600}
+  .flow .node.alt{background:#0c8f6b}
+  .flow .node.soft{background:#eef3f9; color:#13315c; border:1px solid #cfdcec}
+  .flow .arr{color:var(--brand); font-weight:800; font-size:18px}
+
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+  @media(max-width:820px){.grid2{grid-template-columns:1fr}}
+
+  .pill{display:inline-block; background:#e7edf4; color:#0b3a73; padding:2px 10px; border-radius:999px; font-size:12.5px; margin:2px 3px; font-weight:600}
+  .pill.ok{background:#dcf5e8; color:#0a6f4f}
+  .pill.no{background:#fde3e0; color:#a3271f}
+  .pill.new{background:#fde9c8; color:#8a5300}
+
+  hr{border:none; border-top:1px solid var(--line); margin:28px 0}
+  .small{font-size:13.5px; color:var(--muted)}
+  .lead{font-size:18px; color:#2a3a4a}
+  footer{max-width:var(--maxw); margin:40px auto 0; padding:24px 30px; border-top:2px solid var(--line); color:var(--muted); font-size:13.5px}
+
+  /* barra de resultado simple */
+  .bar{display:flex; align-items:center; gap:10px; margin:6px 0; font-size:14px}
+  .bar .lab{width:190px; min-width:190px; color:#15324f}
+  .bar .track{flex:1; background:#eef3f9; border-radius:6px; height:20px; position:relative; overflow:hidden; border:1px solid #dbe6f2}
+  .bar .fill{height:100%; border-radius:6px 0 0 6px}
+  .bar .val{width:54px; min-width:54px; text-align:right; font-weight:700; color:#13315c}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav class="toc">
+  <h2>Índice</h2>
+  <a href="#resumen">0 · Resumen: qué ha cambiado en una semana</a>
+  <a href="#recordatorio">1 · Recordatorio rápido del proyecto</a>
+  <a href="#corpus">2 · Avance A — El corpus: de 10 a 92 leyes ⭐</a>
+  <a class="sub" href="#corpus-porque">2.1 Por qué ampliar</a>
+  <a class="sub" href="#corpus-como">2.2 Cómo se hizo y qué costó</a>
+  <a href="#embeddings">3 · Avance B — Embeddings y elección de modelo ⭐</a>
+  <a class="sub" href="#emb-gpu">3.1 La técnica: GPU prestada</a>
+  <a class="sub" href="#emb-bakeoff">3.2 Comparativa de 3 modelos</a>
+  <a class="sub" href="#emb-grieta">3.3 La grieta del denso</a>
+  <a href="#preguntas">4 · Avance C — El banco de preguntas ⭐</a>
+  <a class="sub" href="#preg-antes">4.1 El problema del banco viejo</a>
+  <a class="sub" href="#preg-tecnica">4.2 La técnica nueva (UQV)</a>
+  <a class="sub" href="#preg-gold">4.3 El gold y el de-sesgo (pooling)</a>
+  <a href="#flagship">5 · Avance D — Experimento estrella ⭐⭐</a>
+  <a class="sub" href="#flag-que">5.1 Qué se comparó</a>
+  <a class="sub" href="#flag-resultados">5.2 Resultados</a>
+  <a class="sub" href="#flag-giro">5.3 El giro: refutamos lo anterior</a>
+  <a href="#analisis">6 · ¿Va mal el léxico, o el examen está sesgado? ⭐⭐</a>
+  <a class="sub" href="#ana-sesgo">6.1 ¿Está el dataset sesgado?</a>
+  <a class="sub" href="#ana-real">6.2 La causa real</a>
+  <a class="sub" href="#ana-mejoras">6.3 Cómo se podría mejorar</a>
+  <a class="sub" href="#ana-honesto">6.4 Límites honestos</a>
+  <a href="#futuro">7 · Pasos inmediatos</a>
+  <a href="#cierre">8 · Resumen para la reunión</a>
+  <span class="tag">Documento al 26/06/2026 · estado real del repositorio</span>
+</nav>
+
+<main>
+<header class="hero">
+  <div class="inner">
+    <p class="kicker">Trabajo de Fin de Grado · Reunión de tutoría · 26 de junio de 2026</p>
+    <h1>Avances de la semana: corpus ×9, elección de modelo<br>y el experimento central de búsqueda, cerrado</h1>
+    <p>Asistente <b>RAG</b> que responde preguntas sobre legislación española del BOE citando siempre
+       la fuente. Esta página recoge <b>todo lo hecho, analizado y descubierto del 19 al 26 de junio</b>,
+       explicado desde cero, y termina respondiendo a una pregunta incómoda: <em>¿por qué la búsqueda
+       por palabras va floja… y nos podemos fiar de ese resultado?</em></p>
+    <div class="meta">
+      <span>📚 10 → 92 leyes</span>
+      <span>🧠 3 modelos comparados</span>
+      <span>❓ banco de preguntas rehecho</span>
+      <span>🏁 denso vs palabras vs híbrido: cerrado</span>
+    </div>
+  </div>
+</header>
+
+<div class="inner">
+
+<!-- ===================== 0 ===================== -->
+<section id="resumen">
+<h2 class="sec"><span class="n">0</span>Resumen: qué ha cambiado en una semana</h2>
+
+<p class="lead">La semana pasada te enseñé el sistema funcionando sobre <b>10 leyes</b> y con un primer
+experimento de búsqueda. Esta semana el trabajo ha ido a lo grande: <b>he multiplicado el corpus por
+nueve, he elegido el modelo de búsqueda con datos, he rehecho el banco de preguntas con el que mido,
+y he cerrado el experimento central del TFG</b>. Y ese experimento ha dado un resultado que <b>cambia
+la conclusión que te conté la semana pasada</b> — es la parte más interesante.</p>
+
+<div class="box info" style="border-width:2px">
+  <p class="h">🆕 Los cuatro avances de esta semana (19 → 26 jun)</p>
+  <ol style="margin:6px 0">
+    <li><b>A · El corpus pasó de 10 a 92 leyes</b> (12 áreas de la vida del ciudadano + Constitución +
+     Código Penal). Procesadas y auditadas sin errores: <b>24.788 fragmentos</b> de ley listos para
+     buscar. <span class="small">(§2)</span></li>
+    <li><b>B · Elegí el modelo de búsqueda con una comparativa de 3 modelos</b>, no a ojo. Para poder
+     hacerla tuve que <b>generar todos los «significados» numéricos (embeddings)</b> de las 92 leyes,
+     y lo resolví con un truco de <b>GPU prestada</b> (lo que en el servidor tardaría ~3 días, en la
+     GPU son minutos). <span class="small">(§3)</span></li>
+    <li><b>C · Rehíce y amplié el banco de preguntas</b> con el que mido todo: de 80 preguntas
+     «degeneradas» a <b>111 preguntas bien diseñadas</b>, con una técnica para medir si el sistema
+     entiende la <b>misma pregunta dicha de varias formas</b>, y un método anti-trampa para que la
+     comparación sea <b>justa con todos los buscadores</b>. <span class="small">(§4)</span></li>
+    <li><b>D · Cerré el experimento estrella del TFG</b>: búsqueda <b>por significado</b> vs <b>por
+     palabras</b> vs <b>las dos combinadas</b>. Conclusión nueva y honesta. <span class="small">(§5)</span></li>
+  </ol>
+  <p style="margin-top:8px">Y como pediste, dedico una sección entera (§6) a una pregunta crítica:
+  <b>los resultados de la búsqueda por palabras son flojos — ¿es que el método es malo, o es que el
+  «examen» está hecho a la medida del otro buscador?</b></p>
+</div>
+
+<div class="box danger">
+  <p class="h">⚠️ Aviso importante: esto contradice lo que te conté la semana pasada</p>
+  <p>La semana pasada, con 10 leyes, te dije que <b>combinar</b> los dos buscadores «rescataba» las
+  preguntas difíciles (de una nota de 0,41 a 0,75). <b>Con 92 leyes ese resultado se ha caído.</b> No
+  es un error: es lo que pasa cuando subes la escala, y <b>refutar tu propia conclusión preliminar con
+  más datos es exactamente lo que da valor a un TFG experimental</b>. Lo explico en §5.3 y §6.</p>
+</div>
+</section>
+
+<!-- ===================== 1 ===================== -->
+<section id="recordatorio">
+<h2 class="sec"><span class="n">1</span>Recordatorio rápido (30 segundos)</h2>
+
+<p>Para situarnos, sin repetir todo lo de la semana pasada. El objetivo es un asistente al que un
+ciudadano le pregunta en lenguaje normal —<em>«¿cuánto tarda la Administración en contestarme?»</em>—
+y responde <b>apoyándose solo en el texto real de las leyes</b>, citando el artículo concreto. No se
+inventa nada: si no tiene la información, prefiere decir <em>«no lo sé»</em>. En lo legal, mentir con
+seguridad es el peor pecado.</p>
+
+<p>Funciona en dos grandes tiempos, y <b>todo lo de esta semana está en el primero</b>:</p>
+<div class="pipe">
+  <div class="step"><span class="num">A</span><h5>Preparar la biblioteca</h5><p>Descargar leyes → leerlas bien (parser) → trocearlas → convertir cada trozo en números (embeddings) → meterlos en un índice de búsqueda.</p></div>
+  <div class="step"><span class="num">B</span><h5>Atender preguntas</h5><p>Buscar los trozos relevantes (retrieval) → dárselos al modelo como «chuleta» → que redacte la respuesta citando solo eso.</p></div>
+</div>
+
+<div class="box plain">
+  <p class="h">💡 Dónde encaja lo de esta semana</p>
+  <p>Casi todo el trabajo de esta semana es sobre <b>el buscador</b> (la pieza «retrieval»): qué leyes
+  tiene, con qué modelo las representa, con qué preguntas lo medimos y qué tipo de búsqueda funciona
+  mejor. La parte de <b>redactar la respuesta</b> (el modelo de lenguaje) es la siguiente etapa (§7).</p>
+</div>
+
+<div class="box term">
+  <p class="h">📖 Tres palabras que usaré mucho</p>
+  <ul style="margin:6px 0">
+    <li><b>Embedding:</b> convertir un texto en una lista de números (un «vector») que captura su
+     <b>significado</b>. Dos textos parecidos dan números parecidos, aunque usen palabras distintas.
+     Es lo que permite buscar «por significado».</li>
+    <li><b>BM25:</b> el buscador clásico «de toda la vida» (el de un Ctrl+F potente). No entiende
+     significados: <b>cuenta coincidencias de palabras</b>, dando más peso a las raras. Es buscar «por
+     palabras exactas».</li>
+    <li><b>Híbrido:</b> juntar los dos (significado + palabras) en una sola lista de resultados.</li>
+  </ul>
+</div>
+</section>
+
+<!-- ===================== 2 CORPUS ===================== -->
+<section id="corpus">
+<h2 class="sec"><span class="n">2</span>Avance A — El corpus: de 10 a 92 leyes ⭐</h2>
+<p class="lead">El «corpus» es el conjunto de leyes que el sistema conoce. Pasar de 10 a 92 no es solo
+«meter más leyes»: cambia la naturaleza del problema y, como veremos, es <b>la causa de que el
+resultado del experimento estrella cambie</b>.</p>
+
+<h3 id="corpus-porque">2.1 Por qué ampliar (y por qué importa tanto)</h3>
+<ul>
+  <li><b>Cobertura realista.</b> Con 10 leyes (todas de derecho administrativo) el asistente cubría un
+   rincón. Las 92 abarcan <b>12 áreas de la vida del ciudadano</b>: vivienda y alquiler, tráfico,
+   consumo, trabajo, tributos, extranjería, protección de datos, administración… más la
+   <b>Constitución</b> y el <b>Código Penal</b>.</li>
+  <li><b>Solidez estadística.</b> Las conclusiones sobre «qué buscador es mejor» son más creíbles
+   cuanto más grande y variado es el corpus. Con 10 leyes, muchos resultados eran «orientativos».</li>
+  <li><b>Realismo del reto.</b> Y esto es clave: con 92 leyes aparece un problema que con 10 casi no se
+   notaba — <b>muchas leyes tienen un «artículo 3», un «artículo 27»…</b>. Buscar por el número de
+   artículo se vuelve ambiguo. Ese detalle, que parece menor, decide el experimento estrella (§6).</li>
+</ul>
+
+<div class="box term">
+  <p class="h">📖 Tecnicismo: «legislación consolidada»</p>
+  <p>Trabajo con la versión <b>consolidada</b> de cada ley: el texto que el BOE mantiene actualizado con
+  todas las reformas ya incorporadas (la que de verdad está vigente hoy). Cada norma se identifica por
+  su código oficial del BOE (p. ej. <code>BOE-A-2015-10565</code> = Ley 39/2015).</p>
+</div>
+
+<h3 id="corpus-como">2.2 Cómo se hizo, y qué costó por el camino</h3>
+<p>El proceso fue: <b>verificar las 92 leyes una a una en boe.es → descargarlas → leerlas con el parser
+→ trocearlas → auditar que todo está bien</b>. Algunos detalles honestos del camino:</p>
+
+<table>
+<tr><th>Qué pasó</th><th>Cómo se resolvió</th></tr>
+<tr><td>Una de las leyes candidatas (la <b>35/2015</b>) <b>no tiene versión consolidada propia</b> en el BOE (daba error 404).</td><td>Se cayó de la lista. Por eso son <b>92</b> y no las 93 que apuntaba al principio. Honestidad: se documenta por qué falta.</td></tr>
+<tr><td>El Código Civil y la Ley del Poder Judicial daban demasiados casos raros para el tiempo disponible.</td><td>Se <b>aplazaron</b> a futuro (no se fuerzan). Calidad &gt; cantidad.</td></tr>
+<tr><td>Al meter leyes nuevas, el lector (parser) tropezó con párrafos repetidos que se «anclaban» mal.</td><td>Se arregló el anclaje de párrafos. Sin ese arreglo, el índice de las 92 no se podía construir.</td></tr>
+<tr><td>La auditoría marcó <b>214 «errores»</b>… que resultaron ser <b>falsos positivos</b> (bloques excluidos a propósito, etc.) + <b>1 error real</b> del parser.</td><td>Se distinguió el ruido del error real. Tras el arreglo: <b>0 errores de integridad</b>.</td></tr>
+</table>
+
+<div class="box plain">
+  <p class="h">💡 El resultado, en una línea</p>
+  <p>Las 92 leyes están <b>procesadas, troceadas y auditadas sin un solo error</b>: <b>24.788
+  fragmentos</b> de ley listos para buscar. La auditoría automática (<code>audit_corpus.py --strict</code>)
+  da «Sin flags» y la luz verde de «listo». Eso es el cimiento sobre el que se monta todo lo demás.</p>
+</div>
+
+<div class="box term">
+  <p class="h">📖 Por qué tanta auditoría</p>
+  <p>El valor del TFG es la <b>experimentación con evidencia</b>. Si los datos de base estuvieran
+  sucios, cualquier conclusión sobre «qué buscador es mejor» sería sospechosa. Por eso cada fase deja
+  un informe auditable y no se avanza hasta que la anterior está limpia.</p>
+</div>
+</section>
+
+<!-- ===================== 3 EMBEDDINGS ===================== -->
+<section id="embeddings">
+<h2 class="sec"><span class="n">3</span>Avance B — Embeddings y elección del modelo de búsqueda ⭐</h2>
+<p class="lead">El modelo de embeddings es el «cerebro» de la búsqueda por significado: es quien decide
+qué textos se parecen. Esta semana (1) generé los embeddings de las 92 leyes y (2) elegí qué modelo
+usar <b>comparando tres candidatos con datos</b>, no por intuición.</p>
+
+<h3 id="emb-gpu">3.1 La técnica: generar los embeddings con una GPU prestada</h3>
+<p>Convertir 24.788 fragmentos en vectores, <b>por tres modelos distintos</b>, es muchísimo cálculo.
+El servidor de la universidad (<code>dslab01</code>) <b>no tiene tarjeta gráfica (GPU)</b>: solo CPU.
+A ese ritmo, generar los índices habría tardado del orden de <b>~3 días</b> de cómputo.</p>
+
+<div class="box info">
+  <p class="h">ℹ️ La solución: una GPU gratis de Google Colab</p>
+  <p>Añadí al programa una opción (<code>--device cuda</code>) para que pueda usar una <b>GPU</b> cuando
+  haya una disponible. Generé los índices en una <b>GPU T4 gratuita de Google Colab</b> (un cuaderno en
+  la nube), donde el trabajo que en CPU son <b>días</b> se hace en <b>minutos</b>. Luego transferí los
+  índices ya creados al servidor y los validé allí. Es un cálculo puntual: se hace una vez, en GPU, y
+  el resultado se usa para siempre desde el servidor.</p>
+</div>
+
+<div class="box term">
+  <p class="h">📖 Tecnicismo: GPU vs CPU para esto</p>
+  <p>Una <b>GPU</b> (tarjeta gráfica) hace miles de multiplicaciones a la vez; los modelos de IA son
+  justo eso. Una <b>CPU</b> (el procesador normal) las hace casi en fila. Para «pasar 25.000 textos por
+  un modelo», la GPU es decenas de veces más rápida. <b>Hallazgo práctico para la memoria:</b> trabajar
+  en un servidor CPU-only condiciona el diseño — el cálculo pesado y puntual (los embeddings) se hace en
+  GPU prestada; lo que corre a diario (responder preguntas) se queda en el servidor.</p>
+</div>
+
+<h3 id="emb-bakeoff">3.2 La comparativa: ¿qué modelo recupera mejor? (3 candidatos)</h3>
+<p>No me quedé con el primer modelo: comparé <b>tres</b> sobre las mismas 92 leyes y las mismas
+preguntas, midiendo con una nota objetiva.</p>
+
+<table>
+<tr><th>Modelo</th><th>Tamaño del vector</th><th>Particularidad</th></tr>
+<tr><td><b>e5-large-instruct</b> ✅</td><td>1024 números</td><td>Multilingüe; <b>acepta una «instrucción»</b> en la pregunta (le puedes decir «esto es una consulta legal»). <b>El elegido.</b></td></tr>
+<tr><td>bge-m3</td><td>1024 números</td><td>Admite textos muy largos sin recortar.</td></tr>
+<tr><td>e5-base</td><td>768 números</td><td>El pequeño y rápido (baseline).</td></tr>
+</table>
+<p class="small">Otros dos quedaron fuera <b>con justificación</b> (no por capricho): <code>qwen3</code> es
+demasiado lento sin GPU (coste prohibitivo en CPU — un hallazgo en sí mismo); y <code>gte</code> es
+incompatible con la versión de librerías del entorno (queda documentado para retomarlo).</p>
+
+<div class="box term">
+  <p class="h">📖 Tecnicismo: «nDCG@10» y «bootstrap pareado»</p>
+  <p><b>nDCG@10</b> es la nota (de 0 a 1) que uso: premia traer los artículos relevantes y, además,
+  ponerlos arriba en la lista. <b>Bootstrap pareado</b> es la prueba estadística que me dice si la
+  diferencia entre dos modelos es <b>real</b> o es ruido del azar (con un 95 % de confianza). Es lo que
+  separa «me parece mejor» de «es mejor, demostrado».</p>
+</div>
+
+<h4>El resultado (nota nDCG@10, sobre 53 preguntas de desarrollo)</h4>
+<div class="box">
+  <div class="bar"><span class="lab">e5-large-instruct ✅</span><span class="track"><span class="fill" style="width:80.2%;background:#0c8f6b"></span></span><span class="val">0,80</span></div>
+  <div class="bar"><span class="lab">bge-m3</span><span class="track"><span class="fill" style="width:71.9%;background:#1f6feb"></span></span><span class="val">0,72</span></div>
+  <div class="bar"><span class="lab">e5-base (pequeño)</span><span class="track"><span class="fill" style="width:62.7%;background:#9aa7b4"></span></span><span class="val">0,63</span></div>
+  <p class="small" style="margin-top:10px">Diferencias <b>estadísticamente significativas</b> (prueba
+  pareada): e5-large-instruct gana a bge-m3 y a e5-base de forma real, no por azar.</p>
+</div>
+
+<div class="box info">
+  <p class="h">ℹ️ Dos conclusiones de esta comparativa</p>
+  <ul style="margin:6px 0">
+    <li><b>Gana e5-large-instruct (0,80).</b> Y además es <b>«Pareto-óptimo»</b>: bge-m3 no solo da peor
+     nota, sino que es un 47 % más lento — o sea, bge-m3 está <b>dominado</b> (peor en todo). e5-base es
+     más rápido pero claramente peor.</li>
+    <li><b>La «instrucción» de la pregunta es una palanca real.</b> Solo por anteponer a la pregunta un
+     texto del tipo «esto es una consulta legal, recupera los pasajes que la responden», la nota sube
+     <b>+0,07</b> de forma significativa (de 0,73 a 0,80) — <b>sin cambiar de modelo</b>. Un detalle
+     barato con efecto medible.</li>
+  </ul>
+  <p>El modelo elegido quedó <b>congelado</b> en un paquete inmutable (<code>e5-large-instruct__j1__c46c7042f563</code>),
+  para poder demostrar que cada número salió con exactamente esa configuración.</p>
+</div>
+
+<h3 id="emb-grieta">3.3 El hallazgo que lo dispara todo: la grieta del denso</h3>
+<p>Aquí está el detalle que conecta con el experimento estrella. Si miro la nota <b>por tipo de
+pregunta</b>, la búsqueda por significado va muy bien <b>en casi todo</b>… salvo en un tipo concreto:</p>
+
+<table>
+<tr><th>Tipo de pregunta</th><th>Nota del modelo ganador</th></tr>
+<tr><td>Conceptual («¿qué es la prórroga obligatoria?»)</td><td class="win">0,92</td></tr>
+<tr><td>Procedimental («¿cómo se pide…?»)</td><td class="win">0,92</td></tr>
+<tr><td>Ciudadana («¿cuánto tardan en contestarme?»)</td><td class="win">0,87</td></tr>
+<tr><td>Por término o sigla (FEIN, TAE…)</td><td>0,78</td></tr>
+<tr><td><b>Por número de artículo</b> («¿qué dice el <b>artículo 122</b>?»)</td><td class="lose">0,60</td></tr>
+</table>
+
+<div class="box danger">
+  <p class="h">⚠️ La grieta: el significado no «ve» los números de artículo</p>
+  <p>Cuando alguien <b>cita un artículo por su número</b> («¿qué dice el artículo 122 de la Ley
+  39/2015?»), la búsqueda por significado se hunde a <b>0,60</b> (frente a 0,80 de media). Tiene sentido:
+  un número de artículo no tiene «significado» que un modelo pueda entender — es una <b>etiqueta
+  exacta</b>. Esto es justo <b>lo que la búsqueda por palabras (BM25) debería hacer bien</b>, y es la
+  razón por la que monté el experimento estrella (§5). <b>Recuerda este 0,60: va a ser el protagonista.</b></p>
+</div>
+</section>
+
+<!-- ===================== 4 PREGUNTAS ===================== -->
+<section id="preguntas">
+<h2 class="sec"><span class="n">4</span>Avance C — El banco de preguntas (la «regla de medir») ⭐</h2>
+<p class="lead">Para decir «este buscador es mejor que aquel» necesito un examen: un conjunto de
+preguntas con sus respuestas correctas conocidas (lo llamo <b>banco de pruebas</b> o <b>gold</b>).
+Esta semana lo <b>rehice y amplié</b>, porque el anterior tenía un defecto serio.</p>
+
+<h3 id="preg-antes">4.1 El problema del banco viejo (y por qué había que rehacerlo)</h3>
+<div class="box danger">
+  <p class="h">⚠️ Honestidad metodológica</p>
+  <p>El banco anterior (80 preguntas, del corpus de 10 leyes) estaba <b>«degenerado»</b>: casi todas
+  tenían <b>una sola respuesta correcta</b> y la relevancia era de «sí/no». Con un examen así, varias
+  métricas <b>se vuelven la misma</b> y <b>no distinguen sistemas</b>: dos buscadores distintos sacan
+  notas casi iguales aunque uno sea mejor. Medir más sobre ese banco era perder el tiempo. Así que
+  diseñé uno nuevo desde cero, bien fundamentado.</p>
+</div>
+
+<p>El banco nuevo (<code>corpus92_v1</code>) tiene <b>111 preguntas</b>: 81 que <b>sí</b> tienen
+respuesta en el corpus + <b>30 «trampa»</b> que <b>no</b> la tienen (para comprobar que el sistema se
+abstiene y no se inventa). Repartidas en <b>6 estilos</b> de pregunta, elegidos a propósito para
+estresar dónde cada buscador gana o pierde:</p>
+
+<table>
+<tr><th>Estilo de pregunta</th><th>Ejemplo</th><th>A quién favorece (hipótesis)</th></tr>
+<tr><td><b>Ciudadana</b></td><td>«El casero no me devuelve la fianza, ¿qué hago?»</td><td>Significado</td></tr>
+<tr><td><b>Conceptual</b></td><td>«¿Qué es la prórroga obligatoria del alquiler?»</td><td>Significado</td></tr>
+<tr><td><b>Procedimental</b></td><td>«¿Qué pasos sigo para recurrir una multa?»</td><td>Mixto</td></tr>
+<tr><td><b>Comparativa</b> (cruza leyes)</td><td>«Diferencia entre recurso de alzada y de reposición»</td><td>La más difícil</td></tr>
+<tr><td><b>Léxica</b> (término/sigla raros)</td><td>«¿Qué es la FEIN en una hipoteca?»</td><td>Palabras (BM25)</td></tr>
+<tr><td><b>Por nº de artículo</b></td><td>«¿Qué dice el artículo 9 de la Ley de Arrendamientos?»</td><td>Palabras (BM25)</td></tr>
+</table>
+
+<div class="box plain">
+  <p class="h">💡 Dato clave para la sección de análisis (§6)</p>
+  <p>Fíjate: <b>dos de los seis estilos</b> (por número de artículo, y léxica) están elegidos
+  <b>precisamente para que la búsqueda por palabras luzca</b>. Y juntos son <b>~38 %</b> del banco. Es
+  decir, el examen <b>no esconde</b> las preguntas donde BM25 debería ganar: al revés, las sobre-incluye.
+  Esto será importante cuando preguntemos si el examen está sesgado.</p>
+</div>
+
+<h3 id="preg-tecnica">4.2 La técnica estrella del banco: «la misma pregunta, dicha de varias formas» (UQV)</h3>
+<p>Un ciudadano y un abogado preguntan lo mismo de formas muy distintas. Quiero saber si el buscador
+entiende <b>la versión coloquial igual de bien que la técnica</b>. Para medirlo limpiamente uso una
+técnica llamada <b>UQV</b> (variaciones de consulta del usuario):</p>
+
+<div class="box term">
+  <p class="h">📖 Tecnicismo: UQV (User Query Variations)</p>
+  <p>Tomo <b>una misma necesidad</b> (p. ej. «duración mínima del alquiler de vivienda») y la escribo en
+  <b>2-3 versiones</b> que apuntan <b>al mismo artículo</b>:</p>
+  <ul style="margin:6px 0">
+    <li><i>Ciudadana:</i> «Firmé un alquiler por un año, ¿tengo derecho a quedarme más tiempo?»</li>
+    <li><i>Conceptual:</i> «¿Cuál es el plazo mínimo y la prórroga obligatoria del alquiler de vivienda?»</li>
+    <li><i>Con cita:</i> «¿Qué establece el artículo 9 de la Ley de Arrendamientos Urbanos?»</li>
+  </ul>
+  <p>Como el <b>artículo correcto es el mismo</b> en las tres, puedo aislar <b>el efecto del fraseo</b>:
+  ¿entiende el buscador la versión coloquial tan bien como la técnica? El banco tiene <b>13 «familias»</b>
+  de estas. (Fundamento en la literatura: los modelos de significado son <b>frágiles ante cómo se
+  formula</b> la pregunta; medir con una sola formulación sobreestima lo buenos que son.)</p>
+</div>
+
+<p>Además, las preguntas llevan <b>relevancia graduada</b> (cada artículo es <span class="pill">2 =
+respuesta central</span> <span class="pill">1 = apoyo/matiz</span> <span class="pill">0 = no vale</span>,
+no un simple sí/no) y se marcan las que <b>se responden con varios artículos a la vez</b> (multi-parent).
+Eso es lo que «resucita» las métricas que en el banco viejo estaban muertas.</p>
+
+<h3 id="preg-gold">4.3 El gold y el paso anti-trampa: el «pooling»</h3>
+<p>Para cada pregunta hay que decidir <b>qué artículos son la respuesta correcta</b>. Esto se hace en
+tres capas, y la tercera es crítica para que la comparación sea <b>justa</b>:</p>
+
+<div class="flow"><div class="row">
+  <span class="node soft">1 · Lo escribo yo<br>desde la ley</span><span class="arr">→</span>
+  <span class="node soft">2 · Reviso a mano<br>(con la fuente del BOE)</span><span class="arr">→</span>
+  <span class="node alt">3 · «Pooling»:<br>de-sesgo automático</span>
+</div></div>
+
+<div class="box term">
+  <p class="h">📖 Tecnicismo: «pooling» y por qué es anti-trampa</p>
+  <p>Problema: si yo solo marco como «correctos» los artículos que <b>yo</b> pensé, podría estar
+  penalizando a un buscador que encuentra un artículo <b>también válido</b> que a mí se me escapó. El
+  <b>pooling</b> (método estándar en investigación de buscadores, llamado «TREC») lo arregla:
+  <b>junto los mejores resultados de TODOS los buscadores</b> (significado + palabras + híbrido) y
+  <b>juzgo a mano cada candidato sospechoso</b>. Así ninguno queda penalizado por un artículo válido
+  que el examen no contemplaba.</p>
+</div>
+
+<div class="box danger">
+  <p class="h">⚠️ El detalle que da credibilidad a todo §5 y §6</p>
+  <p>La primera versión del gold se «pooleó» <b>solo con los buscadores por significado</b>. Eso
+  <b>habría sesgado el examen a favor del significado</b> (los aciertos exclusivos de BM25 contarían
+  como fallo). Lo detecté y <b>volví a poolear añadiendo BM25 y el híbrido</b> — un paso que la
+  literatura considera <b>innegociable</b>. Resultado de ese re-pooling: aparecieron <b>+11 artículos
+  relevantes nuevos</b>… pero <b>ninguno «central»</b> (las respuestas principales ya estaban), y
+  <b>127 candidatos de BM25 resultaron NO relevantes</b> (la mayoría, el típico fallo de BM25 de traer
+  el artículo de <i>otra</i> ley). <b>Traducción:</b> di a BM25 todas las oportunidades de demostrar
+  aciertos que se me hubieran escapado, y casi no había ninguno. El examen es justo.</p>
+</div>
+
+<p class="small">El banco final: <b>567 juicios de relevancia</b> (96 centrales · 60 de apoyo · 411 no
+relevantes), repartido en desarrollo (53), test (28) y trampa/fuera-de-corpus (30), sin que una misma
+pregunta reformulada cruce de un grupo a otro (anti-fuga). La auditoría de grounding sale «Sin flags».</p>
+</section>
+
+<!-- ===================== 5 FLAGSHIP ===================== -->
+<section id="flagship">
+<h2 class="sec"><span class="n">5</span>Avance D — El experimento estrella: significado vs palabras vs híbrido ⭐⭐</h2>
+<p class="lead">Este es <b>el aporte experimental central del TFG</b>. La pregunta de investigación:
+para buscar en leyes, ¿es mejor la búsqueda <b>por significado</b>, la <b>por palabras (BM25)</b>, o
+<b>combinarlas (híbrido)</b>? Y, sobre todo: <b>¿cuándo conviene cada una?</b></p>
+
+<h3 id="flag-que">5.1 Qué se comparó (y cómo, para que sea limpio)</h3>
+<p>Tres estrategias, midiendo todas con la <b>misma vara</b> (nDCG@10) sobre el <b>mismo banco</b>:</p>
+<ol>
+  <li><b>Denso</b> (por significado): el modelo elegido, e5-large-instruct.</li>
+  <li><b>BM25</b> (por palabras): el buscador clásico, <b>afinado</b> con cuidado.</li>
+  <li><b>Híbrido</b>: combinar los dos. Probé dos formas de combinar (ver recuadro).</li>
+</ol>
+
+<div class="box term">
+  <p class="h">📖 Dos formas de combinar, y un truco que sí funcionó</p>
+  <ul style="margin:6px 0">
+    <li><b>RRF</b> (combinar mirando el <i>puesto</i> en cada lista, a partes iguales) vs <b>convexa</b>
+     (mezclar las puntuaciones con un peso α — p. ej. 70 % significado, 30 % palabras).</li>
+    <li><b>El único ajuste de BM25 que de verdad movió la aguja: el «heading-boost».</b> Consiste en
+     <b>repetir, dentro del texto que se indexa, el título del artículo y el nombre de la ley</b>. Así,
+     cuando alguien busca «artículo 27 de la Ley 39/2015», el nombre de la ley pesa y ayuda a no
+     confundirla con la «Ley 27/2014». Subió la nota de las preguntas por número de artículo de
+     <b>0,18 a 0,35</b> — el efecto más grande de todos los ajustes de BM25. (El resto de perillas
+     —stopwords, parámetros k1/b— resultaron irrelevantes; quitar el «stemming» sí empeoraba.)</li>
+  </ul>
+</div>
+
+<p>Todo se afinó en el grupo de <b>desarrollo</b> y la comparación final se reportó en el grupo de
+<b>test</b> (preguntas que no se usaron para afinar — el examen «de verdad»).</p>
+
+<h3 id="flag-resultados">5.2 Los resultados (test, 28 preguntas)</h3>
+<div class="box">
+  <div class="bar"><span class="lab">Denso (significado) ✅</span><span class="track"><span class="fill" style="width:79.7%;background:#0c8f6b"></span></span><span class="val">0,80</span></div>
+  <div class="bar"><span class="lab">Híbrido (convexa α0,7)</span><span class="track"><span class="fill" style="width:76.9%;background:#1f6feb"></span></span><span class="val">0,77</span></div>
+  <div class="bar"><span class="lab">Híbrido (RRF)</span><span class="track"><span class="fill" style="width:70.6%;background:#7c93ad"></span></span><span class="val">0,71</span></div>
+  <div class="bar"><span class="lab">BM25 (solo palabras)</span><span class="track"><span class="fill" style="width:50.7%;background:#c2563f"></span></span><span class="val">0,51</span></div>
+</div>
+
+<table>
+<tr><th>Estrategia</th><th>Nota</th><th>¿Diferencia con el denso?</th></tr>
+<tr><td><b>Denso (significado)</b></td><td class="win">0,797</td><td>— (es el mejor)</td></tr>
+<tr><td>Híbrido convexa (70 % denso)</td><td>0,769</td><td><b>−0,03</b> · no significativa → <b>solo empata</b></td></tr>
+<tr><td>Híbrido RRF (a partes iguales)</td><td>0,706</td><td class="lose"><b>−0,09</b> · significativamente <b>peor</b></td></tr>
+<tr><td>BM25 (solo palabras)</td><td class="lose">0,507</td><td class="lose"><b>−0,29</b> · significativamente <b>peor</b></td></tr>
+</table>
+
+<div class="box info">
+  <p class="h">ℹ️ Cómo se lee esta tabla</p>
+  <ul style="margin:6px 0">
+    <li><b>El denso (significado) gana de forma robusta.</b></li>
+    <li><b>Combinar NO mejora.</b> En el mejor de los casos (dándole al híbrido un 70 % de peso al
+     significado) <b>solo empata</b> al denso; y la forma «de libro» de combinar (RRF, a partes iguales)
+     lo <b>empeora</b> de forma significativa, porque mete el ruido de BM25.</li>
+    <li><b>BM25 solo es claramente el peor.</b></li>
+  </ul>
+</div>
+
+<h3 id="flag-giro">5.3 El giro de guion: esto refuta lo que te conté la semana pasada</h3>
+<div class="box danger">
+  <p class="h">⚠️ Con 10 leyes el híbrido «rescataba»; con 92, ya no</p>
+  <p>La semana pasada (10 leyes) el híbrido subía las preguntas por número de artículo de 0,41 a 0,75:
+  el caso de libro de «combinar es mejor». <b>Con 92 leyes ese efecto desaparece.</b> ¿Por qué? Porque
+  con 92 leyes hay <b>muchos artículos con el mismo número</b> en leyes distintas, y BM25 —que solo ve
+  palabras— <b>trae el artículo de la ley equivocada</b> tan a menudo que su ayuda se ahoga en ese
+  ruido. Combinar deja de compensar.</p>
+  <p style="margin-top:8px"><b>Esto no es un fallo: es el resultado.</b> Refutar con más datos una
+  conclusión preliminar propia es ciencia bien hecha, y es <b>material de primera para la memoria</b>:
+  «con un modelo de significado fuerte sobre legislación consolidada del BOE, la búsqueda densa es
+  robustamente superior y la fusión no mejora; la complementariedad entre palabras y significado, que la
+  literatura suele dar por hecha, aquí es <b>débil</b> por la colisión de números de artículo entre
+  muchas leyes».</p>
+</div>
+</section>
+
+<!-- ===================== 6 ANALISIS ===================== -->
+<section id="analisis">
+<h2 class="sec"><span class="n">6</span>La pregunta incómoda: ¿va mal el léxico, o el examen está sesgado? ⭐⭐</h2>
+<p class="lead">Me pediste que investigara esto a fondo, y es la pregunta correcta. Los resultados de la
+búsqueda por palabras (BM25) y del híbrido son <b>flojos</b>. Caben dos explicaciones: <b>(A)</b> el
+método es genuinamente peor en este problema, o <b>(B)</b> el examen está construido a la medida del
+denso y por eso pierde el léxico. <b>Mi conclusión, con argumentos, es que es (A) — y además es un
+resultado defendible</b>. Pero vamos por partes, con honestidad.</p>
+
+<h3 id="ana-sesgo">6.1 ¿Está el banco de preguntas sesgado a favor del significado?</h3>
+<p>Es la objeción más seria que nos puede hacer un tribunal, así que la tomo en serio. La respuesta es
+<b>no</b>, y hay <b>cuatro defensas concretas</b> que lo respaldan — de hecho, el examen es, si acaso,
+<b>generoso con BM25</b>:</p>
+
+<table>
+<tr><th>Posible sesgo</th><th>Cómo se neutralizó</th></tr>
+<tr><td><b>1. Sesgo de «pooling»</b> (juzgar solo lo que encuentra el denso → los aciertos de BM25 cuentan como fallo).</td><td>Se hizo el <b>re-pooling</b> con BM25 + híbrido (el remedio estándar). Se buscaron activamente los aciertos de BM25 que se me hubieran escapado: aparecieron <b>solo +11 de apoyo y 0 centrales</b>, y <b>127 candidatos de BM25 eran falsos</b>. El examen no esconde aciertos de BM25 porque casi no los hay.</td></tr>
+<tr><td><b>2. Las preguntas se escribieron «pensando en el denso».</b></td><td>Las preguntas son <b>«known-item»</b>: las redacté <b>leyendo el artículo real</b>, así que <b>conozco la respuesta correcta aunque TODOS los buscadores fallen</b>. El gold no depende de lo que un buscador devuelva.</td></tr>
+<tr><td><b>3. Pocas preguntas del tipo que favorece a BM25.</b></td><td>Al revés: los dos estilos que favorecen a BM25 (por número de artículo + léxica) son <b>~38 % del banco</b>, una cuota <b>deliberadamente alta</b>. Si quisiera amañarlo a favor del denso, habría metido menos.</td></tr>
+<tr><td><b>4. El denso juega con ventaja técnica.</b></td><td>Los dos buscadores indexan <b>exactamente el mismo texto</b> (con el nombre de la ley y el título del artículo incluidos). Es una comparación «manzana con manzana». Ese texto enriquecido, de hecho, <b>ayuda a BM25</b> (es lo que hace el «heading-boost»).</td></tr>
+</table>
+
+<div class="box plain">
+  <p class="h">💡 En una frase</p>
+  <p>El banco se diseñó <b>explícitamente para ser justo</b> (y casi generoso) con la búsqueda por
+  palabras. Su regla rectora fue literalmente «realismo primero; <b>no se fabrican preguntas para que
+  gane un sistema concreto</b>». Así que el resultado flojo del léxico <b>no se explica por sesgo del
+  examen</b>.</p>
+</div>
+
+<h3 id="ana-real">6.2 Entonces, ¿por qué va flojo de verdad? La causa estructural</h3>
+<p>La razón es el <b>tamaño y la estructura del corpus</b>, no el examen. Y la prueba más contundente es
+esta: <b>BM25 pierde incluso en su propia casa</b>.</p>
+
+<div class="box danger">
+  <p class="h">⚠️ El dato que lo demuestra</p>
+  <p>En las preguntas <b>por número de artículo</b> —el terreno donde BM25 debería arrasar—, incluso
+  <b>después</b> de afinarlo con el truco del heading-boost, BM25 llega solo a <b>0,35</b>. Y el denso,
+  en esas <b>mismas</b> preguntas, saca <b>0,60</b> (lo vimos en §3.3). <b>Es decir: el denso le gana a
+  BM25 hasta en el tipo de pregunta hecho para BM25.</b></p>
+</div>
+
+<p>¿Cómo es posible? Por <b>la colisión de números de artículo</b>:</p>
+<ul>
+  <li>Con 92 leyes, el «artículo 3», el «artículo 27», etc. existen en <b>decenas</b> de leyes.</li>
+  <li>BM25 <b>solo cuenta palabras</b>: al buscar «artículo 27» ve el «27» en muchísimos sitios — e
+   incluso lo confunde con «Ley <b>27</b>/2014». Trae el artículo correcto… <b>de la ley equivocada</b>.</li>
+  <li>El denso, en cambio, entiende el <b>contexto</b> de la pregunta (de qué va el tema) y desambigua
+   por significado, así que no necesita tanto el número.</li>
+</ul>
+
+<div class="box info">
+  <p class="h">ℹ️ Por qué, entonces, combinar tampoco ayuda</p>
+  <p>La búsqueda híbrida solo gana si los dos buscadores <b>se complementan</b>: que uno acierte donde
+  el otro falla. Pero aquí el denso <b>ya es bueno en casi todo</b> (incluso donde BM25 debería brillar),
+  y BM25 aporta <b>sobre todo ruido</b> (artículos de la ley equivocada). Combinar un buscador bueno con
+  uno ruidoso <b>no mejora: contamina</b>. Por eso el híbrido, en el mejor caso, solo empata.</p>
+</div>
+
+<h3 id="ana-mejoras">6.3 Como compañero crítico: cómo se PODRÍA mejorar el léxico/híbrido</h3>
+<p>Que el resultado global sea «el denso gana» no cierra la puerta a mejorar el único punto débil real:
+las preguntas <b>por número de artículo</b>. Estas son las vías que veo, ordenadas de más a menos
+prometedora, con su «pero» honesto:</p>
+
+<div class="grid2">
+  <div class="box">
+    <h4>1. Búsqueda estructurada de la cita (la más prometedora) 🥇</h4>
+    <p>«¿Qué dice el artículo 122 de la Ley 39/2015?» <b>no es una búsqueda por parecido: es una consulta
+    exacta a una base de datos</b> (ley + número → artículo). En vez de pedírselo a BM25, se
+    <b>detecta la cita</b> en la pregunta y se va <b>directo</b> a ese artículo con un filtro.</p>
+    <p class="small"><b>A favor:</b> haría ese tipo de preguntas casi perfectas. El sistema <b>ya tiene
+    filtros</b> por ley/materia, así que la base está puesta. <b>Pero:</b> hay que parsear bien la cita
+    (nombres de ley, abreviaturas) y solo aplica cuando la pregunta cita un artículo explícito.</p>
+  </div>
+  <div class="box">
+    <h4>2. Híbrido «inteligente» (solo donde conviene) 🥈</h4>
+    <p>El híbrido falla porque combina <b>siempre</b>, mezclando ayuda (preguntas por número) con
+    estorbo (todo lo demás). Un <b>«enrutador»</b> que detecte el tipo de pregunta y <b>solo combine
+    cuando hay un número de artículo</b> evitaría contaminar el resto.</p>
+    <p class="small"><b>A favor:</b> ataca la causa del problema (la fusión global). <b>Pero:</b> como
+    BM25 va flojo hasta en esas preguntas (0,35), conviene enrutar hacia la vía 1 (estructurada), no
+    solo hacia BM25.</p>
+  </div>
+  <div class="box">
+    <h4>3. BM25 «por campos» (la ley como campo obligatorio)</h4>
+    <p>Hoy el «heading-boost» repite la ley dentro del texto. El siguiente paso sería un BM25 <b>por
+    campos</b> de verdad: tratar el <b>nombre de la ley</b> como un campo aparte y <b>exigir que
+    coincida</b>, de modo que «art. 27 de la Ley 39/2015» no pueda traer la Ley 27/2014.</p>
+    <p class="small"><b>A favor:</b> ataca de raíz la colisión de leyes. <b>Pero:</b> es más ingeniería y
+    el techo de mejora puede ser limitado si el denso ya cubre el caso.</p>
+  </div>
+  <div class="box">
+    <h4>4. Reordenador (reranker) sobre la unión</h4>
+    <p>Coger los mejores resultados de denso + BM25 juntos y <b>reordenarlos</b> con un modelo más fino
+    que lee pregunta y artículo a la vez. Podría subir a los dos.</p>
+    <p class="small"><b>A favor:</b> técnica estándar que suele ayudar. <b>Pero:</b> es <b>caro en CPU</b>
+    (sin GPU, ralentiza cada pregunta), por eso está <b>aplazado</b>; encaja como «trabajo futuro» o un
+    piloto pequeño.</p>
+  </div>
+</div>
+
+<div class="box plain">
+  <p class="h">💡 Mi recomendación honesta</p>
+  <p>La forma <b>intelectualmente más sólida</b> de presentar esto no es «el híbrido debería ganar y no
+  lo conseguí», sino: <b>«hice el experimento bien, y el dato dice que con un modelo de significado
+  fuerte sobre 92 leyes el denso es superior y la fusión no ayuda — refutando mi propio preliminar».</b>
+  La mejora del único punto débil (citas por número) <b>no es "mejor BM25", sino tratar esa pregunta como
+  lo que es: una consulta exacta</b> (vía 1). Eso es un hallazgo, no un fracaso.</p>
+</div>
+
+<h3 id="ana-honesto">6.4 Los límites honestos (lo que un tribunal sí podría objetar)</h3>
+<ul>
+  <li><b>Potencia estadística por tramos.</b> El examen final tiene 28 preguntas, y por estilo son
+   pocas (las de número de artículo, ~11 en desarrollo). La conclusión <b>global</b> («el denso gana»)
+   está bien respaldada; las afirmaciones <b>por tipo de pregunta</b> son <b>direccionales</b> (apuntan
+   claro, pero con margen). <b>Mejora pendiente:</b> más preguntas por número de artículo y léxicas
+   afinarían esos tramos — la dirección no cambiaría, pero ganaría firmeza.</li>
+  <li><b>BM25 se afinó, pero no de forma exhaustiva.</b> Se probó lo razonable (palabras vacías,
+   stemming, parámetros, heading-boost), no un BM25 «por campos» completo (vía 3). Es honesto decir que
+   BM25 podría ser algo mejor, aunque su techo aquí es bajo por la colisión de leyes.</li>
+  <li><b>El resultado es específico de este corpus y este modelo.</b> Con un modelo de significado más
+   débil, o un corpus con menos solapamiento de números, el híbrido <b>sí</b> podría ganar (como pasaba
+   con 10 leyes). La conclusión correcta es <b>condicional</b>: «en estas condiciones, el denso domina»,
+   no un «el híbrido nunca sirve».</li>
+</ul>
+</section>
+
+<!-- ===================== 7 FUTURO ===================== -->
+<section id="futuro">
+<h2 class="sec"><span class="n">7</span>Pasos inmediatos (lo que viene ahora)</h2>
+<p class="lead">Con la <b>búsqueda cerrada</b> (sabemos qué leyes, qué modelo y qué tipo de búsqueda
+usar), el foco se mueve a la otra mitad del TFG: <b>la redacción de respuestas</b> y, sobre todo,
+<b>validar la herramienta con la que las puntúo</b>. Marco con 🤝 lo que necesita tu participación.</p>
+
+<ol>
+  <li><b>Crear el «gold» de redacción para las 92 leyes.</b> Para cada pregunta, escribir la
+   <b>respuesta modelo</b> y los <b>hechos clave</b> que debe contener (p. ej. «tres meses»), sacados
+   del texto real. (El que tenía era de las 10 leyes; hay que rehacerlo para ~50-60 preguntas.)</li>
+  <li><b>Medir la generación de respuestas</b> sobre las 92 leyes: comprobar que cita los artículos
+   correctos, que recupera los hechos clave y que <b>se abstiene</b> cuando no sabe.</li>
+  <li>🤝 <b>Validar al «juez».</b> Uso un segundo modelo de IA como <b>juez</b> para puntuar si las
+   respuestas son fieles y correctas. Pero <b>antes de fiarme de ese juez hay que comprobar que
+   coincide con un humano</b>, midiendo el acuerdo con un coeficiente estadístico (Cohen's κ / AC1).
+   <b>Esto requiere que tú (o yo, donde sea verificable) anotemos a mano ~50 respuestas.</b> Es la
+   inversión más crítica que queda, y donde tu criterio jurídico es clave.</li>
+  <li>🤝 <b>Revisión jurídica de una muestra</b> de lo que he marcado como respuesta correcta en el
+   banco de búsqueda, para dar un sello de validez externa.</li>
+  <li><b>Escribir el capítulo de resultados</b> del experimento estrella (ya está listo para
+   redactarse) y, según madure, el de generación.</li>
+</ol>
+
+<div class="box term">
+  <p class="h">📖 Por qué el juez se valida antes de usarlo</p>
+  <p>Si un juez automático aprobara todo, sus notas no valdrían nada. Por eso (1) el juez es de
+  <b>familia distinta</b> al modelo que redacta (para que no «se apruebe a sí mismo») y (2) <b>se mide
+  su acuerdo con un humano</b>. Mientras ese acuerdo no esté validado, las notas de «fidelidad» y
+  «corrección» son <b>provisionales</b> y no se citan como conclusión firme. Es la misma exigencia de
+  rigor que ha hecho creíble el experimento de búsqueda.</p>
+</div>
+
+<h4>La hoja de ruta de un vistazo</h4>
+<div class="pipe">
+  <div class="step"><span class="num">✓</span><h5>Corpus 92</h5><p>92 leyes procesadas y auditadas. 24.788 fragmentos.</p></div>
+  <div class="step"><span class="num">✓</span><h5>Modelo elegido</h5><p>e5-large-instruct, con datos. Embeddings en GPU.</p></div>
+  <div class="step"><span class="num">✓</span><h5>Búsqueda cerrada</h5><p>Denso vs BM25 vs híbrido: gana el denso. Refuta el preliminar.</p></div>
+  <div class="step"><span class="num">▶</span><h5>Generación + juez</h5><p>Gold de redacción, medir respuestas, validar el juez (κ) 🤝.</p></div>
+  <div class="step"><span class="num">→</span><h5>Escritura</h5><p>Capítulo de resultados + conclusiones + cierre.</p></div>
+</div>
+
+<p class="small">Más allá del TFG (trabajo futuro documentado): filtros en la respuesta, RAG
+«agéntico» (que razona en varios pasos), Graph RAG (aprovechar cómo se citan las leyes entre sí), y
+exponerlo como una API web. La entrega del TFG cierra en <b>«la base sólida, medida y validada»</b>.</p>
+</section>
+
+<!-- ===================== 8 CIERRE ===================== -->
+<section id="cierre">
+<h2 class="sec"><span class="n">8</span>Resumen para la reunión (6 frases)</h2>
+<ol>
+  <li><b>El corpus pasó de 10 a 92 leyes</b> (12 áreas + Constitución + Código Penal), procesadas y
+   auditadas <b>sin errores</b>: 24.788 fragmentos listos.</li>
+  <li><b>Elegí el modelo de búsqueda con una comparativa de 3</b> (gana e5-large-instruct, 0,80, de
+   forma significativa y siendo el más eficiente); los embeddings los generé en <b>GPU prestada</b>
+   (minutos, frente a días en el servidor).</li>
+  <li><b>Rehíce y amplié el banco de preguntas</b> a 111, con una técnica para medir el efecto del
+   fraseo (UQV) y un paso anti-trampa (pooling con todos los buscadores) que hace la comparación
+   <b>justa</b>.</li>
+  <li><b>Cerré el experimento central</b>: la búsqueda <b>por significado gana</b> de forma robusta
+   (0,80); combinar con palabras (híbrido) <b>no mejora</b>, y BM25 solo es claramente peor.</li>
+  <li><b>Este resultado refuta mi conclusión preliminar</b> de la semana pasada (con 10 leyes el
+   híbrido «rescataba»): con 92 leyes, la colisión de números de artículo ahoga a BM25. <b>Refutar con
+   datos es un buen resultado, no un fallo.</b></li>
+  <li><b>Investigué si el examen estaba sesgado: no lo está</b> (es incluso generoso con BM25); la
+   debilidad del léxico es <b>real y estructural</b>, y la mejora del único punto flojo (citas por
+   número) pasa por tratarlas como una <b>consulta exacta</b>, no por más BM25.</li>
+</ol>
+
+<div class="box info">
+  <p class="h">ℹ️ En una frase</p>
+  <p>Esta semana he convertido el TFG de «un RAG que funciona sobre 10 leyes» en <b>«un estudio
+  experimental serio sobre 92 leyes que ya tiene su primera conclusión defendible y honesta sobre qué
+  tipo de búsqueda conviene en lo legal»</b>. Lo que queda es la pata de generación y validar el juez —
+  donde tu criterio jurídico entra en juego.</p>
+</div>
+</section>
+
+<footer>
+  <p><b>TFG · RAG informativo sobre legislación consolidada del BOE.</b> Documento de apoyo para la
+  reunión de tutoría del <b>26 de junio de 2026</b>. Sistema de carácter informativo, sin valor jurídico
+  oficial.</p>
+  <p class="small">Generado a partir del estado real del repositorio al 26/06/2026 (corpus-92, bake-off
+  de embeddings, banco <code>corpus92_v1</code> y flagship de retrieval cerrado, OE-01..OE-04). Números
+  procedentes de los informes de evaluación versionados; todas las cifras son reproducibles.</p>
+</footer>
+
+</div><!-- inner -->
+</main>
+</div><!-- wrap -->
+</body>
+</html>
