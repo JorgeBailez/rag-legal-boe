@@ -196,6 +196,45 @@ La orientación ciudadana introduce una dificultad adicional: el usuario puede n
 
 Estos ejemplos no constituyen respuestas jurídicas ni casos cerrados. Su función es mostrar por qué un sistema de consulta normativa debe manejar tanto expresiones comunes como terminología técnica, y por qué resulta razonable comparar recuperación léxica, semántica e híbrida.
 
+\section{Tecnologías y bibliotecas utilizadas}
+\label{sec:tecnologias}
+
+El sistema se construye por completo sobre bibliotecas de código abierto del ecosistema de Python, en coherencia con el principio de ejecución local y abierta que guía el proyecto. Esta sección reseña las más relevantes, agrupadas por su papel, indicando para cada una qué es y, sobre todo, para qué se utiliza concretamente en este trabajo; varias utilidades de apoyo menores se mencionan de forma agrupada al final.
+
+\paragraph{Adquisición, validación y manejo de datos.}
+\begin{description}
+  \item[Pydantic] Biblioteca de validación de datos basada en las anotaciones de tipo de Python, con su núcleo escrito en Rust para mayor rendimiento \cite{pydantic}. En el proyecto define los \emph{contratos} de datos —la fuente única de verdad descrita en el capítulo de diseño—: cada artefacto se valida contra un modelo que prohíbe campos ajenos y fija su versión de esquema. Su extensión \emph{pydantic-settings}, junto con \emph{python-dotenv}, gestiona la configuración a partir del entorno sin incrustar secretos en el código.
+  \item[HTTPX] Cliente HTTP moderno para Python, con interfaces síncrona y asíncrona y anotado de tipos \cite{httpx}. Es el cliente con el que el sistema descarga las normas de la API del BOE y, más tarde, dialoga con el servidor local de modelos; su diseño inyectable permite probar ambos sin abrir red real.
+  \item[lxml] Enlace de Python a las bibliotecas en C \emph{libxml2} y \emph{libxslt}, que ofrece un procesamiento de XML y HTML rápido y completo \cite{lxml}. Es la base del \emph{parser}: con ella se recorren e interpretan los XML consolidados del BOE.
+  \item[Beautiful Soup] Biblioteca para extraer datos de documentos HTML y XML navegando su árbol de etiquetas \cite{beautifulsoup}. En el proyecto ayuda a tratar el HTML incrustado en los bloques normativos —el aparato editorial y las tablas— durante el procesamiento.
+  \item[NumPy] Paquete fundamental para el cálculo científico en Python, centrado en los \emph{arrays} multidimensionales y en operaciones vectorizadas ejecutadas en código compilado \cite{numpy}. Sostiene toda la aritmética de vectores del sistema: la matriz de \emph{embeddings} en \texttt{float32}, el producto escalar del índice exacto y las puntuaciones del recuperador léxico.
+\end{description}
+
+\paragraph{Representación semántica y recuperación.}
+\begin{description}
+  \item[Sentence Transformers] Módulo de referencia para calcular \emph{embeddings} de texto con modelos del estado del arte, mantenido por Hugging Face \cite{sentencetransformers,reimers2019sbert}. Es el codificador del sistema: convierte \emph{chunks} y consultas en vectores densos comparables por similitud.
+  \item[Transformers] Biblioteca de Hugging Face que da acceso a miles de modelos preentrenados y a sus \emph{tokenizers} \cite{transformers}. En el proyecto aporta la carga de los modelos y, en particular, el \emph{tokenizer} real con el que se cuenta cada entrada para impedir el truncado silencioso.
+  \item[PyTorch] Marco de aprendizaje profundo de código abierto cuyo núcleo es una biblioteca de tensores con diferenciación automática y aceleración por hardware \cite{pytorch}. Es el motor de cómputo sobre el que se ejecutan los modelos de \emph{embeddings}, en este trabajo sobre CPU.
+  \item[rank-bm25] Implementación en Python de la familia de algoritmos BM25 \cite{rankbm25}. Proporciona el cálculo de la puntuación del recuperador léxico, en su variante Okapi.
+  \item[snowballstemmer] Colección de algoritmos de \emph{stemming} del proyecto Snowball para numerosos idiomas \cite{snowball}. En el proyecto reduce las palabras a su raíz dentro del analizador léxico de español, mejorando el \emph{recall} morfológico de la búsqueda.
+\end{description}
+
+\paragraph{Generación y servicio de modelos en local.}
+\begin{description}
+  \item[Ollama] Herramienta de código abierto para ejecutar modelos de lenguaje en local; envuelve el motor de inferencia \emph{llama.cpp} y expone una API sencilla \cite{ollama}. Es el servidor sobre el que corren, en la máquina propia, tanto el modelo generador como el que actúa de juez, sin coste por consulta y sin que las preguntas salgan del entorno controlado.
+\end{description}
+
+\paragraph{Reproducibilidad, calidad y evaluación.}
+\begin{description}
+  \item[uv] Gestor de paquetes y proyectos para Python, muy rápido y escrito en Rust \cite{uv}. Administra el entorno y las dependencias del proyecto con un fichero de bloqueo, lo que hace el entorno reconstruible de forma reproducible.
+  \item[Ruff] \emph{Linter} y formateador de Python escrito en Rust \cite{ruff}. Mantiene un estilo de código homogéneo —incluidos los cuadernos— y actúa como puerta de calidad.
+  \item[mypy] Comprobador estático de tipos para Python \cite{mypy}. Detecta errores de tipo sin ejecutar el programa, reforzando la fiabilidad del código.
+  \item[pytest] Marco de pruebas de Python \cite{pytest}. Sostiene una batería de tests que se ejecuta por completo \emph{sin red} —sustituyendo modelos y servicios por dobles de prueba con ayuda de \emph{pytest-mock}—, de modo que la lógica se verifica sin pesos reales ni acceso al servidor de modelos.
+  \item[SciPy] Biblioteca de cálculo científico que extiende NumPy con módulos de estadística, optimización y álgebra, entre otros \cite{scipy}. Da soporte a los cálculos estadísticos del marco de evaluación.
+\end{description}
+
+Completan el conjunto varias utilidades de apoyo: \emph{loguru} para el registro de trazas, \emph{tqdm} para las barras de progreso, \emph{pandas} y \emph{matplotlib} para tabular y representar los resultados, e \emph{ipykernel} y \emph{nbconvert} para ejecutar los cuadernos, que consumen los informes generados sin reejecutar modelos.
+
 \section{Posicionamiento del proyecto}
 \label{sec:posicionamiento-proyecto}
 
