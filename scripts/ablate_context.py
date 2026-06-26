@@ -8,6 +8,8 @@ caracteres, y mide la calidad del CONTEXTO contra el gold de evidencia:
 - ContextEvidenceRecall (primaria L2): fraccion de parrafos-evidencia cubiertos por el contexto.
 - ContextPrecisionById / ContextRecallById: pureza / cobertura a nivel de parent.
 - ContextCharacters, ContextItemCount, RedundantContextRate: coste y ruido del contexto.
+- EvidenceDensity: fraccion de parrafos del contexto que son evidencia (senal/ruido intra-contexto;
+  distingue BOUNDED de FULL, que ContextPrecisionById no separa por ser a nivel de articulo).
 
 Regla de decision: elegir el (estrategia, k, presupuesto) con mayor ContextEvidenceRecall en la
 RODILLA de coste (donde la cobertura satura y los caracteres/redundancia siguen creciendo). El
@@ -139,6 +141,22 @@ def _assemble_for_query(
     return contexts
 
 
+def _evidence_density(contexts: list[dict], evidence_by_parent: dict[str, list[int]]) -> float:
+    """Fraccion de parrafos del contexto que son evidencia anotada (senal/ruido intra-contexto).
+
+    Distingue BOUNDED de FULL (que ContextPrecisionById no ve, por ser a nivel de articulo): FULL
+    diluye la evidencia con parrafos no-evidencia del mismo articulo -> densidad menor.
+    """
+    covered: dict[str, set[int]] = {}
+    for c in contexts:
+        covered.setdefault(c["parent_id"], set()).update(c["paragraph_orders"])
+    covered_ev = sum(
+        len(set(orders) & covered.get(pid, set())) for pid, orders in evidence_by_parent.items()
+    )
+    total_paras = sum(len(c["paragraph_orders"]) for c in contexts)
+    return covered_ev / total_paras if total_paras else 0.0
+
+
 def _build_configs(
     strategies: list[str], budget_labels: list[str], ks: list[int]
 ) -> list[tuple[str, str, int, int]]:
@@ -213,9 +231,9 @@ def main() -> int:
             relevant, evidence = gold_by_qid[qid]
             hits_k = _unique_parent_hits(hits_by_qid[qid], k)
             contexts = _assemble_for_query(hits_k, strat, budget, parents_by_id)
-            per_query.append(
-                context_metrics(contexts, relevant_parents=relevant, evidence_by_parent=evidence)
-            )
+            m = context_metrics(contexts, relevant_parents=relevant, evidence_by_parent=evidence)
+            m["EvidenceDensity"] = _evidence_density(contexts, evidence)
+            per_query.append(m)
         agg = aggregate_metrics(per_query)
         ci = bootstrap_ci([m[CTX_PRIMARY] for m in per_query], seed=args.seed)
         metrics_rows.append(
@@ -262,10 +280,7 @@ def main() -> int:
 def _print_table(out: Path, rows: list[dict]) -> None:
     print(f"\nReport: {out}")
     print(f"metrica primaria L2: {CTX_PRIMARY} (cobertura de la evidencia por el contexto)\n")
-    print(
-        f"  {'config':24}{'EvRecall':>9}{'PrecById':>9}{'RecById':>8}"
-        f"{'Chars':>8}{'Redund':>8}{'Items':>7}"
-    )
+    print(f"  {'config':24}{'EvRecall':>9}{'EvDens':>8}{'PrecById':>9}{'Chars':>8}{'Items':>7}")
     # Orden: mayor cobertura de evidencia y, a igualdad, menos caracteres (rodilla coste/cobertura).
     rows_sorted = sorted(
         rows, key=lambda x: (-x.get(CTX_PRIMARY, 0.0), x.get("ContextCharacters", 0.0))
@@ -273,9 +288,8 @@ def _print_table(out: Path, rows: list[dict]) -> None:
     for r in rows_sorted:
         print(
             f"  {r['config']:24}{r.get(CTX_PRIMARY, 0.0):>9.3f}"
-            f"{r.get('ContextPrecisionById', 0.0):>9.3f}{r.get('ContextRecallById', 0.0):>8.3f}"
-            f"{r.get('ContextCharacters', 0.0):>8.0f}{r.get('RedundantContextRate', 0.0):>8.3f}"
-            f"{r.get('ContextItemCount', 0.0):>7.1f}"
+            f"{r.get('EvidenceDensity', 0.0):>8.3f}{r.get('ContextPrecisionById', 0.0):>9.3f}"
+            f"{r.get('ContextCharacters', 0.0):>8.0f}{r.get('ContextItemCount', 0.0):>7.1f}"
         )
     print(
         "\n  Rodilla = menor k/estrategia/presupuesto cuya EvRecall ya no mejora apreciablemente\n"
