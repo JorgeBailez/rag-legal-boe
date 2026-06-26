@@ -34,7 +34,7 @@ from tqdm import tqdm  # noqa: E402
 from src.config.settings import get_settings  # noqa: E402
 from src.embeddings.corpus_loader import load_processed_corpus  # noqa: E402
 from src.embeddings.encoder import set_cpu_threads  # noqa: E402
-from src.evaluation.dataset import DATASET_DIR, load_and_validate, load_jsonl  # noqa: E402
+from src.evaluation.dataset import load_and_validate, load_jsonl  # noqa: E402
 from src.evaluation.metrics import (  # noqa: E402
     aggregate_metrics,
     bootstrap_ci,
@@ -53,12 +53,14 @@ from src.retrieval.dense_retriever import DenseRetriever  # noqa: E402
 
 CTX_PRIMARY = "ContextEvidenceRecall"
 ALL_STRATEGIES = (K_ONLY, P_EXPAND_BOUNDED, P_EXPAND_FULL)
+# Banco vigente del TFG (corpus-92), NO el MVP de 10 normas (DATASET_DIR del proyecto = MVP).
+CORPUS92_DIR = "data/evaluation/corpus92_v1"
 
 
 def _parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="Ablacion del ensamblado de contexto (L2).")
     p.add_argument("--bundle", help="ruta al bundle denso; fallback a GENERATION_DENSE_BUNDLE.")
-    p.add_argument("--dataset-dir", default=str(DATASET_DIR))
+    p.add_argument("--dataset-dir", default=CORPUS92_DIR, help="banco; por defecto corpus-92.")
     p.add_argument(
         "--split", default="development", choices=["development", "test", "out_of_corpus"]
     )
