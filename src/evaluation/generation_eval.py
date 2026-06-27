@@ -120,10 +120,44 @@ def evaluate_generation(
                 "query_style": q.query_style,
             }
         )
-        answer: RagAnswerV1 = generator.answer(q.query, query_profile_id=query_profile_id)
-        cited_parents = [c.parent_id for c in answer.citations]
         ak = ak_by_qid.get(q.query_id)
         answerable = ak.answerable if ak is not None else (q.split != "out_of_corpus")
+        try:
+            answer: RagAnswerV1 = generator.answer(q.query, query_profile_id=query_profile_id)
+        except RagLegalBoeError as exc:
+            # Un fallo de contrato del generador (JSON inválido del LLM, ID inventado…) NO debe
+            # abortar la corrida entera (horas): se registra como error técnico de la pregunta y se
+            # continúa. Estas filas se EXCLUYEN de las métricas (no son una abstención deliberada).
+            per_query.append(
+                {
+                    "query_id": q.query_id,
+                    "split": q.split,
+                    "query_style": q.query_style,
+                    "failure_mode": q.failure_mode,
+                    "difficulty": q.difficulty,
+                    "answered": False,
+                    "answerable": answerable,
+                    "abstention_outcome": "generation_error",
+                    "generation_error": str(exc),
+                }
+            )
+            notify(
+                {
+                    "event": "done",
+                    "i": idx,
+                    "total": total,
+                    "query_id": q.query_id,
+                    "answered": False,
+                    "answerable": answerable,
+                    "latency_s": None,
+                    "abstention_outcome": "generation_error",
+                    "generation_error": str(exc),
+                    "failure_mode": q.failure_mode,
+                    "query_style": q.query_style,
+                }
+            )
+            continue
+        cited_parents = [c.parent_id for c in answer.citations]
         key_facts = ak.key_facts if ak else []
         forbidden_facts = ak.forbidden_facts if ak else []
         expected_parents = ak.expected_citation_parents if ak else []

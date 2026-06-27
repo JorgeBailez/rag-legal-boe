@@ -122,9 +122,8 @@ def _override(value, default):  # noqa: ANN001, ANN202
 def _prompt_fingerprint(prompts_dir):  # noqa: ANN001, ANN202
     """Huella corta del contenido de los prompts (system+rag) para trazar el A/B."""
     try:
-        text = (
-            load_template(SYSTEM_PROMPT_FILE, prompts_dir)
-            + load_template(RAG_PROMPT_FILE, prompts_dir)
+        text = load_template(SYSTEM_PROMPT_FILE, prompts_dir) + load_template(
+            RAG_PROMPT_FILE, prompts_dir
         )
     except OSError:
         return "missing"
@@ -302,6 +301,12 @@ def main() -> int:  # noqa: C901 - orquestación lineal del CLI
             **write_kwargs,
         )
         _print_summary(out_dir, aggregate)
+        n_gen_err = sum(1 for r in per_query if r.get("generation_error"))
+        if n_gen_err:
+            print(
+                f"⚠ {n_gen_err} pregunta(s) con generación fallida por contrato (excluidas de las "
+                "métricas; ver generation_error en per_query.jsonl). La corrida NO se abortó."
+            )
         n_judge_err = sum(1 for r in per_query if r.get("judge_error"))
         if n_judge_err:
             print(

@@ -130,3 +130,45 @@ def test_evaluate_limit_truncates() -> None:
         questions=questions, answer_keys=answer_keys, generator=generator, judge=None, limit=1
     )
     assert len(per_query) == 1
+
+
+def test_generation_contract_error_is_non_fatal_and_excluded() -> None:
+    from src.core.exceptions import GenerationContractError
+
+    good = _generator(_ANSWERED)
+
+    class _FlakyGenerator:
+        # Falla la generación de la 1ª pregunta y responde la 2ª: la corrida NO debe abortar.
+        config = good.config
+        retriever = good.retriever
+
+        def answer(self, query, *, query_profile_id=None):  # noqa: ANN001, ANN204
+            if "BOOM" in query:
+                raise GenerationContractError("la salida del LLM no cumple rag_llm_answer_v1")
+            return good.answer(query, query_profile_id=query_profile_id)
+
+    questions = [
+        {**_question("q1"), "query": "BOOM pregunta que rompe el contrato"},
+        {**_question("q2"), "query": "¿Qué plazo tengo?"},
+    ]
+    answer_keys = [
+        {"query_id": "q1", "answerable": True, "reference_answer": "x"},
+        {
+            "query_id": "q2",
+            "answerable": True,
+            "reference_answer": "x",
+            "key_facts": ["dato clave"],
+            "expected_citation_parents": ["BOE-A-0001__a1"],
+        },
+    ]
+    per_query, metrics_rows, agg = evaluate_generation(
+        questions=questions, answer_keys=answer_keys, generator=_FlakyGenerator(), judge=None
+    )
+    assert len(per_query) == 2
+    assert per_query[0]["generation_error"]  # q1 registrada como error técnico
+    assert per_query[0]["abstention_outcome"] == "generation_error"
+    assert "generation_error" not in per_query[1]  # q2 normal
+    assert per_query[1]["abstention_outcome"] == "answered"
+    assert agg["n_generation_errors"] == 1
+    assert agg["n_queries"] == 1  # q1 EXCLUIDA de las métricas
+    assert [r["query_id"] for r in metrics_rows] == ["q2"]  # el error no añade fila de métricas

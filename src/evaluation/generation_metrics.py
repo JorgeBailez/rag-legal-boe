@@ -169,9 +169,15 @@ def _class_accuracy(correct: int, total: int) -> float | None:
 
 
 def aggregate_generation_metrics(per_query: list[dict]) -> dict:
-    """Agrega métricas por query: medias (ignorando None) + bloque de abstención + balanced acc."""
+    """Agrega métricas por query: medias (ignorando None) + bloque de abstención + balanced acc.
+
+    Las preguntas con `generation_error` (fallo técnico del generador, p. ej. JSON inválido del LLM)
+    se EXCLUYEN de todas las métricas y se cuentan aparte: no son ni abstención ni respuesta.
+    """
+    errored = [d for d in per_query if d.get("generation_error")]
+    per_query = [d for d in per_query if not d.get("generation_error")]
     n = len(per_query)
-    agg: dict = {"n_queries": n}
+    agg: dict = {"n_queries": n, "n_generation_errors": len(errored)}
     for key in _JUDGE_NUMERIC_KEYS:
         vals = [d[key] for d in per_query if isinstance(d.get(key), int | float)]
         agg[f"{key}_mean"] = (sum(vals) / len(vals)) if vals else None
