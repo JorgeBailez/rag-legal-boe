@@ -4,8 +4,9 @@ Las métricas con juez (fidelidad L3, corrección L5) NO son fiables hasta valid
 muestra anotada a mano (lección de ALCE). Flujo en dos pasos:
 
 1) `--scaffold <out.jsonl>` — genera una plantilla de anotación a partir de un report CON juez: una
-   fila por respuesta con la pregunta, la respuesta generada, la referencia del gold y el veredicto
-   del juez, más campos `human_*` vacíos para que tú rellenes a mano (~30–50 casos).
+   fila por respuesta con la pregunta, la respuesta generada, la referencia del gold, el **bloque de
+   evidencias** que vio el generador (para anotar fidelidad sin adivinar) y el veredicto del juez,
+   más campos `human_*` vacíos para que tú rellenes a mano (~30–50 casos).
 
 2) (validar) `--annotations <plantilla_rellenada.jsonl>` — compara tu anotación con el veredicto del
    juez y calcula κ por dimensión (corrección categórica correct/partial/incorrect; fidelidad
@@ -67,9 +68,7 @@ def _agreement(
     human = [h for h, _ in pairs]
     judge = [j for _, j in pairs]
     out = judge_agreement(human, judge, ordered_labels=ordered_labels)
-    out["disagreements"] = [
-        {"human": h, "judge": j} for h, j in pairs if h != j
-    ]
+    out["disagreements"] = [{"human": h, "judge": j} for h, j in pairs if h != j]
     return out
 
 
@@ -138,6 +137,9 @@ def scaffold_rows(
                 "question": q_text.get(qid, ""),
                 "answer_text": r.get("answer_text", ""),
                 "reference_answer": ref_by_qid.get(qid, ""),
+                # Evidencia que vio el generador: imprescindible para anotar fidelidad (L3) sin
+                # adivinar (afirmación-contra-evidencia). La rellena el runner con --judge-model.
+                "evidences_block": r.get("evidences_block") or "",
                 "judge_correctness": correctness_label_from_score(r.get("correctness")),
                 "judge_faithful": is_faithful(r.get("faithfulness"), faithfulness_threshold),
                 "human_correctness": "",  # rellenar: correct | partial | incorrect
@@ -203,7 +205,8 @@ def main() -> int:
         print(f"No hay per_query.jsonl en {report_dir} (¿report con juez?).", file=sys.stderr)
         return 2
     judged = [
-        r for r in per_query
+        r
+        for r in per_query
         if r.get("faithfulness") is not None or r.get("correctness") is not None
     ]
     if not judged:
@@ -228,11 +231,18 @@ def main() -> int:
             "\n".join(json.dumps(r, ensure_ascii=False) for r in rows) + "\n", encoding="utf-8"
         )
         missing_answer = sum(1 for r in rows if not r["answer_text"])
+        missing_evidence = sum(1 for r in rows if not r["evidences_block"])
         print(f"Plantilla escrita: {out_path} ({len(rows)} respuestas a anotar).")
         if missing_answer:
             print(
                 f"⚠ {missing_answer} filas sin answer_text (report antiguo): vuelve a generar el "
                 "report con el runner actual para tener la respuesta a la vista."
+            )
+        if missing_evidence:
+            print(
+                f"⚠ {missing_evidence} filas sin evidences_block (report previo al guardado de "
+                "evidencias): la fidelidad (L3) no es anotable; regenera el report con el runner "
+                "actual y --judge-model para fijar la evidencia."
             )
         print("Rellena los campos human_correctness y human_faithful de cada fila.")
         return 0

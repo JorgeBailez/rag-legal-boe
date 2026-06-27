@@ -55,8 +55,14 @@ def test_compute_agreement_ignores_unannotated() -> None:
 
 def test_scaffold_only_answered_with_judge_labels() -> None:
     per_query = [
-        {"query_id": "q1", "answered": True, "correctness": 1.0, "faithfulness": 1.0,
-         "answer_text": "resp"},
+        {
+            "query_id": "q1",
+            "answered": True,
+            "correctness": 1.0,
+            "faithfulness": 1.0,
+            "answer_text": "resp",
+            "evidences_block": "[E1] art. 1: texto de evidencia",
+        },
         {"query_id": "q2", "answered": False},
     ]
     rows = scaffold_rows(per_query, {"q1": "¿pregunta?"}, {"q1": "referencia"})
@@ -66,6 +72,22 @@ def test_scaffold_only_answered_with_judge_labels() -> None:
     assert row["question"] == "¿pregunta?"
     assert row["answer_text"] == "resp"
     assert row["reference_answer"] == "referencia"
+    assert row["evidences_block"] == "[E1] art. 1: texto de evidencia"
     assert row["judge_correctness"] == "correct"
     assert row["judge_faithful"] is True
     assert row["human_correctness"] == "" and row["human_faithful"] is None
+
+
+def test_scaffold_missing_evidence_is_empty_string() -> None:
+    # Report previo al guardado de evidencias: la fila sale con evidences_block vacío (no None).
+    per_query = [
+        {
+            "query_id": "q1",
+            "answered": True,
+            "correctness": 0.5,
+            "faithfulness": 1.0,
+            "answer_text": "resp",
+        },
+    ]
+    rows = scaffold_rows(per_query, {"q1": "¿pregunta?"}, {"q1": "referencia"})
+    assert rows[0]["evidences_block"] == ""

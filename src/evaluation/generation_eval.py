@@ -132,6 +132,7 @@ def evaluate_generation(
         faithfulness_claims: list[bool] | None = None
         correctness_label: str | None = None
         judge_error: str | None = None
+        evidences_block: str | None = None
         if judge is not None and answer.answered and answerable:
             try:
                 notify(
@@ -144,6 +145,9 @@ def evaluate_generation(
                     }
                 )
                 block = _evidences_block_for(generator, q.query, query_profile_id)
+                # Se guarda en el report: el anotador humano necesita esta misma evidencia para
+                # validar la fidelidad (afirmación-contra-evidencia); sin ella el κ de L3 no vale.
+                evidences_block = block
                 faith_verdict, _ = judge.judge_faithfulness(
                     answer=answer.answer, evidences_block=block
                 )
@@ -213,6 +217,7 @@ def evaluate_generation(
                 "expected_citation_parents": expected_parents,
                 "answer_text": answer.answer,
                 "abstention_reason": answer.abstention_reason,
+                "evidences_block": evidences_block,
                 "judge_error": judge_error,
             }
         )
