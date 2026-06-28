@@ -99,6 +99,20 @@ def _parse_args() -> argparse.Namespace:
     parser.add_argument("--context-budget-chars", type=_positive_int, default=None)
     parser.add_argument("--max-total-context-chars", type=_positive_int, default=None)
     parser.add_argument(
+        "--num-predict",
+        type=_positive_int,
+        default=None,
+        help="tokens máx. de salida del generador; fallback settings.ollama_num_predict. Subir si "
+        "el LLM trunca el JSON (GenerationContractError).",
+    )
+    parser.add_argument(
+        "--num-ctx",
+        type=_positive_int,
+        default=None,
+        help="ventana de contexto del generador; fallback settings.ollama_num_ctx. Debe caber "
+        "prompt + evidencia (max-total-context-chars) + salida.",
+    )
+    parser.add_argument(
         "--query-ids",
         default=None,
         help="comas; reevalúa solo esos query_id del split (p. ej. q0001,q0013,q0038).",
@@ -185,8 +199,8 @@ def main() -> int:  # noqa: C901 - orquestación lineal del CLI
         ),
         temperature=settings.ollama_temperature,
         seed=settings.ollama_seed,
-        num_predict=settings.ollama_num_predict,
-        num_ctx=settings.ollama_num_ctx,
+        num_predict=_override(args.num_predict, settings.ollama_num_predict),
+        num_ctx=_override(args.num_ctx, settings.ollama_num_ctx),
         keep_alive=settings.ollama_keep_alive,
     )
 
@@ -282,6 +296,10 @@ def main() -> int:  # noqa: C901 - orquestación lineal del CLI
             "max_total_context_chars": config.max_total_context_chars,
             "temperature": config.temperature,
             "seed": config.seed,
+            "num_predict": config.num_predict,
+            "num_ctx": config.num_ctx,
+            "judge_num_ctx": settings.judge_num_ctx if judge is not None else None,
+            "judge_num_predict": settings.judge_num_predict if judge is not None else None,
             "prompts_dir": args.prompts_dir or "(default)",
             "prompt_fingerprint": _prompt_fingerprint(args.prompts_dir),
             "gate_c_generation_ready": report["gate_c"]["generation_ready"],
