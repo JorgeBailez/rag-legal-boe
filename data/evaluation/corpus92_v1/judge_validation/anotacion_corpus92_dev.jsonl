@@ -1,0 +1,30 @@
+{"query_id": "q92_002", "human_faithful": false, "human_correctness": "", "notes": "La respuesta atribuye cuatro meses de preaviso a ambas partes; la evidencia distingue cuatro meses para arrendador y dos para arrendatario."}
+{"query_id": "q92_003", "human_faithful": true, "human_correctness": "", "notes": ""}
+{"query_id": "q92_008", "human_faithful": true, "human_correctness": "", "notes": "La respuesta solo cubre la tasa reducida para conductores durante los dos años siguientes a obtener el permiso; está soportada, aunque no da la regla general."}
+{"query_id": "q92_010", "human_faithful": true, "human_correctness": "correct", "notes": ""}
+{"query_id": "q92_012", "human_faithful": false, "human_correctness": "", "notes": "Añade que los seis meses cuentan desde la fecha del contrato o puesta a disposición; eso no aparece en el artículo 11 mostrado."}
+{"query_id": "q92_014", "human_faithful": true, "human_correctness": "correct", "notes": ""}
+{"query_id": "q92_015", "human_faithful": true, "human_correctness": "correct", "notes": ""}
+{"query_id": "q92_016", "human_faithful": true, "human_correctness": "", "notes": ""}
+{"query_id": "q92_018", "human_faithful": true, "human_correctness": "correct", "notes": ""}
+{"query_id": "q92_019", "human_faithful": true, "human_correctness": "", "notes": ""}
+{"query_id": "q92_020", "human_faithful": true, "human_correctness": "correct", "notes": ""}
+{"query_id": "q92_021", "human_faithful": false, "human_correctness": "", "notes": "Agrupa reimportaciones y operaciones asimiladas como si ambas siguieran la misma regla territorial; la evidencia formula una regla distinta para las operaciones asimiladas."}
+{"query_id": "q92_027", "human_faithful": true, "human_correctness": "", "notes": ""}
+{"query_id": "q92_028", "human_faithful": true, "human_correctness": "correct", "notes": ""}
+{"query_id": "q92_029", "human_faithful": true, "human_correctness": "", "notes": ""}
+{"query_id": "q92_031", "human_faithful": false, "human_correctness": "incorrect", "notes": "La respuesta toma como criterio principal la estimación o desestimación parcial, pero la evidencia y la referencia establecen el vencimiento total como regla general."}
+{"query_id": "q92_033", "human_faithful": true, "human_correctness": "correct", "notes": ""}
+{"query_id": "q92_036", "human_faithful": true, "human_correctness": "partial", "notes": "La respuesta incluye la Ley 41/2002, pero omite la ley general de salud pública como fuente esencial de la referencia y añade la antigua ley de protección de datos como respuesta principal."}
+{"query_id": "q92_042", "human_faithful": true, "human_correctness": "correct", "notes": ""}
+{"query_id": "q92_046", "human_faithful": true, "human_correctness": "", "notes": "Omite los cursos de especialización de Grado E, pero las afirmaciones que sí hace están soportadas."}
+{"query_id": "q92_049", "human_faithful": true, "human_correctness": "", "notes": "Respuesta incompleta respecto a todo el artículo 10, pero las obligaciones mencionadas están soportadas."}
+{"query_id": "q92_057", "human_faithful": true, "human_correctness": "partial", "notes": "Coincide en la conducta y condiciones, pero omite la pena de multa de tres a doce meses incluida en la referencia."}
+{"query_id": "q92_058", "human_faithful": true, "human_correctness": "partial", "notes": "Describe el descubrimiento de secretos y las vías principales, pero omite la revelación de secretos mencionada en la referencia."}
+{"query_id": "q92_059", "human_faithful": true, "human_correctness": "", "notes": ""}
+{"query_id": "q92_063", "human_faithful": false, "human_correctness": "", "notes": "Mezcla requisitos: la convivencia mínima de cinco años no equivale a estar registrado cinco años, y la condición de no nueva pareja/matrimonio pertenece al supuesto de pareja extinguida."}
+{"query_id": "q92_066", "human_faithful": false, "human_correctness": "", "notes": "Confunde la base de cotización con la base reguladora de la pensión de jubilación calculada con 348/324 bases."}
+{"query_id": "q92_067", "human_faithful": true, "human_correctness": "", "notes": "No responde a cargo de quién va el coste, aunque lo que afirma sobre la obligación y el tipo de formación está soportado."}
+{"query_id": "q92_068", "human_faithful": true, "human_correctness": "correct", "notes": ""}
+{"query_id": "q92_080", "human_faithful": true, "human_correctness": "correct", "notes": ""}
+{"query_id": "q92_081", "human_faithful": true, "human_correctness": "partial", "notes": "Incluye el entorno intimidatorio, degradante u ofensivo, pero omite el elemento de atentar contra la dignidad que figura en la referencia."}
