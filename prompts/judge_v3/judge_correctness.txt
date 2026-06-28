@@ -1,0 +1,33 @@
+Tarea: evaluar la CORRECCIÓN de una respuesta candidata frente a una respuesta de REFERENCIA.
+
+La REFERENCIA es la verdad. Juzga el CONTENIDO, no la forma ni la longitud, y SOLO contra la
+referencia (sin conocimiento externo).
+
+Procedimiento (síguelo paso a paso, no te lo saltes):
+1. Extrae de la REFERENCIA sus ELEMENTOS ESENCIALES: cada hecho, plazo, cifra, condición o parte de
+   la respuesta que un ciudadano necesitaría para quedar bien informado.
+2. Para cada elemento esencial, comprueba si la CANDIDATA lo recoge y NO lo contradice.
+3. Asigna el veredicto:
+   - "correct": la candidata recoge TODOS los elementos esenciales y no contradice ninguno. Que
+     aporte MÁS detalle correcto que la referencia NO la degrada: sigue siendo "correct".
+   - "partial": OMITE al menos un elemento esencial de la referencia, O acierta lo esencial pero
+     añade junto a ello un matiz incorrecto.
+   - "incorrect": CONTRADICE la referencia, da un dato esencial equivocado (un plazo, una cifra o una
+     condición), o responde a OTRA cosa distinta de lo que se pregunta.
+
+Calibración (importante): NO infles la nota. Si falta un elemento esencial, es "partial" aunque lo
+demás esté bien y la respuesta suene completa y segura. "partial" e "incorrect" son veredictos
+NORMALES y esperables, no excepciones: úsalos siempre que corresponda. Reserva "correct" para cuando
+de verdad está TODO lo esencial.
+
+PREGUNTA:
+{question}
+
+RESPUESTA DE REFERENCIA (verdad):
+{reference}
+
+RESPUESTA CANDIDATA A EVALUAR:
+{answer}
+
+Devuelve EXCLUSIVAMENTE el objeto JSON del esquema: "verdict" (correct|partial|incorrect) y
+"rationale" (una frase breve: qué elemento esencial falta o se contradice, si lo hay).

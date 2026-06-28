@@ -21,6 +21,8 @@ from src.evaluation.dataset import EvalAnswerKey, EvalQuestion
 from src.evaluation.generation_metrics import (
     aggregate_generation_metrics,
     compute_query_generation_metrics,
+    correctness_score,
+    faithfulness_score,
 )
 from src.generation.answer_generator import AnswerGenerator
 from src.generation.prompt import build_evidences_block
@@ -414,3 +416,86 @@ def rejudge_correctness(
 
     aggregate = aggregate_generation_metrics(per_query)
     return per_query, metrics_rows, aggregate
+
+
+def rejudge_report(
+    *,
+    prior_per_query: list[dict],
+    answer_keys: list[dict],
+    questions: list[dict],
+    judge: Judge,
+    limit: int | None = None,
+    on_progress: Callable[[dict], None] | None = None,
+) -> list[dict]:
+    """Re-juzga fidelidad (L3) y corrección (L5) con un prompt de juez nuevo, sin regenerar.
+
+    Reutiliza `answer_text` y `evidences_block` ya guardados en un report previo (solo las
+    respuestas; las abstenciones se omiten). Pensado para **calibrar el prompt del juez** y
+    re-validar κ/AC1 contra la MISMA anotación humana, aislando el efecto del prompt. Devuelve filas
+    `per_query` con `faithfulness`/`correctness` nuevos (las consume `validate_judge.py
+    --annotations`). Si una fila no trae `evidences_block` (report antiguo) la fidelidad queda
+    `None`; sin `reference_answer`, la corrección queda `None`. Un veredicto malformado del juez NO
+    aborta: se marca `judge_error`.
+    """
+    q_by_qid = {q["query_id"]: EvalQuestion.model_validate(q) for q in questions}
+    ak_by_qid = {a["query_id"]: EvalAnswerKey.model_validate(a) for a in answer_keys}
+    answered = [r for r in prior_per_query if r.get("answered")]
+    selected = answered if limit is None else answered[:limit]
+    total = len(selected)
+    notify = on_progress or (lambda _info: None)
+
+    per_query: list[dict] = []
+    for idx, pr in enumerate(selected, start=1):
+        qid = pr["query_id"]
+        q = q_by_qid.get(qid)
+        ak = ak_by_qid.get(qid)
+        answer_text = pr.get("answer_text", "")
+        evidences_block = pr.get("evidences_block") or ""
+        reference = ak.reference_answer if ak else ""
+        notify({"event": "start", "i": idx, "total": total, "query_id": qid})
+
+        faithfulness: float | None = None
+        correctness: float | None = None
+        judge_error: str | None = None
+        try:
+            if evidences_block.strip():
+                notify({"event": "judging", "phase": "fidelidad", "query_id": qid})
+                faith_verdict, _ = judge.judge_faithfulness(
+                    answer=answer_text, evidences_block=evidences_block
+                )
+                faithfulness = faithfulness_score([c.supported for c in faith_verdict.claims])
+            if reference.strip() and q is not None:
+                notify({"event": "judging", "phase": "corrección", "query_id": qid})
+                corr_verdict, _ = judge.judge_correctness(
+                    question=q.query, answer=answer_text, reference=reference
+                )
+                correctness = correctness_score(corr_verdict.verdict)
+        except RagLegalBoeError as exc:
+            judge_error = str(exc)
+
+        per_query.append(
+            {
+                "query_id": qid,
+                "split": pr.get("split"),
+                "query_style": pr.get("query_style"),
+                "answered": True,
+                "faithfulness": faithfulness,
+                "correctness": correctness,
+                "answer_text": answer_text,
+                "evidences_block": evidences_block,
+                "judge_error": judge_error,
+                "rejudged": True,
+            }
+        )
+        notify(
+            {
+                "event": "done",
+                "i": idx,
+                "total": total,
+                "query_id": qid,
+                "faithfulness": faithfulness,
+                "correctness": correctness,
+                "judge_error": judge_error,
+            }
+        )
+    return per_query

@@ -132,6 +132,49 @@ def test_evaluate_limit_truncates() -> None:
     assert len(per_query) == 1
 
 
+def test_rejudge_report_reuses_answer_and_stored_evidence() -> None:
+    from src.evaluation.generation_eval import rejudge_report
+
+    prior = [
+        {
+            "query_id": "q1",
+            "answered": True,
+            "answer_text": "Respuesta",
+            "evidences_block": "[E1] art. 1: texto",
+        },
+        {"query_id": "q2", "answered": False, "answer_text": "", "evidences_block": ""},
+    ]
+    questions = [_question("q1"), _question("q2")]
+    answer_keys = [
+        {"query_id": "q1", "answerable": True, "reference_answer": "Ref"},
+        {"query_id": "q2", "answerable": True, "reference_answer": "Ref2"},
+    ]
+    judge = FakeJudge(faithfulness_claims=[True, False], correctness="partial")
+    per_query = rejudge_report(
+        prior_per_query=prior, answer_keys=answer_keys, questions=questions, judge=judge
+    )
+    assert len(per_query) == 1  # solo la respondida (la abstención se omite)
+    assert per_query[0]["query_id"] == "q1"
+    assert per_query[0]["faithfulness"] == 0.5  # 1 de 2 afirmaciones soportadas
+    assert per_query[0]["correctness"] == 0.5  # "partial"
+    assert len(judge.faithfulness_calls) == 1 and len(judge.correctness_calls) == 1
+
+
+def test_rejudge_report_without_evidence_skips_faithfulness() -> None:
+    from src.evaluation.generation_eval import rejudge_report
+
+    prior = [{"query_id": "q1", "answered": True, "answer_text": "R", "evidences_block": ""}]
+    questions = [_question("q1")]
+    answer_keys = [{"query_id": "q1", "answerable": True, "reference_answer": "Ref"}]
+    judge = FakeJudge(correctness="correct")
+    per_query = rejudge_report(
+        prior_per_query=prior, answer_keys=answer_keys, questions=questions, judge=judge
+    )
+    assert per_query[0]["faithfulness"] is None  # sin evidencia no se juzga L3
+    assert per_query[0]["correctness"] == 1.0
+    assert len(judge.faithfulness_calls) == 0
+
+
 def test_generation_contract_error_is_non_fatal_and_excluded() -> None:
     from src.core.exceptions import GenerationContractError
 
