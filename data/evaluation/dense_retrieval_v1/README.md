@@ -1,8 +1,9 @@
 # Dataset de evaluación — dense_retrieval_v1
 
-> 🗄️ **HISTÓRICO (MVP corpus-10).** El dataset vigente del TFG es **`corpus92_v1`**
-> (`data/evaluation/corpus92_v1/`): 111 preguntas, split dev/test/ooc, gold de-sesgado por pooling
-> + re-pooling BM25/híbrido. Este (`dense_retrieval_v1`) se conserva como el banco del MVP.
+> Nota: histórico (corpus de 10 normas del MVP). El dataset vigente del proyecto es `corpus92_v1`
+> (`data/evaluation/corpus92_v1/`): 111 preguntas, particiones dev/test/ooc y gold de-sesgado por
+> pooling y re-pooling con BM25 e híbrido. Este (`dense_retrieval_v1`) se conserva como el banco del
+> MVP y como referencia del esquema de datos.
 
 Dataset de evaluación del sistema RAG sobre el corpus MVP (10 normas). Versionable y pensado para
 **revisión jurídica manual**. Tres ficheros JSONL (una entrada por línea):
@@ -16,7 +17,7 @@ Dataset de evaluación del sistema RAG sobre el corpus MVP (10 normas). Versiona
 > (`judgments.jsonl`) está **revisado**: relevancia graduada 2/1/0, `paragraph_orders` reales,
 > `quote`, negativos tentadores (rel 0), `multi_parent` y trampas. Pooling multi-sistema sobre los 5
 > bundles densos (`scripts/build_eval_candidates.py`) para no sesgar el gold hacia el denso.
-> **Gate C retrieval (checkpoint):** development ✅ (≥40) · out_of_corpus ✅ (10/10) · test **19/20**.
+> **Gate C retrieval (checkpoint):** development cumplido (≥40), out_of_corpus 10/10, test 19/20.
 > El test queda 1 corto **a propósito**: `q0051` es una **trampa temporal** (art. 45 LBRL «(Sin
 > contenido)»), su gold es `rel 0` (abstención) y por diseño no cuenta como pregunta con relevante. Se
 > **acepta 19/20** (el gold está completo; la trampa es una *feature*, no un hueco). El **gold de

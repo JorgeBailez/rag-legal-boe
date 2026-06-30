@@ -31,16 +31,25 @@ Desktop.ini
 # Archivos comprimidos (entregables/empaquetados; no se versionan)
 *.zip
 
-# Documentación interna/operativa — decisión del autor: NO versionar (se mantiene en local).
-# CLAUDE.md y ARCHITECTURE.md son guías operativas; docs/ es documentación técnica detallada.
-# Se conservan en el disco de trabajo pero no se publican en GitHub.
+# Guías operativas internas y estado de trabajo: no se versionan, se mantienen en local.
 .claude/
 CLAUDE.md
 ARCHITECTURE.md
 PROGRESO.md
 sessions/
-docs/
 PLAN.md
+
+# Documentación: por defecto no se versiona (notas internas de trabajo); se publica solo el
+# subconjunto curado de abajo (diseño, evaluación, análisis del parser, fuentes y licencias).
+# El resto de docs/ (runbooks del servidor, protocolos de anotación, hoja de ruta, archivo) es local.
+docs/*
+!docs/decisiones_de_diseno.md
+!docs/evaluacion_gold_y_metricas.md
+!docs/fase2_dense_baseline.md
+!docs/fuentes_y_licencias.md
+!docs/analisis_errores_generacion.md
+!docs/analisis/
+!docs/analisis/*
 
 # Datos reales: no versionar contenido crudo ni artefactos generados; conservar los .gitkeep
 data/raw/boe/*

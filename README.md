@@ -4,23 +4,28 @@ Sistema RAG para consulta **informativa** de legislación consolidada del BOE, o
 ciudadanos no expertos. **No** es asesoramiento jurídico vinculante: los textos
 consolidados del BOE tienen carácter informativo y no valor jurídico oficial.
 
-> **Estado (2026-06-25): pata de RECUPERACIÓN cerrada con evidencia (OE-01..OE-04).**
-> Flujo extremo a extremo sobre **92 normas**: raw XML inmutable → manifest → parser →
-> `documents + histories + parents` → chunks vector-ready → auditoría con *gate* →
-> **embeddings densos reproducibles → bundle inmutable → índice exacto (numpy + mmap) →
-> recuperación evaluada (denso vs BM25 vs híbrido)** → **generación fundamentada con LLM local
-> (Ollama) → JSON estructurado validado con citas oficiales o abstención**.
->
-> **Recuperador del sistema: denso `e5-large-instruct · vista J1 · I1_LEGAL`** (bake-off-92, OE-03).
-> El **flagship** denso vs BM25 vs híbrido (OE-04) está **cerrado: el denso gana**; la fusión con
-> BM25 no mejora en este corpus (evidencia y números en `docs/decisiones_de_diseno.md`). Núcleo
-> restante: **generación + validación del juez** (OE-05/06/07). Falta la API (FastAPI), fase
-> posterior. Los bundles densos y los pesos **no se versionan** (`.gitignore`): se generan en GPU/CPU.
->
-> La **vigencia** de cada bloque se decide por la `fecha_actualizacion` de `indice.xml`
-> (coincidencia exacta y única con una versión, que además es la de fecha máxima); el orden de
-> las `<version>` en el XML **no** es criterio. Los bloques que no resuelven van a *cuarentena*
-> (no indexables, sin chunks) y bloquean el avance a embeddings.
+El sistema funciona de principio a fin sobre 92 normas. Descarga el XML original del BOE y lo conserva
+inmutable, lo parsea en una representación por capas (descriptor, historial y texto vigente), lo trocea
+en fragmentos recuperables y lo audita. Sobre esa base genera los embeddings densos como un paquete
+inmutable, construye un índice exacto, recupera y ensambla el contexto, y produce una respuesta
+fundamentada con un modelo de lenguaje local. La respuesta se devuelve como JSON validado con citas
+oficiales, o el sistema se abstiene si no hay evidencia suficiente.
+
+Resultados principales, con la evidencia y los números en
+[`docs/decisiones_de_diseno.md`](docs/decisiones_de_diseno.md): la recuperación densa
+(`e5-large-instruct`) es la mejor opción en este corpus y combinarla con BM25 no la mejora; la
+generación es deliberadamente conservadora, es decir, prefiere abstenerse de más antes que responder a
+una pregunta fuera del corpus; y el juez automático se validó contra anotación humana y resultó
+insuficiente, así que la fidelidad y la corrección se reportan con anotación humana. La interfaz web y
+la API quedan como trabajo futuro.
+
+Un detalle de diseño que conviene conocer: la versión vigente de cada bloque se decide por la fecha de
+actualización del índice de la norma (la coincidencia exacta y única con una versión, que además es la
+de fecha máxima), nunca por el orden en que aparecen las versiones en el XML. Los bloques que no se
+pueden resolver van a cuarentena (no se indexan) y detienen el avance hacia los embeddings.
+
+Los embeddings, los paquetes de índice y los pesos de los modelos no se versionan (ver `.gitignore`):
+se generan en local.
 
 ## Requisitos
 
@@ -199,10 +204,9 @@ uv run python scripts/query_dense_index.py --bundle data/indexes/dense/<bundle_i
 Las **cargas pesadas** (descarga de modelos + codificación) se ejecutan en un servidor CPU; el
 código se valida offline con fixtures. Los bundles publicados son inmutables y requieren revisiones
 exactas de modelo/tokenizer; `--allow-unpinned-revision` queda solo para exploración sin
-publicación. Guía operativa completa:
-[`docs/run_dense_embeddings_server.md`](docs/run_dense_embeddings_server.md). Diseño y decisiones:
-[`docs/fase2_dense_baseline.md`](docs/fase2_dense_baseline.md). Autenticación opcional de Hugging
-Face mediante la variable de entorno `HF_TOKEN` (nunca se versiona).
+publicación. Diseño y decisiones del índice denso:
+[`docs/fase2_dense_baseline.md`](docs/fase2_dense_baseline.md). La autenticación con Hugging Face es
+opcional, mediante la variable de entorno `HF_TOKEN` (nunca se versiona).
 
 ## Fase 3 — Generación fundamentada (MVP)
 
