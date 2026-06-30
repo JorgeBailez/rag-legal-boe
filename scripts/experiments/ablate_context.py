@@ -19,7 +19,7 @@ La recuperacion se hace UNA vez por pregunta (top-`retrieve-depth`) y se reutili
 configuraciones: solo cambia el ensamblado (barato, sin modelo). No reescribe el texto legal.
 
 Uso:
-    uv run python scripts/ablate_context.py --bundle data/indexes/dense/<bundle_id> \
+    uv run python scripts/experiments/ablate_context.py --bundle data/indexes/dense/<bundle_id> \
       --split development --gate-c-level checkpoint --threads 24
 """
 
@@ -29,7 +29,7 @@ import argparse
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
 from tqdm import tqdm  # noqa: E402
 

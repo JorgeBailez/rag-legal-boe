@@ -1,17 +1,16 @@
-"""Ablación de BM25 (OFAT) sobre un split del banco: stopwords · stemming · heading_boost · k1 · b.
+"""Ablación de la FUSIÓN híbrida sobre un split: RRF (k=60) vs convexa min-max (barrido de α).
 
-Compara cada config de BM25 como una «estrategia», reusando `evaluate_retrieval_strategies`
-(mismas métricas L1 que el flagship: ParentnDCG@10 + IC bootstrap + **pareado vs baseline** +
-estratificación por `query_style`). BM25 no carga el modelo de embeddings (solo tokeniza la query),
-así que la ablación es barata en CPU. Un solo report versionado con una fila por configuración.
+Compara denso (e5-large/I1) · BM25 (config ganadora, heading_boost) · híbrido RRF · híbrido convexo
+para varios α, todo como "estrategias" vía `evaluate_retrieval_strategies` (ParentnDCG@10 + IC +
+**pareado vs denso** + estratificación por estilo). Baseline = denso, para responder "¿el híbrido
+bate al denso y por cuánto?". Construye denso y BM25 UNA vez y los reutiliza en todos los híbridos.
 
-Diseño OFAT (one-factor-at-a-time) desde la baseline `base` (stopwords+stemming ON, heading_boost=0,
-k1=1.5, b=0.75 = defaults de rank_bm25): se varía un knob cada vez. Tras leer el report se elige la
-mejor combinación para una corrida de confirmación.
+Literatura: RRF es robusto y no normaliza escalas (Cormack 2009); la combinación convexa bien
+afinada puede batir a RRF (Bruch et al. 2023) → se prueban las dos.
 
 Uso:
-    uv run python scripts/ablate_bm25.py --bundle data/indexes/dense/<bundle_id> \
-      --split development --gate-c-level checkpoint --threads 24
+    uv run python scripts/experiments/ablate_fusion.py --bundle data/indexes/dense/<bundle_id> \
+      --split development --gate-c-level checkpoint --bm25-heading-boost 3 --threads 24
 """
 
 from __future__ import annotations
@@ -20,7 +19,7 @@ import argparse
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
 from tqdm import tqdm  # noqa: E402
 
@@ -34,53 +33,37 @@ from src.evaluation.retrieval_eval import (  # noqa: E402
     DEFAULT_RETRIEVE_DEPTH,
     evaluate_retrieval_strategies,
 )
+from src.retrieval.dense_retriever import DenseRetriever  # noqa: E402
+from src.retrieval.hybrid_retriever import HybridRetriever  # noqa: E402
 from src.retrieval.lexical_retriever import LexicalRetriever  # noqa: E402
 from src.retrieval.text_analysis import SpanishAnalyzer  # noqa: E402
 
-BASE = {"remove_stopwords": True, "stem": True, "heading_boost": 0, "k1": 1.5, "b": 0.75}
-CONFIGS: list[tuple[str, dict]] = [
-    ("base", BASE),
-    ("no_stopwords", {**BASE, "remove_stopwords": False}),
-    ("no_stem", {**BASE, "stem": False}),
-    ("hb1", {**BASE, "heading_boost": 1}),
-    ("hb2", {**BASE, "heading_boost": 2}),
-    ("hb3", {**BASE, "heading_boost": 3}),
-    ("k1_0.9", {**BASE, "k1": 0.9}),
-    ("k1_1.2", {**BASE, "k1": 1.2}),
-    ("k1_2.0", {**BASE, "k1": 2.0}),
-    ("b_0.3", {**BASE, "b": 0.3}),
-    ("b_0.5", {**BASE, "b": 0.5}),
-    ("b_0.9", {**BASE, "b": 0.9}),
-]
-
 
 def _parse_args() -> argparse.Namespace:
-    p = argparse.ArgumentParser(description="Ablación OFAT de BM25 (L1).")
+    p = argparse.ArgumentParser(description="Ablación de la fusión híbrida (RRF vs convexa).")
     p.add_argument("--bundle", help="ruta al bundle; fallback a GENERATION_DENSE_BUNDLE.")
     p.add_argument("--dataset-dir", default=str(DATASET_DIR))
     p.add_argument(
         "--split", default="development", choices=["development", "test", "out_of_corpus"]
     )
+    p.add_argument(
+        "--query-profile-id", default="I1_LEGAL", help="perfil del denso (ganador OE-03)."
+    )
+    p.add_argument("--bm25-heading-boost", type=int, default=3, help="config BM25 ganadora.")
+    p.add_argument("--rrf-k", type=int, default=60)
+    p.add_argument(
+        "--alphas", default="0.3,0.4,0.5,0.6,0.7", help="α de la convexa (peso del denso)."
+    )
+    p.add_argument("--hybrid-candidates", type=int, default=100)
     p.add_argument("--retrieve-depth", type=int, default=DEFAULT_RETRIEVE_DEPTH)
     p.add_argument("--gate-c-level", default="formal", choices=["checkpoint", "formal"])
     p.add_argument("--allow-incomplete-dataset", action="store_true")
     p.add_argument("--threads", type=int, default=8)
+    p.add_argument("--batch-size", type=int, default=32)
     p.add_argument("--seed", type=int, default=12345)
     p.add_argument("--limit", type=int, default=None)
     p.add_argument("--output-root", default="data/processed/reports/dense")
     return p.parse_args()
-
-
-def _build(bundle: str, corpus: dict, cfg: dict) -> LexicalRetriever:
-    analyzer = SpanishAnalyzer(remove_stopwords=cfg["remove_stopwords"], stem=cfg["stem"])
-    return LexicalRetriever.from_bundle(
-        bundle,
-        corpus=corpus,
-        analyzer=analyzer,
-        heading_boost=cfg["heading_boost"],
-        k1=cfg["k1"],
-        b=cfg["b"],
-    )
 
 
 def main() -> int:
@@ -112,10 +95,37 @@ def main() -> int:
         print(f"No hay preguntas en el split {args.split!r}.", file=sys.stderr)
         return 1
 
-    print(f"Construyendo {len(CONFIGS)} configuraciones BM25 sobre {len(split_qs)} preguntas…")
-    strategies = {label: _build(bundle, corpus, cfg) for label, cfg in CONFIGS}
+    print(f"Construyendo denso + BM25(hb={args.bm25_heading_boost}) y los híbridos…")
+    dense = DenseRetriever.from_bundle(bundle, corpus=corpus, batch_size=args.batch_size)
+    bm25 = LexicalRetriever.from_bundle(
+        bundle, corpus=corpus, analyzer=SpanishAnalyzer(), heading_boost=args.bm25_heading_boost
+    )
 
-    bar = tqdm(total=len(strategies) * len(split_qs), desc="ablación BM25", unit="q")
+    def conv(alpha: float) -> HybridRetriever:
+        return HybridRetriever(
+            dense=dense,
+            lexical=bm25,
+            fusion="weighted",
+            alpha=alpha,
+            candidates=args.hybrid_candidates,
+        )
+
+    alphas = [float(a) for a in args.alphas.split(",") if a.strip()]
+    strategies: dict[str, object] = {
+        "dense": dense,
+        "bm25": bm25,
+        "rrf": HybridRetriever(
+            dense=dense,
+            lexical=bm25,
+            fusion="rrf",
+            rrf_k=args.rrf_k,
+            candidates=args.hybrid_candidates,
+        ),
+    }
+    for a in alphas:
+        strategies[f"conv_a{a:g}"] = conv(a)
+
+    bar = tqdm(total=len(strategies) * len(split_qs), desc="ablación fusión", unit="q")
 
     def on_progress(ev: dict) -> None:
         if ev.get("event") == "query":
@@ -128,20 +138,23 @@ def main() -> int:
             split_questions=split_qs,
             judgments_by_query=by_q,
             retrieve_depth=args.retrieve_depth,
-            baseline="base",
+            query_profile_id=args.query_profile_id,
+            baseline="dense",
             seed=args.seed,
             on_progress=on_progress,
         )
     finally:
         bar.close()
 
-    run_id = new_run_id("bm25abl")
+    run_id = new_run_id("fusionabl")
     summary = {
         "split": args.split,
         "gate_c_ready": ds["gate_c"]["ready"],
         "seed": args.seed,
-        "ablation": "bm25_ofat",
-        "configs": {label: cfg for label, cfg in CONFIGS},
+        "ablation": "fusion",
+        "bm25_heading_boost": args.bm25_heading_boost,
+        "rrf_k": args.rrf_k,
+        "alphas": alphas,
         **result["summary"],
     }
     out = write_benchmark_report(
@@ -159,21 +172,21 @@ def main() -> int:
 def _print_table(out: Path, rows: list[dict], summary: dict) -> None:
     by_style = summary.get("stratified", {}).get("by_query_style", {})
 
-    def style_cell(label: str, style: str) -> str:
+    def cell(label: str, style: str) -> str:
         g = by_style.get(label, {}).get(style)
         return f"{g[PRIMARY_METRIC]:.3f}" if g else "-"
 
     print(f"\nReport: {out}")
     print(f"métrica {PRIMARY_METRIC} · baseline {summary['baseline']} · n={rows[0]['n_queries']}\n")
-    print(f"  {'config':14}{'nDCG@10':>9}{'Rec@10':>9}{'directa':>9}{'lexica':>8}{'lat':>7}")
+    print(f"  {'estrategia':14}{'nDCG@10':>9}{'Rec@10':>9}{'directa':>9}{'lexica':>8}{'lat':>8}")
     for r in sorted(rows, key=lambda x: -x.get(PRIMARY_METRIC, 0.0)):
         lbl = r["strategy"]
         print(
             f"  {lbl:14}{r.get(PRIMARY_METRIC, 0.0):>9.3f}{r.get('ParentRecall@10', 0.0):>9.3f}"
-            f"{style_cell(lbl, 'directa_articulo'):>9}{style_cell(lbl, 'lexica'):>8}"
-            f"{r.get('retrieve_latency_p50_ms', 0.0):>7.1f}"
+            f"{cell(lbl, 'directa_articulo'):>9}{cell(lbl, 'lexica'):>8}"
+            f"{r.get('retrieve_latency_p50_ms', 0.0):>8.1f}"
         )
-    print("\n  Δ vs base (pareado, IC95%):")
+    print("\n  Δ vs denso (pareado, IC95%):")
     for pv in summary["paired_vs_baseline"]:
         d = pv["diff"]
         sig = "SIG" if (d["ci_low"] > 0 or d["ci_high"] < 0) else "n.s."
