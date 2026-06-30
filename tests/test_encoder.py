@@ -30,10 +30,22 @@ class DummyModel:
         return np.ones((len(texts), self.dim), dtype=np.float64)
 
 
+# Contrato sintético SIN revisión pinneada: aísla el guard de revisión del estado real del registry
+# (todos los modelos reales están pinneados tras el cierre del MVP, así que ninguno sirve ya para
+# este caso). trust_remote_code por defecto False → el guard que salta es el de revisión, no el de
+# código remoto.
+_SIN_REVISION = ModelContract(
+    alias="fake-unpinned",
+    model_id="fake/unpinned-model",
+    declared_max_tokens=512,
+    expected_embedding_dimension=768,
+)
+
+
 def test_revision_unpinned_blocks_without_flag() -> None:
-    # model=None fuerza la carga real; el guard de revisión salta ANTES de importar ST.
+    # model=None fuerza la carga real; el guard de revisión salta ANTES de importar/instanciar ST.
     with pytest.raises(RevisionUnpinnedError):
-        DenseEncoder(get_contract("e5-base"), allow_unpinned_revision=False)
+        DenseEncoder(_SIN_REVISION, allow_unpinned_revision=False)
 
 
 # Contrato sintético de código remoto SIN revisar: aísla el guard del estado real del registry
