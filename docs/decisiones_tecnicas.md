@@ -2,6 +2,12 @@
 
 Registro de decisiones tomadas y alternativas descartadas. Documento vivo.
 
+> **Estado del proyecto (2026-06-30):** este documento registra el *racional de ingeniería* (el CÓMO),
+> que sigue vigente. El recorrido ha avanzado a **corpus-92** con generación (F3) y evaluación
+> cerradas — ver `PROGRESO.md` y el ledger `docs/decisiones_de_diseno.md` (el PORQUÉ con evidencia).
+> Las menciones a "10 normas / Fase 2" de abajo describen **cuándo** se tomó cada decisión, no el
+> alcance actual.
+
 ## Estado: Fase 2 (índice denso) implementada — dense-only
 
 Cerrado el flujo local end-to-end sobre 10 normas (descarga → manifest → parser → chunking →
