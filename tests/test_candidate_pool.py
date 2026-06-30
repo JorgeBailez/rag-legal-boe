@@ -57,12 +57,21 @@ _PARENTS = {
 
 _QUESTIONS = {
     "q1": {
-        "query_id": "q1", "split": "development", "query": "¿plazo?", "query_style": "ciudadana",
-        "answer_scope": "single_parent", "failure_mode": None, "difficulty": "media",
+        "query_id": "q1",
+        "split": "development",
+        "query": "¿plazo?",
+        "query_style": "ciudadana",
+        "answer_scope": "single_parent",
+        "failure_mode": None,
+        "difficulty": "media",
     },
     "qooc": {
-        "query_id": "qooc", "split": "out_of_corpus", "query": "¿horario oficina?",
-        "query_style": "sin_respuesta", "answer_scope": "none", "failure_mode": "out_of_corpus",
+        "query_id": "qooc",
+        "split": "out_of_corpus",
+        "query": "¿horario oficina?",
+        "query_style": "sin_respuesta",
+        "answer_scope": "none",
+        "failure_mode": "out_of_corpus",
     },
 }
 

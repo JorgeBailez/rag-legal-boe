@@ -103,7 +103,10 @@ def main() -> int:
 
     def conv(alpha: float) -> HybridRetriever:
         return HybridRetriever(
-            dense=dense, lexical=bm25, fusion="weighted", alpha=alpha,
+            dense=dense,
+            lexical=bm25,
+            fusion="weighted",
+            alpha=alpha,
             candidates=args.hybrid_candidates,
         )
 
@@ -112,7 +115,10 @@ def main() -> int:
         "dense": dense,
         "bm25": bm25,
         "rrf": HybridRetriever(
-            dense=dense, lexical=bm25, fusion="rrf", rrf_k=args.rrf_k,
+            dense=dense,
+            lexical=bm25,
+            fusion="rrf",
+            rrf_k=args.rrf_k,
             candidates=args.hybrid_candidates,
         ),
     }

@@ -86,7 +86,7 @@ def _parse_args() -> argparse.Namespace:
         "--prompts-dir",
         default=None,
         help="directorio de prompts (system_prompt.txt + rag_prompt.txt); por defecto prompts/. "
-        "Úsalo para A/B de prompts, p. ej. --prompts-dir prompts/v2.",
+        "Úsalo para A/B de prompts, p. ej. --prompts-dir prompts/gen_v2.",
     )
     parser.add_argument("--query-profile-id", default=None)
     parser.add_argument("--top-k", type=_positive_int, default=None)

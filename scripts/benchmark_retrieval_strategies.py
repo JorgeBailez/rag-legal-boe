@@ -252,8 +252,9 @@ def _print_summary(out: Path, metrics_rows: list[dict], summary: dict) -> None:
         print("    " + "estrategia".ljust(16) + "".join(s[:14].rjust(16) for s in styles))
         for name, groups in by_style.items():
             cells = "".join(
-                (f"{groups[s][PRIMARY_METRIC]:.3f}(n{groups[s]['n']})" if s in groups else "-")
-                .rjust(16)
+                (
+                    f"{groups[s][PRIMARY_METRIC]:.3f}(n{groups[s]['n']})" if s in groups else "-"
+                ).rjust(16)
                 for s in styles
             )
             print("    " + name.ljust(16) + cells)

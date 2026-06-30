@@ -97,7 +97,6 @@ EXPECTED_FILES = [
     "data/evaluation/dense_retrieval_v1/answer_keys.jsonl",
     "docs/decisiones_tecnicas.md",
     "docs/fuentes_y_licencias.md",
-    "docs/evaluacion.md",
     "docs/known_issues.md",
     "docs/fase2_dense_baseline.md",
     "docs/run_dense_embeddings_server.md",
@@ -111,8 +110,6 @@ EXPECTED_FILES = [
     "prompts/rag_prompt.txt",
     "prompts/judge_faithfulness.txt",
     "prompts/judge_correctness.txt",
-    "prompts/v2/system_prompt.txt",
-    "prompts/v2/rag_prompt.txt",
 ]
 
 

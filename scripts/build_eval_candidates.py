@@ -233,8 +233,10 @@ def main() -> int:
     judged_by_qid = _judged_by_qid(judgments)
 
     set_cpu_threads(args.threads)
-    print(f"Bundles: {len(bundle_dirs)} | preguntas objetivo: {len(target_questions)} | "
-          f"pool-depth={args.pool_depth}")
+    print(
+        f"Bundles: {len(bundle_dirs)} | preguntas objetivo: {len(target_questions)} | "
+        f"pool-depth={args.pool_depth}"
+    )
     systems = _collect_systems(bundle_dirs, target_questions, corpus, args)
     systems += _lexical_hybrid_systems(args, corpus, target_questions, bundle_dirs)
     if not systems:
