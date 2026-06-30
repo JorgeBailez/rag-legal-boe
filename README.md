@@ -1,8 +1,8 @@
 # RAG Legal BOE (TFG)
 
-Sistema RAG para consulta **informativa** de legislación consolidada del BOE, orientado a
-ciudadanos no expertos. **No** es asesoramiento jurídico vinculante: los textos
-consolidados del BOE tienen carácter informativo y no valor jurídico oficial.
+Sistema de recuperación y generación (RAG) para consultar de forma informativa la legislación
+consolidada del BOE, pensado para ciudadanos no expertos. No es asesoramiento jurídico vinculante: los
+textos consolidados del BOE tienen carácter informativo y no valor jurídico oficial.
 
 El sistema funciona de principio a fin sobre 92 normas. Descarga el XML original del BOE y lo conserva
 inmutable, lo parsea en una representación por capas (descriptor, historial y texto vigente), lo trocea
@@ -29,10 +29,10 @@ se generan en local.
 
 ## Requisitos
 
-- Python 3.11+
+- Python 3.11 o superior.
 - [`uv`](https://docs.astral.sh/uv/) para gestionar el entorno y las dependencias.
 
-### Instalar uv
+Para instalar `uv`:
 
 ```bash
 # macOS / Linux
@@ -60,31 +60,36 @@ uv run ruff check .
 uv run ruff format .
 ```
 
-No se necesitan secretos para arrancar: `Settings()` funciona con valores por defecto.
+No hacen falta secretos para arrancar: la configuración por defecto funciona sin tocar nada. La suite
+de tests corre sin red, sin Ollama y sin pesos reales.
 
-## Estructura
+## Estructura del repositorio
 
 ```
 src/        Código fuente (boe, preprocessing, indexing, retrieval,
             generation, evaluation, app, core, config)
-data/       Datos (raw, processed, evaluation, manifests) — contenido no versionado;
-            sí se versionan el catálogo semilla, los manifests y los reportes de verificación
-notebooks/  Exploración (notebook narrativo del recorrido del pipeline)
+data/       Datos (raw, processed, evaluation, manifests). El contenido pesado no se versiona;
+            sí se versionan el catálogo de normas, los manifests y los informes de verificación
+notebooks/  Cuadernos que narran el recorrido del pipeline
 prompts/    Plantillas de prompt
 tests/      Suite de pytest
-thesis/     Memoria del TFG (documento de la memoria; seguimiento del tutor)
+docs/       Documentación de diseño y análisis (el subconjunto público; ver docs/decisiones_de_diseno.md)
+thesis/     Memoria del TFG
 ```
 
-## Descarga raw BOE
+El pipeline se ejecuta norma a norma o sobre el corpus entero. Las secciones siguientes describen cada
+paso y su comando.
 
-Descarga la respuesta raw de una norma consolidada (sin parsear) y genera un manifest
-reproducible con hashes y tamaños:
+## Descargar el original del BOE
+
+Descarga la respuesta del BOE para una norma consolidada, sin parsear, y genera un manifest con sus
+hashes y tamaños para poder verificarla después:
 
 ```bash
 uv run python scripts/download_boe_raw.py BOE-A-2015-10565
 ```
 
-Salida:
+Genera:
 
 ```
 data/raw/boe/BOE-A-2015-10565/     # full.xml, metadatos.xml, analisis.xml,
@@ -92,155 +97,149 @@ data/raw/boe/BOE-A-2015-10565/     # full.xml, metadatos.xml, analisis.xml,
 data/manifests/BOE-A-2015-10565.json
 ```
 
-El contenido XML descargado **no se versiona** (ver `.gitignore`); el manifest sí, como
-evidencia de reproducibilidad. La base de la API se configura con `BOE_API_BASE`
-(ver `.env.example`). Llama a la API externa del BOE.
+El XML descargado no se versiona; el manifest sí, como evidencia de reproducibilidad. La dirección de
+la API se configura con `BOE_API_BASE` (ver `.env.example`). Este paso llama a la API externa del BOE.
 
-## Parseo BOE (raw → artefactos v2)
+## Parsear el original (XML a artefactos)
 
-Convierte el raw local de una norma ya descargada en una representación intermedia neutral y
-deriva los **tres artefactos** persistidos. No llama a internet:
+Convierte el original local de una norma ya descargada en una representación intermedia y deriva los
+tres artefactos persistidos. No usa internet:
 
 ```bash
 uv run python scripts/parse_boe_raw.py BOE-A-2015-10565
 ```
 
-Lee `data/raw/boe/<norm_id>/{metadatos,analisis,indice,texto}.xml` +
-`data/manifests/<norm_id>.json` y escribe `data/processed/documents/<id>.json`
-(descriptor `boe_legal_document_v2`), `data/processed/histories/<id>.json`
-(`boe_legal_history_v2`) y `data/processed/parents/<id>.json` (`boe_legal_parents_v2`,
-propietario único del texto vigente). No usa `full.xml` como fuente ni parsea `metadata_eli.xml`.
+Lee `data/raw/boe/<norm_id>/{metadatos,analisis,indice,texto}.xml` y el manifest, y escribe el
+descriptor de la norma, su historial y sus bloques padre (el propietario único del texto vigente) en
+`data/processed/`.
 
-## Contratos de datos v2
+## Contratos de datos
 
-La representación procesada **autoritativa es compuesta**: `documents` (descriptor legible) +
-`histories` (versiones, notas de modificación, resolución temporal) + `parents` (texto vigente y
-párrafos, una sola vez). `chunks` es una **proyección vector-ready mínima** y `reports` una
-proyección de auditoría. Modelos Pydantic en `src/contracts/` (fuente única) → JSON Schema en
-`schemas/`, validados en runtime al persistir y por `validate_mvp_corpus.py`.
-Vista humana por joins: `uv run python scripts/inspect_processed_norm.py <id> [--block <bid>]`.
+La representación procesada está repartida en piezas con propiedad única del texto: el descriptor
+(legible), el historial (versiones, notas de modificación y resolución temporal) y los bloques padre
+(el texto vigente y sus párrafos, una sola vez). Los fragmentos son una proyección mínima para la
+búsqueda, y los informes una proyección de auditoría. Los modelos viven en `src/contracts/` como fuente
+única de verdad y generan los JSON Schema de `schemas/`, que se validan al persistir. Para ver una norma
+ya procesada de forma legible:
 
-## Chunking jurídico
+```bash
+uv run python scripts/inspect_processed_norm.py <id> [--block <bid>]
+```
 
-Convierte el descriptor + parents en chunks recuperables `boe_legal_chunks_v2`
-(parent-child: el bloque jurídico es el padre). Chunking por párrafos, sin red:
+## Trocear (chunking) la norma
+
+Convierte el descriptor y los bloques padre en fragmentos recuperables, troceando por párrafos y sin
+red. El bloque jurídico actúa como padre del fragmento:
 
 ```bash
 uv run python scripts/chunk_boe_document.py BOE-A-2015-10565
 ```
 
-Lee `documents/<id>.json` + `parents/<id>.json` y escribe `chunks/<id>.json` (no se versiona).
-Solo genera chunks de bloques **indexables**; los bloques resueltos no indexables (encabezados
-con texto, firmas, notas iniciales) conservan **parent** pero no generan chunks. Cada chunk
-lleva `parent_id`, `citation`, `filters` mínimos y `retrieval_text` con contexto jurídico —
-**sin** `parent_text` ni metadatos documentales (se resuelven por join). Aún no hace embeddings.
+Solo se trocean los bloques indexables; los que no lo son (encabezados con texto, firmas, notas
+iniciales) conservan su bloque padre pero no generan fragmentos. Cada fragmento lleva su bloque padre,
+la cita, unos filtros mínimos y el texto de recuperación con contexto jurídico, pero no el texto del
+padre ni los metadatos del documento, que se resuelven por unión.
 
 ## Corpus (92 normas)
 
-El corpus actual son **92 normas** en `data/corpus/seed_corpus_ampliado.json` (el `seed_corpus.json`
-de 10 normas fue el MVP, histórico). Este comando descarga, **verifica** (vigente +
-`estado_consolidacion = Finalizado` + endpoints obligatorios) y procesa (parser + chunking) las
-normas que cumplen criterios (con `--seed data/corpus/seed_corpus_ampliado.json`). Llama a la API del BOE:
+El corpus son 92 normas, listadas en `data/corpus/seed_corpus_ampliado.json` (el catálogo de 10 normas
+fue el prototipo inicial). Este comando descarga, verifica (que la norma esté vigente, en estado
+"Finalizado" y con todos los endpoints) y procesa (parser y troceado) las normas que cumplen los
+criterios:
 
 ```bash
 uv run python scripts/build_corpus.py
 ```
 
-Escribe `data/corpus/verification_report.json` (versionado, como evidencia) e imprime una
-tabla. Las normas que **no** cumplen criterios se excluyen del procesado y se reportan —
-**no se sustituyen automáticamente**.
+Escribe un informe de verificación versionado e imprime una tabla. Las normas que no cumplen los
+criterios se excluyen y se reportan; no se sustituyen de forma automática.
 
 ## Auditoría de calidad del corpus
 
-Audita (solo lectura) que parser y chunker generan lo esperado sobre el corpus
-(integridad, trazabilidad XML→documento→chunk, `retrieval_text`, overlap, oversized,
-jerarquía, eficiencia). Escribe `data/processed/reports/mvp_chunking_audit.{json,csv}`:
+Audita, sin modificar nada, que el parser y el troceado producen lo esperado: integridad, trazabilidad
+del XML al fragmento, contexto de recuperación, solapes, fragmentos demasiado grandes, jerarquía y
+eficiencia.
 
 ```bash
 uv run python scripts/audit_corpus.py
 ```
 
-Reproceso local del corpus (parser + chunker desde el raw, **sin red**) y validación:
+Para regenerar el corpus en local desde el original ya descargado (sin red) y validarlo:
 
 ```bash
-uv run python scripts/process_mvp_corpus.py        # regenera documents/histories/parents/chunks
-uv run python scripts/validate_raw_integrity.py    # sha256/size del raw vs manifests
-uv run python scripts/validate_mvp_corpus.py --strict  # contratos Pydantic + auditoría relacional
-uv run python scripts/audit_corpus.py --strict     # exit≠0 si readiness no está lista
+uv run python scripts/process_mvp_corpus.py        # regenera descriptor, historial, padres y fragmentos
+uv run python scripts/validate_raw_integrity.py    # comprueba hashes y tamaños frente a los manifests
+uv run python scripts/validate_mvp_corpus.py --strict  # valida los contratos y la integridad relacional
+uv run python scripts/audit_corpus.py --strict     # termina con error si el corpus no está listo
 ```
 
-El *gate* `pre_embedding_readiness.ready` solo es `true` si: 0 errores estructurales, 0
-divergencias temporales (mismatches/cuarentena/chunks no vigentes), `raw_integrity.ready`
-verde, sin fugas de notas y sin contenido sustantivo fuera de retrieval. Único diferido:
-`H3_oversized_token_measurement` (se cierra midiendo tokens en la fase de indexación).
+El corpus se considera listo para los embeddings solo si no hay errores estructurales, ni divergencias
+de vigencia, la integridad del original es correcta, no se filtran notas editoriales y no queda
+contenido sustantivo fuera de la búsqueda.
 
-## Notebook de exploración
+## Cuaderno de exploración
 
-`notebooks/01_exploracion_api_boe.ipynb` documenta el recorrido y las decisiones (API → raw →
-modelo documental → parser → chunking → corpus). Requiere las dependencias dev
-(`uv sync`) y se ejecuta a mano:
+`notebooks/01_exploracion_api_boe.ipynb` documenta el recorrido y las decisiones, de la API al corpus.
+Requiere las dependencias de desarrollo (`uv sync`) y se ejecuta a mano:
 
 ```bash
 uv run jupyter notebook notebooks/01_exploracion_api_boe.ipynb
 ```
 
-## Fase 2 — Índice denso (dense-only)
+## Índice denso y recuperación
 
-Embeddings densos reproducibles + índice exacto + consulta + evaluación, partiendo de
-`data/processed/chunks/<norm_id>.json`. El índice es **denso** (numpy + mmap). La comparación con
-BM25/híbrido (flagship OE-04) se ejecuta aparte con `scripts/benchmark_retrieval_strategies.py` y
-**concluyó que el denso gana** (la fusión no mejora; ver `docs/decisiones_de_diseno.md`). El reranking
-queda como trabajo futuro. El modelo de embeddings **no** es un default global: se elige con `--model`.
+Embeddings densos reproducibles, índice exacto, consulta y evaluación, a partir de los fragmentos de
+`data/processed/`. El índice es denso (numpy con memoria mapeada). La comparación con BM25 y con la
+fusión híbrida se ejecuta aparte, con `scripts/benchmark_retrieval_strategies.py`, y concluyó que la
+recuperación densa gana en este corpus (el detalle está en `docs/decisiones_de_diseno.md`). El modelo de
+embeddings se elige de forma explícita con `--model`, no hay uno por defecto:
 
 ```bash
-uv run python scripts/generate_dense_index.py --list-models        # aliases disponibles
+uv run python scripts/generate_dense_index.py --list-models        # modelos disponibles
 uv run python scripts/generate_dense_index.py --model bge-m3 --preflight-only
-uv run python scripts/generate_dense_index.py --model bge-m3       # genera el bundle (barra de progreso)
+uv run python scripts/generate_dense_index.py --model bge-m3       # genera el paquete de índice
 uv run python scripts/validate_dense_index.py --bundle data/indexes/dense/<bundle_id>
 uv run python scripts/query_dense_index.py --bundle data/indexes/dense/<bundle_id> \
   --query "¿Cuánto tiempo tiene la Administración para responder a mi solicitud?"
 ```
 
-Las **cargas pesadas** (descarga de modelos + codificación) se ejecutan en un servidor CPU; el
-código se valida offline con fixtures. Los bundles publicados son inmutables y requieren revisiones
-exactas de modelo/tokenizer; `--allow-unpinned-revision` queda solo para exploración sin
-publicación. Diseño y decisiones del índice denso:
+Las cargas pesadas (descargar los modelos y codificar) se hacen en un servidor; el código se valida sin
+red con datos de prueba. Los paquetes de índice publicados son inmutables y exigen fijar la revisión
+exacta del modelo y del tokenizador. El diseño y las decisiones del índice están en
 [`docs/fase2_dense_baseline.md`](docs/fase2_dense_baseline.md). La autenticación con Hugging Face es
-opcional, mediante la variable de entorno `HF_TOKEN` (nunca se versiona).
+opcional, mediante la variable de entorno `HF_TOKEN`, que nunca se versiona.
 
-## Fase 3 — Generación fundamentada (MVP)
+## Generación de respuestas
 
-Cierra el primer ciclo extremo a extremo: pregunta → retrieval denso → evidencias acotadas →
-prompt restrictivo → **LLM local (Ollama)** → JSON estructurado validado → respuesta ciudadana con
-citas oficiales **o abstención**. Las URL y etiquetas finales provienen del corpus (datos
-autoritativos), nunca del texto generado; el aviso jurídico se añade de forma estática.
+Cierra el ciclo de extremo a extremo: pregunta, recuperación densa, evidencias acotadas, prompt
+restrictivo, modelo de lenguaje local (Ollama), JSON validado y, por último, una respuesta para el
+ciudadano con citas oficiales o una abstención. Las direcciones y etiquetas finales salen del corpus,
+nunca del texto generado, y el aviso jurídico se añade de forma fija.
 
-**Dependencia externa (solo en ejecución real):** un Ollama local en `127.0.0.1:11434` con el
-modelo configurado (generador del TFG: `qwen2.5:7b-instruct`; juez de evaluación `gemma3:12b`, de
-familia distinta). No hace falta para los tests (offline).
+Esto requiere, solo en ejecución real, un Ollama local en `127.0.0.1:11434` con el modelo configurado
+(el generador del trabajo es `qwen2.5:7b-instruct` y el juez de evaluación, de una familia distinta,
+`gemma3:12b`). Los tests no lo necesitan.
 
-Configuración en `.env` (ver `.env.example`): `OLLAMA_*` (URL loopback por defecto, modelo,
-timeout, `keep_alive`, `num_ctx`, etc.) y `GENERATION_*` (bundle denso, perfil de consulta,
-`top_k`, nº de evidencias, estrategia y presupuestos de contexto). El **bundle no es un default
-global**: se indica con `--bundle` o `GENERATION_DENSE_BUNDLE`.
+La configuración va en `.env` (ver `.env.example`): las variables `OLLAMA_*` (dirección, modelo,
+tiempos) y `GENERATION_*` (paquete de índice, perfil de consulta, número de resultados y evidencias,
+estrategia y presupuesto de contexto). El paquete de índice no tiene valor por defecto: se indica con
+`--bundle` o con `GENERATION_DENSE_BUNDLE`.
 
 ```bash
 uv run python scripts/answer_question.py \
   --bundle data/indexes/dense/<bundle_id> \
   --query "¿Qué plazo tengo para interponer un recurso de alzada?"
 
-# salida JSON completa y descarga del modelo de RAM al terminar
+# salida JSON completa y descarga del modelo de la memoria al terminar
 uv run python scripts/answer_question.py --bundle data/indexes/dense/<bundle_id> \
   --query "..." --json --unload-model
 ```
 
-Sin evidencia suficiente, el sistema **se abstiene** en lugar de inventar. El exit code es ≠0 solo
-ante fallo técnico (bundle inválido, Ollama caído, contrato del LLM incumplido); una abstención
-válida no es un error.
+Sin evidencia suficiente, el sistema se abstiene en lugar de inventar. Una abstención válida no es un
+error: el código termina con error solo ante un fallo técnico (un paquete de índice inválido, Ollama
+caído o una respuesta del modelo que incumple el contrato).
 
-**Tests:** la suite normal (`uv run pytest`) corre **offline**: sin red, sin Ollama, sin pesos
-reales y sin bundle real (usa fakes y un bundle temporal sintético). La prueba **real** contra
-Ollama está desactivada por defecto y se ejecuta en el servidor:
+La prueba real contra Ollama está desactivada por defecto y se ejecuta en el servidor:
 
 ```bash
 RUN_OLLAMA_INTEGRATION=1 uv run --locked pytest tests/test_integration_ollama.py -q -s
@@ -248,4 +247,4 @@ RUN_OLLAMA_INTEGRATION=1 uv run --locked pytest tests/test_integration_ollama.py
 
 ---
 
-Repositorio **privado** (TFG en curso). © 2026 Jorge Bailez — Todos los derechos reservados.
+Trabajo de Fin de Grado. © 2026 Jorge Bailez Martínez.
