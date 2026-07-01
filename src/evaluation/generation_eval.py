@@ -169,7 +169,20 @@ def evaluate_generation(
         correctness_label: str | None = None
         judge_error: str | None = None
         evidences_block: str | None = None
-        if judge is not None and answer.answered and answerable:
+        # El bloque de evidencias que vio el generador se reconstruye y se guarda en el report
+        # SIEMPRE que haya respuesta (haya juez o no): el anotador humano necesita exactamente esa
+        # evidencia para validar la fidelidad (afirmación-contra-evidencia); sin ella ni el κ de L3
+        # ni la anotación humana que lo sustituye son válidos.
+        if answer.answered and answerable:
+            try:
+                evidences_block = _evidences_block_for(generator, q.query, query_profile_id)
+            except RagLegalBoeError as exc:
+                # Un fallo reconstruyendo la evidencia no debe abortar la corrida.
+                evidences_block = None
+                if judge is not None:
+                    judge_error = str(exc)
+
+        if judge is not None and evidences_block is not None:
             try:
                 notify(
                     {
@@ -180,12 +193,8 @@ def evaluate_generation(
                         "query_id": q.query_id,
                     }
                 )
-                block = _evidences_block_for(generator, q.query, query_profile_id)
-                # Se guarda en el report: el anotador humano necesita esta misma evidencia para
-                # validar la fidelidad (afirmación-contra-evidencia); sin ella el κ de L3 no vale.
-                evidences_block = block
                 faith_verdict, _ = judge.judge_faithfulness(
-                    answer=answer.answer, evidences_block=block
+                    answer=answer.answer, evidences_block=evidences_block
                 )
                 faithfulness_claims = [c.supported for c in faith_verdict.claims]
                 if reference.strip():

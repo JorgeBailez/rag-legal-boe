@@ -118,6 +118,81 @@ def compute_agreement(
     return {"correctness": correctness, "faithfulness": faithfulness}
 
 
+def _wilson_ci(k: int, n: int, z: float = 1.96) -> tuple[float, float]:
+    """IC de Wilson para una proporción k/n (más honesto que el normal con n pequeño)."""
+    if n == 0:
+        return (0.0, 0.0)
+    p = k / n
+    denom = 1.0 + z * z / n
+    center = (p + z * z / (2 * n)) / denom
+    half = z * ((p * (1 - p) / n + z * z / (4 * n * n)) ** 0.5) / denom
+    return (max(0.0, center - half), min(1.0, center + half))
+
+
+def human_summary(human_rows: list[dict]) -> dict:
+    """Tasa humana de fidelidad y corrección con IC de Wilson (medida PRIMARIA sin juez).
+
+    No es acuerdo con nadie: es la proporción observada en la anotación (p. ej. el held-out de
+    test), reportada con su incertidumbre. Anotador único ⇒ sin κ inter-humano; solo tasa + IC.
+    """
+    faith = [r["human_faithful"] for r in human_rows if isinstance(r.get("human_faithful"), bool)]
+    corr = [
+        r["human_correctness"]
+        for r in human_rows
+        if r.get("human_correctness") in CORRECTNESS_LABELS
+    ]
+    n_f, k_f = len(faith), sum(1 for x in faith if x)
+    n_c = len(corr)
+    dist = {lab: corr.count(lab) for lab in CORRECTNESS_LABELS}
+    return {
+        "faithfulness": {
+            "n": n_f,
+            "faithful": k_f,
+            "rate": (k_f / n_f if n_f else None),
+            "ci95": _wilson_ci(k_f, n_f),
+        },
+        "correctness": {
+            "n": n_c,
+            "distribution": dist,
+            "correct_rate": (dist["correct"] / n_c if n_c else None),
+            "ci95_correct": _wilson_ci(dist["correct"], n_c),
+        },
+    }
+
+
+def _run_summary(annotations_path: Path) -> int:
+    """Imprime y persiste el resumen de la anotación humana (tasa + IC), sin juez ni report."""
+    human_rows = load_jsonl(annotations_path)
+    if not human_rows:
+        print(f"No hay anotaciones en {annotations_path}.", file=sys.stderr)
+        return 2
+    summary = human_summary(human_rows)
+    f, c = summary["faithfulness"], summary["correctness"]
+    print(f"Resumen de anotación humana ({annotations_path.name})")
+    if f["n"]:
+        lo, hi = f["ci95"]
+        print(
+            f"  Fidelidad (L3): {f['faithful']}/{f['n']} fieles = {f['rate']:.0%} "
+            f"· IC95 Wilson=[{lo:.0%}, {hi:.0%}]"
+        )
+    else:
+        print("  Fidelidad (L3): sin anotar.")
+    if c["n"]:
+        lo, hi = c["ci95_correct"]
+        d = c["distribution"]
+        print(
+            f"  Corrección (L5): {d['correct']} correct / {d['partial']} partial / "
+            f"{d['incorrect']} incorrect (n={c['n']}) · correct-rate {c['correct_rate']:.0%} "
+            f"· IC95=[{lo:.0%}, {hi:.0%}]"
+        )
+    else:
+        print("  Corrección (L5): sin anotar.")
+    out = annotations_path.with_name(annotations_path.stem + "_summary.json")
+    out.write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(f"Escrito {out}")
+    return 0
+
+
 def scaffold_rows(
     per_query: list[dict],
     q_text: dict[str, str],
@@ -192,28 +267,29 @@ def main() -> int:
     except (AttributeError, ValueError):
         pass
     parser = argparse.ArgumentParser(description="Validación del LLM-juez (acuerdo + Cohen's κ).")
-    parser.add_argument("--report", required=True, help="directorio del report con juez.")
+    parser.add_argument("--report", help="directorio del report (para --scaffold / --annotations).")
     parser.add_argument("--dataset-dir", default=str(DATASET_DIR))
     parser.add_argument("--scaffold", help="genera la plantilla de anotación en esta ruta y sale.")
-    parser.add_argument("--annotations", help="plantilla rellenada para validar.")
+    parser.add_argument("--annotations", help="plantilla rellenada para validar contra el juez.")
+    parser.add_argument(
+        "--summary",
+        help="anotación humana (JSONL): resume tasa de fidelidad/corrección + IC, sin juez.",
+    )
     parser.add_argument("--faithfulness-threshold", type=float, default=1.0)
     args = parser.parse_args()
 
+    # --summary NO necesita report ni juez: mide solo la anotación humana (medida primaria de
+    # L3/L5 cuando el juez no se usa, p. ej. en el held-out de test).
+    if args.summary:
+        return _run_summary(Path(args.summary))
+
+    if not args.report:
+        print("Indica --report (para --scaffold/--annotations) o --summary.", file=sys.stderr)
+        return 2
     report_dir = Path(args.report)
     per_query = load_jsonl(report_dir / "per_query.jsonl")
     if not per_query:
-        print(f"No hay per_query.jsonl en {report_dir} (¿report con juez?).", file=sys.stderr)
-        return 2
-    judged = [
-        r
-        for r in per_query
-        if r.get("faithfulness") is not None or r.get("correctness") is not None
-    ]
-    if not judged:
-        print(
-            "El report no tiene veredictos del juez (¿se corrió con --judge-model?).",
-            file=sys.stderr,
-        )
+        print(f"No hay per_query.jsonl en {report_dir}.", file=sys.stderr)
         return 2
 
     if args.scaffold:
@@ -240,16 +316,29 @@ def main() -> int:
             )
         if missing_evidence:
             print(
-                f"⚠ {missing_evidence} filas sin evidences_block (report previo al guardado de "
-                "evidencias): la fidelidad (L3) no es anotable; regenera el report con el runner "
-                "actual y --judge-model para fijar la evidencia."
+                f"⚠ {missing_evidence} filas sin evidences_block: L3 (fidelidad) no anotable; "
+                "regenera el report con el runner actual (guarda la evidencia aunque no haya juez)."
             )
         print("Rellena los campos human_correctness y human_faithful de cada fila.")
         return 0
 
     if not args.annotations:
         print(
-            "Indica --scaffold para crear la plantilla o --annotations para validar.",
+            "Indica --scaffold para crear la plantilla, --annotations para validar contra el "
+            "juez, o --summary para resumir la anotación humana.",
+            file=sys.stderr,
+        )
+        return 2
+
+    # La validación contra el juez SÍ requiere veredictos en el report.
+    judged = [
+        r
+        for r in per_query
+        if r.get("faithfulness") is not None or r.get("correctness") is not None
+    ]
+    if not judged:
+        print(
+            "El report no tiene veredictos del juez (¿se corrió con --judge-model?).",
             file=sys.stderr,
         )
         return 2
