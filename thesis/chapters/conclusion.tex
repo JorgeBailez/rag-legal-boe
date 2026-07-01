@@ -1,47 +1,69 @@
 \chapter{Conclusiones y trabajos futuros}
 \label{chap:conclusiones}
 
+Este capítulo cierra la memoria valorando, con honestidad, en qué medida se han alcanzado los objetivos planteados, qué conocimientos del grado se han puesto en práctica, qué se ha aprendido en el proceso y qué líneas quedan abiertas. La idea que ha vertebrado todo el trabajo vuelve aquí como criterio de evaluación: no bastaba con construir un RAG jurídico que «funcione», sino con \emph{medir con evidencia} qué decisiones lo hacen fiable y reconocer, sin adornos, dónde la evidencia todavía no alcanza.
 
 \section{Consecución de objetivos}
 \label{sec:consecucion-objetivos}
 
-Esta sección es la sección espejo de las dos primeras del capítulo de objetivos, donde se planteaba el objetivo general y se elaboraban los específicos.
+El objetivo general —diseñar, implementar y evaluar de forma rigurosa un sistema RAG sobre legislación consolidada del BOE, poniendo el énfasis en medir qué decisiones producen respuestas más fiables— se considera alcanzado en su parte central y honestamente delimitado en lo que quedó fuera. El repaso a los objetivos específicos lo concreta.
 
-Es aquí donde hay que debatir qué se ha conseguido y qué no. 
-Cuando algo no se ha conseguido, se ha de justificar, en términos de qué problemas se han encontrado y qué medidas se han tomado para mitigar esos problemas.
+\begin{description}
+  \item[OE-01 y OE-02 (corpus y representación).] \textbf{Conseguidos.} Se construyó un corpus reproducible de 92 normas consolidadas, con ingesta cruda inmutable verificada por sumas de comprobación, y una representación \emph{parent-child} que preserva la estructura jurídica y resuelve la vigencia temporal con una regla estricta y una cuarentena prudente para lo irresoluble.
 
-Y si has llegado hasta aquí, siempre es bueno pasarle el corrector ortográfico, que las erratas quedan fatal en la memoria final.
-Para eso, en Linux tenemos aspell, que se ejecuta de la siguiente manera desde la línea de \emph{shell}:
+  \item[OE-03 (estrategias de recuperación).] \textbf{Conseguido con un matiz.} Se implementaron y evaluaron las recuperaciones léxica (BM25 con analizador de español), semántica (índice denso exacto) e híbrida (fusión por rangos recíprocos y combinación convexa). La \emph{reordenación} (\emph{reranking}), contemplada en el enunciado del objetivo, no se implementó: se justificó como trabajo futuro con nivel de evidencia de literatura, al no esperarse mejora fiable sobre un denso fuerte en este corpus.
 
-\begin{minted}{bash}
-    aspell --lang=es_ES -c memoria.tex
-\end{minted}
+  \item[OE-04 (comparación de recuperadores).] \textbf{Conseguido; es el resultado central.} Sobre un banco anotado y de-sesgado por \emph{pooling}, con protocolo estadístico pareado, se demostró que el recuperador denso encabeza la comparación, que ninguna variante híbrida lo supera y que el léxico queda muy por detrás, con especial claridad en las consultas ciudadanas. El resultado, con significación estadística, refuta además un hallazgo preliminar sobre un corpus reducido.
+
+  \item[OE-05 (generación fundamentada y prudente).] \textbf{Conseguido.} El generador redacta a partir de las evidencias, cita solo identificadores entregados, se abstiene cuando no hay evidencia y nunca produjo una respuesta indebida sobre preguntas fuera del corpus. Se documenta con honestidad su calibración conservadora (una sobre-abstención apreciable en preguntas respondibles).
+
+  \item[OE-06 (marco de evaluación y validación del juez).] \textbf{Conseguido, con un resultado negativo.} Se diseñó un marco modular de seis capas y se validó el modelo juez frente a anotación humana. La validación —que era justamente lo que exigía el objetivo— reveló que el juez no es lo bastante fiable en fidelidad ni en corrección; se reporta como resultado negativo y no se apoya ninguna conclusión en sus veredictos.
+
+  \item[OE-07 (ejecución de la evaluación y análisis de errores).] \textbf{Conseguido, con la potencia como límite reconocido.} Se ejecutó la evaluación y se analizaron los modos de fallo (el colapso del léxico ante lenguaje ciudadano, la indulgencia del juez, la sobre-abstención del generador). Las conclusiones de recuperación están razonablemente potenciadas; las de generación, apoyadas en un gold revisado pequeño, se reportan como indicativas.
+
+  \item[OE-08 (reproducibilidad y uso responsable).] \textbf{Conseguido.} El sistema se sostiene íntegramente sobre software y modelos de código abierto ejecutados en local, con artefactos versionados y trazables, y con un análisis explícito de sus límites técnicos, jurídicos y éticos.
+\end{description}
+
+En conjunto, la pata de recuperación queda cerrada con evidencia sólida; la de generación queda establecida y honestamente acotada por el tamaño de la anotación y por la insuficiencia del juez. Ninguna conclusión fuerte se apoya en una métrica no validada.
 
 \section{Aplicación de lo aprendido}
 \label{sec:aplicacion}
 
-Aquí viene lo que has aprendido durante el Grado/Máster y que has aplicado en el TFG/TFM. Una buena idea es poner las asignaturas más relacionadas y comentar en un párrafo los conocimientos y habilidades puestos en práctica.
+El Trabajo Fin de Grado ha integrado conocimientos de buena parte del Grado en Ciencia e Ingeniería de Datos de la Universidad Rey Juan Carlos. Las asignaturas con una aplicación más directa, agrupadas por área, son las siguientes.
 
-\begin{enumerate}
-    \item a
-    \item b
-\end{enumerate}
+\begin{description}
+  \item[Inteligencia artificial, PLN y aprendizaje automático.] \emph{Procesamiento de Lenguaje Natural y Minería de Texto} aportó los fundamentos más directamente aplicados —RAG, tokenización, lematización y \emph{stemming}, \emph{stopwords}, \emph{embeddings} y minería de texto—, presentes en el analizador de español del recuperador léxico, en la fragmentación y en la propia arquitectura RAG. \emph{Aprendizaje Automático I} y \emph{II} proporcionaron la base sobre modelos, representaciones vectoriales, evaluación y la disciplina de separar ajuste (\emph{development}) de prueba (\emph{test}). La asignatura \emph{Generative AI}, cursada en la estancia Erasmus, supuso el primer contacto con los \emph{transformers} y los modelos generativos que sostienen el generador y el juez.
 
+  \item[Ingeniería del software y de datos.] \emph{Fundamentos de Programación} y \emph{Estructuras de Datos y Programación Orientada a Objetos} sustentan la biblioteca modular y el diseño por contratos. \emph{Sistemas Distribuidos de Procesamiento de Datos II} aportó la gestión de proyectos y dependencias (con \texttt{uv}) y las buenas prácticas de ingeniería que se reflejan en el entorno reproducible, la suite de pruebas sin red y el lintado como puerta de calidad. \emph{Diseño y Análisis de Algoritmos} fundamentó la elección de un índice exacto frente a uno aproximado y la fusión de rankings. \emph{Bases de Datos} y \emph{Bases de Datos No Relacionales} inspiran la representación \emph{parent-child} resuelta por \emph{join} y la propiedad única del texto.
+
+  \item[Matemáticas y estadística.] \emph{Álgebra Lineal} está detrás de los \emph{embeddings}, la similitud coseno y el índice denso normalizado. \emph{Inferencia Estadística} y \emph{Probabilidad y Simulación} sostienen el protocolo experimental —remuestreo \emph{bootstrap}, intervalos de confianza y comparación pareada— y los coeficientes de acuerdo ($\kappa$, AC1) con los que se validó el juez.
+
+  \item[Dominio legal, ético y de seguridad.] \emph{Aspectos Legales y Éticos} enmarca el capítulo de impacto y responsabilidad, el tratamiento de los textos del BOE y la protección de datos. \emph{Seguridad y Privacidad de Datos} se refleja en la ejecución local, la no persistencia de las consultas y la gestión de secretos.
+
+  \item[Cómputo y comunicación de resultados.] \emph{Arquitecturas de Altas Prestaciones y Computación en la Nube} enmarca la indexación puntual en GPU, la inferencia en CPU y el análisis de coste computacional. \emph{Visualización de Información} orienta los cuadernos y la presentación de tablas y figuras de resultados.
+\end{description}
 
 \section{Lecciones aprendidas}
 \label{sec:lecciones_aprendidas}
 
-Aquí viene lo que has aprendido en el Trabajo Fin de Grado/Máster.
-
 \begin{enumerate}
-    \item Aquí viene uno.
-    \item Aquí viene otro.
+  \item \textbf{Medir vence a la intuición.} La fusión híbrida «parecía» ayudar en un corpus pequeño y dejó de hacerlo al medirla con rigor sobre 92 normas. Sin el experimento, se habría adoptado una complejidad que no aporta.
+  \item \textbf{Un resultado negativo también es un resultado.} Descubrir que el modelo juez no es fiable —y reportarlo con sus datos— vale más que exhibir una métrica automática cómoda pero sin respaldo.
+  \item \textbf{No hay que creerse a un evaluador automático sin validarlo.} La misma cautela que se pide al generador se aplicó al juez, y solo tras contrastarlo con anotación humana se supo que no se podía confiar en él.
+  \item \textbf{La distancia entre el lenguaje ciudadano y el normativo es real y medible.} El desplome del léxico en las consultas ciudadanas lo confirma con números, no con impresiones.
+  \item \textbf{La dificultad del dominio está en el detalle.} Resolver correctamente la vigencia temporal de cada precepto fue más delicado —y más importante— que cualquier ajuste de modelo.
+  \item \textbf{La ingeniería reproducible desde el principio ahorra dolor.} Contratos de datos, artefactos versionados y una suite de pruebas sin red hicieron posible razonar sobre el sistema y confiar en cada tabla del capítulo de experimentos.
 \end{enumerate}
-
 
 \section{Trabajos futuros}
 \label{sec:trabajos_futuros}
 
-Ningún proyecto ni software se termina, así que aquí vienen ideas y funcionalidades que estaría bien tener implementadas en el futuro.
+El prototipo deja abiertas líneas de continuación claras, ordenadas de más inmediatas a más ambiciosas.
 
-Es un apartado que sirve para dar ideas de cara a futuros TFGs/TFMs.
+\begin{itemize}
+  \item \textbf{Reforzar la evaluación de la generación.} Ampliar el gold de generación en \emph{test} e incorporar un segundo anotador que permita medir el acuerdo inter-humano y dar un patrón más sólido de fidelidad.
+  \item \textbf{Fidelidad automática sin depender del juez.} Explorar la verificación por implicación textual (\emph{NLI}) como alternativa o complemento al LLM-as-judge, o un juez más potente cuya fiabilidad se valide de nuevo.
+  \item \textbf{Reducir la sobre-abstención sin comprometer la seguridad.} Aprovechar la excelente separabilidad de la señal de recuperación para un umbral de confianza, o ensayar \emph{prompts} menos conservadores, midiendo el efecto sobre las respuestas indebidas.
+  \item \textbf{Reordenación y ampliación del corpus.} Evaluar un \emph{reranker} de tipo \emph{cross-encoder} y ampliar el corpus a más áreas normativas, con las técnicas de búsqueda aproximada que la escala requiera.
+  \item \textbf{Producto y arquitecturas avanzadas.} Una interfaz web y una API de servicio, y la exploración de arquitecturas RAG más sofisticadas —agénticas o basadas en grafos de conocimiento—, una vez consolidada la base con la que este trabajo se ha comprometido.
+\end{itemize}

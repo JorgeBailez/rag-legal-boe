@@ -646,19 +646,19 @@ fonttitle=\normalfont,title=#1}
 % DOC METADATA
 % --------------------------------------------------------------------
 
-\title{Memoria del Proyecto}
-\author{Nombre del autor}
+\title{Diseño y evaluación con evidencia de un sistema RAG para la consulta ciudadana de legislación consolidada del Boletín Oficial del Estado}
+\author{Jorge Bailez Martínez}
 
 %% Config hyperlink options
 
 \hypersetup{
     pdftoolbar=true,	% Muestra barra de herramientas en Adobe Acrobat
 	pdfmenubar=true,	% Muestra menú en Adobe Acrobat
-	pdftitle={Título del TFG/TFM},
-	pdfauthor={Nombre del alumno/a},
+	pdftitle={Diseño y evaluación con evidencia de un sistema RAG para la consulta ciudadana de legislación consolidada del BOE},
+	pdfauthor={Jorge Bailez Martínez},
 	pdfcreator={EIF, URJC},
 	pdfproducer={XeLaTeX},
-	pdfsubject={Topic1, Topic2, Topic3},
+	pdfsubject={RAG, recuperación de información, procesamiento de lenguaje natural, BOE, legislación consolidada},
 	pdfnewwindow=true,              %links open in new window
     colorlinks=true,                % false: boxed links; true: coloured links
     linkcolor=Firebrick4,           % enlaces internos 
@@ -723,8 +723,9 @@ CIENCIA E INGENIERÍA DE DATOS
 
 \vspace{2cm}
 
-\large UN TÍTULO DE PROYECTO LARGO\\
-EN DOS LÍNEAS
+\large Diseño y evaluación con evidencia de un sistema RAG\\
+para la consulta ciudadana de legislación consolidada\\
+del Boletín Oficial del Estado
 
 \vspace{1.5cm}
 
@@ -758,11 +759,11 @@ Curso Académico 2025/2026
 \par\noindent\includegraphics[width=0.2\textwidth]{cc-by-sa.eps}
 \smallskip
 
-\par\noindent \textcopyright~20XX Nombre y apellidos . Algunos derechos reservados.
+\par\noindent \textcopyright~2026 Jorge Bailez Martínez. Algunos derechos reservados.
 \medskip
 
 \par\noindent El código fuente de este Trabajo Fin de Grado está disponible en:\\ 
-    {\url{https://www.somefancysite.org}
+    {\textcolor{red}{AÑADIR URL CUANDO SE PONGA PÚBLICO EL REPOSITORIO}
     \medskip
     
     \par\noindent  Este trabajo se entrega bajo la licencia Creative Commons\\
@@ -923,6 +924,13 @@ As it is the translation of the ``Resumen'', which is supposed to be written at 
 \input{chapters/experim.tex}
 
 %-------------------------------------------------------------------------------
+% IMPACTO Y RESPONSABILIDAD %
+%-------------------------------------------------------------------------------
+
+\cleardoublepage
+\input{chapters/impacto.tex}
+
+%-------------------------------------------------------------------------------
 % CONCLUSIONES %
 %-------------------------------------------------------------------------------
 
@@ -947,6 +955,9 @@ As it is the translation of the ``Resumen'', which is supposed to be written at 
 %-------------------------------------------------------------------------------
 % GLOSARIO(S) %
 %-------------------------------------------------------------------------------
+
+% Incluye todas las entradas definidas, aunque el texto no use \gls explícitamente.
+\glsaddall
 
 \printglossary[type=\acronymtype]
 
