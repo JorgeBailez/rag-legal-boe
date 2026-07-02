@@ -579,6 +579,11 @@ sorting=nty
 % Colored boxes for information corners
 \usepackage{tcolorbox}% http://ctan.org/pkg/tcolorbox
 
+% Colores de las cajas (no vienen en el conjunto de xcolor cargado)
+\definecolor{darkred}{RGB}{139,0,0}
+\definecolor{darkgreen}{RGB}{0,100,0}
+\definecolor{darkblue}{RGB}{0,0,139}
+
 % Caja azul con título para información, explicaciones extra y detalles
 % Icons: \faInfoCircle \faBook \faBookmark
 \newtcolorbox{mybluebox}[1]{colback=darkblue!5!white,colframe=darkblue!75!black,
@@ -763,7 +768,7 @@ Curso Académico 2025/2026
 \medskip
 
 \par\noindent El código fuente de este Trabajo Fin de Grado está disponible en:\\ 
-    {\textcolor{red}{AÑADIR URL CUANDO SE PONGA PÚBLICO EL REPOSITORIO}
+    \textcolor{red}{AÑADIR URL CUANDO SE PONGA PÚBLICO EL REPOSITORIO}
     \medskip
     
     \par\noindent  Este trabajo se entrega bajo la licencia Creative Commons\\
