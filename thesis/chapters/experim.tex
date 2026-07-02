@@ -21,7 +21,7 @@ La evaluación se organiza en seis capas desacopladas, pensadas para \emph{local
     \centering
     \small
     \renewcommand{\arraystretch}{1.2}
-    \caption{Las seis capas de la evaluación y su estado. Este capítulo desarrolla L1 y L3--L6.}
+    \caption{Las seis capas de la evaluación y su estado. Este capítulo las desarrolla todas (L1--L6).}
     \label{tab:capas-eval}
     \begin{tabular}{|p{1.6cm}|p{8.6cm}|p{3.0cm}|}
         \hline
@@ -29,7 +29,7 @@ La evaluación se organiza en seis capas desacopladas, pensadas para \emph{local
         \hline
         L1 Recuperación & ¿Está el artículo correcto y en posición alta? & \textbf{Cerrada} (este cap.) \\
         \hline
-        L2 Contexto & ¿El contexto ensamblado contiene la evidencia y poco ruido? & Maquinaria lista \\
+        L2 Contexto & ¿El contexto ensamblado contiene la evidencia y poco ruido? & \textbf{Cerrada} (este cap.) \\
         \hline
         L3 Fidelidad & ¿Cada afirmación se deriva de la evidencia entregada? & Cerrada (humano; juez insuf.) \\
         \hline
@@ -92,12 +92,16 @@ Los protagonistas de los experimentos de este capítulo son tres \textbf{recuper
 
 Cada ejecución de evaluación deja un \textbf{informe versionado} e inmutable —con su configuración, sus huellas de reproducibilidad, los resultados por pregunta y los agregados—, de modo que toda tabla de este capítulo es trazable a una corrida concreta. A lo largo del capítulo se indica, para cada experimento, el identificador de su informe. Toda la comparación se realiza sobre el corpus de 92 normas y el banco \texttt{corpus92\_v1} descrito arriba, con la métrica y el protocolo ya fijados.
 
+Conviene, por último, dejar constancia del \textbf{entorno de ejecución}, porque condiciona varias decisiones. Los experimentos se ejecutan en un servidor universitario con dos procesadores AMD EPYC (48 núcleos físicos, 96 hilos), 125 GiB de memoria y \emph{sin GPU accesible}, bajo Ubuntu. Esa ausencia de GPU local no es un detalle menor: empuja toda la selección de modelos hacia opciones ejecutables en CPU y explica la atención al coste computacional a lo largo del capítulo. Para la codificación de \emph{embeddings}, que en CPU resultaba prohibitiva, se recurrió de forma puntual a una GPU externa —como se explica en el capítulo de diseño—; el resto —recuperación, generación y evaluación— corre en el propio servidor.
+
 Con la metodología establecida, las secciones siguientes presentan los experimentos y sus resultados.
 
 \section{Selección del modelo de \emph{embeddings}}
 \label{sec:seleccion-embeddings}
 
 El primer experimento decide qué modelo de \emph{embeddings} y qué perfil de consulta emplea el recuperador denso, la pieza sobre la que se apoya todo el sistema. Se comparan tres modelos abiertos y multilingües —\texttt{e5-large-instruct}, \texttt{bge-m3} y \texttt{e5-base}— sobre las mismas unidades de recuperación del corpus de 92 normas. En el caso de \texttt{e5-large-instruct}, que admite condicionamiento por instrucción, se evalúan además los tres perfiles de consulta descritos en el diseño: uno genérico (I0), uno jurídico (I1) y uno orientado a la consulta ciudadana (I2). La comparación se realiza sobre la partición de \emph{development} ($n=53$), reservando \emph{test} para el experimento central; el informe es \texttt{bench\_20260624T181000Z}.
+
+La elección de estos candidatos no es arbitraria: responde a las restricciones del proyecto. Se exigía que fueran modelos de \textbf{pesos abiertos}, con soporte \textbf{multilingüe} —el español jurídico dispone de pocos recursos específicos, como se discutió en el estado del arte—, bien situados en los \emph{benchmarks} de referencia de \emph{embeddings}~\cite{muennighoff2023mteb} y de un \textbf{tamaño ejecutable en CPU}. Sobre esa base se seleccionaron \texttt{e5-large-instruct} —que además admite condicionamiento por instrucción~\cite{su2023instructor}—, \texttt{bge-m3} y, como escalón menor, \texttt{e5-base}. Otros candidatos se descartaron por razones objetivas y documentadas: \texttt{qwen3-0.6b}, por un coste de codificación prohibitivo en CPU (del orden de 2,5 segundos por consulta); \texttt{gte-multilingual-base}, por una incompatibilidad técnica con la versión de la biblioteca de modelos empleada —pese a haberse revisado y aprobado su código remoto—; y la variante \texttt{e5-large} sin instrucción, por redundante frente a su versión \emph{instruct}.
 
 \begin{table}[H]
     \centering
@@ -119,6 +123,25 @@ El primer experimento decide qué modelo de \emph{embeddings} y qué perfil de c
 \end{table}
 
 Dos conclusiones se sostienen con contrastes pareados frente al finalista (\texttt{e5-large-instruct} con el perfil jurídico I1). Primera, \texttt{e5-large-instruct} supera de forma significativa tanto a \texttt{bge-m3} (diferencia pareada $-0{,}083$ \ [$-0{,}146$, $-0{,}022$]) como a \texttt{e5-base} ($-0{,}175$ \ [$-0{,}254$, $-0{,}099$]). Segunda, y menos evidente, el \emph{perfil de consulta importa}: anteponer a la pregunta una instrucción de dominio jurídico (I1) mejora de forma significativa sobre el perfil genérico I0 ($-0{,}070$ \ [$-0{,}117$, $-0{,}023$]), una confirmación empírica sobre el corpus del proyecto del valor del condicionamiento por instrucción discutido en el estado del arte. En cambio, los perfiles jurídico (I1) y ciudadano (I2) no muestran diferencia detectable entre sí ($-0{,}006$ \ [$-0{,}024$, $+0{,}006$]); se adopta I1 por su ligera ventaja en la media.
+
+La calidad no es el único criterio: en un sistema pensado para ejecutarse en CPU, la \textbf{latencia} también cuenta. La Tabla~\ref{tab:latencia-embeddings} enfrenta la calidad a la latencia de recuperación por consulta (codificación de la consulta más búsqueda), y refuerza la decisión. \texttt{bge-m3} no solo recupera peor que \texttt{e5-large-instruct} (0,719 frente a 0,802), sino que es además un 47\,\% más lento (402 frente a 274 ms): queda \textbf{dominado en el sentido de Pareto} —peor en las dos dimensiones—, y su mayor ventana de contexto no compensa. \texttt{e5-base}, el más rápido (133 ms), paga su velocidad con una caída de calidad grande (0,627). El modelo seleccionado es el que mejor equilibra ambas dimensiones.
+
+\begin{table}[H]
+    \centering
+    \small
+    \renewcommand{\arraystretch}{1.2}
+    \caption{Calidad frente a latencia de recuperación en \emph{development} ($n=53$). Latencia P50 por consulta (codificación de la consulta + búsqueda).}
+    \label{tab:latencia-embeddings}
+    \begin{tabular}{|l|c|c|}
+        \hline
+        \textbf{Modelo} & \textbf{ParentnDCG@10} & \textbf{Latencia P50 (ms)} \\
+        \hline
+        \texttt{e5-large-instruct} (I1) & \textbf{0,802} & 274 \\
+        \texttt{bge-m3}                 & 0,719          & 402 \\
+        \texttt{e5-base}                & 0,627          & 133 \\
+        \hline
+    \end{tabular}
+\end{table}
 
 El sistema queda, por tanto, configurado con \texttt{e5-large-instruct} y el perfil jurídico I1. Conviene ser preciso sobre el estatus de esta decisión: se ha tomado sobre \emph{development}, la partición destinada precisamente a ajustar. Su validez sobre datos no vistos no se da por supuesta, sino que se comprueba en el experimento central (§\ref{sec:experimento-central}), donde esta misma configuración alcanza 0,797 sobre \emph{test}, lo que confirma que la elección no está sobreajustada a la partición de ajuste. Con ello queda cerrado el objetivo OE-03 en su vertiente de recuperación semántica.
 
@@ -268,10 +291,92 @@ El resultado dibuja un sistema \textbf{calibrado hacia la prudencia}. En el lado
 
 Combinando ambos lados, la \emph{balanced accuracy} de la decisión «responder frente a abstenerse» es de 0,82 (media de un 64,3\,\% de aciertos en respondibles y un 100\,\% en no respondibles): todos los errores del sistema caen del lado prudente y ninguno del peligroso. Para un asistente jurídico informativo esta es la dirección correcta del compromiso, pero una sobre-abstención de más de un tercio es una limitación real de utilidad. Reducirla sin comprometer la seguridad —por ejemplo, mediante un umbral de confianza sobre la señal de recuperación, cuya excelente separabilidad (§\ref{subsec:abstencion-senal}) la hace prometedora, o un \emph{prompt} menos conservador— queda señalado como línea de mejora en el capítulo de conclusiones.
 
+\subsection{¿Y si relajamos el \emph{prompt}? Seguridad frente a utilidad}
+\label{subsec:abstencion-seguridad-utilidad}
+
+Esa línea de mejora merece un experimento, porque hay una forma obvia de intentarla: relajar las instrucciones. Se compararon dos versiones del \emph{prompt} sobre \emph{development}: la \textbf{conservadora} —la de por defecto, que ordena abstenerse si la evidencia no basta para responder con fiabilidad— y una \textbf{permisiva} —que autoriza a responder cuando alguna evidencia es pertinente, aun exigiendo síntesis, y solo abstenerse si la evidencia trata de otra materia—.
+
+El efecto sobre la \emph{utilidad} es el esperado: el \emph{prompt} permisivo dispara la tasa de respuesta y hunde la sobre-abstención, del 33,96\,\% al 9,43\,\%. Pero el coste en \textbf{seguridad} es inaceptable en un dominio jurídico. Sobre las preguntas fuera del corpus —las que el sistema no debería responder— el conservador se abstuvo en las 30 (0\,\% de respuestas indebidas), mientras que el permisivo respondió a 9 de 30, un \textbf{30\,\% de respuestas indebidas}, inventando sobre materia que el corpus no cubre (Tabla~\ref{tab:prompt-ab}).
+
+\begin{table}[H]
+    \centering
+    \small
+    \renewcommand{\arraystretch}{1.2}
+    \caption{\emph{Prompt} conservador frente a permisivo (\emph{development}): seguridad frente a utilidad.}
+    \label{tab:prompt-ab}
+    \begin{tabular}{|l|c|c|}
+        \hline
+        \textbf{\emph{Prompt}} & \textbf{Sobre-abstención (in-corpus)} & \textbf{Respuestas indebidas (fuera de corpus)} \\
+        \hline
+        Conservador & 33,96\,\% & \textbf{0\,\%} \\
+        Permisivo   & 9,43\,\%  & \textbf{30\,\%} \\
+        \hline
+    \end{tabular}
+\end{table}
+
+La decisión es un compromiso deliberado: se adopta el \textbf{\emph{prompt} conservador}, porque en derecho el error peligroso es responder lo que no se sabe, no callar de más. Un modelo de 7B no respeta de forma fiable una instrucción matizada del tipo «responde solo si de verdad puedes», así que, con este generador, la vía prudente es la única que garantiza la seguridad.
+
+Conviene una cautela honesta: las dos corridas no son un A/B perfectamente limpio, porque la conservadora recuperaba 20 candidatos (\emph{top}-$k$=20) y la permisiva 3 (\emph{top}-$k$=3); la magnitud exacta de la diferencia mezcla, por tanto, el efecto del \emph{prompt} con el de cuántos candidatos se recuperan. Ahora bien, la conclusión de seguridad es \textbf{robusta}: el \emph{prompt} permisivo respondió al 30\,\% de las preguntas fuera de corpus \emph{teniendo menos candidatos}, de modo que el \emph{confound}, si acaso, subestima el efecto del \emph{prompt}. La forma de recuperar utilidad sin sacrificar seguridad —un umbral sobre la señal de recuperación, cuya excelente separabilidad se vio en la §\ref{subsec:abstencion-senal}— queda como trabajo futuro.
+
+\section{¿Cuánto contexto entregar al generador? (capa L2)}
+\label{sec:eval-contexto}
+
+Entre la recuperación (L1) y la generación (L3--L5) hay una decisión intermedia con más peso del que parece: cuánta evidencia, y con cuánto detalle, se le entrega al modelo. Es la capa L2. La gobiernan dos preguntas con respuestas en tensión: ¿cubre el contexto ensamblado la evidencia que hace falta?, y ¿ayuda o estorba entregar más? Se responden con un experimento de ensamblado (informe \texttt{ctxabl\_20260626T210914Z}, sobre \emph{development}, $n=53$) y con la propia generación.
+
+\subsection{Cobertura frente a ruido}
+\label{subsec:l2-cobertura}
+
+El experimento varía el número de fragmentos que se ensamblan ($k \in \{1,3,5,8\}$), la estrategia de expansión y el presupuesto de caracteres, y mide dos magnitudes complementarias: la \textbf{cobertura de evidencia} —\emph{ContextEvidenceRecall}: qué fracción de los párrafos que el gold marca como necesarios acaba dentro del contexto— y la \textbf{precisión} —\emph{ContextPrecisionById}: qué fracción de los artículos entregados son de verdad pertinentes—. La Tabla~\ref{tab:l2-ctxabl} resume el patrón para la estrategia elegida (expansión acotada, presupuesto de 4000 caracteres).
+
+\begin{table}[H]
+    \centering
+    \small
+    \renewcommand{\arraystretch}{1.2}
+    \caption{Ensamblado de contexto en \emph{development} ($n=53$; expansión acotada, 4000 caracteres): cobertura de evidencia frente a precisión, según el número de fragmentos $k$.}
+    \label{tab:l2-ctxabl}
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \textbf{$k$ (fragmentos)} & \textbf{Cobertura (EvidenceRecall)} & \textbf{Precisión (por ID)} \\
+        \hline
+        1 & 0,488 & 0,717 \\
+        3 & 0,731 & 0,409 \\
+        5 & 0,803 & 0,294 \\
+        8 & 0,870 & 0,212 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+El resultado es una \textbf{tensión clara}: cuantos más fragmentos se entregan, más evidencia se cubre (la cobertura sube de 0,49 a 0,87), pero más ruido se cuela (la precisión cae de 0,72 a 0,21). Mirando solo la cobertura, convendría entregar mucho contexto; pero esa es solo la mitad de la historia, porque no mide qué hace el modelo con ese contexto.
+
+\subsection{Más contexto empeora la respuesta}
+\label{subsec:l2-generacion}
+
+La otra mitad se mide en la generación. Se comparan dos configuraciones idénticas salvo en el número de fragmentos entregados —3 frente a 5— sobre \emph{development} (informes \texttt{gen\_20260626T224758Z} y \texttt{gen\_20260627T001804Z}). El resultado es contundente y contrario a la intuición de «más contexto, mejor».
+
+\begin{table}[H]
+    \centering
+    \small
+    \renewcommand{\arraystretch}{1.2}
+    \caption{Efecto del número de fragmentos entregados al generador (\emph{development}). Más contexto empeora la respuesta.}
+    \label{tab:l2-3v5}
+    \begin{tabular}{|l|c|c|}
+        \hline
+        \textbf{Fragmentos} & \textbf{Cobertura de hechos clave} & \textbf{Citas ($F_1$)} \\
+        \hline
+        3 & \textbf{0,741} & \textbf{0,880} \\
+        5 & 0,570          & 0,667 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+Pasar de 3 a 5 fragmentos \textbf{baja} la cobertura de hechos clave de 0,741 a 0,570 y la calidad de las citas ($F_1$) de 0,880 a 0,667. Es el fenómeno «\emph{lost in the middle}» descrito en el estado del arte~\cite{liu2024lostmiddle}: el modelo aprovecha peor la información cuando se le inunda de contexto, y el ruido extra —esa precisión que caía en la tabla anterior— le pasa factura. Hay además un efecto de coste: la corrida con 3 fragmentos fue más rápida que la de 5 (mediana de 85 frente a 101 s por consulta en ese mismo entorno).
+
+En consecuencia, el sistema fija su ensamblado en \textbf{3 fragmentos, expansión acotada y 4000 caracteres por evidencia}: la densidad importa más que la cantidad. Con dos cautelas honestas: las cifras son de \emph{development} y con tamaños de gold pequeños ($n=18$ y $19$), por lo que son indicativas; y las dos corridas comparadas recuperaban 20 candidatos (\emph{top}-$k$=20) antes de quedarse con 3 o 5, de modo que lo que varía es el número de fragmentos \emph{entregados} al modelo, no los recuperados.
+
 \section{Evaluación de la generación}
 \label{sec:eval-generacion}
 
-Cerrada la recuperación, la evaluación se traslada a la otra mitad de la cadena: la respuesta que el sistema redacta a partir de las evidencias. Aquí conviven dos tipos de medida de naturaleza distinta. Algunas propiedades son \emph{objetivas} y se comprueban de forma automática contra el gold —¿cita los artículos correctos?, ¿recoge los hechos clave?—; otras exigen \emph{juicio} —¿cada afirmación se deriva realmente de la evidencia (fidelidad, L3)?, ¿es correcta la respuesta (L5)?— y no se dejan capturar por una comparación mecánica. Para estas últimas se previó un modelo juez (\emph{LLM-as-judge}); como se verá, su validación contra anotación humana arrojó un resultado negativo, de modo que las conclusiones de fidelidad y corrección se apoyan en anotación humana y en señales deterministas, y del juez se reporta honestamente por qué no es fiable. Los resultados provienen de la corrida de generación sobre \emph{test} (\texttt{gen\_20260630T091038Z}) y sobre las preguntas \emph{out-of-corpus} (\texttt{gen\_20260630T091513Z}); el generador es un modelo abierto ejecutado en local (\texttt{qwen2.5:7b-instruct}) y el juez, deliberadamente de familia distinta, \texttt{gemma3:12b}.
+Cerrada la recuperación, la evaluación se traslada a la otra mitad de la cadena: la respuesta que el sistema redacta a partir de las evidencias. Aquí conviven dos tipos de medida de naturaleza distinta. Algunas propiedades son \emph{objetivas} y se comprueban de forma automática contra el gold —¿cita los artículos correctos?, ¿recoge los hechos clave?—; otras exigen \emph{juicio} —¿cada afirmación se deriva realmente de la evidencia (fidelidad, L3)?, ¿es correcta la respuesta (L5)?— y no se dejan capturar por una comparación mecánica. Para estas últimas se previó un modelo juez (\emph{LLM-as-judge}); como se verá, su validación contra anotación humana arrojó un resultado negativo, de modo que las conclusiones de fidelidad y corrección se apoyan en anotación humana y en señales deterministas, y del juez se reporta honestamente por qué no es fiable. Los resultados provienen de la corrida de generación sobre \emph{test} (\texttt{gen\_20260630T091038Z}) y sobre las preguntas \emph{out-of-corpus} (\texttt{gen\_20260630T091513Z}); el generador es un modelo abierto ejecutado en local (\texttt{qwen2.5:7b-instruct}) y el juez, deliberadamente de familia distinta, \texttt{gemma3:12b}. La elección de ambos responde a criterios explícitos. El \textbf{generador} debía ser de software libre —lo que descarta las \emph{APIs} comerciales— y ejecutable en CPU sin GPU —lo que descarta los modelos de 70B o de mezcla de expertos por su latencia—; \texttt{qwen2.5:7b-instruct} ofrece un equilibrio razonable entre capacidad y coste a esa escala, con buen seguimiento de instrucciones. El \textbf{juez} se eligió de una familia distinta a la del generador para mitigar el sesgo de auto-preferencia~\cite{zheng2023judge} y de mayor tamaño (12B frente a 7B).
 
 \subsection{Citas y hechos clave: métricas deterministas (L4 y L5)}
 \label{subsec:gen-deterministas}
@@ -312,3 +417,42 @@ Y lo decisivo no es el coeficiente, sino \emph{qué} falla: de las 6 respuestas 
 La conclusión es un resultado negativo, y se reporta como tal: \textbf{el juez no es lo bastante fiable para sostener conclusiones de fidelidad ni de corrección} en este dominio, un hallazgo coherente con las cautelas de la literatura sobre herramientas jurídicas de IA. Lejos de invalidar el objetivo OE-06 —que pedía precisamente validar el juez frente a anotación humana \emph{antes} de confiar en él—, este resultado lo cumple: la respuesta es que aquí no se puede confiar. En consecuencia, las afirmaciones sobre la calidad de la generación descansan en las métricas deterministas y en la anotación humana, no en veredictos automáticos; la validación del juez se ofrece como contribución cautelar, no como instrumento de medida.
 
 Conviene cerrar con la misma honestidad sobre la propia anotación humana: la realizó un único anotador sobre \emph{development}, sin un segundo anotador con quien medir el acuerdo inter-humano, y con tamaños pequeños (30 y 15). Sus cifras son, por tanto, indicativas; su valor aquí es doble —servir de patrón para revelar la insuficiencia del juez y ofrecer una lectura cualitativa de la fidelidad—, no el de una medida definitiva. Ampliar esta anotación, e incorporar un segundo anotador, queda señalado como trabajo futuro.
+
+\subsection{Coste computacional}
+\label{subsec:gen-coste}
+
+Como el sistema está pensado para ejecutarse en local, conviene cuantificar su coste. La \textbf{recuperación} es barata: del orden de 0,3 s por consulta con el denso —el léxico es 3--4 veces más rápido (~0,1 s), pero pierde en calidad (§\ref{sec:experimento-central})—. El grueso del coste está en la \textbf{generación}: sobre GPU, el generador responde en una \emph{mediana de unos 5 s por consulta}; sobre CPU, en \emph{decenas de segundos}. Esa diferencia de orden de magnitud es la que motivó recurrir a la GPU también para la generación durante el desarrollo.
+
+Ahora bien, esa comparación CPU--GPU debe leerse con cautela: las corridas disponibles no forman un A/B limpio —difieren también en el número de candidatos recuperados y en otros parámetros— y el dispositivo no queda registrado en los informes de generación. Por eso la cifra se ofrece como \emph{orden de magnitud} y una comparación controlada, con idéntica configuración en ambos dispositivos, queda como trabajo pendiente.
+
+\section{Análisis de errores}
+\label{sec:analisis-errores}
+
+Las métricas dicen \emph{cuánto} y \emph{dónde} falla el sistema; esta sección se pregunta \emph{por qué}. Se apoya en la inspección cualitativa de las respuestas y en los cortes por tipo de consulta que contempla el banco —ciudadanas, técnico-jurídicas, reformulaciones de una misma necesidad y preguntas fuera del corpus—, y termina sopesando las hipótesis que compiten por explicar las carencias de la generación, en lugar de quedarse con la primera.
+
+\subsection{Modos de fallo recurrentes}
+\label{subsec:modos-fallo}
+
+Tres patrones concentran los errores observados. El primero es la \textbf{colisión de recuperación}: el buscador trae un artículo con el número correcto pero de la \emph{ley equivocada}. Es el punto débil de la recuperación léxica; de hecho, de los 138 candidatos que solo aportó BM25 durante la construcción del gold, \textbf{127 resultaron irrelevantes}, en su mayoría de este tipo (§\ref{subsec:pooling}). Es también lo que motivó el refuerzo de cabecera con el nombre de la ley (§\ref{sec:ablacion-bm25}) y, en el fondo, una de las razones por las que el denso —que desambigua por significado— gana con claridad.
+
+El segundo es la \textbf{sobre-extensión del generador}: teniendo delante la evidencia correcta, el modelo añade un detalle que \emph{no} está en ella —por ejemplo, una condición sobre la antigüedad de una prestación o un matiz sobre el régimen aplicable— que suena plausible pero no se deriva del texto citado. Son las respuestas que la anotación humana marca como infieles.
+
+El tercero, ligado al anterior, es la \textbf{indulgencia del juez}: de las 6 respuestas que el anotador humano consideró infieles, el juez dejó pasar 4 como buenas (§\ref{subsec:gen-juez}). Es decir, el modo de fallo más peligroso —afirmar algo no respaldado por la evidencia— es justamente el que el evaluador automático peor detecta, lo que confirma por qué no se le confían las conclusiones de fidelidad.
+
+\subsection{Comportamiento por tipo de consulta}
+\label{subsec:errores-por-tipo}
+
+El comportamiento no es uniforme. En las \textbf{consultas ciudadanas} —lenguaje natural, sin terminología jurídica— es donde más se separan el denso y el léxico (§\ref{subsec:flagship-estratificado}): BM25 se hunde porque la pregunta y la norma no comparten palabras, y ahí la recuperación semántica es indispensable. En las \textbf{formulaciones técnico-jurídicas y las búsquedas directas de un artículo} aparece la colisión de ley descrita arriba, y es el único terreno donde la fusión híbrida llegó a igualar al denso. Las \textbf{reformulaciones} de una misma necesidad informativa son, precisamente, la fortaleza de la recuperación densa: al comparar por significado y no por forma, distintas maneras de preguntar lo mismo recuperan la misma evidencia. Y ante las \textbf{preguntas fuera del corpus} el sistema se comporta con prudencia —se abstiene en las 30—, con la salvedad, ya discutida, de que un \emph{prompt} permisivo rompe esa garantía.
+
+\subsection{Hipótesis en tensión}
+\label{subsec:hipotesis}
+
+Ante una generación mejorable, la tentación es atribuir el problema a una sola causa. Este trabajo sopesa tres y evita cerrarse en falso.
+
+\begin{description}
+  \item[H1: el aumentado de contexto.] Descartada como causa principal. Como se vio (§\ref{sec:eval-contexto}), entregar \emph{más} contexto no mejora la respuesta, sino que la \emph{empeora}; el problema no es que falte contexto.
+  \item[H2: la representación del fragmento.] Abierta. Queda por comprobar, sobre el corpus de 92 normas, si codificar el fragmento enriquecido con su contexto jurídico rinde distinto que codificar el texto crudo; en el prototipo de 10 normas el enriquecido ayudaba, pero no se ha revalidado. Es trabajo futuro.
+  \item[H3: la recuperación.] Medida (§\ref{sec:experimento-central}). El denso es fuerte (0,80) y no es el cuello de botella para las preguntas que sí se responden; su fallo característico es la colisión de ley, no una recuperación pobre en general.
+\end{description}
+
+Un matiz cierra el análisis y templa la lectura de la sobre-abstención. Que la recuperación \emph{entregue} evidencia no significa que esa evidencia \emph{baste} para responder: en varias preguntas el sistema recibió pasajes temáticamente cercanos pero sin la respuesta concreta, y abstenerse era lo correcto. Parte del 35,7\,\% de sobre-abstención es, por tanto, prudencia legítima ante recuperaciones de casi-acierto, y no solo exceso de cautela del generador; separar ambas cosas con precisión exigiría anotar la suficiencia de la evidencia caso a caso, y queda como trabajo futuro.

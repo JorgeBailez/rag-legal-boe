@@ -279,3 +279,19 @@ La planificación se organiza en ocho fases. Varias de ellas se solapan porque e
 \end{table}
 
 El ritmo de trabajo se ha ajustado al calendario de convocatorias de defensa de Trabajo Fin de Grado de la Escuela de Ingeniería de Fuenlabrada para el curso 2025--2026 \cite{urjcConvocatoriasTFGEIF2025_2026}. Asimismo, la elaboración de esta memoria sigue los requisitos de estructura, formato y contenido establecidos en el reglamento específico de Trabajo Fin de Grado de la Escuela \cite{urjcReglamentoTFGEIF2025}, que condiciona tanto la organización de los capítulos como la extensión máxima del documento.
+
+En términos de calendario, el proyecto se desarrolló entre \textbf{noviembre de 2025} —con la definición del problema— y la entrega, en \textbf{julio de 2026}. La primera etapa, hasta la primavera de 2026, se dedicó a acotar el dominio y a un intento inicial sobre documentos legales en \emph{texto plano}; en torno a \textbf{mayo de 2026} el proyecto giró hacia la legislación consolidada del BOE. A partir de ahí, y de forma especialmente intensa en \textbf{junio y julio de 2026}, se encadenaron la ingesta y el procesamiento del corpus, la comparación de recuperadores, la generación y la evaluación, hasta el cierre documental.
+
+\subsection{Desviaciones y ajustes}
+\label{subsec:desviaciones}
+
+Como es natural en un trabajo experimental, el plan se ajustó al chocar con la realidad. Las desviaciones principales fueron cuatro.
+
+\begin{description}
+  \item[Cambio de fuente documental.] El proyecto arrancó sobre documentos legales en \emph{texto plano}, sin estructura explícita. Esa falta de estructura complicaba enormemente una fragmentación que respetara la unidad jurídica —la base sobre la que se apoya todo lo demás—. Hacia mayo de 2026 se decidió cambiar a la legislación consolidada del BOE, cuya API expone la estructura de bloques, versiones y metadatos; el cambio, lejos de ser un retroceso, es lo que hizo viables la estrategia \emph{parent-child} y la trazabilidad que vertebran el sistema.
+  \item[Ampliación del corpus.] El corpus pasó de un MVP de \textbf{10 normas}, para demostrar factibilidad, a las \textbf{92 normas} finales, con las que dar cobertura significativa a distintas áreas de uso ciudadano. La ampliación obligó a endurecer el \emph{parser} y la auditoría (véanse los problemas resueltos en el capítulo de diseño).
+  \item[Re-priorización de la generación y del juez.] A finales de junio de 2026, la generación fundamentada y la \emph{validación del modelo juez frente a anotación humana} pasaron de secundarias a objetivos de primera clase, gestionados por niveles de evidencia. Fue una decisión de alcance: invertir horas de anotación para poder afirmar —o negar— algo con rigor sobre la calidad de la generación.
+  \item[Giro a la GPU.] El coste de codificar los \emph{embeddings} en CPU obligó a habilitar la ejecución en GPU para la indexación, como se detalla en el capítulo de diseño; además, un modelo candidato (\texttt{gte-multilingual-base}) quedó aplazado por una incompatibilidad técnica.
+\end{description}
+
+Ninguno de estos ajustes desvió el objetivo general; al contrario, cada uno respondió a un obstáculo concreto y dejó el trabajo en mejor posición para alcanzarlo.
