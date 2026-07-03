@@ -1,9 +1,9 @@
 \chapter{Diseño e implementación}
 \label{chap:diseño}
 
-Este capítulo describe el sistema tal y como se ha construido: sus componentes, cómo se conectan entre sí, qué datos intercambian y por qué se ha decidido organizarlo de esta manera. Si el capítulo de estado del arte (Capítulo~\ref{chap:estado-arte}) presentaba las alternativas que existen en el mundo, este se ocupa de las concretas que se han adoptado en el prototipo. La justificación empírica de las decisiones que dependen de medir —qué modelo de \emph{embeddings} recupera mejor, si la fusión híbrida aporta algo o qué umbral de abstención conviene— se reserva para el capítulo de experimentos (Capítulo~\ref{chap:experimentos}); aquí se explica la maquinaria y el razonamiento de diseño que la sustenta.
+Este capítulo describe el sistema tal y como se ha construido: sus componentes, cómo se conectan, qué datos intercambian y por qué se organizó así. Aquí se explica la \emph{maquinaria} y el razonamiento de diseño; la justificación empírica de las decisiones que dependen de medir —qué modelo de \emph{embeddings} recupera mejor, si la fusión híbrida aporta algo o qué umbral de abstención conviene— se reserva para el capítulo de experimentos.
 
-La exposición avanza de fuera hacia dentro. Primero se ofrece una visión de conjunto de la arquitectura y de los principios que la gobiernan. A continuación se recorren, en el mismo orden en que fluyen los datos, las etapas del sistema: la adquisición y construcción del corpus, el procesamiento documental, la fragmentación, la indexación, la recuperación, el ensamblado de contexto y la generación de respuestas. El capítulo se cierra con el marco de evaluación entendido como software, sobre el que se apoya la evaluación experimental del capítulo siguiente.
+La exposición sigue el orden en que fluyen los datos —de la adquisición del corpus a la generación de la respuesta— y se cierra con el marco de evaluación entendido como \emph{software}.
 
 \section{Arquitectura general}
 \label{sec:arquitectura}
@@ -77,7 +77,7 @@ Todo lo demás se resuelve mediante \emph{join} por identificadores (\texttt{chu
 \subsection{Mapa de componentes}
 \label{subsec:mapa-componentes}
 
-La biblioteca del proyecto se organiza, bajo \texttt{src/}, en paquetes que se corresponden uno a uno con las responsabilidades de la cadena de datos. Esta correspondencia directa entre la estructura del código y las etapas del \emph{pipeline} facilita situar cualquier pieza:
+El sistema se organiza en componentes que se corresponden uno a uno con las etapas de la cadena de datos; cada uno encapsula una responsabilidad y expone una frontera clara. Se resumen a continuación por su función —su plasmación concreta como carpetas del repositorio se recoge en el anexo~\ref{app:repo}—:
 
 \begin{description}
   \item[\texttt{boe}] Cliente HTTP de la API del BOE, \emph{parser} de los XML y gestión del corpus semilla.
@@ -178,7 +178,7 @@ Conviene no confundir la cuarentena con un caso distinto y legítimo: el de los 
 \section{Fragmentación documental}
 \label{sec:fragmentacion}
 
-Con el texto vigente de cada bloque ya resuelto, la última etapa de procesamiento lo prepara para la recuperación troceándolo en unidades manejables. Como se discutió en el estado del arte (§\ref{sec:fragmentacion-contexto}), esta fragmentación condiciona directamente la calidad del sistema: trozos demasiado pequeños pierden el contexto necesario para interpretar una disposición, y demasiado grandes diluyen la precisión de la búsqueda y llenan el contexto del modelo de ruido. El objetivo del fragmentador es alcanzar ese equilibrio sin sacrificar nunca dos garantías: que el texto legal no se altere y que cada fragmento conserve el vínculo con su artículo de origen.
+Con el texto vigente de cada bloque ya resuelto, la última etapa de procesamiento lo prepara para la recuperación troceándolo en unidades manejables. Como se discutió en el estado del arte (\ref{sec:fragmentacion-contexto}), esta fragmentación condiciona directamente la calidad del sistema: trozos demasiado pequeños pierden el contexto necesario para interpretar una disposición, y demasiado grandes diluyen la precisión de la búsqueda y llenan el contexto del modelo de ruido. El objetivo del fragmentador es alcanzar ese equilibrio sin sacrificar nunca dos garantías: que el texto legal no se altere y que cada fragmento conserve el vínculo con su artículo de origen.
 
 \subsection{Estrategia \emph{parent-child} por párrafos}
 \label{subsec:chunking-estrategia}
@@ -280,7 +280,7 @@ La recuperación entrega una lista de fragmentos ordenados por relevancia, pero 
 \subsection{Estrategias de contexto: recuperar lo pequeño, aportar lo grande}
 \label{subsec:estrategias-contexto}
 
-Fiel al patrón \emph{parent-child} y a la idea «recuperar lo pequeño, aportar lo grande» del estado del arte (§\ref{sec:fragmentacion-contexto}), el sistema recupera por \emph{chunks} pero puede entregar al modelo una porción mayor del artículo. Ofrece tres estrategias, precisamente para poder compararlas: \texttt{K\_ONLY} entrega solo el fragmento recuperado; \texttt{P\_EXPAND\_FULL}, el artículo completo; y \texttt{P\_EXPAND\_BOUNDED} —la de por omisión— expande alrededor del fragmento recuperado añadiendo párrafos alternando hacia adelante y hacia atrás, respetando el orden jurídico del texto y sin superar un presupuesto de caracteres. Esta última busca el equilibrio: da al modelo el contexto vecino que necesita para interpretar la disposición, pero acota su tamaño, en línea con el fenómeno «\emph{lost in the middle}» discutido en el estado del arte, que desaconseja inundar el contexto. El texto legal nunca se reescribe: la estrategia solo selecciona y concatena párrafos ya existentes.
+Fiel al patrón \emph{parent-child} y a la idea «recuperar lo pequeño, aportar lo grande» del estado del arte (\ref{sec:fragmentacion-contexto}), el sistema recupera por \emph{chunks} pero puede entregar al modelo una porción mayor del artículo. Ofrece tres estrategias, precisamente para poder compararlas: \texttt{K\_ONLY} entrega solo el fragmento recuperado; \texttt{P\_EXPAND\_FULL}, el artículo completo; y \texttt{P\_EXPAND\_BOUNDED} —la de por omisión— expande alrededor del fragmento recuperado añadiendo párrafos alternando hacia adelante y hacia atrás, respetando el orden jurídico del texto y sin superar un presupuesto de caracteres. Esta última busca el equilibrio: da al modelo el contexto vecino que necesita para interpretar la disposición, pero acota su tamaño, en línea con el fenómeno «\emph{lost in the middle}» discutido en el estado del arte, que desaconseja inundar el contexto. El texto legal nunca se reescribe: la estrategia solo selecciona y concatena párrafos ya existentes.
 
 \subsection{Selección de evidencias sin truncado silencioso}
 \label{subsec:seleccion-evidencias}

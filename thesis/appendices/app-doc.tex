@@ -90,7 +90,7 @@ El código fuente completo de este Trabajo Fin de Grado está disponible en: \te
 El repositorio se organiza en torno a una biblioteca (\texttt{src/}), sus \emph{scripts} de orquestación y los artefactos de datos y documentación:
 
 \begin{description}
-  \item[\texttt{src/}] La biblioteca del sistema, importable como \texttt{src.<paquete>}. Sus paquetes se corresponden uno a uno con las etapas del \emph{pipeline} y se describen en detalle en el capítulo de diseño (§\ref{subsec:mapa-componentes}): \texttt{boe}, \texttt{preprocessing}, \texttt{contracts}, \texttt{embeddings}, \texttt{indexing}, \texttt{retrieval}, \texttt{generation}, \texttt{evaluation}, \texttt{quality}, \texttt{config} y \texttt{core}.
+  \item[\texttt{src/}] La biblioteca del sistema, importable como \texttt{src.<paquete>}. Sus paquetes se corresponden uno a uno con las etapas del \emph{pipeline} y se describen en detalle en el capítulo de diseño (\ref{subsec:mapa-componentes}): \texttt{boe}, \texttt{preprocessing}, \texttt{contracts}, \texttt{embeddings}, \texttt{indexing}, \texttt{retrieval}, \texttt{generation}, \texttt{evaluation}, \texttt{quality}, \texttt{config} y \texttt{core}.
   \item[\texttt{scripts/}] Los \emph{scripts} de orquestación de cada etapa (descarga, parseo, fragmentación, auditoría, indexación y evaluación).
   \item[\texttt{tests/}] La batería de pruebas, que se ejecuta por completo sin red mediante dobles de prueba.
   \item[\texttt{prompts/}] Las plantillas de \emph{prompt} versionadas (sistema, generación fundamentada y juez).
