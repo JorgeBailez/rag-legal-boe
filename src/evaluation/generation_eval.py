@@ -13,9 +13,10 @@ exactamente el contexto entregado al modelo.
 from __future__ import annotations
 
 from collections.abc import Callable
+from types import SimpleNamespace
 from typing import Protocol
 
-from src.contracts.generation_models import RagAnswerV1
+from src.contracts.generation_models import RetrievalTraceV1
 from src.core.exceptions import RagLegalBoeError
 from src.evaluation.dataset import EvalAnswerKey, EvalQuestion
 from src.evaluation.generation_metrics import (
@@ -26,7 +27,9 @@ from src.evaluation.generation_metrics import (
 )
 from src.generation.answer_generator import AnswerGenerator
 from src.generation.prompt import build_evidences_block
-from src.retrieval.evidence_builder import build_evidences
+from src.retrieval.evidence_builder import build_evidences, build_oracle_evidences
+
+EVAL_MODES = ("rag", "closed_book", "oracle")
 
 _SCALAR_KEYS = (
     "key_fact_recall",
@@ -87,6 +90,31 @@ def _scalar_row(q: EvalQuestion, metrics: dict, *, latency_s: float | None) -> d
     return row
 
 
+def _oracle_gold_for(judgments_for_q: list[dict]) -> list[dict]:
+    """Gold del oracle: parent_id + párrafos de evidencia, ordenado por relevancia descendente."""
+    ordered = sorted(judgments_for_q, key=lambda j: j.get("relevance", 0), reverse=True)
+    return [
+        {
+            "parent_id": j["parent_id"],
+            "paragraph_orders": (j.get("evidence") or {}).get("paragraph_orders", []),
+            "relevance": j.get("relevance", 0),
+        }
+        for j in ordered
+    ]
+
+
+def _empty_trace(generator: AnswerGenerator, resolved_profile: str) -> RetrievalTraceV1:
+    """Traza vacía (closed-book no recupera nada; mantiene la forma del report)."""
+    return RetrievalTraceV1(
+        bundle_id=generator.retriever.bundle_id,
+        model_alias=generator.retriever.model_alias,
+        query_profile_id=resolved_profile,
+        top_k=0,
+        returned_hits=0,
+        selected_evidences=0,
+    )
+
+
 def evaluate_generation(
     *,
     questions: list[dict],
@@ -94,6 +122,8 @@ def evaluate_generation(
     generator: AnswerGenerator,
     judge: Judge | None = None,
     query_profile_id: str | None = None,
+    mode: str = "rag",
+    judgments: list[dict] | None = None,
     limit: int | None = None,
     on_progress: Callable[[dict], None] | None = None,
 ) -> tuple[list[dict], list[dict], dict]:
@@ -108,6 +138,16 @@ def evaluate_generation(
     selected = q_models if limit is None else q_models[:limit]
     total = len(selected)
     notify = on_progress or (lambda _info: None)
+
+    if mode not in EVAL_MODES:
+        raise RagLegalBoeError(f"modo de evaluación desconocido: {mode!r} (esperado {EVAL_MODES})")
+    judgments_by_qid: dict[str, list[dict]] = {}
+    for j in judgments or []:
+        if j.get("relevance", 0) >= 1:
+            judgments_by_qid.setdefault(j["query_id"], []).append(j)
+    resolved_profile = generator.retriever.resolved_query_profile_id(
+        query_profile_id or generator.config.query_profile_id
+    )
 
     per_query: list[dict] = []
     metrics_rows: list[dict] = []
@@ -124,8 +164,34 @@ def evaluate_generation(
         )
         ak = ak_by_qid.get(q.query_id)
         answerable = ak.answerable if ak is not None else (q.split != "out_of_corpus")
+        oracle_selection = None
         try:
-            answer: RagAnswerV1 = generator.answer(q.query, query_profile_id=query_profile_id)
+            if mode == "closed_book":
+                cb = generator.generate_closed_book(q.query)
+                # Shim: el closed-book no cabe en RagAnswerV1 (no hay citas); se expone con la misma
+                # forma de atributos que consume el resto del bucle (citas y traza vacías).
+                answer = SimpleNamespace(
+                    answered=cb.answered,
+                    answer=cb.answer,
+                    abstention_reason=cb.abstention_reason,
+                    citations=[],
+                    generation_metrics=cb.generation_metrics,
+                    retrieval_trace=_empty_trace(generator, resolved_profile),
+                )
+            elif mode == "oracle":
+                oracle_selection = build_oracle_evidences(
+                    _oracle_gold_for(judgments_by_qid.get(q.query_id, [])),
+                    parents_by_id=generator.retriever.corpus.get("parents_by_id", {}),
+                    max_evidences=generator.config.max_evidences,
+                    context_strategy=generator.config.context_strategy,
+                    context_budget_chars=generator.config.context_budget_chars,
+                    max_total_context_chars=generator.config.max_total_context_chars,
+                )
+                answer = generator.answer_with_evidences(
+                    q.query, oracle_selection, query_profile_id=query_profile_id
+                )
+            else:
+                answer = generator.answer(q.query, query_profile_id=query_profile_id)
         except RagLegalBoeError as exc:
             # Un fallo de contrato del generador (JSON inválido del LLM, ID inventado…) NO debe
             # abortar la corrida entera (horas): se registra como error técnico de la pregunta y se
@@ -137,6 +203,7 @@ def evaluate_generation(
                     "query_style": q.query_style,
                     "failure_mode": q.failure_mode,
                     "difficulty": q.difficulty,
+                    "mode": mode,
                     "answered": False,
                     "answerable": answerable,
                     "abstention_outcome": "generation_error",
@@ -174,13 +241,17 @@ def evaluate_generation(
         # evidencia para validar la fidelidad (afirmación-contra-evidencia); sin ella ni el κ de L3
         # ni la anotación humana que lo sustituye son válidos.
         if answer.answered and answerable:
-            try:
-                evidences_block = _evidences_block_for(generator, q.query, query_profile_id)
-            except RagLegalBoeError as exc:
-                # Un fallo reconstruyendo la evidencia no debe abortar la corrida.
-                evidences_block = None
-                if judge is not None:
-                    judge_error = str(exc)
+            if mode == "oracle" and oracle_selection is not None:
+                evidences_block = build_evidences_block(oracle_selection.evidences)
+            elif mode == "rag":
+                try:
+                    evidences_block = _evidences_block_for(generator, q.query, query_profile_id)
+                except RagLegalBoeError as exc:
+                    # Un fallo reconstruyendo la evidencia no debe abortar la corrida.
+                    evidences_block = None
+                    if judge is not None:
+                        judge_error = str(exc)
+            # closed_book: sin evidencia → no hay bloque que juzgar (fidelidad no aplica).
 
         if judge is not None and evidences_block is not None:
             try:
@@ -252,6 +323,7 @@ def evaluate_generation(
                 "query_style": q.query_style,
                 "failure_mode": q.failure_mode,
                 "difficulty": q.difficulty,
+                "mode": mode,
                 **metrics,
                 "latency_s": latency_s,
                 "eval_count": eval_count,

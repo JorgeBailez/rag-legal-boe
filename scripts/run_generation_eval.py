@@ -68,6 +68,19 @@ def _parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--split", default="development", choices=["development", "test", "out_of_corpus"]
     )
+    parser.add_argument(
+        "--mode",
+        default="rag",
+        choices=["rag", "closed_book", "oracle"],
+        help="baseline: rag (normal), closed_book (sin evidencia) u oracle (evidencia gold "
+        "inyectada). Descompone el error recuperación vs generación (usa con --no-judge).",
+    )
+    parser.add_argument(
+        "--device-note",
+        default=None,
+        help='etiqueta libre del dispositivo del generador ("cpu" o "gpu"); se guarda en el '
+        "config del report para trazar la comparación CPU-vs-GPU (que no registra el device).",
+    )
     parser.add_argument("--dataset-dir", default=str(DATASET_DIR))
     parser.add_argument("--gate-c-level", default="checkpoint", choices=sorted(GATE_C_LEVELS))
     parser.add_argument(
@@ -178,7 +191,7 @@ def main() -> int:  # noqa: C901 - orquestación lineal del CLI
         wanted = {x.strip() for x in args.query_ids.split(",") if x.strip()}
         questions = [q for q in questions if q.get("query_id") in wanted]
     answer_keys = load_jsonl(dataset_dir / ANSWER_KEYS_FILE)
-    _ = load_jsonl(dataset_dir / JUDGMENTS_FILE)  # cargados/validados arriba; retrieval gold aparte
+    judgments = load_jsonl(dataset_dir / JUDGMENTS_FILE)  # gold de relevancia (oracle usa rel>=1)
     if not questions:
         print(
             f"No hay preguntas en el split {args.split!r} (¿--query-ids correctos?).",
@@ -276,6 +289,8 @@ def main() -> int:  # noqa: C901 - orquestación lineal del CLI
                 generator=generator,
                 judge=judge,
                 query_profile_id=config.query_profile_id,
+                mode=args.mode,
+                judgments=judgments,
                 limit=args.limit,
                 on_progress=on_progress,
             )
@@ -283,6 +298,8 @@ def main() -> int:  # noqa: C901 - orquestación lineal del CLI
             bar.close()
         run_config = {
             "split": args.split,
+            "mode": args.mode,
+            "device_note": args.device_note,
             "dataset_dir": str(dataset_dir),
             "bundle_id": retriever.bundle_id,
             "model_alias": retriever.model_alias,
@@ -308,7 +325,15 @@ def main() -> int:  # noqa: C901 - orquestación lineal del CLI
         run_id = new_run_id("gen", fingerprint(run_config))
         output_root = Path(args.output_root) if args.output_root else None
         write_kwargs = {"reports_root": output_root} if output_root else {}
-        summary_keys = ("split", "bundle_id", "generator_model", "judge_model", "n_questions")
+        summary_keys = (
+            "split",
+            "mode",
+            "device_note",
+            "bundle_id",
+            "generator_model",
+            "judge_model",
+            "n_questions",
+        )
         out_dir = write_generation_report(
             run_id,
             summary={k: run_config[k] for k in summary_keys},

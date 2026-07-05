@@ -170,6 +170,63 @@ def build_evidences(
     return selection
 
 
+def build_oracle_evidences(
+    gold_parents: list[dict],
+    *,
+    parents_by_id: dict[str, dict],
+    max_evidences: int = DEFAULT_MAX_EVIDENCES,
+    context_strategy: str = DEFAULT_CONTEXT_STRATEGY,
+    context_budget_chars: int = DEFAULT_CONTEXT_BUDGET_CHARS,
+    max_total_context_chars: int = DEFAULT_MAX_TOTAL_CONTEXT_CHARS,
+) -> EvidenceSelection:
+    """Evidencia-*oracle*: inyecta los parents GOLD como si un recuperador perfecto los trajera.
+
+    `gold_parents` es una lista de dicts `{"parent_id", "paragraph_orders", "relevance"}`
+    (típicamente los juicios con relevancia >= 1, ordenados por relevancia desc). Fabrica
+    `DenseHit` sintéticos anclados en los párrafos de evidencia del gold y los pasa por
+    `build_evidences` con la MISMA configuración de producción: el contexto se ensambla igual que
+    en la ruta real. Así el *oracle* mide el techo del generador con recuperación perfecta, sin
+    cambiar el ensamblado. Los `parent_id` sin parent en el corpus se ignoran.
+    """
+    hits: list[DenseHit] = []
+    for rank, gold in enumerate(gold_parents, start=1):
+        parent_id = gold["parent_id"]
+        parent = parents_by_id.get(parent_id)
+        if parent is None:
+            continue
+        orders = sorted(o for o in (gold.get("paragraph_orders") or []))
+        if not orders:
+            # Sin párrafos de evidencia: ancla al primer párrafo existente del parent.
+            existing = sorted(p["order"] for p in (parent.get("paragraphs") or []) if "order" in p)
+            orders = existing[:1]
+        anchor = {"paragraph_start": orders[0], "paragraph_end": orders[-1]} if orders else None
+        citation = parent.get("citation") or {}
+        hits.append(
+            DenseHit(
+                rank=rank,
+                score=float(gold.get("relevance", 1) or 1),
+                row_index=rank - 1,
+                embedding_input_id=f"oracle_{rank:06d}",
+                document_id=parent.get("document_id", ""),
+                block_id=parent.get("block_id", ""),
+                parent_id=parent_id,
+                source={"kind": "oracle", "parent_id": parent_id},
+                context_anchor=anchor,
+                retrieval_text=parent.get("text", ""),
+                citation_label=citation.get("label") or parent_id,
+                citation_url=citation.get("url"),
+            )
+        )
+    return build_evidences(
+        hits,
+        parents_by_id=parents_by_id,
+        max_evidences=max_evidences,
+        context_strategy=context_strategy,
+        context_budget_chars=context_budget_chars,
+        max_total_context_chars=max_total_context_chars,
+    )
+
+
 def _omit(
     selection: EvidenceSelection, hit: DenseHit, reason: str, *, char_count: int | None = None
 ) -> None:

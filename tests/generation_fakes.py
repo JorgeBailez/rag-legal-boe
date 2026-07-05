@@ -52,23 +52,36 @@ class FakeJudge:
 
 
 class FakeLlmClient:
-    """Cliente LLM falso: devuelve una respuesta fija y registra las llamadas recibidas."""
+    """Cliente LLM falso: devuelve una respuesta fija y registra las llamadas recibidas.
+
+    `answer` alimenta `chat()` (contrato `RagLlmAnswerV1`); `json_payload` alimenta `chat_json()`
+    (dict crudo, para el baseline closed-book o el juez).
+    """
 
     def __init__(
         self,
-        answer: RagLlmAnswerV1,
+        answer: RagLlmAnswerV1 | None = None,
         *,
         metrics: OllamaMetricsV1 | None = None,
+        json_payload: dict | None = None,
     ) -> None:
         self.answer = answer
         self.metrics = metrics or OllamaMetricsV1(
             total_duration_ns=1_000_000_000, eval_count=10, eval_duration_ns=5_000_000_000
         )
+        self.json_payload = json_payload
         self.calls: list[dict] = []
+        self.json_calls: list[dict] = []
 
     def chat(self, messages, **kwargs):  # noqa: ANN001, ANN003 - firma laxa para test
         self.calls.append({"messages": messages, "kwargs": kwargs})
         return self.answer, self.metrics
+
+    def chat_json(self, messages, **kwargs):  # noqa: ANN001, ANN003 - firma laxa para test
+        self.json_calls.append({"messages": messages, "kwargs": kwargs})
+        if self.json_payload is None:
+            raise AssertionError("FakeLlmClient.chat_json sin json_payload configurado")
+        return self.json_payload, self.metrics
 
 
 class FakeRetriever:

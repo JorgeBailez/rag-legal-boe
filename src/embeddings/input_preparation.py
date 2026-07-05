@@ -158,9 +158,19 @@ def _paragraph_anchor(
 def _paragraph_token_intervals(
     tokenizer: SplittableTokenizer, parent: dict
 ) -> list[tuple[int, int, int]]:
-    """Intervalos [start, end) por párrafo medidos sobre prefijos exactos del parent."""
+    """Intervalos [start, end) por párrafo en el espacio de tokens del texto completo del parent.
+
+    Una sola pasada: tokeniza cada hueco y cada párrafo UNA vez y acumula, en lugar de re-tokenizar
+    prefijos crecientes (que era O(nº_párrafos × longitud) y se disparaba en *parents* gigantes como
+    anexos o tablas linealizadas en miles de filas). Como los saltos de párrafo caen en espacios o
+    saltos de línea —donde los tokenizadores subword no fusionan subtokens—, el conteo acumulado
+    coincide con el del texto completo en esas fronteras. Estos intervalos solo mapean ventana→orden
+    de párrafo para el `context_anchor` (metadato; no afecta al embedding ni a la métrica); se acota
+    el último a `total` para cubrir cualquier ventana del texto completo.
+    """
     intervals: list[tuple[int, int, int]] = []
     parent_text = parent.get("text", "") or ""
+    running = 0
     char_cursor = 0
     for p in parent.get("paragraphs") or []:
         para_text = p.get("text", "") or ""
@@ -169,11 +179,22 @@ def _paragraph_token_intervals(
             raise AnchorResolutionError(
                 f"no se pudo localizar párrafo {p.get('order')} en {parent.get('parent_id')}"
             )
-        char_end = char_start + len(para_text)
-        start = len(tokenizer.encode(parent_text[:char_start], add_special_tokens=False))
-        end = len(tokenizer.encode(parent_text[:char_end], add_special_tokens=False))
+        gap = parent_text[char_cursor:char_start]
+        running += len(tokenizer.encode(gap, add_special_tokens=False))
+        start = running
+        running += len(tokenizer.encode(para_text, add_special_tokens=False))
+        end = running
         intervals.append((p["order"], start, end))
-        char_cursor = char_end
+        char_cursor = char_start + len(para_text)
+    if intervals:
+        # Acota el rango a [0, total]: el primer párrafo absorbe cualquier contenido inicial y el
+        # último el final, para que toda ventana del texto completo solape al menos un intervalo.
+        tail = tokenizer.encode(parent_text[char_cursor:], add_special_tokens=False)
+        total = running + len(tail)
+        order0, _, end0 = intervals[0]
+        intervals[0] = (order0, 0, end0)
+        order_last, start_last, end_last = intervals[-1]
+        intervals[-1] = (order_last, start_last, max(end_last, total))
     return intervals
 
 
