@@ -15,6 +15,7 @@ pero segura. Se reportan por separado y como balanced accuracy.
 
 from __future__ import annotations
 
+import re
 import unicodedata
 
 ABSTENTION_OUTCOMES = ("answered", "correct_abstention", "over_abstention", "false_answer")
@@ -43,8 +44,19 @@ def normalize_text(text: str) -> str:
 
 
 def _contains(haystack_norm: str, needle: str) -> bool:
+    """¿Aparece `needle` en el texto normalizado, respetando fronteras de palabra/número?
+
+    Coincidencia por subcadena PERO exigiendo frontera en los extremos alfanuméricos, para no
+    contar un falso positivo cuando el hecho está embebido en un token mayor: "40.000" NO debe
+    casar dentro de "140.000", ni "mes" dentro de "meson". La frontera solo se exige si el
+    extremo del hecho es alfanumérico (así "50%" o "€500" siguen casando junto a puntuación).
+    """
     n = normalize_text(needle)
-    return bool(n) and n in haystack_norm
+    if not n:
+        return False
+    prefix = r"(?<!\w)" if n[0].isalnum() else ""
+    suffix = r"(?!\w)" if n[-1].isalnum() else ""
+    return re.search(prefix + re.escape(n) + suffix, haystack_norm) is not None
 
 
 # --------------------------------------------------------------------------- #
