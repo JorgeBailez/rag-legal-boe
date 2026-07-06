@@ -240,7 +240,10 @@ def evaluate_generation(
         # SIEMPRE que haya respuesta (haya juez o no): el anotador humano necesita exactamente esa
         # evidencia para validar la fidelidad (afirmación-contra-evidencia); sin ella ni el κ de L3
         # ni la anotación humana que lo sustituye son válidos.
-        if answer.answered and answerable:
+        # Se reconstruye el bloque para toda pregunta respondible (respondida o abstenida): así el
+        # report guarda el contexto que vio el LLM también en las abstenciones, necesario para el
+        # análisis de errores (¿se abstuvo con la evidencia suficiente delante o no?).
+        if answerable:
             if mode == "oracle" and oracle_selection is not None:
                 evidences_block = build_evidences_block(oracle_selection.evidences)
             elif mode == "rag":
@@ -253,7 +256,7 @@ def evaluate_generation(
                         judge_error = str(exc)
             # closed_book: sin evidencia → no hay bloque que juzgar (fidelidad no aplica).
 
-        if judge is not None and evidences_block is not None:
+        if judge is not None and answer.answered and evidences_block is not None:
             try:
                 notify(
                     {
@@ -303,6 +306,19 @@ def evaluate_generation(
             {"parent_id": o.parent_id, "retrieval_rank": o.retrieval_rank, "reason": o.reason}
             for o in trace.omitted_evidences
         ]
+        # Hits de recuperación CON su score y si se seleccionaron (entregaron): permite ver el
+        # ranking y la confianza de cada candidato en el análisis de trazas.
+        retrieval_hits = [
+            {
+                "rank": h.rank,
+                "score": round(h.score, 4),
+                "parent_id": h.parent_id,
+                "block_id": h.block_id,
+                "selected": h.selected,
+                "evidence_id": h.evidence_id,
+            }
+            for h in trace.hits
+        ]
 
         metrics = compute_query_generation_metrics(
             answered=answer.answered,
@@ -330,6 +346,7 @@ def evaluate_generation(
                 "cited_parents": cited_parents,
                 "delivered_parents": delivered_parents,
                 "retrieved_parents": retrieved_parents,
+                "retrieval_hits": retrieval_hits,
                 "omitted_evidences": omitted_evidences,
                 "expected_citation_parents": expected_parents,
                 "answer_text": answer.answer,
