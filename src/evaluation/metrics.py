@@ -11,6 +11,7 @@ descartado, ausencia = no juzgado. "Relevante" = relevancia ≥ 1.
 from __future__ import annotations
 
 import math
+from statistics import NormalDist
 
 import numpy as np
 
@@ -244,6 +245,7 @@ def paired_bootstrap(
             "mean_diff": 0.0,
             "ci_low": 0.0,
             "ci_high": 0.0,
+            "p_value": 1.0,
             "seed": seed,
             "n_resamples": n_resamples,
         }
@@ -252,13 +254,85 @@ def paired_bootstrap(
     idx = rng.integers(0, diffs.size, size=(n_resamples, diffs.size))
     boot = diffs[idx].mean(axis=1)
     lo, hi = (1 - ci) / 2 * 100, (1 + ci) / 2 * 100
+    # p bootstrap a dos colas para H0: media(a − b) = 0 (fracción de remuestras al otro lado del 0)
+    p_two = 2.0 * min(float(np.mean(boot >= 0.0)), float(np.mean(boot <= 0.0)))
     return {
         "mean_diff": float(diffs.mean()),
         "ci_low": float(np.percentile(boot, lo)),
         "ci_high": float(np.percentile(boot, hi)),
+        "p_value": float(min(p_two, 1.0)),
         "seed": seed,
         "n_resamples": n_resamples,
     }
+
+
+def bca_ci(
+    values: list[float],
+    *,
+    seed: int = DEFAULT_BOOTSTRAP_SEED,
+    n_resamples: int = 1000,
+    ci: float = 0.95,
+) -> dict:
+    """IC por bootstrap **BCa** (bias-corrected and accelerated) de la media.
+
+    Corrige el sesgo del bootstrap y la asimetría (aceleración por *jackknife*); es más apropiado
+    que el percentil para tamaños pequeños (p. ej. n=28). Si la aceleración no es estimable
+    (n<2 o varianza nula) degenera con gracia al intervalo percentil.
+    """
+    a = np.asarray(values, dtype=float)
+    if a.size == 0:
+        return {"mean": 0.0, "ci_low": 0.0, "ci_high": 0.0, "seed": seed,
+                "n_resamples": n_resamples, "method": "bca"}
+    theta = float(a.mean())
+    rng = np.random.default_rng(seed)
+    idx = rng.integers(0, a.size, size=(n_resamples, a.size))
+    boot = a[idx].mean(axis=1)
+    nd = NormalDist()
+    # corrección de sesgo z0: cuántas remuestras caen por debajo del estimador puntual
+    prop = float(np.mean(boot < theta))
+    prop = min(max(prop, 1e-6), 1 - 1e-6)
+    z0 = nd.inv_cdf(prop)
+    # aceleración por jackknife (leave-one-out)
+    n = a.size
+    if n >= 2:
+        jack = (a.sum() - a) / (n - 1)
+        jm = jack.mean()
+        num = float(np.sum((jm - jack) ** 3))
+        den = 6.0 * float(np.sum((jm - jack) ** 2)) ** 1.5
+        acc = num / den if den > 0 else 0.0
+    else:
+        acc = 0.0
+    z_lo, z_hi = nd.inv_cdf((1 - ci) / 2), nd.inv_cdf((1 + ci) / 2)
+
+    def _adj(z: float) -> float:
+        return nd.cdf(z0 + (z0 + z) / (1 - acc * (z0 + z)))
+
+    return {
+        "mean": theta,
+        "ci_low": float(np.percentile(boot, 100 * _adj(z_lo))),
+        "ci_high": float(np.percentile(boot, 100 * _adj(z_hi))),
+        "seed": seed,
+        "n_resamples": n_resamples,
+        "method": "bca",
+    }
+
+
+def holm_correction(pvalues: dict[str, float], *, alpha: float = 0.05) -> dict[str, dict]:
+    """Corrección de **Holm-Bonferroni** sobre una familia de p-valores.
+
+    Controla la tasa de error por familia (FWER) con más potencia que Bonferroni simple. Aplicar
+    cuando se comparan varias variantes contra un mismo baseline (p. ej. denso vs BM25/RRF/convexa).
+    Devuelve, por nombre, el p crudo, el p ajustado (monótono no decreciente) y si es significativo.
+    """
+    items = sorted(pvalues.items(), key=lambda kv: kv[1])
+    m = len(items)
+    out: dict[str, dict] = {}
+    running = 0.0
+    for i, (name, p) in enumerate(items):
+        adj = min(max(float(p) * (m - i), running), 1.0)
+        running = adj
+        out[name] = {"p_raw": float(p), "p_holm": adj, "significant": adj < alpha}
+    return out
 
 
 # --------------------------------------------------------------------------- #
