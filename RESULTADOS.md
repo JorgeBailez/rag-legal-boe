@@ -15,11 +15,14 @@
   **significativo en pareado** y **Pareto-óptimo** (bge-m3 dominado). La **instrucción de query es
   palanca** (I1_LEGAL +0.070 SIG sobre I0_GENERIC). → **OE-03 cerrada.**
 - **Flagship denso vs BM25 vs híbrido (test held-out n=28, `retrieval_20260625T111234Z`):**
-  **denso 0.797 GANA**; convexa α0.7 0.769 (Δ−0.028 **n.s.**); RRF 0.706 (Δ−0.091 **SIG peor**);
-  BM25 0.507 (SIG peor). Ablaciones en dev: BM25 → **`heading_boost`** es el único knob significativo;
-  fusión → convexa α alto > RRF pero solo **empata** al denso. → **OE-04 cerrada.**
-- **Tesis OE-04:** con un embedder instruct fuerte sobre legislación consolidada del BOE, el **denso es
-  robustamente superior** y la **fusión no mejora** (el RRF empeora). La complementariedad sparse/denso
+  **denso 0.797 encabeza**; convexa α0.7 0.769 (Δ−0.028 **n.s.**); RRF 0.706 (Δ−0.091, p=0.026 →
+  **n.s. tras Holm-Bonferroni**, p_Holm=0.053); BM25 0.507 (Δ−0.290 **SIG peor**, p_Holm<0.001). Tras
+  corregir por comparaciones múltiples, el denso **iguala** al mejor híbrido y **ninguna fusión lo
+  supera**; solo BM25 es significativamente peor. Ablaciones en dev: BM25 → **`heading_boost`** es el
+  único knob significativo; fusión → convexa α alto > RRF pero solo **empata** al denso. → **OE-04 cerrada.**
+- **Tesis OE-04:** con un embedder instruct fuerte sobre legislación consolidada del BOE, el **denso
+  iguala al mejor híbrido y ninguna fusión lo supera**; la **fusión no aporta** (tras Holm, solo BM25
+  queda significativamente por detrás). La complementariedad sparse/denso
   es **débil**: con 92 normas la **colisión de nº de artículo** dispara los falsos positivos wrong-law
   de BM25 (re-pooling: 127/138 candidatos BM25 = rel=0). **Refuta el preliminar del corpus-10** (que
   daba `directa_articulo` 0.41→0.75); es un hallazgo honesto de tamaño-de-corpus. **→ El sistema usa
