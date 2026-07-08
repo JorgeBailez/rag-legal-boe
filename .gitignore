@@ -83,3 +83,10 @@ data/indexes/
 
 # Material de trabajo del pooling de evaluación (derivado de bundles no versionados; regenerable)
 data/evaluation/dense_retrieval_v1/_candidates/
+
+# Copias de seguridad locales
+*.bak
+
+# Validación del gold (re-anotación humana ciega + etiquetas de los modelos que se ocultan durante la
+# anotación): material interno de trabajo, no se versiona.
+data/evaluation/*/gold_validation/
