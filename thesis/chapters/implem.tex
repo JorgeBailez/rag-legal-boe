@@ -9,6 +9,12 @@ La exposición sigue el orden en que fluyen los datos —de la adquisición del 
 \label{sec:arquitectura}
 
 El sistema no es un programa monolítico, sino una \textbf{cadena de etapas independientes} conectadas por artefactos de datos versionados. Cada etapa toma como entrada el artefacto que produjo la anterior, realiza una transformación bien delimitada y persiste su resultado en disco antes de ceder el turno a la siguiente. Esta organización, próxima a la idea de \emph{tubería} (\emph{pipeline}) de procesamiento,  permite analizar el sistema por partes, reproducir cualquier resultado a partir de sus entradas y sustituir o ampliar una etapa sin rehacer las demás.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{img/arquitectura_rag.pdf}
+    \caption{Arquitectura general del sistema RAG jurídico implementado, separando la fase offline de preparación e indexación del corpus y la fase online de recuperación, construcción de evidencias y generación de una respuesta fundamentada.}
+    \label{fig:arquitectura-rag}
+\end{figure}
 
 \subsection{Principios de diseño}
 \label{subsec:principios-diseno}
