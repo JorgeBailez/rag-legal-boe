@@ -113,3 +113,95 @@ El trabajo se apoya en materiales y componentes con licencias diferenciadas, tod
   \item \textbf{Código.} Se publica como software de código abierto; la licencia concreta se incorpora al hacerse público el repositorio.
   \item \textbf{Memoria.} Se distribuye bajo licencia Creative Commons Reconocimiento-CompartirIgual (CC BY-SA 4.0).
 \end{itemize}
+
+\chapter{Planificación y bitácora del proyecto}
+\label{app:planificacion}
+
+Este anexo desarrolla la planificación temporal resumida en el capítulo de objetivos (\ref{sec:planificacion-temporal}): las ocho fases en que se organizó el trabajo y las desviaciones que el plan sufrió durante la ejecución.
+
+\section{Fases del proyecto}
+\label{sec:app-fases}
+
+La planificación se organizó en ocho fases. Varias se solaparon porque el desarrollo de un sistema RAG requiere revisar decisiones previas cuando se observan resultados experimentales o errores de integración. La Tabla~\ref{tab:fases-proyecto} resume el contenido de cada una y su estado al cierre de la memoria.
+
+\begin{table}[H]
+    \centering
+    \small
+    \renewcommand{\arraystretch}{1.18}
+    \caption{Fases principales del proyecto.}
+    \label{tab:fases-proyecto}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|p{1.3cm}|p{4.0cm}|p{8.4cm}|p{2.0cm}|}
+        \hline
+        \textbf{Fase} & \textbf{Denominación} & \textbf{Contenido principal} & \textbf{Estado} \\
+        \hline
+        F0 & Definición del problema & Delimitación del dominio jurídico, usuarios, fuente documental, alcance y criterios iniciales de utilidad. & Completada \\
+        \hline
+        F1 & Obtención y estructuración documental & Descarga desde el BOE, normalización, validación, metadatos y construcción del corpus inicial. & Completada; ampliable \\
+        \hline
+        F2 & Fragmentación e indexación & Diseño de unidades documentales, textos padre, embeddings, contratos de compatibilidad e índices. & Completada para el MVP \\
+        \hline
+        F3 & Recuperación y evaluación del \emph{retriever} & Evaluación de recuperación semántica e incorporación de recuperación léxica e híbrida para su comparación. & Completada \\
+        \hline
+        F4 & Generación fundamentada & Construcción de contexto, prompts, generación local, citas y validación de salidas. & MVP completado; en mejora \\
+        \hline
+        F5 & Demostrador de extremo a extremo & Ejecución completa del flujo pregunta--respuesta con citas mediante línea de comandos y cuadernos reproducibles. La interfaz web se pospone a trabajo futuro. & Completada para el MVP \\
+        \hline
+        F6 & Evaluación integral & Batería de preguntas, métricas, análisis cualitativo, abstención y estudio de errores. & Completada \\
+        \hline
+        F7 & Documentación y cierre & Memoria, anexos, reproducibilidad, revisión formal y preparación de la defensa. & En curso \\
+        \hline
+    \end{tabular}%
+    }
+\end{table}
+
+\section{Desviaciones y ajustes}
+\label{sec:app-desviaciones}
+
+Como es natural en un trabajo experimental, el plan se ajustó al chocar con la realidad. Las desviaciones principales fueron cuatro.
+
+\begin{description}
+  \item[Cambio de fuente documental.] El proyecto arrancó sobre documentos legales en \emph{texto plano}, sin estructura explícita. Esa falta de estructura complicaba enormemente una fragmentación que respetara la unidad jurídica —la base sobre la que se apoya todo lo demás—. Hacia mayo de 2026 se decidió cambiar a la legislación consolidada del BOE, cuya API expone la estructura de bloques, versiones y metadatos; el cambio, lejos de ser un retroceso, es lo que hizo viables la estrategia \emph{parent-child} y la trazabilidad que vertebran el sistema.
+  \item[Ampliación del corpus.] El corpus pasó de un MVP de \textbf{10 normas}, para demostrar factibilidad, a las \textbf{92 normas} finales, con las que dar cobertura significativa a distintas áreas de uso ciudadano. La ampliación obligó a endurecer el \emph{parser} y la auditoría (véanse los problemas resueltos en el capítulo de diseño).
+  \item[Re-priorización de la generación y del juez.] A finales de junio de 2026, la generación fundamentada y la \emph{validación del modelo juez frente a anotación humana} pasaron de secundarias a objetivos de primera clase, gestionados por niveles de evidencia. Fue una decisión de alcance: invertir horas de anotación para poder afirmar —o negar— algo con rigor sobre la calidad de la generación.
+  \item[Giro a la GPU.] El coste de codificar los \emph{embeddings} en CPU obligó a habilitar la ejecución en GPU para la indexación, como se detalla en el capítulo de diseño; además, un modelo candidato (\texttt{gte-multilingual-base}) quedó aplazado por una incompatibilidad técnica.
+\end{description}
+
+\chapter{Problemas resueltos durante la implementación}
+\label{app:problemas}
+
+Este anexo recoge, con su diagnóstico y su solución, los problemas de mayor impacto que surgieron al construir el sistema y que se mencionan de forma resumida en el capítulo de diseño (\ref{chap:diseño}). Se conservan aquí por su valor de reproducibilidad y como ilustración de las decisiones de ingeniería que sostienen la calidad del corpus, ordenados según la etapa de la cadena de datos en la que aparecieron.
+
+\section{Construcción y auditoría del corpus}
+
+\begin{myredbox}{Problema resuelto: una norma sin texto consolidado}
+Al descargar las 93 normas seleccionadas, una falló: la API de legislación consolidada devolvió un error \texttt{HTTP 404} («recurso no encontrado») para la Ley 35/2015, de valoración de daños. La causa es que se trata de una \emph{ley de reforma} que no tiene un texto consolidado propio en la API; su contenido —un baremo de indemnizaciones— vive en realidad dentro de un anexo de otra norma (el Real Decreto Legislativo 8/2004) que \emph{ya} estaba en el corpus. En lugar de forzar su inclusión, se dejó fuera y se documentó el porqué, con lo que el corpus quedó en \textbf{92 normas}. Es el criterio de inclusión en acción: una norma solo entra si está vigente, con su estado de consolidación «finalizado» y todos sus recursos disponibles; lo que no cumple se reporta, nunca se sustituye a escondidas.
+\end{myredbox}
+
+\begin{myredbox}{Problema resuelto: 214 «errores» de auditoría que no lo eran}
+Al pasar la comprobación de calidad (la auditoría relacional del corpus) sobre las 92 normas, saltaron 214 «errores» aparentemente bloqueantes. Investigados uno a uno, ninguno era un fallo real: eran \emph{falsos positivos} de la propia comprobación. Por ejemplo, marcaba como error los bloques excluidos a propósito (que llevan \texttt{parent\_id} nulo por diseño), los fragmentos con un identificador por encima de un límite fijado un poco a ojo (\texttt{chunk\_id > 1000}) o una cadena literal de una tabla de valores (como \texttt{<P20>}) que confundía con un identificador interno. La solución fue afinar la auditoría para \emph{distinguir} lo excluido por política de lo realmente roto; tras ello, cero errores verdaderos. La lección: una alarma que salta sin motivo acaba siendo tan inútil como no tenerla, y conviene separar la \emph{integridad} (errores reales) de la \emph{cobertura} (exclusiones legítimas).
+\end{myredbox}
+
+\section{Interpretación del documento y vigencia temporal}
+
+\begin{myredbox}{Problema resuelto: texto antiguo colándose como vigente}
+Cuando una ley se reforma, el texto consolidado del BOE conserva —junto a la redacción vigente— la \emph{antigua} y notas del tipo «este artículo estuvo redactado así hasta 2015». En el documento estructurado del BOE ese material caducado va envuelto en un elemento \texttt{<blockquote>} (la etiqueta HTML que marca un texto citado o entrecomillado), mientras que la redacción vigente va en párrafos normales (\texttt{<p>}). El primer \emph{parser} decidía qué descartar mirando la \emph{clase CSS} de cada párrafo —una etiqueta de estilo, del tipo \texttt{class="nota\_pie"}—, pero esas clases no eran consistentes entre normas, de modo que redacciones ya derogadas se colaban en el texto indexable: en la ley de consumidores entraron \textbf{203 fragmentos} de artículos derogados como si siguieran vigentes. La solución fue clasificar por la \emph{estructura} y no por el estilo: todo lo que cuelga de un \texttt{<blockquote>} es aparato editorial —nota o redacción antigua— y no se indexa; y una comprobación de auditoría (\texttt{editorial\_leak}) avisa si algo se cuela. Importa mucho porque, si el sistema citara un artículo derogado como vigente, daría una respuesta equivocada pero con toda la apariencia de estar bien fundamentada: el peor tipo de error en derecho.
+\end{myredbox}
+
+\begin{myredbox}{Problema resuelto: tablas perdidas o duplicadas}
+El BOE codifica las tablas de dos formas distintas en su HTML: unas con párrafos dentro de cada celda (\texttt{<td><p>...}) y otras con la celda «cruda», sin párrafo (\texttt{<td>} a secas). El primer \emph{parser}, que solo sabía leer párrafos, trataba mal ambas: duplicaba las de la primera forma —leía la celda como párrafo suelto y otra vez como parte de la tabla— y perdía por completo las de la segunda. Así desapareció, por ejemplo, la tabla de coeficientes del artículo 107 de la ley de haciendas locales: \textbf{22 filas} de valores que nunca se indexaron, de modo que el sistema no podía responder sobre ellas. La solución fue \emph{linealizar} toda tabla fila a fila —uniendo cada concepto con su valor en una sola línea, p. ej. «municipios de más de 100.000 hab. $\rightarrow$ coeficiente 1,29»— y registrar con una comprobación (\texttt{table\_cell\_dropped}) cualquier celda que quedara fuera. Sumado a la limpieza del texto antiguo del caso anterior, este arreglo recuperó \textbf{226 fragmentos contaminados en 15 de las 92 normas}.
+\end{myredbox}
+
+\begin{myredbox}{Problema resuelto: servir la redacción equivocada}
+Un mismo artículo puede arrastrar varias redacciones, una por cada reforma; el sistema debe servir la que está en vigor \emph{hoy}. El criterio intuitivo —«quédate con la última redacción que aparece en el XML»— falla, porque el orden del fichero no es cronológico y la fecha más alta puede corresponder a una reforma aún no vigente. Ocurrió de verdad: el artículo 45 de la ley de bases de régimen local acababa mostrando su redacción de \textbf{1990 en lugar de la vigente de 2013}, y lo mismo en otros 7 bloques del corpus. El criterio correcto (la regla de vigencia se detalla en \ref{subsec:vigencia}) es tomar la redacción cuya fecha de publicación (\texttt{fecha\_publicacion}) coincide \emph{exactamente} con la fecha de actualización que el índice de la norma (\texttt{indice.xml}) declara como vigente, y recalcularlo de forma independiente en la auditoría. Es uno de los pasos más delicados de todo el procesamiento: servir un artículo caducado no es un fallo cosmético, es dar información jurídica falsa.
+\end{myredbox}
+
+\section{Indexación}
+
+\begin{myredbox}{Problema resuelto: un fragmento que bloqueaba la indexación}
+Para indexar, el sistema parte cada artículo en trozos y necesita \emph{anclar} cada trozo a su posición —el número de párrafo— dentro del artículo original. Un artículo del reglamento general de circulación (el artículo 9) contiene varias líneas \emph{idénticas} repetidas; al anclar un trozo, su texto casaba en más de una posición a la vez y el sistema no podía decidir cuál. Ese fallo \textbf{tumbaba por completo} la construcción del índice denso del corpus de 92 normas (con las 10 iniciales no llegaba a darse). La solución fue anclar con un \emph{cursor por artículo} (por bloque padre): en vez de buscar el texto en todo el artículo, se avanza un cursor solo hacia adelante y solo dentro del mismo artículo, de modo que dos líneas iguales se distinguen por su orden de aparición. Tras el arreglo, los 24.788 trozos del corpus se anclaron sin un solo fallo.
+\end{myredbox}
+
+\begin{mybluebox}{Del CPU a la GPU: cuando indexar dejó de ser viable}
+Codificar los \emph{embeddings} de todo el corpus en CPU resultó prohibitivo: del orden de decenas de horas por modelo (más de 36 en las primeras estimaciones). Con varios modelos candidatos que comparar, ese coste hacía inviable iterar. La solución fue añadir un conmutador de dispositivo (\texttt{--device \{cpu,cuda\}}) al generador de índices: en GPU, la misma codificación pasa de horas a minutos. El sistema conserva la CPU como opción por defecto —con semilla fija, para no perder reproducibilidad— y recurre a la GPU solo de forma puntual para acelerar la indexación; el dispositivo empleado queda anotado en el manifiesto del \emph{bundle}, de modo que cada índice registra cómo se construyó.
+\end{mybluebox}

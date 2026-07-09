@@ -21,7 +21,7 @@ El objetivo general —diseñar, implementar y evaluar de forma rigurosa un sist
 
   \item[OE-07 (ejecución de la evaluación y análisis de errores).] \textbf{Conseguido, con la potencia como límite reconocido.} Se ejecutó la evaluación y se analizaron los modos de fallo (el colapso del léxico ante lenguaje ciudadano, la indulgencia del juez, la sobre-abstención del generador). Las conclusiones de recuperación están razonablemente potenciadas; las de generación, apoyadas en un gold revisado —ampliado a las 28 preguntas respondibles de \emph{test}— pero aún de tamaño modesto, se reportan como indicativas.
 
-  \item[OE-08 (reproducibilidad y uso responsable).] \textbf{Conseguido.} El sistema se sostiene íntegramente sobre software y modelos de código abierto ejecutados en local, con artefactos versionados y trazables, y con un análisis explícito de sus límites técnicos, jurídicos y éticos.
+  \item[OE-08 (reproducibilidad y uso responsable).] \textbf{Conseguido.} El sistema se sostiene íntegramente sobre software y modelos de código abierto ejecutados localmente, con artefactos versionados y trazables, y con un análisis explícito de sus límites técnicos, jurídicos y éticos.
 \end{description}
 
 En conjunto, la pata de recuperación queda cerrada con evidencia sólida; la de generación queda establecida y honestamente acotada por el tamaño de la anotación y por la insuficiencia del juez. Ninguna conclusión fuerte se apoya en una métrica no validada.
@@ -48,8 +48,7 @@ El Trabajo Fin de Grado ha integrado conocimientos de buena parte del Grado en C
 
 \begin{enumerate}
   \item \textbf{Medir vence a la intuición.} La fusión híbrida «parecía» ayudar en un corpus pequeño y dejó de hacerlo al medirla con rigor sobre 92 normas. Sin el experimento, se habría adoptado una complejidad que no aporta.
-  \item \textbf{Un resultado negativo también es un resultado.} Descubrir que el modelo juez no es fiable —y reportarlo con sus datos— vale más que exhibir una métrica automática cómoda pero sin respaldo.
-  \item \textbf{No hay que creerse a un evaluador automático sin validarlo.} La misma cautela que se pide al generador se aplicó al juez, y solo tras contrastarlo con anotación humana se supo que no se podía confiar en él.
+  \item \textbf{Un resultado negativo también es un resultado, y a un evaluador automático no hay que creerlo sin validarlo.} La misma cautela que se pide al generador se aplicó al juez: solo tras contrastarlo con anotación humana se supo que no era fiable, y reportarlo con sus datos vale más que exhibir una métrica automática cómoda pero sin respaldo.
   \item \textbf{La distancia entre el lenguaje ciudadano y el normativo es real y medible.} El desplome del léxico en las consultas ciudadanas lo confirma con números, no con impresiones.
   \item \textbf{La dificultad del dominio está en el detalle.} Resolver correctamente la vigencia temporal de cada precepto fue más delicado —y más importante— que cualquier ajuste de modelo.
   \item \textbf{La ingeniería reproducible desde el principio ahorra dolor.} Contratos de datos, artefactos versionados y una suite de pruebas sin red hicieron posible razonar sobre el sistema y confiar en cada tabla del capítulo de experimentos.

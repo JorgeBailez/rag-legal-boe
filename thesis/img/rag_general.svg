@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 360" role="img" aria-labelledby="rt rd">
+<title id="rt">Esquema conceptual de un sistema RAG</title>
+<desc id="rd">Diagrama genérico de un sistema de generación aumentada por recuperación. El usuario emite una consulta; en la fase de recuperación un recuperador consulta una base de conocimiento y obtiene fragmentos relevantes; en la fase de generación esos fragmentos se combinan con la consulta en un prompt aumentado que un modelo de lenguaje usa para producir la respuesta.</desc>
+<style>
+  .zone{fill:#f5f9fe;stroke:#4a92d4;stroke-width:1.2;stroke-dasharray:5 4;}
+  .zlab{fill:#4a92d4;font-family:'Lato','Segoe UI',sans-serif;font-size:11px;font-weight:700;letter-spacing:1px;}
+  .b{fill:#eef3fb;stroke:#122e74;stroke-width:1.5;}
+  .lbl{fill:#122e74;font-family:'Lato','Segoe UI',sans-serif;font-size:12.5px;font-weight:600;text-anchor:middle;}
+  .sub{fill:#4a6291;font-family:'Lato','Segoe UI',sans-serif;font-size:10px;text-anchor:middle;}
+  .alab{fill:#5b6b8c;font-family:'Lato','Segoe UI',sans-serif;font-size:10px;font-style:italic;text-anchor:middle;}
+  .fl{stroke:#122e74;stroke-width:1.5;fill:none;}
+  .fd{stroke:#4a92d4;stroke-width:1.5;fill:none;}
+  .fr{stroke:#9aa4b8;stroke-width:1.4;fill:none;stroke-dasharray:5 4;}
+  .side{stroke:#4a92d4;stroke-width:1.5;}
+</style>
+<defs>
+  <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#122e74"/></marker>
+  <marker id="ad" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4a92d4"/></marker>
+  <marker id="am" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9aa4b8"/></marker>
+</defs>
+<rect class="zone" x="132" y="44" width="190" height="232" rx="12"/>
+<text class="zlab" x="146" y="62">RECUPERACIÓN</text>
+<rect class="zone" x="402" y="44" width="476" height="232" rx="12"/>
+<text class="zlab" x="416" y="62">GENERACIÓN</text>
+<rect class="b" x="20" y="74" width="92" height="52" rx="9"/>
+<text class="lbl" x="66" y="105">Usuario</text>
+<rect class="b" x="162" y="76" width="130" height="52" rx="9"/>
+<text class="lbl" x="227" y="97">Recuperador</text><text class="sub" x="227" y="113">(retriever)</text>
+<ellipse cx="227" cy="244" rx="62" ry="9" fill="#dce8f7" stroke="#4a92d4"/>
+<rect x="165" y="192" width="124" height="52" fill="#dce8f7"/>
+<line class="side" x1="165" y1="192" x2="165" y2="244"/>
+<line class="side" x1="289" y1="192" x2="289" y2="244"/>
+<ellipse cx="227" cy="192" rx="62" ry="9" fill="#e7f0fb" stroke="#4a92d4"/>
+<text class="lbl" x="227" y="218" style="font-size:11px">Base de conocimiento</text>
+<text class="sub" x="227" y="232">(corpus documental)</text>
+<rect class="b" x="422" y="76" width="140" height="52" rx="9"/>
+<text class="lbl" x="492" y="97" style="font-size:12px">Prompt aumentado</text><text class="sub" x="492" y="113">(consulta + contexto)</text>
+<rect class="b" x="602" y="76" width="122" height="52" rx="9"/>
+<text class="lbl" x="663" y="97" style="font-size:11.5px">Modelo de lenguaje</text><text class="sub" x="663" y="113">(LLM)</text>
+<rect class="b" x="750" y="76" width="112" height="52" rx="9"/>
+<text class="lbl" x="806" y="106">Respuesta</text>
+<text class="alab" x="137" y="92">consulta</text>
+<path class="fl" d="M112,100 H162" marker-end="url(#ah)"/>
+<text class="alab" x="184" y="162">búsqueda</text>
+<text class="alab" x="283" y="162">fragmentos</text>
+<path class="fl" d="M215,128 V186" marker-end="url(#ah)"/>
+<path class="fd" d="M239,192 V130" marker-end="url(#ad)"/>
+<text class="alab" x="357" y="94">contexto recuperado</text>
+<path class="fl" d="M292,102 H422" marker-end="url(#ah)"/>
+<circle cx="125" cy="100" r="2.6" fill="#122e74"/>
+<text class="alab" x="300" y="294">consulta</text>
+<path class="fl" d="M125,100 V300 H492 V128" marker-end="url(#ah)"/>
+<path class="fl" d="M562,102 H602" marker-end="url(#ah)"/>
+<path class="fl" d="M724,102 H750" marker-end="url(#ah)"/>
+<text class="alab" x="430" y="344">respuesta</text>
+<path class="fr" d="M806,128 V328 H66 V126" marker-end="url(#am)"/>
+</svg>

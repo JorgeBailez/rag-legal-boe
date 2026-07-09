@@ -21,24 +21,24 @@ La consolidación normativa consiste, de forma general, en integrar en un único
 
 Esta distinción condiciona el alcance de cualquier aplicación basada en estos textos. Un sistema de consulta ciudadana puede ayudar a localizar información normativa, resumirla de forma comprensible y mostrar las fuentes utilizadas, pero no debe presentarse como sustituto de la publicación oficial ni como herramienta de asesoramiento jurídico profesional. En consecuencia, la trazabilidad no es un requisito accesorio: constituye una condición esencial para que el usuario pueda revisar el origen de la información.
 
-Otra dificultad específica del dominio normativo es la diferencia entre el lenguaje de la ciudadanía y la redacción formal de las normas. Una persona puede preguntar, por ejemplo, ``¿cuántos días tengo para recurrir una multa?'' o ``¿pueden despedirme durante una baja médica?'', mientras que los documentos normativos pueden emplear expresiones como ``plazo para interponer recurso'', ``procedimiento sancionador'', ``extinción del contrato de trabajo'' o ``incapacidad temporal''. Esta distancia lingüística justifica la necesidad de estudiar técnicas de recuperación que no dependan únicamente de coincidencias exactas entre las palabras de la consulta y las palabras del documento.
+Otra dificultad específica del dominio normativo es la distancia entre el lenguaje de la ciudadanía y la redacción formal de las normas: una persona pregunta con vocabulario cotidiano, mientras que el texto emplea expresiones técnicas como ``procedimiento sancionador'', ``extinción del contrato de trabajo'' o ``incapacidad temporal''. Esa distancia justifica estudiar técnicas de recuperación que no dependan únicamente de coincidencias exactas entre las palabras de la consulta y las del documento.
 
 \section{Recuperación de información}
 \label{sec:recuperacion-informacion}
 
 La recuperación de información estudia cómo seleccionar, de una colección documental, aquellos elementos que son relevantes para una necesidad de información expresada mediante una consulta. En un sistema de consulta normativa, la colección está formada por documentos legales o por fragmentos derivados de ellos; la consulta es una pregunta formulada por el usuario; y la salida del recuperador es una lista ordenada de evidencias candidatas.
 
-El concepto de relevancia es central. Un fragmento puede ser relevante porque contiene directamente la respuesta, porque aporta una definición necesaria, porque delimita una excepción o porque enlaza con otra parte de la norma. En sistemas RAG, la recuperación adquiere una importancia adicional: los documentos seleccionados no son el resultado final, sino la información que condicionará la respuesta generada por el modelo de lenguaje. Si el recuperador omite un fragmento esencial, la fase generativa puede responder de forma incompleta; si incluye demasiado ruido, el modelo puede apoyarse en información irrelevante o contradictoria.
+En sistemas RAG la recuperación adquiere una importancia añadida: los documentos seleccionados no son el resultado final, sino la información que condicionará la respuesta del modelo. Si el recuperador omite un fragmento esencial, la respuesta será incompleta; si incluye demasiado ruido, el modelo puede apoyarse en información irrelevante o contradictoria.
 
-Los sistemas de recuperación suelen ordenar los resultados y devolver únicamente los primeros elementos, habitualmente denominados \emph{top-k}. Esta selección es necesaria por razones prácticas: los modelos generativos tienen una ventana de contexto limitada y no pueden recibir todo el corpus en cada consulta. Por tanto, el recuperador actúa como un filtro que determina qué partes del corpus estarán disponibles para la generación.
+Por razones prácticas, el recuperador ordena los resultados y entrega solo los primeros (\emph{top-k}): como la ventana de contexto del modelo es limitada, actúa como un filtro que determina qué partes del corpus llegan a la generación.
 
-La evaluación de la recuperación se apoya en métricas que comparan los documentos recuperados con un conjunto de referencias consideradas relevantes. Entre las más habituales se encuentran la precisión, la exhaustividad, \emph{Recall@k}, \emph{Mean Reciprocal Rank} (MRR) y \emph{Normalized Discounted Cumulative Gain} (nDCG). Cada una mide un aspecto diferente: si los resultados son relevantes, si aparecen suficientes evidencias, si la primera respuesta útil aparece pronto o si el orden de los documentos recuperados es adecuado.
+Para evaluarla se comparan los documentos recuperados con un conjunto de referencias relevantes mediante métricas como \emph{Recall@k}, \emph{Mean Reciprocal Rank} (MRR) y \emph{Normalized Discounted Cumulative Gain} (nDCG), que capturan, respectivamente, si aparecen suficientes evidencias, si la primera útil llega pronto y si el orden es adecuado.
 
 El cálculo de estas métricas presupone disponer de \emph{juicios de relevancia}: un conjunto de pares consulta--documento etiquetados como relevantes o no relevantes que actúa como referencia (\emph{gold standard}). Construir esos juicios de forma exhaustiva resulta inviable en colecciones de cierto tamaño, por lo que la metodología clásica de evaluación —procedente de la tradición de Cranfield y consolidada en las campañas TREC— recurre al \emph{pooling}: se reúnen los primeros resultados devueltos por varios sistemas y solo se anotan los documentos de ese conjunto común. Esta técnica ahorra esfuerzo, pero arrastra un riesgo conocido. Si el conjunto anotado es pequeño o procede de sistemas poco diversos, los juicios quedan \emph{incompletos} y sesgados a favor de los documentos que esos sistemas ya recuperaban, de modo que un recuperador no representado en la anotación puede quedar injustamente penalizado al recuperar documentos relevantes que nunca llegaron a juzgarse \cite{buckley2004incomplete}. De ahí se derivan dos cautelas metodológicas: conviene construir el conjunto de juicios a partir de sistemas diversos y conviene acompañar toda comparación entre recuperadores de pruebas de significancia estadística que distingan las diferencias reales del ruido del muestreo \cite{smucker2007significance}.
 
 El benchmark BEIR ilustra la diversidad de enfoques de recuperación y la necesidad de evaluar en condiciones heterogéneas. Sus autores comparan modelos léxicos, dispersos, densos, de interacción tardía y de reordenación sobre múltiples conjuntos de datos, y muestran que BM25 continúa siendo una línea base robusta, mientras que algunas técnicas de reordenación pueden mejorar resultados a costa de un mayor coste computacional \cite{thakur2021beir}. En una línea complementaria, el \emph{Massive Text Embedding Benchmark} (MTEB) sistematiza la evaluación de modelos de \emph{embeddings} sobre numerosas tareas e idiomas, y se ha consolidado como una referencia habitual para comparar la calidad de las representaciones vectoriales antes de seleccionar un modelo \cite{muennighoff2023mteb}. Esta observación es relevante para el presente TFG: la recuperación semántica puede resultar atractiva por su capacidad para capturar reformulaciones, pero debe compararse empíricamente con alternativas léxicas e híbridas.
 
-\section{Recuperación léxica}
+\subsection{Recuperación léxica}
 \label{sec:recuperacion-lexica}
 
 La recuperación léxica se basa en la coincidencia entre los términos de la consulta y los términos presentes en los documentos. Su enfoque parte de una intuición sencilla: un documento que contiene palabras relevantes de la consulta tiene más probabilidad de responder a la necesidad de información. Para que esta búsqueda sea eficiente, los sistemas suelen utilizar índices invertidos, estructuras que asocian cada término con los documentos o fragmentos en los que aparece. Antes de construir ese índice, el texto se somete a un \emph{preprocesado lingüístico} que determina qué se considera un «término»: segmentación en unidades léxicas (\emph{tokens}), normalización de mayúsculas y signos, eliminación opcional de palabras vacías (\emph{stopwords}) y reducción de las palabras a una forma común mediante \emph{stemming} o lematización \cite{manning2008ir}. Estas decisiones, en apariencia menores, condicionan qué consultas casan con qué documentos y resultan especialmente sensibles en español, una lengua con flexión morfológica rica.
@@ -47,13 +47,11 @@ Uno de los modelos más utilizados en recuperación léxica es BM25. Este métod
 
 En el dominio jurídico, la recuperación léxica tiene ventajas claras. Muchos conceptos normativos poseen una denominación técnica relativamente estable: ``recurso de alzada'', ``despido disciplinario'', ``incapacidad temporal'', ``silencio administrativo'' o ``protección de datos''. Cuando el usuario emplea esos términos, un método léxico puede localizar con precisión los fragmentos que los contienen. Además, BM25 es interpretable, eficiente y puede ejecutarse adecuadamente en CPU, lo que encaja con entornos locales y reproducibles.
 
-No obstante, la recuperación léxica también presenta limitaciones. Su rendimiento depende del solapamiento superficial entre consulta y documento. Si una persona pregunta con vocabulario cotidiano y la norma utiliza términos técnicos diferentes, el sistema puede no recuperar el pasaje relevante. Por ejemplo, una consulta como ``¿qué pasa si la administración no me contesta?'' puede estar relacionada con el concepto jurídico de ``silencio administrativo'', aunque no contenga esa expresión. Este tipo de diferencia entre lenguaje ciudadano y lenguaje normativo justifica estudiar técnicas semánticas.
+No obstante, la recuperación léxica también presenta limitaciones, pues depende del solapamiento superficial entre consulta y documento: si el usuario pregunta con vocabulario cotidiano y la norma emplea términos técnicos distintos —``silencio administrativo'' frente a ``no me contesta la administración''—, el pasaje relevante puede no recuperarse. Esta diferencia justifica estudiar técnicas semánticas.
 
 Conviene señalar, por último, que la frontera entre lo léxico y lo neuronal se ha difuminado con los modelos de \emph{recuperación dispersa aprendida}, como SPLADE, que emplean redes neuronales para ponderar los términos e incluso expandir el texto con vocabulario relacionado, conservando al mismo tiempo la eficiencia del índice invertido \cite{formal2021splade}. Estos modelos quedan fuera del alcance de este trabajo, pero muestran que la recuperación léxica sigue siendo una línea de investigación activa y no un residuo histórico.
 
-La recuperación léxica no es una solución obsoleta ni un mero trámite: es una línea base necesaria y una estrategia potencialmente útil, especialmente en consultas con términos jurídicos precisos.
-
-\section{Representaciones vectoriales y recuperación semántica}
+\subsection{Representaciones vectoriales y recuperación semántica}
 \label{sec:recuperacion-semantica}
 
 La recuperación semántica busca superar la dependencia exclusiva de coincidencias léxicas. Para ello representa consultas y documentos mediante vectores numéricos, conocidos como \emph{embeddings}, que intentan capturar propiedades semánticas del texto. Si una consulta y un fragmento documental expresan ideas relacionadas, sus vectores deberían situarse cerca en el espacio de representación, aunque no compartan exactamente las mismas palabras.
@@ -66,9 +64,9 @@ A partir de esas ideas, los modelos de \emph{embeddings} han evolucionado en dos
 
 La recuperación semántica presenta ventajas relevantes para una aplicación de consulta ciudadana. Puede recuperar fragmentos relacionados con la intención del usuario aunque la consulta no reproduzca literalmente la terminología jurídica. También permite trabajar con preguntas más naturales, lo que mejora la experiencia de personas no expertas. Sin embargo, no elimina la necesidad de evaluación. Los embeddings pueden recuperar documentos semánticamente cercanos pero insuficientes para responder, pueden confundir conceptos próximos y pueden depender del dominio y del idioma para el que el modelo ha sido entrenado.
 
-Cuando el corpus crece, la búsqueda exhaustiva sobre todos los vectores puede resultar costosa. Por ello suelen emplearse índices vectoriales o bases de datos vectoriales, diseñadas para almacenar embeddings y realizar búsquedas eficientes de similitud. Estas herramientas pueden incluir técnicas de búsqueda aproximada, filtrado por metadatos y persistencia de índices.
+Cuando el corpus crece, la búsqueda exhaustiva sobre todos los vectores puede encarecerse; para escalarla suelen emplearse índices vectoriales con búsqueda aproximada, aunque a la escala de este trabajo la búsqueda exacta sigue siendo viable, como se justifica en el capítulo de diseño.
 
-\section{Recuperación híbrida}
+\subsection{Recuperación híbrida}
 \label{sec:recuperacion-hibrida}
 
 La recuperación léxica y la recuperación semántica capturan señales diferentes. La primera es fuerte cuando existen coincidencias terminológicas precisas; la segunda es útil cuando la consulta y el documento expresan ideas similares con vocabularios distintos. En dominios especializados, como el jurídico, ambas señales pueden ser complementarias: una consulta puede contener términos técnicos que conviene preservar, pero también reformulaciones ciudadanas que requieren aproximación semántica.
@@ -81,14 +79,10 @@ Frente a la fusión basada en rangos, otra familia de métodos combina directame
 
 También existen enfoques híbridos más específicos. Algunos sistemas combinan BM25 con recuperación densa mediante pesos ajustables; otros utilizan recuperación léxica para obtener candidatos iniciales y recuperación semántica para ampliar la cobertura; otros aplican filtros por metadatos antes o después de la búsqueda. La elección depende del corpus, del tipo de consulta, de los recursos disponibles y de la métrica que se quiera optimizar.
 
-La superioridad de la recuperación híbrida no se da por supuesta: debe demostrarse empíricamente, y el método concreto de combinación se decide y valida más adelante.
-
 \section{Modelos de lenguaje}
 \label{sec:modelos-lenguaje}
 
-Los modelos de lenguaje son sistemas capaces de estimar y generar secuencias de texto a partir de patrones aprendidos durante su entrenamiento. En las arquitecturas modernas, estos modelos suelen estar basados en Transformer, una arquitectura introducida por Vaswani et al. que sustituyó las estructuras recurrentes tradicionales por mecanismos de atención \cite{vaswani2017attention}. La atención permite que el modelo relacione diferentes posiciones de una secuencia y utilice información contextual para producir representaciones más ricas.
-
-Para comprender su papel en un sistema RAG no es necesario desarrollar toda la arquitectura interna del Transformer, pero sí conviene introducir algunos conceptos. En primer lugar, los modelos de lenguaje operan sobre unidades llamadas \emph{tokens}, que pueden corresponder a palabras, partes de palabras o signos. En segundo lugar, generan texto de forma condicionada: la salida depende del texto de entrada, de las instrucciones proporcionadas y del contexto disponible. En tercer lugar, cada modelo tiene una ventana de contexto limitada, lo que impide introducir documentos extensos completos en cada consulta.
+Los modelos de lenguaje estiman y generan secuencias de texto a partir de patrones aprendidos durante el entrenamiento. Las arquitecturas modernas se basan en el Transformer, que sustituyó las estructuras recurrentes por mecanismos de atención \cite{vaswani2017attention}. Para comprender su papel en un RAG bastan tres nociones: operan sobre unidades llamadas \emph{tokens} (palabras, partes de palabra o signos); generan de forma condicionada por la entrada, las instrucciones y el contexto disponible; y disponen de una ventana de contexto limitada, que impide introducir documentos extensos completos en cada consulta.
 
 Los modelos de gran tamaño han demostrado capacidades notables para seguir instrucciones, resumir información y producir respuestas en lenguaje natural. Brown et al. mostraron que el aumento de escala podía mejorar el rendimiento en múltiples tareas mediante aprendizaje en contexto \cite{brown2020language}. Sin embargo, estas capacidades no implican que el modelo disponga de conocimiento actualizado ni que sus respuestas estén automáticamente fundamentadas en una fuente verificable.
 
@@ -116,7 +110,14 @@ En el dominio jurídico, estas limitaciones tienen consecuencias particulares. D
 
 Retrieval-Augmented Generation, o RAG, combina un modelo generativo con una memoria externa formada por documentos recuperables. Lewis et al. proponen esta arquitectura como una forma de combinar memoria paramétrica, contenida en los pesos del modelo, y memoria no paramétrica, representada por una colección documental accesible mediante recuperación \cite{lewis2020rag}. El objetivo es que el modelo no dependa únicamente de lo aprendido durante el entrenamiento, sino que pueda condicionar su respuesta a pasajes concretos recuperados en tiempo de consulta.
 
-Un flujo RAG típico consta de varias etapas. Primero, el sistema recibe una pregunta. Después, un recuperador selecciona documentos o fragmentos relevantes de la colección. A continuación, esos fragmentos se ensamblan en un contexto que se entrega al modelo de lenguaje junto con la pregunta y las instrucciones. Finalmente, el modelo genera una respuesta que debería estar fundamentada en el contexto suministrado.
+Un flujo RAG típico consta de varias etapas. Primero, el sistema recibe una pregunta. Después, un recuperador selecciona documentos o fragmentos relevantes de la colección. A continuación, esos fragmentos se ensamblan en un contexto que se entrega al modelo de lenguaje junto con la pregunta y las instrucciones. Finalmente, el modelo genera una respuesta que debería estar fundamentada en el contexto suministrado. La Figura~\ref{fig:rag-generico} resume este flujo genérico, con sus dos fases —recuperación y generación—.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{img/rag_general.pdf}
+    \caption{Esquema conceptual de un sistema de generación aumentada por recuperación (RAG). Ante una consulta del usuario, un recuperador selecciona información relevante de una base de conocimiento; ese contexto recuperado se combina con la consulta original en un \emph{prompt} aumentado, a partir del cual un modelo de lenguaje genera la respuesta. Se distinguen las dos fases del proceso: recuperación y generación.}
+    \label{fig:rag-generico}
+\end{figure}
 
 Esta arquitectura resulta adecuada para la consulta de normativa por varias razones. Permite actualizar el corpus sin reentrenar el modelo generativo, facilita mostrar las fuentes utilizadas y reduce la dependencia del conocimiento paramétrico del modelo. Además, permite separar responsabilidades: el recuperador localiza evidencias; el constructor de contexto selecciona y organiza la información; el modelo redacta la respuesta; y los mecanismos de validación comprueban que la salida respete el formato y las citas esperadas.
 
@@ -197,39 +198,37 @@ Estos ejemplos no constituyen respuestas jurídicas ni casos cerrados. Su funci�
 \section{Tecnologías y bibliotecas utilizadas}
 \label{sec:tecnologias}
 
-El sistema se construye por completo sobre bibliotecas de código abierto del ecosistema de Python, en coherencia con el principio de ejecución local y abierta que guía el proyecto. Esta sección reseña las más relevantes, agrupadas por su papel, indicando para cada una qué es y, sobre todo, para qué se utiliza concretamente en este trabajo; varias utilidades de apoyo menores se mencionan de forma agrupada al final.
+El sistema se construye por completo sobre bibliotecas de código abierto del ecosistema de Python, en coherencia con el principio de ejecución local y abierta que guía el proyecto. La Tabla~\ref{tab:tecnologias} reseña las principales indicando el papel concreto que desempeña cada una.
 
-\paragraph{Adquisición, validación y manejo de datos.}
-\begin{description}
-  \item[Pydantic] Biblioteca de validación de datos basada en las anotaciones de tipo de Python, con su núcleo escrito en Rust para mayor rendimiento \cite{pydantic}. En el proyecto define los \emph{contratos} de datos —la fuente única de verdad descrita en el capítulo de diseño—: cada artefacto se valida contra un modelo que prohíbe campos ajenos y fija su versión de esquema. Su extensión \emph{pydantic-settings}, junto con \emph{python-dotenv}, gestiona la configuración a partir del entorno sin incrustar secretos en el código.
-  \item[HTTPX] Cliente HTTP moderno para Python, con interfaces síncrona y asíncrona y anotado de tipos \cite{httpx}. Es el cliente con el que el sistema descarga las normas de la API del BOE y, más tarde, dialoga con el servidor local de modelos; su diseño inyectable permite probar ambos sin abrir red real.
-  \item[lxml] Enlace de Python a las bibliotecas en C \emph{libxml2} y \emph{libxslt}, que ofrece un procesamiento de XML y HTML rápido y completo \cite{lxml}. Es la base del \emph{parser}: con ella se recorren e interpretan los XML consolidados del BOE.
-  \item[Beautiful Soup] Biblioteca para extraer datos de documentos HTML y XML navegando su árbol de etiquetas \cite{beautifulsoup}. En el proyecto ayuda a tratar el HTML incrustado en los bloques normativos —el aparato editorial y las tablas— durante el procesamiento.
-  \item[NumPy] Paquete fundamental para el cálculo científico en Python, centrado en los \emph{arrays} multidimensionales y en operaciones vectorizadas ejecutadas en código compilado \cite{numpy}. Sostiene toda la aritmética de vectores del sistema: la matriz de \emph{embeddings} en \texttt{float32}, el producto escalar del índice exacto y las puntuaciones del recuperador léxico.
-\end{description}
-
-\paragraph{Representación semántica y recuperación.}
-\begin{description}
-  \item[Sentence Transformers] Módulo de referencia para calcular \emph{embeddings} de texto con modelos del estado del arte, mantenido por Hugging Face \cite{sentencetransformers,reimers2019sbert}. Es el codificador del sistema: convierte \emph{chunks} y consultas en vectores densos comparables por similitud.
-  \item[Transformers] Biblioteca de Hugging Face que da acceso a miles de modelos preentrenados y a sus \emph{tokenizers} \cite{transformers}. En el proyecto aporta la carga de los modelos y, en particular, el \emph{tokenizer} real con el que se cuenta cada entrada para impedir el truncado silencioso.
-  \item[PyTorch] Marco de aprendizaje profundo de código abierto cuyo núcleo es una biblioteca de tensores con diferenciación automática y aceleración por hardware \cite{pytorch}. Es el motor de cómputo sobre el que se ejecutan los modelos de \emph{embeddings}, en este trabajo sobre CPU.
-  \item[rank-bm25] Implementación en Python de la familia de algoritmos BM25 \cite{rankbm25}. Proporciona el cálculo de la puntuación del recuperador léxico, en su variante Okapi.
-  \item[snowballstemmer] Colección de algoritmos de \emph{stemming} del proyecto Snowball para numerosos idiomas \cite{snowball}. En el proyecto reduce las palabras a su raíz dentro del analizador léxico de español, mejorando el \emph{recall} morfológico de la búsqueda.
-\end{description}
-
-\paragraph{Generación y servicio de modelos en local.}
-\begin{description}
-  \item[Ollama] Herramienta de código abierto para ejecutar modelos de lenguaje en local; envuelve el motor de inferencia \emph{llama.cpp} y expone una API sencilla \cite{ollama}. Es el servidor sobre el que corren, en la máquina propia, tanto el modelo generador como el que actúa de juez, sin coste por consulta y sin que las preguntas salgan del entorno controlado.
-\end{description}
-
-\paragraph{Reproducibilidad, calidad y evaluación.}
-\begin{description}
-  \item[uv] Gestor de paquetes y proyectos para Python, muy rápido y escrito en Rust \cite{uv}. Administra el entorno y las dependencias del proyecto con un fichero de bloqueo, lo que hace el entorno reconstruible de forma reproducible.
-  \item[Ruff] \emph{Linter} y formateador de Python escrito en Rust \cite{ruff}. Mantiene un estilo de código homogéneo —incluidos los cuadernos— y actúa como puerta de calidad.
-  \item[mypy] Comprobador estático de tipos para Python \cite{mypy}. Detecta errores de tipo sin ejecutar el programa, reforzando la fiabilidad del código.
-  \item[pytest] Marco de pruebas de Python \cite{pytest}. Sostiene una batería de tests que se ejecuta por completo \emph{sin red} —sustituyendo modelos y servicios por dobles de prueba con ayuda de \emph{pytest-mock}—, de modo que la lógica se verifica sin pesos reales ni acceso al servidor de modelos.
-  \item[SciPy] Biblioteca de cálculo científico que extiende NumPy con módulos de estadística, optimización y álgebra, entre otros \cite{scipy}. Da soporte a los cálculos estadísticos del marco de evaluación.
-\end{description}
+\begin{table}[htbp]
+\centering
+\small
+\renewcommand{\arraystretch}{1.2}
+\caption{Bibliotecas de código abierto y su papel en el proyecto.}
+\label{tab:tecnologias}
+\begin{tabular}{p{0.24\textwidth}p{0.68\textwidth}}
+\hline
+\textbf{Biblioteca} & \textbf{Uso en el proyecto} \\
+\hline
+Pydantic \cite{pydantic} & Define los \emph{contratos} de datos (la fuente única de verdad): valida cada artefacto, prohíbe campos ajenos y fija la versión de esquema. Con \emph{pydantic-settings} y \emph{python-dotenv} gestiona la configuración desde el entorno sin incrustar secretos. \\
+HTTPX \cite{httpx} & Cliente HTTP inyectable para descargar las normas de la API del BOE y dialogar con el servidor local de modelos. \\
+lxml \cite{lxml} & Base del \emph{parser}: recorre e interpreta los XML consolidados del BOE. \\
+Beautiful Soup \cite{beautifulsoup} & Trata el HTML incrustado en los bloques normativos (aparato editorial y tablas). \\
+NumPy \cite{numpy} & Aritmética de vectores: matriz de \emph{embeddings}, producto escalar del índice exacto y puntuaciones léxicas. \\
+Sentence Transformers \cite{sentencetransformers,reimers2019sbert} & Codificador que convierte \emph{chunks} y consultas en vectores densos comparables por similitud. \\
+Transformers \cite{transformers} & Carga de modelos y \emph{tokenizer} real con el que se cuenta cada entrada para impedir el truncado silencioso. \\
+PyTorch \cite{pytorch} & Motor de cómputo de los modelos de \emph{embeddings} (en este trabajo, sobre CPU). \\
+rank-bm25 \cite{rankbm25} & Puntuación del recuperador léxico, en su variante Okapi. \\
+snowballstemmer \cite{snowball} & \emph{Stemming} del español en el analizador léxico, para mejorar el \emph{recall} morfológico. \\
+Ollama \cite{ollama} & Servidor local (envuelve \emph{llama.cpp}) sobre el que corren el generador y el juez, sin coste por consulta y sin que las preguntas salgan del entorno. \\
+uv \cite{uv} & Gestor de entorno y dependencias con fichero de bloqueo, para un entorno reconstruible. \\
+Ruff \cite{ruff} & \emph{Linter} y formateador; puerta de calidad de estilo, incluidos los cuadernos. \\
+mypy \cite{mypy} & Comprobación estática de tipos. \\
+pytest \cite{pytest} & Batería de pruebas que se ejecuta por completo sin red, con dobles de prueba (\emph{pytest-mock}). \\
+SciPy \cite{scipy} & Soporte de los cálculos estadísticos del marco de evaluación. \\
+\hline
+\end{tabular}
+\end{table}
 
 Completan el conjunto varias utilidades de apoyo: \emph{loguru} para el registro de trazas, \emph{tqdm} para las barras de progreso, \emph{pandas} y \emph{matplotlib} para tabular y representar los resultados, e \emph{ipykernel} y \emph{nbconvert} para ejecutar los cuadernos, que consumen los informes generados sin reejecutar modelos.
 

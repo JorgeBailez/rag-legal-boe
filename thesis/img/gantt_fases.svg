@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 372" role="img" aria-labelledby="gt gd">
+<title id="gt">Diagrama de Gantt de las fases del proyecto</title>
+<desc id="gd">Cronograma aproximado de las ocho fases del proyecto entre noviembre de 2025 y julio de 2026. La documentacion arranca a finales de mayo. Todas las fases concluyen en la entrega, el 11 de julio de 2026, donde terminan las barras.</desc>
+<style>
+  .panel{fill:#ffffff;stroke:#dfe6f2;}
+  .stripe{fill:#f3f7fd;}
+  .grid{stroke:#e3e9f4;stroke-width:1;}
+  .mth{fill:#122e74;font-family:'Lato','Segoe UI',sans-serif;font-size:11px;font-weight:600;text-anchor:middle;}
+  .yr{fill:#5b6b8c;font-family:'Lato','Segoe UI',sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;text-anchor:middle;}
+  .row{fill:#122e74;font-family:'Lato','Segoe UI',sans-serif;font-size:10.5px;font-weight:600;}
+  .bar{fill:#4a92d4;stroke:#2b4a9e;stroke-width:1;}
+  .tag{fill:#4a92d4;font-family:'Lato','Segoe UI',sans-serif;font-size:10px;font-weight:700;letter-spacing:.6px;}
+  .flag{stroke:#c0392b;stroke-width:1.4;stroke-dasharray:4 3;}
+  .flagt{fill:#c0392b;font-family:'Lato','Segoe UI',sans-serif;font-size:10px;font-weight:700;text-anchor:middle;}
+</style>
+<rect class="panel" x="6" y="6" width="788" height="360" rx="14"/>
+<text class="tag" x="24" y="26">PLANIFICACIÓN · FASES DEL PROYECTO</text>
+<text class="yr" x="296" y="44">2025</text>
+<text class="yr" x="566" y="44">2026</text>
+<rect class="stripe" x="20" y="64" width="756" height="34"/>
+<rect class="stripe" x="20" y="132" width="756" height="34"/>
+<rect class="stripe" x="20" y="200" width="756" height="34"/>
+<rect class="stripe" x="20" y="268" width="756" height="34"/>
+<g>
+  <line class="grid" x1="236" y1="64" x2="236" y2="336"/>
+  <line class="grid" x1="296" y1="64" x2="296" y2="336"/>
+  <line class="grid" x1="356" y1="64" x2="356" y2="336"/>
+  <line class="grid" x1="416" y1="64" x2="416" y2="336"/>
+  <line class="grid" x1="476" y1="64" x2="476" y2="336"/>
+  <line class="grid" x1="536" y1="64" x2="536" y2="336"/>
+  <line class="grid" x1="596" y1="64" x2="596" y2="336"/>
+  <line class="grid" x1="656" y1="64" x2="656" y2="336"/>
+  <line class="grid" x1="716" y1="64" x2="716" y2="336"/>
+  <line class="grid" x1="776" y1="64" x2="776" y2="336"/>
+  <text class="mth" x="266" y="60">Nov</text>
+  <text class="mth" x="326" y="60">Dic</text>
+  <text class="mth" x="386" y="60">Ene</text>
+  <text class="mth" x="446" y="60">Feb</text>
+  <text class="mth" x="506" y="60">Mar</text>
+  <text class="mth" x="566" y="60">Abr</text>
+  <text class="mth" x="626" y="60">May</text>
+  <text class="mth" x="686" y="60">Jun</text>
+  <text class="mth" x="746" y="60">Jul</text>
+</g>
+<text class="row" x="24" y="85">F0 · Definición del problema</text>
+<rect class="bar" x="240" y="73" width="172" height="16" rx="4"/>
+<text class="row" x="24" y="119">F1 · Obtención y estructuración</text>
+<rect class="bar" x="420" y="107" width="232" height="16" rx="4"/>
+<text class="row" x="24" y="153">F2 · Fragmentación e indexación</text>
+<rect class="bar" x="540" y="141" width="172" height="16" rx="4"/>
+<text class="row" x="24" y="187">F3 · Recuperación y evaluación</text>
+<rect class="bar" x="600" y="175" width="112" height="16" rx="4"/>
+<text class="row" x="24" y="221">F4 · Generación fundamentada</text>
+<rect class="bar" x="660" y="209" width="77" height="16" rx="4"/>
+<text class="row" x="24" y="255">F5 · Demostrador E2E</text>
+<rect class="bar" x="660" y="243" width="77" height="16" rx="4"/>
+<text class="row" x="24" y="289">F6 · Evaluación integral</text>
+<rect class="bar" x="660" y="277" width="77" height="16" rx="4"/>
+<text class="row" x="24" y="323">F7 · Documentación y cierre</text>
+<rect class="bar" x="636" y="311" width="101" height="16" rx="4"/>
+<line class="flag" x1="737" y1="64" x2="737" y2="336"/>
+<text class="flagt" x="737" y="352">entrega · 11 jul</text>
+</svg>
