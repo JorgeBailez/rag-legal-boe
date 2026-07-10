@@ -106,18 +106,18 @@ La elección de estos candidatos no es arbitraria: responde a las restricciones 
         \hline
         \textbf{Modelo y perfil de consulta} & \textbf{ParentnDCG@10} & \textbf{IC 95\,\%} \\
         \hline
-        \texttt{e5-large-instruct} · I1 (jurídico)   & \textbf{0,802} & [0,710--0,877] \\
-        \texttt{e5-large-instruct} · I2 (ciudadano)  & 0,796          & [0,707--0,872] \\
-        \texttt{e5-large-instruct} · I0 (genérico)   & 0,731          & [0,639--0,812] \\
-        \texttt{bge-m3}                              & 0,719          & [0,629--0,793] \\
-        \texttt{e5-base}                             & 0,627          & [0,524--0,726] \\
+        \texttt{e5-large-instruct} · I1 (jurídico)   & \textbf{0,795} & [0,705--0,873] \\
+        \texttt{e5-large-instruct} · I2 (ciudadano)  & 0,792          & [0,704--0,868] \\
+        \texttt{e5-large-instruct} · I0 (genérico)   & 0,738          & [0,649--0,814] \\
+        \texttt{bge-m3}                              & 0,717          & [0,630--0,793] \\
+        \texttt{e5-base}                             & 0,622          & [0,523--0,720] \\
         \hline
     \end{tabular}
 \end{table}
 
-Dos conclusiones se sostienen con contrastes pareados frente al finalista (\texttt{e5-large-instruct} con el perfil jurídico I1). Primera, \texttt{e5-large-instruct} supera de forma significativa tanto a \texttt{bge-m3} (diferencia pareada $-0{,}083$ \ [$-0{,}146$, $-0{,}022$]) como a \texttt{e5-base} ($-0{,}175$ \ [$-0{,}254$, $-0{,}099$]). Segunda, y menos evidente, el \emph{perfil de consulta importa}: anteponer a la pregunta una instrucción de dominio jurídico (I1) mejora de forma significativa sobre el perfil genérico I0 ($-0{,}070$ \ [$-0{,}117$, $-0{,}023$]), una confirmación empírica sobre el corpus del proyecto del valor del condicionamiento por instrucción discutido en el estado del arte. En cambio, los perfiles jurídico (I1) y ciudadano (I2) no muestran diferencia detectable entre sí ($-0{,}006$ \ [$-0{,}024$, $+0{,}006$]); se adopta I1 por su ligera ventaja en la media.
+Dos conclusiones se sostienen con contrastes pareados frente al finalista (\texttt{e5-large-instruct} con el perfil jurídico I1). Primera, \texttt{e5-large-instruct} supera de forma significativa tanto a \texttt{bge-m3} (diferencia pareada $-0{,}078$ \ [$-0{,}142$, $-0{,}015$]) como a \texttt{e5-base} ($-0{,}173$ \ [$-0{,}252$, $-0{,}097$]). Segunda, y menos evidente, el \emph{perfil de consulta importa}: anteponer a la pregunta una instrucción de dominio jurídico (I1) mejora de forma significativa sobre el perfil genérico I0 ($-0{,}057$ \ [$-0{,}105$, $-0{,}012$]), una confirmación empírica sobre el corpus del proyecto del valor del condicionamiento por instrucción discutido en el estado del arte. En cambio, los perfiles jurídico (I1) y ciudadano (I2) no muestran diferencia detectable entre sí ($-0{,}003$ \ [$-0{,}022$, $+0{,}011$]); se adopta I1 por su ligera ventaja en la media.
 
-La calidad no es el único criterio: en un sistema pensado para ejecutarse en CPU, la \textbf{latencia} también cuenta. La Tabla~\ref{tab:latencia-embeddings} enfrenta la calidad a la latencia de recuperación por consulta (codificación de la consulta más búsqueda), y refuerza la decisión. \texttt{bge-m3} no solo recupera peor que \texttt{e5-large-instruct} (0,719 frente a 0,802), sino que es además un 47\,\% más lento (402 frente a 274 ms): queda \textbf{dominado en el sentido de Pareto} —peor en las dos dimensiones—, y su mayor ventana de contexto no compensa. \texttt{e5-base}, el más rápido (133 ms), paga su velocidad con una caída de calidad grande (0,627). El modelo seleccionado es el que mejor equilibra ambas dimensiones.
+La calidad no es el único criterio: en un sistema pensado para ejecutarse en CPU, la \textbf{latencia} también cuenta. La Tabla~\ref{tab:latencia-embeddings} enfrenta la calidad a la latencia de recuperación por consulta (codificación de la consulta más búsqueda), y refuerza la decisión. \texttt{bge-m3} no solo recupera peor que \texttt{e5-large-instruct} (0,717 frente a 0,795), sino que es además un 47\,\% más lento (402 frente a 274 ms): queda \textbf{dominado en el sentido de Pareto} —peor en las dos dimensiones—, y su mayor ventana de contexto no compensa. \texttt{e5-base}, el más rápido (133 ms), paga su velocidad con una caída de calidad grande (0,622). El modelo seleccionado es el que mejor equilibra ambas dimensiones.
 
 \begin{table}[htbp]
     \centering
@@ -129,21 +129,21 @@ La calidad no es el único criterio: en un sistema pensado para ejecutarse en CP
         \hline
         \textbf{Modelo} & \textbf{ParentnDCG@10} & \textbf{Latencia P50 (ms)} \\
         \hline
-        \texttt{e5-large-instruct} (I1) & \textbf{0,802} & 274 \\
-        \texttt{bge-m3}                 & 0,719          & 402 \\
-        \texttt{e5-base}                & 0,627          & 133 \\
+        \texttt{e5-large-instruct} (I1) & \textbf{0,795} & 274 \\
+        \texttt{bge-m3}                 & 0,717          & 402 \\
+        \texttt{e5-base}                & 0,622          & 133 \\
         \hline
     \end{tabular}
 \end{table}
 
-El sistema queda, por tanto, configurado con \texttt{e5-large-instruct} y el perfil jurídico I1. Conviene ser preciso sobre el estatus de esta decisión: se ha tomado sobre \emph{development}, la partición destinada precisamente a ajustar. Su validez sobre datos no vistos no se da por supuesta, sino que se comprueba en el experimento central (\ref{sec:experimento-central}), donde esta misma configuración alcanza 0,797 sobre \emph{test}, lo que confirma que la elección no está sobreajustada a la partición de ajuste. Con ello queda cerrado el objetivo OE-03 en su vertiente de recuperación semántica.
+El sistema queda, por tanto, configurado con \texttt{e5-large-instruct} y el perfil jurídico I1. Conviene ser preciso sobre el estatus de esta decisión: se ha tomado sobre \emph{development}, la partición destinada precisamente a ajustar. Su validez sobre datos no vistos no se da por supuesta, sino que se comprueba en el experimento central (\ref{sec:experimento-central}), donde esta misma configuración alcanza 0,806 sobre \emph{test}, lo que confirma que la elección no está sobreajustada a la partición de ajuste. Con ello queda cerrado el objetivo OE-03 en su vertiente de recuperación semántica.
 
 \section{Ajuste del recuperador léxico}
 \label{sec:ablacion-bm25}
 
 Antes de enfrentar el recuperador léxico al denso, conviene fijar su configuración con criterio y no por omisión. Se realiza una ablación «un factor cada vez» sobre \emph{development} ($n=53$) que varía, por separado, el preprocesado lingüístico (\emph{stemming} y \emph{stopwords}), el refuerzo de cabecera y los parámetros clásicos $k_1$ y $b$.
 
-Los resultados justifican las decisiones de diseño del analizador de español. El \textbf{\emph{stemming} aporta}: desactivarlo baja la métrica de 0,488 (configuración base) a 0,432. La \textbf{eliminación de \emph{stopwords} es neutra} (0,490 frente a 0,488; diferencia pareada [$-0{,}039$, $+0{,}047$], no significativa), pero se mantiene por coherencia y eficiencia del índice. El \textbf{refuerzo de cabecera es la única palanca con efecto claro}: añadir a cada documento copias del rótulo del bloque —que incluye el nombre de la ley— eleva la métrica de 0,488 (sin refuerzo) a 0,517, 0,529 y 0,536 con factores 1, 2 y 3 respectivamente; se adopta el factor 3. Esto confirma empíricamente el problema descrito en el diseño: sin el nombre de la ley en la cabecera, colisionan artículos homónimos de leyes distintas. Por último, los parámetros $k_1$ (entre 0,482 y 0,488 en el rango 0,9--2,0) y $b$ (entre 0,488 y 0,498 en el rango 0,3--0,9) resultan \textbf{insensibles} en este corpus, por lo que se conservan sus valores habituales ($k_1{=}1{,}5$, $b{=}0{,}75$). Aun con su mejor configuración, el recuperador léxico se queda en torno a 0,54 en \emph{development}: un techo que conviene tener presente al interpretar la comparación siguiente.
+Los resultados justifican las decisiones de diseño del analizador de español. El \textbf{\emph{stemming} aporta}: desactivarlo baja la métrica de 0,486 (configuración base) a 0,430. La \textbf{eliminación de \emph{stopwords} es neutra} (0,489 frente a 0,486; diferencia pareada [$-0{,}038$, $+0{,}049$], no significativa), pero se mantiene por coherencia y eficiencia del índice. El \textbf{refuerzo de cabecera es la única palanca con efecto claro}: añadir a cada documento copias del rótulo del bloque —que incluye el nombre de la ley— eleva la métrica de 0,486 (sin refuerzo) a 0,516, 0,528 y 0,536 con factores 1, 2 y 3 respectivamente; se adopta el factor 3. Esto confirma empíricamente el problema descrito en el diseño: sin el nombre de la ley en la cabecera, colisionan artículos homónimos de leyes distintas. Por último, los parámetros $k_1$ (entre 0,483 y 0,486 en el rango 0,9--2,0) y $b$ (entre 0,486 y 0,489 en el rango 0,3--0,9) resultan \textbf{insensibles} en este corpus, por lo que se conservan sus valores habituales ($k_1{=}1{,}5$, $b{=}0{,}75$). Aun con su mejor configuración, el recuperador léxico se queda en torno a 0,54 en \emph{development}: un techo que conviene tener presente al interpretar la comparación siguiente.
 
 \section{¿Mejora la fusión híbrida al denso? Ablación de la combinación}
 \label{sec:ablacion-fusion}
@@ -160,19 +160,19 @@ La intuición sugiere que combinar la señal léxica y la semántica debería me
         \hline
         \textbf{Estrategia} & \textbf{ParentnDCG@10} & \textbf{$\Delta$ vs denso [IC 95\,\%]} \\
         \hline
-        Denso                 & 0,805 & --- \\
-        Convexa $\alpha{=}0{,}7$ & 0,798 & $-0{,}007$ \ [$-0{,}038$, $+0{,}025$] \\
-        Convexa $\alpha{=}0{,}6$ & 0,786 & $-0{,}019$ \ [$-0{,}059$, $+0{,}018$] \\
-        Convexa $\alpha{=}0{,}5$ & 0,760 & $-0{,}045$ \ [$-0{,}101$, $+0{,}008$] \\
-        RRF                   & 0,744 & $-0{,}061$ \ [$-0{,}130$, $-0{,}001$] \\
-        Convexa $\alpha{=}0{,}4$ & 0,706 & $-0{,}100$ \ [$-0{,}168$, $-0{,}040$] \\
-        Convexa $\alpha{=}0{,}3$ & 0,635 & $-0{,}170$ \ [$-0{,}260$, $-0{,}096$] \\
-        BM25                  & 0,536 & $-0{,}269$ \ [$-0{,}372$, $-0{,}182$] \\
+        Denso                 & 0,804 & --- \\
+        Convexa $\alpha{=}0{,}7$ & 0,802 & $-0{,}001$ \ [$-0{,}033$, $+0{,}028$] \\
+        Convexa $\alpha{=}0{,}6$ & 0,789 & $-0{,}014$ \ [$-0{,}053$, $+0{,}022$] \\
+        Convexa $\alpha{=}0{,}5$ & 0,761 & $-0{,}042$ \ [$-0{,}098$, $+0{,}009$] \\
+        RRF                   & 0,742 & $-0{,}062$ \ [$-0{,}134$, $-0{,}002$] \\
+        Convexa $\alpha{=}0{,}4$ & 0,706 & $-0{,}098$ \ [$-0{,}165$, $-0{,}041$] \\
+        Convexa $\alpha{=}0{,}3$ & 0,635 & $-0{,}169$ \ [$-0{,}259$, $-0{,}094$] \\
+        BM25                  & 0,536 & $-0{,}268$ \ [$-0{,}371$, $-0{,}181$] \\
         \hline
     \end{tabular}
 \end{table}
 
-El patrón es inequívoco y contrario a la intuición: \textbf{ninguna fusión supera al denso}. La combinación convexa mejora de forma monótona a medida que se le concede más peso al denso —de 0,635 ($\alpha{=}0{,}3$) a 0,798 ($\alpha{=}0{,}7$)—; es decir, cuanto más se parece al denso, mejor rinde. En su mejor punto ($\alpha{=}0{,}7$) apenas lo \emph{alcanza} (0,798 frente a 0,805), sin superarlo: la diferencia pareada contiene el cero. La fusión RRF (0,744) queda por debajo del denso, aunque de forma marginal (el intervalo casi toca el cero, $-0{,}061$ [$-0{,}130$, $-0{,}001$]) —una diferencia que, como se verá, no sobrevive a la corrección por comparaciones múltiples en \emph{test}—. En síntesis, la mejor fusión no aporta señal útil sobre el denso: solo deja de estorbar cuando se le resta casi todo el peso al léxico. Se traslada la variante más favorable (convexa $\alpha{=}0{,}7$) al experimento central sobre \emph{test}, para comprobar si esta ausencia de mejora se confirma en la partición reservada.
+El patrón es inequívoco y contrario a la intuición: \textbf{ninguna fusión supera al denso}. La combinación convexa mejora de forma monótona a medida que se le concede más peso al denso —de 0,635 ($\alpha{=}0{,}3$) a 0,802 ($\alpha{=}0{,}7$)—; es decir, cuanto más se parece al denso, mejor rinde. En su mejor punto ($\alpha{=}0{,}7$) apenas lo \emph{alcanza} (0,802 frente a 0,804), sin superarlo: la diferencia pareada contiene el cero. La fusión RRF (0,742) queda por debajo del denso, aunque de forma marginal (el intervalo casi toca el cero, $-0{,}062$ [$-0{,}134$, $-0{,}002$]) —una diferencia que, como se verá, no sobrevive a la corrección por comparaciones múltiples en \emph{test}—. En síntesis, la mejor fusión no aporta señal útil sobre el denso: solo deja de estorbar cuando se le resta casi todo el peso al léxico. Se traslada la variante más favorable (convexa $\alpha{=}0{,}7$) al experimento central sobre \emph{test}, para comprobar si esta ausencia de mejora se confirma en la partición reservada.
 
 \section{¿Importan la representación del fragmento y la forma de trocear?}
 \label{sec:ablacion-representacion}
@@ -197,14 +197,14 @@ La comparación es pareada frente a la vista enriquecida, con el mismo banco, pr
         \hline
         \textbf{Vista del fragmento} & \textbf{\emph{development} ($n=53$)} & \textbf{\emph{test} ($n=28$)} \\
         \hline
-        Enriquecida (producción) & 0,796 \ [0,707--0,875] & 0,789 \ [0,686--0,877] \\
-        Cruda                    & 0,838 \ [0,763--0,906] & 0,772 \ [0,665--0,869] \\
-        Troceado clásico         & 0,829 \ [0,753--0,900] & 0,796 \ [0,691--0,893] \\
+        Enriquecida (producción) & 0,795 \ [0,705--0,873] & 0,783 \ [0,674--0,870] \\
+        Cruda                    & 0,840 \ [0,762--0,908] & 0,764 \ [0,660--0,852] \\
+        Troceado clásico         & 0,830 \ [0,754--0,901] & 0,803 \ [0,705--0,887] \\
         \hline
     \end{tabular}
 \end{table}
 
-El resultado es un \textbf{empate estadístico}. Ninguna diferencia pareada frente a la vista enriquecida resiste el ruido del muestreo: en \emph{development}, la cruda queda en $+0{,}042$ \ [$-0{,}014$, $+0{,}106$] y la clásica en $+0{,}033$ \ [$-0{,}026$, $+0{,}101$]; en \emph{test}, la cruda en $-0{,}018$ \ [$-0{,}067$, $+0{,}044$] y la clásica en $+0{,}007$ \ [$-0{,}061$, $+0{,}077$]. Todos los intervalos contienen el cero y, más revelador aún, el signo del efecto \emph{se invierte} entre las dos particiones: es el patrón de una diferencia que no existe y que un tamaño de muestra pequeño solo puede reflejar como ruido. La capacidad de abstención tampoco separa entre vistas (AUC entre 0,94 y 0,97 en las tres, sin un orden estable entre particiones). Combinar ambas particiones (n=81) no altera el veredicto: ninguna vista se separa de la enriquecida (cruda $+0{,}021$ \ [$-0{,}020$, $+0{,}067$]; clásica $+0{,}024$ \ [$-0{,}022$, $+0{,}074$]; ambos IC cruzan el cero), con el punto estimado incluso levemente \emph{a favor} de las vistas sin enriquecer —lo que refuerza, no debilita, la lectura de que el enriquecimiento no aporta a la recuperación—.
+El resultado es un \textbf{empate estadístico}. Ninguna diferencia pareada frente a la vista enriquecida resiste el ruido del muestreo: en \emph{development}, la cruda queda en $+0{,}045$ \ [$-0{,}011$, $+0{,}107$] y la clásica en $+0{,}035$ \ [$-0{,}025$, $+0{,}106$]; en \emph{test}, la cruda en $-0{,}020$ \ [$-0{,}069$, $+0{,}032$] y la clásica en $+0{,}020$ \ [$-0{,}034$, $+0{,}076$]. Todos los intervalos contienen el cero y, más revelador aún, el signo del efecto \emph{se invierte} entre las dos particiones: es el patrón de una diferencia que no existe y que un tamaño de muestra pequeño solo puede reflejar como ruido. La capacidad de abstención tampoco separa entre vistas (AUC entre 0,94 y 0,97 en las tres, sin un orden estable entre particiones). Combinar ambas particiones (n=81) no altera el veredicto: ninguna vista se separa de la enriquecida (cruda $+0{,}023$ \ [$-0{,}018$, $+0{,}069$]; clásica $+0{,}030$ \ [$-0{,}016$, $+0{,}079$]; ambos IC cruzan el cero), con el punto estimado incluso levemente \emph{a favor} de las vistas sin enriquecer —lo que refuerza, no debilita, la lectura de que el enriquecimiento no aporta a la recuperación—.
 
 La lectura es doble y, en parte, contraria a la intuición. Primera: \textbf{enriquecer el fragmento con el nombre de la norma no mejora la recuperación} en este corpus. Es un matiz frente a la intuición —extendida en la literatura de contextualización de fragmentos— de que anteponer contexto antes de codificar ayuda: con un modelo de \emph{embeddings} fuerte y condicionado por instrucción, y una métrica a nivel de artículo, ese añadido resulta redundante y, al ser común a muchos fragmentos de la misma norma, poco discriminativo. Segunda: \textbf{el troceado clásico de tamaño fijo iguala al \emph{parent-child} por párrafos}; como la métrica premia recuperar el \emph{artículo} correcto y las tres vistas indexan el mismo texto de los mismos artículos —solo cortado de otra forma—, el artículo pertinente aflora con independencia de dónde caigan los límites del fragmento.
 
@@ -232,15 +232,15 @@ Este es el experimento central del trabajo: la comparación directa, sobre el mi
         \hline
         \textbf{Estrategia} & \textbf{ParentnDCG@10} & \textbf{IC 95\,\%} \\
         \hline
-        Denso                & \textbf{0,797} & [0,695--0,884] \\
-        Híbrido ponderado    & 0,769          & [0,668--0,862] \\
-        Híbrido RRF          & 0,706          & [0,597--0,812] \\
-        Léxico (BM25)        & 0,507          & [0,358--0,656] \\
+        Denso                & \textbf{0,806} & [0,711--0,885] \\
+        Híbrido ponderado    & 0,779          & [0,682--0,865] \\
+        Híbrido RRF          & 0,691          & [0,577--0,801] \\
+        Léxico (BM25)        & 0,521          & [0,368--0,669] \\
         \hline
     \end{tabular}
 \end{table}
 
-El orden es inequívoco en su magnitud: el denso encabeza con 0,797, seguido de cerca por la fusión ponderada (0,769); la fusión RRF queda por debajo (0,706) y el léxico, muy atrás (0,507). Ahora bien, comparar medias no basta con un banco de este tamaño: hay que comprobar si las diferencias resisten el ruido del muestreo.
+El orden es inequívoco en su magnitud: el denso encabeza con 0,806, seguido de cerca por la fusión ponderada (0,779); la fusión RRF queda por debajo (0,691) y el léxico, muy atrás (0,521). Ahora bien, comparar medias no basta con un banco de este tamaño: hay que comprobar si las diferencias resisten el ruido del muestreo.
 
 \subsection{Significancia estadística: contrastes pareados}
 \label{subsec:flagship-pareado}
@@ -250,12 +250,12 @@ Se toma el denso como referencia y se calcula, pregunta a pregunta, la diferenci
 Estos tres contrastes forman la familia \emph{confirmatoria} del trabajo; sus $p$-valores (bootstrap pareado, dos colas) se corrigen por \textbf{Holm-Bonferroni} para controlar el error por familia (\ref{subsec:protocolo}).
 
 \begin{itemize}
-  \item \textbf{BM25 $-$ denso} $= -0{,}290$ \ [$-0{,}415$, $-0{,}165$]: el léxico es significativamente \emph{peor} que el denso, con un efecto grande ($p<0{,}001$; $p_{\text{Holm}}<0{,}001$).
-  \item \textbf{RRF $-$ denso} $= -0{,}091$ \ [$-0{,}175$, $-0{,}009$]: sin corregir, la fusión RRF queda por debajo del denso, pero es un efecto \emph{de frontera} ($p=0{,}026$) que \textbf{no sobrevive} a la corrección por comparaciones múltiples ($p_{\text{Holm}}=0{,}052$; n.s.).
-  \item \textbf{Ponderado $-$ denso} $= -0{,}028$ \ [$-0{,}075$, $+0{,}019$]: el intervalo contiene el cero; no hay diferencia detectable entre la fusión ponderada y el denso ($p=0{,}28$).
+  \item \textbf{BM25 $-$ denso} $= -0{,}285$ \ [$-0{,}410$, $-0{,}157$]: el léxico es significativamente \emph{peor} que el denso, con un efecto grande ($p<0{,}001$; $p_{\text{Holm}}<0{,}001$).
+  \item \textbf{RRF $-$ denso} $= -0{,}115$ \ [$-0{,}213$, $-0{,}027$]: la fusión RRF queda \textbf{significativamente por debajo} del denso ($p=0{,}006$), y la diferencia \textbf{sobrevive} a la corrección por comparaciones múltiples ($p_{\text{Holm}}=0{,}012$).
+  \item \textbf{Ponderado $-$ denso} $= -0{,}027$ \ [$-0{,}071$, $+0{,}020$]: el intervalo contiene el cero; no hay diferencia detectable entre la fusión ponderada y el denso ($p=0{,}29$).
 \end{itemize}
 
-La lectura, contraria a la intuición de que «combinar siempre suma», gana nitidez con la corrección: \textbf{ninguna variante híbrida supera al denso} y la única diferencia que resiste Holm es que \emph{BM25 es peor}. La fusión RRF, que sin corregir parecía significativamente peor, deja de serlo de forma concluyente; la ponderada, en el mejor de los casos, lo iguala —sin mejora detectable, con una cota superior de apenas $+0{,}019$—. Como la fusión añade un recuperador léxico, un parámetro de peso y coste sin aportar ganancia, el principio de parsimonia respalda \textbf{elegir el recuperador denso} como configuración del sistema. Conviene ser preciso con el alcance de la afirmación: los datos sostienen que \emph{la fusión no aporta} sobre este corpus, no que el denso sea superior a cualquier híbrido. Este resultado sobre \emph{test} confirma el observado en la ablación sobre \emph{development} (\ref{sec:ablacion-fusion}) y, además, \emph{refuta} el hallazgo preliminar obtenido sobre el corpus reducido de diez normas, donde la fusión sí parecía ayudar: una advertencia empírica sobre el riesgo de generalizar desde corpus pequeños.
+La lectura, contraria a la intuición de que «combinar siempre suma», gana nitidez con la corrección: \textbf{ninguna variante híbrida supera al denso} y la única diferencia que resiste Holm es que \emph{BM25 es peor}. La fusión RRF queda significativamente por debajo del denso incluso tras la corrección; la ponderada, en el mejor de los casos, lo iguala —sin mejora detectable, con una cota superior de apenas $+0{,}020$—. Como la fusión añade un recuperador léxico, un parámetro de peso y coste sin aportar ganancia, el principio de parsimonia respalda \textbf{elegir el recuperador denso} como configuración del sistema. Conviene ser preciso con el alcance de la afirmación: los datos sostienen que \emph{la fusión no aporta} sobre este corpus, no que el denso sea superior a cualquier híbrido. Este resultado sobre \emph{test} confirma el observado en la ablación sobre \emph{development} (\ref{sec:ablacion-fusion}) y, además, \emph{refuta} el hallazgo preliminar obtenido sobre el corpus reducido de diez normas, donde la fusión sí parecía ayudar: una advertencia empírica sobre el riesgo de generalizar desde corpus pequeños.
 
 \subsection{Robustez y desglose por estilo (\emph{development}+\emph{test}, \texorpdfstring{$n=81$}{n=81})}
 \label{subsec:flagship-robustez}
@@ -272,17 +272,17 @@ La comparación anterior es \emph{confirmatoria}: se hace sobre \emph{test} (n=2
         \hline
         \textbf{Estrategia} & \textbf{ParentnDCG@10 [IC 95\,\%]} & \textbf{$\Delta$ vs denso [IC 95\,\%]} \\
         \hline
-        Denso                     & \textbf{0,802} \ [0,728--0,857] & --- \\
-        Ponderado $\alpha{=}0{,}7$ & 0,788 \ [0,720--0,845] & $-0{,}014$ \ [$-0{,}043$, $+0{,}012$] \ n.s. \\
-        RRF                       & 0,731 \ [0,658--0,787] & $-0{,}071$ \ [$-0{,}125$, $-0{,}022$] \ ($p_{\text{Holm}}{=}0{,}016$) \\
-        Léxico (BM25)             & 0,526 \ [0,432--0,612] & $-0{,}276$ \ [$-0{,}355$, $-0{,}197$] \ ($p_{\text{Holm}}{<}0{,}001$) \\
+        Denso                     & \textbf{0,805} \ [0,732--0,857] & --- \\
+        Ponderado $\alpha{=}0{,}7$ & 0,794 \ [0,726--0,851] & $-0{,}010$ \ [$-0{,}036$, $+0{,}016$] \ n.s. \\
+        RRF                       & 0,724 \ [0,650--0,780] & $-0{,}081$ \ [$-0{,}135$, $-0{,}029$] \ ($p_{\text{Holm}}{=}0{,}004$) \\
+        Léxico (BM25)             & 0,531 \ [0,436--0,614] & $-0{,}274$ \ [$-0{,}352$, $-0{,}194$] \ ($p_{\text{Holm}}{<}0{,}001$) \\
         \hline
     \end{tabular}
 \end{table}
 
-El patrón de \emph{test} se confirma y, con la mayor potencia, se afina en dos puntos que \emph{refuerzan} la conclusión. Primero, la fusión RRF —que en \emph{test} era un efecto de frontera que no sobrevivía a Holm (\ref{subsec:flagship-pareado})— aquí queda \textbf{significativamente por debajo} del denso ($-0{,}071$; $p_{\text{Holm}}{=}0{,}016$): la evidencia de que RRF \emph{empeora} se firma, no se diluye. Segundo, y decisivo para la pregunta que vertebra el experimento —«¿aporta la fusión?»—, la ventaja de la fusión ponderada sobre el denso tiene una \textbf{cota superior de $+0{,}012$} (extremo del IC95 pareado). Esto cambia la naturaleza de la afirmación: no es «no detectamos diferencia» —que dejaría abierta una mejora oculta—, sino que la mejora, \emph{de existir}, es demasiado pequeña para importar. Añadir el recuperador léxico cuesta un recuperador extra, un parámetro de peso y más latencia a cambio de, como mucho, una centésima de nDCG; el principio de parsimonia respalda el denso sin ambigüedad. Una precisión metodológica: un criterio de equivalencia al estilo TOST —sobre el intervalo \emph{bootstrap} pareado, no un test de permutación clásico— al margen estricto de $0{,}02$ no llega a establecerse —el IC del efecto es algo más ancho que ese margen aun a n=81—, de modo que lo que se afirma es la cota sobre la \emph{ganancia} posible de la fusión, no una equivalencia simétrica.
+El patrón de \emph{test} se confirma y, con la mayor potencia, se afina en dos puntos que \emph{refuerzan} la conclusión. Primero, la fusión RRF —significativamente por debajo del denso ya en \emph{test} (\ref{subsec:flagship-pareado})— lo confirma con más muestra ($-0{,}081$; $p_{\text{Holm}}{=}0{,}004$): la evidencia de que RRF \emph{empeora} se firma en ambas particiones. Segundo, y decisivo para la pregunta que vertebra el experimento —«¿aporta la fusión?»—, la ventaja de la fusión ponderada sobre el denso tiene una \textbf{cota superior de $+0{,}016$} (extremo del IC95 pareado). Esto cambia la naturaleza de la afirmación: no es «no detectamos diferencia» —que dejaría abierta una mejora oculta—, sino que la mejora, \emph{de existir}, es demasiado pequeña para importar. Añadir el recuperador léxico cuesta un recuperador extra, un parámetro de peso y más latencia a cambio de, como mucho, un par de centésimas de nDCG; el principio de parsimonia respalda el denso sin ambigüedad. Una precisión metodológica: un criterio de equivalencia al estilo TOST —sobre el intervalo \emph{bootstrap} pareado, no un test de permutación clásico— al margen estricto de $0{,}02$ no llega a establecerse —el IC del efecto es algo más ancho que ese margen aun a n=81—, de modo que lo que se afirma es la cota sobre la \emph{ganancia} posible de la fusión, no una equivalencia simétrica.
 
-El desglose por estilo (Tabla~\ref{tab:flagship-estilo-n81}) gana solidez: cada estrato reúne ahora entre 8 y 22 preguntas, frente a las 3--7 de \emph{test}, de modo que las lecturas antes \emph{direccionales} quedan mejor sostenidas. El desplome del léxico en \textbf{consultas ciudadanas} —el hallazgo más relevante para un sistema orientado a la ciudadanía— se apoya ya en 22 preguntas (BM25 0,380 frente a denso 0,811), no en siete. Y los únicos dos estratos donde una variante iguala o supera al denso siguen siendo nichos de coincidencia exacta y muestra corta: la \textbf{búsqueda directa de artículo} (ponderada 0,684 frente a denso 0,662; $n=17$) y la \textbf{consulta léxica} (RRF 0,871 frente a denso 0,835; $n=14$). Son la cara amable de la señal léxica —aporta justo donde la palabra literal desambigua— pero no bastan para volcar el promedio: la conclusión global (el denso iguala o supera a toda fusión) se mantiene.
+El desglose por estilo (Tabla~\ref{tab:flagship-estilo-n81}) gana solidez: cada estrato reúne ahora entre 8 y 22 preguntas, frente a las 3--7 de \emph{test}, de modo que las lecturas antes \emph{direccionales} quedan mejor sostenidas. El desplome del léxico en \textbf{consultas ciudadanas} —el hallazgo más relevante para un sistema orientado a la ciudadanía— se apoya ya en 22 preguntas (BM25 0,379 frente a denso 0,813), no en siete. Y los únicos dos estratos donde una variante iguala o supera al denso siguen siendo nichos de coincidencia exacta y muestra corta: la \textbf{búsqueda directa de artículo} (ponderada 0,684 frente a denso 0,660; $n=17$) y la \textbf{consulta léxica} (RRF 0,879 frente a denso 0,837; $n=14$). Son la cara amable de la señal léxica —aporta justo donde la palabra literal desambigua— pero no bastan para volcar el promedio: la conclusión global (el denso iguala o supera a toda fusión) se mantiene.
 
 \begin{table}[htbp]
     \centering
@@ -294,12 +294,12 @@ El desglose por estilo (Tabla~\ref{tab:flagship-estilo-n81}) gana solidez: cada 
         \hline
         \textbf{Estilo} & \textbf{$n$} & \textbf{Denso} & \textbf{BM25} & \textbf{Ponderado} & \textbf{RRF} \\
         \hline
-        Ciudadana          & 22 & \textbf{0,811} & 0,380 & 0,764 & 0,666 \\
-        Léxica             & 14 & 0,835 & 0,691 & 0,844 & \textbf{0,871} \\
-        Directa (artículo) & 17 & 0,662 & 0,411 & \textbf{0,684} & 0,625 \\
-        Comparativa        & 10 & \textbf{0,748} & 0,510 & 0,705 & 0,662 \\
-        Conceptual         & 10 & 0,923 & 0,739 & \textbf{0,927} & 0,839 \\
-        Procedimental      &  8 & \textbf{0,938} & 0,636 & 0,909 & 0,839 \\
+        Ciudadana          & 22 & \textbf{0,813} & 0,379 & 0,769 & 0,632 \\
+        Léxica             & 14 & 0,837 & 0,701 & 0,857 & \textbf{0,879} \\
+        Directa (artículo) & 17 & 0,660 & 0,409 & \textbf{0,684} & 0,625 \\
+        Comparativa        & 10 & \textbf{0,782} & 0,541 & 0,736 & 0,691 \\
+        Conceptual         & 10 & 0,922 & 0,739 & \textbf{0,927} & 0,839 \\
+        Procedimental      &  8 & \textbf{0,914} & 0,636 & 0,897 & 0,815 \\
         \hline
     \end{tabular}
 \end{table}

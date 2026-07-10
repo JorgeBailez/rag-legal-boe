@@ -7,17 +7,18 @@
   "seed": 12345,
   "margin_tost": 0.02,
   "baseline": "dense",
+  "note": "Regenerado sobre el gold corregido corpus92_v1 (15 apoyos rel-1). Fuentes: ablacion de fusion dev+test (config tuned: heading_boost=3, convex alpha=0.7).",
   "sources": {
-    "dev": "data\\processed\\reports\\dense\\benchmarks\\fusionabl_20260625T094731Z",
-    "test": "data\\processed\\reports\\dense\\benchmarks\\retrieval_20260625T111234Z"
+    "dev": "fusionabl_20260710T204045Z",
+    "test": "fusionabl_20260710T211222Z"
   },
   "per_strategy": {
     "dense": {
       "n": 81,
       "ci": {
-        "mean": 0.802246501356429,
-        "ci_low": 0.727977403214521,
-        "ci_high": 0.8570423967548261,
+        "mean": 0.804694294702096,
+        "ci_low": 0.732463847349368,
+        "ci_high": 0.8569861330453133,
         "seed": 12345,
         "n_resamples": 1000,
         "method": "bca"
@@ -26,9 +27,9 @@
     "bm25": {
       "n": 81,
       "ci": {
-        "mean": 0.5258661818804223,
-        "ci_low": 0.43176962292089976,
-        "ci_high": 0.612012076877309,
+        "mean": 0.5306377153591553,
+        "ci_low": 0.43624431405821407,
+        "ci_high": 0.6144897297119899,
         "seed": 12345,
         "n_resamples": 1000,
         "method": "bca"
@@ -37,9 +38,9 @@
     "rrf": {
       "n": 81,
       "ci": {
-        "mean": 0.7307974056079556,
-        "ci_low": 0.6581973396564879,
-        "ci_high": 0.7873976530926861,
+        "mean": 0.7241256364298855,
+        "ci_low": 0.6500814303047876,
+        "ci_high": 0.7800834254774655,
         "seed": 12345,
         "n_resamples": 1000,
         "method": "bca"
@@ -48,9 +49,9 @@
     "weighted": {
       "n": 81,
       "ci": {
-        "mean": 0.7881683647549558,
-        "ci_low": 0.7195702161383881,
-        "ci_high": 0.8452368774004783,
+        "mean": 0.7944988801891151,
+        "ci_low": 0.7261116902884457,
+        "ci_high": 0.8508608972796446,
         "seed": 12345,
         "n_resamples": 1000,
         "method": "bca"
@@ -59,26 +60,26 @@
   },
   "paired_vs_dense": {
     "bm25": {
-      "mean_diff": -0.2763803194760067,
-      "ci_low": -0.35473387202542106,
-      "ci_high": -0.19727697266675204,
+      "mean_diff": -0.27405657934294064,
+      "ci_low": -0.3516463539326249,
+      "ci_high": -0.19361148989545737,
       "p_value": 0.0,
       "seed": 12345,
       "n_resamples": 1000
     },
     "rrf": {
-      "mean_diff": -0.07144909574847348,
-      "ci_low": -0.1249228851276021,
-      "ci_high": -0.022436653430745506,
-      "p_value": 0.008,
+      "mean_diff": -0.08056865827221053,
+      "ci_low": -0.1346022693567057,
+      "ci_high": -0.029278097908796284,
+      "p_value": 0.002,
       "seed": 12345,
       "n_resamples": 1000
     },
     "weighted": {
-      "mean_diff": -0.014078136601473263,
-      "ci_low": -0.042783998025167934,
-      "ci_high": 0.012198683872239862,
-      "p_value": 0.292,
+      "mean_diff": -0.01019541451298086,
+      "ci_low": -0.03570328385861946,
+      "ci_high": 0.016459762829196818,
+      "p_value": 0.412,
       "seed": 12345,
       "n_resamples": 1000
     }
@@ -90,38 +91,38 @@
       "significant": true
     },
     "rrf": {
-      "p_raw": 0.008,
-      "p_holm": 0.016,
+      "p_raw": 0.002,
+      "p_holm": 0.004,
       "significant": true
     },
     "weighted": {
-      "p_raw": 0.292,
-      "p_holm": 0.292,
+      "p_raw": 0.412,
+      "p_holm": 0.412,
       "significant": false
     }
   },
   "tost_vs_dense": {
     "weighted": {
-      "mean_diff": -0.014078136601473263,
-      "ci_low": -0.03587227010712019,
-      "ci_high": 0.0075583063815152325,
+      "mean_diff": -0.01019541451298086,
+      "ci_low": -0.03114427619261946,
+      "ci_high": 0.01150930119617252,
       "margin": 0.02,
-      "p_lower": 0.328,
-      "p_upper": 0.01,
-      "p_tost": 0.328,
+      "p_lower": 0.234,
+      "p_upper": 0.014,
+      "p_tost": 0.234,
       "equivalent": false,
       "seed": 12345,
       "n_resamples": 1000,
       "alpha": 0.05
     },
     "rrf": {
-      "mean_diff": -0.07144909574847348,
-      "ci_low": -0.11555720244731973,
-      "ci_high": -0.028891111793293178,
+      "mean_diff": -0.08056865827221053,
+      "ci_low": -0.12576177768087396,
+      "ci_high": -0.035568574453835336,
       "margin": 0.02,
-      "p_lower": 0.984,
+      "p_lower": 0.991,
       "p_upper": 0.0,
-      "p_tost": 0.984,
+      "p_tost": 0.991,
       "equivalent": false,
       "seed": 12345,
       "n_resamples": 1000,
@@ -132,25 +133,16 @@
     "ciudadana": {
       "n": 22,
       "means": {
-        "dense": 0.8106,
-        "bm25": 0.3797,
-        "rrf": 0.6664,
-        "weighted": 0.7638
-      }
-    },
-    "comparativa": {
-      "n": 10,
-      "means": {
-        "dense": 0.7475,
-        "bm25": 0.5099,
-        "rrf": 0.6618,
-        "weighted": 0.7046
+        "dense": 0.8127,
+        "bm25": 0.3786,
+        "rrf": 0.6316,
+        "weighted": 0.7691
       }
     },
     "conceptual": {
       "n": 10,
       "means": {
-        "dense": 0.9229,
+        "dense": 0.9224,
         "bm25": 0.7387,
         "rrf": 0.8385,
         "weighted": 0.9274
@@ -159,28 +151,37 @@
     "directa_articulo": {
       "n": 17,
       "means": {
-        "dense": 0.6625,
-        "bm25": 0.4112,
+        "dense": 0.6603,
+        "bm25": 0.4091,
         "rrf": 0.6252,
         "weighted": 0.6842
-      }
-    },
-    "lexica": {
-      "n": 14,
-      "means": {
-        "dense": 0.8345,
-        "bm25": 0.6911,
-        "rrf": 0.8709,
-        "weighted": 0.8441
       }
     },
     "procedimental": {
       "n": 8,
       "means": {
-        "dense": 0.9376,
+        "dense": 0.9142,
         "bm25": 0.6363,
-        "rrf": 0.8387,
-        "weighted": 0.9088
+        "rrf": 0.8153,
+        "weighted": 0.897
+      }
+    },
+    "comparativa": {
+      "n": 10,
+      "means": {
+        "dense": 0.7824,
+        "bm25": 0.5412,
+        "rrf": 0.6913,
+        "weighted": 0.7356
+      }
+    },
+    "lexica": {
+      "n": 14,
+      "means": {
+        "dense": 0.8366,
+        "bm25": 0.7006,
+        "rrf": 0.8792,
+        "weighted": 0.8569
       }
     }
   }
