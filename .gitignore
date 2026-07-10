@@ -90,3 +90,10 @@ data/evaluation/dense_retrieval_v1/_candidates/
 # Validación del gold (re-anotación humana ciega + etiquetas de los modelos que se ocultan durante la
 # anotación): material interno de trabajo, no se versiona.
 data/evaluation/*/gold_validation/
+
+# Herramientas y material interno de anotación (worksheets HTML, backups y resúmenes regenerables).
+# NO afecta a las anotaciones versionadas (p. ej. anotacion_corpus92_dev.jsonl).
+data/evaluation/*/near_miss_review/
+data/evaluation/*/judge_validation/reanotacion_*.html
+data/evaluation/*/judge_validation/*_i2_prev.jsonl
+data/evaluation/*/judge_validation/*_summary.json
