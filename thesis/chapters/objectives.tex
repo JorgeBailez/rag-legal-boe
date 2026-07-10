@@ -54,14 +54,13 @@ Los requisitos se dividen en requisitos funcionales y no funcionales. Los primer
 
 La Tabla~\ref{tab:requisitos-funcionales} recoge los requisitos funcionales comprometidos para la versión demostrable del sistema.
 
-\begin{table}[H]
+\begin{table}[htbp]
     \centering
     \small
     \renewcommand{\arraystretch}{1.2}
     \caption{Requisitos funcionales del sistema.}
     \label{tab:requisitos-funcionales}
-    \resizebox{\textwidth}{!}{%
-    \begin{tabular}{|p{1.4cm}|p{11.8cm}|p{2.0cm}|}
+    \begin{tabularx}{\textwidth}{|p{1.4cm}|X|p{2.0cm}|}
         \hline
         \textbf{Código} & \textbf{Requisito funcional} & \textbf{Prioridad} \\
         \hline
@@ -97,8 +96,7 @@ La Tabla~\ref{tab:requisitos-funcionales} recoge los requisitos funcionales comp
         \hline
         RF-16 & El proceso documental deberá permitir ampliar posteriormente el corpus sin rediseñar la arquitectura completa. & Importante \\
         \hline
-    \end{tabular}%
-    }
+    \end{tabularx}
 \end{table}
 
 La API de legislación consolidada del BOE permite obtener una lista de normas mediante criterios de búsqueda, recuperar metadatos básicos y acceder a la URL de la versión HTML del texto consolidado. Para una norma concreta también ofrece el texto completo de sus versiones, el índice de bloques y las distintas versiones de un bloque determinado \cite{boeApiConsolidada}. Esta disponibilidad permite plantear la trazabilidad como una propiedad estructural del sistema: los fragmentos indexados deben conservar información suficiente para reconstruir su origen y enlazar la respuesta con la fuente oficial relacionada.
@@ -110,14 +108,13 @@ El comportamiento previsto ante preguntas no cubiertas por el corpus merece una 
 
 Los requisitos no funcionales se recogen en la Tabla~\ref{tab:requisitos-no-funcionales}. No se fijan inicialmente umbrales arbitrarios de precisión o latencia: los valores observados deberán medirse en el entorno real y analizarse en el capítulo de experimentos.
 
-\begin{table}[H]
+\begin{table}[htbp]
     \centering
     \small
     \renewcommand{\arraystretch}{1.2}
     \caption{Requisitos no funcionales del sistema.}
     \label{tab:requisitos-no-funcionales}
-    \resizebox{\textwidth}{!}{%
-    \begin{tabular}{|p{1.5cm}|p{3.0cm}|p{10.7cm}|}
+    \begin{tabularx}{\textwidth}{|p{1.5cm}|p{3.0cm}|X|}
         \hline
         \textbf{Código} & \textbf{Propiedad} & \textbf{Requisito no funcional} \\
         \hline
@@ -141,8 +138,7 @@ Los requisitos no funcionales se recogen en la Tabla~\ref{tab:requisitos-no-func
         \hline
         RNF-10 & Observabilidad experimental & Las ejecuciones relevantes deberán registrar parámetros, resultados y diagnósticos suficientes para analizar errores. \\
         \hline
-    \end{tabular}%
-    }
+    \end{tabularx}
 \end{table}
 
 \section{Restricciones y supuestos}
@@ -150,14 +146,13 @@ Los requisitos no funcionales se recogen en la Tabla~\ref{tab:requisitos-no-func
 
 El proyecto se desarrolla bajo un conjunto de restricciones que delimitan la interpretación de los resultados. Estas restricciones no constituyen errores del prototipo, sino condiciones de partida que deben tenerse en cuenta al evaluar su utilidad.
 
-\begin{table}[H]
+\begin{table}[htbp]
     \centering
     \small
     \renewcommand{\arraystretch}{1.2}
     \caption{Restricciones y supuestos iniciales del proyecto.}
     \label{tab:restricciones-supuestos}
-    \resizebox{\textwidth}{!}{%
-    \begin{tabular}{|p{3.3cm}|p{12.2cm}|}
+    \begin{tabularx}{\textwidth}{|p{3.3cm}|X|}
         \hline
         \textbf{Ámbito} & \textbf{Restricción o supuesto} \\
         \hline
@@ -171,8 +166,7 @@ El proyecto se desarrolla bajo un conjunto de restricciones que delimitan la int
         \hline
         Alcance experimental & Las conclusiones serán válidas para el corpus, las consultas y las configuraciones evaluadas. No deberán generalizarse automáticamente a cualquier norma o escenario de uso. \\
         \hline
-    \end{tabular}%
-    }
+    \end{tabularx}
 \end{table}
 
 %\subsection{Entorno computacional disponible}
@@ -180,7 +174,7 @@ El proyecto se desarrolla bajo un conjunto de restricciones que delimitan la int
 
 %El desarrollo y la ejecución local se realizan en un servidor universitario. La Tabla~\ref{tab:hardware-servidor} resume el inventario recogido durante el desarrollo. La descripción detallada del entorno experimental, incluyendo versiones de software y configuraciones de cada prueba, se incorporará en el capítulo de experimentos.
 
-%\begin{table}[H]
+%\begin{table}[htbp]
     %\centering
     %\small
    % \renewcommand{\arraystretch}{1.2}
