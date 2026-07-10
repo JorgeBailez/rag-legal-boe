@@ -1,7 +1,7 @@
 \chapter{Conclusiones y trabajos futuros}
 \label{chap:conclusiones}
 
-Este capítulo cierra la memoria valorando, con honestidad, en qué medida se han alcanzado los objetivos planteados, qué conocimientos del grado se han puesto en práctica, qué se ha aprendido en el proceso y qué líneas quedan abiertas. La idea que ha vertebrado todo el trabajo vuelve aquí como criterio de evaluación: no bastaba con construir un RAG jurídico que «funcione», sino con \emph{medir con evidencia} qué decisiones lo hacen fiable y reconocer, sin adornos, dónde la evidencia todavía no alcanza.
+Este capítulo cierra la memoria valorando con cuidado en qué medida se han alcanzado los objetivos planteados, qué conocimientos del grado se han puesto en práctica, qué se ha aprendido en el proceso y qué líneas quedan abiertas. La idea que ha vertebrado todo el trabajo vuelve aquí como criterio de evaluación: no bastaba con construir un RAG jurídico que «funcione», sino con \emph{medir con evidencia} qué decisiones lo hacen fiable y reconocer, sin adornos, dónde la evidencia todavía no alcanza.
 
 \section{Consecución de objetivos}
 \label{sec:consecucion-objetivos}
@@ -15,7 +15,7 @@ El objetivo general —diseñar, implementar y evaluar de forma rigurosa un sist
 
   \item[OE-04 (comparación de recuperadores).] \textbf{Conseguido; es el resultado central.} Sobre un banco anotado y de-sesgado por \emph{pooling}, con protocolo estadístico pareado y corrección por comparaciones múltiples, se mostró que el recuperador denso \textbf{iguala al mejor híbrido y que ninguna variante híbrida lo supera}, mientras que el léxico queda muy por detrás, con especial claridad en las consultas ciudadanas. La conclusión defendible es que \emph{la fusión no aporta} sobre este corpus; el resultado refuta además un hallazgo preliminar, obtenido sobre un corpus reducido, en el que la fusión sí parecía ayudar.
 
-  \item[OE-05 (generación fundamentada y prudente).] \textbf{Conseguido.} El generador redacta a partir de las evidencias, cita solo identificadores entregados, se abstiene cuando no hay evidencia y nunca produjo una respuesta indebida sobre preguntas fuera del corpus. Se documenta con honestidad su calibración conservadora (una sobre-abstención apreciable en preguntas respondibles).
+  \item[OE-05 (generación fundamentada y prudente).] \textbf{Conseguido.} El generador redacta a partir de las evidencias, cita solo identificadores entregados y se abstiene cuando no hay evidencia. No produjo respuestas indebidas en las 30 preguntas de dominio lejano y solo respondió indebidamente en una de las 10 preguntas \emph{near-miss}. Se analiza además su calibración conservadora (una sobre-abstención apreciable en preguntas respondibles).
 
   \item[OE-06 (marco de evaluación y validación del juez).] \textbf{Conseguido, con un resultado negativo.} Se diseñó un marco modular de seis capas y se validó el modelo juez frente a anotación humana. La validación —que era justamente lo que exigía el objetivo— reveló que el juez no es lo bastante fiable en fidelidad ni en corrección; se reporta como resultado negativo y no se apoya ninguna conclusión en sus veredictos.
 
@@ -24,7 +24,7 @@ El objetivo general —diseñar, implementar y evaluar de forma rigurosa un sist
   \item[OE-08 (reproducibilidad y uso responsable).] \textbf{Conseguido.} El sistema se sostiene íntegramente sobre software y modelos de código abierto ejecutados localmente, con artefactos versionados y trazables, y con un análisis explícito de sus límites técnicos, jurídicos y éticos.
 \end{description}
 
-En conjunto, la pata de recuperación queda cerrada con evidencia sólida; la de generación queda establecida y honestamente acotada por el tamaño de la anotación y por la insuficiencia del juez. Ninguna conclusión fuerte se apoya en una métrica no validada.
+En conjunto, la parte de recuperación queda bien respaldada por los experimentos; la de generación queda establecida y acotada por el tamaño de la anotación y por la insuficiencia del juez. Ninguna conclusión fuerte se apoya en una métrica no validada.
 
 \section{Aplicación de lo aprendido}
 \label{sec:aplicacion}
