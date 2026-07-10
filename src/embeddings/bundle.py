@@ -413,8 +413,19 @@ def _validate_revision_policy(manifest: dict) -> None:
         raise BundleValidationError("bundle generado con --allow-unpinned-revision")
 
 
-def load_validated_bundle(bundle_dir: Path, *, corpus: dict) -> tuple[dict, list[dict], np.ndarray]:
-    """Carga pública validada de un bundle publicado contra el corpus actual."""
+def load_validated_bundle(
+    bundle_dir: Path, *, corpus: dict | None = None
+) -> tuple[dict, list[dict], np.ndarray]:
+    """Carga pública validada de un bundle publicado.
+
+    Con `corpus` (chunks + parents en disco) se valida además la consistencia bundle-corpus
+    (`source_corpus_fingerprint`, `n_norms`, existencia de parents). Con `corpus=None` se omiten
+    SOLO esas comprobaciones dependientes del corpus; el resto de la validación interna del bundle
+    (esquema del manifest, `bundle_id`, gates A/B, política de revisión, checksums, esquema de
+    rows/embeddings, `embedding_inputs_fingerprint`, Gate B) sigue siendo obligatoria. Útil para
+    consumidores que solo puntúan con embeddings+rows y no resuelven texto (p. ej. abstención
+    top-1) sin arrastrar `data/processed/`.
+    """
     bundle_dir = Path(bundle_dir)
     manifest = json.loads((bundle_dir / "manifest.json").read_text(encoding="utf-8"))
     try:
@@ -483,22 +494,26 @@ def load_validated_bundle(bundle_dir: Path, *, corpus: dict) -> tuple[dict, list
         raise BundleValidationError("artifacts.dtype debe ser float32")
     if manifest["corpus"]["n_rows"] != len(rows):
         raise BundleValidationError("corpus.n_rows no coincide con rows.jsonl")
-    if "n_norms" in corpus and manifest["corpus"]["n_norms"] != corpus["n_norms"]:
-        raise BundleValidationError("corpus.n_norms no coincide con el corpus actual")
 
     rows_fp = embedding_inputs_fingerprint(rows)
     if rows_fp != manifest["corpus"]["embedding_inputs_fingerprint"]:
         raise BundleValidationError("embedding_inputs_fingerprint no coincide con rows.jsonl")
-    current_corpus_fp = compute_source_corpus_fingerprint(
-        corpus.get("chunks", []), corpus.get("parents_by_id", {})
-    )
-    if current_corpus_fp != manifest["corpus"]["source_corpus_fingerprint"]:
-        raise BundleValidationError("source_corpus_fingerprint obsoleto para el corpus actual")
-    missing_parents = sorted(
-        {r["parent_id"] for r in rows} - set((corpus.get("parents_by_id") or {}).keys())
-    )
-    if missing_parents:
-        raise BundleValidationError(f"rows con parent_id inexistente: {missing_parents[:5]}")
+
+    # Comprobaciones que exigen el corpus en disco: se omiten si `corpus is None` (ver docstring).
+    if corpus is not None:
+        if "n_norms" in corpus and manifest["corpus"]["n_norms"] != corpus["n_norms"]:
+            raise BundleValidationError("corpus.n_norms no coincide con el corpus actual")
+        current_corpus_fp = compute_source_corpus_fingerprint(
+            corpus.get("chunks", []), corpus.get("parents_by_id", {})
+        )
+        if current_corpus_fp != manifest["corpus"]["source_corpus_fingerprint"]:
+            raise BundleValidationError("source_corpus_fingerprint obsoleto para el corpus actual")
+        missing_parents = sorted(
+            {r["parent_id"] for r in rows} - set((corpus.get("parents_by_id") or {}).keys())
+        )
+        if missing_parents:
+            raise BundleValidationError(f"rows con parent_id inexistente: {missing_parents[:5]}")
+
     missing_anchors = [r["embedding_input_id"] for r in rows if r.get("context_anchor") is None]
     if missing_anchors:
         raise BundleValidationError(f"rows sin context_anchor: {missing_anchors[:5]}")

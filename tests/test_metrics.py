@@ -15,6 +15,7 @@ from src.evaluation.metrics import (
     mrr_at_k,
     ndcg_at_k,
     paired_bootstrap,
+    paired_equivalence_tost,
     parent_hit_at_1,
     recall_at_k,
     unique_in_order,
@@ -139,6 +140,29 @@ def test_paired_bootstrap_reports_p_value() -> None:
     assert sig["p_value"] < 0.05
     null = paired_bootstrap([1.0, 0.0] * 6, [1.0, 0.0] * 6, seed=7, n_resamples=300)
     assert null["p_value"] == 1.0  # media de la diferencia = 0 exacto
+
+
+def test_tost_declares_equivalence_when_difference_is_negligible() -> None:
+    # diferencia casi nula y consistente ⇒ el IC(1-2a) cae dentro de ±margen ⇒ equivalencia
+    a = [0.80, 0.75, 0.82, 0.78, 0.81, 0.79, 0.83, 0.77] * 4
+    b = [0.79, 0.75, 0.82, 0.78, 0.80, 0.79, 0.83, 0.77] * 4
+    res = paired_equivalence_tost(a, b, margin=0.05, seed=7, n_resamples=400)
+    assert res["equivalent"] is True
+    assert res["p_tost"] < 0.05
+    assert -res["margin"] <= res["ci_low"] and res["ci_high"] <= res["margin"]
+
+
+def test_tost_rejects_equivalence_when_effect_or_noise_too_large() -> None:
+    # efecto grande ⇒ no equivalente
+    big = paired_equivalence_tost([1.0] * 12, [0.0] * 12, margin=0.05, seed=7, n_resamples=400)
+    assert big["equivalent"] is False
+    assert big["p_tost"] == pytest.approx(1.0)
+    # margen no positivo ⇒ error
+    with pytest.raises(ValueError):
+        paired_equivalence_tost([0.1], [0.1], margin=0.0)
+    # vectores de distinto tamaño ⇒ error
+    with pytest.raises(ValueError):
+        paired_equivalence_tost([0.1, 0.2], [0.1], margin=0.05)
 
 
 def test_holm_correction_matches_manual() -> None:

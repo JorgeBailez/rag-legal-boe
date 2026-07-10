@@ -281,8 +281,14 @@ def bca_ci(
     """
     a = np.asarray(values, dtype=float)
     if a.size == 0:
-        return {"mean": 0.0, "ci_low": 0.0, "ci_high": 0.0, "seed": seed,
-                "n_resamples": n_resamples, "method": "bca"}
+        return {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "seed": seed,
+            "n_resamples": n_resamples,
+            "method": "bca",
+        }
     theta = float(a.mean())
     rng = np.random.default_rng(seed)
     idx = rng.integers(0, a.size, size=(n_resamples, a.size))
@@ -333,6 +339,75 @@ def holm_correction(pvalues: dict[str, float], *, alpha: float = 0.05) -> dict[s
         running = adj
         out[name] = {"p_raw": float(p), "p_holm": adj, "significant": adj < alpha}
     return out
+
+
+def paired_equivalence_tost(
+    a_values: list[float],
+    b_values: list[float],
+    *,
+    margin: float,
+    seed: int = DEFAULT_BOOTSTRAP_SEED,
+    n_resamples: int = 1000,
+    alpha: float = 0.05,
+) -> dict:
+    """Test de **equivalencia** (TOST) por bootstrap pareado sobre la diferencia (a − b).
+
+    El contraste de superioridad (``paired_bootstrap``) responde a "¿difiere de 0?"; un "no
+    significativo" allí puede ser mera falta de potencia, no equivalencia. Este responde a la
+    pregunta complementaria: "¿es la diferencia *prácticamente nula*?", es decir,
+    |media(a - b)| < ``margin`` (margen de negligibilidad preespecificado, en unidades de la
+    métrica). Hay equivalencia cuando el IC bilateral al ``1 - 2*alpha`` (90 % para alpha=0.05,
+    forma estándar del TOST de Schuirmann) queda **contenido** en [-margin, +margin]. Convierte
+    un nulo infrapotenciado en una afirmación positiva y acotada ("equivalente hasta +/-margin").
+
+    Devuelve la diferencia observada, el IC al 1-2*alpha, el margen, los dos p unilaterales
+    (bootstrap) y si hay equivalencia (p_tost < alpha, i.e. IC dentro de [-margin, margin]).
+    """
+    a = np.asarray(a_values, dtype=float)
+    b = np.asarray(b_values, dtype=float)
+    if a.size != b.size:
+        raise ValueError("TOST pareado requiere vectores del mismo tamaño")
+    if margin <= 0:
+        raise ValueError("margin debe ser > 0")
+    if a.size == 0:
+        return {
+            "mean_diff": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "margin": float(margin),
+            "p_lower": 1.0,
+            "p_upper": 1.0,
+            "p_tost": 1.0,
+            "equivalent": False,
+            "seed": seed,
+            "n_resamples": n_resamples,
+            "alpha": alpha,
+        }
+    diffs = a - b
+    rng = np.random.default_rng(seed)
+    idx = rng.integers(0, diffs.size, size=(n_resamples, diffs.size))
+    boot = diffs[idx].mean(axis=1)
+    # IC bilateral al 1 − 2·alpha (percentil): equivalente a la unión de los dos tests unilaterales
+    lo_pct, hi_pct = alpha * 100, (1 - alpha) * 100
+    ci_low = float(np.percentile(boot, lo_pct))
+    ci_high = float(np.percentile(boot, hi_pct))
+    # p-valores unilaterales de cada test de Schuirmann
+    p_upper = float(np.mean(boot >= margin))  # H0: media ≥ +margin
+    p_lower = float(np.mean(boot <= -margin))  # H0: media ≤ −margin
+    p_tost = max(p_upper, p_lower)
+    return {
+        "mean_diff": float(diffs.mean()),
+        "ci_low": ci_low,
+        "ci_high": ci_high,
+        "margin": float(margin),
+        "p_lower": p_lower,
+        "p_upper": p_upper,
+        "p_tost": p_tost,
+        "equivalent": bool(-margin <= ci_low and ci_high <= margin),
+        "seed": seed,
+        "n_resamples": n_resamples,
+        "alpha": alpha,
+    }
 
 
 # --------------------------------------------------------------------------- #
