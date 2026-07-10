@@ -28,12 +28,27 @@ Endpoints confirmados e implementados en `src/boe/client.py` para la descarga ra
 
 ## Licencias y condiciones de uso
 
-Se reutiliza la información de datos abiertos del BOE (legislación consolidada). La
-legislación consolidada reutilizada tiene **carácter informativo**: no sustituye al texto
-oficial publicado en el BOE. Pendiente: citar formalmente las condiciones de reutilización
-de datos abiertos del BOE.
+El proyecto reutiliza la legislación consolidada que el BOE publica como datos abiertos. Esa
+reutilización se rige por la Ley 37/2007, sobre reutilización de la información del sector público, y
+por el Real Decreto 1495/2011, que la desarrolla para el sector público estatal, en los términos del
+aviso legal del BOE. Las condiciones generales permiten la reutilización con fines comerciales y no
+comerciales siempre que se cumplan dos obligaciones básicas:
+
+- no desnaturalizar el sentido de la información, y
+- citar como fuente al BOE e indicar la fecha de la última actualización del documento reutilizado.
+
+Cuando la información contenga datos personales, su reutilización debe respetar el Reglamento General
+de Protección de Datos y la Ley Orgánica 3/2018.
+
+Referencias oficiales:
+
+- Aviso legal del BOE: <https://www.boe.es/informacion/aviso_legal/index.php>
+- Real Decreto 1495/2011, de reutilización en el sector público estatal:
+  <https://www.boe.es/buscar/act.php?id=BOE-A-2011-17560>
+- Datos abiertos del BOE, preguntas frecuentes sobre legislación consolidada:
+  <https://www.boe.es/datosabiertos/faq/consolidada.php>
 
 ## Aviso
 
-Los textos consolidados del BOE tienen carácter informativo y no valor jurídico oficial;
-remitir siempre a la publicación oficial.
+Los textos consolidados del BOE tienen carácter informativo y no valor jurídico oficial. Para
+cualquier uso con efectos jurídicos hay que remitirse siempre a la publicación oficial.

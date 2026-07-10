@@ -1,39 +1,309 @@
 \chapter{Diseño e implementación}
 \label{chap:diseño}
 
+Este capítulo describe el sistema tal y como se ha construido: sus componentes, cómo se conectan, qué datos intercambian y por qué se organizó así. Aquí se explica la \emph{maquinaria} y el razonamiento de diseño; la justificación empírica de las decisiones que dependen de medir —qué modelo de \emph{embeddings} recupera mejor, si la fusión híbrida aporta algo o qué umbral de abstención conviene— se reserva para el capítulo de experimentos.
 
-Aquí viene todo lo que has hecho tú (tecnológicamente). 
-Puedes entrar hasta el detalle. 
-Es la parte más importante de la memoria, porque describe lo que has hecho tú.
-Eso sí, normalmente aconsejo no poner código, sino diagramas.
+La exposición sigue el orden en que fluyen los datos —de la adquisición del corpus a la generación de la respuesta— y se cierra con el marco de evaluación entendido como \emph{software}.
 
-\section{Arquitectura general} 
+\section{Arquitectura general}
 \label{sec:arquitectura}
 
-Si tu proyecto es un software, siempre es bueno poner la arquitectura (que es cómo se estructura tu programa a ``vista de pájaro'').
-
-Por ejemplo, puedes verlo en la Figura~\ref{fig:arquitectura}.
-\LaTeX \ pone las figuras donde mejor cuadran. 
-Y eso quiere decir que quizás no lo haga donde lo hemos puesto\ldots
-Eso no es malo.
-A veces queda un poco raro, pero es la filosofía de \LaTeX: tú al contenido, que yo me encargo de la maquetación.
-
-\begin{figure}
+El sistema no es un programa monolítico, sino una \textbf{cadena de etapas independientes} conectadas por artefactos de datos versionados. Cada etapa toma como entrada el artefacto que produjo la anterior, realiza una transformación bien delimitada y persiste su resultado en disco antes de ceder el turno a la siguiente. Esta organización, próxima a la idea de \emph{tubería} (\emph{pipeline}) de procesamiento,  permite analizar el sistema por partes, reproducir cualquier resultado a partir de sus entradas y sustituir o ampliar una etapa sin rehacer las demás.
+\begin{figure}[htbp]
     \centering
-    \includegraphics[width=9cm, keepaspectratio]{img/arquitectura.png}
-    \caption{Estructura del parser básico.}\label{fig:arquitectura}
+    \includegraphics[width=\textwidth]{img/arquitectura_rag.pdf}
+    \caption{Arquitectura general del sistema RAG jurídico implementado, separando la fase offline de preparación e indexación del corpus y la fase online de recuperación, construcción de evidencias y generación de una respuesta fundamentada.}
+    \label{fig:arquitectura-rag}
 \end{figure}
 
-\begin{figure}
+\subsection{Principios de diseño}
+\label{subsec:principios-diseno}
+
+Cinco principios atraviesan todas las decisiones del proyecto y conviene enunciarlos antes de entrar en el detalle.
+
+\begin{description}
+  \item[Separación de responsabilidades.] Cada componente hace una sola cosa y la expone con una frontera clara de entrada y salida. La ingesta descarga, el \emph{parser} interpreta, el fragmentador trocea, el índice recupera, el generador redacta. Ningún componente conoce los detalles internos de otro: se comunican a través de contratos de datos, no de estructuras compartidas en memoria. Esto responde directamente al requisito de mantenibilidad y hace que cada pieza sea comprobable de forma aislada.
+
+  \item[Los contratos de datos como frontera.] Lo que viaja entre etapas no es un objeto cualquiera, sino un documento que cumple un \emph{contrato} explícito y validado. Esa frontera tipada es la que garantiza que un cambio en una etapa no corrompa silenciosamente a las siguientes y la que sostiene la trazabilidad de extremo a extremo.
+
+  \item[Reproducibilidad por construcción.] Todo artefacto relevante —los XML descargados, los documentos procesados, los índices— se acompaña de la información necesaria para reconstruirlo y verificar que no ha cambiado: sumas de comprobación, manifiestos y huellas digitales. Un resultado del que no se puede rehacer el camino no se considera válido.
+
+  \item[Ejecución local y abierta.] El sistema funciona íntegramente con software y modelos de código abierto ejecutados en un servidor propio, sin depender de servicios externos de pago ni de \emph{APIs} comerciales. Esta decisión, lejos de ser una mera restricción de recursos, refuerza la reproducibilidad, elimina el coste por consulta y mantiene las preguntas y los documentos bajo control, algo especialmente pertinente al trabajar con información jurídica.
+
+  \item[Fallo seguro y validación de salidas.] Ante la duda, el sistema se detiene o se abstiene en lugar de inventar. Las salidas se validan contra su contrato antes de aceptarse y, como se verá, el generador no responde si no dispone de evidencias suficientes. Es preferible una abstención explícita a una respuesta fluida pero infundada.
+\end{description}
+
+\subsection{El flujo de datos de extremo a extremo}
+\label{subsec:flujo-datos}
+
+La forma más clara de entender la arquitectura es seguir el camino que recorre la información, desde que una norma vive en el portal del BOE hasta que el usuario recibe una respuesta fundamentada. El sistema encadena las siguientes etapas, cada una materializada en un \emph{script} de orquestación y respaldada por uno o varios módulos de la biblioteca \texttt{src/}:
+\begin{enumerate}
+  \item \textbf{Ingesta cruda.} Se descargan de la API del BOE los documentos de una norma y se guardan tal cual, junto con un manifiesto que registra su huella digital. Produce los XML inmutables en \texttt{data/raw/} y los manifiestos en \texttt{data/manifests/}.
+
+  \item \textbf{Procesamiento documental.} El \emph{parser} interpreta esos XML y construye la representación estructurada de la norma: su descriptor, su historial de versiones y el texto vigente de cada bloque. Produce los documentos procesados en \texttt{data/processed/}.
+
+  \item \textbf{Fragmentación.} El texto vigente se trocea en unidades recuperables que conservan el vínculo con su artículo o disposición de origen. Produce los \emph{chunks} listos para vectorizar.
+
+  \item \textbf{Auditoría.} Una comprobación de solo lectura verifica la coherencia relacional del corpus procesado y decide si está en condiciones de indexarse. Actúa como una puerta de calidad previa a las cargas pesadas.
+
+  \item \textbf{Indexación densa.} Los \emph{chunks} se transforman en vectores mediante un modelo de \emph{embeddings} y se empaquetan en un índice inmutable y verificable.
+
+  \item \textbf{Recuperación.} Ante una consulta, los recuperadores —léxico, denso e híbrido— seleccionan las evidencias candidatas del corpus.
+
+  \item \textbf{Ensamblado de contexto.} Las evidencias recuperadas se deduplican, se ordenan, se acotan a un presupuesto y se etiquetan con identificadores antes de entregarse al modelo generativo.
+
+  \item \textbf{Generación fundamentada.} El modelo de lenguaje redacta una respuesta a partir de ese contexto, citando únicamente las evidencias proporcionadas, o se abstiene si no las hay.
+
+  \item \textbf{Evaluación.} De forma transversal, un conjunto de métricas y un modelo juez miden por separado la calidad de cada eslabón sobre un banco de consultas anotadas.
+\end{enumerate}
+
+El rasgo decisivo es que cada etapa lee de disco el artefacto de la anterior y escribe el suyo antes de continuar: no hay un proceso monolítico, sino una sucesión de transformaciones reproducibles. Gracias a ello, las etapas costosas (descarga, vectorización o llamada al modelo) se ejecutan cuando conviene y en la máquina adecuada, y las pruebas automáticas ejercitan cada componente de forma aislada y sin red.
+
+\subsection{Los contratos de datos como fuente única de verdad}
+\label{subsec:contratos}
+
+El elemento que cohesiona toda la arquitectura es el conjunto de \textbf{contratos de datos}, definidos como modelos \emph{Pydantic} (versión~2) en el paquete \texttt{src/contracts}. Cada contrato describe con precisión la forma de un artefacto: qué campos contiene, de qué tipo son y cuáles son obligatorios. Dos rasgos los convierten en una verdadera fuente de verdad. El primero es que prohíben los campos no declarados (\texttt{extra="forbid"}): si un documento trae información ajena al contrato —por una deriva del formato o por un error de otra etapa—, la validación lo rechaza en lugar de dejarlo pasar. El segundo es que cada contrato raíz fija una versión de esquema explícita (\texttt{schema\_version}), de modo que un artefacto generado con una versión antigua se detecta de inmediato.
+
+A partir de estos modelos se generan, de forma determinista, los esquemas JSON publicados en el repositorio, y una prueba automática comprueba byte a byte que el esquema versionado coincide con el que producen los modelos. Así, ningún cambio en un contrato puede colarse sin quedar reflejado y revisado.
+
+La representación procesada de una norma se reparte entre cuatro contratos, con una regla estricta de \textbf{propiedad única del texto}: cada pieza de información tiene un solo dueño y las demás la referencian, en lugar de duplicarla.
+
+\begin{description}
+  \item[Descriptor.] La ficha de la norma: sus metadatos, la lista de bloques, cuáles son indexables y la clasificación por materias. Es el dueño de la estructura y de las decisiones de indexabilidad.
+  \item[Historial.] Las distintas versiones de cada bloque, sus notas de modificación y la resolución temporal que determina qué redacción está vigente. Es el dueño de la dimensión temporal.
+  \item[Textos padre.] El texto vigente de cada bloque y sus párrafos. Son el único dueño del texto pesado: el resto de artefactos no lo duplican, sino que lo recuperan por referencia.
+  \item[\emph{Chunks}.] La proyección lista para recuperación: el texto del fragmento, una variante enriquecida para la búsqueda, la cita autoritativa con su enlace oficial y los filtros de metadatos. Es lo único que se vectoriza.
+\end{description}
+
+Todo lo demás se resuelve mediante \emph{join} por identificadores (\texttt{chunk\_id}, \texttt{parent\_id}), igual que en una base de datos relacional. Esta disciplina evita el peor enemigo de la trazabilidad —que la misma información viva, divergente, en varios sitios— y deja claro, para cada dato, dónde está la versión canónica. A estos contratos se añaden los de las capas posteriores: el de la respuesta fundamentada que produce el generador y los que describen los modelos de \emph{embeddings} y sus parámetros, descritos en sus secciones correspondientes.
+
+\subsection{Mapa de componentes}
+\label{subsec:mapa-componentes}
+
+El sistema se organiza en componentes que se corresponden uno a uno con las etapas de la cadena de datos; cada uno encapsula una responsabilidad y expone una frontera clara. Se resumen a continuación por su función —su implementación concreta como carpetas del repositorio se recoge en el anexo~\ref{app:repo}—:
+
+\begin{description}
+  \item[\texttt{boe}] Cliente HTTP de la API del BOE, \emph{parser} de los XML y gestión del corpus semilla.
+  \item[\texttt{contracts}] Los modelos de datos descritos arriba y la exportación de sus esquemas JSON.
+  \item[\texttt{preprocessing}] El fragmentador que convierte el texto vigente en \emph{chunks}.
+  \item[\texttt{embeddings}] El registro de modelos, el codificador, la preparación de entradas, el empaquetado del índice inmutable y sus huellas digitales.
+  \item[\texttt{indexing}] Los índices propiamente dichos: el índice denso exacto y el índice léxico.
+  \item[\texttt{retrieval}] Los recuperadores (denso, léxico e híbrido), el constructor de evidencias y el ensamblador de contexto.
+  \item[\texttt{generation}] La construcción del \emph{prompt}, el cliente del modelo local y el generador de respuestas.
+  \item[\texttt{evaluation}] Las métricas por componente, el modelo juez, el banco de consultas anotadas y los informes.
+  \item[\texttt{quality}] La auditoría del corpus procesado.
+  \item[\texttt{config} y \texttt{core}] La configuración del sistema y la jerarquía de excepciones propia, de la que heredan todos los errores del proyecto.
+\end{description}
+
+\section{Adquisición y construcción del corpus}
+\label{sec:corpus}
+
+La primera etapa del sistema responde al objetivo de construir un corpus normativo reproducible y ampliable. Antes de poder recuperar o generar nada, hace falta una colección de normas obtenida de una fuente fiable, almacenada de forma que pueda verificarse y reconstruirse, y seleccionada con criterios explícitos. Esta sección describe cómo se adquieren los documentos, cómo se garantiza su trazabilidad y qué normas componen el corpus del trabajo.
+
+\subsection{Fuente documental: la API de legislación consolidada del BOE}
+\label{subsec:fuente-api}
+
+La fuente es la colección de legislación consolidada del \emph{Boletín Oficial del Estado}, accesible a través de su API de datos abiertos~\cite{boeApiConsolidada}. Como se argumentó en el estado del arte (\ref{sec:informacion-juridica}), la consolidación integra en un único texto las modificaciones que ha recibido una norma, lo que la hace especialmente adecuada para un sistema de consulta; conviene recordar, no obstante, que estos textos tienen carácter informativo y no sustituyen a la publicación oficial~\cite{boeLegislacionActualizada}.
+
+Para cada norma, identificada por su código \texttt{BOE-A-AAAA-NNNNN}, el cliente de ingesta solicita seis recursos complementarios de la API: el texto completo (\texttt{full}), los metadatos (\texttt{metadatos}), el análisis jurídico (\texttt{analisis}), los metadatos en formato europeo ELI (\texttt{metadata-eli}), el texto estructurado (\texttt{texto}) y el índice de bloques (\texttt{indice}). De ellos, los metadatos, el texto y el índice se consideran obligatorios, porque sin ellos no se puede construir la representación de la norma; el resto son opcionales y, si la API no los ofrece para una norma concreta, se omiten sin detener la ingesta. Esta combinación de recursos es la que permite, más adelante, preservar la procedencia de cada fragmento y construir enlaces verificables a la fuente oficial.
+
+\subsection{Ingesta cruda inmutable y trazabilidad}
+\label{subsec:ingesta-cruda}
+
+La etapa de ingesta tiene una responsabilidad deliberadamente estrecha: descargar y guardar, sin interpretar nada. El cliente del BOE recupera los recursos de una norma y escribe los bytes \emph{tal cual} los devuelve la API, como ficheros XML bajo \texttt{data/raw/boe/<norma>/}. No se realiza ningún \emph{parsing} en este punto; la interpretación se delega por completo a la etapa siguiente. Esta separación mantiene la ingesta desacoplada del resto del sistema y, sobre todo, preserva el dato original intacto: el \emph{raw} es inmutable y nunca se vuelve a tocar.
+
+Junto a los XML, el cliente genera un \textbf{manifiesto} por norma (\texttt{data/manifests/<norma>.json}) que actúa como acta de la descarga. Para cada fichero registra su ruta, su tamaño en bytes (\texttt{size\_bytes}) y, sobre todo, su suma de comprobación criptográfica SHA-256; y para la norma en conjunto anota la fuente, la URL base de la API y el instante exacto de la descarga en formato UTC. Esa huella digital cumple una función esencial: permite comprobar en cualquier momento que los XML almacenados son exactamente los que se descargaron, sin alteraciones ni corrupción. La integridad del corpus deja así de ser una promesa y pasa a ser una propiedad verificable, base de la reproducibilidad de todo lo que se construye después.
+
+\subsection{Selección del corpus semilla}
+\label{subsec:seleccion-corpus}
+
+El corpus del trabajo está definido de forma declarativa en un catálogo semilla (\texttt{seed\_corpus\_ampliado.json}), que enumera las normas a incorporar con su identificador, su denominación, su rango esperado y el área temática a la que pertenecen. Mantener la composición del corpus en un fichero de datos —y no dispersa por el código— es lo que hace la colección \emph{ampliable}: añadir o quitar normas es editar una lista y volver a ejecutar el proceso, sin rediseñar la arquitectura.
+
+La colección reúne \textbf{92 normas estatales consolidadas} de alto uso ciudadano, distribuidas en doce áreas temáticas. Parte de un núcleo administrativo y del sector público —procedimiento administrativo común, régimen jurídico del sector público, régimen local, transparencia, subvenciones, contratación pública o protección de datos— y se abre a las materias que más afectan a la vida cotidiana: tributaria, laboral y de seguridad social, consumo, vivienda, sanidad, educación, extranjería o tráfico, entre otras. Esta diversidad temática y de estilo de redacción no es casual: un corpus heterogéneo es el banco de pruebas adecuado para comparar después estrategias de recuperación de naturaleza distinta.
+
+La inclusión de una norma no es discrecional, sino que responde a criterios verificables comprobados sobre sus metadatos. Una norma entra en el corpus si, y solo si, está \textbf{vigente} (ni derogada ni con su vigencia agotada), su estado de consolidación figura como «Finalizado» —es decir, su texto consolidado está al día— y dispone de los recursos obligatorios de la API. Las normas que no cumplen estos criterios se excluyen y se reportan, nunca se sustituyen de forma automática. Los identificadores se verificaron además manualmente contra el portal del BOE, comprobando su vigencia y su última actualización, para no fiar la composición del corpus a la memoria ni a referencias antiguas. Este criterio se aplicó de forma efectiva: de las 93 normas seleccionadas al principio, una —la Ley 35/2015, de valoración de daños— quedó fuera porque la API no ofrece un texto consolidado propio para ella (es una ley de reforma cuyo baremo de indemnizaciones vive dentro de un anexo del Real Decreto Legislativo 8/2004, ya presente en el corpus), con lo que la colección quedó en las \textbf{92 normas} definitivas (Anexo~\ref{app:problemas}). Lo que no cumple los criterios se reporta, nunca se sustituye a escondidas.
+
+\subsection{Construcción, validación y auditoría}
+\label{subsec:construccion-validacion}
+
+Sobre ese catálogo operan varios procesos con responsabilidades separadas, que reflejan en el plano operativo los principios de diseño enunciados antes. La construcción \emph{con red} recorre el corpus semilla y, para cada norma, descarga su \emph{raw} y su manifiesto, la verifica contra los criterios de inclusión y, si los cumple, genera ya su documento procesado y sus \emph{chunks}; las normas que no los cumplen se dejan fuera y se documentan en un informe de verificación. A partir de ahí, todas las operaciones habituales son \emph{sin red}: un reprocesado local que regenera los artefactos procesados a partir del \emph{raw} ya descargado —útil cada vez que mejora el \emph{parser} o el fragmentador, sin volver a llamar a la API—, una validación estructural que comprueba que cada documento y cada conjunto de \emph{chunks} cumplen sus contratos, y una auditoría de calidad, de solo lectura, que revisa la coherencia relacional del corpus y produce un informe de \emph{readiness} que actúa como puerta previa a la indexación.
+
+Esta arquitectura de etapas y comprobaciones consigue que la incorporación de nueva normativa sea un proceso administrativo reproducible y de bajo riesgo: se amplía la lista semilla, se descarga lo nuevo, se reprocesa todo en local y las validaciones avisan si algo no encaja antes de seguir adelante. El corpus deja de ser un punto de partida frágil para convertirse en un artefacto reconstruible y verificable, que es justamente lo que exige el resto del sistema. Afinar esa auditoría exigió, de hecho, separar la \emph{integridad} (errores reales) de la \emph{cobertura} (exclusiones legítimas): en una primera pasada sobre las 92 normas saltaron 214 «errores» que, investigados uno a uno, resultaron falsos positivos —bloques excluidos a propósito, límites de identificador fijados a ojo o cadenas de tablas confundidas con identificadores internos—, y distinguir lo excluido por política de lo realmente roto los redujo a cero.
+
+\section{Representación documental y vigencia temporal}
+\label{sec:representacion}
+
+Una vez descargados los XML en crudo, el sistema necesita transformarlos en una representación estructurada con la que se pueda trabajar: localizar artículos, conocer su contexto jerárquico, distinguir qué texto está vigente y conservar la procedencia de cada fragmento. De esto se ocupa el \emph{parser}. Su tarea no es trivial, porque un texto consolidado del BOE no es un documento plano: es el resultado de superponer todas las reformas que ha sufrido una norma, y esa superposición deja huellas que hay que interpretar correctamente. Esta sección describe cómo se construye la representación y se detiene, con especial cuidado, en la decisión de diseño más delicada de todo el procesamiento: determinar qué redacción de cada precepto está en vigor.
+
+\subsection{Del XML a una representación estructurada}
+\label{subsec:parser}
+
+El \emph{parser} consume los recursos descargados —principalmente el texto estructurado, el índice de bloques, los metadatos y el análisis jurídico— y produce los tres artefactos procesados que ya se presentaron en la arquitectura: el descriptor de la norma, su historial y el almacén de textos padre. La unidad básica sobre la que trabaja es el \emph{bloque}: cada artículo, disposición, encabezado o anexo de la norma se corresponde con un bloque identificado de forma estable (por ejemplo, \texttt{a14} para el artículo~14), que conviene no confundir con el número de artículo visible para el lector.
+
+De cada bloque, el \emph{parser} extrae su tipo —precepto, encabezado, preámbulo, firma o nota inicial—, su rótulo y, sobre todo, sus distintas \emph{versiones}: cada vez que una reforma ha modificado ese bloque, el BOE conserva la redacción correspondiente con la fecha en que se publicó y la norma que la introdujo. A partir de los encabezados, el \emph{parser} reconstruye además la posición jerárquica de cada bloque (libro, título, capítulo, sección, subsección o anexo), de modo que un artículo no quede aislado de la estructura que le da sentido. Toda esta información se reparte entre los contratos descritos antes, respetando la regla de propiedad única: el texto vigente y sus párrafos viven solo en el almacén de textos padre, el historial completo de versiones solo en el historial, y la estructura e indexabilidad solo en el descriptor. Interpretar fielmente ese HTML no fue trivial: durante el desarrollo del \emph{parser} se resolvieron dos problemas con impacto medible —redacciones antiguas que se colaban como vigentes y tablas perdidas o duplicadas—, que se detallan, con sus cifras y soluciones, en el Anexo~\ref{app:problemas}.
+
+\subsection{La regla de vigencia temporal}
+\label{subsec:vigencia}
+
+Aquí reside el problema más sutil del dominio. Como un bloque puede arrastrar varias redacciones a lo largo del tiempo, el sistema debe elegir, para cada uno, cuál es la que está \textbf{realmente en vigor}; servir la redacción equivocada de un artículo no es un error cosmético, sino una información falsa con consecuencias. Y la solución intuitiva es justamente la que no funciona: ni «quedarse con la última versión que aparece en el XML» ni «tomar la de fecha más reciente» son criterios fiables, porque el orden del XML no es necesariamente cronológico y la fecha más alta puede corresponder a una reforma aún no vigente o a un dato mal normalizado.
+
+El criterio que adopta el sistema es estricto y no admite atajos. La redacción vigente de un bloque es aquella cuya fecha de publicación (\texttt{fecha\_publicacion}) coincide de forma \textbf{exacta y única} con la fecha de actualización del índice de la norma (\texttt{fecha\_actualizacion} del fichero \texttt{indice.xml}) y que, además, es la máxima fecha normalizable del bloque. El índice de la norma actúa así como única autoridad sobre la vigencia: indica a qué fecha está actualizado el texto consolidado, y solo la versión que casa con esa fecha se considera en vigor. El orden de aparición en el XML nunca decide; la fecha máxima se calcula únicamente como diagnóstico, no como criterio de selección. La importancia de este criterio no es teórica —servir un artículo caducado no es un fallo cosmético, sino dar información jurídica falsa—: un caso real del corpus, con el artículo~45 de la ley de bases de régimen local que mostraba su redacción de 1990 en lugar de la vigente de 2013, se detalla en el Anexo~\ref{app:problemas}.
+
+Esta resolución temporal es lo bastante importante como para que el sistema la trate como una función canónica, recalculada de forma \emph{independiente} por el \emph{parser} cuando construye los artefactos y por la auditoría cuando los verifica. Que dos componentes lleguen al mismo resultado por separado funciona como una comprobación cruzada: un error en uno no puede corromper el corpus en silencio, porque el otro lo detectaría.
+
+\subsection{Cuarentena y artículos vaciados}
+\label{subsec:cuarentena}
+
+¿Qué ocurre cuando la regla no puede resolver la vigencia de forma exacta y única? El sistema no improvisa: el bloque pasa a \textbf{cuarentena}. Esto sucede en varios casos —cuando ninguna versión casa con la fecha del índice, cuando casan varias de forma ambigua, cuando la versión que casa no es la máxima, o cuando la fecha del índice falta o no es normalizable—, y todos comparten la misma respuesta prudente: el bloque se marca sin redacción vigente, no genera párrafos ni \emph{chunks} y queda fuera de lo que el sistema puede recuperar y citar. Eso sí, se conserva su lista completa de versiones para poder diagnosticar después por qué no se resolvió. Es, deliberadamente, una decisión conservadora: ante la duda sobre qué dice hoy un artículo, es preferible no ofrecerlo que ofrecer una versión posiblemente incorrecta.
+
+Conviene no confundir la cuarentena con un caso distinto y legítimo: el de los \textbf{artículos vaciados}. A veces una reforma deja un precepto sin contenido, y el texto consolidado vigente de ese bloque es, literalmente, «(Sin contenido)». Aquí no hay ninguna ambigüedad: sabemos con certeza cuál es su estado actual. Por eso estos bloques sí se resuelven, sí se indexan y el sistema puede informar legítimamente de que ese artículo se encuentra vigente pero sin contenido, lo que es en sí mismo una respuesta correcta. Distinguir el «no sé cuál es la versión vigente» (cuarentena) del «sé que la versión vigente está vacía» (artículo vaciado) es justamente el tipo de matiz que el dominio jurídico exige y que un tratamiento ingenuo pasaría por alto.
+
+\section{Fragmentación documental}
+\label{sec:fragmentacion}
+
+Con el texto vigente de cada bloque ya resuelto, la última etapa de procesamiento lo prepara para la recuperación troceándolo en unidades manejables. Como se discutió en el estado del arte (\ref{sec:fragmentacion-contexto}), esta fragmentación condiciona directamente la calidad del sistema: trozos demasiado pequeños pierden el contexto necesario para interpretar una disposición, y demasiado grandes diluyen la precisión de la búsqueda y llenan el contexto del modelo de ruido. El objetivo del fragmentador es alcanzar ese equilibrio sin sacrificar nunca dos garantías: que el texto legal no se altere y que cada fragmento conserve el vínculo con su artículo de origen.
+
+\subsection{Estrategia \emph{parent-child} por párrafos}
+\label{subsec:chunking-estrategia}
+
+El sistema adopta una estrategia de fragmentación \emph{parent-child} (padre-hijo) trabajando por párrafos, en línea con el patrón «recuperar lo pequeño, aportar lo grande» descrito en el estado del arte. El padre es el bloque vigente completo —el artículo o la disposición—, cuyo texto vive en el almacén de textos padre; los hijos son los \emph{chunks}, fragmentos que proyectan una porción de ese texto y que son lo único que se vectoriza e indexa.
+
+Dos decisiones definen el troceado. La primera es que se realiza \textbf{respetando los párrafos}, nunca cortando por un número fijo de caracteres a mitad de una frase: el fragmentador agrupa párrafos consecutivos hasta llenar un presupuesto de tamaño (en torno a 1800 caracteres por omisión) y, si un bloque lo excede, lo divide en varios \emph{chunks} solapando un párrafo entre fragmentos contiguos, de modo que el contexto no se pierda justo en la costura. Un bloque que cabe en el presupuesto produce un único \emph{chunk}. La segunda es que el texto legal \textbf{no se reescribe jamás}: el fragmentador solo selecciona y agrupa párrafos existentes, sin resumir ni parafrasear, porque la integridad literal del texto normativo es innegociable.
+
+Fiel a la regla de propiedad única, el \emph{chunk} no copia el texto del padre ni los metadatos completos de la norma: lleva su identidad, su texto, una variante para búsqueda, la cita autoritativa y un puñado de filtros compactos, y todo lo demás lo recupera por referencia al padre. Así se evita duplicar el texto pesado y se mantiene una sola versión canónica de cada cosa.
+
+\subsection{Texto y texto de recuperación}
+\label{subsec:text-vs-retrieval}
+
+Cada \emph{chunk} almacena en realidad dos textos con propósitos distintos. El primero, \texttt{text}, es el texto legal del fragmento tal cual, sin adornos, que es el que se mostraría al usuario o se entregaría como evidencia. El segundo, \texttt{retrieval\_text}, es una variante \emph{enriquecida para la búsqueda}: antepone al texto del fragmento su contexto jurídico —el título corto de la norma, la ruta jerárquica (libro, título, capítulo, sección\ldots) y el rótulo del bloque— unidos con un separador inteligente y evitando duplicar la cabecera si el fragmento ya empieza por ella.
+
+La razón de esta duplicidad es importante. Un fragmento aislado, como «el plazo será de un mes», resulta casi inútil para un buscador semántico: no dice de qué norma ni de qué procedimiento habla. Al envolverlo con su contexto —«Ley 39/2015 \ldots Título IV \ldots Artículo 21. Obligación de resolver \ldots el plazo será de un mes»—, el fragmento adquiere las señales que un modelo de \emph{embeddings} necesita para situarlo, y se acorta la distancia entre el lenguaje cotidiano de la consulta y la terminología de la norma. Es crucial subrayar que este enriquecimiento solo afecta a la representación que se indexa: el texto legal en sí permanece intacto en \texttt{text}, y es ese, y no el enriquecido, el que respalda la respuesta.
+
+\subsection{Filtros e independencia del modelo}
+\label{subsec:chunking-filtros}
+
+Además de los dos textos y la cita, cada \emph{chunk} incorpora una proyección compacta de \textbf{filtros} de metadatos: el rango de la norma, su ámbito, los códigos de materia, el papel semántico del bloque y varias banderas (si está vacío de contenido, si es un anexo, si contiene una tabla o una imagen). Estos filtros permiten, llegado el caso, acotar la búsqueda a un subconjunto del corpus sin recalcular nada, aunque la recuperación principal opere sobre el corpus completo.
+
+Una propiedad de diseño merece destacarse: la fragmentación es \textbf{independiente del modelo}. Como el troceado se decide por párrafos y caracteres, y no por los \emph{tokens} de un modelo concreto, los mismos \emph{chunks} sirven a cualquier modelo de \emph{embeddings} que se quiera evaluar; no hay que rehacer el corpus al cambiar de modelo. La garantía de que ningún fragmento se trunque silenciosamente al superar el límite de \emph{tokens} de un modelo se resuelve más adelante, en la etapa de indexación, mediante una reparación específica que se describe en su sección. Por último, en coherencia con la etapa anterior, los bloques en cuarentena o no indexables no producen \emph{chunks}, mientras que los artículos vaciados, al estar resueltos, sí se fragmentan e indexan.
+
+\section{Indexación densa}
+\label{sec:indexacion}
+
+Llegados a este punto, el corpus ya está troceado en \emph{chunks}, pero estos siguen siendo texto. Para poder recuperarlos por significado —y no solo por coincidencia de palabras— hay que convertirlos en vectores y organizarlos en un índice consultable. De esto se ocupa la etapa de indexación densa. Conviene anticipar que el valor de esta etapa no está en la escala —el corpus es de decenas de miles de vectores, no de millones—, sino en la \textbf{trazabilidad y la reproducibilidad}: que el índice sea exactamente reconstruible, que se sepa con qué modelo y con qué texto se construyó, y que no se pueda publicar uno corrupto sin que el sistema lo advierta. La recuperación léxica e híbrida se añadirá sobre estas mismas unidades en la sección siguiente; aquí el índice es estrictamente denso.
+
+\subsection{Registro de modelos y contrato de \emph{embeddings}}
+\label{subsec:registro-modelos}
+
+El sistema no fija un modelo de \emph{embeddings} de forma rígida: mantiene un \textbf{registro declarativo} de modelos candidatos, donde cada uno aporta su propio \emph{contrato}. Ese contrato describe la identidad reproducible del modelo (su identificador y el \emph{commit hash} exacto de sus pesos y de su \emph{tokenizer}), cómo debe formatearse un documento antes de codificarlo, qué tipo de \emph{pooling} aplica, si normaliza los vectores, su dimensión esperada y su límite de \emph{tokens}. Tratar cada modelo como un contrato evita un error sutil pero grave: aplicar a un modelo el formato de otro produciría vectores silenciosamente peores, y la comparación entre modelos dejaría de ser legítima.
+
+El contrato separa de forma deliberada dos cosas que a menudo se confunden. Por un lado, el \emph{contrato de \emph{embeddings} documentales}, que define la identidad de los vectores del corpus: si cambia, los vectores cambian. Por otro, el \emph{perfil de consulta}, que describe cómo se formula la pregunta antes de codificarla —por ejemplo, anteponiéndole una instrucción como «dada una pregunta de un ciudadano sobre legislación, recupera los pasajes legales pertinentes»— y que es configurable sin alterar los vectores de los documentos. El sistema define varios perfiles reproducibles (uno genérico, uno jurídico y uno orientado a la consulta ciudadana, entre otros); cuál de ellos rinde mejor es una pregunta empírica que se responde en el capítulo de experimentos.
+
+Un punto innegociable es la \textbf{fijación de revisiones}. Las revisiones de los pesos y del \emph{tokenizer} deben anclarse a un \emph{commit hash} concreto; mientras no lo estén, una puerta de control impide publicar un índice definitivo. Nunca se usa de forma silenciosa la última versión disponible de un modelo, porque eso haría que un mismo proceso produjera resultados distintos en momentos distintos, rompiendo la reproducibilidad. El \emph{token} de acceso a los modelos se lee solo del entorno y jamás se imprime ni se persiste.
+
+\subsection{Codificación y prohibición del truncado silencioso}
+\label{subsec:codificacion}
+
+La codificación la realiza un único componente sobre la biblioteca \emph{Sentence Transformers}, configurado de forma explícita: CPU, precisión \texttt{float32}, normalización L2 de los vectores y validación de que la dimensión obtenida coincide con la declarada. Antes de codificar, los textos se preparan según una de tres \emph{vistas}, que son las que permitirán después estudiar qué representación recupera mejor: la vista base codifica el texto de recuperación enriquecido (el de cada \emph{chunk} con su contexto jurídico), una segunda vista codifica solo el texto crudo del fragmento —para aislar el efecto del enriquecimiento— y una tercera reproduce un troceado clásico de ventanas fijas dentro de cada artículo, como término de comparación. El dispositivo de codificación es conmutable: la CPU es la opción por defecto —con semilla fija, para no perder reproducibilidad— y la GPU se emplea de forma puntual para acelerar la indexación, que en CPU resultaba muy costosa (Anexo~\ref{app:problemas}); el dispositivo empleado queda anotado en el manifiesto del \emph{bundle}.
+
+Aquí se honra la promesa hecha en la fragmentación: la \textbf{prohibición del truncado silencioso}. El problema es real: cada modelo tiene un límite de \emph{tokens}, y si un fragmento lo supera, la práctica habitual de las bibliotecas es recortarlo por la mitad sin avisar, perdiendo texto legal de forma invisible. El sistema lo impide. Para cada entrada, formatea el texto con el contrato del modelo, lo cuenta con el \emph{tokenizer} real —incluyendo los \emph{tokens} especiales— y lo valida contra el límite efectivo. Si una entrada excede ese límite, no se trunca: se \textbf{repara} dividiéndola en ventanas solapadas respetuosas con los \emph{tokens}, de modo que todo el texto quede cubierto. Y si, por lo que fuera, quedara algún fragmento sin reparar, el proceso se detiene con un error en lugar de publicar un índice con texto perdido. Es, de nuevo, el principio de fallo seguro aplicado a un punto donde un descuido sería invisible pero corrosivo. Un problema de anclaje de fragmentos que llegó a bloquear por completo la indexación del corpus de 92 normas, y su solución, se documentan en el Anexo~\ref{app:problemas}.
+
+\subsection{El \emph{bundle} inmutable y sus garantías}
+\label{subsec:bundle}
+
+El resultado de la indexación no es un fichero suelto, sino un \emph{bundle}: un paquete autocontenido e \textbf{inmutable} que reúne la matriz de vectores (en \texttt{float32}), las filas con la identidad y la procedencia de cada vector, un manifiesto legible y un informe de validación. Su identificador combina el alias del modelo, la vista empleada y una huella de identidad de doce caracteres, de modo que dos índices construidos con modelos, vistas o corpus distintos nunca se confunden. Esa huella se calcula a partir de tres \emph{fingerprints} independientes —del corpus de origen, de las entradas preparadas y del contrato documental—, lo que permite detectar de inmediato si algo en la cadena ha cambiado.
+
+La publicación de un \emph{bundle} pasa por dos puertas de control. La primera, antes de codificar, exige que el corpus esté auditado y listo, que el modelo esté registrado y sus revisiones fijadas, que el \emph{tokenizer} cargue, que las entradas estén preparadas con identificadores únicos y que no quede ningún truncado sin reparar. La segunda, antes de publicar, comprueba que los artefactos existen y son coherentes: que el número de vectores cuadra con el de filas, que la forma y el tipo son los esperados, que no hay valores nulos ni infinitos, que la norma de los vectores es efectivamente unitaria y que las sumas de comprobación encajan. Solo si todo pasa se publica, y se hace de forma atómica —se prepara en un área temporal, se valida, se calculan las sumas, se escribe el manifiesto y, por último, se renombra de golpe—, de manera que nunca exista un \emph{bundle} a medio escribir. Un \emph{bundle} ya publicado jamás se sobrescribe.
+
+\subsection{El índice denso exacto}
+\label{subsec:indice-exacto}
+
+Sobre un \emph{bundle} validado se monta el índice de consulta. La implementación es un \textbf{índice exacto}: carga las filas en memoria y la matriz de vectores mediante un mapeo de fichero de solo lectura (sin deserialización de objetos, por seguridad), y resuelve cada consulta calculando el producto escalar entre el vector de la pregunta y todos los del corpus, que al estar normalizados equivale a la similitud coseno; después ordena y devuelve los mejores resultados. No se emplea búsqueda aproximada (ANN). La razón es de proporción: a la escala de este corpus, la búsqueda exacta es sobradamente rápida y no introduce el error de aproximación que arrastran los índices aproximados; añadir uno aportaría complejidad y una fuente de error sin un beneficio medible. Sería optimizar un cuello de botella que no existe.
+
+El índice admite, opcionalmente, \textbf{filtros por metadatos} —rango de la norma, ámbito, materia, papel semántico o las banderas de anexo, tabla, etc.—, que se resuelven como una máscara en memoria mediante un \emph{join} ligero a los \emph{chunks} y descriptores, sin duplicar esa información dentro del \emph{bundle}. Cada resultado devuelto conserva la identidad del vector y su procedencia (documento, bloque y padre de origen), de modo que la recuperación nunca pierde el rastro hacia la fuente, condición indispensable para las citas verificables que exige el sistema.
+
+\section{Recuperación: léxica, densa e híbrida}
+\label{sec:recuperacion}
+
+Con el índice construido, la recuperación es la etapa que, ante una pregunta, selecciona del corpus las evidencias candidatas que se entregarán al generador. El sistema implementa las tres estrategias que el estado del arte señalaba como complementarias —densa, léxica e híbrida— con una decisión de diseño que las hace comparables de forma homogénea: las tres operan sobre las \textbf{mismas unidades de recuperación}, es decir, sobre las mismas filas del \emph{bundle}, identificadas por la misma clave. Gracias a ello, no se comparan corpus distintos, sino estrategias aplicadas a las mismas unidades. Cuál de las tres conviene es, una vez más, una pregunta empírica reservada al capítulo de experimentos; aquí se describe cómo está construida cada una.
+
+\subsection{Recuperación densa}
+\label{subsec:recuperacion-densa}
+
+El recuperador denso es el envoltorio reutilizable del índice exacto. Recibe la pregunta, la codifica con un perfil de consulta reproducible, busca en el índice los vectores más próximos y resuelve cada resultado a su texto recuperado y a su \textbf{cita autoritativa}: la etiqueta humana y la URL oficial del BOE provienen siempre del corpus, nunca las genera el modelo de lenguaje. Los \emph{joins} hacia el texto y la cita se precalculan una sola vez al construir el recuperador, no dentro del bucle de resultados, y tanto el índice como el codificador son inyectables, lo que permite probar la lógica de recuperación sin pesos reales ni red. Es la estrategia que captura el significado: recupera bien aunque la pregunta no comparta el vocabulario exacto de la norma.
+
+\subsection{Recuperación léxica}
+\label{subsec:recuperacion-lexica}
+
+El recuperador léxico implementa BM25 —delegando el cálculo de la puntuación en una biblioteca consolidada (\texttt{rank\_bm25})— sobre exactamente las mismas filas que el índice denso, e indexando el mismo texto de recuperación (sin el prefijo de instrucción que solo necesita el modelo de \emph{embeddings})~\cite{robertson2009bm25}. No se persiste en binario: reconstruirlo desde el corpus es barato frente al coste de los vectores densos.
+
+Dos piezas son propias del proyecto y merecen detalle. La primera es el \textbf{analizador de español}, que decide qué cuenta como término: normaliza el texto, lo pasa a minúsculas, elimina una lista curada de palabras vacías y reduce las palabras a su raíz con un \emph{stemmer} (Snowball). Su rasgo distintivo es que \textbf{conserva las cifras intactas} —los millares y decimales como «40.000» o «1,5»—, porque son precisamente la clase de señal donde la búsqueda léxica aporta valor frente a la semántica: un umbral económico o un plazo numérico se buscan mejor por coincidencia exacta. La segunda es un \textbf{refuerzo de cabecera} (una variante ligera de BM25F): a los términos de cada documento se les pueden añadir copias adicionales de los de su rótulo, que incluye no solo el número de artículo sino \emph{el nombre de la ley}. Esto resuelve un problema detectado en pruebas: reforzar solo el número de artículo hace que colisionen dos «Artículo 122» de leyes distintas; añadir la ley devuelve el poder de desempate a la norma citada.
+
+Por último, el recuperador decide qué cuenta como coincidencia con criterio: un documento solo es un resultado válido si comparte al menos un término real con la pregunta, y no por el signo de la puntuación. Este matiz evita un defecto conocido del BM25 clásico, donde el factor de rareza de un término puede anularse cuando ese término aparece en muchos documentos o el corpus es pequeño, dejando fuera coincidencias legítimas. Los parámetros clásicos del modelo (la saturación de frecuencia y la normalización por longitud) quedan expuestos para poder estudiarlos, con sus valores habituales por defecto.
+
+\subsection{Recuperación híbrida}
+\label{subsec:recuperacion-hibrida}
+
+El recuperador híbrido fusiona en una sola lista ordenada los resultados del denso y del léxico, emparejándolos por la clave que identifica la misma unidad en ambos índices. Implementa los dos métodos de fusión descritos en el estado del arte. El primero, y opción por defecto, es la \textbf{fusión por rangos recíprocos} (RRF): suma, para cada documento, una contribución que decrece con la posición que ocupa en cada lista~\cite{cormack2009rrf}. Su virtud es la robustez: depende de un solo parámetro poco sensible y no necesita normalizar escalas heterogéneas —la similitud coseno del denso y la puntuación BM25 del léxico no son directamente comparables—, porque solo mira el orden, no la magnitud. El segundo es una \textbf{combinación ponderada} (convexa): normaliza las puntuaciones de cada recuperador a un rango común y las promedia con un peso configurable que gradúa cuánto pesa lo denso frente a lo léxico~\cite{bruch2023fusion}; sirve para estudiar la sensibilidad a ese peso.
+
+El recuperador híbrido recupera primero un conjunto amplio de candidatos de ambos lados antes de fusionar, y mantiene exactamente la misma interfaz que el recuperador denso. Esta uniformidad es deliberada: las tres estrategias son intercambiables, devuelven resultados con el mismo formato y conservan la cita autoritativa, de modo que el resto del sistema —el ensamblado de contexto y la generación— funciona igual con independencia de qué recuperador esté detrás. Eso es lo que permite, en la evaluación, cambiar de estrategia y medir el efecto sin tocar nada más.
+
+\section{Ensamblado de contexto}
+\label{sec:ensamblado-contexto}
+
+La recuperación entrega una lista de fragmentos ordenados por relevancia, pero un fragmento aislado no es todavía una buena evidencia para el modelo generativo: puede haber varios del mismo artículo, puede haber perdido el contexto que lo hace interpretable y su longitud no está acotada. El ensamblado de contexto es la etapa que convierte esos \emph{hits} en un conjunto pequeño de \textbf{evidencias deterministas y acotadas}, listas para inyectarse en el \emph{prompt}. Se reparte en dos piezas: una decide, para un artículo dado, \emph{cuánto} texto entregar; la otra decide \emph{qué} evidencias entran y con qué presupuesto global.
+
+\subsection{Estrategias de contexto: recuperar lo pequeño, aportar lo grande}
+\label{subsec:estrategias-contexto}
+
+Fiel al patrón \emph{parent-child} ya descrito, el sistema recupera por \emph{chunks} pero puede entregar al modelo una porción mayor del artículo. Ofrece tres estrategias, para poder compararlas: \texttt{K\_ONLY} entrega solo el fragmento recuperado; \texttt{P\_EXPAND\_FULL}, el artículo completo; y \texttt{P\_EXPAND\_BOUNDED} —la de por omisión— expande alrededor del fragmento añadiendo párrafos hacia adelante y hacia atrás, respetando el orden jurídico y sin superar un presupuesto de caracteres. Esta última equilibra el contexto vecino y el tamaño, en línea con el fenómeno «\emph{lost in the middle}» (\ref{sec:fragmentacion-contexto}). El texto legal nunca se reescribe: solo se seleccionan y concatenan párrafos ya existentes.
+
+\subsection{Selección de evidencias sin truncado silencioso}
+\label{subsec:seleccion-evidencias}
+
+Sobre esas estrategias opera el constructor de evidencias, que aplica una secuencia deliberada de pasos. Primero \textbf{deduplica por artículo}: si varios fragmentos recuperados pertenecen al mismo \emph{parent}, conserva solo el mejor posicionado, porque entregar dos trozos del mismo artículo desperdicia presupuesto. Después resuelve cada artículo contra el corpus y ensambla su contexto con la estrategia elegida, sujeto a un \textbf{doble presupuesto} de caracteres: uno por evidencia y otro \emph{agregado} para el conjunto. Y aquí se aplica, una vez más, el principio de fallo seguro: \textbf{no se trunca texto jurídico de forma silenciosa}. Si una evidencia no cabe en su presupuesto, o no cabe en el presupuesto agregado, se \emph{omite entera} —no se recorta— y la omisión se registra con su motivo. Como los candidatos se recorren por orden de ranking y se siguen evaluando los siguientes cuando uno se descarta (\emph{backfill}), el sistema reúne las mejores evidencias que caben sin sacrificar texto a mitad de frase.
+
+Finalmente, a las evidencias que sí entran se les asigna un \textbf{identificador compacto y determinista} —\texttt{E1}, \texttt{E2}, \ldots— que será la única forma en que el modelo podrá referirse a ellas. Cada evidencia conserva, además del texto, su procedencia completa (artículo, documento, etiqueta de cita y URL oficial) y la traza de por qué se incluyó o se omitió. El constructor no sabe nada del modelo de lenguaje ni del \emph{prompt}: su única misión es preparar datos autoritativos del corpus, lo que mantiene limpia la frontera entre «qué evidencia hay» y «qué hace el modelo con ella».
+
+\section{Generación fundamentada}
+\label{sec:generacion}
+
+La última etapa redacta la respuesta. Su diseño está dominado por una desconfianza deliberada hacia el modelo de lenguaje: se le da un papel acotado —redactar a partir de un contexto dado— y se le rodea de comprobaciones que impiden que su fluidez se convierta en afirmaciones infundadas. El orquestador (\texttt{AnswerGenerator}) encadena la pregunta a través de la recuperación, el ensamblado de evidencias, la construcción del \emph{prompt}, la llamada al modelo y la validación de su salida, hasta producir un contrato de respuesta \texttt{RagAnswerV1}.
+
+\subsection{Un \emph{prompt} que trata al modelo como un redactor vigilado}
+\label{subsec:prompt}
+
+El \emph{prompt} se construye a partir de plantillas versionadas en el repositorio y se divide en un mensaje de sistema y uno de usuario. Tres decisiones de diseño lo caracterizan. Primera, las evidencias se presentan \textbf{delimitadas e identificadas} por sus IDs compactos (\texttt{E1}, \texttt{E2}, \ldots) y se marca de forma explícita que tanto las evidencias como la pregunta son \textbf{datos, no instrucciones} —una defensa básica frente a la inyección de instrucciones desde el propio texto—. Segunda, se obliga al modelo a \textbf{responder solo con el contexto entregado} y a citar exclusivamente los IDs que se le han pasado. Tercera, se le exige una \textbf{salida estructurada}: se incrusta en el \emph{prompt} el esquema JSON de la respuesta esperada, que se envía además al motor como formato. Un detalle de robustez: el reemplazo de huecos en la plantilla es literal y en una sola pasada, de modo que el texto jurídico —que puede contener llaves \texttt{\{\}}— nunca se malinterpreta como marcador.
+
+\subsection{Ejecución local y validación de la salida}
+\label{subsec:generacion-validacion}
+
+El modelo se sirve en local mediante Ollama, a través de un cliente que valida su salida contra el esquema del contrato y que, por diseño, solo acepta conexiones de bucle local salvo activación explícita. El cliente es \emph{inyectable}: en las pruebas se sustituye por un doble, de modo que toda la lógica de generación se verifica sin pesos reales ni red. La decodificación es determinista (temperatura cero y semilla fija), condición necesaria para que un experimento sea reproducible.
+
+Recibida la respuesta del modelo, el orquestador aplica las \textbf{garantías de fallo seguro} que definen esta etapa:
+
+\begin{itemize}
+  \item \textbf{Abstención sin coste.} Si la recuperación no devuelve nada, o si no se puede construir ninguna evidencia utilizable, el sistema se abstiene \emph{sin siquiera llamar al modelo}: no tiene sentido pedir una respuesta cuando no hay evidencia sobre la que fundarla.
+  \item \textbf{Citas verificadas.} Si el modelo cita un identificador que no se le entregó, se considera una violación del contrato y se aborta con un error, en lugar de dejar pasar una cita inventada.
+  \item \textbf{Citas autoritativas.} Las etiquetas y las URLs oficiales de la respuesta final \textbf{provienen siempre del corpus}, resueltas a partir de los IDs citados; nunca se toman del texto generado por el modelo, que podría equivocarlas.
+  \item \textbf{Aviso jurídico constante.} La respuesta incorpora siempre un aviso estático que recuerda su carácter informativo, añadido por la aplicación y no por el modelo.
+\end{itemize}
+
+El resultado es un contrato \texttt{RagAnswerV1} que, además de la respuesta y sus citas, transporta una \textbf{traza de recuperación} completa —qué se recuperó, qué se seleccionó, qué se omitió y por qué—. Con ello se cierra el bucle de trazabilidad que recorre toda la memoria: cada afirmación de la respuesta remite a una evidencia, cada evidencia a un artículo del corpus y cada artículo a su fuente oficial en el BOE.
+
+\section{El marco de evaluación como \emph{software}}
+\label{sec:evaluacion-software}
+
+La evaluación no es, en este proyecto, un conjunto de \emph{scripts} improvisados al final, sino una pieza más del sistema, construida con los mismos principios: contratos de datos, reproducibilidad y verificabilidad sin red. Como el capítulo de experimentos se apoya por completo en ella, conviene describir aquí su arquitectura, que la Figura~\ref{fig:eval-marco} resume.
+
+\begin{figure}[htbp]
     \centering
-    \includegraphics[bb=0 0 800 600, width=12cm, keepaspectratio]{img/foro1}
-    \caption{Página con enlaces a hilos}\label{fig:_arquitectura}
+    \includegraphics[width=\textwidth]{img/eval_marco.pdf}
+    \caption{Marco de evaluación modular. La respuesta del sistema y el conjunto de referencia se miden en seis capas (L1--L6) por dos vías complementarias: \emph{métricas deterministas} (recuperación, contexto, citas, hechos clave y abstención) y un \emph{modelo juez} (fidelidad y corrección). Los veredictos del juez solo se emplean tras validarse contra anotación humana mediante coeficientes de acuerdo ($\kappa$ de Cohen y AC1 de Gwet); en su defecto, la fidelidad y la corrección se sostienen con la propia anotación humana.}
+    \label{fig:eval-marco}
 \end{figure}
 
+Su núcleo son \textbf{funciones de métrica puras}: dado un conjunto de resultados y un gold, calculan la cobertura de hechos clave, la precisión y la exhaustividad de las citas o la separabilidad de la abstención, de forma determinista y sin efectos secundarios. Al no depender de red ni de modelos, se prueban de forma exhaustiva y barata. Sobre ellas se levanta el bucle de evaluación, inyectable y observable, y una capa de \emph{scripts} de línea de comandos que producen, para cada corrida, un \textbf{informe versionado e inmutable} —con su configuración, sus huellas de reproducibilidad, los resultados por pregunta y los agregados—. Esa disciplina es la que permite que toda tabla del capítulo de experimentos sea trazable a una corrida concreta.
 
-Recuerda que toda figura que añadas a tu memoria debe ser explicada.
-Sí, aunque te parezca evidente lo que se ve en la Figura~\ref{fig:arquitectura}, la figura en sí solamente es un apoyo a tu texto.
-Así que explica lo que se ve en la Figura, haciendo referencia a la misma tal y como ves aquí.
-Por ejemplo: En la Figura~\ref{fig:arquitectura} se puede ver que la estructura del \emph{parser} básico, que consta de seis componentes diferentes: los datos se obtienen de la red, y según el tipo de dato, se pasará a un \emph{parser} específico y bla, bla, bla\ldots
+El componente más delicado es el \textbf{modelo juez}. Evaluar automáticamente propiedades como la fidelidad exige «entender» la respuesta, y para ello se recurre a un segundo modelo de lenguaje que la valora. Dos cautelas, heredadas del estado del arte, están grabadas en su diseño: el juez debe ser de una \textbf{familia distinta} a la del generador, para mitigar el sesgo de auto-preferencia, y sus veredictos no se dan por buenos hasta \textbf{validarlos contra anotación humana} mediante coeficientes de acuerdo (el $\kappa$ de Cohen y el AC1 de Gwet). Como se verá en los experimentos, es precisamente esa validación la que revela que aquí el juez no resulta fiable.
 
-Si utilizas una base de datos, no te olvides de incluir también un diagrama de entidad-relación.
+El instrumento sobre el que todo esto se aplica es el \textbf{banco de consultas anotadas}, con una cautela incorporada por diseño: distingue los juicios de \emph{relevancia} (gold de recuperación) de las \emph{claves de respuesta} (gold de generación), y solo exige completitud a las entradas marcadas como revisadas, no a los borradores. Una utilidad de auditoría verifica, además, que el gold esté \textbf{anclado al corpus real}: que cada artículo referenciado exista y sea recuperable y que cada hecho clave aparezca literalmente en el texto citado. Los cuadernos, por último, son meros \emph{consumidores} de los informes: representan resultados ya calculados, sin reejecutar modelos, de modo que la parte cara del cómputo se hace una sola vez, en el servidor, y queda documentada de forma reproducible.

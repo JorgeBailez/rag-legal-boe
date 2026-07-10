@@ -203,6 +203,55 @@ def test_overflow_repair_blocks_when_legal_anchor_cannot_be_resolved() -> None:
         )
 
 
+def test_anchor_resolves_repeated_paragraph_sequence_by_cursor() -> None:
+    # Párrafos repetidos en el parent (equipamiento de vehículos a)/b), como el art. 9 del RGC):
+    # el último chunk casa en 2 posiciones; el cursor por parent lo ancla a la SEGUNDA (no falla
+    # con "secuencia ambigua" ni lo confunde con la primera ocurrencia).
+    parent_id = "BOE-A-0003__a9"
+    paras = [
+        {"order": 1, "text": "Intro."},
+        {"order": 2, "text": "a) Apertura:"},
+        {"order": 3, "text": "Rotativo naranja."},
+        {"order": 4, "text": "Luces encendidas."},
+        {"order": 5, "text": "b) Cierre:"},
+        {"order": 6, "text": "Rotativo naranja."},
+        {"order": 7, "text": "Luces encendidas."},
+    ]
+    parent = {
+        "parent_id": parent_id,
+        "document_id": "BOE-A-0003",
+        "block_id": "a9",
+        "text": "\n".join(p["text"] for p in paras),
+        "paragraphs": paras,
+    }
+
+    def _chunk(idx: int, text: str) -> dict:
+        return {
+            "chunk_id": f"{parent_id}__c{idx:03d}",
+            "parent_id": parent_id,
+            "document_id": "BOE-A-0003",
+            "block_id": "a9",
+            "text": text,
+            "retrieval_text": text,
+        }
+
+    chunks = [
+        _chunk(1, "Intro.\na) Apertura:\nRotativo naranja.\nLuces encendidas.\nb) Cierre:"),
+        _chunk(2, "Rotativo naranja.\nLuces encendidas."),  # casa en orders 3-4 y 6-7
+    ]
+    out = prepare_inputs(
+        "J1",
+        chunks=chunks,
+        parents_by_id={parent_id: parent},
+        contract=get_contract("e5-base"),
+        tokenizer=FakeWordTokenizer(model_max_length=10000, special=0),
+    )
+    anchors = {r["source"].get("chunk_id"): r["context_anchor"] for r in out.rows}
+    assert anchors[f"{parent_id}__c001"] == {"paragraph_start": 1, "paragraph_end": 5}
+    # Sin el cursor esto fallaría (ambigua) o anclaría a 3-4; debe ser la segunda ocurrencia.
+    assert anchors[f"{parent_id}__c002"] == {"paragraph_start": 6, "paragraph_end": 7}
+
+
 def test_unrepairable_overflow_raises() -> None:
     chunks, parents = _corpus()
     # Presupuesto imposible: límite efectivo = special tokens ⇒ no hay sitio para contenido.
@@ -263,7 +312,11 @@ def test_anchor_uses_contiguous_sequence_with_repeated_paragraphs() -> None:
     assert out.rows[0]["context_anchor"] == {"paragraph_start": 3, "paragraph_end": 4}
 
 
-def test_anchor_rejects_ambiguous_repeated_sequence() -> None:
+def test_anchor_repeated_sequence_resolves_to_first_without_cursor() -> None:
+    # Chunk único cuyo texto se repite en el parent: sin cursor previo (es el primero) el anclaje
+    # se resuelve DETERMINISTA a la primera ocurrencia, en vez de fallar. Un mal anclaje solo
+    # afectaría al ventaneo de overflow, no a la identidad del chunk → preferible a bloquear el
+    # índice. Para sub-chunks con hermanos, el cursor elige la ocurrencia correcta (test by_cursor).
     parent_id = "BOE-A-0001__a1"
     parent = {
         "parent_id": parent_id,
@@ -284,14 +337,14 @@ def test_anchor_rejects_ambiguous_repeated_sequence() -> None:
         "text": "Repetido\nRepetido",
         "retrieval_text": "Repetido\nRepetido",
     }
-    with pytest.raises(AnchorResolutionError, match="BOE-A-0001__a1__c001"):
-        prepare_inputs(
-            "J2",
-            chunks=[chunk],
-            parents_by_id={parent_id: parent},
-            contract=get_contract("bge-m3"),
-            tokenizer=FakeWordTokenizer(),
-        )
+    out = prepare_inputs(
+        "J2",
+        chunks=[chunk],
+        parents_by_id={parent_id: parent},
+        contract=get_contract("bge-m3"),
+        tokenizer=FakeWordTokenizer(),
+    )
+    assert out.rows[0]["context_anchor"] == {"paragraph_start": 1, "paragraph_end": 2}
 
 
 class NewlineTokenizer:

@@ -1,0 +1,44 @@
+{
+  "norm_id": "BOE-A-2011-17975",
+  "source": "BOE legislación consolidada",
+  "base_url": "https://www.boe.es/datosabiertos/api",
+  "downloaded_at": "2026-06-22T17:44:17.036830+00:00",
+  "files": [
+    {
+      "endpoint_name": "full",
+      "path": "data/raw/boe/BOE-A-2011-17975/full.xml",
+      "sha256": "99d8de97c754308eef578ca7cd4855ed760be8c1888c9700187a0771084cade9",
+      "size_bytes": 91121
+    },
+    {
+      "endpoint_name": "metadatos",
+      "path": "data/raw/boe/BOE-A-2011-17975/metadatos.xml",
+      "sha256": "69415ae41250844bc0864fa632627ce83314470a55a09ae056462b442f431f6c",
+      "size_bytes": 1324
+    },
+    {
+      "endpoint_name": "analisis",
+      "path": "data/raw/boe/BOE-A-2011-17975/analisis.xml",
+      "sha256": "48565f63122149ae0666e9cfd776044689bd3a2e6b950dd74b24b442975c7014",
+      "size_bytes": 2351
+    },
+    {
+      "endpoint_name": "metadata_eli",
+      "path": "data/raw/boe/BOE-A-2011-17975/metadata_eli.xml",
+      "sha256": "5bd7e926081dfcbd3da39351b798dfa69f46ca49878d61046fbef3514424805f",
+      "size_bytes": 16338
+    },
+    {
+      "endpoint_name": "texto",
+      "path": "data/raw/boe/BOE-A-2011-17975/texto.xml",
+      "sha256": "b7a606ff151fa2ab8e0aafefbdbee56effd0e9dae7df065bfe19f290c4759173",
+      "size_bytes": 71543
+    },
+    {
+      "endpoint_name": "indice",
+      "path": "data/raw/boe/BOE-A-2011-17975/indice.xml",
+      "sha256": "c2245e8891add13005323af335a427c3cda0392bb0031ea553e139082f3f4201",
+      "size_bytes": 7726
+    }
+  ]
+}

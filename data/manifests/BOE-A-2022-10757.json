@@ -1,0 +1,44 @@
+{
+  "norm_id": "BOE-A-2022-10757",
+  "source": "BOE legislación consolidada",
+  "base_url": "https://www.boe.es/datosabiertos/api",
+  "downloaded_at": "2026-06-22T17:44:52.279071+00:00",
+  "files": [
+    {
+      "endpoint_name": "full",
+      "path": "data/raw/boe/BOE-A-2022-10757/full.xml",
+      "sha256": "53c9b475ad5a1f14faecc756b1e89a004e36312b01cc93d910fe3b814ae3cb6a",
+      "size_bytes": 795809
+    },
+    {
+      "endpoint_name": "metadatos",
+      "path": "data/raw/boe/BOE-A-2022-10757/metadatos.xml",
+      "sha256": "d51ce3bbd83ec81dc8169708be9afb0730a201ca77ce5479648e3bb03d4db3f1",
+      "size_bytes": 1212
+    },
+    {
+      "endpoint_name": "analisis",
+      "path": "data/raw/boe/BOE-A-2022-10757/analisis.xml",
+      "sha256": "7f25b7d0cac7f86697959188f8e24423c1f30f11a2ab696863b1bbe419adda1a",
+      "size_bytes": 4799
+    },
+    {
+      "endpoint_name": "metadata_eli",
+      "path": "data/raw/boe/BOE-A-2022-10757/metadata_eli.xml",
+      "sha256": "8585704df50f13dc6b74e6099d9242084e581d284ada458f72fc1fe866e22bc9",
+      "size_bytes": 24987
+    },
+    {
+      "endpoint_name": "texto",
+      "path": "data/raw/boe/BOE-A-2022-10757/texto.xml",
+      "sha256": "0ef99fee54d12191c7295d87d0cb994a9baf300c16f2d83770193c7d3abe11c1",
+      "size_bytes": 765246
+    },
+    {
+      "endpoint_name": "indice",
+      "path": "data/raw/boe/BOE-A-2022-10757/indice.xml",
+      "sha256": "29545cf77dee4d6e5aed6e5469ffdb22643818fd687a38075524831c8213569d",
+      "size_bytes": 49950
+    }
+  ]
+}

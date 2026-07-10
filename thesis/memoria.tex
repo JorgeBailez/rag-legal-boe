@@ -188,8 +188,8 @@ usegeometry=true			% Let typearea translate layout changes to geometry
 
 % From R. Bringhurst: prop. 1:1.618 (approx. 1:\phi) --> 82-86 chars./line w/ Tex Gyre Pagella font
 % Add ~33 pts head + 42 pts \footskip
-%\areaset[current]{\textwidth}{1.76\textwidth}
-\areaset[current]{0.925\textwidth}{1.85\textwidth}
+\areaset[current]{1.08\textwidth}{1.7\textwidth}
+%\areaset[current]{0.925\textwidth}{1.85\textwidth}
 
 % From R. Bringhurst: prop. 1:1.414 (sqrt(2)) corresponds to A4 ISO standard.
 % With Times New Roman (narrow font) this leads to long lines (80-85 chars./line)
@@ -384,6 +384,7 @@ usegeometry=true			% Let typearea translate layout changes to geometry
 \usepackage{colortbl}           % For coloured tables
 %\usepackage{subcaption}        % Adv. subcaption management
 \usepackage{longtable}          % Tables spanning more than one page
+\usepackage{tabularx}           % Tablas que ajustan una columna (X) al ancho de texto sin escalar
 
 %%-- Graphs and colors
 %\usepackage{subfig}            % Subfigures
@@ -579,6 +580,11 @@ sorting=nty
 % Colored boxes for information corners
 \usepackage{tcolorbox}% http://ctan.org/pkg/tcolorbox
 
+% Colores de las cajas (no vienen en el conjunto de xcolor cargado)
+\definecolor{darkred}{RGB}{139,0,0}
+\definecolor{darkgreen}{RGB}{0,100,0}
+\definecolor{darkblue}{RGB}{0,0,139}
+
 % Caja azul con título para información, explicaciones extra y detalles
 % Icons: \faInfoCircle \faBook \faBookmark
 \newtcolorbox{mybluebox}[1]{colback=darkblue!5!white,colframe=darkblue!75!black,
@@ -646,19 +652,19 @@ fonttitle=\normalfont,title=#1}
 % DOC METADATA
 % --------------------------------------------------------------------
 
-\title{Memoria del Proyecto}
-\author{Nombre del autor}
+\title{Diseño y evaluación con evidencia de un sistema RAG para la consulta ciudadana de legislación consolidada del Boletín Oficial del Estado}
+\author{Jorge Bailez Martínez}
 
 %% Config hyperlink options
 
 \hypersetup{
     pdftoolbar=true,	% Muestra barra de herramientas en Adobe Acrobat
 	pdfmenubar=true,	% Muestra menú en Adobe Acrobat
-	pdftitle={Título del TFG/TFM},
-	pdfauthor={Nombre del alumno/a},
+	pdftitle={Diseño y evaluación con evidencia de un sistema RAG para la consulta ciudadana de legislación consolidada del BOE},
+	pdfauthor={Jorge Bailez Martínez},
 	pdfcreator={EIF, URJC},
 	pdfproducer={XeLaTeX},
-	pdfsubject={Topic1, Topic2, Topic3},
+	pdfsubject={RAG, recuperación de información, procesamiento de lenguaje natural, BOE, legislación consolidada},
 	pdfnewwindow=true,              %links open in new window
     colorlinks=true,                % false: boxed links; true: coloured links
     linkcolor=Firebrick4,           % enlaces internos 
@@ -723,8 +729,9 @@ CIENCIA E INGENIERÍA DE DATOS
 
 \vspace{2cm}
 
-\large UN TÍTULO DE PROYECTO LARGO\\
-EN DOS LÍNEAS
+\large Diseño y evaluación con evidencia de un sistema RAG\\
+para la consulta ciudadana de legislación consolidada\\
+del Boletín Oficial del Estado
 
 \vspace{1.5cm}
 
@@ -758,11 +765,11 @@ Curso Académico 2025/2026
 \par\noindent\includegraphics[width=0.2\textwidth]{cc-by-sa.eps}
 \smallskip
 
-\par\noindent \textcopyright~20XX Nombre y apellidos . Algunos derechos reservados.
+\par\noindent \textcopyright~2026 Jorge Bailez Martínez. Algunos derechos reservados.
 \medskip
 
 \par\noindent El código fuente de este Trabajo Fin de Grado está disponible en:\\ 
-    {\url{https://www.somefancysite.org}
+    \textcolor{red}{AÑADIR URL CUANDO SE PONGA PÚBLICO EL REPOSITORIO}
     \medskip
     
     \par\noindent  Este trabajo se entrega bajo la licencia Creative Commons\\
@@ -815,17 +822,11 @@ la ayuda prestada\ldots
 %\addcontentsline{toc}{chapter}{Resumen} % si queremos que aparezca en el índice
 \markboth{RESUMEN}{RESUMEN} % encabezado
 
-Aquí viene un resumen del proyecto.
-Ha de constar de tres o cuatro párrafos, donde se presente de manera clara y concisa de qué va el proyecto. 
-Han de quedar respondidas las siguientes preguntas:
+Este Trabajo Fin de Grado aborda el diseño y la evaluación de un sistema de generación aumentada mediante recuperación (RAG) para facilitar la consulta ciudadana de legislación consolidada del Boletín Oficial del Estado. El punto de partida es que publicar una norma no basta para hacerla accesible: los textos jurídicos son extensos, cambian con el tiempo y emplean un lenguaje alejado de muchas consultas cotidianas. El objetivo no es sustituir la publicación oficial ni ofrecer asesoramiento jurídico, sino construir una herramienta informativa capaz de recuperar evidencias normativas, redactar respuestas comprensibles y mantener la trazabilidad hacia las fuentes.
 
-\begin{itemize}
-  \item ¿De qué va este proyecto? ¿Cuál es su objetivo principal?
-  \item ¿Cómo se ha realizado? ¿Qué tecnologías están involucradas?
-  \item ¿En qué contexto se ha realizado el proyecto? ¿Es un proyecto dentro de un marco general?
-\end{itemize}
+Para ello se ha desarrollado un sistema completo, ejecutable de extremo a extremo, sobre software y modelos de código abierto en entorno local. El trabajo incluye un corpus reproducible de 92 normas consolidadas del BOE, la interpretación de su estructura y vigencia temporal, una representación documental \emph{parent-child}, recuperadores léxico, denso e híbrido, ensamblado controlado de contexto y generación de respuestas fundamentadas con citas verificables. La evaluación se plantea como una parte central del proyecto: se construye un banco de 121 preguntas y 567 juicios de relevancia, se separan las particiones de ajuste y prueba, y se mide la cadena RAG por capas para distinguir recuperación, contexto, citas, hechos clave, fidelidad, corrección y abstención.
 
-Lo mejor es escribir el resumen al final.
+Los resultados muestran que, en este corpus y con este tipo de consulta, el recuperador denso es la opción más adecuada: alcanza un ParentnDCG@10 de 0,797 en \emph{test}, iguala al mejor híbrido sin añadir su complejidad y supera con claridad a BM25, especialmente en consultas ciudadanas. La generación confirma que recuperar evidencias aporta valor frente a responder sin contexto, aunque también muestra límites importantes: el sistema es prudente ante preguntas fuera del corpus (0 respuestas indebidas en 30 preguntas de dominio lejano y 1 en 10 \emph{near-miss}), a costa de una sobre-abstención apreciable. Además, la validación del modelo juez frente a anotación humana revela que no es suficientemente fiable para sostener conclusiones de fidelidad o corrección. En conjunto, el trabajo aporta una arquitectura RAG legal reproducible, trazable y ampliable, junto con un análisis experimental que muestra qué decisiones funcionan, cuáles no aportan y dónde están los cuellos de botella reales.
 
 %-------------------------------------------------------------------------------
 %%%--- Resumen en inglés
@@ -834,9 +835,11 @@ Lo mejor es escribir el resumen al final.
 %\addcontentsline{toc}{chapter}{Summary} % si queremos que aparezca en el índice
 \markboth{SUMMARY}{SUMMARY} % encabezado
 
-Here comes a translation of the ``Resumen'' into English. 
-Please, double check it for correct grammar and spelling.
-As it is the translation of the ``Resumen'', which is supposed to be written at the end, this as well should be filled out just before submitting.
+This Bachelor's Thesis addresses the design and evaluation of a retrieval-augmented generation (RAG) system for citizen-oriented consultation of consolidated legislation from the Spanish Official State Gazette (BOE). The starting point is that publishing a legal text does not automatically make it accessible: legislation is extensive, changes over time and often uses language that differs from everyday questions. The aim is not to replace official publication or provide legal advice, but to build an informative tool able to retrieve legal evidence, produce understandable answers and preserve traceability to the original sources.
+
+To this end, the project develops an end-to-end system based on open-source software and locally executed models. The work includes a reproducible corpus of 92 consolidated BOE regulations, parsing of their structure and temporal validity, a \emph{parent-child} document representation, lexical, dense and hybrid retrievers, controlled context assembly and grounded answer generation with verifiable citations. Evaluation is treated as a core part of the project: a benchmark of 121 questions and 567 relevance judgements is built, development and test partitions are kept separate, and the RAG pipeline is measured layer by layer to distinguish retrieval, context, citations, key facts, faithfulness, correctness and abstention.
+
+The results show that, for this corpus and this type of query, the dense retriever is the most suitable option: it reaches 0.797 ParentnDCG@10 on the test split, matches the best hybrid alternative without adding its complexity and clearly outperforms BM25, especially on citizen-style questions. Generation confirms that retrieved evidence adds value compared with answering without context, although it also shows important limits: the system behaves cautiously on out-of-corpus questions (0 improper answers on 30 far-domain questions and 1 on 10 \emph{near-miss} questions), at the cost of noticeable over-abstention. In addition, the validation of the LLM-as-judge against human annotation shows that it is not reliable enough to support conclusions about faithfulness or correctness. Overall, the thesis contributes a reproducible, traceable and extensible legal RAG architecture, together with an experimental analysis that shows which design choices work, which ones do not add value and where the real bottlenecks lie.
 
 %-------------------------------------------------------------------------------
 % Lista de comentarios de revisión
@@ -923,6 +926,13 @@ As it is the translation of the ``Resumen'', which is supposed to be written at 
 \input{chapters/experim.tex}
 
 %-------------------------------------------------------------------------------
+% IMPACTO Y RESPONSABILIDAD %
+%-------------------------------------------------------------------------------
+
+\cleardoublepage
+\input{chapters/impacto.tex}
+
+%-------------------------------------------------------------------------------
 % CONCLUSIONES %
 %-------------------------------------------------------------------------------
 
@@ -947,6 +957,9 @@ As it is the translation of the ``Resumen'', which is supposed to be written at 
 %-------------------------------------------------------------------------------
 % GLOSARIO(S) %
 %-------------------------------------------------------------------------------
+
+% Incluye todas las entradas definidas, aunque el texto no use \gls explícitamente.
+\glsaddall
 
 \printglossary[type=\acronymtype]
 

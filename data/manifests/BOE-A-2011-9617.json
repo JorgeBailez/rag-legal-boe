@@ -1,0 +1,44 @@
+{
+  "norm_id": "BOE-A-2011-9617",
+  "source": "BOE legislación consolidada",
+  "base_url": "https://www.boe.es/datosabiertos/api",
+  "downloaded_at": "2026-06-22T17:44:31.973546+00:00",
+  "files": [
+    {
+      "endpoint_name": "full",
+      "path": "data/raw/boe/BOE-A-2011-9617/full.xml",
+      "sha256": "58b96a1b39140b7af9b077cd0d302048cabd255e348e738e57fec83567de3fd6",
+      "size_bytes": 663660
+    },
+    {
+      "endpoint_name": "metadatos",
+      "path": "data/raw/boe/BOE-A-2011-9617/metadatos.xml",
+      "sha256": "2871c12acfd717aab59bb340aee9f4043a191ee74ddbc97cfb65696c4b93f89a",
+      "size_bytes": 1226
+    },
+    {
+      "endpoint_name": "analisis",
+      "path": "data/raw/boe/BOE-A-2011-9617/analisis.xml",
+      "sha256": "07aef3b12b083dc90191a44cc3927b9b5f8b1d93e5a7f011c19f4ecbd15f6a4d",
+      "size_bytes": 9693
+    },
+    {
+      "endpoint_name": "metadata_eli",
+      "path": "data/raw/boe/BOE-A-2011-9617/metadata_eli.xml",
+      "sha256": "06a6fad441e2acc2aa482316d2ef4b44db0bc28c177cb0c9609a1536b5eae3d1",
+      "size_bytes": 63501
+    },
+    {
+      "endpoint_name": "texto",
+      "path": "data/raw/boe/BOE-A-2011-9617/texto.xml",
+      "sha256": "9c528d2d6b7c610e1d1a7992fbc85f0e59495b973969b8febaa9f3cec055cd6d",
+      "size_bytes": 589675
+    },
+    {
+      "endpoint_name": "indice",
+      "path": "data/raw/boe/BOE-A-2011-9617/indice.xml",
+      "sha256": "4cdd1d238a1b38e4babcb8ec67b2d9bfa4686c4b44ad87fd5ad66e17bd95a4a1",
+      "size_bytes": 35441
+    }
+  ]
+}

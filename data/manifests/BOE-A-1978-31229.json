@@ -1,0 +1,44 @@
+{
+  "norm_id": "BOE-A-1978-31229",
+  "source": "BOE legislación consolidada",
+  "base_url": "https://www.boe.es/datosabiertos/api",
+  "downloaded_at": "2026-06-22T17:44:59.323202+00:00",
+  "files": [
+    {
+      "endpoint_name": "full",
+      "path": "data/raw/boe/BOE-A-1978-31229/full.xml",
+      "sha256": "1575de1811b3cca5bfc69459d2e4536734fb76f10ef7b4a9228a35264d05b01b",
+      "size_bytes": 213020
+    },
+    {
+      "endpoint_name": "metadatos",
+      "path": "data/raw/boe/BOE-A-1978-31229/metadatos.xml",
+      "sha256": "9a963cf4e0b6e610fd86312d7db178728b3e98f1c16df3b27f0eaaa369c1f00f",
+      "size_bytes": 1138
+    },
+    {
+      "endpoint_name": "analisis",
+      "path": "data/raw/boe/BOE-A-1978-31229/analisis.xml",
+      "sha256": "429403496eb73870985092bc61caf043d09f81e12c22644ed2a6d7e7f1ca2f8a",
+      "size_bytes": 4899
+    },
+    {
+      "endpoint_name": "metadata_eli",
+      "path": "data/raw/boe/BOE-A-1978-31229/metadata_eli.xml",
+      "sha256": "1c9c2041921215fb123d32a01941e345dfd80468f13fd3eba2c85c0133ce271a",
+      "size_bytes": 16689
+    },
+    {
+      "endpoint_name": "texto",
+      "path": "data/raw/boe/BOE-A-1978-31229/texto.xml",
+      "sha256": "f4cf08f1255614b88bcb848ad72faf41e3a10c0b7cbd4dcb98a8198cb2e9048a",
+      "size_bytes": 190729
+    },
+    {
+      "endpoint_name": "indice",
+      "path": "data/raw/boe/BOE-A-1978-31229/indice.xml",
+      "sha256": "b9b92e33459b6d1d0194ce0cd33640ebce572e99438e1af51d76d7dfc78f6658",
+      "size_bytes": 54400
+    }
+  ]
+}

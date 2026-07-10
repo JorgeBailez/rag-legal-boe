@@ -88,7 +88,7 @@ def build_filter_mask(rows: list[dict], corpus: dict, filters: dict) -> np.ndarr
 class ExactDenseIndex:
     """Índice denso exacto sobre un bundle publicado (mmap + dot product + argsort estable)."""
 
-    def __init__(self, bundle_dir: Path, *, corpus: dict) -> None:
+    def __init__(self, bundle_dir: Path, *, corpus: dict | None = None) -> None:
         self.bundle_dir = Path(bundle_dir)
         self.manifest, self.rows, self.embeddings = load_validated_bundle(
             self.bundle_dir, corpus=corpus
@@ -96,7 +96,9 @@ class ExactDenseIndex:
         self.dimension = self.manifest["artifacts"]["embedding_dimension"]
 
     @classmethod
-    def from_bundle(cls, bundle_dir: Path, *, corpus: dict) -> ExactDenseIndex:
+    def from_bundle(cls, bundle_dir: Path, *, corpus: dict | None = None) -> ExactDenseIndex:
+        """Carga un bundle. Sin `corpus` se omiten las comprobaciones bundle↔corpus (ver
+        `load_validated_bundle`): apto para búsqueda sin filtros ni resolución de texto."""
         return cls(bundle_dir, corpus=corpus)
 
     def __len__(self) -> int:

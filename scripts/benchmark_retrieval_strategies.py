@@ -71,6 +71,12 @@ def _parse_args() -> argparse.Namespace:
         default=0,
         help="copias EXTRA de los tokens de la cabecera al indexar BM25 (0 = sin boost).",
     )
+    parser.add_argument(
+        "--bm25-k1", type=float, default=1.5, help="BM25: saturación de frecuencia."
+    )
+    parser.add_argument(
+        "--bm25-b", type=float, default=0.75, help="BM25: normalización por longitud."
+    )
     parser.add_argument("--gate-c-level", default="formal", choices=["checkpoint", "formal"])
     parser.add_argument(
         "--allow-incomplete-dataset",
@@ -104,7 +110,12 @@ def _build_strategies(args: argparse.Namespace, bundle: str, corpus: dict) -> tu
     )
     lexical = (
         LexicalRetriever.from_bundle(
-            bundle, corpus=corpus, analyzer=analyzer, heading_boost=args.bm25_heading_boost
+            bundle,
+            corpus=corpus,
+            analyzer=analyzer,
+            heading_boost=args.bm25_heading_boost,
+            k1=args.bm25_k1,
+            b=args.bm25_b,
         )
         if need_lexical
         else None
@@ -137,6 +148,8 @@ def _build_strategies(args: argparse.Namespace, bundle: str, corpus: dict) -> tu
         ),
         "analyzer": analyzer.signature(),
         "bm25_heading_boost": args.bm25_heading_boost,
+        "bm25_k1": args.bm25_k1,
+        "bm25_b": args.bm25_b,
     }
     return strategies, meta
 
@@ -239,8 +252,9 @@ def _print_summary(out: Path, metrics_rows: list[dict], summary: dict) -> None:
         print("    " + "estrategia".ljust(16) + "".join(s[:14].rjust(16) for s in styles))
         for name, groups in by_style.items():
             cells = "".join(
-                (f"{groups[s][PRIMARY_METRIC]:.3f}(n{groups[s]['n']})" if s in groups else "-")
-                .rjust(16)
+                (
+                    f"{groups[s][PRIMARY_METRIC]:.3f}(n{groups[s]['n']})" if s in groups else "-"
+                ).rjust(16)
                 for s in styles
             )
             print("    " + name.ljust(16) + cells)

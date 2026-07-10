@@ -261,7 +261,7 @@ def assert_bundle_compatible(contract: ModelContract, manifest: dict) -> None:
         raise ValueError(f"registry incompatible con bundle ({details})")
 
 
-# Shortlist. `*_revision=None` (unresolved) hasta fijar el commit hash en el servidor (con red).
+# Registro de modelos candidatos. Las revisiones quedan fijadas para reproducibilidad.
 CANDIDATES: dict[str, ModelContract] = {
     "e5-base": ModelContract(
         alias="e5-base",
@@ -291,7 +291,7 @@ CANDIDATES: dict[str, ModelContract] = {
         alias="e5-large-instruct",
         model_id="intfloat/multilingual-e5-large-instruct",
         model_revision="274baa43b0e13e37fafa6428dbc7938e62e5c439",
-        tokenizer_revision="274baa43b0e13e37fafa6428dbc7938e62e5c439",  
+        tokenizer_revision="274baa43b0e13e37fafa6428dbc7938e62e5c439",
         declared_max_tokens=512,
         expected_embedding_dimension=1024,
         document_template="{text}",
@@ -345,11 +345,10 @@ CANDIDATES: dict[str, ModelContract] = {
             "Contexto largo (8192, RoPE+NTK). trust_remote_code: el modeling vive en el repo "
             "Alibaba-NLP/new-impl (sha 40ced75c, jul-2024), revisado 2026-06-16: solo define "
             "nn.Module de torch; sin red, IO de ficheros, subprocess/exec/eval, env ni secretos. "
-            "Pesos+tokenizer fijados en 9bbca17d. Caveat reproducibilidad: el codigo remoto "
+            "Pesos+tokenizer fijados en 9bbca17d. Caveat reproducibilidad: el código remoto "
             "resuelve new-impl@main salvo code_revision, que el encoder actual no fija. "
-            "DEFERIDO 2026-06-18: incompatible con el transformers del entorno "
-            "(IndexError RoPE en new-impl); reactivar con transformers ~4.39 en venv "
-            "aparte. Ver docs/known_issues.md."
+            "Limitación conocida: incompatible con el entorno validado por un IndexError RoPE en "
+            "new-impl; no se usa en los resultados finales."
         ),
     ),
 }

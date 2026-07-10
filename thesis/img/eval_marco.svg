@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" role="img" aria-labelledby="et ed">
+<title id="et">Marco de evaluación modular con validación del modelo juez</title>
+<desc id="ed">La evaluación toma la respuesta del sistema y el conjunto de referencia y mide seis capas mediante dos vías: métricas deterministas (recuperación L1, contexto L2, citas L4, hechos clave L5 y abstención L6) y un modelo juez que valora fidelidad L3 y corrección L5. Los veredictos del juez se validan contra anotación humana con coeficientes de acuerdo (kappa de Cohen y AC1 de Gwet) para decidir si son fiables.</desc>
+<style>
+  .panel{fill:#ffffff;stroke:#dfe6f2;}
+  .zone{fill:#f5f9fe;stroke:#4a92d4;stroke-width:1.2;stroke-dasharray:5 4;}
+  .zlab{fill:#4a92d4;font-family:'Lato','Segoe UI',sans-serif;font-size:11px;font-weight:700;letter-spacing:1px;}
+  .tag{fill:#4a92d4;font-family:'Lato','Segoe UI',sans-serif;font-size:11px;font-weight:700;letter-spacing:1px;}
+  .b{fill:#eef3fb;stroke:#122e74;stroke-width:1.5;}
+  .dec{fill:#e7f0fb;stroke:#122e74;stroke-width:1.5;}
+  .chip{fill:#eef3fb;stroke:#4a92d4;stroke-width:1;}
+  .chipj{fill:#e7f0fb;stroke:#4a92d4;stroke-width:1;}
+  .chiptx{fill:#122e74;font-family:'Lato','Segoe UI',sans-serif;font-size:10.5px;font-weight:600;text-anchor:middle;}
+  .lbl{fill:#122e74;font-family:'Lato','Segoe UI',sans-serif;font-size:12px;font-weight:600;text-anchor:middle;}
+  .sub{fill:#4a6291;font-family:'Lato','Segoe UI',sans-serif;font-size:10px;text-anchor:middle;}
+  .alab{fill:#5b6b8c;font-family:'Lato','Segoe UI',sans-serif;font-size:10px;font-style:italic;text-anchor:middle;}
+  .note{fill:#5b6b8c;font-family:'Lato','Segoe UI',sans-serif;font-size:10.5px;font-style:italic;text-anchor:middle;}
+  .fl{stroke:#122e74;stroke-width:1.5;fill:none;}
+  .brace{stroke:#122e74;stroke-width:1.5;fill:none;}
+  .fdash{stroke:#4a92d4;stroke-width:1.4;fill:none;stroke-dasharray:4 3;}
+</style>
+<defs>
+  <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#122e74"/></marker>
+  <marker id="ad" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4a92d4"/></marker>
+</defs>
+<rect class="panel" x="6" y="6" width="888" height="488" rx="14"/>
+<text class="tag" x="24" y="32">EVALUACIÓN MODULAR POR CAPAS (L1–L6)</text>
+
+<!-- entrada -->
+<rect class="b" x="24" y="142" width="182" height="60" rx="9"/>
+<text class="lbl" x="115" y="168" style="font-size:11.5px">Respuesta del sistema</text>
+<text class="sub" x="115" y="185">y conjunto de referencia (gold)</text>
+
+<!-- evaluadores -->
+<rect class="b" x="244" y="86" width="176" height="48" rx="9"/>
+<text class="lbl" x="332" y="106" style="font-size:11.5px">Métricas deterministas</text>
+<text class="sub" x="332" y="121">(funciones puras, sin red)</text>
+<rect class="b" x="244" y="214" width="176" height="48" rx="9"/>
+<text class="lbl" x="332" y="234" style="font-size:11.5px">Modelo juez</text>
+<text class="sub" x="332" y="249">(LLM · familia distinta)</text>
+
+<path class="fl" d="M206,160 L244,110" marker-end="url(#ah)"/>
+<path class="fl" d="M206,184 L244,238" marker-end="url(#ah)"/>
+
+<!-- llave deterministas: conector + espina + dientes -->
+<path class="brace" d="M420,110 H490"/>
+<path class="brace" d="M490,46 V174"/>
+<path class="fl" d="M490,46 H520" marker-end="url(#ah)"/>
+<path class="fl" d="M490,78 H520" marker-end="url(#ah)"/>
+<path class="fl" d="M490,110 H520" marker-end="url(#ah)"/>
+<path class="fl" d="M490,142 H520" marker-end="url(#ah)"/>
+<path class="fl" d="M490,174 H520" marker-end="url(#ah)"/>
+<rect class="chip" x="520" y="34" width="130" height="24" rx="12"/><text class="chiptx" x="585" y="50">L1 · Recuperación</text>
+<rect class="chip" x="520" y="66" width="130" height="24" rx="12"/><text class="chiptx" x="585" y="82">L2 · Contexto</text>
+<rect class="chip" x="520" y="98" width="130" height="24" rx="12"/><text class="chiptx" x="585" y="114">L4 · Citas</text>
+<rect class="chip" x="520" y="130" width="130" height="24" rx="12"/><text class="chiptx" x="585" y="146">L5 · Hechos clave</text>
+<rect class="chip" x="520" y="162" width="130" height="24" rx="12"/><text class="chiptx" x="585" y="178">L6 · Abstención</text>
+
+<!-- llave juez -->
+<path class="brace" d="M420,238 H490"/>
+<path class="brace" d="M490,222 V254"/>
+<path class="fl" d="M490,222 H520" marker-end="url(#ah)"/>
+<path class="fl" d="M490,254 H520" marker-end="url(#ah)"/>
+<rect class="chipj" x="520" y="210" width="130" height="24" rx="12"/><text class="chiptx" x="585" y="226">L3 · Fidelidad</text>
+<rect class="chipj" x="520" y="242" width="130" height="24" rx="12"/><text class="chiptx" x="585" y="258">L5 · Corrección</text>
+
+<!-- validación del juez -->
+<rect class="zone" x="244" y="300" width="620" height="176" rx="12"/>
+<text class="zlab" x="584" y="324">VALIDACIÓN DEL JUEZ</text>
+<rect class="b" x="284" y="342" width="152" height="44" rx="9"/>
+<text class="lbl" x="360" y="369" style="font-size:11px">Veredictos del juez</text>
+<rect class="b" x="284" y="404" width="152" height="44" rx="9"/>
+<text class="lbl" x="360" y="431" style="font-size:11px">Anotación humana</text>
+<rect class="dec" x="488" y="368" width="192" height="56" rx="9"/>
+<text class="lbl" x="584" y="391" style="font-size:11.5px">Acuerdo</text>
+<text class="sub" x="584" y="408">κ de Cohen · AC1 de Gwet</text>
+<rect class="dec" x="714" y="372" width="124" height="48" rx="9"/>
+<text class="lbl" x="776" y="401">¿Fiable?</text>
+
+<path class="fdash" d="M332,262 V330 H360 V342" marker-end="url(#ad)"/>
+<text class="alab" x="398" y="326">veredictos</text>
+<path class="fl" d="M436,364 L488,382" marker-end="url(#ah)"/>
+<path class="fl" d="M436,426 L488,408" marker-end="url(#ah)"/>
+<path class="fl" d="M680,396 H714" marker-end="url(#ah)"/>
+
+<text class="note" x="560" y="466">Solo si es fiable se usan sus veredictos; en su defecto, la fidelidad y la corrección se apoyan en anotación humana.</text>
+</svg>

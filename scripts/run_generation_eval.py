@@ -3,8 +3,8 @@
 Mide fidelidad, citas, corrección y abstención de las respuestas generadas frente al dataset gold,
 y escribe un report versionado y reproducible bajo `data/processed/reports/generation/<run_id>/`.
 
-Requiere (solo en ejecución real, en el servidor): un bundle denso publicado, los pesos del modelo
-de embeddings, y un Ollama local con el modelo generador y el modelo JUEZ (distinto, más fuerte).
+Requiere, solo en ejecución real, un bundle denso publicado, los pesos del modelo de embeddings y
+un Ollama local con el modelo generador y el modelo JUEZ (distinto, más fuerte).
 El juez es opcional: sin `--judge-model`/`JUDGE_MODEL` se calculan las métricas que no lo necesitan
 (abstención, key-fact recall, attribution), útiles para un primer barrido o un bake-off de modelos.
 
@@ -68,6 +68,19 @@ def _parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--split", default="development", choices=["development", "test", "out_of_corpus"]
     )
+    parser.add_argument(
+        "--mode",
+        default="rag",
+        choices=["rag", "closed_book", "oracle"],
+        help="baseline: rag (normal), closed_book (sin evidencia) u oracle (evidencia gold "
+        "inyectada). Descompone el error recuperación vs generación (usa con --no-judge).",
+    )
+    parser.add_argument(
+        "--device-note",
+        default=None,
+        help='etiqueta libre del dispositivo del generador ("cpu" o "gpu"); se guarda en el '
+        "config del report para trazar la comparación CPU-vs-GPU (que no registra el device).",
+    )
     parser.add_argument("--dataset-dir", default=str(DATASET_DIR))
     parser.add_argument("--gate-c-level", default="checkpoint", choices=sorted(GATE_C_LEVELS))
     parser.add_argument(
@@ -86,7 +99,7 @@ def _parse_args() -> argparse.Namespace:
         "--prompts-dir",
         default=None,
         help="directorio de prompts (system_prompt.txt + rag_prompt.txt); por defecto prompts/. "
-        "Úsalo para A/B de prompts, p. ej. --prompts-dir prompts/v2.",
+        "Úsalo para A/B de prompts, p. ej. --prompts-dir prompts/gen_v2.",
     )
     parser.add_argument("--query-profile-id", default=None)
     parser.add_argument("--top-k", type=_positive_int, default=None)
@@ -98,6 +111,20 @@ def _parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--context-budget-chars", type=_positive_int, default=None)
     parser.add_argument("--max-total-context-chars", type=_positive_int, default=None)
+    parser.add_argument(
+        "--num-predict",
+        type=_positive_int,
+        default=None,
+        help="tokens máx. de salida del generador; fallback settings.ollama_num_predict. Subir si "
+        "el LLM trunca el JSON (GenerationContractError).",
+    )
+    parser.add_argument(
+        "--num-ctx",
+        type=_positive_int,
+        default=None,
+        help="ventana de contexto del generador; fallback settings.ollama_num_ctx. Debe caber "
+        "prompt + evidencia (max-total-context-chars) + salida.",
+    )
     parser.add_argument(
         "--query-ids",
         default=None,
@@ -122,9 +149,8 @@ def _override(value, default):  # noqa: ANN001, ANN202
 def _prompt_fingerprint(prompts_dir):  # noqa: ANN001, ANN202
     """Huella corta del contenido de los prompts (system+rag) para trazar el A/B."""
     try:
-        text = (
-            load_template(SYSTEM_PROMPT_FILE, prompts_dir)
-            + load_template(RAG_PROMPT_FILE, prompts_dir)
+        text = load_template(SYSTEM_PROMPT_FILE, prompts_dir) + load_template(
+            RAG_PROMPT_FILE, prompts_dir
         )
     except OSError:
         return "missing"
@@ -165,7 +191,7 @@ def main() -> int:  # noqa: C901 - orquestación lineal del CLI
         wanted = {x.strip() for x in args.query_ids.split(",") if x.strip()}
         questions = [q for q in questions if q.get("query_id") in wanted]
     answer_keys = load_jsonl(dataset_dir / ANSWER_KEYS_FILE)
-    _ = load_jsonl(dataset_dir / JUDGMENTS_FILE)  # cargados/validados arriba; retrieval gold aparte
+    judgments = load_jsonl(dataset_dir / JUDGMENTS_FILE)  # gold de relevancia (oracle usa rel>=1)
     if not questions:
         print(
             f"No hay preguntas en el split {args.split!r} (¿--query-ids correctos?).",
@@ -186,8 +212,8 @@ def main() -> int:  # noqa: C901 - orquestación lineal del CLI
         ),
         temperature=settings.ollama_temperature,
         seed=settings.ollama_seed,
-        num_predict=settings.ollama_num_predict,
-        num_ctx=settings.ollama_num_ctx,
+        num_predict=_override(args.num_predict, settings.ollama_num_predict),
+        num_ctx=_override(args.num_ctx, settings.ollama_num_ctx),
         keep_alive=settings.ollama_keep_alive,
     )
 
@@ -243,10 +269,10 @@ def main() -> int:  # noqa: C901 - orquestación lineal del CLI
         elif event == "judging":
             bar.set_postfix_str(f"juez:{ev['phase']}…")
         elif event == "done":
-            mark = "✓ resp" if ev["answered"] else "○ abst"
+            mark = "RESP" if ev["answered"] else "ABST"
             lat = f" {ev['latency_s']:.0f}s" if ev.get("latency_s") else ""
             tag = ev.get("failure_mode") or ev.get("query_style") or ""
-            jerr = " ⚠ juez falló" if ev.get("judge_error") else ""
+            jerr = " [WARN juez falló]" if ev.get("judge_error") else ""
             tqdm.write(
                 f"  [{ev['i']}/{ev['total']}] {ev['query_id']} {tag}: "
                 f"{mark} · {ev['abstention_outcome']}{lat}{jerr}"
@@ -263,6 +289,8 @@ def main() -> int:  # noqa: C901 - orquestación lineal del CLI
                 generator=generator,
                 judge=judge,
                 query_profile_id=config.query_profile_id,
+                mode=args.mode,
+                judgments=judgments,
                 limit=args.limit,
                 on_progress=on_progress,
             )
@@ -270,6 +298,8 @@ def main() -> int:  # noqa: C901 - orquestación lineal del CLI
             bar.close()
         run_config = {
             "split": args.split,
+            "mode": args.mode,
+            "device_note": args.device_note,
             "dataset_dir": str(dataset_dir),
             "bundle_id": retriever.bundle_id,
             "model_alias": retriever.model_alias,
@@ -283,6 +313,10 @@ def main() -> int:  # noqa: C901 - orquestación lineal del CLI
             "max_total_context_chars": config.max_total_context_chars,
             "temperature": config.temperature,
             "seed": config.seed,
+            "num_predict": config.num_predict,
+            "num_ctx": config.num_ctx,
+            "judge_num_ctx": settings.judge_num_ctx if judge is not None else None,
+            "judge_num_predict": settings.judge_num_predict if judge is not None else None,
             "prompts_dir": args.prompts_dir or "(default)",
             "prompt_fingerprint": _prompt_fingerprint(args.prompts_dir),
             "gate_c_generation_ready": report["gate_c"]["generation_ready"],
@@ -291,7 +325,15 @@ def main() -> int:  # noqa: C901 - orquestación lineal del CLI
         run_id = new_run_id("gen", fingerprint(run_config))
         output_root = Path(args.output_root) if args.output_root else None
         write_kwargs = {"reports_root": output_root} if output_root else {}
-        summary_keys = ("split", "bundle_id", "generator_model", "judge_model", "n_questions")
+        summary_keys = (
+            "split",
+            "mode",
+            "device_note",
+            "bundle_id",
+            "generator_model",
+            "judge_model",
+            "n_questions",
+        )
         out_dir = write_generation_report(
             run_id,
             summary={k: run_config[k] for k in summary_keys},
@@ -302,10 +344,17 @@ def main() -> int:  # noqa: C901 - orquestación lineal del CLI
             **write_kwargs,
         )
         _print_summary(out_dir, aggregate)
+        n_gen_err = sum(1 for r in per_query if r.get("generation_error"))
+        if n_gen_err:
+            print(
+                f"[WARN] {n_gen_err} pregunta(s) con generación fallida por contrato "
+                "(excluidas de las métricas; ver generation_error en per_query.jsonl). "
+                "La corrida NO se abortó."
+            )
         n_judge_err = sum(1 for r in per_query if r.get("judge_error"))
         if n_judge_err:
             print(
-                f"⚠ {n_judge_err} pregunta(s) con veredicto del juez fallido (no juzgadas; "
+                f"[WARN] {n_judge_err} pregunta(s) con veredicto del juez fallido (no juzgadas; "
                 "ver judge_error en per_query.jsonl). La corrida NO se abortó."
             )
     except RagLegalBoeError as exc:
@@ -343,7 +392,8 @@ def _print_summary(out_dir: Path, aggregate: dict) -> None:
         f"citation_f1={_fmt(aggregate['citation_f1_mean'])}"
     )
     if ab["hallucinated_forbidden_count"]:
-        print(f"⚠ hechos prohibidos detectados en {ab['hallucinated_forbidden_count']} respuestas")
+        count = ab["hallucinated_forbidden_count"]
+        print(f"[WARN] hechos prohibidos detectados en {count} respuestas")
 
 
 def _fmt(value: float | None) -> str:

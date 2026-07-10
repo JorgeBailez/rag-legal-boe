@@ -1,0 +1,44 @@
+{
+  "norm_id": "BOE-A-1986-10499",
+  "source": "BOE legislación consolidada",
+  "base_url": "https://www.boe.es/datosabiertos/api",
+  "downloaded_at": "2026-06-22T17:44:28.294911+00:00",
+  "files": [
+    {
+      "endpoint_name": "full",
+      "path": "data/raw/boe/BOE-A-1986-10499/full.xml",
+      "sha256": "c9a343a701d8b3891f07e2179f3bd2ef926fb44dba5c2ef89e7d2cb9135f855b",
+      "size_bytes": 591118
+    },
+    {
+      "endpoint_name": "metadatos",
+      "path": "data/raw/boe/BOE-A-1986-10499/metadatos.xml",
+      "sha256": "12a43220336bb73c0b84ad1a7e2a38c6552fbf0a715af6609a2482074371b210",
+      "size_bytes": 1200
+    },
+    {
+      "endpoint_name": "analisis",
+      "path": "data/raw/boe/BOE-A-1986-10499/analisis.xml",
+      "sha256": "183f213af6e4bc6f7dde2d8fb53337b2683837773bf61b755f25e0a6cbef9f6e",
+      "size_bytes": 23995
+    },
+    {
+      "endpoint_name": "metadata_eli",
+      "path": "data/raw/boe/BOE-A-1986-10499/metadata_eli.xml",
+      "sha256": "60653fd18d8c78f88014d0fd49d4682af913e0a49774e8511a565b0fa5605146",
+      "size_bytes": 268668
+    },
+    {
+      "endpoint_name": "texto",
+      "path": "data/raw/boe/BOE-A-1986-10499/texto.xml",
+      "sha256": "eee1314db0a67ceb0c702c48eb48ec445ce2dd3bebe83bd8d802c35be6e7ee0a",
+      "size_bytes": 297690
+    },
+    {
+      "endpoint_name": "indice",
+      "path": "data/raw/boe/BOE-A-1986-10499/indice.xml",
+      "sha256": "63a20beda94213fc94ae23d3f4054ab124986dc1561c54437f51efc1e897791c",
+      "size_bytes": 54688
+    }
+  ]
+}

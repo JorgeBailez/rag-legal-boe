@@ -1,0 +1,115 @@
+{
+  "kind": "generation_robustness_rescore",
+  "prompt_fingerprints": {
+    "test": "4d85b5f5f509",
+    "dev": "4d85b5f5f509"
+  },
+  "same_config": true,
+  "per_source": {
+    "test": {
+      "answerable": 28,
+      "answered": 18,
+      "over_abstention_rate": 0.35714285714285715,
+      "key_fact": {
+        "n": 18,
+        "mean": 0.4993386243386243,
+        "ci": {
+          "mean": 0.4993386243386243,
+          "ci_low": 0.3280423280423281,
+          "ci_high": 0.6613921957671958,
+          "seed": 12345,
+          "n_resamples": 1000
+        }
+      },
+      "citation_precision": {
+        "n": 18,
+        "mean": 0.8333333333333334
+      },
+      "citation_recall": {
+        "n": 18,
+        "mean": 0.7777777777777778
+      },
+      "citation_f1": {
+        "n": 18,
+        "mean": 0.787037037037037,
+        "ci": {
+          "mean": 0.787037037037037,
+          "ci_low": 0.6203703703703703,
+          "ci_high": 0.9168981481481479,
+          "seed": 12345,
+          "n_resamples": 1000
+        }
+      }
+    },
+    "dev": {
+      "answerable": 53,
+      "answered": 30,
+      "over_abstention_rate": 0.4339622641509434,
+      "key_fact": {
+        "n": 15,
+        "mean": 0.6555555555555556,
+        "ci": {
+          "mean": 0.6555555555555554,
+          "ci_low": 0.455277777777778,
+          "ci_high": 0.8111111111111111,
+          "seed": 12345,
+          "n_resamples": 1000
+        }
+      },
+      "citation_precision": {
+        "n": 15,
+        "mean": 0.9333333333333333
+      },
+      "citation_recall": {
+        "n": 15,
+        "mean": 1.0
+      },
+      "citation_f1": {
+        "n": 15,
+        "mean": 0.9555555555555556,
+        "ci": {
+          "mean": 0.9555555555555555,
+          "ci_low": 0.8888888888888888,
+          "ci_high": 1.0,
+          "seed": 12345,
+          "n_resamples": 1000
+        }
+      }
+    }
+  },
+  "combined": {
+    "answerable": 81,
+    "answered": 48,
+    "over_abstention_rate": 0.4074074074074074,
+    "key_fact": {
+      "n": 33,
+      "mean": 0.5703463203463204,
+      "ci": {
+        "mean": 0.5703463203463203,
+        "ci_low": 0.4317550505050506,
+        "ci_high": 0.6958964646464646,
+        "seed": 12345,
+        "n_resamples": 1000
+      }
+    },
+    "citation_precision": {
+      "n": 33,
+      "mean": 0.8787878787878788
+    },
+    "citation_recall": {
+      "n": 33,
+      "mean": 0.8787878787878788
+    },
+    "citation_f1": {
+      "n": 33,
+      "mean": 0.8636363636363636,
+      "ci": {
+        "mean": 0.8636363636363636,
+        "ci_low": 0.7675505050505051,
+        "ci_high": 0.9444444444444444,
+        "seed": 12345,
+        "n_resamples": 1000
+      }
+    }
+  }
+}

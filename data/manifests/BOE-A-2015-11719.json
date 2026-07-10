@@ -1,0 +1,44 @@
+{
+  "norm_id": "BOE-A-2015-11719",
+  "source": "BOE legislación consolidada",
+  "base_url": "https://www.boe.es/datosabiertos/api",
+  "downloaded_at": "2026-06-22T17:43:57.710981+00:00",
+  "files": [
+    {
+      "endpoint_name": "full",
+      "path": "data/raw/boe/BOE-A-2015-11719/full.xml",
+      "sha256": "86e99e4a53ffcdd6dc203d9a359d41e5b1a0ec0e513395cf2307747a81f6cc51",
+      "size_bytes": 671382
+    },
+    {
+      "endpoint_name": "metadatos",
+      "path": "data/raw/boe/BOE-A-2015-11719/metadatos.xml",
+      "sha256": "b7206df9dcbc9ca1757af5d714fb6546aad7d9e16d523a586a9ac6f0989d673b",
+      "size_bytes": 1352
+    },
+    {
+      "endpoint_name": "analisis",
+      "path": "data/raw/boe/BOE-A-2015-11719/analisis.xml",
+      "sha256": "a7f696ee765a817314f17d80ca187effe75cd13f9988b87a3268e283b44edf50",
+      "size_bytes": 14097
+    },
+    {
+      "endpoint_name": "metadata_eli",
+      "path": "data/raw/boe/BOE-A-2015-11719/metadata_eli.xml",
+      "sha256": "4247c49e8f0555ed490d8f26a80af2e12199577215be42385103ca2b2e1718ce",
+      "size_bytes": 85591
+    },
+    {
+      "endpoint_name": "texto",
+      "path": "data/raw/boe/BOE-A-2015-11719/texto.xml",
+      "sha256": "58e52897a4a9c4037ca86f16cfbba30dd73e44ff7468b6f511c6258c76b743bc",
+      "size_bytes": 570777
+    },
+    {
+      "endpoint_name": "indice",
+      "path": "data/raw/boe/BOE-A-2015-11719/indice.xml",
+      "sha256": "7771924bc178d558320f1a111149f60eb2752651bc3d72f2a9b3ce31cee59f4b",
+      "size_bytes": 42155
+    }
+  ]
+}

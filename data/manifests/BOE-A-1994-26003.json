@@ -1,0 +1,44 @@
+{
+  "norm_id": "BOE-A-1994-26003",
+  "source": "BOE legislación consolidada",
+  "base_url": "https://www.boe.es/datosabiertos/api",
+  "downloaded_at": "2026-06-22T17:44:17.373465+00:00",
+  "files": [
+    {
+      "endpoint_name": "full",
+      "path": "data/raw/boe/BOE-A-1994-26003/full.xml",
+      "sha256": "00eb70b64a82485a15ffa119d3bc2ae1a67f9fa694a3cf4d91f4c1ddccbed73c",
+      "size_bytes": 437922
+    },
+    {
+      "endpoint_name": "metadatos",
+      "path": "data/raw/boe/BOE-A-1994-26003/metadatos.xml",
+      "sha256": "8d949f16016688c4ea76bc443976a29297c37aedf0ab065cf4e22b6145885c5e",
+      "size_bytes": 1212
+    },
+    {
+      "endpoint_name": "analisis",
+      "path": "data/raw/boe/BOE-A-1994-26003/analisis.xml",
+      "sha256": "cb00573b27cb69b104239ff375ab7a57872b9947b1c06cc15872f1631ad0de27",
+      "size_bytes": 12003
+    },
+    {
+      "endpoint_name": "metadata_eli",
+      "path": "data/raw/boe/BOE-A-1994-26003/metadata_eli.xml",
+      "sha256": "57f9c884b2d6645cc36a08d24bf8b0343807437f93aed0a4a64ee6191c3c1e0e",
+      "size_bytes": 59135
+    },
+    {
+      "endpoint_name": "texto",
+      "path": "data/raw/boe/BOE-A-1994-26003/texto.xml",
+      "sha256": "b764b0277efcce1f59b693449767dc73da76777a3308a39147512ba74ab76b10",
+      "size_bytes": 366007
+    },
+    {
+      "endpoint_name": "indice",
+      "path": "data/raw/boe/BOE-A-1994-26003/indice.xml",
+      "sha256": "eb5b8a9c1d0c5fc3a5348646023c8f85b9f5464f72c86a632e604ae40d0a40d9",
+      "size_bytes": 20086
+    }
+  ]
+}

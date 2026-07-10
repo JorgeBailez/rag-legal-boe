@@ -1,0 +1,187 @@
+{
+  "kind": "retrieval_robustness_devtest",
+  "primary_metric": "ParentnDCG@10",
+  "n_combined": 81,
+  "n_dev": 53,
+  "n_test": 28,
+  "seed": 12345,
+  "margin_tost": 0.02,
+  "baseline": "dense",
+  "sources": {
+    "dev": "data\\processed\\reports\\dense\\benchmarks\\fusionabl_20260625T094731Z",
+    "test": "data\\processed\\reports\\dense\\benchmarks\\retrieval_20260625T111234Z"
+  },
+  "per_strategy": {
+    "dense": {
+      "n": 81,
+      "ci": {
+        "mean": 0.802246501356429,
+        "ci_low": 0.727977403214521,
+        "ci_high": 0.8570423967548261,
+        "seed": 12345,
+        "n_resamples": 1000,
+        "method": "bca"
+      }
+    },
+    "bm25": {
+      "n": 81,
+      "ci": {
+        "mean": 0.5258661818804223,
+        "ci_low": 0.43176962292089976,
+        "ci_high": 0.612012076877309,
+        "seed": 12345,
+        "n_resamples": 1000,
+        "method": "bca"
+      }
+    },
+    "rrf": {
+      "n": 81,
+      "ci": {
+        "mean": 0.7307974056079556,
+        "ci_low": 0.6581973396564879,
+        "ci_high": 0.7873976530926861,
+        "seed": 12345,
+        "n_resamples": 1000,
+        "method": "bca"
+      }
+    },
+    "weighted": {
+      "n": 81,
+      "ci": {
+        "mean": 0.7881683647549558,
+        "ci_low": 0.7195702161383881,
+        "ci_high": 0.8452368774004783,
+        "seed": 12345,
+        "n_resamples": 1000,
+        "method": "bca"
+      }
+    }
+  },
+  "paired_vs_dense": {
+    "bm25": {
+      "mean_diff": -0.2763803194760067,
+      "ci_low": -0.35473387202542106,
+      "ci_high": -0.19727697266675204,
+      "p_value": 0.0,
+      "seed": 12345,
+      "n_resamples": 1000
+    },
+    "rrf": {
+      "mean_diff": -0.07144909574847348,
+      "ci_low": -0.1249228851276021,
+      "ci_high": -0.022436653430745506,
+      "p_value": 0.008,
+      "seed": 12345,
+      "n_resamples": 1000
+    },
+    "weighted": {
+      "mean_diff": -0.014078136601473263,
+      "ci_low": -0.042783998025167934,
+      "ci_high": 0.012198683872239862,
+      "p_value": 0.292,
+      "seed": 12345,
+      "n_resamples": 1000
+    }
+  },
+  "holm": {
+    "bm25": {
+      "p_raw": 0.0,
+      "p_holm": 0.0,
+      "significant": true
+    },
+    "rrf": {
+      "p_raw": 0.008,
+      "p_holm": 0.016,
+      "significant": true
+    },
+    "weighted": {
+      "p_raw": 0.292,
+      "p_holm": 0.292,
+      "significant": false
+    }
+  },
+  "tost_vs_dense": {
+    "weighted": {
+      "mean_diff": -0.014078136601473263,
+      "ci_low": -0.03587227010712019,
+      "ci_high": 0.0075583063815152325,
+      "margin": 0.02,
+      "p_lower": 0.328,
+      "p_upper": 0.01,
+      "p_tost": 0.328,
+      "equivalent": false,
+      "seed": 12345,
+      "n_resamples": 1000,
+      "alpha": 0.05
+    },
+    "rrf": {
+      "mean_diff": -0.07144909574847348,
+      "ci_low": -0.11555720244731973,
+      "ci_high": -0.028891111793293178,
+      "margin": 0.02,
+      "p_lower": 0.984,
+      "p_upper": 0.0,
+      "p_tost": 0.984,
+      "equivalent": false,
+      "seed": 12345,
+      "n_resamples": 1000,
+      "alpha": 0.05
+    }
+  },
+  "by_query_style": {
+    "ciudadana": {
+      "n": 22,
+      "means": {
+        "dense": 0.8106,
+        "bm25": 0.3797,
+        "rrf": 0.6664,
+        "weighted": 0.7638
+      }
+    },
+    "comparativa": {
+      "n": 10,
+      "means": {
+        "dense": 0.7475,
+        "bm25": 0.5099,
+        "rrf": 0.6618,
+        "weighted": 0.7046
+      }
+    },
+    "conceptual": {
+      "n": 10,
+      "means": {
+        "dense": 0.9229,
+        "bm25": 0.7387,
+        "rrf": 0.8385,
+        "weighted": 0.9274
+      }
+    },
+    "directa_articulo": {
+      "n": 17,
+      "means": {
+        "dense": 0.6625,
+        "bm25": 0.4112,
+        "rrf": 0.6252,
+        "weighted": 0.6842
+      }
+    },
+    "lexica": {
+      "n": 14,
+      "means": {
+        "dense": 0.8345,
+        "bm25": 0.6911,
+        "rrf": 0.8709,
+        "weighted": 0.8441
+      }
+    },
+    "procedimental": {
+      "n": 8,
+      "means": {
+        "dense": 0.9376,
+        "bm25": 0.6363,
+        "rrf": 0.8387,
+        "weighted": 0.9088
+      }
+    }
+  }
+}

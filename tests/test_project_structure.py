@@ -95,12 +95,13 @@ EXPECTED_FILES = [
     "data/evaluation/dense_retrieval_v1/questions.jsonl",
     "data/evaluation/dense_retrieval_v1/judgments.jsonl",
     "data/evaluation/dense_retrieval_v1/answer_keys.jsonl",
-    "docs/decisiones_tecnicas.md",
-    "docs/fuentes_y_licencias.md",
-    "docs/evaluacion.md",
-    "docs/known_issues.md",
+    "docs/decisiones_de_diseno.md",
+    "docs/evaluacion_gold_y_metricas.md",
     "docs/fase2_dense_baseline.md",
-    "docs/run_dense_embeddings_server.md",
+    "docs/fuentes_y_licencias.md",
+    "docs/analisis_errores_generacion.md",
+    "docs/analisis/README.md",
+    "docs/analisis/01_parser_flujo_completo.md",
     "notebooks/README.md",
     "notebooks/02_perfilado_tokenizacion.ipynb",
     "notebooks/03_benchmark_modelos_densos.ipynb",
@@ -111,8 +112,6 @@ EXPECTED_FILES = [
     "prompts/rag_prompt.txt",
     "prompts/judge_faithfulness.txt",
     "prompts/judge_correctness.txt",
-    "prompts/v2/system_prompt.txt",
-    "prompts/v2/rag_prompt.txt",
 ]
 
 

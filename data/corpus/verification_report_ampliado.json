@@ -1,0 +1,3139 @@
+[
+  {
+    "norm_id": "BOE-A-2015-10565",
+    "exists": true,
+    "title": "Ley 39/2015, de 1 de octubre, del Procedimiento Administrativo Común de las Administraciones Públicas.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2016-10-02",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 195,
+    "chunks_count": 248
+  },
+  {
+    "norm_id": "BOE-A-2015-10566",
+    "exists": true,
+    "title": "Ley 40/2015, de 1 de octubre, de Régimen Jurídico del Sector Público.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2016-10-02",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 267,
+    "chunks_count": 425
+  },
+  {
+    "norm_id": "BOE-A-1985-5392",
+    "exists": true,
+    "title": "Ley 7/1985, de 2 de abril, Reguladora de las Bases del Régimen Local",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "1985-04-23",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 231,
+    "chunks_count": 326
+  },
+  {
+    "norm_id": "BOE-A-2004-4214",
+    "exists": true,
+    "title": "Real Decreto Legislativo 2/2004, de 5 de marzo, por el que se aprueba el texto refundido de la Ley Reguladora de las Haciendas Locales.",
+    "rank": {
+      "code": "1310",
+      "label": "Real Decreto Legislativo"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2004-03-10",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 368,
+    "chunks_count": 402
+  },
+  {
+    "norm_id": "BOE-A-2013-12887",
+    "exists": true,
+    "title": "Ley 19/2013, de 9 de diciembre, de transparencia, acceso a la información pública y buen gobierno.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2014-12-10",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 70,
+    "chunks_count": 103
+  },
+  {
+    "norm_id": "BOE-A-2021-5032",
+    "exists": true,
+    "title": "Real Decreto 203/2021, de 30 de marzo, por el que se aprueba el Reglamento de actuación y funcionamiento del sector público por medios electrónicos.",
+    "rank": {
+      "code": "1340",
+      "label": "Real Decreto"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2021-04-02",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 106,
+    "chunks_count": 188
+  },
+  {
+    "norm_id": "BOE-A-2003-20977",
+    "exists": true,
+    "title": "Ley 38/2003, de 17 de noviembre, General de Subvenciones.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2004-02-18",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 122,
+    "chunks_count": 188
+  },
+  {
+    "norm_id": "BOE-A-2006-13371",
+    "exists": true,
+    "title": "Real Decreto 887/2006, de 21 de julio, por el que se aprueba el Reglamento de la Ley 38/2003, de 17 de noviembre, General de Subvenciones.",
+    "rank": {
+      "code": "1340",
+      "label": "Real Decreto"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2006-10-25",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 171,
+    "chunks_count": 188
+  },
+  {
+    "norm_id": "BOE-A-2017-12902",
+    "exists": true,
+    "title": "Ley 9/2017, de 8 de noviembre, de Contratos del Sector Público, por la que se transponen al ordenamiento jurídico español las Directivas del Parlamento Europeo y del Consejo 2014/23/UE y 2014/24/UE, de 26 de febrero de 2014.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2018-03-09",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 557,
+    "chunks_count": 967
+  },
+  {
+    "norm_id": "BOE-A-2018-16673",
+    "exists": true,
+    "title": "Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y garantía de los derechos digitales.",
+    "rank": {
+      "code": "1290",
+      "label": "Ley Orgánica"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2018-12-07",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 169,
+    "chunks_count": 228
+  },
+  {
+    "norm_id": "BOE-A-1997-25336",
+    "exists": true,
+    "title": "Ley 50/1997, de 27 de noviembre, del Gobierno.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "1997-12-18",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 47,
+    "chunks_count": 53
+  },
+  {
+    "norm_id": "BOE-A-2003-21614",
+    "exists": true,
+    "title": "Ley 47/2003, de 26 de noviembre, General Presupuestaria.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2005-01-01",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 281,
+    "chunks_count": 355
+  },
+  {
+    "norm_id": "BOE-A-2015-11719",
+    "exists": true,
+    "title": "Real Decreto Legislativo 5/2015, de 30 de octubre, por el que se aprueba el texto refundido de la Ley del Estatuto Básico del Empleado Público.",
+    "rank": {
+      "code": "1310",
+      "label": "Real Decreto Legislativo"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2015-11-01",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 161,
+    "chunks_count": 199
+  },
+  {
+    "norm_id": "BOE-A-1998-16718",
+    "exists": true,
+    "title": "Ley 29/1998, de 13 de julio, reguladora de la Jurisdicción Contencioso-administrativa.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "1998-12-14",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 224,
+    "chunks_count": 284
+  },
+  {
+    "norm_id": "BOE-A-2003-20254",
+    "exists": true,
+    "title": "Ley 33/2003, de 3 de noviembre, del Patrimonio de las Administraciones Públicas.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2004-02-04",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 298,
+    "chunks_count": 332
+  },
+  {
+    "norm_id": "BOE-A-2009-18731",
+    "exists": true,
+    "title": "Ley 17/2009, de 23 de noviembre, sobre el libre acceso a las actividades de servicios y su ejercicio.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2009-12-24",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 55,
+    "chunks_count": 89
+  },
+  {
+    "norm_id": "BOE-A-2013-12888",
+    "exists": true,
+    "title": "Ley 20/2013, de 9 de diciembre, de garantía de la unidad de mercado.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2013-12-11",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 58,
+    "chunks_count": 90
+  },
+  {
+    "norm_id": "BOE-A-2023-4513",
+    "exists": true,
+    "title": "Ley 2/2023, de 20 de febrero, reguladora de la protección de las personas que informen sobre infracciones normativas y de lucha contra la corrupción.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2023-03-13",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 106,
+    "chunks_count": 162
+  },
+  {
+    "norm_id": "BOE-A-1980-8648",
+    "exists": true,
+    "title": "Ley Orgánica 3/1980, de 22 de abril, del Consejo de Estado.",
+    "rank": {
+      "code": "1290",
+      "label": "Ley Orgánica"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "1980-05-15",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 40,
+    "chunks_count": 35
+  },
+  {
+    "norm_id": "BOE-A-2003-23186",
+    "exists": true,
+    "title": "Ley 58/2003, de 17 de diciembre, General Tributaria.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2004-07-01",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 448,
+    "chunks_count": 605
+  },
+  {
+    "norm_id": "BOE-A-2006-20764",
+    "exists": true,
+    "title": "Ley 35/2006, de 28 de noviembre, del Impuesto sobre la Renta de las Personas Físicas y de modificación parcial de las leyes de los Impuestos sobre Sociedades, sobre la Renta de no Residentes y sobre el Patrimonio.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2007-01-01",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 273,
+    "chunks_count": 626
+  },
+  {
+    "norm_id": "BOE-A-1992-28740",
+    "exists": true,
+    "title": "Ley 37/1992, de 28 de diciembre, del Impuesto sobre el Valor Añadido.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "1993-01-01",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 307,
+    "chunks_count": 531
+  },
+  {
+    "norm_id": "BOE-A-2014-12328",
+    "exists": true,
+    "title": "Ley 27/2014, de 27 de noviembre, del Impuesto sobre Sociedades.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2015-01-01",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 258,
+    "chunks_count": 607
+  },
+  {
+    "norm_id": "BOE-A-1987-28141",
+    "exists": true,
+    "title": "Ley 29/1987, de 18 de diciembre, del Impuesto sobre Sucesiones y Donaciones.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "1988-01-01",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 74,
+    "chunks_count": 86
+  },
+  {
+    "norm_id": "BOE-A-1993-25359",
+    "exists": true,
+    "title": "Real Decreto Legislativo 1/1993, de 24 de septiembre, por el que se aprueba el Texto refundido de la Ley del Impuesto sobre Transmisiones Patrimoniales y Actos Jurídicos Documentados.",
+    "rank": {
+      "code": "1310",
+      "label": "Real Decreto Legislativo"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "1993-10-21",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 115,
+    "chunks_count": 118
+  },
+  {
+    "norm_id": "BOE-A-1992-28741",
+    "exists": true,
+    "title": "Ley 38/1992, de 28 de diciembre, de Impuestos Especiales.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "1993-01-01",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 158,
+    "chunks_count": 274
+  },
+  {
+    "norm_id": "BOE-A-2007-15984",
+    "exists": true,
+    "title": "Real Decreto 1065/2007, de 27 de julio, por el que se aprueba el Reglamento General de las actuaciones y los procedimientos de gestión e inspección tributaria y de desarrollo de las normas comunes de los procedimientos de aplicación de los tributos.",
+    "rank": {
+      "code": "1340",
+      "label": "Real Decreto"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2008-01-01",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 364,
+    "chunks_count": 602
+  },
+  {
+    "norm_id": "BOE-A-2007-6820",
+    "exists": true,
+    "title": "Real Decreto 439/2007, de 30 de marzo, por el que se aprueba el Reglamento del Impuesto sobre la Renta de las Personas Físicas y se modifica el Reglamento de Planes y Fondos de Pensiones, aprobado por Real Decreto 304/2004, de 20 de febrero.",
+    "rank": {
+      "code": "1340",
+      "label": "Real Decreto"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2007-04-01",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 215,
+    "chunks_count": 373
+  },
+  {
+    "norm_id": "BOE-A-1990-30735",
+    "exists": true,
+    "title": "Ley 20/1990, de 19 de diciembre, sobre Régimen Fiscal de las Cooperativas.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "1990-12-20",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 76,
+    "chunks_count": 84
+  },
+  {
+    "norm_id": "BOE-A-2015-11430",
+    "exists": true,
+    "title": "Real Decreto Legislativo 2/2015, de 23 de octubre, por el que se aprueba el texto refundido de la Ley del Estatuto de los Trabajadores.",
+    "rank": {
+      "code": "1310",
+      "label": "Real Decreto Legislativo"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2015-11-13",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 178,
+    "chunks_count": 334
+  },
+  {
+    "norm_id": "BOE-A-2015-11724",
+    "exists": true,
+    "title": "Real Decreto Legislativo 8/2015, de 30 de octubre, por el que se aprueba el texto refundido de la Ley General de la Seguridad Social.",
+    "rank": {
+      "code": "1310",
+      "label": "Real Decreto Legislativo"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2016-01-02",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 627,
+    "chunks_count": 995
+  },
+  {
+    "norm_id": "BOE-A-1995-24292",
+    "exists": true,
+    "title": "Ley 31/1995, de 8 de noviembre, de Prevención de Riesgos Laborales.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "1996-02-10",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 88,
+    "chunks_count": 139
+  },
+  {
+    "norm_id": "BOE-A-2000-15060",
+    "exists": true,
+    "title": "Real Decreto Legislativo 5/2000, de 4 de agosto, por el que se aprueba el texto refundido de la Ley sobre Infracciones y Sanciones en el Orden Social.",
+    "rank": {
+      "code": "1310",
+      "label": "Real Decreto Legislativo"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2001-01-01",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 106,
+    "chunks_count": 142
+  },
+  {
+    "norm_id": "BOE-A-2007-13409",
+    "exists": true,
+    "title": "Ley 20/2007, de 11 de julio, del Estatuto del trabajo autónomo.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2007-10-12",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 89,
+    "chunks_count": 143
+  },
+  {
+    "norm_id": "BOE-A-2023-5365",
+    "exists": true,
+    "title": "Ley 3/2023, de 28 de febrero, de Empleo.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2023-03-02",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 125,
+    "chunks_count": 203
+  },
+  {
+    "norm_id": "BOE-A-1994-12554",
+    "exists": true,
+    "title": "Ley 14/1994, de 1 de junio, por la que se regulan las empresas de trabajo temporal.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "1994-06-22",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 46,
+    "chunks_count": 58
+  },
+  {
+    "norm_id": "BOE-A-2015-8168",
+    "exists": true,
+    "title": "Ley 23/2015, de 21 de julio, Ordenadora del Sistema de Inspección de Trabajo y Seguridad Social.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2015-07-23",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 69,
+    "chunks_count": 114
+  },
+  {
+    "norm_id": "BOE-A-2011-17975",
+    "exists": true,
+    "title": "Real Decreto 1620/2011, de 14 de noviembre, por el que se regula la relación laboral de carácter especial del servicio del hogar familiar.",
+    "rank": {
+      "code": "1340",
+      "label": "Real Decreto"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2011-11-18",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 29,
+    "chunks_count": 45
+  },
+  {
+    "norm_id": "BOE-A-1994-26003",
+    "exists": true,
+    "title": "Ley 29/1994, de 24 de noviembre, de Arrendamientos Urbanos.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "1995-01-01",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 76,
+    "chunks_count": 126
+  },
+  {
+    "norm_id": "BOE-A-1960-10906",
+    "exists": true,
+    "title": "Ley 49/1960, de 21 de julio, sobre propiedad horizontal.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "1960-08-12",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 35,
+    "chunks_count": 71
+  },
+  {
+    "norm_id": "BOE-A-2007-20555",
+    "exists": true,
+    "title": "Real Decreto Legislativo 1/2007, de 16 de noviembre, por el que se aprueba el texto refundido de la Ley General para la Defensa de los Consumidores y Usuarios y otras leyes complementarias.",
+    "rank": {
+      "code": "1310",
+      "label": "Real Decreto Legislativo"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2007-12-01",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 284,
+    "chunks_count": 370
+  },
+  {
+    "norm_id": "BOE-A-2023-12203",
+    "exists": true,
+    "title": "Ley 12/2023, de 24 de mayo, por el derecho a la vivienda.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2023-05-26",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 70,
+    "chunks_count": 164
+  },
+  {
+    "norm_id": "BOE-A-2019-3814",
+    "exists": true,
+    "title": "Ley 5/2019, de 15 de marzo, reguladora de los contratos de crédito inmobiliario.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2019-06-16",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 100,
+    "chunks_count": 223
+  },
+  {
+    "norm_id": "BOE-A-1998-8789",
+    "exists": true,
+    "title": "Ley 7/1998, de 13 de abril, sobre condiciones generales de la contratación.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "1998-05-04",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 43,
+    "chunks_count": 68
+  },
+  {
+    "norm_id": "BOE-A-2011-10970",
+    "exists": true,
+    "title": "Ley 16/2011, de 24 de junio, de contratos de crédito al consumo.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2011-09-25",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 58,
+    "chunks_count": 92
+  },
+  {
+    "norm_id": "BOE-A-2007-13411",
+    "exists": true,
+    "title": "Ley 22/2007, de 11 de julio, sobre comercialización a distancia de servicios financieros destinados a los consumidores.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2007-10-12",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 29,
+    "chunks_count": 41
+  },
+  {
+    "norm_id": "BOE-A-2012-9111",
+    "exists": true,
+    "title": "Ley 4/2012, de 6 de julio, de contratos de aprovechamiento por turno de bienes de uso turístico, de adquisición de productos vacacionales de larga duración, de reventa y de intercambio y normas tributarias.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2012-07-08",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 67,
+    "chunks_count": 100
+  },
+  {
+    "norm_id": "BOE-A-1998-16717",
+    "exists": true,
+    "title": "Ley 28/1998, de 13 de julio, de Venta a Plazos de Bienes Muebles.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "1998-09-12",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 30,
+    "chunks_count": 42
+  },
+  {
+    "norm_id": "BOE-A-2000-323",
+    "exists": true,
+    "title": "Ley 1/2000, de 7 de enero, de Enjuiciamiento Civil.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2001-01-08",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 1083,
+    "chunks_count": 1402
+  },
+  {
+    "norm_id": "BOE-A-2015-7391",
+    "exists": true,
+    "title": "Ley 15/2015, de 2 de julio, de la Jurisdicción Voluntaria.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2015-07-23",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 251,
+    "chunks_count": 434
+  },
+  {
+    "norm_id": "BOE-A-2021-9233",
+    "exists": true,
+    "title": "Ley 8/2021, de 2 de junio, por la que se reforma la legislación civil y procesal para el apoyo a las personas con discapacidad en el ejercicio de su capacidad jurídica.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2021-09-03",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 22,
+    "chunks_count": 165
+  },
+  {
+    "norm_id": "BOE-A-2011-12628",
+    "exists": true,
+    "title": "Ley 20/2011, de 21 de julio, del Registro Civil.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2021-04-30",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 170,
+    "chunks_count": 174
+  },
+  {
+    "norm_id": "BOE-A-2003-21053",
+    "exists": true,
+    "title": "Ley 41/2003, de 18 de noviembre, de protección patrimonial de las personas con discapacidad y de modificación del Código Civil, de la Ley de Enjuiciamiento Civil y de la Normativa Tributaria con esta finalidad.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2003-11-20",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 28,
+    "chunks_count": 64
+  },
+  {
+    "norm_id": "BOE-A-2012-9112",
+    "exists": true,
+    "title": "Ley 5/2012, de 6 de julio, de mediación en asuntos civiles y mercantiles.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2012-07-27",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 50,
+    "chunks_count": 69
+  },
+  {
+    "norm_id": "BOE-A-2015-8564",
+    "exists": true,
+    "title": "Ley 29/2015, de 30 de julio, de cooperación jurídica internacional en materia civil.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2015-08-20",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 93,
+    "chunks_count": 137
+  },
+  {
+    "norm_id": "BOE-A-1986-10499",
+    "exists": true,
+    "title": "Ley 14/1986, de 25 de abril, General de Sanidad",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "1986-05-19",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 196,
+    "chunks_count": 198
+  },
+  {
+    "norm_id": "BOE-A-2002-22188",
+    "exists": true,
+    "title": "Ley 41/2002, de 14 de noviembre, básica reguladora de la autonomía del paciente y de derechos y obligaciones en materia de información y documentación clínica.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2003-05-16",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 40,
+    "chunks_count": 48
+  },
+  {
+    "norm_id": "BOE-A-2003-10715",
+    "exists": true,
+    "title": "Ley 16/2003, de 28 de mayo, de cohesión y calidad del Sistema Nacional de Salud.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2003-05-30",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 133,
+    "chunks_count": 158
+  },
+  {
+    "norm_id": "BOE-A-2011-15623",
+    "exists": true,
+    "title": "Ley 33/2011, de 4 de octubre, General de Salud Pública.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2011-10-06",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 104,
+    "chunks_count": 127
+  },
+  {
+    "norm_id": "BOE-A-2015-8343",
+    "exists": true,
+    "title": "Real Decreto Legislativo 1/2015, de 24 de julio, por el que se aprueba el texto refundido de la Ley de garantías y uso racional de los medicamentos y productos sanitarios.",
+    "rank": {
+      "code": "1310",
+      "label": "Real Decreto Legislativo"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2015-07-25",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 181,
+    "chunks_count": 315
+  },
+  {
+    "norm_id": "BOE-A-2003-21340",
+    "exists": true,
+    "title": "Ley 44/2003, de 21 de noviembre, de ordenación de las profesiones sanitarias.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2003-11-23",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 87,
+    "chunks_count": 106
+  },
+  {
+    "norm_id": "BOE-A-2006-7899",
+    "exists": true,
+    "title": "Ley Orgánica 2/2006, de 3 de mayo, de Educación.",
+    "rank": {
+      "code": "1290",
+      "label": "Ley Orgánica"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2006-05-24",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 302,
+    "chunks_count": 432
+  },
+  {
+    "norm_id": "BOE-A-2023-7500",
+    "exists": true,
+    "title": "Ley Orgánica 2/2023, de 22 de marzo, del Sistema Universitario.",
+    "rank": {
+      "code": "1290",
+      "label": "Ley Orgánica"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2023-04-12",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 165,
+    "chunks_count": 239
+  },
+  {
+    "norm_id": "BOE-A-2011-9617",
+    "exists": true,
+    "title": "Ley 14/2011, de 1 de junio, de la Ciencia, la Tecnología y la Innovación.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2011-12-02",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 132,
+    "chunks_count": 294
+  },
+  {
+    "norm_id": "BOE-A-2022-5139",
+    "exists": true,
+    "title": "Ley Orgánica 3/2022, de 31 de marzo, de ordenación e integración de la Formación Profesional.",
+    "rank": {
+      "code": "1290",
+      "label": "Ley Orgánica"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2022-04-21",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 187,
+    "chunks_count": 241
+  },
+  {
+    "norm_id": "BOE-A-2000-544",
+    "exists": true,
+    "title": "Ley Orgánica 4/2000, de 11 de enero, sobre derechos y libertades de los extranjeros en España y su integración social.",
+    "rank": {
+      "code": "1290",
+      "label": "Ley Orgánica"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2000-02-01",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 142,
+    "chunks_count": 196
+  },
+  {
+    "norm_id": "BOE-A-2009-17242",
+    "exists": true,
+    "title": "Ley 12/2009, de 30 de octubre, reguladora del derecho de asilo y de la protección subsidiaria.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2009-11-20",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 80,
+    "chunks_count": 97
+  },
+  {
+    "norm_id": "BOE-A-2024-24099",
+    "exists": true,
+    "title": "Real Decreto 1155/2024, de 19 de noviembre, por el que se aprueba el Reglamento de la Ley Orgánica 4/2000, de 11 de enero, sobre derechos y libertades de los extranjeros en España y su integración social.",
+    "rank": {
+      "code": "1340",
+      "label": "Real Decreto"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2025-05-20",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 383,
+    "chunks_count": 635
+  },
+  {
+    "norm_id": "BOE-A-2015-7851",
+    "exists": true,
+    "title": "Ley 19/2015, de 13 de julio, de medidas de reforma administrativa en el ámbito de la Administración de Justicia y del Registro Civil.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2015-10-15",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 22,
+    "chunks_count": 81
+  },
+  {
+    "norm_id": "BOE-A-2015-11722",
+    "exists": true,
+    "title": "Real Decreto Legislativo 6/2015, de 30 de octubre, por el que se aprueba el texto refundido de la Ley sobre Tráfico, Circulación de Vehículos a Motor y Seguridad Vial.",
+    "rank": {
+      "code": "1310",
+      "label": "Real Decreto Legislativo"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2016-01-31",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 196,
+    "chunks_count": 233
+  },
+  {
+    "norm_id": "BOE-A-2004-18911",
+    "exists": true,
+    "title": "Real Decreto Legislativo 8/2004, de 29 de octubre, por el que se aprueba el texto refundido de la Ley sobre responsabilidad civil y seguro en la circulación de vehículos a motor.",
+    "rank": {
+      "code": "1310",
+      "label": "Real Decreto Legislativo"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2004-11-06",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 207,
+    "chunks_count": 1451
+  },
+  {
+    "norm_id": "BOE-A-2015-10197",
+    "exists": false,
+    "availability": {},
+    "meets_criteria": false,
+    "reasons": [
+      "error de descarga: Respuesta HTTP 404 en endpoint /legislacion-consolidada/id/BOE-A-2015-10197/metadatos"
+    ]
+  },
+  {
+    "norm_id": "BOE-A-2003-23514",
+    "exists": true,
+    "title": "Real Decreto 1428/2003, de 21 de noviembre, por el que se aprueba el Reglamento General de Circulación para la aplicación y desarrollo del texto articulado de la Ley sobre tráfico, circulación de vehículos a motor y seguridad vial, aprobado por el Real Decreto Legislativo 339/1990, de 2 de marzo.",
+    "rank": {
+      "code": "1340",
+      "label": "Real Decreto"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2004-01-23",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 329,
+    "chunks_count": 357
+  },
+  {
+    "norm_id": "BOE-A-2002-13758",
+    "exists": true,
+    "title": "Ley 34/2002, de 11 de julio, de servicios de la sociedad de la información y de comercio electrónico.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2002-10-12",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 90,
+    "chunks_count": 123
+  },
+  {
+    "norm_id": "BOE-A-2022-10757",
+    "exists": true,
+    "title": "Ley 11/2022, de 28 de junio, General de Telecomunicaciones.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2022-06-30",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 190,
+    "chunks_count": 519
+  },
+  {
+    "norm_id": "BOE-A-2007-22440",
+    "exists": true,
+    "title": "Ley 56/2007, de 28 de diciembre, de Medidas de Impulso de la Sociedad de la Información.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2007-12-30",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 40,
+    "chunks_count": 121
+  },
+  {
+    "norm_id": "BOE-A-2020-14046",
+    "exists": true,
+    "title": "Ley 6/2020, de 11 de noviembre, reguladora de determinados aspectos de los servicios electrónicos de confianza.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2020-11-13",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 42,
+    "chunks_count": 63
+  },
+  {
+    "norm_id": "BOE-A-2022-11311",
+    "exists": true,
+    "title": "Ley 13/2022, de 7 de julio, General de Comunicación Audiovisual.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2022-07-09",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 229,
+    "chunks_count": 288
+  },
+  {
+    "norm_id": "BOE-A-2013-12913",
+    "exists": true,
+    "title": "Ley 21/2013, de 9 de diciembre, de evaluación ambiental.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2013-12-12",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 118,
+    "chunks_count": 280
+  },
+  {
+    "norm_id": "BOE-A-2021-8447",
+    "exists": true,
+    "title": "Ley 7/2021, de 20 de mayo, de cambio climático y transición energética.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2021-05-22",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 82,
+    "chunks_count": 174
+  },
+  {
+    "norm_id": "BOE-A-2013-13645",
+    "exists": true,
+    "title": "Ley 24/2013, de 26 de diciembre, del Sector Eléctrico.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2013-12-28",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 151,
+    "chunks_count": 399
+  },
+  {
+    "norm_id": "BOE-A-2022-5809",
+    "exists": true,
+    "title": "Ley 7/2022, de 8 de abril, de residuos y suelos contaminados para una economía circular.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2022-04-10",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 213,
+    "chunks_count": 467
+  },
+  {
+    "norm_id": "BOE-A-2007-21490",
+    "exists": true,
+    "title": "Ley 42/2007, de 13 de diciembre, del Patrimonio Natural y de la Biodiversidad.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2007-12-15",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 166,
+    "chunks_count": 274
+  },
+  {
+    "norm_id": "BOE-A-2001-14276",
+    "exists": true,
+    "title": "Real Decreto Legislativo 1/2001, de 20 de julio, por el que se aprueba el texto refundido de la Ley de Aguas.",
+    "rank": {
+      "code": "1310",
+      "label": "Real Decreto Legislativo"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2001-07-25",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 235,
+    "chunks_count": 258
+  },
+  {
+    "norm_id": "BOE-A-2002-5852",
+    "exists": true,
+    "title": "Ley Orgánica 1/2002, de 22 de marzo, reguladora del Derecho de Asociación.",
+    "rank": {
+      "code": "1290",
+      "label": "Ley Orgánica"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2002-05-26",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 64,
+    "chunks_count": 73
+  },
+  {
+    "norm_id": "BOE-A-2002-25180",
+    "exists": true,
+    "title": "Ley 50/2002, de 26 de diciembre, de Fundaciones.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2003-01-01",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 80,
+    "chunks_count": 86
+  },
+  {
+    "norm_id": "BOE-A-2002-25039",
+    "exists": true,
+    "title": "Ley 49/2002, de 23 de diciembre, de régimen fiscal de las entidades sin fines lucrativos y de los incentivos fiscales al mecenazgo.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2002-12-25",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 66,
+    "chunks_count": 102
+  },
+  {
+    "norm_id": "BOE-A-2015-3442",
+    "exists": true,
+    "title": "Ley Orgánica 4/2015, de 30 de marzo, de protección de la seguridad ciudadana.",
+    "rank": {
+      "code": "1290",
+      "label": "Ley Orgánica"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2015-07-01",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 80,
+    "chunks_count": 101
+  },
+  {
+    "norm_id": "BOE-A-2022-11589",
+    "exists": true,
+    "title": "Ley 15/2022, de 12 de julio, integral para la igualdad de trato y la no discriminación.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2022-07-14",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 84,
+    "chunks_count": 126
+  },
+  {
+    "norm_id": "BOE-A-2007-6115",
+    "exists": true,
+    "title": "Ley Orgánica 3/2007, de 22 de marzo, para la igualdad efectiva de mujeres y hombres.",
+    "rank": {
+      "code": "1290",
+      "label": "Ley Orgánica"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2007-03-24",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 153,
+    "chunks_count": 222
+  },
+  {
+    "norm_id": "BOE-A-2006-21990",
+    "exists": true,
+    "title": "Ley 39/2006, de 14 de diciembre, de Promoción de la Autonomía Personal y Atención a las personas en situación de dependencia.",
+    "rank": {
+      "code": "1300",
+      "label": "Ley"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "2007-01-01",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 97,
+    "chunks_count": 103
+  },
+  {
+    "norm_id": "BOE-A-1978-31229",
+    "exists": true,
+    "title": "Constitución Española.",
+    "rank": {
+      "code": "1070",
+      "label": "Constitución"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "1978-12-29",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 210,
+    "chunks_count": 193
+  },
+  {
+    "norm_id": "BOE-A-1995-25444",
+    "exists": true,
+    "title": "Ley Orgánica 10/1995, de 23 de noviembre, del Código Penal.",
+    "rank": {
+      "code": "1290",
+      "label": "Ley Orgánica"
+    },
+    "scope": {
+      "code": "1",
+      "label": "Estatal"
+    },
+    "consolidation_status": {
+      "code": "3",
+      "label": "Finalizado"
+    },
+    "expired_validity": "N",
+    "derogation_status": "N",
+    "effective_date": "1996-05-24",
+    "availability": {
+      "metadatos": true,
+      "texto": true,
+      "indice": true,
+      "analisis": true,
+      "metadata_eli": true,
+      "full": true
+    },
+    "vigente": true,
+    "finalizado": true,
+    "meets_criteria": true,
+    "reasons": [],
+    "blocks_count": 985,
+    "chunks_count": 925
+  }
+]

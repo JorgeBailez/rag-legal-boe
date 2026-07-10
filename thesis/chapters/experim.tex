@@ -1,180 +1,644 @@
 \chapter{Experimentos y validación}
 \label{chap:experimentos}
 
-\textbf{Atención}: Este capítulo se introdujo como requisito en 2019.
+Este es el capítulo central del trabajo: donde el sistema deja de «funcionar» sobre el papel y se somete a medida. La pregunta que lo guía no es si responde, sino \emph{cuándo es fiable y cómo lo sabemos}: se mide con evidencia y se comparan estrategias, en lugar de elegirlas por intuición.
 
-Describe los experimentos y casos de test que tuviste que implementar para validar tus resultados. 
-Incluye también los resultados de validación que permiten afirmar que tus resultados son correctos.
+La evaluación cubre las dos mitades de la cadena. La \textbf{recuperación} —localizar las evidencias pertinentes (L1) y saber abstenerse cuando el corpus no basta (L6)— se cierra con datos sobre las 92 normas, sin depender de un modelo juez. La \textbf{generación} —fidelidad, citas y corrección (L3--L5)— se aborda también aquí, pero con un estatus de evidencia distinto: las citas y los hechos clave se miden de forma automática contra el gold, mientras que la fidelidad y la corrección descansan en anotación humana, porque el modelo juez previsto para automatizarlas se validó y resultó insuficiente. Ese resultado negativo se reporta como tal, en coherencia con lo que exige OE-06.
 
-\section{Incorporación de código en la memoria}
+\section{Metodología de evaluación}
+\label{sec:metodologia-eval}
 
-Es bastante habitual que se reproduzcan fragmentos de código en la memoria de un TFG/TFM.
-Esto permite explicar detalladamente partes del desarrollo que se ha realizado que se consideren
-de especial interés. No obstante, tampoco es conveniente pasarse e incluir demasiado código en
-la memoria, puesto que se puede alargar mucho el documento. Un recurso muy habitual es subir
-todo el código a un repositorio de un servicio de control de versiones como GitHub o GitLab,
-y luego incluir en la memoria la URL que enlace a dicho repositorio.
+Toda afirmación de este capítulo se apoya en un mismo aparato de medida: un banco de consultas anotadas, un conjunto de métricas y un protocolo estadístico fijos y reproducibles. Describirlos antes de presentar resultados es lo que permite interpretar los números y distinguir un hallazgo real de un artefacto del muestreo.
 
-Para incluir fragmentos de código en un documento \LaTeX se pueden combinar varias
-herramientas:
+\subsection{Un marco modular de seis capas}
+\label{subsec:marco-capas}
 
-\begin{itemize}
-    \item El entorno \mintinline{latex}{\begin{listing}[]...\end{listing}} permite crear
-    un marco en el que situar el fragmento de código (parecido al generado cuando insertamos
-    una tabla o una figura). Podemos insertar también una descripción (\textit{caption})
-    y una etiqueta para referenciarlo luego en el texto.
-    
-    \item Dentro de este entorno, se puede utilizar el paquete 
-    \mintinline{latex}{minted}~\footnote{\url{https://es.overleaf.com/learn/latex/Code_Highlighting_with_minted}},
-    que utiliza el paquete Python Pygments para resaltado de sintaxis (coloreando el
-    código). Como se puede ver en el siguiente ejemplo, hay muchas opciones de configuración
-    que permiten controlar cómo se va a mostrar el código (incluir números de línea, saltos
-    de línea, tamaño y tipo de fuente, espaciado, código de colores para resaltado, etc.).
-\end{itemize}
+La evaluación se organiza en seis capas desacopladas, pensadas para \emph{localizar} el fallo y no solo para puntuarlo. La Tabla~\ref{tab:capas-eval} las resume. La idea, alineada con las propuestas de evaluación automatizada de RAG revisadas en el estado del arte~\cite{es2024ragas,saadfalcon2024ares}, es que una nota global no dice dónde mejorar; medir cada componente por separado, sí.
 
-\begin{listing}[h!]
-    \caption{Lectura de un fichero *.csv y tipado de datos.}{}
-    \label{lst:1}
-    \begin{minted}[breaklines, fontsize=\footnotesize, baselinestretch=1]{python}
-        # A dictionary is built to define the data type contained by each column
-        dtype_scheme ={'budget': np.int64, 'genres': np.object, 'homepage': np.str, 'id': np.int64, 'keywords': np.object, 'original_language': np.str, 'original_title': np.str, 'overview': np.str, 'popularity': np.float64, 'production_companies': np.object, 'production_countries': np.object, 'release_date': np.object, 'revenue': np.int64, 'runtime': np.float64, 'spoken_languages': np.object,  'status': np.object, 'tagline': np.str, 'title': np.str, 'vote_average': np.float64, 'vote_count': np.int64}
-        
-        # When loading the data from the .csv file, we provide the scheme to be followed for data typing
-        df1 = dd.read_csv('tmdb_5000_movies.csv', dtype=dtype_scheme)
-    \end{minted}
-\end{listing}
+\begin{table}[htbp]
+    \centering
+    \small
+    \renewcommand{\arraystretch}{1.2}
+    \caption{Las seis capas de la evaluación y su estado. Este capítulo las desarrolla todas (L1--L6).}
+    \label{tab:capas-eval}
+    \begin{tabular}{p{1.6cm}p{8.6cm}p{3.0cm}}
+        \toprule
+        \textbf{Capa} & \textbf{Qué mide} & \textbf{Estado} \\
+        \midrule
+        L1 Recuperación & ¿Está el artículo correcto y en posición alta? & \textbf{Cerrada} (este cap.) \\
+        L2 Contexto & ¿El contexto ensamblado contiene la evidencia y poco ruido? & \textbf{Cerrada} (este cap.) \\
+        L3 Fidelidad & ¿Cada afirmación se deriva de la evidencia entregada? & Cerrada (humano; juez insuf.) \\
+        L4 Citas & ¿Las citas soportan de verdad lo que afirman? & \textbf{Cerrada} (este cap.) \\
+        L5 Corrección & ¿La respuesta acierta los hechos clave? & Cerrada (determ.\ + humano) \\
+        L6 Abstención & ¿Se abstiene cuando debe y solo cuando debe? & \textbf{Cerrada} (este cap.) \\
+        \bottomrule
+    \end{tabular}
+\end{table}
 
-Otra ventaja del entorno \verb|listing| es que se puede generar automáticamente un índice
-(con entradas hiperenlazadas) de fragmentos de código, para incluirlo al comienzo del 
-documento junto con los índices de figuras, tablas, etc.
+Esta separación es especialmente pertinente en el dominio jurídico, donde —como advierte la literatura sobre herramientas legales de IA— una respuesta puede ser plausible y estar bien citada en la forma y, aun así, ser infiel a la fuente o incorrecta~\cite{magesh2025hallucinationfree}. Por eso \emph{correcto}, \emph{fundado en la evidencia} y \emph{bien citado} se miden por separado en la fase de generación, y por eso la recuperación —que determina qué evidencia llega siquiera al modelo— se evalúa primero y por sí misma.
 
-\subsection{Fuentes monoespaciadas}
+\subsection{El banco de pruebas}
+\label{subsec:banco}
 
-A veces se incluyen nombres de archivos, paquetes, etc. como texto monoespaciado, utilizando
-el comando \LaTeX \mintinline{latex}{\texttt{}}. Sin embargo, esto puede generar un problema
-cuando las palabras en fuente monoespaciada alcanzan el final de una línea. En ese caso,
-el compilador rehusa muchas veces romper la palabra y deja la línea demasiado larga respecto
-al resto.
+El instrumento central es un banco de consultas anotadas, versionado como \texttt{corpus92\_v1}. Se construyó por el método \emph{known-item}: las preguntas se redactan leyendo el corpus real procesado de las 92 normas, de modo que el artículo o artículos que las responden se conocen de antemano. Esto evita la circularidad de evaluar un sistema con las preguntas que ese mismo sistema encuentra fácilmente, y permite saber cuándo un recuperador falla aunque ninguno lo acierte.
 
-Para evitar esto, especialmente en párrafos más cortos de lo habitual (como en una lista
-no numerada), se puede utilizar el entorno:
+Cada pregunta se anota con la riqueza que las métricas exigen: \textbf{relevancia graduada} de cada artículo candidato (2 = central o suficiente, 1 = apoyo o matiz, 0 = revisado y descartado), los \textbf{párrafos exactos} que sustentan la relevancia, la marca \textbf{\emph{multi\_parent}} cuando la respuesta vive legítimamente en varios artículos, y un \textbf{estilo de consulta} (\emph{directa\_articulo}, ciudadana, conceptual, procedimental, léxica, comparativa o sin respuesta) más una dificultad estimada. Las preguntas \emph{out-of-corpus} —legales pero no cubiertas por las 92 normas— se marcan como no respondibles y constituyen el gold de abstención.
 
-\begin{minted}{latex}
-    \begin{sloppypar}
-        ...
-    \end{sloppypar}
-\end{minted}
+El banco realizado reúne \textbf{121 preguntas} y \textbf{567 juicios de relevancia} (96 centrales, 60 de apoyo y 411 negativos revisados), repartidos en tres particiones: \emph{development} (para ajustar parámetros), \emph{test} (reservado para las comparaciones finales) y \emph{out-of-corpus} (abstención). Una misma necesidad informativa reformulada nunca cruza entre \emph{development} y \emph{test}, lo que evita la fuga de información entre ambos. La anotación alcanza el nivel \emph{checkpoint} del control de calidad del banco (mínimos de preguntas revisadas con relevante por partición: 40 en \emph{development}, 20 en \emph{test}, 10 en \emph{out-of-corpus}), con la relevancia graduada verificada contra el texto consolidado vigente de las normas.
 
-Se muestra a continuación con un ejemplo real.
+Conviene una advertencia metodológica de potencia estadística. El objetivo metodológico era un banco mayor (del orden de 150 preguntas in-corpus, nivel formal); el realizado se queda en el nivel \emph{checkpoint}. En consecuencia, las conclusiones \textbf{globales} están razonablemente potenciadas, pero los cortes \textbf{por estilo de consulta} reparten ese tamaño y quedan con intervalos de confianza anchos: se reportan como \emph{direccionales}, no como cifras finas.
+
+\subsection{Construcción del conjunto de referencia sin sesgo: \emph{pooling} y re-\emph{pooling}}
+\label{subsec:pooling}
+
+Decidir qué artículos juzgar para cada pregunta es delicado, porque condiciona la equidad de toda comparación posterior. Como se explicó en el estado del arte, anotar solo los resultados de un sistema sesga el gold a su favor: los artículos relevantes que otro recuperador encuentra, pero que nunca se juzgaron, contarían erróneamente como no relevantes~\cite{buckley2004incomplete}. Para evitarlo se aplicó el método de \emph{pooling} de la tradición TREC: el conjunto de candidatos a anotar se reunió a partir de \textbf{los tres recuperadores} —denso, léxico e híbrido— hasta una profundidad fija, no solo del denso.
+
+Este cuidado tuvo una consecuencia medible y reveladora. Como el banco reaprovecha preguntas anotadas en una fase anterior con un \emph{pool} únicamente denso, al incorporar el léxico y el híbrido hubo que \textbf{re-\emph{poolear}} y re-juzgar. Ese re-\emph{pooling} sacó a la luz once artículos relevantes nuevos que el \emph{pool} denso no había visto y, sobre todo, documentó 127 candidatos del léxico como negativos revisados: en su mayoría, falsos positivos de BM25 que apuntaban al artículo correcto pero de la \emph{ley equivocada}. Sin este de-sesgado, la comparación de recuperadores habría partido viciada a favor del denso; con él, es justa.
+
+\subsection{Métricas}
+\label{subsec:metricas}
+
+La métrica primaria de recuperación es \textbf{ParentnDCG@10}. Conviene desglosar su nombre, porque cada parte responde a una decisión de diseño.
 
 \begin{itemize}
-    
-    \begin{sloppypar} % Arregla longitud de línea en párrafos con fuente monoespaciada
-        \item Los valores contenidos en las columnas \texttt{genres}, \texttt{spoken\_languages}, \texttt{production\_companies} y \texttt{production\_countries}, clasificados originalmente como \texttt{np.objects}, se corresponden en realidad con listas de objetos \gls{json} que han sido almacenadas como cadenas de caracteres. A través de la función \texttt{get\_values(obj, key)} definida específicamente para ello, se transformará dicha cadena de caracteres en una lista de diccionarios a través de la función \texttt{json.loads(obj)} y se devolverá una  tupla que recopile los valores de los mismos para la clave indicada, un objeto de Python mucho más manejable de cara a realizar consultas sobre el \textit{dataset}.
-    \end{sloppypar}
-    
+  \item \textbf{nDCG} (\emph{normalized discounted cumulative gain}) es una métrica de ranking con relevancia graduada~\cite{jarvelin2002ndcg}: acumula la relevancia de cada resultado recuperado, descontándola según la posición que ocupa —un acierto en el puesto 1 vale más que en el 8— y normaliza el total entre 0 y 1 dividiéndolo por el del orden ideal. Premia, por tanto, no solo \emph{encontrar} la evidencia, sino \emph{colocarla arriba}.
+  \item La relevancia \textbf{graduada} (0/1/2) es lo que hace que nDCG distinga un artículo central de uno de mero apoyo; con relevancia binaria, nDCG degeneraría a una simple cuenta de aciertos.
+  \item El prefijo \textbf{Parent} indica que la puntuación se calcula a nivel de \emph{artículo} (el \emph{parent}), no del fragmento concreto recuperado. Es coherente con la representación \emph{parent-child}: al usuario le importa que el sistema recupere el artículo correcto, con independencia de qué \emph{chunk} suyo casara primero.
+  \item El sufijo \textbf{@10} acota la medida a los diez primeros resultados, que son los que el sistema realmente usaría para construir el contexto.
 \end{itemize}
 
-\section{Conteniodo matemático y ecuaciones}
-\label{sec:equations}
+Junto a la primaria se reportan métricas de control que iluminan aspectos distintos: \emph{ParentRecall@k} (¿aparece el artículo correcto entre los $k$ primeros?), \emph{ParentHit@1} (¿es el primer resultado?), \emph{ParentMRR@10} (¿cómo de pronto aparece el primer acierto útil?) y \emph{EvidenceRecall@k} (cobertura a nivel de párrafo, no solo de artículo). Ninguna sustituye a la primaria, pero su lectura conjunta evita conclusiones engañosas.
 
-El contenido matemático se puede escribir en línea utilizando los delimitadores
-\mintinline{latex}|\(...\)|, o bien delimitado por dos símbolos de \$. Actualmente, se prefiere
-la primera opción para favorecer la compatibilidad con otras herramientas como Pandoc, así como
-para aprovechar el código para escribir ecuaciones con motores de interpretación de contenido
-matemático en HTML.
+La abstención (L6) se mide de forma específica. Se toma la \textbf{puntuación de similitud del primer resultado} del recuperador como señal de confianza y se comprueba si separa las preguntas respondibles (in-corpus) de las no respondibles (\emph{out-of-corpus}). Se reportan el área bajo la curva ROC —cómo de bien separa la señal, con independencia del umbral— y la \emph{balanced accuracy} en un umbral elegido. Junto a esa separabilidad de la señal se reporta, además, el comportamiento de abstención observado en el sistema completo —tasa de respuesta, sobre-abstención y respuestas indebidas—, que mide qué hace de verdad el sistema y no solo qué podría hacer la señal. Los dos errores posibles no son simétricos: responder a algo que el corpus no cubre es el error \textbf{peligroso} en derecho, mientras que abstenerse de más es solo incómodo; por eso se analizan por separado.
 
-Si queremos que el contenido matemático se muestra en un bloque aparte, con una notación que ocupe
-más espacio vertical (para sumatorios, integrales, fracciones, etc.), entonces debemos usar el llamado
-\textit{display mode}, delimitado por \mintinline{latex}|\[...\]|, o bien por dos símbolos \$\$. 
-De nuevo, la primera opción es preferible.
+\subsection{Protocolo estadístico}
+\label{subsec:protocolo}
 
-Por ejemplo, para mostrar en la misma línea una ecuación de segundo grado, escribimos \(3x^2 + 2x + 1 = 0\).
-Si preferimos el contenido en un bloque independiente:
+Comparar dos recuperadores por sus medias no basta: una diferencia pequeña puede ser ruido del muestreo. Para distinguir señal de ruido se sigue un protocolo fijo, alineado con la práctica habitual en recuperación de información~\cite{smucker2007significance}. Cada métrica se acompaña de un \textbf{intervalo de confianza del 95\,\%} obtenido por \emph{bootstrap} (1000 remuestreos, con semilla fija para que el resultado sea reproducible). Y las comparaciones entre estrategias se hacen con un \emph{bootstrap} \textbf{pareado} frente a una de referencia: como todas las estrategias se evalúan sobre las \emph{mismas} preguntas, comparar pregunta a pregunta cancela la variabilidad debida a que unas preguntas son intrínsecamente más difíciles que otras, y aísla la diferencia atribuible a la estrategia. Una diferencia se considera significativa cuando el intervalo de su efecto pareado no cruza el cero. Conviene precisar el estatus de los contrastes: las ablaciones que enfrentan varias variantes a la vez contra una referencia (selección de modelo, fusión) implican comparaciones múltiples, por lo que se leen como \textbf{exploratorias} —su fin es fijar la configuración— y no se corrigen por multiplicidad; la afirmación \textbf{confirmatoria} del trabajo es el experimento central, con pocos contrastes preespecificados sobre la partición \emph{test} reservada, cuyos $p$-valores sí se corrigen por \textbf{Holm-Bonferroni} (control del error por familia).
 
-\[
-F(x)=\int^a_b \frac{1}{3}x^3
-\]
+Los resultados se presentan, además, \textbf{estratificados} por estilo de consulta y por dificultad, porque —como se verá— el promedio global puede esconder comportamientos opuestos por estrato. Se respeta la separación entre \emph{development}, donde se ajustan los parámetros (pesos de fusión, parámetros de BM25, $k$), y \emph{test}, que se mantiene reservado y sobre el que se hacen las afirmaciones finales.
 
-\[\frac{1}{\sqrt{x}}\]
+\subsection{Actores y configuración de los experimentos}
+\label{subsec:actores}
 
-\[\left(
-\begin{matrix}
-    1 & 0\\
-    0 & 1
-\end{matrix}
-\right)\]
+Los protagonistas de los experimentos de este capítulo son tres \textbf{recuperadores} construidos, como se describió en el diseño, sobre las \emph{mismas} unidades de recuperación: el \textbf{denso} (índice exacto sobre un modelo de \emph{embeddings}), el \textbf{léxico} (BM25 con el analizador de español) y el \textbf{híbrido} (que fusiona ambos). Que compartan las mismas filas permite una comparación homogénea. A ellos se añade, en el experimento de selección, un conjunto de \textbf{modelos de \emph{embeddings} candidatos}, cuya elección y peculiaridades se justifican en la sección correspondiente.
 
-Ahora bien, en un documento en el que tenemos que hacer referencia a las ecuaciones dentro del
-texto de explicación, es conveniente otorgarle a cada bloque matemático un identificador numérico, similar
-al que usamos en figuras y tablas. Para ello, empleamos el bloque \mintinline{latex}|\begin{equation} contenidos... \end{equation}|.
-En esta ocasión ya no tenemos que incluir los delimitadores de contenido matemático en \textit{display mode}.
+Cada ejecución de evaluación deja un \textbf{informe versionado} e inmutable —con su configuración, sus huellas de reproducibilidad, los resultados por pregunta y los agregados—, de modo que toda tabla de este capítulo es trazable a una corrida concreta. Toda la comparación se realiza sobre el corpus de 92 normas y el banco \texttt{corpus92\_v1} descrito arriba, con la métrica y el protocolo ya fijados.
 
-\begin{equation}
-    \label{eq:fraction}
-    \frac{1}{\sqrt{x}}
-\end{equation}
+Por último, el \textbf{entorno de ejecución} condiciona varias decisiones. Los experimentos corren en un servidor universitario con dos procesadores AMD EPYC (48 núcleos físicos, 96 hilos), 125 GiB de memoria y \emph{sin GPU accesible}, bajo Ubuntu. Esa ausencia de GPU empuja la selección de modelos hacia opciones ejecutables en CPU y explica la atención al coste computacional a lo largo del capítulo; solo la codificación de \emph{embeddings}, prohibitiva en CPU, se apoyó de forma puntual en una GPU externa (capítulo de diseño), mientras que recuperación, generación y evaluación corren en el propio servidor.
 
-Si añadimos una etiqueta a la ecuación, entonces podemos referenciar la Ecuación \ref{eq:fraction} en el texto.
-Veamos más ejemplos con caracteres especiales.
+Con la metodología establecida, las secciones siguientes presentan los experimentos y sus resultados.
 
-%% Testing math equations with tildes, hats, etc.
+\section{Selección del modelo de \emph{embeddings}}
+\label{sec:seleccion-embeddings}
 
-\begin{equation}
-    \hat f(\omega)=\frac{1}{2\pi}
-    \sum_{-\infty}^\infty f(x)e^{-i\omega x}\,dx\,, 
-\end{equation}
+El primer experimento decide qué modelo de \emph{embeddings} y qué perfil de consulta emplea el recuperador denso, la pieza sobre la que se apoya todo el sistema. Se comparan tres modelos abiertos y multilingües —\texttt{e5-large-instruct}, \texttt{bge-m3} y \texttt{e5-base}— sobre las mismas unidades de recuperación del corpus de 92 normas. En el caso de \texttt{e5-large-instruct}, que admite condicionamiento por instrucción, se evalúan además los tres perfiles de consulta descritos en el diseño: uno genérico (I0), uno jurídico (I1) y uno orientado a la consulta ciudadana (I2). La comparación se realiza sobre la partición de \emph{development} ($n=53$), reservando \emph{test} para el experimento central.
 
-\begin{equation}
-    \tilde f(\omega)=\frac{1}{2\pi}
-    \int_{-\infty}^\infty f(x)e^{-i\omega x}\,dx\,, 
-\end{equation}
+La elección de estos candidatos no es arbitraria: responde a las restricciones del proyecto. Se exigía que fueran modelos de \textbf{pesos abiertos}, con soporte \textbf{multilingüe} —el español jurídico dispone de pocos recursos específicos, como se discutió en el estado del arte—, bien situados en los \emph{benchmarks} de referencia de \emph{embeddings}~\cite{muennighoff2023mteb} y de un \textbf{tamaño ejecutable en CPU}. Sobre esa base se seleccionaron \texttt{e5-large-instruct} —que además admite condicionamiento por instrucción~\cite{su2023instructor}—, \texttt{bge-m3} y, como escalón menor, \texttt{e5-base}. Otros candidatos se descartaron por razones objetivas y documentadas: \texttt{qwen3-0.6b}, por un coste de codificación prohibitivo en CPU; \texttt{gte-multilingual-base}, por una incompatibilidad técnica con la versión de la biblioteca de modelos empleada —pese a haberse revisado y aprobado su código remoto—; y la variante \texttt{e5-large} sin instrucción, por redundante frente a su versión \emph{instruct}.
 
-\begin{equation}
-    \dot{\vec \omega}=\vec r\times\vec I\,.
-\end{equation}
+\begin{table}[htbp]
+    \centering
+    \small
+    \renewcommand{\arraystretch}{1.2}
+    \caption{Selección del modelo de \emph{embeddings} en \emph{development} ($n=53$): ParentnDCG@10 con intervalo de confianza del 95\,\% por \emph{bootstrap}.}
+    \label{tab:bakeoff}
+    \begin{tabular}{|l|c|c|}
+        \hline
+        \textbf{Modelo y perfil de consulta} & \textbf{ParentnDCG@10} & \textbf{IC 95\,\%} \\
+        \hline
+        \texttt{e5-large-instruct} · I1 (jurídico)   & \textbf{0,802} & [0,710--0,877] \\
+        \texttt{e5-large-instruct} · I2 (ciudadano)  & 0,796          & [0,707--0,872] \\
+        \texttt{e5-large-instruct} · I0 (genérico)   & 0,731          & [0,639--0,812] \\
+        \texttt{bge-m3}                              & 0,719          & [0,629--0,793] \\
+        \texttt{e5-base}                             & 0,627          & [0,524--0,726] \\
+        \hline
+    \end{tabular}
+\end{table}
 
+Dos conclusiones se sostienen con contrastes pareados frente al finalista (\texttt{e5-large-instruct} con el perfil jurídico I1). Primera, \texttt{e5-large-instruct} supera de forma significativa tanto a \texttt{bge-m3} (diferencia pareada $-0{,}083$ \ [$-0{,}146$, $-0{,}022$]) como a \texttt{e5-base} ($-0{,}175$ \ [$-0{,}254$, $-0{,}099$]). Segunda, y menos evidente, el \emph{perfil de consulta importa}: anteponer a la pregunta una instrucción de dominio jurídico (I1) mejora de forma significativa sobre el perfil genérico I0 ($-0{,}070$ \ [$-0{,}117$, $-0{,}023$]), una confirmación empírica sobre el corpus del proyecto del valor del condicionamiento por instrucción discutido en el estado del arte. En cambio, los perfiles jurídico (I1) y ciudadano (I2) no muestran diferencia detectable entre sí ($-0{,}006$ \ [$-0{,}024$, $+0{,}006$]); se adopta I1 por su ligera ventaja en la media.
 
-\subsection{Ecuaciones en múltiples líneas y elementos alineados}
+La calidad no es el único criterio: en un sistema pensado para ejecutarse en CPU, la \textbf{latencia} también cuenta. La Tabla~\ref{tab:latencia-embeddings} enfrenta la calidad a la latencia de recuperación por consulta (codificación de la consulta más búsqueda), y refuerza la decisión. \texttt{bge-m3} no solo recupera peor que \texttt{e5-large-instruct} (0,719 frente a 0,802), sino que es además un 47\,\% más lento (402 frente a 274 ms): queda \textbf{dominado en el sentido de Pareto} —peor en las dos dimensiones—, y su mayor ventana de contexto no compensa. \texttt{e5-base}, el más rápido (133 ms), paga su velocidad con una caída de calidad grande (0,627). El modelo seleccionado es el que mejor equilibra ambas dimensiones.
 
-Algunos ejemplos que muestran alineamiento de ecuaciones en diferentes líneas con 
-el entorno \mintinline{latex}|\begin{align*} ... \end{align*}|.
+\begin{table}[htbp]
+    \centering
+    \small
+    \renewcommand{\arraystretch}{1.2}
+    \caption{Calidad frente a latencia de recuperación en \emph{development} ($n=53$). Latencia P50 por consulta (codificación de la consulta + búsqueda).}
+    \label{tab:latencia-embeddings}
+    \begin{tabular}{|l|c|c|}
+        \hline
+        \textbf{Modelo} & \textbf{ParentnDCG@10} & \textbf{Latencia P50 (ms)} \\
+        \hline
+        \texttt{e5-large-instruct} (I1) & \textbf{0,802} & 274 \\
+        \texttt{bge-m3}                 & 0,719          & 402 \\
+        \texttt{e5-base}                & 0,627          & 133 \\
+        \hline
+    \end{tabular}
+\end{table}
 
-\begin{center}
-    \begin{align*}
-        x&=y           &  w &=z              &  a&=b+c\\
-        2x&=-y         &  3w&=\frac{1}{2}z   &  a&=b\\
-        -4 + 5x&=2+y   &  w+2&=-1+w          &  ab&=cb
-    \end{align*}
-\end{center}
+El sistema queda, por tanto, configurado con \texttt{e5-large-instruct} y el perfil jurídico I1. Conviene ser preciso sobre el estatus de esta decisión: se ha tomado sobre \emph{development}, la partición destinada precisamente a ajustar. Su validez sobre datos no vistos no se da por supuesta, sino que se comprueba en el experimento central (\ref{sec:experimento-central}), donde esta misma configuración alcanza 0,797 sobre \emph{test}, lo que confirma que la elección no está sobreajustada a la partición de ajuste. Con ello queda cerrado el objetivo OE-03 en su vertiente de recuperación semántica.
 
-\textbf{Nota}: las ecuaciones anteriores en varias líneas tienen un modo de escritura matemática definido
-para cada línea, no globalmente (a nivel de ecuación).
+\section{Ajuste del recuperador léxico}
+\label{sec:ablacion-bm25}
 
-\begin{align*}
-    f(x) &= x^2\\
-    g(x) &= \frac{1}{x}\\
-    F(x) &= \int^a_b \frac{1}{3}x^3
-\end{align*}
+Antes de enfrentar el recuperador léxico al denso, conviene fijar su configuración con criterio y no por omisión. Se realiza una ablación «un factor cada vez» sobre \emph{development} ($n=53$) que varía, por separado, el preprocesado lingüístico (\emph{stemming} y \emph{stopwords}), el refuerzo de cabecera y los parámetros clásicos $k_1$ y $b$.
 
-\subsection{Teoremas y conjuntos}
+Los resultados justifican las decisiones de diseño del analizador de español. El \textbf{\emph{stemming} aporta}: desactivarlo baja la métrica de 0,488 (configuración base) a 0,432. La \textbf{eliminación de \emph{stopwords} es neutra} (0,490 frente a 0,488; diferencia pareada [$-0{,}039$, $+0{,}047$], no significativa), pero se mantiene por coherencia y eficiencia del índice. El \textbf{refuerzo de cabecera es la única palanca con efecto claro}: añadir a cada documento copias del rótulo del bloque —que incluye el nombre de la ley— eleva la métrica de 0,488 (sin refuerzo) a 0,517, 0,529 y 0,536 con factores 1, 2 y 3 respectivamente; se adopta el factor 3. Esto confirma empíricamente el problema descrito en el diseño: sin el nombre de la ley en la cabecera, colisionan artículos homónimos de leyes distintas. Por último, los parámetros $k_1$ (entre 0,482 y 0,488 en el rango 0,9--2,0) y $b$ (entre 0,488 y 0,498 en el rango 0,3--0,9) resultan \textbf{insensibles} en este corpus, por lo que se conservan sus valores habituales ($k_1{=}1{,}5$, $b{=}0{,}75$). Aun con su mejor configuración, el recuperador léxico se queda en torno a 0,54 en \emph{development}: un techo que conviene tener presente al interpretar la comparación siguiente.
 
-\begin{theorem}
-    Para todo número entero no negativo $n$, tenemos:
-    \[ (1+x)^n = \sum_{i=0}^n {n \choose i} x^i. \]
-\end{theorem}
+\section{¿Mejora la fusión híbrida al denso? Ablación de la combinación}
+\label{sec:ablacion-fusion}
 
-La expansión en series de Taylor de la función $e^x$ viene dada por:
+La intuición sugiere que combinar la señal léxica y la semántica debería mejorar a cualquiera de ellas por separado. Este experimento la pone a prueba antes del contraste final. Sobre \emph{development} ($n=53$) se comparan, frente al denso, la fusión por rangos recíprocos (RRF) y la combinación convexa para cinco pesos $\alpha$ (de 0,3 a 0,7, donde $\alpha$ es el peso que se concede al denso).
 
-\begin{equation}
-    e^x = 1 + x + \frac{x^2}{2} + \frac{x^3}{6} + \cdots = \sum_{n\geq 0} \frac{x^n}{n!}\,.
-\end{equation}
+\begin{table}[htbp]
+    \centering
+    \small
+    \renewcommand{\arraystretch}{1.2}
+    \caption{Ablación de la fusión en \emph{development} ($n=53$): ParentnDCG@10 y diferencia pareada frente al denso. Un intervalo que contiene el cero indica ausencia de diferencia detectable.}
+    \label{tab:ablacion-fusion}
+    \begin{tabular}{|l|c|c|}
+        \hline
+        \textbf{Estrategia} & \textbf{ParentnDCG@10} & \textbf{$\Delta$ vs denso [IC 95\,\%]} \\
+        \hline
+        Denso                 & 0,805 & --- \\
+        Convexa $\alpha{=}0{,}7$ & 0,798 & $-0{,}007$ \ [$-0{,}038$, $+0{,}025$] \\
+        Convexa $\alpha{=}0{,}6$ & 0,786 & $-0{,}019$ \ [$-0{,}059$, $+0{,}018$] \\
+        Convexa $\alpha{=}0{,}5$ & 0,760 & $-0{,}045$ \ [$-0{,}101$, $+0{,}008$] \\
+        RRF                   & 0,744 & $-0{,}061$ \ [$-0{,}130$, $-0{,}001$] \\
+        Convexa $\alpha{=}0{,}4$ & 0,706 & $-0{,}100$ \ [$-0{,}168$, $-0{,}040$] \\
+        Convexa $\alpha{=}0{,}3$ & 0,635 & $-0{,}170$ \ [$-0{,}260$, $-0{,}096$] \\
+        BM25                  & 0,536 & $-0{,}269$ \ [$-0{,}372$, $-0{,}182$] \\
+        \hline
+    \end{tabular}
+\end{table}
 
-\[ \forall x \in X, \quad \exists y \leq \epsilon\,, \]
+El patrón es inequívoco y contrario a la intuición: \textbf{ninguna fusión supera al denso}. La combinación convexa mejora de forma monótona a medida que se le concede más peso al denso —de 0,635 ($\alpha{=}0{,}3$) a 0,798 ($\alpha{=}0{,}7$)—; es decir, cuanto más se parece al denso, mejor rinde. En su mejor punto ($\alpha{=}0{,}7$) apenas lo \emph{alcanza} (0,798 frente a 0,805), sin superarlo: la diferencia pareada contiene el cero. La fusión RRF (0,744) queda por debajo del denso, aunque de forma marginal (el intervalo casi toca el cero, $-0{,}061$ [$-0{,}130$, $-0{,}001$]) —una diferencia que, como se verá, no sobrevive a la corrección por comparaciones múltiples en \emph{test}—. En síntesis, la mejor fusión no aporta señal útil sobre el denso: solo deja de estorbar cuando se le resta casi todo el peso al léxico. Se traslada la variante más favorable (convexa $\alpha{=}0{,}7$) al experimento central sobre \emph{test}, para comprobar si esta ausencia de mejora se confirma en la partición reservada.
 
-\[ \frac{n!}{k!(n-k)!} = \binom{n}{k}\,. \]
+\section{¿Importan la representación del fragmento y la forma de trocear?}
+\label{sec:ablacion-representacion}
 
-\begin{theorem}
-    Para cualesquiera conjuntos $A$, $B$ y $C$, se cumple que:
-    \[ (A\cup B)-(C-A) = A \cup (B-C)\,. \]
-\end{theorem} 
+La selección de modelo (\ref{sec:seleccion-embeddings}) se hizo sobre una representación concreta del fragmento y una forma concreta de trocear el texto, ambas heredadas del prototipo de diez normas y no revalidadas sobre el corpus completo. Conviene medirlas, porque son decisiones de diseño que se habían dado por buenas. Este experimento las somete a prueba manteniendo fijos el modelo y el perfil de consulta ganadores (\texttt{e5-large-instruct}, perfil jurídico I1) y variando \emph{solo} cómo se construye el texto que se indexa. Se comparan tres vistas de la misma información:
+
+\begin{itemize}
+  \item \textbf{Enriquecida} (la de producción): al texto del fragmento se le antepone el nombre de la norma y su jerarquía (título, capítulo, sección\ldots). Es la vista sobre la que se seleccionó el modelo.
+  \item \textbf{Cruda}: el texto del fragmento tal cual, sin ningún añadido. Aísla el efecto del enriquecimiento.
+  \item \textbf{Troceado clásico}: ventanas de tamaño fijo (token a token, con solape) sobre el texto del artículo, sin respetar sus párrafos. Aísla el efecto de la estrategia de fragmentación frente a la \emph{parent-child} por párrafos que usa el sistema.
+\end{itemize}
+
+La comparación es pareada frente a la vista enriquecida, con el mismo banco, protocolo y métrica, sobre \emph{development} ($n=53$) y \emph{test} ($n=28$).
+
+\begin{table}[htbp]
+    \centering
+    \small
+    \renewcommand{\arraystretch}{1.2}
+    \caption{Ablación de representación y troceado: ParentnDCG@10 con IC 95\,\% por \emph{bootstrap}, con el modelo y el perfil fijos. Ninguna vista se distingue de las demás.}
+    \label{tab:ablacion-representacion}
+    \begin{tabular}{|l|c|c|}
+        \hline
+        \textbf{Vista del fragmento} & \textbf{\emph{development} ($n=53$)} & \textbf{\emph{test} ($n=28$)} \\
+        \hline
+        Enriquecida (producción) & 0,796 \ [0,707--0,875] & 0,789 \ [0,686--0,877] \\
+        Cruda                    & 0,838 \ [0,763--0,906] & 0,772 \ [0,665--0,869] \\
+        Troceado clásico         & 0,829 \ [0,753--0,900] & 0,796 \ [0,691--0,893] \\
+        \hline
+    \end{tabular}
+\end{table}
+
+El resultado es un \textbf{empate estadístico}. Ninguna diferencia pareada frente a la vista enriquecida resiste el ruido del muestreo: en \emph{development}, la cruda queda en $+0{,}042$ \ [$-0{,}014$, $+0{,}106$] y la clásica en $+0{,}033$ \ [$-0{,}026$, $+0{,}101$]; en \emph{test}, la cruda en $-0{,}018$ \ [$-0{,}067$, $+0{,}044$] y la clásica en $+0{,}007$ \ [$-0{,}061$, $+0{,}077$]. Todos los intervalos contienen el cero y, más revelador aún, el signo del efecto \emph{se invierte} entre las dos particiones: es el patrón de una diferencia que no existe y que un tamaño de muestra pequeño solo puede reflejar como ruido. La capacidad de abstención tampoco separa entre vistas (AUC entre 0,94 y 0,97 en las tres, sin un orden estable entre particiones). Combinar ambas particiones (n=81) no altera el veredicto: ninguna vista se separa de la enriquecida (cruda $+0{,}021$ \ [$-0{,}020$, $+0{,}067$]; clásica $+0{,}024$ \ [$-0{,}022$, $+0{,}074$]; ambos IC cruzan el cero), con el punto estimado incluso levemente \emph{a favor} de las vistas sin enriquecer —lo que refuerza, no debilita, la lectura de que el enriquecimiento no aporta a la recuperación—.
+
+La lectura es doble y, en parte, contraria a la intuición. Primera: \textbf{enriquecer el fragmento con el nombre de la norma no mejora la recuperación} en este corpus. Es un matiz frente a la intuición —extendida en la literatura de contextualización de fragmentos— de que anteponer contexto antes de codificar ayuda: con un modelo de \emph{embeddings} fuerte y condicionado por instrucción, y una métrica a nivel de artículo, ese añadido resulta redundante y, al ser común a muchos fragmentos de la misma norma, poco discriminativo. Segunda: \textbf{el troceado clásico de tamaño fijo iguala al \emph{parent-child} por párrafos}; como la métrica premia recuperar el \emph{artículo} correcto y las tres vistas indexan el mismo texto de los mismos artículos —solo cortado de otra forma—, el artículo pertinente aflora con independencia de dónde caigan los límites del fragmento.
+
+Ambas lecturas encajan con la ablación del recuperador léxico (\ref{sec:ablacion-bm25}) en una historia coherente: a BM25 el refuerzo de cabecera con el nombre de la ley \emph{sí} le ayudó de forma significativa, porque necesita la palabra literal para desambiguar artículos homónimos de leyes distintas; al recuperador denso no le hace falta, porque desambigua por significado. Cada recuperador se beneficia de la señal que le falta, no de la que ya domina.
+
+En consecuencia, el sistema conserva la representación enriquecida \emph{parent-child}, con una justificación más precisa: no por una ventaja de recuperación —que no la hay— sino porque no perjudica y su valor está \emph{aguas abajo}, en que acarrea la identidad de la norma al contexto que se entrega al generador y sustenta la cita y la trazabilidad. Para el \emph{ranking}, la representación cruda sería igual de válida. Con ello, una decisión de diseño heredada del prototipo pasa a estar medida, cerrando por evidencia la vertiente de representación de OE-02.
+
+Tres cautelas cierran el análisis. El tamaño de muestra solo permite detectar efectos grandes: una diferencia real pero modesta quedaría enmascarada. La comparación es de \emph{recuperación} (ParentnDCG@10); la representación podría influir en la \emph{generación} —el texto que llega al modelo difiere entre vistas—, algo que este experimento no mide. Y el troceado clásico evaluado respeta las fronteras del artículo (ventanas dentro de cada \emph{parent}), de modo que lo que se compara es la forma de cortar \emph{dentro} del artículo, no un troceado ciego a la estructura jurídica.
+
+\section{Comparación de recuperadores: denso, léxico e híbrido}
+\label{sec:experimento-central}
+
+Este es el experimento central del trabajo: la comparación directa, sobre el mismo banco y con el mismo protocolo, de las tres estrategias de recuperación. Responde a la pregunta que vertebra el objetivo OE-04 —¿qué recupera mejor las evidencias jurídicas pertinentes?— y lo hace sobre la partición \emph{test}, reservada hasta este punto. Todos los números provienen de una corrida sobre la partición \emph{test} ($n=28$ preguntas, semilla 12345, 1000 remuestreos \emph{bootstrap}). La variante híbrida ponderada es la combinación convexa con el peso $\alpha{=}0{,}7$ seleccionado en la ablación anterior (\ref{sec:ablacion-fusion}).
+
+\subsection{Resultados globales}
+\label{subsec:flagship-global}
+
+\begin{table}[htbp]
+    \centering
+    \small
+    \renewcommand{\arraystretch}{1.2}
+    \caption{Comparación de recuperadores en \emph{test} ($n=28$): ParentnDCG@10 con intervalo de confianza del 95\,\% por \emph{bootstrap}.}
+    \label{tab:flagship-global}
+    \begin{tabular}{|l|c|c|}
+        \hline
+        \textbf{Estrategia} & \textbf{ParentnDCG@10} & \textbf{IC 95\,\%} \\
+        \hline
+        Denso                & \textbf{0,797} & [0,695--0,884] \\
+        Híbrido ponderado    & 0,769          & [0,668--0,862] \\
+        Híbrido RRF          & 0,706          & [0,597--0,812] \\
+        Léxico (BM25)        & 0,507          & [0,358--0,656] \\
+        \hline
+    \end{tabular}
+\end{table}
+
+El orden es inequívoco en su magnitud: el denso encabeza con 0,797, seguido de cerca por la fusión ponderada (0,769); la fusión RRF queda por debajo (0,706) y el léxico, muy atrás (0,507). Ahora bien, comparar medias no basta con un banco de este tamaño: hay que comprobar si las diferencias resisten el ruido del muestreo.
+
+\subsection{Significancia estadística: contrastes pareados}
+\label{subsec:flagship-pareado}
+
+Se toma el denso como referencia y se calcula, pregunta a pregunta, la diferencia pareada de cada alternativa frente a él (convención: \emph{alternativa} $-$ \emph{denso}; un valor negativo indica que la alternativa rinde por debajo del denso). Una diferencia es significativa cuando su intervalo de confianza no cruza el cero.
+
+Estos tres contrastes forman la familia \emph{confirmatoria} del trabajo; sus $p$-valores (bootstrap pareado, dos colas) se corrigen por \textbf{Holm-Bonferroni} para controlar el error por familia (\ref{subsec:protocolo}).
+
+\begin{itemize}
+  \item \textbf{BM25 $-$ denso} $= -0{,}290$ \ [$-0{,}415$, $-0{,}165$]: el léxico es significativamente \emph{peor} que el denso, con un efecto grande ($p<0{,}001$; $p_{\text{Holm}}<0{,}001$).
+  \item \textbf{RRF $-$ denso} $= -0{,}091$ \ [$-0{,}175$, $-0{,}009$]: sin corregir, la fusión RRF queda por debajo del denso, pero es un efecto \emph{de frontera} ($p=0{,}026$) que \textbf{no sobrevive} a la corrección por comparaciones múltiples ($p_{\text{Holm}}=0{,}053$; n.s.).
+  \item \textbf{Ponderado $-$ denso} $= -0{,}028$ \ [$-0{,}075$, $+0{,}019$]: el intervalo contiene el cero; no hay diferencia detectable entre la fusión ponderada y el denso ($p=0{,}24$).
+\end{itemize}
+
+La lectura, contraria a la intuición de que «combinar siempre suma», gana nitidez con la corrección: \textbf{ninguna variante híbrida supera al denso} y la única diferencia que resiste Holm es que \emph{BM25 es peor}. La fusión RRF, que sin corregir parecía significativamente peor, deja de serlo de forma concluyente; la ponderada, en el mejor de los casos, lo iguala —sin mejora detectable, con una cota superior de apenas $+0{,}019$—. Como la fusión añade un recuperador léxico, un parámetro de peso y coste sin aportar ganancia, el principio de parsimonia respalda \textbf{elegir el recuperador denso} como configuración del sistema. Conviene ser preciso con el alcance de la afirmación: los datos sostienen que \emph{la fusión no aporta} sobre este corpus, no que el denso sea superior a cualquier híbrido. Este resultado sobre \emph{test} confirma el observado en la ablación sobre \emph{development} (\ref{sec:ablacion-fusion}) y, además, \emph{refuta} el hallazgo preliminar obtenido sobre el corpus reducido de diez normas, donde la fusión sí parecía ayudar: una advertencia empírica sobre el riesgo de generalizar desde corpus pequeños.
+
+\subsection{Robustez y desglose por estilo (\emph{development}+\emph{test}, \texorpdfstring{$n=81$}{n=81})}
+\label{subsec:flagship-robustez}
+
+La comparación anterior es \emph{confirmatoria}: se hace sobre \emph{test} (n=28), reservado y no visto durante el ajuste, y esa es su virtud; su límite es la potencia (\ref{sec:amenazas}). Conviene comprobar si el patrón se sostiene con más muestra. Para ello se repite el análisis sobre \textbf{las 81 preguntas in-corpus} (\emph{development}+\emph{test}), reutilizando las corridas ya versionadas —sin re-ejecutar ningún modelo—. No es un resultado held-out: incluye el split con el que se ajustó el peso de fusión, de modo que arrastra un sesgo optimista. Es clave notar en qué dirección: ese sesgo \textbf{favorece al híbrido} —cuyo $\alpha$ se eligió sobre \emph{development}—, no al denso, así que si el denso mantiene su ventaja lo hace \emph{a pesar} de jugar en contra. La Tabla~\ref{tab:flagship-robustez} recoge el resultado.
+
+\begin{table}[htbp]
+    \centering
+    \small
+    \renewcommand{\arraystretch}{1.2}
+    \caption{Robustez sobre todo el in-corpus (\emph{development}+\emph{test}, $n=81$): ParentnDCG@10 con IC 95\,\% por \emph{bootstrap} y diferencia pareada frente al denso (familia corregida por Holm). No es held-out: incluye el split de ajuste, con un sesgo optimista que favorece al híbrido.}
+    \label{tab:flagship-robustez}
+    \begin{tabular}{|l|c|c|}
+        \hline
+        \textbf{Estrategia} & \textbf{ParentnDCG@10 [IC 95\,\%]} & \textbf{$\Delta$ vs denso [IC 95\,\%]} \\
+        \hline
+        Denso                     & \textbf{0,802} \ [0,728--0,857] & --- \\
+        Ponderado $\alpha{=}0{,}7$ & 0,788 \ [0,720--0,845] & $-0{,}014$ \ [$-0{,}043$, $+0{,}012$] \ n.s. \\
+        RRF                       & 0,731 \ [0,658--0,787] & $-0{,}071$ \ [$-0{,}125$, $-0{,}022$] \ ($p_{\text{Holm}}{=}0{,}016$) \\
+        Léxico (BM25)             & 0,526 \ [0,432--0,612] & $-0{,}276$ \ [$-0{,}355$, $-0{,}197$] \ ($p_{\text{Holm}}{<}0{,}001$) \\
+        \hline
+    \end{tabular}
+\end{table}
+
+El patrón de \emph{test} se confirma y, con la mayor potencia, se afina en dos puntos que \emph{refuerzan} la conclusión. Primero, la fusión RRF —que en \emph{test} era un efecto de frontera que no sobrevivía a Holm (\ref{subsec:flagship-pareado})— aquí queda \textbf{significativamente por debajo} del denso ($-0{,}071$; $p_{\text{Holm}}{=}0{,}016$): la evidencia de que RRF \emph{empeora} se firma, no se diluye. Segundo, y decisivo para la pregunta que vertebra el experimento —«¿aporta la fusión?»—, la ventaja de la fusión ponderada sobre el denso tiene una \textbf{cota superior de $+0{,}012$} (extremo del IC95 pareado). Esto cambia la naturaleza de la afirmación: no es «no detectamos diferencia» —que dejaría abierta una mejora oculta—, sino que la mejora, \emph{de existir}, es demasiado pequeña para importar. Añadir el recuperador léxico cuesta un recuperador extra, un parámetro de peso y más latencia a cambio de, como mucho, una centésima de nDCG; el principio de parsimonia respalda el denso sin ambigüedad. Una precisión metodológica: un contraste \emph{formal} de equivalencia (TOST) al margen estricto de $0{,}02$ no llega a establecerse —el IC del efecto es algo más ancho que ese margen aun a n=81—, de modo que lo que se afirma es la cota sobre la \emph{ganancia} posible de la fusión, no una equivalencia simétrica.
+
+El desglose por estilo (Tabla~\ref{tab:flagship-estilo-n81}) gana solidez: cada estrato reúne ahora entre 8 y 22 preguntas, frente a las 3--7 de \emph{test}, de modo que las lecturas antes \emph{direccionales} quedan mejor sostenidas. El desplome del léxico en \textbf{consultas ciudadanas} —el hallazgo más relevante para un sistema orientado a la ciudadanía— se apoya ya en 22 preguntas (BM25 0,380 frente a denso 0,811), no en siete. Y los únicos dos estratos donde una variante iguala o supera al denso siguen siendo nichos de coincidencia exacta y muestra corta: la \textbf{búsqueda directa de artículo} (ponderada 0,684 frente a denso 0,662; $n=17$) y la \textbf{consulta léxica} (RRF 0,871 frente a denso 0,835; $n=14$). Son la cara amable de la señal léxica —aporta justo donde la palabra literal desambigua— pero no bastan para volcar el promedio: la conclusión global (el denso iguala o supera a toda fusión) se mantiene.
+
+\begin{table}[htbp]
+    \centering
+    \footnotesize
+    \renewcommand{\arraystretch}{1.2}
+    \caption{ParentnDCG@10 por estilo de consulta sobre todo el in-corpus ($n=81$). El tamaño por estrato (8--22) da solidez a las lecturas por estilo. En negrita, la mejor estrategia de cada fila.}
+    \label{tab:flagship-estilo-n81}
+    \begin{tabular}{|l|c|c|c|c|c|}
+        \hline
+        \textbf{Estilo} & \textbf{$n$} & \textbf{Denso} & \textbf{BM25} & \textbf{Ponderado} & \textbf{RRF} \\
+        \hline
+        Ciudadana          & 22 & \textbf{0,811} & 0,380 & 0,764 & 0,666 \\
+        Léxica             & 14 & 0,835 & 0,691 & 0,844 & \textbf{0,871} \\
+        Directa (artículo) & 17 & 0,662 & 0,411 & \textbf{0,684} & 0,625 \\
+        Comparativa        & 10 & \textbf{0,748} & 0,510 & 0,705 & 0,662 \\
+        Conceptual         & 10 & 0,923 & 0,739 & \textbf{0,927} & 0,839 \\
+        Procedimental      &  8 & \textbf{0,938} & 0,636 & 0,909 & 0,839 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\section{Abstención: ¿sabe el sistema cuándo callar?}
+\label{sec:abstencion}
+
+Recuperar bien no basta: un sistema de consulta jurídica debe además reconocer cuándo la respuesta no está en su corpus y abstenerse. La capa L6 se examina desde dos ángulos complementarios: la \emph{separabilidad de la señal} de recuperación (¿podría el sistema saber cuándo callar?) y el \emph{comportamiento observado} del sistema completo (¿lo hace de verdad?).
+
+\subsection{Separabilidad de la señal de recuperación}
+\label{subsec:abstencion-senal}
+
+La hipótesis es que la puntuación de similitud del primer resultado del recuperador sirve como señal de confianza: alta cuando la pregunta se puede responder con el corpus, baja cuando no. Para comprobarlo se enfrentan las puntuaciones \emph{top}-1 de las preguntas respondibles a las de las preguntas \emph{out-of-corpus}, y se mide con el área bajo la curva ROC —la probabilidad de que una pregunta respondible reciba mayor puntuación que una no respondible—, una medida independiente del umbral. El análisis se realizó durante la selección de modelo (53 preguntas respondibles de \emph{development} frente a 30 \emph{out-of-corpus}).
+
+\begin{table}[htbp]
+    \centering
+    \small
+    \renewcommand{\arraystretch}{1.2}
+    \caption{Separabilidad de la señal de abstención por modelo (53 respondibles vs 30 \emph{out-of-corpus}): AUC y \emph{balanced accuracy} en el mejor umbral.}
+    \label{tab:abstencion-senal}
+    \begin{tabular}{|l|c|c|}
+        \hline
+        \textbf{Modelo y perfil} & \textbf{AUC} & \textbf{Balanced acc.} \\
+        \hline
+        \texttt{e5-large-instruct} · I1 (jurídico)  & \textbf{0,970} & 0,929 \\
+        \texttt{e5-large-instruct} · I2 (ciudadano) & 0,968          & 0,922 \\
+        \texttt{e5-large-instruct} · I0 (genérico)  & 0,946          & 0,898 \\
+        \texttt{bge-m3}                             & 0,856          & 0,801 \\
+        \texttt{e5-base}                            & 0,798          & 0,755 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+La señal separa muy bien: para el modelo seleccionado (\texttt{e5-large-instruct} · I1), el AUC es \textbf{0,970}, y en el mejor umbral la \emph{balanced accuracy} alcanza 0,929 (92,5\,\% de preguntas respondibles reconocidas y 93,3\,\% de \emph{out-of-corpus} marcadas). Un detalle refuerza la decisión del experimento de selección: el modelo que mejor recupera es también el que mejor separa lo respondible de lo no respondible (0,970 frente a 0,946 del perfil genérico y 0,856--0,798 de los otros modelos). Y esa separabilidad \textbf{se confirma sobre la partición reservada}: en \emph{test} (28 respondibles frente a 30 \emph{out-of-corpus}) el AUC se mantiene en torno a 0,94.
+
+Dos cautelas matizan la lectura. Primera, la \emph{balanced accuracy} se calcula en el umbral que la maximiza \emph{sobre el mismo conjunto} que se reporta, de modo que es optimista (\emph{in-sample}); la cifra robusta e independiente del umbral es el AUC. Segunda, y más importante, las 30 preguntas \emph{out-of-corpus} de la tabla anterior son de \textbf{dominio lejano} —derecho civil, marcas, patentes: materias que las 92 normas no tocan—, es decir, negativos fáciles de distinguir. El caso realmente difícil es el \emph{near-miss}: una pregunta del \emph{mismo} dominio que el corpus cubre, pero cuya respuesta concreta reside en una ley hermana ausente.
+
+Para no dejar ese caso a la conjetura, se añadieron al banco \textbf{diez preguntas \emph{near-miss}} —redactadas conociendo el corpus (por ejemplo, los años de residencia para la nacionalidad, que fija el Código Civil; o la responsabilidad decenal por defectos de construcción, que fija la Ley de Ordenación de la Edificación), verificando por búsqueda directa sobre el texto de las 92 normas que el dato concreto no aparece— y se repitió el análisis por separado. El contraste es nítido (Tabla~\ref{tab:abstencion-nearmiss}): frente a los negativos de dominio lejano, donde el AUC se mantiene alto (0,969 en \emph{development} —consistente con el 0,970 de la Tabla~\ref{tab:abstencion-senal}— y 0,938 en \emph{test}), sobre los \emph{near-miss} la separabilidad \textbf{se desploma a 0,82} (0,823 en \emph{development}, 0,814 en \emph{test}). La razón se lee en las puntuaciones: los \emph{near-miss} reciben un \emph{top}-1 de 0,90--0,93, dentro del rango de las preguntas legítimas, porque el recuperador encuentra artículos temáticamente próximos —solo que insuficientes—.
+
+\begin{table}[htbp]
+    \centering
+    \small
+    \renewcommand{\arraystretch}{1.2}
+    \caption{Separabilidad de la señal de abstención según el \emph{tipo} de negativo (modelo \texttt{e5-large-instruct} · I1). AUC sobre \emph{development} (53 respondibles) y \emph{test} (28), frente a 30 negativos de dominio lejano y 10 \emph{near-miss}. La caída ante el \emph{near-miss} cuantifica lo que el AUC global sobreestimaba.}
+    \label{tab:abstencion-nearmiss}
+    \begin{tabular}{|l|c|c|}
+        \hline
+        \textbf{Tipo de negativo} & \textbf{AUC \emph{development}} & \textbf{AUC \emph{test}} \\
+        \hline
+        Dominio lejano ($n=30$)   & 0,969 & 0,938 \\
+        \emph{Near-miss} ($n=10$) & \textbf{0,823} & \textbf{0,814} \\
+        \hline
+    \end{tabular}
+\end{table}
+
+Queda así confirmado con dato lo que antes era solo una sospecha: la señal de recuperación distingue muy bien la materia ajena, pero es un discriminador \textbf{débil} ante preguntas cercanas no cubiertas —mide \emph{parecido temático}, no \emph{suficiencia}—. Es la misma limitación que el análisis de errores encontrará por el otro lado (\ref{subsec:analisis-abstenciones}): un umbral sobre el \emph{score} no basta para gobernar la abstención \emph{dentro} del dominio. Dos salvedades: los \emph{near-miss} son solo diez, de modo que su AUC es indicativo —aunque la coincidencia entre \emph{development} (0,823) y \emph{test} (0,814) sugiere que la caída es real y no ruido del muestreo—; y esto mide la \emph{señal} de recuperación, no el comportamiento del generador ante un \emph{near-miss}, que no se evalúa por separado.
+
+\subsection{Comportamiento de abstención del sistema completo}
+\label{subsec:abstencion-observada}
+
+Una cosa es que la señal \emph{pueda} separar y otra que el sistema de extremo a extremo —recuperación densa más generador local— \emph{se comporte} en consecuencia. Se mide sobre las 28 preguntas in-corpus de \emph{test} y las 40 \emph{out-of-corpus} (30 de dominio lejano + 10 \emph{near-miss}).
+
+El resultado dibuja un sistema \textbf{calibrado hacia la prudencia}, con una grieta que solo aflora en el caso difícil. Ante las \textbf{30 preguntas de dominio lejano} no produjo respuestas indebidas: se abstuvo en las 30 (0/30; con la muestra escasa, cota superior del 11,6\,\% por Clopper-Pearson). Pero ante las \textbf{10 preguntas \emph{near-miss}} —misma materia, respuesta ausente— respondió indebidamente a \textbf{una} (1/10). En conjunto, una respuesta indebida en 40 preguntas fuera de corpus, y aparece justo donde se esperaba: en el negativo cercano, no en el lejano. El coste de la prudencia aparece en el lado in-corpus: de 28 preguntas respondibles, respondió 17 y se abstuvo en 11, una \textbf{sobre-abstención del 39,3\,\%}. Ambas cifras muestran el mismo compromiso: el sistema solo responde cuando está muy seguro. Un matiz diagnóstico importante: ninguna de esas once abstenciones se debe a que el recuperador no devolviera nada —en las once se ensambló y entregó contexto—, sino a que, con ese contexto delante, el modelo generativo decidió no responder. Ahora bien, «recibió contexto» no equivale a «recibió la evidencia suficiente»: cuánto de esa sobre-abstención es fallo de la recuperación y cuánto del generador es una pregunta que exige abrir caso a caso lo que llegó al modelo, y se resuelve en el análisis de errores (\ref{subsec:analisis-abstenciones}).
+
+Combinando ambos lados, la \emph{balanced accuracy} de la decisión «responder frente a abstenerse» es de 0,79 (media de un 60,7\,\% de aciertos en respondibles y un 97,5\,\% en no respondibles sobre las 40 fuera de corpus). Casi todos los errores del sistema caen del lado prudente —la sobre-abstención—; la única excepción es esa respuesta indebida en un \emph{near-miss}. Para un asistente jurídico informativo la dirección del compromiso es la correcta, pero una sobre-abstención de casi el 40\,\% es una limitación real de utilidad. Reducirla sin comprometer la seguridad es, por tanto, una línea de mejora genuina; el análisis de errores (\ref{subsec:analisis-abstenciones}) examina de qué depende y —conviene adelantarlo— descarta el atajo más obvio: un umbral sobre la puntuación de recuperación separa muy bien una materia ajena al corpus, pero no una evidencia que basta de otra que se le parece y no basta dentro de él.
+
+\subsection{¿Y si relajamos el \emph{prompt}? Seguridad frente a utilidad}
+\label{subsec:abstencion-seguridad-utilidad}
+
+Esa línea de mejora merece un experimento, porque hay una forma obvia de intentarla: relajar las instrucciones. Se compararon dos versiones del \emph{prompt} sobre \emph{development}: la \textbf{conservadora} —la de por defecto, que ordena abstenerse si la evidencia no basta para responder con fiabilidad— y una \textbf{permisiva} —que autoriza a responder cuando alguna evidencia es pertinente, aun exigiendo síntesis, y solo abstenerse si la evidencia trata de otra materia—.
+
+El efecto sobre la \emph{utilidad} es el esperado: el \emph{prompt} permisivo dispara la tasa de respuesta y hunde la sobre-abstención, del 33,96\,\% al 9,43\,\%. Pero el coste en \textbf{seguridad} es inaceptable en un dominio jurídico. Sobre las preguntas fuera del corpus —las que el sistema no debería responder— el conservador se abstuvo en las 30 (0\,\% de respuestas indebidas), mientras que el permisivo respondió a 9 de 30, un \textbf{30\,\% de respuestas indebidas}, inventando sobre materia que el corpus no cubre (Tabla~\ref{tab:prompt-ab}).
+
+\begin{table}[htbp]
+    \centering
+    \small
+    \renewcommand{\arraystretch}{1.2}
+    \caption{\emph{Prompt} conservador frente a permisivo (\emph{development}): seguridad frente a utilidad.}
+    \label{tab:prompt-ab}
+    \begin{tabular}{|l|c|c|}
+        \hline
+        \textbf{\emph{Prompt}} & \textbf{Sobre-abstención (in-corpus)} & \textbf{Respuestas indebidas (fuera de corpus)} \\
+        \hline
+        Conservador & 33,96\,\% & \textbf{0\,\%} \\
+        Permisivo   & 9,43\,\%  & \textbf{30\,\%} \\
+        \hline
+    \end{tabular}
+\end{table}
+
+La decisión es un compromiso deliberado: se adopta el \textbf{\emph{prompt} conservador}, porque en derecho el error peligroso es responder lo que no se sabe, no callar de más. Un modelo de 7B no respeta de forma fiable una instrucción matizada del tipo «responde solo si de verdad puedes», así que, con este generador, la vía prudente es la única que garantiza la seguridad.
+
+Conviene una cautela metodológica: las dos corridas no son un A/B perfectamente limpio, porque la conservadora recuperaba 20 candidatos (\emph{top}-$k$=20) y la permisiva 3 (\emph{top}-$k$=3); la magnitud exacta de la diferencia mezcla, por tanto, el efecto del \emph{prompt} con el de cuántos candidatos se recuperan. Ahora bien, la conclusión de seguridad es \textbf{robusta}: el \emph{prompt} permisivo respondió al 30\,\% de las preguntas fuera de corpus \emph{teniendo menos candidatos}, de modo que el \emph{confound}, si acaso, subestima el efecto del \emph{prompt}. La forma de recuperar utilidad sin sacrificar seguridad —un umbral sobre la señal de recuperación, cuya excelente separabilidad se vio en la sección~\ref{subsec:abstencion-senal}— queda como trabajo futuro.
+
+\section{¿Cuánto contexto entregar al generador? (capa L2)}
+\label{sec:eval-contexto}
+
+Entre la recuperación (L1) y la generación (L3--L5) hay una decisión intermedia con más peso del que parece: cuánta evidencia, y con cuánto detalle, se le entrega al modelo. Es la capa L2. La gobiernan dos preguntas con respuestas en tensión: ¿cubre el contexto ensamblado la evidencia que hace falta?, y ¿ayuda o estorba entregar más? Se responden con un experimento de ensamblado (sobre \emph{development}, $n=53$) y con la propia generación.
+
+\subsection{Cobertura frente a ruido}
+\label{subsec:l2-cobertura}
+
+El experimento varía el número de fragmentos que se ensamblan ($k \in \{1,3,5,8\}$), la estrategia de expansión y el presupuesto de caracteres, y mide dos magnitudes complementarias: la \textbf{cobertura de evidencia} —\emph{ContextEvidenceRecall}: qué fracción de los párrafos que el gold marca como necesarios acaba dentro del contexto— y la \textbf{precisión} —\emph{ContextPrecisionById}: qué fracción de los artículos entregados son de verdad pertinentes—. La Tabla~\ref{tab:l2-ctxabl} resume el patrón para la estrategia elegida (expansión acotada, presupuesto de 4000 caracteres).
+
+\begin{table}[htbp]
+    \centering
+    \small
+    \renewcommand{\arraystretch}{1.2}
+    \caption{Ensamblado de contexto en \emph{development} ($n=53$; expansión acotada, 4000 caracteres): cobertura de evidencia frente a precisión, según el número de fragmentos $k$.}
+    \label{tab:l2-ctxabl}
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \textbf{$k$ (fragmentos)} & \textbf{Cobertura (EvidenceRecall)} & \textbf{Precisión (por ID)} \\
+        \hline
+        1 & 0,488 & 0,717 \\
+        3 & 0,731 & 0,409 \\
+        5 & 0,803 & 0,294 \\
+        8 & 0,870 & 0,212 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+El resultado es una \textbf{tensión clara}: cuantos más fragmentos se entregan, más evidencia se cubre (la cobertura sube de 0,49 a 0,87), pero más ruido se cuela (la precisión cae de 0,72 a 0,21). Mirando solo la cobertura, convendría entregar mucho contexto; pero esa es solo la mitad de la historia, porque no mide qué hace el modelo con ese contexto.
+
+\subsection{¿Compensa entregar más contexto?}
+\label{subsec:l2-generacion}
+
+La otra mitad se mide en la generación. Se comparan dos configuraciones idénticas salvo en el número de fragmentos entregados —3 frente a 5— sobre \emph{development}, con recuperación de \emph{top}-$k$ directo (3 o 5) y el perfil de consulta de producción (I1). El resultado matiza la intuición de «más contexto, mejor».
+
+\begin{table}[htbp]
+    \centering
+    \small
+    \renewcommand{\arraystretch}{1.2}
+    \caption{Efecto del número de fragmentos entregados al generador (\emph{development}, perfil I1). Con 5 fragmentos el sistema responde a más preguntas, pero cada respuesta es algo menos densa.}
+    \label{tab:l2-3v5}
+    \begin{tabular}{|l|c|c|c|}
+        \hline
+        \textbf{Fragmentos} & \textbf{Respondidas (de 53)} & \textbf{Cobertura de hechos clave} & \textbf{Citas ($F_1$)} \\
+        \hline
+        3 & 31 & \textbf{0,67} & \textbf{0,90} \\
+        5 & \textbf{36} & 0,60 & 0,88 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+El compromiso es fino, no un desplome. Pasar de 3 a 5 fragmentos hace que el modelo \textbf{responda a más preguntas} —de 31 a 36 de 53, menos sobre-abstención— pero a costa de que \textbf{cada respuesta pierda algo de densidad}: la cobertura de hechos clave baja de 0,67 a 0,60 y las citas ($F_1$) de 0,90 a 0,88. Es la contrapartida directa de la tensión anterior: más fragmentos cubren más evidencia, pero el ruido que arrastran —la precisión que caía en la Tabla~\ref{tab:l2-ctxabl}— diluye la respuesta. No es el hundimiento que sugería el prototipo de diez normas; medido con más cuidado (métrica endurecida, \emph{top}-$k$ directo, perfil I1) el efecto es moderado. Hay además un efecto de coste: menos fragmentos, menos \emph{tokens} de entrada y menor latencia.
+
+En consecuencia, el sistema fija su ensamblado en \textbf{3 fragmentos, expansión acotada y 4000 caracteres por evidencia}: se prima la \emph{densidad} de la respuesta —más hechos clave y mejores citas por respuesta— y el menor coste, aceptando una sobre-abstención algo mayor que con 5 fragmentos. Conviene acotar el alcance: es un compromiso ajustado —con 5 fragmentos el sistema respondería a unas pocas preguntas más—, no una diferencia tajante, y las cifras son de \emph{development} con gold pequeño ($n=16$ y $19$), por lo que son indicativas.
+
+\section{Evaluación de la generación}
+\label{sec:eval-generacion}
+
+Cerrada la recuperación, la evaluación se traslada a la otra mitad de la cadena: la respuesta que el sistema redacta a partir de las evidencias. Aquí conviven dos tipos de medida de naturaleza distinta. Algunas propiedades son \emph{objetivas} y se comprueban de forma automática contra el gold —¿cita los artículos correctos?, ¿recoge los hechos clave?—; otras exigen \emph{juicio} —¿cada afirmación se deriva realmente de la evidencia (fidelidad, L3)?, ¿es correcta la respuesta (L5)?— y no se dejan capturar por una comparación mecánica. Para estas últimas se previó un modelo juez (\emph{LLM-as-judge}); como se verá, su validación contra anotación humana arrojó un resultado negativo, de modo que las conclusiones de fidelidad y corrección se apoyan en anotación humana y en señales deterministas, y del juez se explica por qué no es fiable. Los resultados provienen de la corrida de generación sobre \emph{test} y sobre las preguntas \emph{out-of-corpus}, con la recuperación interna configurada con el perfil de consulta ganador (\texttt{I1\_LEGAL}, \ref{sec:seleccion-embeddings}), de modo que la generación es coherente con la recuperación seleccionada en la primera mitad del capítulo; el generador es un modelo abierto ejecutado en local (\texttt{qwen2.5:7b-instruct}) y el juez, deliberadamente de familia distinta, \texttt{gemma3:12b}. La elección de ambos responde a criterios ya justificados en el diseño: el \textbf{generador} debía ser de software libre y ejecutable en CPU —lo que descarta las \emph{APIs} comerciales y los modelos de 70B o de mezcla de expertos por su latencia—, con un equilibrio razonable entre capacidad y coste; el \textbf{juez} se tomó de una familia distinta para mitigar el sesgo de auto-preferencia~\cite{zheng2023judge} y de mayor tamaño (12B frente a 7B).
+
+\subsection{Citas y hechos clave: métricas deterministas (L4 y L5)}
+\label{subsec:gen-deterministas}
+
+Dos propiedades de la respuesta se miden sin necesidad de juicio, comparándolas con el gold del banco. El \textbf{acierto del conjunto de citas} (L4, de \emph{forma}) comprueba si los identificadores de artículo citados coinciden con los que el gold marca como pertinentes —una correspondencia \emph{formal}, no una garantía de que la cita respalde lo que la respuesta afirma; ese respaldo es la fidelidad (L3), que se mide aparte—; la \textbf{cobertura de hechos clave} (L5) mide qué fracción de los hechos que el gold considera esenciales aparece en la respuesta. Sobre el subconjunto de \emph{test} con gold de generación revisado —ampliado a las 28 preguntas respondibles, de las que el sistema responde 17—, la cobertura de hechos clave es de 0,50 (IC95 [0,32, 0,66]) y las citas obtienen precisión 0,82, exhaustividad 0,76 y $F_1$ 0,78 [0,60, 0,91]. Los intervalos siguen siendo anchos ($n=17$), pero el gold es ahora más sólido que el inicial de diez preguntas, y las cifras se leen como \emph{indicativas}. (La métrica de hechos clave se endureció —coincidencia exigiendo frontera de palabra y número, para no dar por bueno un dato numérico embebido en otro mayor— sin que ello altere de forma apreciable esta cifra.)
+
+Estas cifras se leen con dos cautelas. La primera es de \textbf{potencia}: aun con el gold ampliado a las 28 preguntas respondibles de \emph{test}, la cobertura de hechos clave se calcula sobre las 17 que el sistema responde, de modo que son indicativas, no concluyentes. La segunda es de \textbf{interpretación}: la precisión de citas, tomada en solitario, engaña cuando el gold marca un único artículo, porque penaliza citar un segundo artículo legítimo (por ejemplo, el de desarrollo de una norma); por eso se reporta junto a la exhaustividad y nunca como cifra única.
+
+A la cautela de potencia cabe responder con el mismo análisis de robustez que en recuperación (\ref{subsec:flagship-robustez}): como la generación es determinista, las respuestas de \emph{development} se re-puntúan sin regenerar (misma configuración: \emph{prompt}, $k{=}3$, ensamblado y perfil I1). Sobre las \textbf{81 preguntas in-corpus}, la cobertura de hechos clave sube a \textbf{0,58} [0,44, 0,71] y las citas a $F_1$ \textbf{0,83} [0,71, 0,93], con intervalos más estrechos. No es held-out (incluye el split de ajuste, con un leve sesgo optimista), de modo que \emph{test} sigue siendo la cifra confirmatoria y dev+test la de robustez: la lectura no cambia y gana solidez.
+
+\subsection{Descomposición del error: \emph{closed-book} y oráculo}
+\label{subsec:gen-baselines}
+
+Las métricas anteriores dicen cómo de bien responde el sistema, pero no \emph{de dónde} vienen sus límites: ¿de la recuperación, que a veces no entrega la evidencia suficiente, o del generador, que no aprovecha del todo la que recibe? Para separarlo se emplean dos \emph{baselines} habituales en la evaluación de generación aumentada, ejecutados sobre las mismas preguntas de \emph{test} y con configuración idéntica al sistema:
+
+\begin{itemize}
+  \item \textbf{\emph{closed-book}}: el generador responde \emph{sin} evidencia, solo con su conocimiento interno. Mide cuánto sabe el modelo por sí mismo y, por contraste, cuánto aporta recuperar.
+  \item \textbf{oráculo}: se le inyecta la evidencia \emph{gold} del banco (recuperación perfecta). Mide el techo alcanzable con este generador si la recuperación fuese ideal; la distancia entre el sistema real y ese techo es el margen atribuible a la recuperación.
+\end{itemize}
+
+\begin{table}[htbp]
+    \centering
+    \small
+    \renewcommand{\arraystretch}{1.2}
+    \caption{Descomposición del error en \emph{test} ($n=28$, configuración idéntica en los tres, perfil I1; ventana de contexto de 8192 \emph{tokens}). Cifras deterministas (sin juez).}
+    \label{tab:gen-baselines}
+    \begin{tabular}{|l|c|c|c|c|}
+        \hline
+        \textbf{Configuración} & \textbf{Respondidas} & \textbf{Hechos clave} & \textbf{Citas $F_1$} & \textbf{Sobre-absten.} \\
+        \hline
+        \emph{Closed-book} (sin evidencia) & 18 & 0,23 & --- & 35,7\,\% \\
+        Sistema (recuperación real)        & 17 & 0,50 & 0,78 & 39,3\,\% \\
+        Oráculo (evidencia \emph{gold})    & 24 & 0,57 & \textbf{0,99} & \textbf{14,3\,\%} \\
+        \hline
+    \end{tabular}
+\end{table}
+
+Cuatro lecturas se desprenden, y ninguna era evidente de antemano.
+
+\emph{Primera: recuperar aporta valor real.} El sistema recupera el 50\,\% de los hechos clave frente al 23\,\% del \emph{closed-book} —más del doble—, y sin evidencia no hay citas posibles. El modelo apenas domina el detalle del derecho español por sí mismo; ese 23\,\% es, además, optimista, porque sin evidencia no puede medirse la fidelidad y la cifra incluye respuestas plausibles pero quizá inventadas.
+
+\emph{Segunda, y contraria a la intuición: para el contenido de las respuestas el cuello es el generador, no la recuperación.} Con evidencia \emph{perfecta}, la cobertura de hechos clave del 7B sube solo de forma modesta —de 0,50 con recuperación real a 0,57 en el oráculo—: dar la evidencia exacta ayuda algo, pero el 7B sigue dejando cerca de la mitad de los hechos clave sin verbalizar. Ese techo es del \emph{generador}, no de la recuperación, y subirlo exige un modelo más capaz —como confirma el experimento con un generador mayor (\ref{subsec:gen-tamano}), donde el 14B eleva ese techo con evidencia perfecta a 0,66—, no una recuperación mejor.
+
+\emph{Tercera: para responder —para no abstenerse de más— el cuello sí es la recuperación}, y puede cuantificarse pregunta a pregunta. De las once sobre-abstenciones del sistema, la evidencia \emph{gold} recupera \textbf{siete} (con ella el modelo sí responde) y \textbf{cuatro} persisten. Es decir, cerca de dos tercios de la sobre-abstención se deben a que la evidencia \emph{tal como se entregó} no bastaba, no a un exceso de cautela del generador ante evidencia ya suficiente. Este dato sustancia con precisión un matiz antes solo enunciado: \emph{evidencia entregada no es lo mismo que evidencia suficiente}. El análisis de errores (\ref{subsec:analisis-abstenciones}) abre caso a caso esas abstenciones y precisa dónde se pierde —en el ensamblado del contexto más que en el \emph{ranking} del artículo—. El valor de la recuperación perfecta no es tanto dar respuestas mejores como dar \emph{más} respuestas (de 17 a 24 de 28), con una calidad de contenido solo algo superior (0,57 frente a 0,50).
+
+\emph{Cuarta: la calidad de las citas también está limitada por la recuperación.} El $F_1$ de citas sube de 0,78 en el sistema a 0,99 con evidencia \emph{gold}: el modelo cita fielmente lo que se le entrega, y los fallos de cita provienen de que el recuperador aporta a veces artículos de más o equivocados.
+
+El hallazgo de fondo es que \textbf{el sistema tiene cuellos de botella distintos en capas distintas}: la cobertura de respuesta y las citas las limita la \emph{recuperación}, mientras que el contenido de las respuestas que sí da lo limita el \emph{generador}. Una nota de calidad única habría ocultado esta asimetría; medir por capas separadas (\ref{subsec:marco-capas}) es justo lo que permite verla, lo que valida el diseño del marco de evaluación.
+
+Conviene reconciliar esto con el experimento central (\ref{sec:experimento-central}), donde el recuperador denso alcanzaba un ParentnDCG@10 alto (${\approx}0{,}80$) y la fusión no lo mejoraba (un reordenador no se evaluó; queda como trabajo futuro). ¿Cómo puede ser, entonces, la recuperación el cuello de la sobre-abstención? Porque aquella métrica mide acertar el \emph{artículo}, y ahí el denso está casi al techo; pero abstenerse o citar dependen de que lleguen al generador los \emph{párrafos suficientes} del artículo, bien ensamblados —el paso del artículo recuperado al contexto entregado—, que el ranking de artículos no captura. El margen de mejora, por tanto, no está en reordenar artículos, sino en el ensamblado del contexto (\ref{sec:eval-contexto}): qué porciones del artículo correcto se entregan.
+
+El análisis se cierra con las cautelas debidas. El tamaño muestral es pequeño (28 preguntas; entre 17 y 24 con gold de hechos clave según la ruta), de modo que los efectos grandes —recuperar frente a no recuperar, la caída de la sobre-abstención con evidencia perfecta— son fiables, mientras que la modesta mejora en hechos clave con evidencia perfecta (0,50 frente a 0,57) es indicativa, no concluyente. La ventana de contexto se fijó en 8192 \emph{tokens}, holgada para el contexto ensamblado: una ventana menor lo truncaba y deprimía ligeramente el contenido de las respuestas, sin alterar la sobre-abstención. Y, al no intervenir el juez, esta descomposición mide hechos clave y citas, no fidelidad.
+
+\subsection{Fidelidad y corrección: el modelo juez como resultado negativo (L3 y L5)}
+\label{subsec:gen-juez}
+
+La fidelidad —que cada afirmación se derive de la evidencia entregada— es la propiedad número uno en el dominio jurídico y no la captura ninguna métrica mecánica. La estrategia prevista para medirla a escala era un modelo juez, de familia distinta al generador para mitigar el sesgo de auto-preferencia. Pero, como se advirtió en el estado del arte, un juez no puede creerse sin validarlo: sus veredictos se contrastaron contra \textbf{anotación humana} sobre el conjunto de \emph{development}, midiendo el acuerdo con el $\kappa$ de Cohen, el $\kappa$ ponderado y el AC1 de Gwet (más estable cuando una clase es rara). Se evaluaron además dos versiones del \emph{prompt} del juez (v2 y v3). Una precisión de trazabilidad: este contraste juez--humano se realizó sobre las respuestas de una corrida previa de configuración equivalente (mismo banco y tubería); como el juez sobre-acredita con independencia del perfil de consulta, su validación —que es lo que aquí importa— no depende de ese detalle.
+
+Antes de juzgar al juez, la anotación humana ofrece la referencia más directa sobre la calidad de la generación: de las \textbf{31 respuestas} que da el sistema (perfil I1) en \emph{development}, 25 se juzgaron fieles a la evidencia y 6 infieles (un \textbf{81\,\%} de fidelidad; IC95 de Wilson [64\,\%, 91\,\%]); las 31 se valoraron además en corrección —18 correctas, 10 parciales y 3 incorrectas (un \textbf{58\,\%} de correctas plenas; IC95 [41\,\%, 74\,\%])—. Los intervalos, anchos por el tamaño ($n=31$), confirman que estas cifras humanas son \emph{indicativas}. La Tabla~\ref{tab:juez-acuerdo} se calcula sobre los subconjuntos comparables de esa validación: 30 casos para fidelidad y 15 para corrección.
+
+\begin{table}[htbp]
+    \centering
+    \small
+    \renewcommand{\arraystretch}{1.2}
+    \caption{Acuerdo juez--humano sobre \emph{development} (corrida previa de configuración equivalente) para dos versiones del \emph{prompt} del juez. $\kappa$ = Cohen; pond. = $\kappa$ ponderado; AC1 = Gwet.}
+    \label{tab:juez-acuerdo}
+    \begin{tabular}{|l|c|c|c|c|c|}
+        \hline
+        \textbf{Dimensión ($n$)} & \textbf{Prompt} & \textbf{Acuerdo} & \textbf{$\kappa$} & \textbf{$\kappa$ pond.} & \textbf{AC1} \\
+        \hline
+        Fidelidad (30)  & v2 & 0,87 & 0,44 & 0,44 & 0,83 \\
+        Fidelidad (30)  & v3 & 0,83 & 0,36 & 0,36 & 0,78 \\
+        Corrección (15) & v2 & 0,67 & 0,07 & 0,21 & 0,60 \\
+        Corrección (15) & v3 & 0,73 & 0,31 & 0,40 & 0,67 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+A primera vista, el acuerdo observado parece alto (83--87\,\% en fidelidad). Pero ese número engaña por la \textbf{paradoja de $\kappa$}: como la inmensa mayoría de las respuestas son fieles (más del 80\,\%), coincidir en «fiel» es fácil por azar, y el $\kappa$ —que descuenta ese azar— cae a 0,36--0,44, con intervalos de confianza que llegan hasta cerca de cero. En corrección la situación es aún peor ($\kappa$ entre 0,07 y 0,31). Ni siquiera el AC1, más benévolo ante el desbalance, alcanza un acuerdo que permita fiarse de los veredictos.
+
+Y lo decisivo no es el coeficiente, sino \emph{qué} falla: de las 6 respuestas que el anotador humano marcó como infieles, el juez solo detectó 2 —en ambas versiones del \emph{prompt}—; las otras 4 alucinaciones pasaron su filtro. Todos sus errores van en la misma dirección: el juez es \textbf{indulgente}, da por buenas respuestas que no lo son (en corrección, elevó a «correctas» respuestas que el humano consideró solo parciales). Reescribir su \emph{prompt} (v2$\rightarrow$v3) no lo corrigió: mejoró algo en corrección a costa de empeorar en fidelidad, y en ningún caso mejoró lo que de verdad importa —seguía cazando 2 de cada 6 alucinaciones—.
+
+La conclusión es un resultado negativo, y se reporta como tal: \textbf{el juez no es lo bastante fiable para sostener conclusiones de fidelidad ni de corrección} en este dominio, un hallazgo coherente con las cautelas de la literatura sobre herramientas jurídicas de IA. Lejos de invalidar el objetivo OE-06 —que pedía precisamente validar el juez frente a anotación humana \emph{antes} de confiar en él—, este resultado lo cumple: la respuesta es que aquí no se puede confiar. En consecuencia, las afirmaciones sobre la calidad de la generación descansan en las métricas deterministas y en la anotación humana, no en veredictos automáticos; la validación del juez se ofrece como contribución cautelar, no como instrumento de medida.
+
+Conviene cerrar con la principal cautela sobre la propia anotación humana: la realizó un único anotador sobre \emph{development}, sin un segundo anotador con quien medir el acuerdo inter-humano, y con un tamaño pequeño ($n=31$). Sus cifras son, por tanto, indicativas; su valor aquí es doble —servir de patrón para revelar la insuficiencia del juez y ofrecer una lectura cualitativa de la fidelidad—, no el de una medida definitiva. Ampliar esta anotación, e incorporar un segundo anotador, queda señalado como trabajo futuro.
+
+\subsection{Coste computacional}
+\label{subsec:gen-coste}
+
+Como el sistema está pensado para ejecutarse en local, conviene cuantificar su coste. La \textbf{recuperación} es barata: del orden de 0,3 s por consulta con el denso —el léxico es 3--4 veces más rápido (~0,1 s), pero pierde en calidad (\ref{sec:experimento-central})—. El grueso del coste está en la \textbf{generación}, y ahí el dispositivo lo cambia todo. Para medirlo con limpieza se ejecutó la \emph{misma} configuración sobre las \emph{mismas} 28 preguntas de \emph{test}, variando solo el dispositivo: el servidor de despliegue (CPU, dos AMD EPYC) frente a una GPU externa (una T4). La mediana de latencia de generación por consulta pasa de \textbf{64,7 s en CPU} (rango 43--119 s) a \textbf{4,7 s en GPU} (rango 3,5--11 s): un factor de aproximadamente $14\times$. La ventana de contexto apenas altera esa latencia en GPU (4,8 s con 8192 \emph{tokens}), de modo que el factor lo domina el dispositivo, no la configuración. La decisión de responder o abstenerse es idéntica en ambos dispositivos —la misma tasa de respuesta y de sobre-abstención—, de modo que la diferencia es puramente de coste, no de comportamiento.
+
+Esta es la razón práctica por la que la codificación de \emph{embeddings} y las corridas de generación del desarrollo se apoyaron en una GPU externa puntual, aunque el sistema sigue siendo reproducible por completo en el servidor local, a costa de decenas de segundos por consulta. Conviene declarar una salvedad de reproducibilidad: aun con temperatura cero, CPU y GPU no producen exactamente la misma salida —las diferencias numéricas de cada \emph{backend} cambian ocasionalmente algún \emph{token}—, por lo que las métricas de contenido oscilan levemente entre dispositivos (del orden de $0{,}03$ en hechos clave sobre este subconjunto), sin alterar ninguna conclusión.
+
+\section{Análisis de errores}
+\label{sec:analisis-errores}
+
+Las métricas dicen \emph{cuánto} y \emph{dónde} falla el sistema; esta sección se pregunta \emph{por qué}. Se apoya en la inspección cualitativa de las respuestas, en los cortes por tipo de consulta que contempla el banco —ciudadanas, técnico-jurídicas, reformulaciones de una misma necesidad y preguntas fuera del corpus— y en las hipótesis que compiten por explicar las carencias de la generación; y culmina abriendo una a una las abstenciones del sistema, con el contexto real que recibió el modelo delante, para decidir cuál de esas hipótesis se sostiene en vez de quedarse con la primera.
+
+\subsection{Modos de fallo recurrentes}
+\label{subsec:modos-fallo}
+
+Tres patrones concentran los errores observados. El primero es la \textbf{colisión de recuperación}: el buscador trae un artículo con el número correcto pero de la \emph{ley equivocada}. Es el punto débil de la recuperación léxica; de hecho, de los 138 candidatos que solo aportó BM25 durante la construcción del gold, \textbf{127 resultaron irrelevantes}, en su mayoría de este tipo (\ref{subsec:pooling}). Es también lo que motivó el refuerzo de cabecera con el nombre de la ley (\ref{sec:ablacion-bm25}) y, en el fondo, una de las razones por las que el denso —que desambigua por significado— gana con claridad.
+
+El segundo nace del \textbf{generador}, y tiene dos caras opuestas con la misma raíz —un modelo de 7B que no razona con solidez sobre el texto que se le entrega—. La primera es la \textbf{sobre-extensión}: teniendo delante la evidencia correcta, el modelo añade un detalle que \emph{no} está en ella —una condición sobre la antigüedad de una prestación, un matiz sobre el régimen aplicable— que suena plausible pero no se deriva del texto citado; son las respuestas que la anotación humana marca como infieles. La segunda, simétrica, es la \textbf{abstención en falso}: el modelo se abstiene alegando que la evidencia no contiene la respuesta \emph{cuando esta figura, a veces literalmente, en el contexto que acaba de recibir}. Son el mismo defecto por sus dos lados —afirmar lo que no hay y no ver lo que sí hay—; la segunda, por su peso en la sobre-abstención, se examina caso a caso más adelante (\ref{subsec:analisis-abstenciones}).
+
+El tercero, ligado al anterior, es la \textbf{indulgencia del juez}: de las 6 respuestas que el anotador humano consideró infieles, el juez dejó pasar 4 como buenas (\ref{subsec:gen-juez}). Es decir, el modo de fallo más peligroso —afirmar algo no respaldado por la evidencia— es justamente el que el evaluador automático peor detecta, lo que confirma por qué no se le confían las conclusiones de fidelidad.
+
+\subsection{Comportamiento por tipo de consulta}
+\label{subsec:errores-por-tipo}
+
+El comportamiento por tipo de consulta ha ido aflorando a lo largo del capítulo: el denso domina en las \textbf{consultas ciudadanas}, donde el léxico se hunde (\ref{subsec:flagship-robustez}); la \textbf{colisión de ley} concentra los fallos léxicos en las formulaciones técnico-jurídicas y las búsquedas directas de artículo (\ref{subsec:modos-fallo}); las \textbf{reformulaciones} de una misma necesidad son la fortaleza del denso, que compara por significado; y ante las \textbf{preguntas fuera del corpus} el sistema se abstiene, con la salvedad de que un \emph{prompt} permisivo rompe la garantía (\ref{subsec:abstencion-seguridad-utilidad}).
+
+\subsection{Hipótesis en tensión}
+\label{subsec:hipotesis}
+
+Ante una generación mejorable, la tentación es atribuir el problema a una sola causa. Este trabajo sopesa cuatro y evita cerrarse en falso: descarta o acota las tres primeras y deja en pie la cuarta, que el análisis siguiente confirma.
+
+\begin{description}
+  \item[H1: el aumentado de contexto.] Descartada como causa principal. Como se vio (\ref{sec:eval-contexto}), entregar \emph{más} contexto no mejora la respuesta, sino que la \emph{empeora}; el problema no es que falte contexto.
+  \item[H2: la representación del fragmento.] Medida (\ref{sec:ablacion-representacion}). Sobre las 92 normas, ni enriquecer el fragmento con su contexto jurídico ni la forma de trocearlo cambian la recuperación de forma detectable; la ventaja del enriquecido que sugería el prototipo de diez normas no se confirma. El sistema conserva la vista enriquecida por su utilidad aguas abajo (contexto y cita), no por una ganancia de recuperación.
+  \item[H3: la recuperación.] Medida (\ref{sec:experimento-central}). El denso es fuerte (0,80) y no es el cuello de botella para las preguntas que sí se responden; su fallo característico es la colisión de ley, no una recuperación pobre en general.
+  \item[H4: el generador.] La que queda en pie. Cuando la evidencia correcta llega al modelo, este todavía falla por sus dos caras —sobre-extensión y abstención en falso (\ref{subsec:modos-fallo})—; es, según el análisis caso a caso que sigue, la causa dominante de la sobre-abstención y el techo de los hechos clave. El margen no está en más recuperación, sino en el propio generador, como comprueba —y matiza— el experimento con un modelo mayor (\ref{subsec:gen-tamano}).
+\end{description}
+
+\subsection{Análisis caso a caso de las once abstenciones: ¿faltó evidencia o falló el generador?}
+\label{subsec:analisis-abstenciones}
+
+La descomposición con el oráculo (\ref{subsec:gen-baselines}) dio una respuesta gruesa: con evidencia perfecta, siete de las once sobre-abstenciones desaparecen, de modo que el grueso del problema vive en la evidencia y no en una decisión aislada del modelo. Pero «en la evidencia» admite dos lecturas muy distintas —que el recuperador no trajera el artículo correcto, o que lo trajera y el modelo no lo aprovechara— y elegir entre ellas cambia dónde conviene invertir. Separarlas no exige ninguna corrida nueva: el informe de cada evaluación guarda, por pregunta, los resultados recuperados con su puntuación y el contexto exacto entregado al generador, así que basta con abrir esas once abstenciones una a una.
+
+El desglose es revelador. En \textbf{tres} de las once, el artículo central —el que el gold marca como suficiente— \emph{no llegó nunca} al modelo: el recuperador devolvió otra cosa y la abstención fue, en rigor, acertada dado lo que se le entregó; el fallo estaba aguas arriba, en la recuperación. En las \textbf{ocho} restantes, en cambio, el artículo central \emph{sí estaba} en el contexto entregado, y el modelo se abstuvo igualmente. La sobre-abstención, por tanto, no es sobre todo un problema de \emph{rankear} el artículo —el denso lo colocó donde debía en ocho de cada once casos— sino de que, con él delante, el generador no llegó a responder.
+
+Dos ejemplos lo hacen palpable. Ante la pregunta de en cuántos días debe resolverse una solicitud de asilo presentada en frontera, el sistema entregó como primera evidencia el artículo 21 de la Ley 12/2009 —titulado, literalmente, «Solicitudes presentadas en puestos fronterizos»—, cuyo texto repite dos veces «en el plazo máximo de cuatro días desde su presentación»; la respuesta esperada era, exactamente, «cuatro días». El modelo se abstuvo alegando que «las evidencias no contienen información específica sobre los plazos». El dato no solo estaba: estaba anunciado por el propio título del artículo. En una segunda pregunta —una comparación entre cómo regulan las becas la ley universitaria y la de educación— el sistema entregó los dos artículos pertinentes, ambos titulados «Becas y ayudas al estudio», uno de cada ley; el modelo, que solo tenía que contrastarlos, también se abstuvo. No son casos de evidencia ausente ni ambigua, sino de un generador de 7B que no extrae ni sintetiza lo que tiene escrito delante.
+
+Las dos miradas —la del oráculo y la de la traza— encajan sin contradicción en cuanto se separan dos cosas que se confunden a menudo: \emph{rankear} el artículo correcto y \emph{entregarlo en un contexto explotable}. El oráculo rescató siete abstenciones porque inyecta la evidencia \emph{gold} depurada —los párrafos exactos, sin artículos homónimos de otras leyes que distraigan—; pero como solo tres eran fallos de \emph{ranking}, la mayor parte de lo que arregla no es traer el artículo (ya estaba) sino entregarlo limpio. El margen, pues, vive en el \textbf{ensamblado del contexto} —qué párrafos del artículo correcto se seleccionan y cuánto ruido los rodea— más que en el reordenamiento de artículos, lo que confirma con casos concretos lo que se apuntó al reconciliar los \emph{baselines} (\ref{subsec:gen-baselines}). Y hay un residuo que no se puede achacar a la evidencia: cuatro abstenciones persisten \emph{incluso} con evidencia perfecta, y ejemplos como el del plazo de asilo —respuesta literal, contexto real— muestran que el generador ya falla con la evidencia que de hecho recibe. Ese residuo es irreducible por la vía de la recuperación: solo lo levanta un modelo mejor.
+
+El análisis cierra, además, una vía de mejora que parecía evidente y no lo es. Dado lo bien que la puntuación de recuperación separa lo respondible de la materia ajena al corpus (AUC 0,94 en dominio lejano; \ref{subsec:abstencion-senal}), la tentación es usar un umbral sobre esa misma puntuación para decidir cuándo responder \emph{dentro} del corpus y recortar así la sobre-abstención. Los datos lo desaconsejan. Entre las preguntas de \emph{test}, las que se respondieron obtuvieron puntuaciones \emph{top}-1 en el rango 0,888--0,951 y las sobre-abstenidas en 0,897--0,944: la banda de las abstenciones queda \emph{dentro} de la de las respuestas, sin un corte que las separe. Es más, la abstención con la puntuación más alta de todo el \emph{test} (0,944, superada solo por dos de las diecisiete respuestas) fue justamente uno de los tres fallos de recuperación —el recuperador devolvió con altísima confianza un artículo que no era el preguntado—. Es la misma razón por la que la señal se degrada ante los \emph{near-miss} (donde el AUC baja a 0,82; \ref{subsec:abstencion-senal}): la puntuación mide \emph{parecido temático}, no \emph{suficiencia} —distingue de maravilla una materia ajena, donde el parecido se desploma, pero no una evidencia que basta de otra que se le parece y no basta—. Un semáforo por puntuación sirve, por tanto, para abstenerse ante preguntas fuera de dominio, no para recuperar utilidad dentro de él.
+
+La conclusión operativa es nítida y coherente con todo el capítulo: la palanca principal contra la sobre-abstención no es reordenar artículos —el denso ya acierta— ni un umbral sobre la confianza de recuperación, sino un \textbf{generador más capaz} que aproveche la evidencia que ya recibe, sostenido por un \textbf{ensamblado de contexto} que le entregue los párrafos pertinentes con menos ruido; y, como señal para decidir, una medida de \emph{suficiencia} que mire el contenido de la evidencia —no su puntuación—, en la línea de la fidelidad automática que retoma el capítulo de conclusiones. Todo ello sin tocar lo único que no admite concesiones y que aquí apenas cede: la seguridad, con una sola respuesta indebida en 40 preguntas fuera de corpus.
+
+\subsection{¿Y si el generador fuera más grande?}
+\label{subsec:gen-tamano}
+
+Esa conclusión —que el freno está en el generador— pedía una comprobación empírica. La forma directa de hacerla es cambiar el modelo por uno más capaz y ver qué se mueve. Se repitió, por tanto, toda la evaluación de generación sobre \emph{test} con una única diferencia respecto al sistema: el generador pasó de \texttt{qwen2.5:7b-instruct} a \texttt{qwen2.5:14b-instruct} —el doble de parámetros, la misma familia—, dejando idénticos la recuperación, el contexto y el resto de la configuración. Así, cualquier cambio es atribuible al tamaño del modelo. El resultado se lee en tres planos —utilidad, contenido y seguridad— y el balance entre ellos no es el que sugeriría mirar solo el tamaño.
+
+\begin{table}[htbp]
+    \centering
+    \small
+    \renewcommand{\arraystretch}{1.2}
+    \caption{Efecto del tamaño del generador en \emph{test}, con la recuperación (perfil I1) y el contexto idénticos. Los hechos clave se comparan sobre las mismas preguntas (comparación pareada); por eso las cifras del 7B difieren levemente de las de la Tabla~\ref{tab:gen-baselines}, promediada sobre todas las respondidas.}
+    \label{tab:gen-tamano}
+    \begin{tabular}{|l|c|c|}
+        \hline
+        \textbf{} & \textbf{7B} & \textbf{14B} \\
+        \hline
+        Sobre-abstención (recuperación real)          & 39,3\,\% & \textbf{17,9\,\%} \\
+        Hechos clave (recuperación real, $n=17$)       & 0,50     & \textbf{0,63} \\
+        Hechos clave (evidencia perfecta, $n=23$)      & 0,59     & \textbf{0,66} \\
+        Citas $F_1$ (recuperación real)                & 0,78     & 0,77 \\
+        Respuestas indebidas (\emph{far-domain}, 30)   & \textbf{0/30} & 3/30 \\
+        \textbf{Respuestas indebidas (\emph{near-miss}, 10)} & 1/10 & \textbf{4/10} \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\textbf{En utilidad, el modelo mayor cumple.} La sobre-abstención cae a menos de la mitad, del 39,3\,\% al 17,9\,\%: responde seis preguntas más y no deja de responder ninguna de las que antes acertaba. Y lo hace bien, no a base de inventar: las recuperadas son respuestas correctas o parcialmente correctas, sin datos fabricados. Entre ellas está el caso que servía de ejemplo del fallo del 7B —el plazo para resolver una solicitud de asilo en frontera—, que el modelo mayor ahora responde con el dato exacto («en un plazo máximo de cuatro días»). Es la confirmación limpia de aquel diagnóstico: esas abstenciones eran del generador, y un generador mejor las resuelve.
+
+\textbf{En el contenido de las respuestas, el modelo mayor mejora de forma significativa.} Sobre las mismas preguntas, la cobertura de hechos clave sube de 0,50 a 0,63 con recuperación real —una diferencia que, a diferencia de casi todo lo demás en generación, \emph{sí} resiste el ruido del muestreo: bootstrap pareado $+0{,}13$ \ [$+0{,}01$, $+0{,}26$], $p=0{,}03$— y de 0,59 a 0,66 con evidencia perfecta (aquí ya no significativa, $n=23$). Es la señal más clara del capítulo de que el freno de contenido está en el \emph{generador}: un modelo más capaz verbaliza más de los datos esenciales sobre la misma evidencia. Además, el modelo mayor \textbf{no cae en ninguna de las trampas de dato} anticipadas por el gold (cero afirmaciones prohibidas), frente a una del 7B. Conviene una nota metodológica: esta comparación solo es fiel cuando los hechos clave se expresan como \emph{datos atómicos y literales} (un plazo, un porcentaje, un término), porque la métrica exige coincidencia casi literal; con hechos clave redactados como frases largas, esa misma exigencia penaliza la prosa más natural del modelo mayor y puede \emph{ocultar} su mejora.
+
+\textbf{En seguridad, el modelo mayor retrocede, y el caso \emph{near-miss} lo hace evidente.} Sobre las 30 preguntas de \textbf{dominio lejano} el 7B se abstiene en todas (0/30) y el 14B responde 3 (10\,\%). Pero es sobre las 10 preguntas \textbf{\emph{near-miss}} —mismo dominio, respuesta ausente— donde la brecha se dispara: el 7B ya no es perfecto (responde 1 de 10), y el 14B responde \textbf{4 de 10}. Es decir, la sobre-respuesta del modelo mayor, que en los negativos fáciles parecía un 10\,\%, en el caso realista es del 40\,\%. Y no hay arreglo barato: esas preguntas reciben puntuaciones de recuperación en torno a 0,90 —dentro del rango de las legítimas del corpus—, de modo que ningún umbral sobre esa puntuación las filtraría sin silenciar respuestas buenas. Es exactamente el punto ciego que anticipaba la evaluación de la abstención (\ref{subsec:abstencion-senal}): la señal distingue la materia lejana, no una pregunta jurídica cercana cuya respuesta no está en el corpus.
+
+Un último dato ilumina el porqué, y desmonta la lectura simplista de «modelo grande = más alucina». Sin ninguna evidencia —el escenario \emph{closed-book}—, el modelo mayor se abstiene casi siempre (responde 1 de 28, frente a las \textbf{dieciocho} del 7B en \ref{subsec:gen-baselines}): \textbf{no inventa derecho de memoria}, mientras que el 7B, sin evidencia, confabula en la mayoría. El defecto del 14B es el opuesto y más sutil: cuando se le entrega contexto recuperado —aunque sea un casi-acierto—, \emph{confía de más en él}. Es una virtud cuando el contexto es el correcto (por eso rescata abstenciones legítimas) y un riesgo cuando es un \emph{near-miss} (por eso responde de más ante lo que el corpus no cubre). Son dos fallos de distinta naturaleza, y el del 14B es más abordable si se añade una señal de suficiencia: no exige más conocimiento, sino decidir mejor cuándo callar.
+
+La lectura de conjunto es, por tanto, más favorable al modelo mayor de lo que sugeriría fijarse solo en la seguridad. El 14B es \textbf{mejor en utilidad y cobertura}: recupera significativamente más hechos clave sobre las mismas preguntas ($+0{,}13$, $p=0{,}03$), responde a un tercio más de preguntas, no cae en trampas de dato y —a diferencia del 7B— no confabula de memoria cuando le falta evidencia. Su punto débil es la sobre-respuesta ante preguntas fuera del corpus, sobre todo en el caso \emph{near-miss}. No es, pues, que «un modelo mayor descalifique por seguridad», sino que \textbf{el modelo mayor es un candidato natural si se acompaña de una señal de suficiencia}: lo que le falta no es capacidad, sino un criterio sobre el contenido de la evidencia —no sobre su puntuación de recuperación— que gobierne cuándo callar. Esa es, exactamente, la línea de mejora que recogen las conclusiones; el coste añadido (duplicar parámetros encarece la inferencia en CPU, \ref{subsec:gen-coste}) es el otro factor a sopesar. En este trabajo el sistema operativo se mantiene en el 7B por su garantía de seguridad sin gate, pero la evidencia señala al 14B+gate como el camino natural.
+
+Como en el resto de la generación, estas cifras se leen con cautela: 28 preguntas de \emph{test} (entre 17 y 26 con gold de hechos clave según la ruta) y una sola corrida a temperatura cero. Los efectos grandes —la caída de la sobre-abstención, las respuestas indebidas fuera del corpus— son fiables; las diferencias finas de contenido, indicativas.
+
+\section{Amenazas a la validez}
+\label{sec:amenazas}
+
+Ningún resultado de este capítulo se presenta sin sus límites. Reunirlos aquí no es una concesión, sino parte del método: un trabajo cuyo valor es «medir con evidencia» debe ser igual de riguroso al declarar hasta dónde llega esa evidencia. Se discuten las cinco amenazas principales a las conclusiones.
+
+\paragraph{Potencia estadística.} Las particiones son pequeñas —\emph{test} $n=28$ en recuperación; entre 10 y 15 preguntas con gold de generación—, de modo que los intervalos de confianza son anchos y solo los efectos grandes resultan concluyentes. Cuantificar ese límite es más informativo que invocarlo: con $n=28$ y la variabilidad observada entre preguntas (desviación típica de la diferencia pareada $\approx 0{,}13$ en el contraste más ajustado), el diseño solo tiene potencia (80\,\%, $\alpha=0{,}05$) para detectar diferencias en ParentnDCG@10 de \textbf{unos 0,07} o mayores. La diferencia entre la fusión ponderada y el denso ($-0{,}028$) queda \emph{por debajo} de ese mínimo detectable: su «no significativa» refleja \textbf{falta de potencia ante un efecto pequeño}, no una equivalencia demostrada. Detectar de forma fiable una ventaja real de $0{,}03$ exigiría del orden de \textbf{150 preguntas}, más de cinco veces el \emph{test} actual. En cambio, los efectos grandes sí son concluyentes: el $-0{,}29$ de BM25 supera con holgura ese umbral, coherente con su significación. Por eso las conclusiones globales de recuperación están razonablemente potenciadas, mientras que los cortes por estilo de consulta y las cifras de generación se reportan como \emph{direccionales}. Esta limitación se \emph{mitiga —no se elimina—} con el análisis de robustez sobre las 81 preguntas in-corpus (\ref{subsec:flagship-robustez}): al triplicar la muestra, la conclusión central se sostiene, la ventaja potencial de la fusión ponderada queda acotada por arriba a $+0{,}012$ y la fusión RRF pasa a ser significativamente peor; pero como ese conjunto incluye el split de ajuste, acompaña al held-out sin sustituirlo.
+
+\paragraph{Comparaciones múltiples.} La familia \emph{confirmatoria} —el denso frente a BM25, la fusión RRF y la ponderada— se corrige por Holm-Bonferroni (\ref{subsec:flagship-pareado}); tras la corrección, solo BM25 queda significativamente por debajo del denso, y la conclusión —ninguna fusión mejora al denso— se mantiene. Las ablaciones exploratorias, que enfrentan muchas variantes, no se corrigen por multiplicidad y se leen como tales, no como contrastes con potencia confirmatoria.
+
+\paragraph{La métrica de citas mide forma, no fondo.} El $F_1$ de citas (\ref{subsec:gen-deterministas}) mide la correspondencia entre los identificadores citados y los del gold, no que la cita \emph{respalde} lo que la respuesta afirma; ese respaldo es la fidelidad (L3) y se estima por anotación humana. Un buen $F_1$ de citas no debe leerse, por tanto, como garantía de que la respuesta esté fundada en la evidencia.
+
+\paragraph{La seguridad es contingente al generador.} La casi total ausencia de respuestas indebidas del sistema —0/30 en dominio lejano (cota superior del 11,6\,\% por lo escaso de la muestra) y solo 1/10 en el caso \emph{near-miss}— se obtiene con un generador conservador de 7B; ya en el \emph{near-miss} aparece una primera respuesta indebida, y un generador mayor rompe la garantía con claridad (14B: 3/30 en dominio lejano, 4/10 en \emph{near-miss}; \ref{subsec:gen-tamano}). Además, esas preguntas fuera de corpus reciben puntuaciones de recuperación indistinguibles de las de dentro, de modo que un umbral sobre esa señal no las filtraría. La seguridad observada no es, pues, una propiedad del sistema en abstracto, sino de esta configuración concreta, y se erosiona precisamente en el negativo cercano.
+
+\paragraph{Dependencia de la escala y del tipo de texto legal.} El resultado «la fusión no aporta» se invirtió respecto al prototipo de diez normas, donde la fusión sí parecía ayudar (\ref{subsec:flagship-pareado}). Es un hallazgo ligado al tamaño del corpus: 92 normas bastan para refutar aquel preliminar, pero no garantizan que la conclusión se mantenga sobre la totalidad del derecho consolidado español. A esta dependencia de la escala se añade otra del \emph{género} de texto jurídico: el resultado obtenido —el denso iguala o supera a toda fusión— se circunscribe a \textbf{legislación consolidada} (artículos breves y relativamente autocontenidos) consultada en lenguaje natural. En \textbf{recuperación de jurisprudencia} —sentencias extensas y densas en citas— la evidencia apunta en sentido contrario: en el \emph{benchmark} legal CLERC, los métodos léxicos como BM25 se mantienen muy competitivos o superiores frente a los recuperadores densos~\cite{hou2024clerc}. La conclusión, por tanto, es específica de este género normativo y de este tipo de consulta, y no debe extrapolarse a otros textos jurídicos sin volver a medir; lejos de debilitar el trabajo, refuerza su tesis de fondo —que la estrategia de recuperación \emph{se decide midiendo}, no por defecto—.

@@ -1,0 +1,44 @@
+{
+  "norm_id": "BOE-A-2003-10715",
+  "source": "BOE legislación consolidada",
+  "base_url": "https://www.boe.es/datosabiertos/api",
+  "downloaded_at": "2026-06-22T17:44:28.971650+00:00",
+  "files": [
+    {
+      "endpoint_name": "full",
+      "path": "data/raw/boe/BOE-A-2003-10715/full.xml",
+      "sha256": "35a8a7ca38814ccd91c91ce18368d134551a5bb38fd7d3c48ee5dcc6610527e2",
+      "size_bytes": 440896
+    },
+    {
+      "endpoint_name": "metadatos",
+      "path": "data/raw/boe/BOE-A-2003-10715/metadatos.xml",
+      "sha256": "c0ee32f17da0fa1b02a9c070f017204d1d6b928be5570ddc74ec15f0e8122e85",
+      "size_bytes": 1234
+    },
+    {
+      "endpoint_name": "analisis",
+      "path": "data/raw/boe/BOE-A-2003-10715/analisis.xml",
+      "sha256": "7e8ab19e3ccb09e73a7060960639804235e51df4d1a48bcff051d549b169c386",
+      "size_bytes": 13525
+    },
+    {
+      "endpoint_name": "metadata_eli",
+      "path": "data/raw/boe/BOE-A-2003-10715/metadata_eli.xml",
+      "sha256": "649fd82eb85adf8b5d1e100b3031f1635f835b4f96d2d9a1cb41c5d66093dcc4",
+      "size_bytes": 110572
+    },
+    {
+      "endpoint_name": "texto",
+      "path": "data/raw/boe/BOE-A-2003-10715/texto.xml",
+      "sha256": "1ef5e9ca32e9d0066ee1e85facb945d9418b8d60d9a51b4eadf758261c86cb1d",
+      "size_bytes": 316000
+    },
+    {
+      "endpoint_name": "indice",
+      "path": "data/raw/boe/BOE-A-2003-10715/indice.xml",
+      "sha256": "bddffff58e2ce3745ce32e3130ab220a77f8e1e2f390978d324b8d6345d957d7",
+      "size_bytes": 34616
+    }
+  ]
+}

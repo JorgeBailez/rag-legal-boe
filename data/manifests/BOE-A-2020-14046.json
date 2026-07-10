@@ -1,0 +1,44 @@
+{
+  "norm_id": "BOE-A-2020-14046",
+  "source": "BOE legislación consolidada",
+  "base_url": "https://www.boe.es/datosabiertos/api",
+  "downloaded_at": "2026-06-22T17:44:53.030205+00:00",
+  "files": [
+    {
+      "endpoint_name": "full",
+      "path": "data/raw/boe/BOE-A-2020-14046/full.xml",
+      "sha256": "747d579ad329ec7282f69495a4904a5b7f7c334e932b87fa201bb70b0f3dbaba",
+      "size_bytes": 115653
+    },
+    {
+      "endpoint_name": "metadatos",
+      "path": "data/raw/boe/BOE-A-2020-14046/metadatos.xml",
+      "sha256": "f5f70b2b6cb97fb7d13de5f91a2507c84476de5eb5f561a0e765ffef786d5389",
+      "size_bytes": 1263
+    },
+    {
+      "endpoint_name": "analisis",
+      "path": "data/raw/boe/BOE-A-2020-14046/analisis.xml",
+      "sha256": "33e8902fdfa88f819db5acbf74a7c4c56a258838461bc4074be07f4128102cbd",
+      "size_bytes": 3239
+    },
+    {
+      "endpoint_name": "metadata_eli",
+      "path": "data/raw/boe/BOE-A-2020-14046/metadata_eli.xml",
+      "sha256": "66ddab9cc1e664db5b3100362eaa760e335884a46b18336131dea6f821721a17",
+      "size_bytes": 17313
+    },
+    {
+      "endpoint_name": "texto",
+      "path": "data/raw/boe/BOE-A-2020-14046/texto.xml",
+      "sha256": "50d2e69e164903c67bd24e23753837fe5270b49de1c78f040fe962c2cfc6cb33",
+      "size_bytes": 94273
+    },
+    {
+      "endpoint_name": "indice",
+      "path": "data/raw/boe/BOE-A-2020-14046/indice.xml",
+      "sha256": "155e04683d910f746208d650e069f57a5644a7d15307f5718b8e4ae27d2d594e",
+      "size_bytes": 11094
+    }
+  ]
+}

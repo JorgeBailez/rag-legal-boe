@@ -156,7 +156,7 @@ def render_worksheet(
         )
         if entry["judged_not_pooled"]:
             out.append(
-                "> ⚠️ Parents ya juzgados que NINGÚN sistema recuperó (revisar recall o gold): "
+                "> [WARN] Parents ya juzgados que NINGÚN sistema recuperó (revisar recall o gold): "
                 f"{', '.join(entry['judged_not_pooled'])}"
             )
         shown = cands[:worksheet_top]
@@ -189,9 +189,7 @@ def render_worksheet(
     return "\n".join(out) + "\n"
 
 
-def pool_to_jsonl_records(
-    pool: dict[str, dict], questions_by_id: dict[str, dict]
-) -> list[dict]:
+def pool_to_jsonl_records(pool: dict[str, dict], questions_by_id: dict[str, dict]) -> list[dict]:
     """Aplana el pool a registros JSONL (uno por pregunta) con sus metadatos."""
     records: list[dict] = []
     for qid in sorted(pool):

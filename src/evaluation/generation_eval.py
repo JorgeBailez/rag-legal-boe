@@ -13,18 +13,23 @@ exactamente el contexto entregado al modelo.
 from __future__ import annotations
 
 from collections.abc import Callable
+from types import SimpleNamespace
 from typing import Protocol
 
-from src.contracts.generation_models import RagAnswerV1
+from src.contracts.generation_models import RetrievalTraceV1
 from src.core.exceptions import RagLegalBoeError
 from src.evaluation.dataset import EvalAnswerKey, EvalQuestion
 from src.evaluation.generation_metrics import (
     aggregate_generation_metrics,
     compute_query_generation_metrics,
+    correctness_score,
+    faithfulness_score,
 )
 from src.generation.answer_generator import AnswerGenerator
 from src.generation.prompt import build_evidences_block
-from src.retrieval.evidence_builder import build_evidences
+from src.retrieval.evidence_builder import build_evidences, build_oracle_evidences
+
+EVAL_MODES = ("rag", "closed_book", "oracle")
 
 _SCALAR_KEYS = (
     "key_fact_recall",
@@ -85,6 +90,31 @@ def _scalar_row(q: EvalQuestion, metrics: dict, *, latency_s: float | None) -> d
     return row
 
 
+def _oracle_gold_for(judgments_for_q: list[dict]) -> list[dict]:
+    """Gold del oracle: parent_id + párrafos de evidencia, ordenado por relevancia descendente."""
+    ordered = sorted(judgments_for_q, key=lambda j: j.get("relevance", 0), reverse=True)
+    return [
+        {
+            "parent_id": j["parent_id"],
+            "paragraph_orders": (j.get("evidence") or {}).get("paragraph_orders", []),
+            "relevance": j.get("relevance", 0),
+        }
+        for j in ordered
+    ]
+
+
+def _empty_trace(generator: AnswerGenerator, resolved_profile: str) -> RetrievalTraceV1:
+    """Traza vacía (closed-book no recupera nada; mantiene la forma del report)."""
+    return RetrievalTraceV1(
+        bundle_id=generator.retriever.bundle_id,
+        model_alias=generator.retriever.model_alias,
+        query_profile_id=resolved_profile,
+        top_k=0,
+        returned_hits=0,
+        selected_evidences=0,
+    )
+
+
 def evaluate_generation(
     *,
     questions: list[dict],
@@ -92,6 +122,8 @@ def evaluate_generation(
     generator: AnswerGenerator,
     judge: Judge | None = None,
     query_profile_id: str | None = None,
+    mode: str = "rag",
+    judgments: list[dict] | None = None,
     limit: int | None = None,
     on_progress: Callable[[dict], None] | None = None,
 ) -> tuple[list[dict], list[dict], dict]:
@@ -107,6 +139,16 @@ def evaluate_generation(
     total = len(selected)
     notify = on_progress or (lambda _info: None)
 
+    if mode not in EVAL_MODES:
+        raise RagLegalBoeError(f"modo de evaluación desconocido: {mode!r} (esperado {EVAL_MODES})")
+    judgments_by_qid: dict[str, list[dict]] = {}
+    for j in judgments or []:
+        if j.get("relevance", 0) >= 1:
+            judgments_by_qid.setdefault(j["query_id"], []).append(j)
+    resolved_profile = generator.retriever.resolved_query_profile_id(
+        query_profile_id or generator.config.query_profile_id
+    )
+
     per_query: list[dict] = []
     metrics_rows: list[dict] = []
     for idx, q in enumerate(selected, start=1):
@@ -120,10 +162,71 @@ def evaluate_generation(
                 "query_style": q.query_style,
             }
         )
-        answer: RagAnswerV1 = generator.answer(q.query, query_profile_id=query_profile_id)
-        cited_parents = [c.parent_id for c in answer.citations]
         ak = ak_by_qid.get(q.query_id)
         answerable = ak.answerable if ak is not None else (q.split != "out_of_corpus")
+        oracle_selection = None
+        try:
+            if mode == "closed_book":
+                cb = generator.generate_closed_book(q.query)
+                # Shim: el closed-book no cabe en RagAnswerV1 (no hay citas); se expone con la misma
+                # forma de atributos que consume el resto del bucle (citas y traza vacías).
+                answer = SimpleNamespace(
+                    answered=cb.answered,
+                    answer=cb.answer,
+                    abstention_reason=cb.abstention_reason,
+                    citations=[],
+                    generation_metrics=cb.generation_metrics,
+                    retrieval_trace=_empty_trace(generator, resolved_profile),
+                )
+            elif mode == "oracle":
+                oracle_selection = build_oracle_evidences(
+                    _oracle_gold_for(judgments_by_qid.get(q.query_id, [])),
+                    parents_by_id=generator.retriever.corpus.get("parents_by_id", {}),
+                    max_evidences=generator.config.max_evidences,
+                    context_strategy=generator.config.context_strategy,
+                    context_budget_chars=generator.config.context_budget_chars,
+                    max_total_context_chars=generator.config.max_total_context_chars,
+                )
+                answer = generator.answer_with_evidences(
+                    q.query, oracle_selection, query_profile_id=query_profile_id
+                )
+            else:
+                answer = generator.answer(q.query, query_profile_id=query_profile_id)
+        except RagLegalBoeError as exc:
+            # Un fallo de contrato del generador (JSON inválido del LLM, ID inventado…) NO debe
+            # abortar la corrida entera (horas): se registra como error técnico de la pregunta y se
+            # continúa. Estas filas se EXCLUYEN de las métricas (no son una abstención deliberada).
+            per_query.append(
+                {
+                    "query_id": q.query_id,
+                    "split": q.split,
+                    "query_style": q.query_style,
+                    "failure_mode": q.failure_mode,
+                    "difficulty": q.difficulty,
+                    "mode": mode,
+                    "answered": False,
+                    "answerable": answerable,
+                    "abstention_outcome": "generation_error",
+                    "generation_error": str(exc),
+                }
+            )
+            notify(
+                {
+                    "event": "done",
+                    "i": idx,
+                    "total": total,
+                    "query_id": q.query_id,
+                    "answered": False,
+                    "answerable": answerable,
+                    "latency_s": None,
+                    "abstention_outcome": "generation_error",
+                    "generation_error": str(exc),
+                    "failure_mode": q.failure_mode,
+                    "query_style": q.query_style,
+                }
+            )
+            continue
+        cited_parents = [c.parent_id for c in answer.citations]
         key_facts = ak.key_facts if ak else []
         forbidden_facts = ak.forbidden_facts if ak else []
         expected_parents = ak.expected_citation_parents if ak else []
@@ -132,7 +235,28 @@ def evaluate_generation(
         faithfulness_claims: list[bool] | None = None
         correctness_label: str | None = None
         judge_error: str | None = None
-        if judge is not None and answer.answered and answerable:
+        evidences_block: str | None = None
+        # El bloque de evidencias que vio el generador se reconstruye y se guarda en el report
+        # SIEMPRE que haya respuesta (haya juez o no): el anotador humano necesita exactamente esa
+        # evidencia para validar la fidelidad (afirmación-contra-evidencia); sin ella ni el κ de L3
+        # ni la anotación humana que lo sustituye son válidos.
+        # Se reconstruye el bloque para toda pregunta respondible (respondida o abstenida): así el
+        # report guarda el contexto que vio el LLM también en las abstenciones, necesario para el
+        # análisis de errores (¿se abstuvo con la evidencia suficiente delante o no?).
+        if answerable:
+            if mode == "oracle" and oracle_selection is not None:
+                evidences_block = build_evidences_block(oracle_selection.evidences)
+            elif mode == "rag":
+                try:
+                    evidences_block = _evidences_block_for(generator, q.query, query_profile_id)
+                except RagLegalBoeError as exc:
+                    # Un fallo reconstruyendo la evidencia no debe abortar la corrida.
+                    evidences_block = None
+                    if judge is not None:
+                        judge_error = str(exc)
+            # closed_book: sin evidencia → no hay bloque que juzgar (fidelidad no aplica).
+
+        if judge is not None and answer.answered and evidences_block is not None:
             try:
                 notify(
                     {
@@ -143,9 +267,8 @@ def evaluate_generation(
                         "query_id": q.query_id,
                     }
                 )
-                block = _evidences_block_for(generator, q.query, query_profile_id)
                 faith_verdict, _ = judge.judge_faithfulness(
-                    answer=answer.answer, evidences_block=block
+                    answer=answer.answer, evidences_block=evidences_block
                 )
                 faithfulness_claims = [c.supported for c in faith_verdict.claims]
                 if reference.strip():
@@ -183,6 +306,19 @@ def evaluate_generation(
             {"parent_id": o.parent_id, "retrieval_rank": o.retrieval_rank, "reason": o.reason}
             for o in trace.omitted_evidences
         ]
+        # Hits de recuperación CON su score y si se seleccionaron (entregaron): permite ver el
+        # ranking y la confianza de cada candidato en el análisis de trazas.
+        retrieval_hits = [
+            {
+                "rank": h.rank,
+                "score": round(h.score, 4),
+                "parent_id": h.parent_id,
+                "block_id": h.block_id,
+                "selected": h.selected,
+                "evidence_id": h.evidence_id,
+            }
+            for h in trace.hits
+        ]
 
         metrics = compute_query_generation_metrics(
             answered=answer.answered,
@@ -203,16 +339,19 @@ def evaluate_generation(
                 "query_style": q.query_style,
                 "failure_mode": q.failure_mode,
                 "difficulty": q.difficulty,
+                "mode": mode,
                 **metrics,
                 "latency_s": latency_s,
                 "eval_count": eval_count,
                 "cited_parents": cited_parents,
                 "delivered_parents": delivered_parents,
                 "retrieved_parents": retrieved_parents,
+                "retrieval_hits": retrieval_hits,
                 "omitted_evidences": omitted_evidences,
                 "expected_citation_parents": expected_parents,
                 "answer_text": answer.answer,
                 "abstention_reason": answer.abstention_reason,
+                "evidences_block": evidences_block,
                 "judge_error": judge_error,
             }
         )
@@ -375,3 +514,86 @@ def rejudge_correctness(
 
     aggregate = aggregate_generation_metrics(per_query)
     return per_query, metrics_rows, aggregate
+
+
+def rejudge_report(
+    *,
+    prior_per_query: list[dict],
+    answer_keys: list[dict],
+    questions: list[dict],
+    judge: Judge,
+    limit: int | None = None,
+    on_progress: Callable[[dict], None] | None = None,
+) -> list[dict]:
+    """Re-juzga fidelidad (L3) y corrección (L5) con un prompt de juez nuevo, sin regenerar.
+
+    Reutiliza `answer_text` y `evidences_block` ya guardados en un report previo (solo las
+    respuestas; las abstenciones se omiten). Pensado para **calibrar el prompt del juez** y
+    re-validar κ/AC1 contra la MISMA anotación humana, aislando el efecto del prompt. Devuelve filas
+    `per_query` con `faithfulness`/`correctness` nuevos (las consume `validate_judge.py
+    --annotations`). Si una fila no trae `evidences_block` (report antiguo) la fidelidad queda
+    `None`; sin `reference_answer`, la corrección queda `None`. Un veredicto malformado del juez NO
+    aborta: se marca `judge_error`.
+    """
+    q_by_qid = {q["query_id"]: EvalQuestion.model_validate(q) for q in questions}
+    ak_by_qid = {a["query_id"]: EvalAnswerKey.model_validate(a) for a in answer_keys}
+    answered = [r for r in prior_per_query if r.get("answered")]
+    selected = answered if limit is None else answered[:limit]
+    total = len(selected)
+    notify = on_progress or (lambda _info: None)
+
+    per_query: list[dict] = []
+    for idx, pr in enumerate(selected, start=1):
+        qid = pr["query_id"]
+        q = q_by_qid.get(qid)
+        ak = ak_by_qid.get(qid)
+        answer_text = pr.get("answer_text", "")
+        evidences_block = pr.get("evidences_block") or ""
+        reference = ak.reference_answer if ak else ""
+        notify({"event": "start", "i": idx, "total": total, "query_id": qid})
+
+        faithfulness: float | None = None
+        correctness: float | None = None
+        judge_error: str | None = None
+        try:
+            if evidences_block.strip():
+                notify({"event": "judging", "phase": "fidelidad", "query_id": qid})
+                faith_verdict, _ = judge.judge_faithfulness(
+                    answer=answer_text, evidences_block=evidences_block
+                )
+                faithfulness = faithfulness_score([c.supported for c in faith_verdict.claims])
+            if reference.strip() and q is not None:
+                notify({"event": "judging", "phase": "corrección", "query_id": qid})
+                corr_verdict, _ = judge.judge_correctness(
+                    question=q.query, answer=answer_text, reference=reference
+                )
+                correctness = correctness_score(corr_verdict.verdict)
+        except RagLegalBoeError as exc:
+            judge_error = str(exc)
+
+        per_query.append(
+            {
+                "query_id": qid,
+                "split": pr.get("split"),
+                "query_style": pr.get("query_style"),
+                "answered": True,
+                "faithfulness": faithfulness,
+                "correctness": correctness,
+                "answer_text": answer_text,
+                "evidences_block": evidences_block,
+                "judge_error": judge_error,
+                "rejudged": True,
+            }
+        )
+        notify(
+            {
+                "event": "done",
+                "i": idx,
+                "total": total,
+                "query_id": qid,
+                "faithfulness": faithfulness,
+                "correctness": correctness,
+                "judge_error": judge_error,
+            }
+        )
+    return per_query

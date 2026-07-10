@@ -1,0 +1,44 @@
+{
+  "norm_id": "BOE-A-2015-8343",
+  "source": "BOE legislación consolidada",
+  "base_url": "https://www.boe.es/datosabiertos/api",
+  "downloaded_at": "2026-06-22T17:44:29.776269+00:00",
+  "files": [
+    {
+      "endpoint_name": "full",
+      "path": "data/raw/boe/BOE-A-2015-8343/full.xml",
+      "sha256": "b6b351bb37a2ae54d40566cec37dc3d21dbea95556d5824bdac7ee7857a5b5ba",
+      "size_bytes": 1193620
+    },
+    {
+      "endpoint_name": "metadatos",
+      "path": "data/raw/boe/BOE-A-2015-8343/metadatos.xml",
+      "sha256": "c166993960f7ecbd0bab8e445470da5c37b3ff44eb55fcab495f5acc340d2d15",
+      "size_bytes": 1378
+    },
+    {
+      "endpoint_name": "analisis",
+      "path": "data/raw/boe/BOE-A-2015-8343/analisis.xml",
+      "sha256": "3bf78f574d59f8396c9a543571563c669d5c8176054332aee546e209eab181ef",
+      "size_bytes": 8239
+    },
+    {
+      "endpoint_name": "metadata_eli",
+      "path": "data/raw/boe/BOE-A-2015-8343/metadata_eli.xml",
+      "sha256": "0f0fe711fdb98ad919fca93ce26e1b691c6888aa4bb4baccf4a8c374a95f4c67",
+      "size_bytes": 111950
+    },
+    {
+      "endpoint_name": "texto",
+      "path": "data/raw/boe/BOE-A-2015-8343/texto.xml",
+      "sha256": "bd2d03497357995202179aff4622263352b52eb9d350649e425369a91f82a0e2",
+      "size_bytes": 1072488
+    },
+    {
+      "endpoint_name": "indice",
+      "path": "data/raw/boe/BOE-A-2015-8343/indice.xml",
+      "sha256": "421e02f398642fe8c5e546d321ea6fc4f3bd4e0c4c8a3c0bfc10cdc9e17de2a1",
+      "size_bytes": 46909
+    }
+  ]
+}

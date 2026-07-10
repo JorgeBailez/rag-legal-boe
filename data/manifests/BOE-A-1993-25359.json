@@ -1,0 +1,44 @@
+{
+  "norm_id": "BOE-A-1993-25359",
+  "source": "BOE legislación consolidada",
+  "base_url": "https://www.boe.es/datosabiertos/api",
+  "downloaded_at": "2026-06-22T17:44:07.442143+00:00",
+  "files": [
+    {
+      "endpoint_name": "full",
+      "path": "data/raw/boe/BOE-A-1993-25359/full.xml",
+      "sha256": "be0fa02086d42d47578bd8f76adc828134bc555654fea5ff29aa4f142957a558",
+      "size_bytes": 1818281
+    },
+    {
+      "endpoint_name": "metadatos",
+      "path": "data/raw/boe/BOE-A-1993-25359/metadatos.xml",
+      "sha256": "6b5a8120b102b9945918514338fb7fc6d2c0ffb0b191fdf56df867840ecb3501",
+      "size_bytes": 1374
+    },
+    {
+      "endpoint_name": "analisis",
+      "path": "data/raw/boe/BOE-A-1993-25359/analisis.xml",
+      "sha256": "15b6b5099c331483fa36e4283cf48a8ff38c8e049a39c668896b73ba2d60f28e",
+      "size_bytes": 32287
+    },
+    {
+      "endpoint_name": "metadata_eli",
+      "path": "data/raw/boe/BOE-A-1993-25359/metadata_eli.xml",
+      "sha256": "9db9f03c9fb5579efdd509e309e617972d74663d1d57caec802979f7c5490ae9",
+      "size_bytes": 244096
+    },
+    {
+      "endpoint_name": "texto",
+      "path": "data/raw/boe/BOE-A-1993-25359/texto.xml",
+      "sha256": "673d582aad8765280cf575c43f378eeba2177cfd26aa278c42b1455b71d869c1",
+      "size_bytes": 1540959
+    },
+    {
+      "endpoint_name": "indice",
+      "path": "data/raw/boe/BOE-A-1993-25359/indice.xml",
+      "sha256": "04b3acbfd5832a7bf0cf5dfa1bfd6b52b185d82afac77e20bead6ddb76d4c3b1",
+      "size_bytes": 30917
+    }
+  ]
+}

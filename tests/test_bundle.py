@@ -329,6 +329,30 @@ def test_validated_loader_rejects_obsolete_corpus_fingerprint(tmp_path) -> None:
         load_validated_bundle(result["path"], corpus=obsolete)
 
 
+def test_validated_loader_accepts_no_corpus(tmp_path) -> None:
+    """corpus=None omite SOLO las comprobaciones bundle-corpus; el resto de la validación sigue."""
+    prepared, emb, scfp = _prepare_and_embed()
+    result = publish_bundle(
+        contract=TEST_CONTRACT,
+        view="J1",
+        prepared=prepared,
+        embeddings=emb,
+        source_corpus_fingerprint=scfp,
+        n_norms=2,
+        execution=ExecutionMeta(encoder_backend="fake"),
+        output_root=tmp_path,
+    )
+    bundle_dir = result["path"]
+    # sin corpus en disco la carga funciona (caso abstención top-1)
+    manifest, rows, emb_loaded = load_validated_bundle(bundle_dir, corpus=None)
+    assert manifest["bundle"]["bundle_id"] == bundle_dir.name
+    assert emb_loaded.shape[0] == len(rows) == manifest["artifacts"]["n_rows"]
+    # pero la validación interna (checksums) sigue activa aunque no haya corpus
+    (bundle_dir / "rows.jsonl").write_text("tampered\n", encoding="utf-8")
+    with pytest.raises(BundleValidationError, match="checksum"):
+        load_validated_bundle(bundle_dir, corpus=None)
+
+
 def test_validated_loader_rejects_document_fingerprint_tampering(tmp_path) -> None:
     prepared, emb, scfp = _prepare_and_embed()
     result = publish_bundle(

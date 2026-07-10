@@ -1,17 +1,205 @@
-\chapter{Contenido adicional}
-\label{app:additional}
+\chapter{Instalación, ejecución y reproducibilidad}
+\label{app:instalacion}
 
-\section{Dimensiones de página}
+Este anexo documenta cómo reconstruir y ejecutar el sistema de extremo a extremo, en apoyo directo del objetivo de reproducibilidad (OE-08). Todos los comandos se lanzan desde la raíz del repositorio.
 
-A continuación se incluye un resumen de las dimensiones calculadas para
-el diseño de maquetación de las páginas de la memoria.
+\section{Requisitos}
+\label{sec:app-requisitos}
 
-\printinunitsof{mm}{\pagevalues}
+El entorno de Python se gestiona con \texttt{uv}, que debe estar instalado en el sistema. Las cargas ligeras y la suite de pruebas corren en cualquier equipo; las cargas pesadas —descarga del corpus, codificación de \emph{embeddings} y llamadas reales al modelo generativo— se ejecutan en el servidor, con la GPU como opción puntual para acelerar la indexación. La generación y el modelo juez requieren \texttt{Ollama} con los modelos locales descargados (generador \texttt{qwen2.5:7b-instruct} y juez \texttt{gemma3:12b}). Para descargar el modelo de \emph{embeddings} se necesita un token de acceso a Hugging Face en la variable de entorno \texttt{HF\_TOKEN}, que nunca se versiona ni se imprime.
 
-\verb|\marginparwidth|: \printinunitsof{mm}\prntlen{\marginparwidth}
+\section{Instalación del entorno}
+\label{sec:app-instalacion}
 
-\verb|\marginparwidth|: \printinunitsof{pt}\prntlen{\marginparwidth}
+\begin{lstlisting}
+uv sync    # crea .venv e instala las dependencias fijadas en el lockfile
+\end{lstlisting}
 
-\pagediagram
+No hacen falta ficheros \texttt{.env} ni secretos para las pruebas: la configuración arranca con valores por defecto seguros.
 
-\blindtext
+\section{Puerta de calidad (sin red)}
+\label{sec:app-calidad}
+
+La suite completa se ejecuta \emph{offline}, sustituyendo modelos y servicios por dobles de prueba:
+
+\begin{lstlisting}
+uv run pytest                                          # suite completa, 100% offline
+uv run ruff check .                                    # lint (incluye los notebooks)
+uv run ruff format .                                   # formato
+uv run python -m src.contracts.export_schemas --check  # anti-drift de los JSON Schema
+\end{lstlisting}
+
+\section{Construcción del corpus}
+\label{sec:app-corpus}
+
+El pipeline encadena descarga cruda, parseo, fragmentación y auditoría. La construcción con red y las validaciones posteriores son:
+
+\begin{lstlisting}
+uv run python scripts/build_corpus.py             # descarga + procesa + chunk (requiere red)
+uv run python scripts/validate_mvp_corpus.py --strict
+uv run python scripts/audit_corpus.py --strict    # debe terminar "Sin flags"
+\end{lstlisting}
+
+El reprocesado local a partir del \emph{raw} ya descargado (sin red) se realiza con \texttt{process\_mvp\_corpus.py}, útil cada vez que mejora el \emph{parser} o el fragmentador.
+
+\section{Indexación densa}
+\label{sec:app-indexacion}
+
+Es una carga pesada; conviene lanzarla en el servidor y, si se dispone, acelerar la codificación en GPU:
+
+\begin{lstlisting}
+uv run python scripts/generate_dense_index.py --model e5-large-instruct
+uv run python scripts/validate_dense_index.py <ruta-al-bundle>
+\end{lstlisting}
+
+\section{Evaluación}
+\label{sec:app-evaluacion}
+
+\begin{lstlisting}
+# Recuperacion: comparacion de estrategias y seleccion de modelo de embeddings
+uv run python scripts/benchmark_retrieval_strategies.py --bundle <bundle> --split test
+uv run python scripts/benchmark_dense_models.py
+# Generacion: retrieval + generacion + juez (opcional)
+uv run python scripts/run_generation_eval.py
+# Auditoria del banco de pruebas: grounding contra el corpus real
+uv run python scripts/audit_eval_dataset.py       # debe terminar "Sin flags"
+\end{lstlisting}
+
+Cada corrida deja un \textbf{informe versionado e inmutable} en \texttt{data/processed/reports/}, con su configuración y sus huellas de reproducibilidad; de esos informes procede cada tabla del capítulo de experimentos.
+
+\section{Ejecución real con modelos (opcional)}
+\label{sec:app-ollama}
+
+Las llamadas reales a \texttt{Ollama} se mantienen fuera de la suite automática. Para ejercitarlas de forma explícita:
+
+\begin{lstlisting}
+RUN_OLLAMA_INTEGRATION=1 uv run --locked pytest tests/test_integration_ollama.py -q -s
+\end{lstlisting}
+
+\chapter{Estructura del repositorio y licencias}
+\label{app:repo}
+
+\section{Enlace al repositorio}
+\label{sec:app-enlace}
+
+El código fuente completo de este Trabajo Fin de Grado está disponible en: \textcolor{red}{AÑADIR URL CUANDO SE PONGA PÚBLICO EL REPOSITORIO}.
+
+\section{Estructura de carpetas}
+\label{sec:app-estructura}
+
+El repositorio se organiza en torno a una biblioteca (\texttt{src/}), sus \emph{scripts} de orquestación y los artefactos de datos y documentación:
+
+\begin{description}
+  \item[\texttt{src/}] La biblioteca del sistema, importable como \texttt{src.<paquete>}. Sus paquetes se corresponden uno a uno con las etapas del \emph{pipeline} y se describen en detalle en el capítulo de diseño (\ref{subsec:mapa-componentes}): \texttt{boe}, \texttt{preprocessing}, \texttt{contracts}, \texttt{embeddings}, \texttt{indexing}, \texttt{retrieval}, \texttt{generation}, \texttt{evaluation}, \texttt{quality}, \texttt{config} y \texttt{core}.
+  \item[\texttt{scripts/}] Los \emph{scripts} de orquestación de cada etapa (descarga, parseo, fragmentación, auditoría, indexación y evaluación).
+  \item[\texttt{tests/}] La batería de pruebas, que se ejecuta por completo sin red mediante dobles de prueba.
+  \item[\texttt{prompts/}] Las plantillas de \emph{prompt} versionadas (sistema, generación fundamentada y juez).
+  \item[\texttt{schemas/}] Los \emph{JSON Schema} generados de forma determinista a partir de los contratos de datos.
+  \item[\texttt{data/}] Los artefactos: \emph{raw} inmutable, procesados, índices e informes. En su mayoría no se versionan (sí los manifiestos, esquemas, informes de verificación y el banco de evaluación).
+  \item[\texttt{thesis/}] Esta memoria, en \LaTeX.
+  \item[\texttt{pyproject.toml}] La declaración de dependencias del proyecto, gestionadas por \texttt{uv} con fichero de bloqueo para un entorno reconstruible.
+\end{description}
+
+Esta correspondencia directa entre la estructura del código y las etapas de la cadena de datos es la que permite localizar cualquier pieza y reproducir cualquier resultado a partir de sus entradas.
+
+\section{Licencias}
+\label{sec:app-licencias}
+
+El trabajo se apoya en materiales y componentes con licencias diferenciadas, todas compatibles con un uso abierto y local:
+
+\begin{itemize}
+  \item \textbf{Textos normativos.} Proceden de los datos abiertos del BOE y son reutilizables; tienen carácter informativo y no sustituyen a la publicación oficial \cite{boeLegislacionActualizada}.
+  \item \textbf{Modelos.} El modelo de \emph{embeddings}, el generador y el juez son de pesos abiertos y se ejecutan en local, cada uno bajo la licencia que establece su autor.
+  \item \textbf{Código.} Se publica como software de código abierto; la licencia concreta se incorpora al hacerse público el repositorio.
+  \item \textbf{Memoria.} Se distribuye bajo licencia Creative Commons Reconocimiento-CompartirIgual (CC BY-SA 4.0).
+\end{itemize}
+
+\chapter{Planificación y bitácora del proyecto}
+\label{app:planificacion}
+
+Este anexo desarrolla la planificación temporal resumida en el capítulo de objetivos (\ref{sec:planificacion-temporal}): las ocho fases en que se organizó el trabajo y las desviaciones que el plan sufrió durante la ejecución.
+
+\section{Fases del proyecto}
+\label{sec:app-fases}
+
+La planificación se organizó en ocho fases. Varias se solaparon porque el desarrollo de un sistema RAG requiere revisar decisiones previas cuando se observan resultados experimentales o errores de integración. La Tabla~\ref{tab:fases-proyecto} resume el contenido de cada una y su estado al cierre de la memoria.
+
+\begin{table}[htbp]
+    \centering
+    \small
+    \renewcommand{\arraystretch}{1.18}
+    \caption{Fases principales del proyecto.}
+    \label{tab:fases-proyecto}
+    \begin{tabularx}{\textwidth}{|p{1.3cm}|p{4.0cm}|X|p{2.0cm}|}
+        \hline
+        \textbf{Fase} & \textbf{Denominación} & \textbf{Contenido principal} & \textbf{Estado} \\
+        \hline
+        F0 & Definición del problema & Delimitación del dominio jurídico, usuarios, fuente documental, alcance y criterios iniciales de utilidad. & Completada \\
+        \hline
+        F1 & Obtención y estructuración documental & Descarga desde el BOE, normalización, validación, metadatos y construcción del corpus inicial. & Completada; ampliable \\
+        \hline
+        F2 & Fragmentación e indexación & Diseño de unidades documentales, textos padre, embeddings, contratos de compatibilidad e índices. & Completada para el MVP \\
+        \hline
+        F3 & Recuperación y evaluación del \emph{retriever} & Evaluación de recuperación semántica e incorporación de recuperación léxica e híbrida para su comparación. & Completada \\
+        \hline
+        F4 & Generación fundamentada & Construcción de contexto, prompts, generación local, citas y validación de salidas. & MVP completado; en mejora \\
+        \hline
+        F5 & Demostrador de extremo a extremo & Ejecución completa del flujo pregunta--respuesta con citas mediante línea de comandos y cuadernos reproducibles. La interfaz web se pospone a trabajo futuro. & Completada para el MVP \\
+        \hline
+        F6 & Evaluación integral & Batería de preguntas, métricas, análisis cualitativo, abstención y estudio de errores. & Completada \\
+        \hline
+        F7 & Documentación y cierre & Memoria, anexos, reproducibilidad, revisión formal y preparación de la defensa. & En curso \\
+        \hline
+    \end{tabularx}
+\end{table}
+
+\section{Desviaciones y ajustes}
+\label{sec:app-desviaciones}
+
+Como es natural en un trabajo experimental, el plan se ajustó al chocar con la realidad. Las desviaciones principales fueron cuatro.
+
+\begin{description}
+  \item[Cambio de fuente documental.] El proyecto arrancó sobre documentos legales en \emph{texto plano}, sin estructura explícita. Esa falta de estructura complicaba enormemente una fragmentación que respetara la unidad jurídica —la base sobre la que se apoya todo lo demás—. Hacia mayo de 2026 se decidió cambiar a la legislación consolidada del BOE, cuya API expone la estructura de bloques, versiones y metadatos; el cambio, lejos de ser un retroceso, es lo que hizo viables la estrategia \emph{parent-child} y la trazabilidad que vertebran el sistema.
+  \item[Ampliación del corpus.] El corpus pasó de un MVP de \textbf{10 normas}, para demostrar factibilidad, a las \textbf{92 normas} finales, con las que dar cobertura significativa a distintas áreas de uso ciudadano. La ampliación obligó a endurecer el \emph{parser} y la auditoría (véanse los problemas resueltos en el capítulo de diseño).
+  \item[Re-priorización de la generación y del juez.] A finales de junio de 2026, la generación fundamentada y la \emph{validación del modelo juez frente a anotación humana} pasaron de secundarias a objetivos de primera clase, gestionados por niveles de evidencia. Fue una decisión de alcance: invertir horas de anotación para poder afirmar —o negar— algo con rigor sobre la calidad de la generación.
+  \item[Giro a la GPU.] El coste de codificar los \emph{embeddings} en CPU obligó a habilitar la ejecución en GPU para la indexación, como se detalla en el capítulo de diseño; además, un modelo candidato (\texttt{gte-multilingual-base}) quedó aplazado por una incompatibilidad técnica.
+\end{description}
+
+\chapter{Problemas resueltos durante la implementación}
+\label{app:problemas}
+
+Este anexo recoge, con su diagnóstico y su solución, los problemas de mayor impacto que surgieron al construir el sistema y que se mencionan de forma resumida en el capítulo de diseño (\ref{chap:diseño}). Se conservan aquí por su valor de reproducibilidad y como ilustración de las decisiones de ingeniería que sostienen la calidad del corpus, ordenados según la etapa de la cadena de datos en la que aparecieron.
+
+\section{Construcción y auditoría del corpus}
+
+\begin{myredbox}{Problema resuelto: una norma sin texto consolidado}
+Al descargar las 93 normas seleccionadas, una falló: la API de legislación consolidada devolvió un error \texttt{HTTP 404} («recurso no encontrado») para la Ley 35/2015, de valoración de daños. La causa es que se trata de una \emph{ley de reforma} que no tiene un texto consolidado propio en la API; su contenido —un baremo de indemnizaciones— vive en realidad dentro de un anexo de otra norma (el Real Decreto Legislativo 8/2004) que \emph{ya} estaba en el corpus. En lugar de forzar su inclusión, se dejó fuera y se documentó el porqué, con lo que el corpus quedó en \textbf{92 normas}. Es el criterio de inclusión en acción: una norma solo entra si está vigente, con su estado de consolidación «finalizado» y todos sus recursos disponibles; lo que no cumple se reporta, nunca se sustituye a escondidas.
+\end{myredbox}
+
+\begin{myredbox}{Problema resuelto: 214 «errores» de auditoría que no lo eran}
+Al pasar la comprobación de calidad (la auditoría relacional del corpus) sobre las 92 normas, saltaron 214 «errores» aparentemente bloqueantes. Investigados uno a uno, ninguno era un fallo real: eran \emph{falsos positivos} de la propia comprobación. Por ejemplo, marcaba como error los bloques excluidos a propósito (que llevan \texttt{parent\_id} nulo por diseño), los fragmentos con un identificador por encima de un límite fijado un poco a ojo (\texttt{chunk\_id > 1000}) o una cadena literal de una tabla de valores (como \texttt{<P20>}) que confundía con un identificador interno. La solución fue afinar la auditoría para \emph{distinguir} lo excluido por política de lo realmente roto; tras ello, cero errores verdaderos. La lección: una alarma que salta sin motivo acaba siendo tan inútil como no tenerla, y conviene separar la \emph{integridad} (errores reales) de la \emph{cobertura} (exclusiones legítimas).
+\end{myredbox}
+
+\section{Interpretación del documento y vigencia temporal}
+
+\begin{myredbox}{Problema resuelto: texto antiguo colándose como vigente}
+Cuando una ley se reforma, el texto consolidado del BOE conserva —junto a la redacción vigente— la \emph{antigua} y notas del tipo «este artículo estuvo redactado así hasta 2015». En el documento estructurado del BOE ese material caducado va envuelto en un elemento \texttt{<blockquote>} (la etiqueta HTML que marca un texto citado o entrecomillado), mientras que la redacción vigente va en párrafos normales (\texttt{<p>}). El primer \emph{parser} decidía qué descartar mirando la \emph{clase CSS} de cada párrafo —una etiqueta de estilo, del tipo \texttt{class="nota\_pie"}—, pero esas clases no eran consistentes entre normas, de modo que redacciones ya derogadas se colaban en el texto indexable: en la ley de consumidores entraron \textbf{203 fragmentos} de artículos derogados como si siguieran vigentes. La solución fue clasificar por la \emph{estructura} y no por el estilo: todo lo que cuelga de un \texttt{<blockquote>} es aparato editorial —nota o redacción antigua— y no se indexa; y una comprobación de auditoría (\texttt{editorial\_leak}) avisa si algo se cuela. Importa mucho porque, si el sistema citara un artículo derogado como vigente, daría una respuesta equivocada pero con toda la apariencia de estar bien fundamentada: el peor tipo de error en derecho.
+\end{myredbox}
+
+\begin{myredbox}{Problema resuelto: tablas perdidas o duplicadas}
+El BOE codifica las tablas de dos formas distintas en su HTML: unas con párrafos dentro de cada celda (\texttt{<td><p>...}) y otras con la celda «cruda», sin párrafo (\texttt{<td>} a secas). El primer \emph{parser}, que solo sabía leer párrafos, trataba mal ambas: duplicaba las de la primera forma —leía la celda como párrafo suelto y otra vez como parte de la tabla— y perdía por completo las de la segunda. Así desapareció, por ejemplo, la tabla de coeficientes del artículo 107 de la ley de haciendas locales: \textbf{22 filas} de valores que nunca se indexaron, de modo que el sistema no podía responder sobre ellas. La solución fue \emph{linealizar} toda tabla fila a fila —uniendo cada concepto con su valor en una sola línea, p. ej. «municipios de más de 100.000 hab. $\rightarrow$ coeficiente 1,29»— y registrar con una comprobación (\texttt{table\_cell\_dropped}) cualquier celda que quedara fuera. Sumado a la limpieza del texto antiguo del caso anterior, este arreglo recuperó \textbf{226 fragmentos contaminados en 15 de las 92 normas}.
+\end{myredbox}
+
+\begin{myredbox}{Problema resuelto: servir la redacción equivocada}
+Un mismo artículo puede arrastrar varias redacciones, una por cada reforma; el sistema debe servir la que está en vigor \emph{hoy}. El criterio intuitivo —«quédate con la última redacción que aparece en el XML»— falla, porque el orden del fichero no es cronológico y la fecha más alta puede corresponder a una reforma aún no vigente. Ocurrió de verdad: el artículo 45 de la ley de bases de régimen local acababa mostrando su redacción de \textbf{1990 en lugar de la vigente de 2013}, y lo mismo en otros 7 bloques del corpus. El criterio correcto (la regla de vigencia se detalla en \ref{subsec:vigencia}) es tomar la redacción cuya fecha de publicación (\texttt{fecha\_publicacion}) coincide \emph{exactamente} con la fecha de actualización que el índice de la norma (\texttt{indice.xml}) declara como vigente, y recalcularlo de forma independiente en la auditoría. Es uno de los pasos más delicados de todo el procesamiento: servir un artículo caducado no es un fallo cosmético, es dar información jurídica falsa.
+\end{myredbox}
+
+\section{Indexación}
+
+\begin{myredbox}{Problema resuelto: un fragmento que bloqueaba la indexación}
+Para indexar, el sistema parte cada artículo en trozos y necesita \emph{anclar} cada trozo a su posición —el número de párrafo— dentro del artículo original. Un artículo del reglamento general de circulación (el artículo 9) contiene varias líneas \emph{idénticas} repetidas; al anclar un trozo, su texto casaba en más de una posición a la vez y el sistema no podía decidir cuál. Ese fallo \textbf{tumbaba por completo} la construcción del índice denso del corpus de 92 normas (con las 10 iniciales no llegaba a darse). La solución fue anclar con un \emph{cursor por artículo} (por bloque padre): en vez de buscar el texto en todo el artículo, se avanza un cursor solo hacia adelante y solo dentro del mismo artículo, de modo que dos líneas iguales se distinguen por su orden de aparición. Tras el arreglo, los 24.788 trozos del corpus se anclaron sin un solo fallo.
+\end{myredbox}
+
+\begin{mybluebox}{Del CPU a la GPU: cuando indexar dejó de ser viable}
+Codificar los \emph{embeddings} de todo el corpus en CPU resultó prohibitivo: del orden de decenas de horas por modelo (más de 36 en las primeras estimaciones). Con varios modelos candidatos que comparar, ese coste hacía inviable iterar. La solución fue añadir un conmutador de dispositivo (\texttt{--device \{cpu,cuda\}}) al generador de índices: en GPU, la misma codificación pasa de horas a minutos. El sistema conserva la CPU como opción por defecto —con semilla fija, para no perder reproducibilidad— y recurre a la GPU solo de forma puntual para acelerar la indexación; el dispositivo empleado queda anotado en el manifiesto del \emph{bundle}, de modo que cada índice registra cómo se construyó.
+\end{mybluebox}

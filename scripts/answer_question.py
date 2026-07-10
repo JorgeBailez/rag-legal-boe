@@ -1,8 +1,8 @@
 """CLI del MVP de generación fundamentada (Fase 3): pregunta → respuesta con citas o abstención.
 
-Capa DELGADA sobre los servicios desacoplados (retrieval denso + evidencias + prompt + Ollama +
+Capa delgada sobre los servicios desacoplados (retrieval denso + evidencias + prompt + Ollama +
 orquestador). Requiere, para funcionar de verdad, un bundle denso publicado, los pesos del modelo
-de embeddings y un Ollama local en marcha — por eso se ejecuta en el servidor, no en los tests.
+de embeddings y un Ollama local en marcha; por eso se ejecuta fuera de los tests.
 
 Uso:
     uv run python scripts/answer_question.py \

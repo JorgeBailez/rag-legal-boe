@@ -32,6 +32,27 @@ def test_key_fact_recall_none_when_no_facts() -> None:
     assert key_fact_recall("texto", [])["key_fact_recall"] is None
 
 
+def test_key_fact_recall_respects_numeric_boundaries() -> None:
+    # "40.000" NO debe casar embebido en "140.000" (falso positivo del match por subcadena).
+    embedded = key_fact_recall("La cuantía asciende a 140.000 euros.", ["40.000"])
+    assert embedded["key_fact_recall"] == 0.0
+    # …pero SÍ casa como número independiente.
+    standalone = key_fact_recall("La sanción es de 40.000 euros.", ["40.000"])
+    assert standalone["key_fact_recall"] == 1.0
+
+
+def test_key_fact_recall_respects_word_boundaries() -> None:
+    # "mes" NO debe casar dentro de "mesón"; "días" NO dentro de "adjudicación".
+    out = key_fact_recall("Se celebró en el mesón tras la adjudicación.", ["mes", "dias"])
+    assert out["key_fact_recall"] == 0.0
+
+
+def test_forbidden_fact_hits_respects_boundaries() -> None:
+    # No debe marcar alucinación por un solapamiento de subcadena espurio.
+    assert forbidden_fact_hits("la cuantía es de 140.000 euros", ["40.000"]) == []
+    assert forbidden_fact_hits("la cuantía es de 40.000 euros", ["40.000"]) == ["40.000"]
+
+
 def test_forbidden_fact_hits_flags_hallucination() -> None:
     assert forbidden_fact_hits("el plazo es de tres meses", ["tres meses"]) == ["tres meses"]
     assert forbidden_fact_hits("el plazo es de un mes", ["tres meses"]) == []

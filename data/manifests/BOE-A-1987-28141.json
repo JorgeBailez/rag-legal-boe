@@ -1,0 +1,44 @@
+{
+  "norm_id": "BOE-A-1987-28141",
+  "source": "BOE legislación consolidada",
+  "base_url": "https://www.boe.es/datosabiertos/api",
+  "downloaded_at": "2026-06-22T17:44:06.934394+00:00",
+  "files": [
+    {
+      "endpoint_name": "full",
+      "path": "data/raw/boe/BOE-A-1987-28141/full.xml",
+      "sha256": "5b4fba856ca7ff1c2cc64a85e67d81d42c5cd3a885f00d56ffb9bd41d26c49c0",
+      "size_bytes": 659632
+    },
+    {
+      "endpoint_name": "metadatos",
+      "path": "data/raw/boe/BOE-A-1987-28141/metadatos.xml",
+      "sha256": "1449951344de57b979f30c7c6a1949e2a30ecfffba9f4acbd2ac751737eb9d12",
+      "size_bytes": 1229
+    },
+    {
+      "endpoint_name": "analisis",
+      "path": "data/raw/boe/BOE-A-1987-28141/analisis.xml",
+      "sha256": "0d12b1e59cc0102d421602b7b16b102ace9dea3b1cfe3a8caf708c221a9ee342",
+      "size_bytes": 11917
+    },
+    {
+      "endpoint_name": "metadata_eli",
+      "path": "data/raw/boe/BOE-A-1987-28141/metadata_eli.xml",
+      "sha256": "0642d29d99e41a2283db150308f7d9bb1b6a575aeba0391f86c35e862f1f772f",
+      "size_bytes": 98774
+    },
+    {
+      "endpoint_name": "texto",
+      "path": "data/raw/boe/BOE-A-1987-28141/texto.xml",
+      "sha256": "44c8cd18ffabe331a949b21f383828c3f49d9dda0e888d4fc103ca23946837a9",
+      "size_bytes": 548147
+    },
+    {
+      "endpoint_name": "indice",
+      "path": "data/raw/boe/BOE-A-1987-28141/indice.xml",
+      "sha256": "2d046004bf420c37d5db275067f8254d3034688dda32d3c63af8290bf6e2dc67",
+      "size_bytes": 19265
+    }
+  ]
+}

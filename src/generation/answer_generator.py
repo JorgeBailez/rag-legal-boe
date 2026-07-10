@@ -35,6 +35,8 @@ from src.contracts.generation_models import (
     RetrievalTraceV1,
 )
 from src.core.exceptions import ConfigurationError, GenerationContractError
+from src.generation.baselines import ClosedBookResult
+from src.generation.baselines import generate_closed_book as _generate_closed_book
 from src.generation.prompt import build_messages
 from src.retrieval.context_assembler import P_EXPAND_BOUNDED, STRATEGIES
 from src.retrieval.dense_retriever import DenseHit, DenseRetriever
@@ -53,7 +55,7 @@ DISCLAIMER = (
     "jurídico oficial. Remítase a la publicación oficial en el BOE."
 )
 
-DEFAULT_QUERY_PROFILE_ID = "I2_CITIZEN_LEGISLATION"
+DEFAULT_QUERY_PROFILE_ID = "I1_LEGAL"
 
 
 class LlmClient(Protocol):
@@ -71,21 +73,33 @@ class LlmClient(Protocol):
         keep_alive: str | int | None = ...,
     ) -> tuple[RagLlmAnswerV1, OllamaMetricsV1]: ...
 
+    def chat_json(
+        self,
+        messages: list[dict[str, str]],
+        *,
+        response_format: dict,
+        temperature: float = ...,
+        seed: int = ...,
+        num_predict: int = ...,
+        num_ctx: int = ...,
+        keep_alive: str | int | None = ...,
+    ) -> tuple[dict, OllamaMetricsV1]: ...
+
 
 @dataclass
 class GenerationConfig:
-    """Parámetros de la generación (defaults provisionales del MVP; configurables)."""
+    """Parámetros de la generación fundamentada."""
 
     query_profile_id: str = DEFAULT_QUERY_PROFILE_ID
-    top_k: int = 5
+    top_k: int = 3
     max_evidences: int = DEFAULT_MAX_EVIDENCES
     context_strategy: str = P_EXPAND_BOUNDED
     context_budget_chars: int = DEFAULT_CONTEXT_BUDGET_CHARS
     max_total_context_chars: int = DEFAULT_MAX_TOTAL_CONTEXT_CHARS
     temperature: float = 0.0
     seed: int = 42
-    num_predict: int = 256
-    num_ctx: int = 4096
+    num_predict: int = 1536
+    num_ctx: int = 8192
     keep_alive: str | int | None = None
 
     def __post_init__(self) -> None:
@@ -212,6 +226,84 @@ class AnswerGenerator:
             generation_metrics=metrics,
         )
 
+    # -- baselines (descomposición de error: recuperación vs generación) -----
+    def answer_with_evidences(
+        self,
+        question: str,
+        selection: EvidenceSelection,
+        *,
+        query_profile_id: str | None = None,
+    ) -> RagAnswerV1:
+        """Genera con evidencias YA seleccionadas (baseline *oracle*): salta el retrieval.
+
+        Usa la MISMA ruta de prompt/LLM/validación de IDs/citas que `answer()`, pero sobre las
+        evidencias inyectadas (p. ej. las gold del banco). Sin evidencias utilizables ⇒ abstención
+        determinista sin llamar al LLM.
+        """
+        resolved_profile = self.retriever.resolved_query_profile_id(
+            query_profile_id or self.config.query_profile_id
+        )
+        trace = self._trace_for_injected(selection, resolved_profile)
+        if not selection.evidences:
+            return RagAnswerV1(
+                answered=False,
+                answer="",
+                citations=[],
+                abstention_reason="No se dispuso de evidencia gold utilizable para esta pregunta.",
+                disclaimer=DISCLAIMER,
+                retrieval_trace=trace,
+                generation_metrics=None,
+            )
+        messages = build_messages(
+            question=question, evidences=selection.evidences, prompts_dir=self.prompts_dir
+        )
+        llm_answer, metrics = self.llm_client.chat(
+            messages,
+            temperature=self.config.temperature,
+            seed=self.config.seed,
+            num_predict=self.config.num_predict,
+            num_ctx=self.config.num_ctx,
+            keep_alive=self.config.keep_alive,
+        )
+        if not llm_answer.answered:
+            return RagAnswerV1(
+                answered=False,
+                answer="",
+                citations=[],
+                abstention_reason=llm_answer.abstention_reason,
+                disclaimer=DISCLAIMER,
+                retrieval_trace=trace,
+                generation_metrics=metrics,
+            )
+        allowed = {ev.evidence_id for ev in selection.evidences}
+        unknown = [cid for cid in llm_answer.citation_ids if cid not in allowed]
+        if unknown:
+            raise GenerationContractError(
+                f"el LLM citó identificadores no entregados: {sorted(set(unknown))}"
+            )
+        citations = self._enrich_citations(llm_answer.citation_ids, selection.evidences)
+        return RagAnswerV1(
+            answered=True,
+            answer=llm_answer.answer,
+            citations=citations,
+            abstention_reason="",
+            disclaimer=DISCLAIMER,
+            retrieval_trace=trace,
+            generation_metrics=metrics,
+        )
+
+    def generate_closed_book(self, question: str) -> ClosedBookResult:
+        """Baseline closed-book: responde SIN evidencia (solo conocimiento paramétrico)."""
+        return _generate_closed_book(
+            self.llm_client,
+            question,
+            temperature=self.config.temperature,
+            seed=self.config.seed,
+            num_predict=self.config.num_predict,
+            num_ctx=self.config.num_ctx,
+            keep_alive=self.config.keep_alive,
+        )
+
     # -- helpers -------------------------------------------------------------
     def _abstain(
         self,
@@ -273,6 +365,44 @@ class AnswerGenerator:
             duplicate_parents_removed=selection.duplicate_parents_removed,
             total_context_chars=selection.total_char_count,
             hits=hit_traces,
+            omitted_evidences=omitted,
+        )
+
+    def _trace_for_injected(
+        self, selection: EvidenceSelection, resolved_profile: str
+    ) -> RetrievalTraceV1:
+        """Traza para evidencias inyectadas (oracle): las gold hacen de 'hits' entregados."""
+        hits = [
+            RetrievalHitTraceV1(
+                rank=ev.retrieval_rank,
+                score=ev.score,
+                document_id=ev.document_id,
+                block_id=ev.block_id,
+                parent_id=ev.parent_id,
+                selected=True,
+                evidence_id=ev.evidence_id,
+            )
+            for ev in selection.evidences
+        ]
+        omitted = [
+            EvidenceOmissionTraceV1(
+                parent_id=o["parent_id"],
+                retrieval_rank=o["retrieval_rank"],
+                reason=o["reason"],
+                char_count=o.get("char_count"),
+            )
+            for o in selection.omitted
+        ]
+        return RetrievalTraceV1(
+            bundle_id=self.retriever.bundle_id,
+            model_alias=self.retriever.model_alias,
+            query_profile_id=resolved_profile,
+            top_k=len(selection.evidences),
+            returned_hits=len(hits),
+            selected_evidences=len(selection.evidences),
+            duplicate_parents_removed=selection.duplicate_parents_removed,
+            total_context_chars=selection.total_char_count,
+            hits=hits,
             omitted_evidences=omitted,
         )
 

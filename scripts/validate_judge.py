@@ -4,8 +4,9 @@ Las métricas con juez (fidelidad L3, corrección L5) NO son fiables hasta valid
 muestra anotada a mano (lección de ALCE). Flujo en dos pasos:
 
 1) `--scaffold <out.jsonl>` — genera una plantilla de anotación a partir de un report CON juez: una
-   fila por respuesta con la pregunta, la respuesta generada, la referencia del gold y el veredicto
-   del juez, más campos `human_*` vacíos para que tú rellenes a mano (~30–50 casos).
+   fila por respuesta con la pregunta, la respuesta generada, la referencia del gold, el **bloque de
+   evidencias** que vio el generador (para anotar fidelidad sin adivinar) y el veredicto del juez,
+   más campos `human_*` vacíos para que tú rellenes a mano (~30–50 casos).
 
 2) (validar) `--annotations <plantilla_rellenada.jsonl>` — compara tu anotación con el veredicto del
    juez y calcula κ por dimensión (corrección categórica correct/partial/incorrect; fidelidad
@@ -67,9 +68,7 @@ def _agreement(
     human = [h for h, _ in pairs]
     judge = [j for _, j in pairs]
     out = judge_agreement(human, judge, ordered_labels=ordered_labels)
-    out["disagreements"] = [
-        {"human": h, "judge": j} for h, j in pairs if h != j
-    ]
+    out["disagreements"] = [{"human": h, "judge": j} for h, j in pairs if h != j]
     return out
 
 
@@ -119,6 +118,81 @@ def compute_agreement(
     return {"correctness": correctness, "faithfulness": faithfulness}
 
 
+def _wilson_ci(k: int, n: int, z: float = 1.96) -> tuple[float, float]:
+    """IC de Wilson para una proporción k/n (más honesto que el normal con n pequeño)."""
+    if n == 0:
+        return (0.0, 0.0)
+    p = k / n
+    denom = 1.0 + z * z / n
+    center = (p + z * z / (2 * n)) / denom
+    half = z * ((p * (1 - p) / n + z * z / (4 * n * n)) ** 0.5) / denom
+    return (max(0.0, center - half), min(1.0, center + half))
+
+
+def human_summary(human_rows: list[dict]) -> dict:
+    """Tasa humana de fidelidad y corrección con IC de Wilson (medida PRIMARIA sin juez).
+
+    No es acuerdo con nadie: es la proporción observada en la anotación (p. ej. el held-out de
+    test), reportada con su incertidumbre. Anotador único ⇒ sin κ inter-humano; solo tasa + IC.
+    """
+    faith = [r["human_faithful"] for r in human_rows if isinstance(r.get("human_faithful"), bool)]
+    corr = [
+        r["human_correctness"]
+        for r in human_rows
+        if r.get("human_correctness") in CORRECTNESS_LABELS
+    ]
+    n_f, k_f = len(faith), sum(1 for x in faith if x)
+    n_c = len(corr)
+    dist = {lab: corr.count(lab) for lab in CORRECTNESS_LABELS}
+    return {
+        "faithfulness": {
+            "n": n_f,
+            "faithful": k_f,
+            "rate": (k_f / n_f if n_f else None),
+            "ci95": _wilson_ci(k_f, n_f),
+        },
+        "correctness": {
+            "n": n_c,
+            "distribution": dist,
+            "correct_rate": (dist["correct"] / n_c if n_c else None),
+            "ci95_correct": _wilson_ci(dist["correct"], n_c),
+        },
+    }
+
+
+def _run_summary(annotations_path: Path) -> int:
+    """Imprime y persiste el resumen de la anotación humana (tasa + IC), sin juez ni report."""
+    human_rows = load_jsonl(annotations_path)
+    if not human_rows:
+        print(f"No hay anotaciones en {annotations_path}.", file=sys.stderr)
+        return 2
+    summary = human_summary(human_rows)
+    f, c = summary["faithfulness"], summary["correctness"]
+    print(f"Resumen de anotación humana ({annotations_path.name})")
+    if f["n"]:
+        lo, hi = f["ci95"]
+        print(
+            f"  Fidelidad (L3): {f['faithful']}/{f['n']} fieles = {f['rate']:.0%} "
+            f"· IC95 Wilson=[{lo:.0%}, {hi:.0%}]"
+        )
+    else:
+        print("  Fidelidad (L3): sin anotar.")
+    if c["n"]:
+        lo, hi = c["ci95_correct"]
+        d = c["distribution"]
+        print(
+            f"  Corrección (L5): {d['correct']} correct / {d['partial']} partial / "
+            f"{d['incorrect']} incorrect (n={c['n']}) · correct-rate {c['correct_rate']:.0%} "
+            f"· IC95=[{lo:.0%}, {hi:.0%}]"
+        )
+    else:
+        print("  Corrección (L5): sin anotar.")
+    out = annotations_path.with_name(annotations_path.stem + "_summary.json")
+    out.write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(f"Escrito {out}")
+    return 0
+
+
 def scaffold_rows(
     per_query: list[dict],
     q_text: dict[str, str],
@@ -138,6 +212,9 @@ def scaffold_rows(
                 "question": q_text.get(qid, ""),
                 "answer_text": r.get("answer_text", ""),
                 "reference_answer": ref_by_qid.get(qid, ""),
+                # Evidencia que vio el generador: imprescindible para anotar fidelidad (L3) sin
+                # adivinar (afirmación-contra-evidencia). La rellena el runner con --judge-model.
+                "evidences_block": r.get("evidences_block") or "",
                 "judge_correctness": correctness_label_from_score(r.get("correctness")),
                 "judge_faithful": is_faithful(r.get("faithfulness"), faithfulness_threshold),
                 "human_correctness": "",  # rellenar: correct | partial | incorrect
@@ -180,37 +257,39 @@ def _print_dim(name: str, dim: dict) -> None:
         for i, row in enumerate(matrix):
             print(f"        {labels[i]:>{width}} | {row}")
     for d in dim.get("disagreements", []):
-        print(f"      ✗ {d['query_id']}: humano={d['human']} vs juez={d['judge']}")
+        print(f"      [DIFF] {d['query_id']}: humano={d['human']} vs juez={d['judge']}")
 
 
 def main() -> int:
-    # Consolas no-UTF8 (Windows cp1252) no pueden imprimir κ/✗/⚠; forzamos UTF-8 si se puede.
+    # Algunas consolas de Windows no imprimen bien κ; forzamos UTF-8 si se puede.
     try:
         sys.stdout.reconfigure(encoding="utf-8")
     except (AttributeError, ValueError):
         pass
     parser = argparse.ArgumentParser(description="Validación del LLM-juez (acuerdo + Cohen's κ).")
-    parser.add_argument("--report", required=True, help="directorio del report con juez.")
+    parser.add_argument("--report", help="directorio del report (para --scaffold / --annotations).")
     parser.add_argument("--dataset-dir", default=str(DATASET_DIR))
     parser.add_argument("--scaffold", help="genera la plantilla de anotación en esta ruta y sale.")
-    parser.add_argument("--annotations", help="plantilla rellenada para validar.")
+    parser.add_argument("--annotations", help="plantilla rellenada para validar contra el juez.")
+    parser.add_argument(
+        "--summary",
+        help="anotación humana (JSONL): resume tasa de fidelidad/corrección + IC, sin juez.",
+    )
     parser.add_argument("--faithfulness-threshold", type=float, default=1.0)
     args = parser.parse_args()
 
+    # --summary NO necesita report ni juez: mide solo la anotación humana (medida primaria de
+    # L3/L5 cuando el juez no se usa, p. ej. en el held-out de test).
+    if args.summary:
+        return _run_summary(Path(args.summary))
+
+    if not args.report:
+        print("Indica --report (para --scaffold/--annotations) o --summary.", file=sys.stderr)
+        return 2
     report_dir = Path(args.report)
     per_query = load_jsonl(report_dir / "per_query.jsonl")
     if not per_query:
-        print(f"No hay per_query.jsonl en {report_dir} (¿report con juez?).", file=sys.stderr)
-        return 2
-    judged = [
-        r for r in per_query
-        if r.get("faithfulness") is not None or r.get("correctness") is not None
-    ]
-    if not judged:
-        print(
-            "El report no tiene veredictos del juez (¿se corrió con --judge-model?).",
-            file=sys.stderr,
-        )
+        print(f"No hay per_query.jsonl en {report_dir}.", file=sys.stderr)
         return 2
 
     if args.scaffold:
@@ -228,18 +307,39 @@ def main() -> int:
             "\n".join(json.dumps(r, ensure_ascii=False) for r in rows) + "\n", encoding="utf-8"
         )
         missing_answer = sum(1 for r in rows if not r["answer_text"])
+        missing_evidence = sum(1 for r in rows if not r["evidences_block"])
         print(f"Plantilla escrita: {out_path} ({len(rows)} respuestas a anotar).")
         if missing_answer:
             print(
-                f"⚠ {missing_answer} filas sin answer_text (report antiguo): vuelve a generar el "
-                "report con el runner actual para tener la respuesta a la vista."
+                f"[WARN] {missing_answer} filas sin answer_text (report antiguo): "
+                "vuelve a generar el report con el runner actual para tener "
+                "la respuesta a la vista."
+            )
+        if missing_evidence:
+            print(
+                f"[WARN] {missing_evidence} filas sin evidences_block: L3 (fidelidad) no anotable; "
+                "regenera el report con el runner actual (guarda la evidencia aunque no haya juez)."
             )
         print("Rellena los campos human_correctness y human_faithful de cada fila.")
         return 0
 
     if not args.annotations:
         print(
-            "Indica --scaffold para crear la plantilla o --annotations para validar.",
+            "Indica --scaffold para crear la plantilla, --annotations para validar contra el "
+            "juez, o --summary para resumir la anotación humana.",
+            file=sys.stderr,
+        )
+        return 2
+
+    # La validación contra el juez SÍ requiere veredictos en el report.
+    judged = [
+        r
+        for r in per_query
+        if r.get("faithfulness") is not None or r.get("correctness") is not None
+    ]
+    if not judged:
+        print(
+            "El report no tiene veredictos del juez (¿se corrió con --judge-model?).",
             file=sys.stderr,
         )
         return 2
@@ -285,7 +385,10 @@ def main() -> int:
                 "(clases desbalanceadas). Reporta AC1 como métrica primaria y el % de acuerdo."
             )
         else:
-            print("⚠ κ < 0.6 y AC1 < 0.6: trata L3/L5 como PROVISIONALES o cambia de modelo juez.")
+            print(
+                "[WARN] κ < 0.6 y AC1 < 0.6: trata L3/L5 como PROVISIONALES "
+                "o cambia de modelo juez."
+            )
     return 0
 
 

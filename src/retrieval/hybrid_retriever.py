@@ -90,6 +90,8 @@ class HybridRetriever:
         encoder: object | None = None,
         analyzer: SpanishAnalyzer | None = None,
         heading_boost: int = 0,
+        k1: float = 1.5,
+        b: float = 0.75,
         fusion: FusionMethod = "rrf",
         rrf_k: int = 60,
         alpha: float = 0.5,
@@ -99,7 +101,12 @@ class HybridRetriever:
         corpus = corpus if corpus is not None else load_processed_corpus()
         dense = DenseRetriever.from_bundle(bundle_dir, corpus=corpus, encoder=encoder)
         lexical = LexicalRetriever.from_bundle(
-            bundle_dir, corpus=corpus, analyzer=analyzer, heading_boost=heading_boost
+            bundle_dir,
+            corpus=corpus,
+            analyzer=analyzer,
+            heading_boost=heading_boost,
+            k1=k1,
+            b=b,
         )
         return cls(
             dense=dense,

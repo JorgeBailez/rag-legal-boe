@@ -1,15 +1,15 @@
-"""Construye el corpus MVP: descarga, verifica y procesa las normas del corpus semilla.
+"""Construye un corpus: descarga, verifica y procesa las normas del catálogo semilla.
 
 Uso:
-    uv run python scripts/build_corpus.py
+    uv run python scripts/build_corpus.py --seed data/corpus/seed_corpus_ampliado.json
 
-Llama a la API externa del BOE. Para cada norma del corpus semilla:
+Llama a la API externa del BOE. Para cada norma del catálogo semilla:
   1. descarga el raw (endpoints opcionales tolerados) + manifest;
   2. la verifica contra los criterios (vigente + estado_consolidacion "Finalizado");
   3. si los cumple, genera el documento procesado y los chunks.
 
 Las normas que NO cumplen criterios se EXCLUYEN del procesado y se reportan (no se
-sustituyen automáticamente). Escribe `data/corpus/verification_report.json`.
+sustituyen automáticamente). Escribe el report de verificación junto al catálogo usado.
 """
 
 from __future__ import annotations
@@ -23,7 +23,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from src.boe.client import BoeClient  # noqa: E402
-from src.boe.corpus import load_seed_corpus, verify_norm  # noqa: E402
+from src.boe.corpus import SEED_CORPUS_PATH, load_seed_corpus, verify_norm  # noqa: E402
 from src.boe.parser import build_processed_bundle, save_processed_bundle  # noqa: E402
 from src.config.settings import get_settings  # noqa: E402
 from src.core.exceptions import BoeApiError, ParsingError  # noqa: E402
@@ -39,6 +39,14 @@ REPORT_PATH = Path("data/corpus/verification_report.json")
 
 # Endpoints opcionales: su ausencia no invalida la norma ni aborta la descarga.
 OPTIONAL_DOWNLOAD = frozenset({"analisis", "metadata_eli", "full"})
+
+
+def _report_path(seed: Path) -> Path:
+    """Deriva el report del seed: el MVP-10 (seed_corpus) conserva su nombre; otros no lo pisan."""
+    if seed.stem == "seed_corpus":
+        return REPORT_PATH
+    tag = seed.stem.removeprefix("seed_corpus_")
+    return REPORT_PATH.with_name(f"verification_report_{tag}.json")
 
 
 def _acquire_and_verify(client: BoeClient, norm_id: str) -> dict:
@@ -74,9 +82,10 @@ def _format_row(row: dict) -> str:
     return f"  [{flag}] {row['norm_id']:18} {rank:24} {status:12} {title}"
 
 
-def main(strict: bool = False) -> int:
+def main(strict: bool = False, seed: Path = SEED_CORPUS_PATH) -> int:
     settings = get_settings()
-    norms = load_seed_corpus()
+    norms = load_seed_corpus(seed)
+    report_path = _report_path(seed)
 
     report: list[dict] = []
     with BoeClient(base_url=settings.boe_api_base) as client:
@@ -91,11 +100,11 @@ def main(strict: bool = False) -> int:
                     row["chunks_count"] = chunks
                 except ParsingError as exc:
                     row["processing_error"] = str(exc)
-                    print(f"  ⚠ error al procesar {norm_id}: {exc}", file=sys.stderr)
+                    print(f"  [WARN] error al procesar {norm_id}: {exc}", file=sys.stderr)
             report.append(row)
 
-    REPORT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    REPORT_PATH.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
+    report_path.parent.mkdir(parents=True, exist_ok=True)
+    report_path.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
 
     passed = [r for r in report if r["meets_criteria"]]
     failed = [r for r in report if not r["meets_criteria"]]
@@ -104,10 +113,10 @@ def main(strict: bool = False) -> int:
     for row in report:
         print(_format_row(row))
     print(f"\nCumplen criterios y procesadas: {len(passed)}/{len(report)}")
-    print(f"Reporte: {REPORT_PATH}")
+    print(f"Reporte: {report_path}")
 
     if failed:
-        print("\n⚠ Normas a REVISAR (no procesadas, no sustituidas):")
+        print("\n[WARN] Normas a REVISAR (no procesadas, no sustituidas):")
         for row in failed:
             print(f"  - {row['norm_id']}: {', '.join(row['reasons']) or 'ver reporte'}")
 
@@ -123,11 +132,17 @@ def main(strict: bool = False) -> int:
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Construye el corpus MVP (descarga + proceso).")
+    parser = argparse.ArgumentParser(description="Construye el corpus (descarga + proceso).")
     parser.add_argument(
         "--strict",
         action="store_true",
         help="exit != 0 si alguna norma no cumple criterios o falla el proceso.",
     )
+    parser.add_argument(
+        "--seed",
+        type=Path,
+        default=SEED_CORPUS_PATH,
+        help="catálogo de normas (default: seed MVP-10 data/corpus/seed_corpus.json).",
+    )
     args = parser.parse_args()
-    raise SystemExit(main(strict=args.strict))
+    raise SystemExit(main(strict=args.strict, seed=args.seed))

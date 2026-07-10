@@ -1,0 +1,44 @@
+{
+  "norm_id": "BOE-A-2007-13409",
+  "source": "BOE legislación consolidada",
+  "base_url": "https://www.boe.es/datosabiertos/api",
+  "downloaded_at": "2026-06-22T17:44:15.371159+00:00",
+  "files": [
+    {
+      "endpoint_name": "full",
+      "path": "data/raw/boe/BOE-A-2007-13409/full.xml",
+      "sha256": "c6512e201c638893194c723add5061c345c8998feda6031375dd5a3594409a8e",
+      "size_bytes": 692421
+    },
+    {
+      "endpoint_name": "metadatos",
+      "path": "data/raw/boe/BOE-A-2007-13409/metadatos.xml",
+      "sha256": "68b6796fdfc57068d0150eaa0555124f5e2857ce38e32f97f5840799564cf550",
+      "size_bytes": 1217
+    },
+    {
+      "endpoint_name": "analisis",
+      "path": "data/raw/boe/BOE-A-2007-13409/analisis.xml",
+      "sha256": "99a9da6ff493aa2ec8c1b84645a6f7e1375ab3c53e30aed7953d3156434f49ad",
+      "size_bytes": 11257
+    },
+    {
+      "endpoint_name": "metadata_eli",
+      "path": "data/raw/boe/BOE-A-2007-13409/metadata_eli.xml",
+      "sha256": "62b3bfc41755a54479fa0cab06530e44f4043face47ace62f88cda93e6fb6229",
+      "size_bytes": 92595
+    },
+    {
+      "endpoint_name": "texto",
+      "path": "data/raw/boe/BOE-A-2007-13409/texto.xml",
+      "sha256": "ee2a5dc957d7d25fb38255099dd7d533bb5936f60fd817cbd68ff87761ae7ad7",
+      "size_bytes": 587787
+    },
+    {
+      "endpoint_name": "indice",
+      "path": "data/raw/boe/BOE-A-2007-13409/indice.xml",
+      "sha256": "7b8cbd92876441c26ebd3b6e7696ff5567dca440ba4134779120a6880eabd6bf",
+      "size_bytes": 23774
+    }
+  ]
+}

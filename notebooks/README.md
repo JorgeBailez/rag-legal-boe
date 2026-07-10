@@ -2,7 +2,7 @@
 
 Los notebooks son **consumidores de reportes**: leen los artefactos generados por los scripts
 (`data/processed/reports/dense/...`) y construyen la narrativa y las figuras del TFG. **No** generan
-embeddings ni publican bundles (eso lo hacen los scripts, normalmente en el servidor universitario).
+embeddings ni publican bundles; eso lo hacen los scripts en una máquina con recursos suficientes.
 
 | Notebook | Contenido |
 |---|---|
@@ -16,13 +16,13 @@ embeddings ni publican bundles (eso lo hacen los scripts, normalmente en el serv
 ## Cómo ejecutarlos
 
 ```bash
-uv sync
+uv sync --group dev
 uv run jupyter notebook notebooks/<nombre>.ipynb
 ```
 
 - Deben funcionar con **Restart Kernel + Run All**.
-- **Fallan de forma clara** si faltan los reportes que consumen (primero hay que ejecutar los
-  scripts correspondientes, normalmente en el servidor; ver `docs/run_dense_embeddings_server.md`).
+- **Fallan de forma clara** si faltan los reportes que consumen; primero hay que ejecutar los
+  scripts correspondientes.
 - Usan **rutas relativas** desde la raíz del repo y muestran `benchmark_id` y fingerprints para
   trazabilidad.
 - Narrativa en **español**; código y nombres técnicos en **inglés**.

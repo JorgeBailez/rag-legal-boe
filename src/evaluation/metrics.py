@@ -11,6 +11,7 @@ descartado, ausencia = no juzgado. "Relevante" = relevancia ≥ 1.
 from __future__ import annotations
 
 import math
+from statistics import NormalDist
 
 import numpy as np
 
@@ -244,6 +245,7 @@ def paired_bootstrap(
             "mean_diff": 0.0,
             "ci_low": 0.0,
             "ci_high": 0.0,
+            "p_value": 1.0,
             "seed": seed,
             "n_resamples": n_resamples,
         }
@@ -252,12 +254,159 @@ def paired_bootstrap(
     idx = rng.integers(0, diffs.size, size=(n_resamples, diffs.size))
     boot = diffs[idx].mean(axis=1)
     lo, hi = (1 - ci) / 2 * 100, (1 + ci) / 2 * 100
+    # p bootstrap a dos colas para H0: media(a − b) = 0 (fracción de remuestras al otro lado del 0)
+    p_two = 2.0 * min(float(np.mean(boot >= 0.0)), float(np.mean(boot <= 0.0)))
     return {
         "mean_diff": float(diffs.mean()),
         "ci_low": float(np.percentile(boot, lo)),
         "ci_high": float(np.percentile(boot, hi)),
+        "p_value": float(min(p_two, 1.0)),
         "seed": seed,
         "n_resamples": n_resamples,
+    }
+
+
+def bca_ci(
+    values: list[float],
+    *,
+    seed: int = DEFAULT_BOOTSTRAP_SEED,
+    n_resamples: int = 1000,
+    ci: float = 0.95,
+) -> dict:
+    """IC por bootstrap **BCa** (bias-corrected and accelerated) de la media.
+
+    Corrige el sesgo del bootstrap y la asimetría (aceleración por *jackknife*); es más apropiado
+    que el percentil para tamaños pequeños (p. ej. n=28). Si la aceleración no es estimable
+    (n<2 o varianza nula) degenera con gracia al intervalo percentil.
+    """
+    a = np.asarray(values, dtype=float)
+    if a.size == 0:
+        return {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "seed": seed,
+            "n_resamples": n_resamples,
+            "method": "bca",
+        }
+    theta = float(a.mean())
+    rng = np.random.default_rng(seed)
+    idx = rng.integers(0, a.size, size=(n_resamples, a.size))
+    boot = a[idx].mean(axis=1)
+    nd = NormalDist()
+    # corrección de sesgo z0: cuántas remuestras caen por debajo del estimador puntual
+    prop = float(np.mean(boot < theta))
+    prop = min(max(prop, 1e-6), 1 - 1e-6)
+    z0 = nd.inv_cdf(prop)
+    # aceleración por jackknife (leave-one-out)
+    n = a.size
+    if n >= 2:
+        jack = (a.sum() - a) / (n - 1)
+        jm = jack.mean()
+        num = float(np.sum((jm - jack) ** 3))
+        den = 6.0 * float(np.sum((jm - jack) ** 2)) ** 1.5
+        acc = num / den if den > 0 else 0.0
+    else:
+        acc = 0.0
+    z_lo, z_hi = nd.inv_cdf((1 - ci) / 2), nd.inv_cdf((1 + ci) / 2)
+
+    def _adj(z: float) -> float:
+        return nd.cdf(z0 + (z0 + z) / (1 - acc * (z0 + z)))
+
+    return {
+        "mean": theta,
+        "ci_low": float(np.percentile(boot, 100 * _adj(z_lo))),
+        "ci_high": float(np.percentile(boot, 100 * _adj(z_hi))),
+        "seed": seed,
+        "n_resamples": n_resamples,
+        "method": "bca",
+    }
+
+
+def holm_correction(pvalues: dict[str, float], *, alpha: float = 0.05) -> dict[str, dict]:
+    """Corrección de **Holm-Bonferroni** sobre una familia de p-valores.
+
+    Controla la tasa de error por familia (FWER) con más potencia que Bonferroni simple. Aplicar
+    cuando se comparan varias variantes contra un mismo baseline (p. ej. denso vs BM25/RRF/convexa).
+    Devuelve, por nombre, el p crudo, el p ajustado (monótono no decreciente) y si es significativo.
+    """
+    items = sorted(pvalues.items(), key=lambda kv: kv[1])
+    m = len(items)
+    out: dict[str, dict] = {}
+    running = 0.0
+    for i, (name, p) in enumerate(items):
+        adj = min(max(float(p) * (m - i), running), 1.0)
+        running = adj
+        out[name] = {"p_raw": float(p), "p_holm": adj, "significant": adj < alpha}
+    return out
+
+
+def paired_equivalence_tost(
+    a_values: list[float],
+    b_values: list[float],
+    *,
+    margin: float,
+    seed: int = DEFAULT_BOOTSTRAP_SEED,
+    n_resamples: int = 1000,
+    alpha: float = 0.05,
+) -> dict:
+    """Test de **equivalencia** (TOST) por bootstrap pareado sobre la diferencia (a − b).
+
+    El contraste de superioridad (``paired_bootstrap``) responde a "¿difiere de 0?"; un "no
+    significativo" allí puede ser mera falta de potencia, no equivalencia. Este responde a la
+    pregunta complementaria: "¿es la diferencia *prácticamente nula*?", es decir,
+    |media(a - b)| < ``margin`` (margen de negligibilidad preespecificado, en unidades de la
+    métrica). Hay equivalencia cuando el IC bilateral al ``1 - 2*alpha`` (90 % para alpha=0.05,
+    forma estándar del TOST de Schuirmann) queda **contenido** en [-margin, +margin]. Convierte
+    un nulo infrapotenciado en una afirmación positiva y acotada ("equivalente hasta +/-margin").
+
+    Devuelve la diferencia observada, el IC al 1-2*alpha, el margen, los dos p unilaterales
+    (bootstrap) y si hay equivalencia (p_tost < alpha, i.e. IC dentro de [-margin, margin]).
+    """
+    a = np.asarray(a_values, dtype=float)
+    b = np.asarray(b_values, dtype=float)
+    if a.size != b.size:
+        raise ValueError("TOST pareado requiere vectores del mismo tamaño")
+    if margin <= 0:
+        raise ValueError("margin debe ser > 0")
+    if a.size == 0:
+        return {
+            "mean_diff": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "margin": float(margin),
+            "p_lower": 1.0,
+            "p_upper": 1.0,
+            "p_tost": 1.0,
+            "equivalent": False,
+            "seed": seed,
+            "n_resamples": n_resamples,
+            "alpha": alpha,
+        }
+    diffs = a - b
+    rng = np.random.default_rng(seed)
+    idx = rng.integers(0, diffs.size, size=(n_resamples, diffs.size))
+    boot = diffs[idx].mean(axis=1)
+    # IC bilateral al 1 − 2·alpha (percentil): equivalente a la unión de los dos tests unilaterales
+    lo_pct, hi_pct = alpha * 100, (1 - alpha) * 100
+    ci_low = float(np.percentile(boot, lo_pct))
+    ci_high = float(np.percentile(boot, hi_pct))
+    # p-valores unilaterales de cada test de Schuirmann
+    p_upper = float(np.mean(boot >= margin))  # H0: media ≥ +margin
+    p_lower = float(np.mean(boot <= -margin))  # H0: media ≤ −margin
+    p_tost = max(p_upper, p_lower)
+    return {
+        "mean_diff": float(diffs.mean()),
+        "ci_low": ci_low,
+        "ci_high": ci_high,
+        "margin": float(margin),
+        "p_lower": p_lower,
+        "p_upper": p_upper,
+        "p_tost": p_tost,
+        "equivalent": bool(-margin <= ci_low and ci_high <= margin),
+        "seed": seed,
+        "n_resamples": n_resamples,
+        "alpha": alpha,
     }
 
 

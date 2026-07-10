@@ -2,15 +2,20 @@
 
 import math
 
+import pytest
+
 from src.evaluation.metrics import (
     aggregate_metrics,
+    bca_ci,
     bootstrap_ci,
     compute_query_retrieval_metrics,
     context_metrics,
     duplicate_parent_rate_at_k,
+    holm_correction,
     mrr_at_k,
     ndcg_at_k,
     paired_bootstrap,
+    paired_equivalence_tost,
     parent_hit_at_1,
     recall_at_k,
     unique_in_order,
@@ -126,3 +131,56 @@ def test_paired_bootstrap_detects_positive_difference() -> None:
     res = paired_bootstrap(a, b, seed=7, n_resamples=300)
     assert res["mean_diff"] == 1.0
     assert res["ci_low"] == 1.0 and res["ci_high"] == 1.0
+
+
+def test_paired_bootstrap_reports_p_value() -> None:
+    # diferencia grande y consistente ⇒ p pequeño; sin diferencia ⇒ p alto
+    sig = paired_bootstrap([1.0] * 10, [0.0] * 10, seed=7, n_resamples=300)
+    assert 0.0 <= sig["p_value"] <= 1.0
+    assert sig["p_value"] < 0.05
+    null = paired_bootstrap([1.0, 0.0] * 6, [1.0, 0.0] * 6, seed=7, n_resamples=300)
+    assert null["p_value"] == 1.0  # media de la diferencia = 0 exacto
+
+
+def test_tost_declares_equivalence_when_difference_is_negligible() -> None:
+    # diferencia casi nula y consistente ⇒ el IC(1-2a) cae dentro de ±margen ⇒ equivalencia
+    a = [0.80, 0.75, 0.82, 0.78, 0.81, 0.79, 0.83, 0.77] * 4
+    b = [0.79, 0.75, 0.82, 0.78, 0.80, 0.79, 0.83, 0.77] * 4
+    res = paired_equivalence_tost(a, b, margin=0.05, seed=7, n_resamples=400)
+    assert res["equivalent"] is True
+    assert res["p_tost"] < 0.05
+    assert -res["margin"] <= res["ci_low"] and res["ci_high"] <= res["margin"]
+
+
+def test_tost_rejects_equivalence_when_effect_or_noise_too_large() -> None:
+    # efecto grande ⇒ no equivalente
+    big = paired_equivalence_tost([1.0] * 12, [0.0] * 12, margin=0.05, seed=7, n_resamples=400)
+    assert big["equivalent"] is False
+    assert big["p_tost"] == pytest.approx(1.0)
+    # margen no positivo ⇒ error
+    with pytest.raises(ValueError):
+        paired_equivalence_tost([0.1], [0.1], margin=0.0)
+    # vectores de distinto tamaño ⇒ error
+    with pytest.raises(ValueError):
+        paired_equivalence_tost([0.1, 0.2], [0.1], margin=0.05)
+
+
+def test_holm_correction_matches_manual() -> None:
+    res = holm_correction({"bm25": 0.0001, "rrf": 0.026, "weighted": 0.24}, alpha=0.05)
+    # BM25: 0.0001*3 sig; RRF: 0.026*2 = 0.052 > 0.05 ⇒ n.s.; weighted: 0.24 ⇒ n.s.
+    assert res["bm25"]["significant"] is True
+    assert res["rrf"]["p_holm"] == pytest.approx(0.052, abs=1e-9)
+    assert res["rrf"]["significant"] is False
+    assert res["weighted"]["significant"] is False
+    # los p ajustados son monótonos no decrecientes en el orden de p crudos
+    assert res["bm25"]["p_holm"] <= res["rrf"]["p_holm"] <= res["weighted"]["p_holm"]
+
+
+def test_bca_ci_is_reproducible_and_brackets_mean() -> None:
+    vals = [1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0]
+    a = bca_ci(vals, seed=12345, n_resamples=500)
+    b = bca_ci(vals, seed=12345, n_resamples=500)
+    assert a == b  # determinista con la misma semilla
+    assert a["method"] == "bca"
+    assert a["ci_low"] <= a["mean"] <= a["ci_high"]
+    assert 0.0 <= a["ci_low"] and a["ci_high"] <= 1.0

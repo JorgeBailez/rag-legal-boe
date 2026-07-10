@@ -19,7 +19,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from pydantic import ValidationError  # noqa: E402
 
-from src.boe.corpus import load_seed_corpus  # noqa: E402
+from src.boe.corpus import SEED_CORPUS_PATH, load_seed_corpus  # noqa: E402
 from src.contracts.models import ChunksV2, DocumentV2, HistoryV2, ParentsV2  # noqa: E402
 from src.quality.corpus_audit import (  # noqa: E402
     check_chunks,
@@ -55,8 +55,8 @@ def _validate_contracts(norm_id: str, artifacts: dict) -> list[str]:
     return errs
 
 
-def main(strict: bool = False) -> int:
-    norms = load_seed_corpus()
+def main(strict: bool = False, seed: Path = SEED_CORPUS_PATH) -> int:
+    norms = load_seed_corpus(seed)
     total_errors = 0
     total_warnings = 0
     for norm in norms:
@@ -69,7 +69,8 @@ def main(strict: bool = False) -> int:
         }
         if not all(p.is_file() for p in paths.values()):
             print(
-                f"  ⚠ {norm_id}: faltan artefactos (ejecuta process_mvp_corpus.py)", file=sys.stderr
+                f"  [WARN] {norm_id}: faltan artefactos (ejecuta process_mvp_corpus.py)",
+                file=sys.stderr,
             )
             total_errors += 1
             continue
@@ -119,11 +120,17 @@ def main(strict: bool = False) -> int:
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Validación local de integridad del corpus MVP.")
+    parser = argparse.ArgumentParser(description="Validación local de integridad del corpus.")
     parser.add_argument(
         "--strict",
         action="store_true",
         help="exit != 0 también ante avisos WARN (cierre/CI local).",
     )
+    parser.add_argument(
+        "--seed",
+        type=Path,
+        default=SEED_CORPUS_PATH,
+        help="catálogo de normas (default: seed MVP-10 data/corpus/seed_corpus.json).",
+    )
     args = parser.parse_args()
-    raise SystemExit(main(strict=args.strict))
+    raise SystemExit(main(strict=args.strict, seed=args.seed))

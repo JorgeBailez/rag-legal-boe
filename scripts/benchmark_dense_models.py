@@ -1,4 +1,4 @@
-"""Benchmark / smoke test de los modelos densos (CPU). Las cargas pesadas son para el servidor.
+"""Benchmark / smoke test de los modelos densos (CPU).
 
 Modos:
 - `--smoke-test`: codifica una muestra pequeña con cada modelo y mide dimensión, throughput,
@@ -6,7 +6,7 @@ Modos:
 - (por defecto) benchmark formal: recupera sobre los bundles publicados usando el dataset de
   evaluación y calcula métricas. **Gate C** bloquea si el dataset no está anotado/revisado.
 
-No se ejecuta automáticamente en los tests (requiere pesos reales y/o bundles publicados).
+No se ejecuta automáticamente en los tests: requiere pesos reales y/o bundles publicados.
 """
 
 from __future__ import annotations
@@ -74,7 +74,7 @@ def _peak_ram_mb() -> float | None:
     except ImportError:
         return None
     ru = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
-    return round(ru / 1024, 1)  # Linux reporta KB (servidor objetivo)
+    return round(ru / 1024, 1)  # En Linux, ru_maxrss se reporta en KB.
 
 
 def _percentile(values: list[float], p: float) -> float:
@@ -447,15 +447,29 @@ def run_benchmark(args: argparse.Namespace) -> int:
                 "by_difficulty": aggregate_metric_groups(diff_groups, seed=args.seed),
             }
             # Abstención (L6): ¿el score top-1 separa in-corpus de out_of_corpus?
+            # Se desglosa el OOC en dos subconjuntos: 'far_domain' (materia ajena al corpus,
+            # negativos fáciles) y 'near_miss' (misma materia pero respuesta ausente; query_id con
+            # prefijo 'q92nm_'). El AUC global mezcla ambos y sobreestima la abstención, porque el
+            # near-miss es el caso difícil. Se guardan además los scores top-1 por pregunta.
             if run_abstention:
-                ooc_scores: list[float] = []
+                ooc_scored: list[tuple[str, float]] = []
                 for q in ooc_qs:
                     qv_ooc = enc.encode_queries(
                         [q["query"]], query_profile_id=profile_id, show_progress=False
                     )[0]
                     h = index.search(qv_ooc, k=1)
-                    ooc_scores.append(h[0]["score"] if h else 0.0)
-                abstention_by_run[run_key] = abstention_threshold_analysis(top1_scores, ooc_scores)
+                    ooc_scored.append((q["query_id"], h[0]["score"] if h else 0.0))
+                far = [s for qid, s in ooc_scored if not qid.startswith("q92nm_")]
+                near = [s for qid, s in ooc_scored if qid.startswith("q92nm_")]
+                abst: dict = {
+                    "all": abstention_threshold_analysis(top1_scores, [s for _, s in ooc_scored]),
+                    "ooc_top1_scores": dict(ooc_scored),
+                }
+                if far:
+                    abst["far_domain"] = abstention_threshold_analysis(top1_scores, far)
+                if near:
+                    abst["near_miss"] = abstention_threshold_analysis(top1_scores, near)
+                abstention_by_run[run_key] = abst
 
     ranked_runs = sorted(
         metrics_rows, key=lambda r: float(r.get(PRIMARY_METRIC, 0.0)), reverse=True

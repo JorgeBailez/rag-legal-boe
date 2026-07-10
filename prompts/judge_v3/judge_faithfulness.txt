@@ -1,0 +1,26 @@
+Tarea: evaluar la FIDELIDAD de una respuesta respecto a la EVIDENCIA entregada.
+
+Procedimiento (ESTRICTO):
+1. Descompón la RESPUESTA en afirmaciones atómicas (una idea verificable por afirmación): cada hecho,
+   cifra, plazo, condición, excepción, nombre de ley o artículo, y cada ÁMBITO de aplicación ("se
+   aplica a…", "en todos los casos", "siempre que…").
+2. Marca una afirmación supported=true SOLO si puedes señalar la parte de la EVIDENCIA que la afirma.
+   Si no está respaldada por la evidencia, supported=false —aunque sea cierta en el mundo real, aunque
+   sea una generalización razonable o una inferencia plausible.
+3. Marca como supported=false (casos frecuentes de NO soportado):
+   - citar una ley, artículo, cifra, plazo o porcentaje que NO aparece en la evidencia;
+   - ampliar, generalizar o concluir más allá de lo que la evidencia dice literalmente;
+   - añadir condiciones, requisitos, excepciones o ámbitos que la evidencia no menciona.
+4. Ante la duda de si la evidencia respalda una afirmación, márcala supported=false.
+
+Solo cuenta la EVIDENCIA de abajo. No uses conocimiento externo. Cifras, plazos, importes y
+excepciones deben APARECER en la evidencia para considerarse soportados.
+
+EVIDENCIA:
+{evidences}
+
+RESPUESTA A EVALUAR:
+{answer}
+
+Devuelve EXCLUSIVAMENTE el objeto JSON del esquema: una lista "claims", cada una con "claim"
+(la afirmación) y "supported" (true/false).

@@ -1,0 +1,44 @@
+{
+  "norm_id": "BOE-A-2000-15060",
+  "source": "BOE legislación consolidada",
+  "base_url": "https://www.boe.es/datosabiertos/api",
+  "downloaded_at": "2026-06-22T17:44:14.971987+00:00",
+  "files": [
+    {
+      "endpoint_name": "full",
+      "path": "data/raw/boe/BOE-A-2000-15060/full.xml",
+      "sha256": "ccb2a86c89e0cb424c721e052abd4f8ace14c03dcd6a4110934576ec123fa6b8",
+      "size_bytes": 1622277
+    },
+    {
+      "endpoint_name": "metadatos",
+      "path": "data/raw/boe/BOE-A-2000-15060/metadatos.xml",
+      "sha256": "ca915c6076e2277313ee756a6b1d8289bc5b8156e5becdf5a0fddbdf415bcfe0",
+      "size_bytes": 1346
+    },
+    {
+      "endpoint_name": "analisis",
+      "path": "data/raw/boe/BOE-A-2000-15060/analisis.xml",
+      "sha256": "f5448385fae8e040369177586fbd3c6e045022acb34d66faada8f6a643985fdf",
+      "size_bytes": 24796
+    },
+    {
+      "endpoint_name": "metadata_eli",
+      "path": "data/raw/boe/BOE-A-2000-15060/metadata_eli.xml",
+      "sha256": "b875b02862a74145d510f5547768352bb666c02f5db2f513ec98a006b965ac85",
+      "size_bytes": 343819
+    },
+    {
+      "endpoint_name": "texto",
+      "path": "data/raw/boe/BOE-A-2000-15060/texto.xml",
+      "sha256": "29489f1207fcb586ee21b7e2c9e0f20f3a3c2d622ea3962f5087e89a059e28cb",
+      "size_bytes": 1252751
+    },
+    {
+      "endpoint_name": "indice",
+      "path": "data/raw/boe/BOE-A-2000-15060/indice.xml",
+      "sha256": "b95c47b166a5570e624af1f6cd84d8ef76e3611387904d42df5dc8807f1bc506",
+      "size_bytes": 27365
+    }
+  ]
+}

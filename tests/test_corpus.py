@@ -131,3 +131,34 @@ def test_real_seed_corpus_has_ten_norms() -> None:
     norms = load_seed_corpus()
     assert len(norms) == 10
     assert all(n["norm_id"].startswith("BOE-A-") for n in norms)
+
+
+AMPLIADO_PATH = Path("data/corpus/seed_corpus_ampliado.json")
+
+
+def test_seed_corpus_ampliado_invariantes() -> None:
+    """El corpus ampliado del cierre: 92 normas, sin duplicados, superconjunto del MVP-10."""
+    norms = load_seed_corpus(AMPLIADO_PATH)
+    ids = [n["norm_id"] for n in norms]
+
+    assert len(ids) == 92
+    assert len(set(ids)) == 92, "hay norm_id duplicados en el seed ampliado"
+    assert all(i.startswith("BOE-A-") for i in ids)
+
+    # Es superconjunto estricto del baseline MVP-10 (reproducibilidad del baseline).
+    mvp_ids = {n["norm_id"] for n in load_seed_corpus()}
+    assert mvp_ids <= set(ids)
+
+    # Altas decididas el 2026-06-22: Constitución + Código Penal.
+    assert {"BOE-A-1978-31229", "BOE-A-1995-25444"} <= set(ids)
+
+    # Descartadas (derogadas + sin consolidado propio) + diferidos (CC, LOPJ).
+    prohibidos = {
+        "BOE-A-2015-11431",  # RDLeg 3/2015 (derogado por Ley 3/2023)
+        "BOE-A-2014-4950",  # Ley 9/2014 (derogada por Ley 11/2022)
+        "BOE-A-2011-7703",  # RD 557/2011 (derogado por RD 1155/2024)
+        "BOE-A-2015-10197",  # Ley 35/2015 (reforma sin consolidado propio; baremo en RDLeg 8/2004)
+        "BOE-A-1889-4763",  # Código Civil (diferido: riesgo de parser)
+        "BOE-A-1985-12666",  # LOPJ (diferido: peso)
+    }
+    assert not (prohibidos & set(ids))

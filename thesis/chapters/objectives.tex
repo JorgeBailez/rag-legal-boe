@@ -17,7 +17,7 @@ El sistema debe permitir que una persona formule preguntas en lenguaje natural y
 
 El entregable de este Trabajo Fin de Grado se materializa en un sistema ejecutable de extremo a extremo y en un marco de evaluación reproducible. Una interfaz web de cara al usuario y una API de servicio quedan planteadas como líneas de trabajo futuro, ya que su utilidad depende de haber determinado antes, con evidencia, qué configuración interna del sistema es la más fiable.
 
-La elección de normativa consolidada resulta adecuada para esta finalidad porque la Agencia Estatal Boletín Oficial del Estado (AEBOE) ofrece interfaces de programación que permiten reutilizar normas consolidadas, recuperar sus metadatos, consultar el texto completo de sus distintas versiones y acceder a los bloques que reflejan su estructura interna \cite{boeApiConsolidada}. No obstante, estos textos consolidados tienen carácter meramente informativo y carecen de valor jurídico propio; para fines jurídicos debe consultarse la publicación oficial correspondiente \cite{boeLegislacionActualizada}.
+La elección de normativa consolidada resulta adecuada para esta finalidad porque la Agencia Estatal Boletín Oficial del Estado (AEBOE) ofrece interfaces de programación que permiten reutilizar normas consolidadas, recuperar sus metadatos, consultar el texto completo de sus distintas versiones y acceder a los bloques que reflejan su estructura interna \cite{boeApiConsolidada}.
 
 \section{Objetivos específicos}
 \label{sec:objetivos-especificos}
@@ -39,7 +39,7 @@ El objetivo general se concreta en los siguientes objetivos específicos:
 
     \item[\textbf{OE-07}] \textbf{Ejecutar la evaluación y analizar los errores con evidencia.} Aplicar el marco anterior para medir la calidad de las respuestas generadas, estudiar el equilibrio entre responder y abstenerse, y analizar de forma cualitativa dónde y por qué falla el sistema, contemplando consultas ciudadanas, formulaciones técnico-jurídicas, reformulaciones de una misma necesidad informativa y preguntas fuera del corpus.
 
-    \item[\textbf{OE-08}] \textbf{Favorecer la reproducibilidad, la extensibilidad y el uso responsable.} Documentar la arquitectura, la configuración y los procedimientos de ejecución; sostener el sistema íntegramente sobre modelos y herramientas de código abierto ejecutados en local, sin servicios externos de pago; facilitar la ampliación posterior del corpus; y analizar las limitaciones técnicas y jurídicas del prototipo.
+    \item[\textbf{OE-08}] \textbf{Favorecer la reproducibilidad, la extensibilidad y el uso responsable.} Documentar la arquitectura, la configuración y los procedimientos de ejecución; sostener el sistema íntegramente sobre modelos y herramientas de código abierto ejecutados localmente, sin servicios externos de pago; facilitar la ampliación posterior del corpus; y analizar las limitaciones técnicas y jurídicas del prototipo.
 \end{enumerate}
 
 Los objetivos se han formulado de manera que puedan revisarse al final del trabajo. Cada uno deberá corresponderse con una parte de la implementación, una evidencia experimental o documental y una valoración explícita en el capítulo de conclusiones.
@@ -52,16 +52,15 @@ Los requisitos se dividen en requisitos funcionales y no funcionales. Los primer
 \subsection{Requisitos funcionales}
 \label{subsec:requisitos-funcionales}
 
-Las Tablas~\ref{tab:requisitos-funcionales-1} y~\ref{tab:requisitos-funcionales-2} recogen los requisitos funcionales comprometidos para la versión demostrable del sistema.
+La Tabla~\ref{tab:requisitos-funcionales} recoge los requisitos funcionales comprometidos para la versión demostrable del sistema.
 
-\begin{table}[H]
+\begin{table}[htbp]
     \centering
     \small
     \renewcommand{\arraystretch}{1.2}
-    \caption{Requisitos funcionales del sistema: adquisición, representación y recuperación.}
-    \label{tab:requisitos-funcionales-1}
-    \resizebox{\textwidth}{!}{%
-    \begin{tabular}{|p{1.4cm}|p{11.8cm}|p{2.0cm}|}
+    \caption{Requisitos funcionales del sistema.}
+    \label{tab:requisitos-funcionales}
+    \begin{tabularx}{\textwidth}{|p{1.4cm}|X|p{2.0cm}|}
         \hline
         \textbf{Código} & \textbf{Requisito funcional} & \textbf{Prioridad} \\
         \hline
@@ -81,21 +80,6 @@ Las Tablas~\ref{tab:requisitos-funcionales-1} y~\ref{tab:requisitos-funcionales-
         \hline
         RF-08 & El sistema deberá aceptar preguntas formuladas en lenguaje natural. & Esencial \\
         \hline
-    \end{tabular}%
-    }
-\end{table}
-
-\begin{table}[H]
-    \centering
-    \small
-    \renewcommand{\arraystretch}{1.2}
-    \caption{Requisitos funcionales del sistema: generación, trazabilidad e interfaz.}
-    \label{tab:requisitos-funcionales-2}
-    \resizebox{\textwidth}{!}{%
-    \begin{tabular}{|p{1.4cm}|p{11.8cm}|p{2.0cm}|}
-        \hline
-        \textbf{Código} & \textbf{Requisito funcional} & \textbf{Prioridad} \\
-        \hline
         RF-09 & El sistema deberá construir un contexto limitado a partir de las evidencias recuperadas. & Esencial \\
         \hline
         RF-10 & El sistema deberá generar respuestas basadas en el contexto documental suministrado. & Esencial \\
@@ -112,8 +96,7 @@ Las Tablas~\ref{tab:requisitos-funcionales-1} y~\ref{tab:requisitos-funcionales-
         \hline
         RF-16 & El proceso documental deberá permitir ampliar posteriormente el corpus sin rediseñar la arquitectura completa. & Importante \\
         \hline
-    \end{tabular}%
-    }
+    \end{tabularx}
 \end{table}
 
 La API de legislación consolidada del BOE permite obtener una lista de normas mediante criterios de búsqueda, recuperar metadatos básicos y acceder a la URL de la versión HTML del texto consolidado. Para una norma concreta también ofrece el texto completo de sus versiones, el índice de bloques y las distintas versiones de un bloque determinado \cite{boeApiConsolidada}. Esta disponibilidad permite plantear la trazabilidad como una propiedad estructural del sistema: los fragmentos indexados deben conservar información suficiente para reconstruir su origen y enlazar la respuesta con la fuente oficial relacionada.
@@ -123,16 +106,15 @@ El comportamiento previsto ante preguntas no cubiertas por el corpus merece una 
 \subsection{Requisitos no funcionales}
 \label{subsec:requisitos-no-funcionales}
 
-Los requisitos no funcionales se recogen en las Tablas~\ref{tab:requisitos-no-funcionales-1} y~\ref{tab:requisitos-no-funcionales-2}. No se fijan inicialmente umbrales arbitrarios de precisión o latencia: los valores observados deberán medirse en el entorno real y analizarse en el capítulo de experimentos.
+Los requisitos no funcionales se recogen en la Tabla~\ref{tab:requisitos-no-funcionales}. No se fijan inicialmente umbrales arbitrarios de precisión o latencia: los valores observados deberán medirse en el entorno real y analizarse en el capítulo de experimentos.
 
-\begin{table}[H]
+\begin{table}[htbp]
     \centering
     \small
     \renewcommand{\arraystretch}{1.2}
-    \caption{Requisitos no funcionales del sistema: calidad técnica.}
-    \label{tab:requisitos-no-funcionales-1}
-    \resizebox{\textwidth}{!}{%
-    \begin{tabular}{|p{1.5cm}|p{3.0cm}|p{10.7cm}|}
+    \caption{Requisitos no funcionales del sistema.}
+    \label{tab:requisitos-no-funcionales}
+    \begin{tabularx}{\textwidth}{|p{1.5cm}|p{3.0cm}|X|}
         \hline
         \textbf{Código} & \textbf{Propiedad} & \textbf{Requisito no funcional} \\
         \hline
@@ -146,21 +128,6 @@ Los requisitos no funcionales se recogen en las Tablas~\ref{tab:requisitos-no-fu
         \hline
         RNF-05 & Extensibilidad & La ampliación del corpus o la incorporación de nuevos recuperadores no deberá exigir rehacer el sistema completo. \\
         \hline
-    \end{tabular}%
-    }
-\end{table}
-
-\begin{table}[H]
-    \centering
-    \small
-    \renewcommand{\arraystretch}{1.2}
-    \caption{Requisitos no funcionales del sistema: operación y uso responsable.}
-    \label{tab:requisitos-no-funcionales-2}
-    \resizebox{\textwidth}{!}{%
-    \begin{tabular}{|p{1.5cm}|p{3.0cm}|p{10.7cm}|}
-        \hline
-        \textbf{Código} & \textbf{Propiedad} & \textbf{Requisito no funcional} \\
-        \hline
         RNF-06 & Ejecución local y abierta & El sistema deberá ejecutarse íntegramente con modelos y herramientas de código abierto en el servidor universitario, sin depender de servicios externos de pago. \\
         \hline
         RNF-07 & Comprensibilidad & Las respuestas deberán utilizar un lenguaje accesible para usuarios no especializados, sin ocultar su fundamentación documental. \\
@@ -171,8 +138,7 @@ Los requisitos no funcionales se recogen en las Tablas~\ref{tab:requisitos-no-fu
         \hline
         RNF-10 & Observabilidad experimental & Las ejecuciones relevantes deberán registrar parámetros, resultados y diagnósticos suficientes para analizar errores. \\
         \hline
-    \end{tabular}%
-    }
+    \end{tabularx}
 \end{table}
 
 \section{Restricciones y supuestos}
@@ -180,14 +146,13 @@ Los requisitos no funcionales se recogen en las Tablas~\ref{tab:requisitos-no-fu
 
 El proyecto se desarrolla bajo un conjunto de restricciones que delimitan la interpretación de los resultados. Estas restricciones no constituyen errores del prototipo, sino condiciones de partida que deben tenerse en cuenta al evaluar su utilidad.
 
-\begin{table}[H]
+\begin{table}[htbp]
     \centering
     \small
     \renewcommand{\arraystretch}{1.2}
     \caption{Restricciones y supuestos iniciales del proyecto.}
     \label{tab:restricciones-supuestos}
-    \resizebox{\textwidth}{!}{%
-    \begin{tabular}{|p{3.3cm}|p{12.2cm}|}
+    \begin{tabularx}{\textwidth}{|p{3.3cm}|X|}
         \hline
         \textbf{Ámbito} & \textbf{Restricción o supuesto} \\
         \hline
@@ -201,8 +166,7 @@ El proyecto se desarrolla bajo un conjunto de restricciones que delimitan la int
         \hline
         Alcance experimental & Las conclusiones serán válidas para el corpus, las consultas y las configuraciones evaluadas. No deberán generalizarse automáticamente a cualquier norma o escenario de uso. \\
         \hline
-    \end{tabular}%
-    }
+    \end{tabularx}
 \end{table}
 
 %\subsection{Entorno computacional disponible}
@@ -210,7 +174,7 @@ El proyecto se desarrolla bajo un conjunto de restricciones que delimitan la int
 
 %El desarrollo y la ejecución local se realizan en un servidor universitario. La Tabla~\ref{tab:hardware-servidor} resume el inventario recogido durante el desarrollo. La descripción detallada del entorno experimental, incluyendo versiones de software y configuraciones de cada prueba, se incorporará en el capítulo de experimentos.
 
-%\begin{table}[H]
+%\begin{table}[htbp]
     %\centering
     %\small
    % \renewcommand{\arraystretch}{1.2}
@@ -242,40 +206,13 @@ El proyecto se desarrolla bajo un conjunto de restricciones que delimitan la int
 \section{Planificación temporal}
 \label{sec:planificacion-temporal}
 
-\subsection{Fases del proyecto}
-\label{subsec:fases-proyecto}
+El proyecto se organizó en ocho fases, desde la definición del problema hasta la documentación y el cierre, que en la práctica se solaparon: construir un sistema RAG obliga a revisar decisiones previas cada vez que aparecen resultados experimentales o errores de integración. En cuanto al calendario, se desarrolló entre \textbf{noviembre de 2025} y la entrega, en \textbf{julio de 2026}. La primera etapa acotó el dominio sobre documentos en \emph{texto plano} y, en torno a \textbf{mayo de 2026}, el trabajo giró hacia la legislación consolidada del BOE; a partir de ahí, de forma especialmente intensa en junio y julio, se encadenaron la ingesta y el procesamiento del corpus, la comparación de recuperadores, la generación y la evaluación. Este ritmo se ajustó al calendario de convocatorias de defensa y al reglamento de Trabajo Fin de Grado de la Escuela de Ingeniería de Fuenlabrada \cite{urjcConvocatoriasTFGEIF2025_2026,urjcReglamentoTFGEIF2025}, que fija la estructura y la extensión máxima del documento. El diagrama de Gantt de la Figura~\ref{fig:gantt-fases} resume gráficamente el cronograma seguido.
 
-La planificación se organiza en ocho fases. Varias de ellas se solapan porque el desarrollo de un sistema RAG requiere revisar decisiones previas cuando se observan resultados experimentales o errores de integración.
-
-\begin{table}[H]
+\begin{figure}[htbp]
     \centering
-    \small
-    \renewcommand{\arraystretch}{1.18}
-    \caption{Fases principales del proyecto.}
-    \label{tab:fases-proyecto}
-    \resizebox{\textwidth}{!}{%
-    \begin{tabular}{|p{1.3cm}|p{4.0cm}|p{8.4cm}|p{2.0cm}|}
-        \hline
-        \textbf{Fase} & \textbf{Denominación} & \textbf{Contenido principal} & \textbf{Estado} \\
-        \hline
-        F0 & Definición del problema & Delimitación del dominio jurídico, usuarios, fuente documental, alcance y criterios iniciales de utilidad. & Completada \\
-        \hline
-        F1 & Obtención y estructuración documental & Descarga desde el BOE, normalización, validación, metadatos y construcción del corpus inicial. & Completada; ampliable \\
-        \hline
-        F2 & Fragmentación e indexación & Diseño de unidades documentales, textos padre, embeddings, contratos de compatibilidad e índices. & Completada para el MVP \\
-        \hline
-        F3 & Recuperación y evaluación del \emph{retriever} & Evaluación de recuperación semántica e incorporación de recuperación léxica e híbrida para su comparación. & En curso \\
-        \hline
-        F4 & Generación fundamentada & Construcción de contexto, prompts, generación local, citas y validación de salidas. & MVP completado; en mejora \\
-        \hline
-        F5 & Demostrador de extremo a extremo & Ejecución completa del flujo pregunta--respuesta con citas mediante línea de comandos y cuadernos reproducibles. La interfaz web se pospone a trabajo futuro. & Completada para el MVP \\
-        \hline
-        F6 & Evaluación integral & Batería de preguntas, métricas, análisis cualitativo, abstención y estudio de errores. & En curso \\
-        \hline
-        F7 & Documentación y cierre & Memoria, anexos, reproducibilidad, revisión formal y preparación de la defensa. & En curso \\
-        \hline
-    \end{tabular}%
-    }
-\end{table}
+    \includegraphics[width=\textwidth]{img/gantt_fases.pdf}
+    \caption{Cronograma aproximado de las ocho fases del proyecto (noviembre de 2025 -- entrega el 11 de julio de 2026). Las fases se solapan y todas concluyen en la entrega; el detalle de cada una se recoge en el Anexo~\ref{app:planificacion}.}
+    \label{fig:gantt-fases}
+\end{figure}
 
-El ritmo de trabajo se ha ajustado al calendario de convocatorias de defensa de Trabajo Fin de Grado de la Escuela de Ingeniería de Fuenlabrada para el curso 2025--2026 \cite{urjcConvocatoriasTFGEIF2025_2026}. Asimismo, la elaboración de esta memoria sigue los requisitos de estructura, formato y contenido establecidos en el reglamento específico de Trabajo Fin de Grado de la Escuela \cite{urjcReglamentoTFGEIF2025}, que condiciona tanto la organización de los capítulos como la extensión máxima del documento.
+El detalle de las ocho fases y las cuatro desviaciones que el plan sufrió al chocar con la realidad —el cambio de fuente documental (del texto plano a la legislación consolidada), la ampliación del corpus de 10 a 92 normas, la re-priorización de la generación y de la validación del modelo juez, y el giro a la GPU para la indexación— se recogen en el Anexo~\ref{app:planificacion}. Ninguno de esos ajustes desvió el objetivo general: cada uno respondió a un obstáculo concreto y dejó el trabajo en mejor posición para alcanzarlo.

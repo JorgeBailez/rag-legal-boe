@@ -1,12 +1,20 @@
 # Fase 2 — Baseline denso (dense-only)
 
+> Nota de alcance. Este documento describe el diseño del índice denso, que sigue vigente. Las cifras
+> y los bundles que cita son de la primera fase (corpus de 10 normas) y han quedado superados por el
+> corpus de 92: el modelo elegido es `e5-large-instruct · J1 · I1_LEGAL` y el recuperador del sistema
+> es el denso. La comparación con BM25 y la fusión híbrida llegó en una fase posterior y confirmó que,
+> en este corpus, el denso es la mejor opción. Las decisiones con su evidencia están en
+> `decisiones_de_diseno.md`.
+
 Documentación de la Fase 2: embeddings densos reproducibles, índice exacto, consulta, ensamblado de
 contexto y evaluación. Documento vivo.
 
 ## Objetivo
 
 Construir, de forma **trazable y reproducible**, un baseline de recuperación **dense-only** sobre el
-corpus MVP (10 normas) y dejar el flujo preparado para ejecutar las cargas pesadas en un servidor
+corpus MVP (10 normas) y dejar el flujo preparado para ejecutar las cargas pesadas en una máquina
+con recursos suficientes
 CPU. El valor es la trazabilidad y la evaluación, no la escala.
 
 ## Fuera de alcance
@@ -149,5 +157,5 @@ P2.8 métricas/assembler · P2.9 reportes/notebooks · P2.10 scripts/docs/QA.
 
 - Fijar los commit hashes de los modelos antes de publicar bundles definitivos.
 - Anotación jurídica del dataset (Gate C) para el benchmark formal.
-- `peak_ram_mb` solo en Linux (servidor); en otros SO queda `null`.
+- `peak_ram_mb` solo en Linux; en otros SO queda `null`.
 - Capas posteriores fuera de esta fase: BM25, híbrido, reranking, generación con LLM, API.

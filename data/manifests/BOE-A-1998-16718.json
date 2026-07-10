@@ -1,0 +1,44 @@
+{
+  "norm_id": "BOE-A-1998-16718",
+  "source": "BOE legislación consolidada",
+  "base_url": "https://www.boe.es/datosabiertos/api",
+  "downloaded_at": "2026-06-22T17:43:59.342894+00:00",
+  "files": [
+    {
+      "endpoint_name": "full",
+      "path": "data/raw/boe/BOE-A-1998-16718/full.xml",
+      "sha256": "9e00afa864a9bb43c6ef1646b0fee2d53732e324560b26c40cafd6c6747f3341",
+      "size_bytes": 1228697
+    },
+    {
+      "endpoint_name": "metadatos",
+      "path": "data/raw/boe/BOE-A-1998-16718/metadatos.xml",
+      "sha256": "3df6f9d2030ea2bb7693fb7ec21c3998d304625c9ebae0190f9f8534c66d4f7c",
+      "size_bytes": 1240
+    },
+    {
+      "endpoint_name": "analisis",
+      "path": "data/raw/boe/BOE-A-1998-16718/analisis.xml",
+      "sha256": "791554d29b79fbd63eee843243f725b4d0f532971de88abc559693b121a91e0a",
+      "size_bytes": 21713
+    },
+    {
+      "endpoint_name": "metadata_eli",
+      "path": "data/raw/boe/BOE-A-1998-16718/metadata_eli.xml",
+      "sha256": "d0559e61f7b5d2ede38daf4e6263f0ba85b1ac313f010ae020ca6e5cee02ae0a",
+      "size_bytes": 144125
+    },
+    {
+      "endpoint_name": "texto",
+      "path": "data/raw/boe/BOE-A-1998-16718/texto.xml",
+      "sha256": "4945fe0ec20ccc6b93cbcbbfb9c0f8affd2536471201b70f45a5af7f59a2fd46",
+      "size_bytes": 1062054
+    },
+    {
+      "endpoint_name": "indice",
+      "path": "data/raw/boe/BOE-A-1998-16718/indice.xml",
+      "sha256": "3ad598562785f923cd4d74860717e0d3b336f14cd21319b26f7e0abd8a138cf2",
+      "size_bytes": 58190
+    }
+  ]
+}

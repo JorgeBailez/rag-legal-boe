@@ -1,0 +1,44 @@
+{
+  "norm_id": "BOE-A-2002-25180",
+  "source": "BOE legislación consolidada",
+  "base_url": "https://www.boe.es/datosabiertos/api",
+  "downloaded_at": "2026-06-22T17:44:57.301911+00:00",
+  "files": [
+    {
+      "endpoint_name": "full",
+      "path": "data/raw/boe/BOE-A-2002-25180/full.xml",
+      "sha256": "e72cf13b7bc5026665b574551b95d182a28d599e57fabd87e316c2b74b141677",
+      "size_bytes": 168256
+    },
+    {
+      "endpoint_name": "metadatos",
+      "path": "data/raw/boe/BOE-A-2002-25180/metadatos.xml",
+      "sha256": "eaf3966e8d936612df7e4b712aca539b22d125e242b0fef541c35c15a7f94c04",
+      "size_bytes": 1201
+    },
+    {
+      "endpoint_name": "analisis",
+      "path": "data/raw/boe/BOE-A-2002-25180/analisis.xml",
+      "sha256": "f5167ff40ad6174e30a1d00f2820b40814c8c1c49927b1e22227be1defac2e49",
+      "size_bytes": 4467
+    },
+    {
+      "endpoint_name": "metadata_eli",
+      "path": "data/raw/boe/BOE-A-2002-25180/metadata_eli.xml",
+      "sha256": "7c0796cf4e0b16626882a8f6b3e8270357dfe46532363f417e8da9e584548876",
+      "size_bytes": 37259
+    },
+    {
+      "endpoint_name": "texto",
+      "path": "data/raw/boe/BOE-A-2002-25180/texto.xml",
+      "sha256": "6c5c6806ba20a9010fd8309d4e36891b8b09362833aeff0c32b0d9737104aa15",
+      "size_bytes": 125764
+    },
+    {
+      "endpoint_name": "indice",
+      "path": "data/raw/boe/BOE-A-2002-25180/indice.xml",
+      "sha256": "2a00e137230b35280bc48263287f6652150b6909dd5ca1244b0cdba959a97c99",
+      "size_bytes": 20998
+    }
+  ]
+}

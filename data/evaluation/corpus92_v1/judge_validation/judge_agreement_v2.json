@@ -1,0 +1,187 @@
+{
+  "n": 15,
+  "percent_agreement": 0.6666666666666666,
+  "cohens_kappa": 0.07407407407407407,
+  "weighted_kappa": 0.21052631578947367,
+  "gwet_ac1": 0.6005326231691078,
+  "cohens_kappa_ci": {
+    "lo": 0.0,
+    "hi": 0.32835820895522383,
+    "n_boot": 2000,
+    "level": 0.95
+  },
+  "weighted_kappa_ci": {
+    "lo": 0.0,
+    "hi": 0.5161290322580645,
+    "n_boot": 2000,
+    "level": 0.95
+  },
+  "gwet_ac1_ci": {
+    "lo": 0.2185238784370478,
+    "hi": 0.8578199052132702,
+    "n_boot": 2000,
+    "level": 0.95
+  },
+  "confusion_matrix": [
+    [
+      0,
+      1,
+      0
+    ],
+    [
+      0,
+      0,
+      4
+    ],
+    [
+      0,
+      0,
+      10
+    ]
+  ],
+  "labels": [
+    "incorrect",
+    "partial",
+    "correct"
+  ],
+  "primary_dimension": "correctness",
+  "primary_kappa": "weighted_kappa",
+  "primary_metric_imbalanced": "gwet_ac1",
+  "by_dimension": {
+    "correctness": {
+      "n": 15,
+      "percent_agreement": 0.6666666666666666,
+      "cohens_kappa": 0.07407407407407407,
+      "weighted_kappa": 0.21052631578947367,
+      "gwet_ac1": 0.6005326231691078,
+      "labels": [
+        "incorrect",
+        "partial",
+        "correct"
+      ],
+      "confusion_matrix": [
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          4
+        ],
+        [
+          0,
+          0,
+          10
+        ]
+      ],
+      "cohens_kappa_ci": {
+        "lo": 0.0,
+        "hi": 0.32835820895522383,
+        "n_boot": 2000,
+        "level": 0.95
+      },
+      "weighted_kappa_ci": {
+        "lo": 0.0,
+        "hi": 0.5161290322580645,
+        "n_boot": 2000,
+        "level": 0.95
+      },
+      "gwet_ac1_ci": {
+        "lo": 0.2185238784370478,
+        "hi": 0.8578199052132702,
+        "n_boot": 2000,
+        "level": 0.95
+      },
+      "disagreements": [
+        {
+          "query_id": "q92_031",
+          "human": "incorrect",
+          "judge": "partial"
+        },
+        {
+          "query_id": "q92_036",
+          "human": "partial",
+          "judge": "correct"
+        },
+        {
+          "query_id": "q92_057",
+          "human": "partial",
+          "judge": "correct"
+        },
+        {
+          "query_id": "q92_058",
+          "human": "partial",
+          "judge": "correct"
+        },
+        {
+          "query_id": "q92_081",
+          "human": "partial",
+          "judge": "correct"
+        }
+      ]
+    },
+    "faithfulness": {
+      "n": 30,
+      "percent_agreement": 0.8666666666666667,
+      "cohens_kappa": 0.4444444444444444,
+      "weighted_kappa": 0.4444444444444444,
+      "gwet_ac1": 0.8265895953757226,
+      "labels": [
+        "unfaithful",
+        "faithful"
+      ],
+      "confusion_matrix": [
+        [
+          2,
+          4
+        ],
+        [
+          0,
+          24
+        ]
+      ],
+      "cohens_kappa_ci": {
+        "lo": 0.0,
+        "hi": 0.8695652173913043,
+        "n_boot": 2000,
+        "level": 0.95
+      },
+      "weighted_kappa_ci": {
+        "lo": 0.0,
+        "hi": 0.8695652173913043,
+        "n_boot": 2000,
+        "level": 0.95
+      },
+      "gwet_ac1_ci": {
+        "lo": 0.6078431372549019,
+        "hi": 0.9631675874769797,
+        "n_boot": 2000,
+        "level": 0.95
+      },
+      "disagreements": [
+        {
+          "query_id": "q92_002",
+          "human": "unfaithful",
+          "judge": "faithful"
+        },
+        {
+          "query_id": "q92_021",
+          "human": "unfaithful",
+          "judge": "faithful"
+        },
+        {
+          "query_id": "q92_031",
+          "human": "unfaithful",
+          "judge": "faithful"
+        },
+        {
+          "query_id": "q92_063",
+          "human": "unfaithful",
+          "judge": "faithful"
+        }
+      ]
+    }
+  }
+}
