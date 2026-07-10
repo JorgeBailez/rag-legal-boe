@@ -769,7 +769,7 @@ Curso Académico 2025/2026
 \medskip
 
 \par\noindent El código fuente de este Trabajo Fin de Grado está disponible en:\\ 
-    \textcolor{red}{AÑADIR URL CUANDO SE PONGA PÚBLICO EL REPOSITORIO}
+    \url{https://github.com/JorgeBailez/rag-legal-boe}
     \medskip
     
     \par\noindent  Este trabajo se entrega bajo la licencia Creative Commons\\
@@ -796,8 +796,7 @@ Curso Académico 2025/2026
 \chapter*{}
 %\pagenumbering{Roman} % para comenzar la numeración de paginas en numeros romanos
 \begin{flushright}
-\textit{Aquí normalmente \\
-se inserta una dedicatoria corta \\}
+%\textit{Dedicatoria opcional (una línea).}
 \end{flushright}
 
 %-------------------------------------------------------------------------------
@@ -807,13 +806,15 @@ se inserta una dedicatoria corta \\}
 %\addcontentsline{toc}{chapter}{Agradecimientos} % si queremos que aparezca en el índice
 \markboth{AGRADECIMIENTOS}{AGRADECIMIENTOS} % encabezado 
 
-Aquí vienen los agradecimientos\ldots
+A mis padres, por su apoyo incondicional y por confiar siempre en mí; por el esfuerzo con el que me lo han dado todo y por los valores que me han enseñado. Y, sobre todo, por la fortaleza con la que afrontan la vida, que es para mí el mejor ejemplo.
 
-Hay más espacio para explayarse y explicar a quién agradeces su apoyo o ayuda para
-haber acabado el proyecto: familia, pareja, amigos, compañeros de clase\ldots
+A mi hermano, por ser, además de hermano, un amigo y un referente; por el ejemplo que me ha dado siempre y por estar ahí en todo lo que he necesitado.
 
-También hay quien, en algunos casos, hasta agradecer a su tutor o tutores del proyecto
-la ayuda prestada\ldots
+A María, por su apoyo y su paciencia, por animarme en los momentos difíciles y por caminar conmigo en cada etapa. Gracias por creer en mí y por hacer más fácil todo el camino.
+
+A Felipe Ortega Soto, tutor de este trabajo, por su orientación, su paciencia y su acompañamiento durante todo el proceso.
+
+A todos, gracias.
 
 %-------------------------------------------------------------------------------
 %%%--- Resumen
@@ -824,7 +825,7 @@ la ayuda prestada\ldots
 
 Este Trabajo Fin de Grado aborda el diseño y la evaluación de un sistema de generación aumentada mediante recuperación (RAG) para facilitar la consulta ciudadana de legislación consolidada del Boletín Oficial del Estado. El punto de partida es que publicar una norma no basta para hacerla accesible: los textos jurídicos son extensos, cambian con el tiempo y emplean un lenguaje alejado de muchas consultas cotidianas. El objetivo no es sustituir la publicación oficial ni ofrecer asesoramiento jurídico, sino construir una herramienta informativa capaz de recuperar evidencias normativas, redactar respuestas comprensibles y mantener la trazabilidad hacia las fuentes.
 
-Para ello se ha desarrollado un sistema completo, ejecutable de extremo a extremo, sobre software y modelos de código abierto en entorno local. El trabajo incluye un corpus reproducible de 92 normas consolidadas del BOE, la interpretación de su estructura y vigencia temporal, una representación documental \emph{parent-child}, recuperadores léxico, denso e híbrido, ensamblado controlado de contexto y generación de respuestas fundamentadas con citas verificables. La evaluación se plantea como una parte central del proyecto: se construye un banco de 121 preguntas y 567 juicios de relevancia, se separan las particiones de ajuste y prueba, y se mide la cadena RAG por capas para distinguir recuperación, contexto, citas, hechos clave, fidelidad, corrección y abstención.
+Para ello se ha desarrollado un sistema completo, ejecutable de extremo a extremo, sobre software de código abierto y modelos de pesos abiertos, en entorno local. El trabajo incluye un corpus reproducible de 92 normas consolidadas del BOE, la interpretación de su estructura y vigencia temporal, una representación documental \emph{parent-child}, recuperadores léxico, denso e híbrido, ensamblado controlado de contexto y generación de respuestas fundamentadas con citas verificables. La evaluación se plantea como una parte central del proyecto: se construye un banco de 121 preguntas y 567 juicios de relevancia, se separan las particiones de ajuste y prueba, y se mide la cadena RAG por capas para distinguir recuperación, contexto, citas, hechos clave, fidelidad, corrección y abstención.
 
 Los resultados muestran que, en este corpus y con este tipo de consulta, el recuperador denso es la opción más adecuada: alcanza un ParentnDCG@10 de 0,797 en \emph{test}, iguala al mejor híbrido sin añadir su complejidad y supera con claridad a BM25, especialmente en consultas ciudadanas. La generación confirma que recuperar evidencias aporta valor frente a responder sin contexto, aunque también muestra límites importantes: el sistema es prudente ante preguntas fuera del corpus (0 respuestas indebidas en 30 preguntas de dominio lejano y 1 en 10 \emph{near-miss}), a costa de una sobre-abstención apreciable. Además, la validación del modelo juez frente a anotación humana revela que no es suficientemente fiable para sostener conclusiones de fidelidad o corrección. En conjunto, el trabajo aporta una arquitectura RAG legal reproducible, trazable y ampliable, junto con un análisis experimental que muestra qué decisiones funcionan, cuáles no aportan y dónde están los cuellos de botella reales.
 
@@ -837,7 +838,7 @@ Los resultados muestran que, en este corpus y con este tipo de consulta, el recu
 
 This Bachelor's Thesis addresses the design and evaluation of a retrieval-augmented generation (RAG) system for citizen-oriented consultation of consolidated legislation from the Spanish Official State Gazette (BOE). The starting point is that publishing a legal text does not automatically make it accessible: legislation is extensive, changes over time and often uses language that differs from everyday questions. The aim is not to replace official publication or provide legal advice, but to build an informative tool able to retrieve legal evidence, produce understandable answers and preserve traceability to the original sources.
 
-To this end, the project develops an end-to-end system based on open-source software and locally executed models. The work includes a reproducible corpus of 92 consolidated BOE regulations, parsing of their structure and temporal validity, a \emph{parent-child} document representation, lexical, dense and hybrid retrievers, controlled context assembly and grounded answer generation with verifiable citations. Evaluation is treated as a core part of the project: a benchmark of 121 questions and 567 relevance judgements is built, development and test partitions are kept separate, and the RAG pipeline is measured layer by layer to distinguish retrieval, context, citations, key facts, faithfulness, correctness and abstention.
+To this end, the project develops an end-to-end system based on open-source software and open-weight models executed locally. The work includes a reproducible corpus of 92 consolidated BOE regulations, parsing of their structure and temporal validity, a \emph{parent-child} document representation, lexical, dense and hybrid retrievers, controlled context assembly and grounded answer generation with verifiable citations. Evaluation is treated as a core part of the project: a benchmark of 121 questions and 567 relevance judgements is built, development and test partitions are kept separate, and the RAG pipeline is measured layer by layer to distinguish retrieval, context, citations, key facts, faithfulness, correctness and abstention.
 
 The results show that, for this corpus and this type of query, the dense retriever is the most suitable option: it reaches 0.797 ParentnDCG@10 on the test split, matches the best hybrid alternative without adding its complexity and clearly outperforms BM25, especially on citizen-style questions. Generation confirms that retrieved evidence adds value compared with answering without context, although it also shows important limits: the system behaves cautiously on out-of-corpus questions (0 improper answers on 30 far-domain questions and 1 on 10 \emph{near-miss} questions), at the cost of noticeable over-abstention. In addition, the validation of the LLM-as-judge against human annotation shows that it is not reliable enough to support conclusions about faithfulness or correctness. Overall, the thesis contributes a reproducible, traceable and extensible legal RAG architecture, together with an experimental analysis that shows which design choices work, which ones do not add value and where the real bottlenecks lie.
 

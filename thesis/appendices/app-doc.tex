@@ -24,7 +24,7 @@ La suite completa se ejecuta \emph{offline}, sustituyendo modelos y servicios po
 
 \begin{lstlisting}
 uv run pytest                                          # suite completa, 100% offline
-uv run ruff check .                                    # lint (incluye los notebooks)
+uv run ruff check .                                    # lint
 uv run ruff format .                                   # formato
 uv run python -m src.contracts.export_schemas --check  # anti-drift de los JSON Schema
 \end{lstlisting}
@@ -35,9 +35,9 @@ uv run python -m src.contracts.export_schemas --check  # anti-drift de los JSON 
 El pipeline encadena descarga cruda, parseo, fragmentación y auditoría. La construcción con red y las validaciones posteriores son:
 
 \begin{lstlisting}
-uv run python scripts/build_corpus.py             # descarga + procesa + chunk (requiere red)
-uv run python scripts/validate_mvp_corpus.py --strict
-uv run python scripts/audit_corpus.py --strict    # debe terminar "Sin flags"
+uv run python scripts/build_corpus.py --seed data/corpus/seed_corpus_ampliado.json   # descarga+chunk (red)
+uv run python scripts/validate_mvp_corpus.py --seed data/corpus/seed_corpus_ampliado.json --strict
+uv run python scripts/audit_corpus.py --seed data/corpus/seed_corpus_ampliado.json --strict   # "Sin flags"
 \end{lstlisting}
 
 El reprocesado local a partir del \emph{raw} ya descargado (sin red) se realiza con \texttt{process\_mvp\_corpus.py}, útil cada vez que mejora el \emph{parser} o el fragmentador.
@@ -56,13 +56,17 @@ uv run python scripts/validate_dense_index.py <ruta-al-bundle>
 \label{sec:app-evaluacion}
 
 \begin{lstlisting}
-# Recuperacion: comparacion de estrategias y seleccion de modelo de embeddings
-uv run python scripts/benchmark_retrieval_strategies.py --bundle <bundle> --split test
-uv run python scripts/benchmark_dense_models.py
+# Config autoritativa: banco corpus92_v1, bundle e5-large-instruct / perfil I1, k=3.
+# Recuperacion: comparacion de estrategias sobre test (n=28)
+uv run python scripts/benchmark_retrieval_strategies.py \
+    --bundle data/indexes/dense/e5-large-instruct__j1__c46c7042f563 \
+    --dataset-dir data/evaluation/corpus92_v1 --split test
 # Generacion: retrieval + generacion + juez (opcional)
-uv run python scripts/run_generation_eval.py
+uv run python scripts/run_generation_eval.py \
+    --bundle data/indexes/dense/e5-large-instruct__j1__c46c7042f563 \
+    --dataset-dir data/evaluation/corpus92_v1 --split test --query-profile-id I1_LEGAL
 # Auditoria del banco de pruebas: grounding contra el corpus real
-uv run python scripts/audit_eval_dataset.py       # debe terminar "Sin flags"
+uv run python scripts/audit_eval_dataset.py --dataset-dir data/evaluation/corpus92_v1   # "Sin flags"
 \end{lstlisting}
 
 Cada corrida deja un \textbf{informe versionado e inmutable} en \texttt{data/processed/reports/}, con su configuración y sus huellas de reproducibilidad; de esos informes procede cada tabla del capítulo de experimentos.
@@ -82,7 +86,7 @@ RUN_OLLAMA_INTEGRATION=1 uv run --locked pytest tests/test_integration_ollama.py
 \section{Enlace al repositorio}
 \label{sec:app-enlace}
 
-El código fuente completo de este Trabajo Fin de Grado está disponible en: \textcolor{red}{AÑADIR URL CUANDO SE PONGA PÚBLICO EL REPOSITORIO}.
+El código fuente completo de este Trabajo Fin de Grado está disponible en: \url{https://github.com/JorgeBailez/rag-legal-boe}.
 
 \section{Estructura de carpetas}
 \label{sec:app-estructura}
@@ -110,7 +114,7 @@ El trabajo se apoya en materiales y componentes con licencias diferenciadas, tod
 \begin{itemize}
   \item \textbf{Textos normativos.} Proceden de los datos abiertos del BOE y son reutilizables; tienen carácter informativo y no sustituyen a la publicación oficial \cite{boeLegislacionActualizada}.
   \item \textbf{Modelos.} El modelo de \emph{embeddings}, el generador y el juez son de pesos abiertos y se ejecutan en local, cada uno bajo la licencia que establece su autor.
-  \item \textbf{Código.} Se publica como software de código abierto; la licencia concreta se incorpora al hacerse público el repositorio.
+  \item \textbf{Código.} Se publica como software de código abierto bajo licencia MIT (fichero \texttt{LICENSE} en la raíz del repositorio).
   \item \textbf{Memoria.} Se distribuye bajo licencia Creative Commons Reconocimiento-CompartirIgual (CC BY-SA 4.0).
 \end{itemize}
 
@@ -144,11 +148,11 @@ La planificación se organizó en ocho fases. Varias se solaparon porque el desa
         \hline
         F4 & Generación fundamentada & Construcción de contexto, prompts, generación local, citas y validación de salidas. & MVP completado; en mejora \\
         \hline
-        F5 & Demostrador de extremo a extremo & Ejecución completa del flujo pregunta--respuesta con citas mediante línea de comandos y cuadernos reproducibles. La interfaz web se pospone a trabajo futuro. & Completada para el MVP \\
+        F5 & Demostrador de extremo a extremo & Ejecución completa del flujo pregunta--respuesta con citas mediante línea de comandos. La interfaz web se pospone a trabajo futuro. & Completada para el MVP \\
         \hline
         F6 & Evaluación integral & Batería de preguntas, métricas, análisis cualitativo, abstención y estudio de errores. & Completada \\
         \hline
-        F7 & Documentación y cierre & Memoria, anexos, reproducibilidad, revisión formal y preparación de la defensa. & En curso \\
+        F7 & Documentación y cierre & Memoria, anexos, reproducibilidad, revisión formal y preparación de la defensa. & Completada \\
         \hline
     \end{tabularx}
 \end{table}

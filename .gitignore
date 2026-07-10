@@ -23,11 +23,11 @@ dist/
 *.tmp
 *.temp
 
-# Notebooks (salidas temporales)
+# Notebooks: no forman parte de la entrega; se retiran del control de versiones.
 .ipynb_checkpoints/
 *.executed.ipynb
 *.nbconvert.ipynb
-notebooks/*.html
+notebooks/
 
 # Artefactos de compilación LaTeX
 thesis/*.aux

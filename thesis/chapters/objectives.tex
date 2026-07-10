@@ -39,7 +39,7 @@ El objetivo general se concreta en los siguientes objetivos específicos:
 
     \item[\textbf{OE-07}] \textbf{Ejecutar la evaluación y analizar los errores con evidencia.} Aplicar el marco anterior para medir la calidad de las respuestas generadas, estudiar el equilibrio entre responder y abstenerse, y analizar de forma cualitativa dónde y por qué falla el sistema, contemplando consultas ciudadanas, formulaciones técnico-jurídicas, reformulaciones de una misma necesidad informativa y preguntas fuera del corpus.
 
-    \item[\textbf{OE-08}] \textbf{Favorecer la reproducibilidad, la extensibilidad y el uso responsable.} Documentar la arquitectura, la configuración y los procedimientos de ejecución; sostener el sistema íntegramente sobre modelos y herramientas de código abierto ejecutados localmente, sin servicios externos de pago; facilitar la ampliación posterior del corpus; y analizar las limitaciones técnicas y jurídicas del prototipo.
+    \item[\textbf{OE-08}] \textbf{Favorecer la reproducibilidad, la extensibilidad y el uso responsable.} Documentar la arquitectura, la configuración y los procedimientos de ejecución; sostener el sistema íntegramente sobre herramientas de código abierto y modelos de pesos abiertos ejecutados localmente, sin servicios externos de pago; facilitar la ampliación posterior del corpus; y analizar las limitaciones técnicas y jurídicas del prototipo.
 \end{enumerate}
 
 Los objetivos se han formulado de manera que puedan revisarse al final del trabajo. Cada uno deberá corresponderse con una parte de la implementación, una evidencia experimental o documental y una valoración explícita en el capítulo de conclusiones.
@@ -92,7 +92,7 @@ La Tabla~\ref{tab:requisitos-funcionales} recoge los requisitos funcionales comp
         \hline
         RF-14 & El sistema deberá indicar que no dispone de información suficiente cuando el corpus no permita responder de forma fundamentada. & Esencial \\
         \hline
-        RF-15 & El sistema deberá ofrecer un demostrador ejecutable (línea de comandos o cuaderno) que permita formular una consulta y obtener la respuesta fundamentada con sus citas. & Esencial \\
+        RF-15 & El sistema deberá ofrecer un demostrador ejecutable por línea de comandos que permita formular una consulta y obtener la respuesta fundamentada con sus citas. & Esencial \\
         \hline
         RF-16 & El proceso documental deberá permitir ampliar posteriormente el corpus sin rediseñar la arquitectura completa. & Importante \\
         \hline
@@ -128,7 +128,7 @@ Los requisitos no funcionales se recogen en la Tabla~\ref{tab:requisitos-no-func
         \hline
         RNF-05 & Extensibilidad & La ampliación del corpus o la incorporación de nuevos recuperadores no deberá exigir rehacer el sistema completo. \\
         \hline
-        RNF-06 & Ejecución local y abierta & El sistema deberá ejecutarse íntegramente con modelos y herramientas de código abierto en el servidor universitario, sin depender de servicios externos de pago. \\
+        RNF-06 & Ejecución local y abierta & El sistema deberá ejecutarse íntegramente con herramientas de código abierto y modelos de pesos abiertos en el servidor universitario, sin depender de servicios externos de pago. \\
         \hline
         RNF-07 & Comprensibilidad & Las respuestas deberán utilizar un lenguaje accesible para usuarios no especializados, sin ocultar su fundamentación documental. \\
         \hline
