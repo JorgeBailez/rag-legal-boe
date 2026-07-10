@@ -63,30 +63,29 @@ class Settings(BaseSettings):
     # Logging
     log_level: str = "INFO"
 
-    # Ollama (LLM local de generación — Fase 3). Default loopback; no se expone a red.
+    # Ollama local para generación. Default loopback; no se expone a red.
     ollama_base_url: str = "http://127.0.0.1:11434"
-    ollama_model: str = "qwen2.5:7b-instruct"  # generador seleccionado (no el viejo qwen3:4b)
+    ollama_model: str = "qwen2.5:7b-instruct"
     ollama_timeout_seconds: float = 900.0
     ollama_keep_alive: str = "5m"
-    ollama_num_ctx: int = 8192  # config validada (4096 truncaba el prompt con 3 evidencias)
-    ollama_num_predict: int = 1536  # config validada (256 truncaba el JSON de salida)
+    ollama_num_ctx: int = 8192
+    ollama_num_predict: int = 1536
     ollama_temperature: float = 0.0
     ollama_seed: int = 42
     ollama_think: bool = False
     # Salvaguarda: solo se permite una URL de Ollama no-loopback con opt-in explícito.
     ollama_allow_remote: bool = False
 
-    # Generación fundamentada (Fase 3). El bundle NO tiene default: se indica por entorno o CLI.
+    # Generación fundamentada. El bundle se indica por entorno o CLI.
     generation_dense_bundle: str | None = None
-    generation_query_profile_id: str = "I1_LEGAL"  # perfil ganador (OE-03); antes I2, equivalente
-    generation_top_k: int = 3  # config validada (k=3 > k=5 downstream)
+    generation_query_profile_id: str = "I1_LEGAL"
+    generation_top_k: int = 3
     generation_max_evidences: int = 3
     generation_context_strategy: str = "P_EXPAND_BOUNDED"
     generation_context_budget_chars: int = 4000
     generation_max_total_context_chars: int = 16000
 
-    # Juez LLM de evaluación (L3/L5). Modelo CONFIGURABLE y distinto del generador (anti
-    # auto-preferencia); NO tiene default global (se indica por entorno o CLI, como el bundle).
+    # Juez LLM de evaluación. Modelo configurable y sin default global.
     judge_base_url: str = "http://127.0.0.1:11434"
     judge_model: str = ""
     judge_timeout_seconds: float = 900.0
@@ -98,7 +97,7 @@ class Settings(BaseSettings):
     judge_seed: int = 42
     judge_keep_alive: str = "5m"
 
-    # Índice denso (el modelo se elige por CLI, no por default global)
+    # Índice denso: el modelo se elige por CLI.
     dense_index_root: str = "data/indexes/dense"
     default_cpu_threads: int = 8
     max_cpu_threads: int = 16

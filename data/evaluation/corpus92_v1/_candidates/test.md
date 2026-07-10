@@ -1023,7 +1023,7 @@ _recuperado por:_ bge-m3/BASELINE#3 (0.638) · bm25/lexical#11 (28.943) · hybri
 ## q92_034 · directa_articulo · single_parent
 **Pregunta:** ¿Qué regula el artículo 42 de la Ley 29/2015 de cooperación jurídica internacional en materia civil?
 _split=test · difficulty=dificil · failure_mode=—_
-> ⚠️ Parents ya juzgados que NINGÚN sistema recuperó (revisar recall o gold): BOE-A-2015-8564__a42
+> [WARN] Parents ya juzgados que NINGÚN sistema recuperó (revisar recall o gold): BOE-A-2015-8564__a42
 
 ### Ley 29/2015, artículo 1 · `BOE-A-2015-8564__a1` [JUZGADO rel=0 draft]
 https://www.boe.es/buscar/act.php?id=BOE-A-2015-8564#a1

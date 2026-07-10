@@ -1,11 +1,11 @@
-"""Reprocesa localmente el corpus MVP (parser + chunker) desde el raw ya descargado.
+"""Reprocesa localmente un corpus (parser + chunker) desde el raw ya descargado.
 
 Uso:
-    uv run python scripts/process_mvp_corpus.py
+    uv run python scripts/process_mvp_corpus.py --seed data/corpus/seed_corpus_ampliado.json
 
-No llama a internet ni re-descarga: por cada norma del catálogo canónico
-(`data/corpus/seed_corpus.json`) regenera `data/processed/documents/<id>.json` y
-`data/processed/chunks/<id>.json`. Devuelve exit code != 0 si falla alguna.
+No llama a internet ni re-descarga: por cada norma del catálogo indicado regenera
+`data/processed/documents/<id>.json`, `histories`, `parents` y `chunks`. Devuelve exit code != 0 si
+falla alguna.
 """
 
 from __future__ import annotations
@@ -42,7 +42,7 @@ def main(seed: Path = SEED_CORPUS_PATH) -> int:
             save_chunks(chunks_document, CHUNKS_DIR)
         except (ParsingError, FileNotFoundError) as exc:
             failures += 1
-            print(f"  ⚠ {norm_id}: {exc}", file=sys.stderr)
+            print(f"  [WARN] {norm_id}: {exc}", file=sys.stderr)
             continue
         print(
             f"  {norm_id}: bloques={len(bundle.document['blocks'])} "

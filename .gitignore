@@ -10,16 +10,40 @@ __pycache__/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
+.uv-cache/
 .coverage
+.coverage.*
+coverage.xml
 htmlcov/
+junit.xml
 *.egg-info/
 build/
 dist/
+*.log
+*.tmp
+*.temp
 
 # Notebooks (salidas temporales)
 .ipynb_checkpoints/
 *.executed.ipynb
 *.nbconvert.ipynb
+notebooks/*.html
+
+# Artefactos de compilación LaTeX
+thesis/*.aux
+thesis/*.bbl
+thesis/*.bcf
+thesis/*.blg
+thesis/*.fdb_latexmk
+thesis/*.fls
+thesis/*.lof
+thesis/*.log
+thesis/*.lot
+thesis/*.out
+thesis/*.run.xml
+thesis/*.synctex.gz
+thesis/*.toc
+thesis/*.pdf
 
 # Sistema operativo / IDE
 .DS_Store
@@ -41,7 +65,7 @@ PLAN.md
 
 # Documentación: por defecto no se versiona (notas internas de trabajo); se publica solo el
 # subconjunto curado de abajo (diseño, evaluación, análisis del parser, fuentes y licencias).
-# El resto de docs/ (runbooks del servidor, protocolos de anotación, hoja de ruta, archivo) es local.
+# El resto de docs/ (runbooks de ejecución, protocolos de anotación, hoja de ruta, archivo) es local.
 docs/*
 !docs/decisiones_de_diseno.md
 !docs/evaluacion_gold_y_metricas.md
@@ -54,9 +78,8 @@ docs/*
 # Datos reales: no versionar contenido crudo ni artefactos generados; conservar los .gitkeep
 data/raw/boe/*
 !data/raw/boe/.gitkeep
-# Excepción: el raw de las 10 normas del MVP SÍ se versiona (reproducibilidad de la campaña de
-# embeddings: el servidor indexa los MISMOS bytes que describen los manifests re-baselinados). El
-# resto del raw (normas de ampliación) sigue ignorado. Ver docs/analisis/06 y 07.
+# Excepción reproducible: se conserva el raw mínimo versionado para pruebas y trazabilidad.
+# El resto de normas descargadas se mantiene fuera de Git.
 !data/raw/boe/BOE-A-1985-5392/
 !data/raw/boe/BOE-A-2003-20977/
 !data/raw/boe/BOE-A-2004-4214/
@@ -82,17 +105,22 @@ data/processed/reports/*
 data/indexes/
 
 # Material de trabajo del pooling de evaluación (derivado de bundles no versionados; regenerable)
+data/evaluation/*/_candidates/
 data/evaluation/dense_retrieval_v1/_candidates/
+
+# Modelos o pesos descargados accidentalmente dentro del repo
+*.gguf
+*.safetensors
+*.pt
+*.pth
 
 # Copias de seguridad locales
 *.bak
 
-# Validación del gold (re-anotación humana ciega + etiquetas de los modelos que se ocultan durante la
-# anotación): material interno de trabajo, no se versiona.
+# Validación auxiliar del gold: material local no versionado.
 data/evaluation/*/gold_validation/
 
-# Herramientas y material interno de anotación (worksheets HTML, backups y resúmenes regenerables).
-# NO afecta a las anotaciones versionadas (p. ej. anotacion_corpus92_dev.jsonl).
+# Hojas de anotación, backups y resúmenes regenerables.
 data/evaluation/*/near_miss_review/
 data/evaluation/*/judge_validation/reanotacion_*.html
 data/evaluation/*/judge_validation/*_i2_prev.jsonl

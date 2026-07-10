@@ -18,9 +18,10 @@ esta tabla es solo el mapa.
 | `audit_corpus.py` | Auditoría de calidad parser+chunker + *gate* de readiness. |
 
 > **Nota sobre el "mvp" y `audit_corpus`:** su default es `seed_corpus.json` (las **10 normas** del
-> MVP, cuyo raw está **versionado** para reproducibilidad local). Para el **corpus-92** pásales
-> `--seed data/corpus/seed_corpus_ampliado.json` (su raw vive en `dslab01`, gitignored). El nombre
-> "mvp" es histórico; los scripts son agnósticos al seed.
+> prototipo, cuyo raw está **versionado** para reproducibilidad local). Para el **corpus-92** pásales
+> `--seed data/corpus/seed_corpus_ampliado.json`; su raw completo no se versiona y debe
+> reconstruirse o aportarse localmente. El nombre "mvp" es histórico; los scripts son agnósticos al
+> seed.
 
 ## Índice denso
 
@@ -48,7 +49,7 @@ esta tabla es solo el mapa.
 | `answer_question.py` | CLI de una pregunta → respuesta fundamentada o abstención. |
 | `run_generation_eval.py` | Corre el RAG sobre un split + métricas L3–L6 + report versionado. |
 
-## Validación del juez (la "familia")
+## Validación del juez
 
 Los cuatro se parecen en el nombre pero hacen cosas distintas:
 

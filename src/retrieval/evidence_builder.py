@@ -23,11 +23,11 @@ from src.core.exceptions import ConfigurationError
 from src.retrieval.context_assembler import P_EXPAND_BOUNDED, STRATEGIES, assemble_context
 from src.retrieval.dense_retriever import DenseHit
 
-# Defaults provisionales del MVP (configurables; no son una decisión experimental definitiva).
+# Defaults de bajo nivel; la configuración de ejecución puede sobrescribirlos.
 DEFAULT_MAX_EVIDENCES = 3
 DEFAULT_CONTEXT_STRATEGY = P_EXPAND_BOUNDED
 DEFAULT_CONTEXT_BUDGET_CHARS = 4000  # B4K por evidencia
-DEFAULT_MAX_TOTAL_CONTEXT_CHARS = 8000  # presupuesto agregado
+DEFAULT_MAX_TOTAL_CONTEXT_CHARS = 16000  # presupuesto agregado
 
 
 @dataclass

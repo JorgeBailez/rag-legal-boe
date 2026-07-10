@@ -1,15 +1,15 @@
-"""Construye el corpus MVP: descarga, verifica y procesa las normas del corpus semilla.
+"""Construye un corpus: descarga, verifica y procesa las normas del catálogo semilla.
 
 Uso:
-    uv run python scripts/build_corpus.py
+    uv run python scripts/build_corpus.py --seed data/corpus/seed_corpus_ampliado.json
 
-Llama a la API externa del BOE. Para cada norma del corpus semilla:
+Llama a la API externa del BOE. Para cada norma del catálogo semilla:
   1. descarga el raw (endpoints opcionales tolerados) + manifest;
   2. la verifica contra los criterios (vigente + estado_consolidacion "Finalizado");
   3. si los cumple, genera el documento procesado y los chunks.
 
 Las normas que NO cumplen criterios se EXCLUYEN del procesado y se reportan (no se
-sustituyen automáticamente). Escribe `data/corpus/verification_report.json`.
+sustituyen automáticamente). Escribe el report de verificación junto al catálogo usado.
 """
 
 from __future__ import annotations
@@ -100,7 +100,7 @@ def main(strict: bool = False, seed: Path = SEED_CORPUS_PATH) -> int:
                     row["chunks_count"] = chunks
                 except ParsingError as exc:
                     row["processing_error"] = str(exc)
-                    print(f"  ⚠ error al procesar {norm_id}: {exc}", file=sys.stderr)
+                    print(f"  [WARN] error al procesar {norm_id}: {exc}", file=sys.stderr)
             report.append(row)
 
     report_path.parent.mkdir(parents=True, exist_ok=True)
@@ -116,7 +116,7 @@ def main(strict: bool = False, seed: Path = SEED_CORPUS_PATH) -> int:
     print(f"Reporte: {report_path}")
 
     if failed:
-        print("\n⚠ Normas a REVISAR (no procesadas, no sustituidas):")
+        print("\n[WARN] Normas a REVISAR (no procesadas, no sustituidas):")
         for row in failed:
             print(f"  - {row['norm_id']}: {', '.join(row['reasons']) or 'ver reporte'}")
 

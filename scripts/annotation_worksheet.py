@@ -183,7 +183,7 @@ def main() -> int:
         f"Anotación escrita: {args.out} ({len(rows)} filas; {n_f} con fidelidad, {n_c} corrección)."
     )
     for w in warnings:
-        print(f"  ⚠ {w}")
+        print(f"  [WARN] {w}")
     return 0
 
 

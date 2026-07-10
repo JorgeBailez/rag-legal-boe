@@ -7,9 +7,10 @@ acuerdo juez↔humano?" sin gastar horas de anotación nuevas. Reporta también 
 cambian respecto al juez ANTERIOR guardado en la anotación (`judge_correctness`), para ver en qué
 dirección movió el prompt (p. ej. si dejó de marcar `partial` lo que el humano da por `correct`).
 
-Necesita Ollama con el modelo juez (dslab01). Determinista (temperatura 0, seed fija). La anotación
-de entrada debe traer, por fila: `question`, `answer_text`, `reference_answer`, `human_correctness`
-(correct|partial|incorrect) y, opcionalmente, `judge_correctness` (el veredicto del juez anterior).
+Necesita Ollama con el modelo juez configurado. Determinista (temperatura 0, seed fija). La
+anotación de entrada debe traer, por fila: `question`, `answer_text`, `reference_answer`,
+`human_correctness` (correct|partial|incorrect) y, opcionalmente, `judge_correctness` (veredicto
+anterior del juez).
 
 Uso:
     uv run python scripts/revalidate_judge_correctness.py --annotations anotacion_juez.jsonl \
@@ -135,7 +136,7 @@ def main() -> int:
                 new = verdict.verdict
             except RagLegalBoeError as exc:
                 errors += 1
-                print(f"  [{i}/{len(annotated)}] {qid}: ⚠ juez falló ({exc}); se omite.")
+                print(f"  [{i}/{len(annotated)}] {qid}: [WARN] juez falló ({exc}); se omite.")
                 continue
             new_pairs.append((human, new))
             old = r.get("judge_correctness")

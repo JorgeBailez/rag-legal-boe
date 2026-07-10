@@ -59,8 +59,10 @@ def main() -> None:
         else:
             identical.append(qid)
 
-    print(f"comunes={len(common)}  idénticas={len(identical)}  "
-          f"cambió_texto={len(changed_text)}  cambió_estado={len(changed_status)}")
+    print(
+        f"comunes={len(common)}  idénticas={len(identical)}  "
+        f"cambió_texto={len(changed_text)}  cambió_estado={len(changed_status)}"
+    )
     only_old = sorted(set(old) - set(new))
     only_new = sorted(set(new) - set(old))
     if only_old:
@@ -78,8 +80,10 @@ def main() -> None:
         print(f"  {qid} ({kind}){tag}")
     if annotated:
         recheck_annotated = [q for q in to_recheck if q in annotated]
-        print(f"\nDe las {len(annotated)} anotadas, hay que re-mirar {len(recheck_annotated)}: "
-              f"{recheck_annotated or 'ninguna'}")
+        print(
+            f"\nDe las {len(annotated)} anotadas, hay que re-mirar {len(recheck_annotated)}: "
+            f"{recheck_annotated or 'ninguna'}"
+        )
 
 
 if __name__ == "__main__":

@@ -257,11 +257,11 @@ def _print_dim(name: str, dim: dict) -> None:
         for i, row in enumerate(matrix):
             print(f"        {labels[i]:>{width}} | {row}")
     for d in dim.get("disagreements", []):
-        print(f"      ✗ {d['query_id']}: humano={d['human']} vs juez={d['judge']}")
+        print(f"      [DIFF] {d['query_id']}: humano={d['human']} vs juez={d['judge']}")
 
 
 def main() -> int:
-    # Consolas no-UTF8 (Windows cp1252) no pueden imprimir κ/✗/⚠; forzamos UTF-8 si se puede.
+    # Algunas consolas de Windows no imprimen bien κ; forzamos UTF-8 si se puede.
     try:
         sys.stdout.reconfigure(encoding="utf-8")
     except (AttributeError, ValueError):
@@ -311,12 +311,13 @@ def main() -> int:
         print(f"Plantilla escrita: {out_path} ({len(rows)} respuestas a anotar).")
         if missing_answer:
             print(
-                f"⚠ {missing_answer} filas sin answer_text (report antiguo): vuelve a generar el "
-                "report con el runner actual para tener la respuesta a la vista."
+                f"[WARN] {missing_answer} filas sin answer_text (report antiguo): "
+                "vuelve a generar el report con el runner actual para tener "
+                "la respuesta a la vista."
             )
         if missing_evidence:
             print(
-                f"⚠ {missing_evidence} filas sin evidences_block: L3 (fidelidad) no anotable; "
+                f"[WARN] {missing_evidence} filas sin evidences_block: L3 (fidelidad) no anotable; "
                 "regenera el report con el runner actual (guarda la evidencia aunque no haya juez)."
             )
         print("Rellena los campos human_correctness y human_faithful de cada fila.")
@@ -384,7 +385,10 @@ def main() -> int:
                 "(clases desbalanceadas). Reporta AC1 como métrica primaria y el % de acuerdo."
             )
         else:
-            print("⚠ κ < 0.6 y AC1 < 0.6: trata L3/L5 como PROVISIONALES o cambia de modelo juez.")
+            print(
+                "[WARN] κ < 0.6 y AC1 < 0.6: trata L3/L5 como PROVISIONALES "
+                "o cambia de modelo juez."
+            )
     return 0
 
 

@@ -1,4 +1,4 @@
-"""Benchmark / smoke test de los modelos densos (CPU). Las cargas pesadas son para el servidor.
+"""Benchmark / smoke test de los modelos densos (CPU).
 
 Modos:
 - `--smoke-test`: codifica una muestra pequeña con cada modelo y mide dimensión, throughput,
@@ -6,7 +6,7 @@ Modos:
 - (por defecto) benchmark formal: recupera sobre los bundles publicados usando el dataset de
   evaluación y calcula métricas. **Gate C** bloquea si el dataset no está anotado/revisado.
 
-No se ejecuta automáticamente en los tests (requiere pesos reales y/o bundles publicados).
+No se ejecuta automáticamente en los tests: requiere pesos reales y/o bundles publicados.
 """
 
 from __future__ import annotations
@@ -74,7 +74,7 @@ def _peak_ram_mb() -> float | None:
     except ImportError:
         return None
     ru = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
-    return round(ru / 1024, 1)  # Linux reporta KB (servidor objetivo)
+    return round(ru / 1024, 1)  # En Linux, ru_maxrss se reporta en KB.
 
 
 def _percentile(values: list[float], p: float) -> float:

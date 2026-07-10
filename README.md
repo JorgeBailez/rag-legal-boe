@@ -45,8 +45,8 @@ powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | ie
 ## Puesta en marcha
 
 ```bash
-# 1. Sincronizar dependencias (crea el entorno .venv)
-uv sync
+# 1. Sincronizar dependencias de desarrollo (crea el entorno .venv)
+uv sync --group dev
 
 # 2. Crear el fichero de configuración local
 #    (copiar .env.example a .env y ajustar si hace falta)
@@ -148,7 +148,7 @@ fue el prototipo inicial). Este comando descarga, verifica (que la norma esté v
 criterios:
 
 ```bash
-uv run python scripts/build_corpus.py
+uv run python scripts/build_corpus.py --seed data/corpus/seed_corpus_ampliado.json
 ```
 
 Escribe un informe de verificación versionado e imprime una tabla. Las normas que no cumplen los
@@ -167,10 +167,10 @@ uv run python scripts/audit_corpus.py
 Para regenerar el corpus en local desde el original ya descargado (sin red) y validarlo:
 
 ```bash
-uv run python scripts/process_mvp_corpus.py        # regenera descriptor, historial, padres y fragmentos
-uv run python scripts/validate_raw_integrity.py    # comprueba hashes y tamaños frente a los manifests
-uv run python scripts/validate_mvp_corpus.py --strict  # valida los contratos y la integridad relacional
-uv run python scripts/audit_corpus.py --strict     # termina con error si el corpus no está listo
+uv run python scripts/process_mvp_corpus.py --seed data/corpus/seed_corpus_ampliado.json
+uv run python scripts/validate_raw_integrity.py --seed data/corpus/seed_corpus_ampliado.json
+uv run python scripts/validate_mvp_corpus.py --seed data/corpus/seed_corpus_ampliado.json --strict
+uv run python scripts/audit_corpus.py --strict
 ```
 
 El corpus se considera listo para los embeddings solo si no hay errores estructurales, ni divergencias
@@ -180,7 +180,7 @@ contenido sustantivo fuera de la búsqueda.
 ## Cuaderno de exploración
 
 `notebooks/01_exploracion_api_boe.ipynb` documenta el recorrido y las decisiones, de la API al corpus.
-Requiere las dependencias de desarrollo (`uv sync`) y se ejecuta a mano:
+Requiere las dependencias de desarrollo (`uv sync --group dev`) y se ejecuta a mano:
 
 ```bash
 uv run jupyter notebook notebooks/01_exploracion_api_boe.ipynb
@@ -196,15 +196,16 @@ embeddings se elige de forma explícita con `--model`, no hay uno por defecto:
 
 ```bash
 uv run python scripts/generate_dense_index.py --list-models        # modelos disponibles
-uv run python scripts/generate_dense_index.py --model bge-m3 --preflight-only
-uv run python scripts/generate_dense_index.py --model bge-m3       # genera el paquete de índice
+uv run python scripts/generate_dense_index.py --model e5-large-instruct --preflight-only
+uv run python scripts/generate_dense_index.py --model e5-large-instruct
 uv run python scripts/validate_dense_index.py --bundle data/indexes/dense/<bundle_id>
 uv run python scripts/query_dense_index.py --bundle data/indexes/dense/<bundle_id> \
   --query "¿Cuánto tiempo tiene la Administración para responder a mi solicitud?"
 ```
 
-Las cargas pesadas (descargar los modelos y codificar) se hacen en un servidor; el código se valida sin
-red con datos de prueba. Los paquetes de índice publicados son inmutables y exigen fijar la revisión
+Las cargas pesadas (descargar los modelos y codificar) se hacen en una máquina con recursos
+suficientes; el código se valida sin red con datos de prueba. Los paquetes de índice publicados son
+inmutables y exigen fijar la revisión
 exacta del modelo y del tokenizador. El diseño y las decisiones del índice están en
 [`docs/fase2_dense_baseline.md`](docs/fase2_dense_baseline.md). La autenticación con Hugging Face es
 opcional, mediante la variable de entorno `HF_TOKEN`, que nunca se versiona.
@@ -230,7 +231,7 @@ uv run python scripts/answer_question.py \
   --bundle data/indexes/dense/<bundle_id> \
   --query "¿Qué plazo tengo para interponer un recurso de alzada?"
 
-# salida JSON completa y descarga del modelo de la memoria al terminar
+# salida JSON completa y descarga el modelo de Ollama al terminar
 uv run python scripts/answer_question.py --bundle data/indexes/dense/<bundle_id> \
   --query "..." --json --unload-model
 ```
@@ -239,10 +240,10 @@ Sin evidencia suficiente, el sistema se abstiene en lugar de inventar. Una abste
 error: el código termina con error solo ante un fallo técnico (un paquete de índice inválido, Ollama
 caído o una respuesta del modelo que incumple el contrato).
 
-La prueba real contra Ollama está desactivada por defecto y se ejecuta en el servidor:
+La prueba real contra Ollama está desactivada por defecto y se ejecuta solo en un entorno con Ollama:
 
 ```bash
-RUN_OLLAMA_INTEGRATION=1 uv run --locked pytest tests/test_integration_ollama.py -q -s
+RUN_OLLAMA_INTEGRATION=1 uv run --locked --group dev pytest tests/test_integration_ollama.py -q -s
 ```
 
 ---

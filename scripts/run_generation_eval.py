@@ -3,8 +3,8 @@
 Mide fidelidad, citas, corrección y abstención de las respuestas generadas frente al dataset gold,
 y escribe un report versionado y reproducible bajo `data/processed/reports/generation/<run_id>/`.
 
-Requiere (solo en ejecución real, en el servidor): un bundle denso publicado, los pesos del modelo
-de embeddings, y un Ollama local con el modelo generador y el modelo JUEZ (distinto, más fuerte).
+Requiere, solo en ejecución real, un bundle denso publicado, los pesos del modelo de embeddings y
+un Ollama local con el modelo generador y el modelo JUEZ (distinto, más fuerte).
 El juez es opcional: sin `--judge-model`/`JUDGE_MODEL` se calculan las métricas que no lo necesitan
 (abstención, key-fact recall, attribution), útiles para un primer barrido o un bake-off de modelos.
 
@@ -269,10 +269,10 @@ def main() -> int:  # noqa: C901 - orquestación lineal del CLI
         elif event == "judging":
             bar.set_postfix_str(f"juez:{ev['phase']}…")
         elif event == "done":
-            mark = "✓ resp" if ev["answered"] else "○ abst"
+            mark = "RESP" if ev["answered"] else "ABST"
             lat = f" {ev['latency_s']:.0f}s" if ev.get("latency_s") else ""
             tag = ev.get("failure_mode") or ev.get("query_style") or ""
-            jerr = " ⚠ juez falló" if ev.get("judge_error") else ""
+            jerr = " [WARN juez falló]" if ev.get("judge_error") else ""
             tqdm.write(
                 f"  [{ev['i']}/{ev['total']}] {ev['query_id']} {tag}: "
                 f"{mark} · {ev['abstention_outcome']}{lat}{jerr}"
@@ -347,13 +347,14 @@ def main() -> int:  # noqa: C901 - orquestación lineal del CLI
         n_gen_err = sum(1 for r in per_query if r.get("generation_error"))
         if n_gen_err:
             print(
-                f"⚠ {n_gen_err} pregunta(s) con generación fallida por contrato (excluidas de las "
-                "métricas; ver generation_error en per_query.jsonl). La corrida NO se abortó."
+                f"[WARN] {n_gen_err} pregunta(s) con generación fallida por contrato "
+                "(excluidas de las métricas; ver generation_error en per_query.jsonl). "
+                "La corrida NO se abortó."
             )
         n_judge_err = sum(1 for r in per_query if r.get("judge_error"))
         if n_judge_err:
             print(
-                f"⚠ {n_judge_err} pregunta(s) con veredicto del juez fallido (no juzgadas; "
+                f"[WARN] {n_judge_err} pregunta(s) con veredicto del juez fallido (no juzgadas; "
                 "ver judge_error en per_query.jsonl). La corrida NO se abortó."
             )
     except RagLegalBoeError as exc:
@@ -391,7 +392,8 @@ def _print_summary(out_dir: Path, aggregate: dict) -> None:
         f"citation_f1={_fmt(aggregate['citation_f1_mean'])}"
     )
     if ab["hallucinated_forbidden_count"]:
-        print(f"⚠ hechos prohibidos detectados en {ab['hallucinated_forbidden_count']} respuestas")
+        count = ab["hallucinated_forbidden_count"]
+        print(f"[WARN] hechos prohibidos detectados en {count} respuestas")
 
 
 def _fmt(value: float | None) -> str:

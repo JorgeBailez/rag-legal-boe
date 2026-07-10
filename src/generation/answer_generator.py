@@ -55,7 +55,7 @@ DISCLAIMER = (
     "jurídico oficial. Remítase a la publicación oficial en el BOE."
 )
 
-DEFAULT_QUERY_PROFILE_ID = "I2_CITIZEN_LEGISLATION"
+DEFAULT_QUERY_PROFILE_ID = "I1_LEGAL"
 
 
 class LlmClient(Protocol):
@@ -88,18 +88,18 @@ class LlmClient(Protocol):
 
 @dataclass
 class GenerationConfig:
-    """Parámetros de la generación (defaults provisionales del MVP; configurables)."""
+    """Parámetros de la generación fundamentada."""
 
     query_profile_id: str = DEFAULT_QUERY_PROFILE_ID
-    top_k: int = 5
+    top_k: int = 3
     max_evidences: int = DEFAULT_MAX_EVIDENCES
     context_strategy: str = P_EXPAND_BOUNDED
     context_budget_chars: int = DEFAULT_CONTEXT_BUDGET_CHARS
     max_total_context_chars: int = DEFAULT_MAX_TOTAL_CONTEXT_CHARS
     temperature: float = 0.0
     seed: int = 42
-    num_predict: int = 256
-    num_ctx: int = 4096
+    num_predict: int = 1536
+    num_ctx: int = 8192
     keep_alive: str | int | None = None
 
     def __post_init__(self) -> None:

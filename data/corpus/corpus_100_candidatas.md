@@ -2,7 +2,7 @@
 
 > **ESTADO:** verificación documental completada (2026-06-22) contra **boe.es** (texto consolidado,
 > `https://www.boe.es/buscar/act.php?id=BOE-A-...`). Cada identificador BOE-A, su vigencia y su última
-> actualización se confirmaron en la página consolidada oficial. **Pendiente del autor (🧑):** decidir
+> actualización se confirmaron en la página consolidada oficial. **Pendiente del autor:** decidir
 > el recorte de dudosas, los dos "códigos" pesados y el tamaño final. Tras eso → `seed_corpus.json` →
 > descarga (`download_boe_raw.py` + `validate_raw_integrity.py`, verificación final).
 >
@@ -40,7 +40,7 @@
 ## 2 · Tributario
 | Norma | BOE-A id | Vigencia | Últ. act. | [T]/[A] | Idoneidad |
 |---|---|---|---|---|---|
-| Ley 58/2003, General Tributaria | **BOE-A-2003-23186** | VIGENTE | 2024-12-21 | — | apta · ⚠ id corregido (la pista era de la 47/2003) |
+| Ley 58/2003, General Tributaria | **BOE-A-2003-23186** | VIGENTE | 2024-12-21 | — | apta · id corregido (la pista era de la 47/2003) |
 | Ley 35/2006, IRPF | BOE-A-2006-20764 | VIGENTE | 2026-04-29 | [T] | apta |
 | Ley 37/1992, IVA | BOE-A-1992-28740 | VIGENTE | 2026-02-28 | [A] | apta |
 | Ley 27/2014, Impuesto Sociedades | BOE-A-2014-12328 | VIGENTE | 2026-03-21 | [T] | apta |
@@ -160,12 +160,12 @@
 ## 13 · Grandes ausentes — DECISIÓN del autor (2026-06-22)
 | Norma | BOE-A id | Vigencia | Tamaño | Decisión |
 |---|---|---|---|---|
-| Constitución Española 1978 | BOE-A-1978-31229 | VIGENTE | ~169 arts. | ✅ **AÑADIR** (riesgo nulo, valor altísimo) |
-| LO 10/1995, Código Penal | BOE-A-1995-25444 | VIGENTE | ~639 arts. | ✅ **AÑADIR** (formato moderno, alto interés; cubierto por el disclaimer estático) |
-| Ley Hipotecaria (1946) | BOE-A-1946-2453 | VIGENTE | ~329 arts. | ⏸️ no en esta fase (solo era para forzar el 100 exacto) |
-| RDLeg 1/2020, TR Ley Concursal (TRLC) | BOE-A-2020-4859 | VIGENTE | ~755 arts. | ⏸️ no en esta fase (pesada y técnica-mercantil) |
-| LO 6/1985, Poder Judicial (LOPJ) | BOE-A-1985-12666 | VIGENTE | ~800+ arts. | ⏸️ **DIFERIR** (enorme, procesal, reforma constante) |
-| Código Civil (1889) | BOE-A-1889-4763 | VIGENTE | ~1.976 arts. | ⏸️ **DIFERIR / piloto** (formato 1889 = máximo riesgo de parser; fuera del camino crítico) |
+| Constitución Española 1978 | BOE-A-1978-31229 | VIGENTE | ~169 arts. | **AÑADIR** (riesgo nulo, valor altísimo) |
+| LO 10/1995, Código Penal | BOE-A-1995-25444 | VIGENTE | ~639 arts. | **AÑADIR** (formato moderno, alto interés; cubierto por el disclaimer estático) |
+| Ley Hipotecaria (1946) | BOE-A-1946-2453 | VIGENTE | ~329 arts. | No en esta fase (solo era para forzar el 100 exacto) |
+| RDLeg 1/2020, TR Ley Concursal (TRLC) | BOE-A-2020-4859 | VIGENTE | ~755 arts. | No en esta fase (pesada y técnica-mercantil) |
+| LO 6/1985, Poder Judicial (LOPJ) | BOE-A-1985-12666 | VIGENTE | ~800+ arts. | **DIFERIR** (enorme, procesal, reforma constante) |
+| Código Civil (1889) | BOE-A-1889-4763 | VIGENTE | ~1.976 arts. | **DIFERIR / piloto** (formato 1889 = máximo riesgo de parser; fuera del camino crítico) |
 
 ---
 
@@ -194,12 +194,12 @@
   consolidada → corpus efectivo 92). Cumple el "~100" del PLAN sin meter el riesgo del CC en el cierre.
 
 ## Siguiente paso (A2)
-1. ✅ lista confirmada (decisión 2026-06-22).
-2. ✅ seed nuevo `data/corpus/seed_corpus_ampliado.json` (92 normas; `seed_corpus.json` MVP-10 intacto).
+1. Lista confirmada (decisión 2026-06-22).
+2. Seed nuevo `data/corpus/seed_corpus_ampliado.json` (92 normas; `seed_corpus.json` MVP-10 intacto).
    `expected_rank` de la Constitución = `"Constitución"` (es documental: `load_seed_corpus` no lo
    valida; el rank real se lee de los metadatos al descargar). Scripts del flujo con flag `--seed`
    (default = MVP-10) y `build_corpus` escribe `verification_report_ampliado.json` (no pisa el del 10).
-3. 🖥️ **descarga (con red, en dslab01)** — baja raw + manifest, verifica y procesa las 93:
+3. **Descarga (con red, en una máquina de trabajo)** — baja raw + manifest, verifica y procesa las 93:
    ```bash
    uv run --locked python scripts/build_corpus.py --seed data/corpus/seed_corpus_ampliado.json
    uv run --locked python scripts/validate_raw_integrity.py --seed data/corpus/seed_corpus_ampliado.json

@@ -156,7 +156,7 @@ def render_worksheet(
         )
         if entry["judged_not_pooled"]:
             out.append(
-                "> ⚠️ Parents ya juzgados que NINGÚN sistema recuperó (revisar recall o gold): "
+                "> [WARN] Parents ya juzgados que NINGÚN sistema recuperó (revisar recall o gold): "
                 f"{', '.join(entry['judged_not_pooled'])}"
             )
         shown = cands[:worksheet_top]

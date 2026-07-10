@@ -125,11 +125,16 @@ def main() -> None:
         r = result["per_source"][label] if label in sources else result["combined"]
         print(f"\n### {label}")
         oa = r["over_abstention_rate"]
-        print(f"  answerable={r['answerable']} answered={r['answered']} "
-              f"over_abstention={oa:.3f}" if oa is not None else "  (sin answerable)")
+        print(
+            f"  answerable={r['answerable']} answered={r['answered']} over_abstention={oa:.3f}"
+            if oa is not None
+            else "  (sin answerable)"
+        )
         print(f"  key_fact   {_fmt(r['key_fact'])}")
-        print(f"  citas P    n={r['citation_precision']['n']} mean="
-              f"{r['citation_precision']['mean']:.3f}")
+        print(
+            f"  citas P    n={r['citation_precision']['n']} mean="
+            f"{r['citation_precision']['mean']:.3f}"
+        )
         print(f"  citas R    n={r['citation_recall']['n']} mean={r['citation_recall']['mean']:.3f}")
         print(f"  citas F1   {_fmt(r['citation_f1'])}")
 

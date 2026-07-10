@@ -1,10 +1,10 @@
 """Valida la integridad del raw descargado contra los manifests (sin red).
 
 Uso:
-    uv run python scripts/validate_raw_integrity.py
+    uv run python scripts/validate_raw_integrity.py --seed data/corpus/seed_corpus_ampliado.json
 
-Por cada norma del catálogo canónico (`data/corpus/seed_corpus.json`) recomputa el `sha256` y
-el `size_bytes` de cada fichero listado en su manifest y los compara con el raw en disco.
+Por cada norma del catálogo indicado recomputa el `sha256` y el `size_bytes` de cada fichero listado
+en su manifest y los compara con el raw en disco.
 Devuelve exit code != 0 si falta algún fichero o si algún hash/tamaño no coincide.
 """
 

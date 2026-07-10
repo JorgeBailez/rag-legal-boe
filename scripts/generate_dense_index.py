@@ -1,7 +1,7 @@
 """Genera un bundle de índice denso para un modelo y una vista (CPU, reproducible).
 
 Uso habitual (limpio):
-    uv run python scripts/generate_dense_index.py --model bge-m3
+    uv run python scripts/generate_dense_index.py --model e5-large-instruct
 
 Implica por defecto: view J1, device cpu, threads 8, barra de progreso, overflow_policy=repair,
 salida en data/indexes/dense.
@@ -9,7 +9,7 @@ salida en data/indexes/dense.
 Flujo: resolver alias → Gate A → preparar inputs → codificar (con progreso) → bundle en staging →
 Gate B → publicar (rename atómico) → imprimir próximos comandos. El preflight valida sin cargar los
 pesos del encoder:
-    uv run python scripts/generate_dense_index.py --model bge-m3 --preflight-only
+    uv run python scripts/generate_dense_index.py --model e5-large-instruct --preflight-only
 """
 
 from __future__ import annotations

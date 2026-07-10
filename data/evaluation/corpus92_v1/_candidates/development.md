@@ -1253,7 +1253,7 @@ _recuperado por:_ hybrid_rrf/I0_GENERIC#8 (0.025) · bge-m3/BASELINE#9 (0.597) �
 ## q92_005 · directa_articulo · single_parent
 **Pregunta:** ¿Qué dice el artículo 38 del Estatuto de los Trabajadores?
 _split=development · difficulty=facil · failure_mode=—_
-> ⚠️ Parents ya juzgados que NINGÚN sistema recuperó (revisar recall o gold): BOE-A-2015-11430__a38
+> [WARN] Parents ya juzgados que NINGÚN sistema recuperó (revisar recall o gold): BOE-A-2015-11430__a38
 
 ### Ley Orgánica 3/2007, disposición adicional décimo primera · `BOE-A-2007-6115__dadecimoprimera` [JUZGADO rel=0 draft]
 https://www.boe.es/buscar/act.php?id=BOE-A-2007-6115#dadecimoprimera

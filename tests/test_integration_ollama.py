@@ -1,4 +1,4 @@
-"""Prueba REAL contra un Ollama local. Desactivada por defecto; se ejecuta en el servidor.
+"""Prueba REAL contra un Ollama local. Desactivada por defecto.
 
 Activar con:
     RUN_OLLAMA_INTEGRATION=1 uv run --locked pytest tests/test_integration_ollama.py -q -s
@@ -20,7 +20,7 @@ from src.retrieval.evidence_builder import GenerationEvidence
 
 pytestmark = pytest.mark.skipif(
     os.environ.get("RUN_OLLAMA_INTEGRATION") != "1",
-    reason="prueba real de Ollama desactivada (exporta RUN_OLLAMA_INTEGRATION=1 en el servidor)",
+    reason="prueba real de Ollama desactivada (exporta RUN_OLLAMA_INTEGRATION=1)",
 )
 
 

@@ -8114,12 +8114,12 @@ Reports de generación: /home/jbailez/repos/rag-legal-boe/data/processed/reports
 
 <span class="k">if</span> <span class="n">IS_DEMO</span><span class="p">:</span>
     <span class="n">banner</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="s2">"🟠 **MODO DEMO** — datos *ilustrativos* (no reales) sobre la taxonomía real de "</span>
+        <span class="s2">"[WARN] **MODO DEMO** — datos *ilustrativos* (no reales) sobre la taxonomía real de "</span>
         <span class="s2">"preguntas. Ejecuta `scripts/run_generation_eval.py` en el servidor para resultados "</span>
         <span class="s2">"reales."</span>
     <span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="n">banner</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"✅ Report real cargado: `</span><span class="si">{</span><span class="n">run_id</span><span class="si">}</span><span class="s2">`"</span>
+    <span class="n">banner</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"[OK] Report real cargado: `</span><span class="si">{</span><span class="n">run_id</span><span class="si">}</span><span class="s2">`"</span>
 <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">banner</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Preguntas en el report: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="si">}</span><span class="s2">  |  run_id: </span><span class="si">{</span><span class="n">run_id</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
@@ -8134,7 +8134,7 @@ Reports de generación: /home/jbailez/repos/rag-legal-boe/data/processed/reports
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p>✅ Report real cargado: <code>gen_20260612T143618Z_605b82e4</code></p>
+<p>[OK] Report real cargado: <code>gen_20260612T143618Z_605b82e4</code></p>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -8497,7 +8497,7 @@ Un κ por debajo de ~0.6 obliga a tratar L3/L5 como provisionales.</p>
     <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">"**Lectura:** </span><span class="si">{</span><span class="n">verdict</span><span class="si">}</span><span class="s2">"</span><span class="p">))</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="s2">"⚠️ **El juez aún no se ha validado contra anotación humana** "</span>
+        <span class="s2">"[WARN] **El juez aún no se ha validado contra anotación humana** "</span>
         <span class="s2">"(no hay `judge_agreement`). Las métricas de fidelidad y corrección son "</span>
         <span class="s2">"**provisionales**: anota a mano ~30–50 casos y compáralos con el juez "</span>
         <span class="s2">"(`judge_agreement` en `src/evaluation/judge.py`)."</span>
@@ -8515,7 +8515,7 @@ Un κ por debajo de ~0.6 obliga a tratar L3/L5 como provisionales.</p>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p>⚠️ <strong>El juez aún no se ha validado contra anotación humana</strong> (no hay <code>judge_agreement</code>). Las métricas de fidelidad y corrección son <strong>provisionales</strong>: anota a mano ~30–50 casos y compáralos con el juez (<code>judge_agreement</code> en <code>src/evaluation/judge.py</code>).</p>
+<p>[WARN] <strong>El juez aún no se ha validado contra anotación humana</strong> (no hay <code>judge_agreement</code>). Las métricas de fidelidad y corrección son <strong>provisionales</strong>: anota a mano ~30–50 casos y compáralos con el juez (<code>judge_agreement</code> en <code>src/evaluation/judge.py</code>).</p>
 </div>
 </div>
 </div>
@@ -8529,9 +8529,9 @@ Un κ por debajo de ~0.6 obliga a tratar L3/L5 como provisionales.</p>
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="5-%C2%B7-Abstenci%C3%B3n-%E2%80%94-los-dos-errores-no-son-sim%C3%A9tricos">5 · Abstención — los dos errores no son simétricos<a class="anchor-link" href="#5-%C2%B7-Abstenci%C3%B3n-%E2%80%94-los-dos-errores-no-son-sim%C3%A9tricos">¶</a></h2><p>Abstenerse bien es seguridad. Hay <strong>dos errores muy distintos</strong>:</p>
 <ul>
-<li>🔴 <strong>Respuesta inventada</strong> sobre algo <em>no respondible</em> (<code>false_answer</code>): el error <strong>peligroso</strong> en
+<li>[ERROR] <strong>Respuesta inventada</strong> sobre algo <em>no respondible</em> (<code>false_answer</code>): el error <strong>peligroso</strong> en
 legal — el sistema afirma con aplomo algo que no está en el corpus.</li>
-<li>🟠 <strong>Sobre-abstención</strong> sobre algo <em>respondible</em> (<code>over_abstention</code>): molesto pero <strong>seguro</strong>.</li>
+<li>[WARN] <strong>Sobre-abstención</strong> sobre algo <em>respondible</em> (<code>over_abstention</code>): molesto pero <strong>seguro</strong>.</li>
 </ul>
 <p>Por eso reportamos <em>balanced accuracy</em> (responder y abstenerse pesan igual) y separamos ambos. El
 gráfico parte las preguntas en <strong>respondibles</strong> vs <strong>no respondibles</strong> y muestra qué hizo el sistema.</p>
@@ -8550,11 +8550,11 @@ gráfico parte las preguntas en <strong>respondibles</strong> vs <strong>no resp
 <span class="n">able</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"answerable"</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
 <span class="n">groups</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">"Respondibles"</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">(</span><span class="s2">"Respondidas ✓"</span><span class="p">,</span> <span class="nb">int</span><span class="p">((</span><span class="n">able</span> <span class="o">&amp;</span> <span class="n">ans</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()),</span> <span class="n">PAL</span><span class="p">[</span><span class="s2">"good"</span><span class="p">]),</span>
+        <span class="p">(</span><span class="s2">"Respondidas OK"</span><span class="p">,</span> <span class="nb">int</span><span class="p">((</span><span class="n">able</span> <span class="o">&amp;</span> <span class="n">ans</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()),</span> <span class="n">PAL</span><span class="p">[</span><span class="s2">"good"</span><span class="p">]),</span>
         <span class="p">(</span><span class="s2">"Sobre-abstención"</span><span class="p">,</span> <span class="nb">int</span><span class="p">((</span><span class="n">able</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">ans</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()),</span> <span class="n">PAL</span><span class="p">[</span><span class="s2">"warn"</span><span class="p">]),</span>
     <span class="p">],</span>
     <span class="s2">"No respondibles"</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">(</span><span class="s2">"Abstención correcta ✓"</span><span class="p">,</span> <span class="nb">int</span><span class="p">((</span><span class="o">~</span><span class="n">able</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">ans</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()),</span> <span class="n">PAL</span><span class="p">[</span><span class="s2">"good"</span><span class="p">]),</span>
+        <span class="p">(</span><span class="s2">"Abstención correcta OK"</span><span class="p">,</span> <span class="nb">int</span><span class="p">((</span><span class="o">~</span><span class="n">able</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">ans</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()),</span> <span class="n">PAL</span><span class="p">[</span><span class="s2">"good"</span><span class="p">]),</span>
         <span class="p">(</span><span class="s2">"Respuesta inventada"</span><span class="p">,</span> <span class="nb">int</span><span class="p">((</span><span class="o">~</span><span class="n">able</span> <span class="o">&amp;</span> <span class="n">ans</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()),</span> <span class="n">PAL</span><span class="p">[</span><span class="s2">"bad"</span><span class="p">]),</span>
     <span class="p">],</span>
 <span class="p">}</span>
@@ -8759,7 +8759,7 @@ prohibidos</strong>: si aparecen, es una <strong>alucinación</strong> (p. ej. r
 
 <span class="k">if</span> <span class="n">hall</span><span class="p">:</span>
     <span class="n">flagged</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">"hallucinated_forbidden"</span><span class="p">],</span> <span class="s2">"query_id"</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
-    <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s2">"**⚠️ Respuestas con hecho prohibido (revisar):** "</span> <span class="o">+</span> <span class="s2">", "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">flagged</span><span class="p">)))</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s2">"**[WARN] Respuestas con hecho prohibido (revisar):** "</span> <span class="o">+</span> <span class="s2">", "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">flagged</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
@@ -8941,7 +8941,7 @@ Para cada parent esperado seguimos su rastro con la traza del runner:</p>
 <li><strong>recuperado pero expulsado</strong> → salió, pero el ensamblado lo descartó (p. ej.
 <code>exceeds_total_context_budget</code>: una evidencia larga consumió el presupuesto) (L2);</li>
 <li><strong>entregado pero no citado</strong> → llegó al LLM, que no lo citó (fallo de <em>generación</em>, L3–L4);</li>
-<li><strong>citado ✓</strong> → todo correcto.</li>
+<li><strong>citado OK</strong> → todo correcto.</li>
 </ul>
 <p>Esto distingue, por ejemplo, <em>"el modelo de embeddings falló"</em> de <em>"el artículo correcto se
 recuperó pero el presupuesto de contexto lo expulsó"</em> — dos problemas con soluciones distintas.</p>
@@ -8993,7 +8993,7 @@ recuperó pero el presupuesto de contexto lo expulsó"</em> — dos problemas co
                 <span class="p">)</span>
 
     <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="s2">"citado ✓ (todo OK)"</span><span class="p">,</span>
+        <span class="s2">"citado OK (todo OK)"</span><span class="p">,</span>
         <span class="s2">"entregado, no citado (generación)"</span><span class="p">,</span>
         <span class="s2">"recuperado, expulsado (ensamblado)"</span><span class="p">,</span>
         <span class="s2">"no recuperado (retrieval)"</span><span class="p">,</span>
@@ -9014,7 +9014,7 @@ recuperó pero el presupuesto de contexto lo expulsó"</em> — dos problemas co
         <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s2">"**Citas esperadas que NO se citaron** (etapa del fallo + motivo):"</span><span class="p">))</span>
         <span class="n">display</span><span class="p">(</span><span class="n">tbl</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s2">"Todas las citas esperadas se citaron correctamente ✓"</span><span class="p">))</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s2">"Todas las citas esperadas se citaron correctamente OK"</span><span class="p">))</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="n">display</span><span class="p">(</span>
         <span class="n">Markdown</span><span class="p">(</span>
@@ -9203,7 +9203,7 @@ hecho prohibido</strong> son prioritarias en un sistema legal.</p>
 <div class="highlight hl-python"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">show_cases</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">cols_extra</span><span class="p">,</span> <span class="n">titulo</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">8</span><span class="p">):</span>
     <span class="n">sub</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">sub</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
-        <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">"**</span><span class="si">{</span><span class="n">titulo</span><span class="si">}</span><span class="s2">:** ninguno ✓"</span><span class="p">))</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">"**</span><span class="si">{</span><span class="n">titulo</span><span class="si">}</span><span class="s2">:** ninguno OK"</span><span class="p">))</span>
         <span class="k">return</span>
     <span class="n">sub</span><span class="p">[</span><span class="s2">"pregunta"</span><span class="p">]</span> <span class="o">=</span> <span class="n">sub</span><span class="p">[</span><span class="s2">"query_id"</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">q_text</span><span class="p">)</span>
     <span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"query_id"</span><span class="p">,</span> <span class="s2">"failure_mode"</span><span class="p">,</span> <span class="s2">"pregunta"</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cols_extra</span> <span class="k">if</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">sub</span><span class="p">]</span>
@@ -9214,12 +9214,12 @@ hecho prohibido</strong> son prioritarias en un sistema legal.</p>
 <span class="n">ans</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"answered"</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
 <span class="n">able</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"answerable"</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
 
-<span class="n">show_cases</span><span class="p">(</span><span class="o">~</span><span class="n">able</span> <span class="o">&amp;</span> <span class="n">ans</span><span class="p">,</span> <span class="p">[],</span> <span class="s2">"🔴 Respuestas inventadas (no respondible pero respondió)"</span><span class="p">)</span>
-<span class="n">show_cases</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"hallucinated_forbidden"</span><span class="p">],</span> <span class="p">[</span><span class="s2">"faithfulness"</span><span class="p">],</span> <span class="s2">"🔴 Alucinaciones de hecho prohibido"</span><span class="p">)</span>
-<span class="n">show_cases</span><span class="p">(</span><span class="n">able</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">ans</span><span class="p">,</span> <span class="p">[</span><span class="s2">"abstention_reason"</span><span class="p">],</span> <span class="s2">"🟠 Sobre-abstención (respondible pero se abstuvo)"</span><span class="p">)</span>
+<span class="n">show_cases</span><span class="p">(</span><span class="o">~</span><span class="n">able</span> <span class="o">&amp;</span> <span class="n">ans</span><span class="p">,</span> <span class="p">[],</span> <span class="s2">"[ERROR] Respuestas inventadas (no respondible pero respondió)"</span><span class="p">)</span>
+<span class="n">show_cases</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"hallucinated_forbidden"</span><span class="p">],</span> <span class="p">[</span><span class="s2">"faithfulness"</span><span class="p">],</span> <span class="s2">"[ERROR] Alucinaciones de hecho prohibido"</span><span class="p">)</span>
+<span class="n">show_cases</span><span class="p">(</span><span class="n">able</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">ans</span><span class="p">,</span> <span class="p">[</span><span class="s2">"abstention_reason"</span><span class="p">],</span> <span class="s2">"[WARN] Sobre-abstención (respondible pero se abstuvo)"</span><span class="p">)</span>
 <span class="k">if</span> <span class="s2">"faithfulness"</span> <span class="ow">in</span> <span class="n">df</span> <span class="ow">and</span> <span class="n">df</span><span class="p">[</span><span class="s2">"faithfulness"</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
     <span class="n">low</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"faithfulness"</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"faithfulness"</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.8</span><span class="p">)</span>
-    <span class="n">show_cases</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="p">[</span><span class="s2">"faithfulness"</span><span class="p">],</span> <span class="s2">"🟠 Menor fidelidad (&lt; 0.80)"</span><span class="p">)</span>
+    <span class="n">show_cases</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="p">[</span><span class="s2">"faithfulness"</span><span class="p">],</span> <span class="s2">"[WARN] Menor fidelidad (&lt; 0.80)"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -9232,19 +9232,19 @@ hecho prohibido</strong> son prioritarias en un sistema legal.</p>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p><strong>🔴 Respuestas inventadas (no respondible pero respondió):</strong> ninguno ✓</p>
+<p><strong>[ERROR] Respuestas inventadas (no respondible pero respondió):</strong> ninguno OK</p>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p><strong>🔴 Alucinaciones de hecho prohibido:</strong> ninguno ✓</p>
+<p><strong>[ERROR] Alucinaciones de hecho prohibido:</strong> ninguno OK</p>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p><strong>🟠 Sobre-abstención (respondible pero se abstuvo)</strong> (7):</p>
+<p><strong>[WARN] Sobre-abstención (respondible pero se abstuvo)</strong> (7):</p>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -9332,7 +9332,7 @@ hecho prohibido</strong> son prioritarias en un sistema legal.</p>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p><strong>🟠 Menor fidelidad (&lt; 0.80)</strong> (1):</p>
+<p><strong>[WARN] Menor fidelidad (&lt; 0.80)</strong> (1):</p>
 </div>
 </div>
 <div class="jp-OutputArea-child">

@@ -11,11 +11,10 @@ El AUC global mezcla ambos y sobreestima la abstención, porque el near-miss es 
 (development, test) se reporta AUC + balanced accuracy contra all / far_domain / near_miss.
 
 A diferencia de `benchmark_dense_models.py`, NO necesita `data/processed/` (no calcula ParentnDCG):
-solo el bundle (embeddings + rows) para el score top-1 y el modelo para codificar las consultas.
-Por eso el payload de Colab es mínimo (bundle + código + questions.jsonl). El modelo se descarga en
-la sesión; la codificación de ~120 consultas cortas es barata (CPU basta; GPU opcional).
+solo el bundle (embeddings + rows) para el score top-1 y el modelo para codificar las consultas. La
+codificación de ~120 consultas cortas es barata (CPU basta; GPU opcional).
 
-Uso (Colab o servidor):
+Uso:
     python scripts/abstention_nearmiss.py \
         --bundle data/indexes/dense/e5-large-instruct__j1__c46c7042f563 \
         --dataset-dir data/evaluation/corpus92_v1 \
@@ -40,7 +39,7 @@ from src.evaluation.metrics import abstention_threshold_analysis  # noqa: E402
 # El índice se carga SIN corpus: `load_validated_bundle(corpus=None)` valida la integridad interna
 # del bundle (esquema, gates, checksums, Gate B) pero omite las comprobaciones que exigen tener el
 # corpus en disco (source_corpus_fingerprint, existencia de parents). La abstención solo necesita el
-# score top-1 (embeddings + rows) → no hace falta arrastrar data/processed/ al payload de Colab.
+# score top-1 (embeddings + rows); no necesita arrastrar data/processed/.
 from src.indexing.vector_index import ExactDenseIndex  # noqa: E402
 
 

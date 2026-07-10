@@ -104,7 +104,8 @@ def _print_summary(out_dir: Path, aggregate: dict) -> None:
         f"false_answer_rate={_fmt(ab['false_answer_rate'])}"
     )
     if ab["hallucinated_forbidden_count"]:
-        print(f"⚠ hechos prohibidos detectados en {ab['hallucinated_forbidden_count']} respuestas")
+        count = ab["hallucinated_forbidden_count"]
+        print(f"[WARN] hechos prohibidos detectados en {count} respuestas")
 
 
 def _fmt(value: float | None) -> str:
@@ -169,9 +170,9 @@ def main() -> int:
         elif event == "judging":
             bar.set_postfix_str("juez:corrección…")
         elif event == "done":
-            mark = "✓ resp" if ev["answered"] else "○ abst"
+            mark = "RESP" if ev["answered"] else "ABST"
             tag = ev.get("failure_mode") or ev.get("query_style") or ""
-            jerr = " ⚠ juez falló" if ev.get("judge_error") else ""
+            jerr = " [WARN juez falló]" if ev.get("judge_error") else ""
             tqdm.write(
                 f"  [{ev['i']}/{ev['total']}] {ev['query_id']} {tag}: "
                 f"{mark} · {ev['abstention_outcome']}{jerr}"
@@ -230,7 +231,7 @@ def main() -> int:
         n_judge_err = sum(1 for r in per_query if r.get("judge_error"))
         if n_judge_err:
             print(
-                f"⚠ {n_judge_err} pregunta(s) con veredicto del juez fallido (no juzgadas; "
+                f"[WARN] {n_judge_err} pregunta(s) con veredicto del juez fallido (no juzgadas; "
                 "ver judge_error en per_query.jsonl)."
             )
         print(

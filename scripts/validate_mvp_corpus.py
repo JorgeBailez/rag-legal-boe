@@ -69,7 +69,8 @@ def main(strict: bool = False, seed: Path = SEED_CORPUS_PATH) -> int:
         }
         if not all(p.is_file() for p in paths.values()):
             print(
-                f"  ⚠ {norm_id}: faltan artefactos (ejecuta process_mvp_corpus.py)", file=sys.stderr
+                f"  [WARN] {norm_id}: faltan artefactos (ejecuta process_mvp_corpus.py)",
+                file=sys.stderr,
             )
             total_errors += 1
             continue

@@ -5,7 +5,7 @@ L3 + corrección L5) con el prompt que indique `--judge-prompts-dir`. Escribe un
 `per_query.jsonl` + `config.json`) que `validate_judge.py --annotations` consume para recomputar
 κ/AC1 contra la MISMA anotación humana. Aísla el efecto del prompt del juez (no recupera ni genera).
 
-Necesita Ollama con el modelo juez (servidor/Colab; en local con `uv run`).
+Necesita Ollama con el modelo juez configurado.
 
 Uso:
     uv run python scripts/rejudge_report.py --report data/processed/reports/generation/<run_id> \

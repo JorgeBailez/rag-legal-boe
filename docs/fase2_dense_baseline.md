@@ -13,7 +13,8 @@ contexto y evaluación. Documento vivo.
 ## Objetivo
 
 Construir, de forma **trazable y reproducible**, un baseline de recuperación **dense-only** sobre el
-corpus MVP (10 normas) y dejar el flujo preparado para ejecutar las cargas pesadas en un servidor
+corpus MVP (10 normas) y dejar el flujo preparado para ejecutar las cargas pesadas en una máquina
+con recursos suficientes
 CPU. El valor es la trazabilidad y la evaluación, no la escala.
 
 ## Fuera de alcance
@@ -156,5 +157,5 @@ P2.8 métricas/assembler · P2.9 reportes/notebooks · P2.10 scripts/docs/QA.
 
 - Fijar los commit hashes de los modelos antes de publicar bundles definitivos.
 - Anotación jurídica del dataset (Gate C) para el benchmark formal.
-- `peak_ram_mb` solo en Linux (servidor); en otros SO queda `null`.
+- `peak_ram_mb` solo en Linux; en otros SO queda `null`.
 - Capas posteriores fuera de esta fase: BM25, híbrido, reranking, generación con LLM, API.

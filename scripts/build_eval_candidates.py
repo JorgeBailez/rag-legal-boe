@@ -1,4 +1,4 @@
-"""Pooling de candidatos para anotar el gold de relevancia (Fase D). Carga pesada → servidor.
+"""Pooling de candidatos para anotar el gold de relevancia (Fase D). Carga pesada.
 
 Para cada pregunta del dataset de evaluación, recupera los top-k parents candidatos desde VARIOS
 bundles densos publicados (y sus perfiles de query) y los reúne en un *pool* por pregunta (método de
