@@ -729,8 +729,8 @@ CIENCIA E INGENIERÍA DE DATOS
 
 \vspace{2cm}
 
-\large Diseño y evaluación con evidencia de un sistema RAG\\
-para la consulta ciudadana de legislación consolidada\\
+\large Diseño y evaluación de una arquitectura RAG\\
+para un servicio de consulta ciudadana sobre legislación consolidada\\
 del Boletín Oficial del Estado
 
 \vspace{1.5cm}
@@ -810,7 +810,7 @@ A mis padres, por su apoyo incondicional y por confiar siempre en mí; por el es
 
 A mi hermano, por ser, además de hermano, un amigo y un referente; por el ejemplo que me ha dado siempre y por estar ahí en todo lo que he necesitado.
 
-A María, por su apoyo y su paciencia, por animarme en los momentos difíciles y por caminar conmigo en cada etapa. Gracias por creer en mí y por hacer más fácil todo el camino.
+A María, por su apoyo y su paciencia, por animarme en los momentos difíciles y por acompañarme en cada etapa. Gracias por creer en mí y por hacer más fácil todo el camino.
 
 A Felipe Ortega Soto, tutor de este trabajo, por su orientación, su paciencia y su acompañamiento durante todo el proceso.
 
@@ -827,7 +827,7 @@ Este Trabajo Fin de Grado aborda el diseño y la evaluación de un sistema de ge
 
 Para ello se ha desarrollado un sistema completo, ejecutable de extremo a extremo, sobre software de código abierto y modelos de pesos abiertos, en entorno local. El trabajo incluye un corpus reproducible de 92 normas consolidadas del BOE, la interpretación de su estructura y vigencia temporal, una representación documental \emph{parent-child}, recuperadores léxico, denso e híbrido, ensamblado controlado de contexto y generación de respuestas fundamentadas con citas verificables. La evaluación se plantea como una parte central del proyecto: se construye un banco de 121 preguntas y 567 juicios de relevancia, se separan las particiones de ajuste y prueba, y se mide la cadena RAG por capas para distinguir recuperación, contexto, citas, hechos clave, fidelidad, corrección y abstención.
 
-Los resultados muestran que, en este corpus y con este tipo de consulta, el recuperador denso es la opción más adecuada: alcanza un ParentnDCG@10 de 0,797 en \emph{test}, iguala al mejor híbrido sin añadir su complejidad y supera con claridad a BM25, especialmente en consultas ciudadanas. La generación confirma que recuperar evidencias aporta valor frente a responder sin contexto, aunque también muestra límites importantes: el sistema es prudente ante preguntas fuera del corpus (0 respuestas indebidas en 30 preguntas de dominio lejano y 1 en 10 \emph{near-miss}), a costa de una sobre-abstención apreciable. Además, la validación del modelo juez frente a anotación humana revela que no es suficientemente fiable para sostener conclusiones de fidelidad o corrección. En conjunto, el trabajo aporta una arquitectura RAG legal reproducible, trazable y ampliable, junto con un análisis experimental que muestra qué decisiones funcionan, cuáles no aportan y dónde están los cuellos de botella reales.
+Los resultados muestran que, en este corpus y con este tipo de consulta, el recuperador denso es la opción más adecuada: alcanza un ParentnDCG@10 de 0,806 en \emph{test}, supera con claridad a BM25 —sobre todo en consultas ciudadanas— y al híbrido RRF, y no muestra una diferencia concluyente frente al mejor híbrido ponderado, cuya complejidad adicional no aporta una ganancia observada. La generación confirma que recuperar evidencias aporta valor frente a responder sin contexto, aunque también muestra límites importantes: el sistema es prudente ante preguntas fuera del corpus (0 respuestas indebidas en 30 preguntas de dominio lejano y 1 en 10 \emph{near-miss}), a costa de una sobre-abstención apreciable. Además, la validación del modelo juez frente a anotación humana revela que no es suficientemente fiable para sostener conclusiones de fidelidad o corrección. En conjunto, el trabajo aporta una arquitectura RAG legal reproducible, trazable y ampliable, junto con un análisis experimental que muestra qué decisiones funcionan, cuáles no aportan y dónde están los cuellos de botella reales.
 
 %-------------------------------------------------------------------------------
 %%%--- Resumen en inglés
@@ -840,7 +840,7 @@ This Bachelor's Thesis addresses the design and evaluation of a retrieval-augmen
 
 To this end, the project develops an end-to-end system based on open-source software and open-weight models executed locally. The work includes a reproducible corpus of 92 consolidated BOE regulations, parsing of their structure and temporal validity, a \emph{parent-child} document representation, lexical, dense and hybrid retrievers, controlled context assembly and grounded answer generation with verifiable citations. Evaluation is treated as a core part of the project: a benchmark of 121 questions and 567 relevance judgements is built, development and test partitions are kept separate, and the RAG pipeline is measured layer by layer to distinguish retrieval, context, citations, key facts, faithfulness, correctness and abstention.
 
-The results show that, for this corpus and this type of query, the dense retriever is the most suitable option: it reaches 0.797 ParentnDCG@10 on the test split, matches the best hybrid alternative without adding its complexity and clearly outperforms BM25, especially on citizen-style questions. Generation confirms that retrieved evidence adds value compared with answering without context, although it also shows important limits: the system behaves cautiously on out-of-corpus questions (0 improper answers on 30 far-domain questions and 1 on 10 \emph{near-miss} questions), at the cost of noticeable over-abstention. In addition, the validation of the LLM-as-judge against human annotation shows that it is not reliable enough to support conclusions about faithfulness or correctness. Overall, the thesis contributes a reproducible, traceable and extensible legal RAG architecture, together with an experimental analysis that shows which design choices work, which ones do not add value and where the real bottlenecks lie.
+The results show that, for this corpus and this type of query, the dense retriever is the most suitable option: it reaches 0.806 ParentnDCG@10 on the test split, significantly outperforms BM25 and the RRF hybrid, and shows no conclusive difference from the best weighted hybrid —whose added complexity brings no observed gain—, especially on citizen-style questions. Generation confirms that retrieved evidence adds value compared with answering without context, although it also shows important limits: the system behaves cautiously on out-of-corpus questions (0 improper answers on 30 far-domain questions and 1 on 10 \emph{near-miss} questions), at the cost of noticeable over-abstention. In addition, the validation of the LLM-as-judge against human annotation shows that it is not reliable enough to support conclusions about faithfulness or correctness. Overall, the thesis contributes a reproducible, traceable and extensible legal RAG architecture, together with an experimental analysis that shows which design choices work, which ones do not add value and where the real bottlenecks lie.
 
 %-------------------------------------------------------------------------------
 % Lista de comentarios de revisión

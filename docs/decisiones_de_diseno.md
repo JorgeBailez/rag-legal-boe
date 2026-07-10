@@ -84,7 +84,7 @@ Esta es la pregunta de investigación principal del trabajo: con un buen modelo 
 
 | Decisión | Opciones | Evidencia (nivel) | Estado y veredicto |
 |---|---|---|---|
-| Comparar recuperación densa, BM25 e híbrida | tres estrategias | N1, el experimento central: métrica de recuperación con intervalo de confianza por bootstrap, contraste pareado frente a la densa y desglose por tipo de pregunta; ajustado en desarrollo y reportado en el conjunto de prueba reservado | [Cerrada] (prueba, n=28, report `retrieval_20260625T111234Z`). La densa gana con 0.797 [0.695, 0.884]; la convexa con peso alto al denso queda en 0.769 (diferencia pareada −0.028, IC95 [−0.075, +0.019], no significativa); el RRF en 0.706 (−0.091, IC95 [−0.175, −0.009], significativamente peor); BM25 sola en 0.507 (−0.290, IC95 [−0.415, −0.166], significativamente peor). El sistema usa recuperación densa |
+| Comparar recuperación densa, BM25 e híbrida | tres estrategias | N1, el experimento central: métrica de recuperación con intervalo de confianza por bootstrap, contraste pareado frente a la densa y desglose por tipo de pregunta; ajustado en desarrollo y reportado en el conjunto de prueba reservado | [Cerrada] (prueba, n=28, re-puntuado sobre el gold definitivo `corpus92_v1`). La densa gana con 0.806 [0.711, 0.885]; la fusión ponderada con peso alto al denso queda en 0.779 (diferencia pareada −0.027, IC95 [−0.071, +0.020], no significativa, p=0.29); el RRF en 0.691 (−0.115, IC95 [−0.213, −0.027], p=0.006, significativamente peor y **sobrevive a Holm**, p_Holm=0.012); BM25 sola en 0.521 (−0.285, IC95 [−0.410, −0.157], p_Holm<0.001, significativamente peor). Robustez dev+test (n=81) confirma el orden y acota la ganancia posible de la fusión ponderada a +0.016. El sistema usa recuperación densa |
 | Elegir la función de fusión: por rango (RRF) o convexa por puntuación normalizada | RRF / convexa / peso α | N1 | [Cerrada] En desarrollo y prueba, la convexa con peso alto al denso supera a la fusión por rango; el RRF es significativamente peor que la densa sola. La mejor fusión no mejora de forma detectable a la densa: la diferencia pareada denso−convexa es −0.028 con IC95 [−0.075, +0.019] (contiene el 0), así que la mejora de la fusión, de existir, está acotada por arriba a +0.019 nDCG. No es equivalencia demostrada, sino ausencia de mejora detectable con n=28 |
 | Ajustar BM25 (stopwords, lematización, conservación de cifras, parámetros k1 y b) | ablación de un factor cada vez | N1 | [Cerrada] (desarrollo, n=53, report `bm25abl_20260624T233009Z`). El único parámetro con efecto significativo es el refuerzo de cabecera (fila siguiente); la lematización ayuda (quitarla resta 0.056); stopwords, k1 y b son indiferentes |
 | Reforzar la cabecera del bloque en BM25 (repetir el título y la ley a la que pertenece) | sin refuerzo / con refuerzo | N1 | [Cerrada] El refuerzo aporta entre 0.029 y 0.048 según su intensidad, todos significativos. El efecto es grande en las preguntas por número de artículo, donde sube de 0.18 a 0.35: incluir la ley deshace la confusión entre artículos con el mismo número en normas distintas |
@@ -111,10 +111,18 @@ Referencias de literatura del experimento: Askari et al. (2021) sobre BM25 como 
 
 ## Fase 5 — Modelo de embeddings (OE-02/03)
 
+> **Fuente de verdad = la memoria** (`thesis/`, capítulo de experimentación), cuyas tablas están
+> re-puntuadas sobre el gold definitivo `corpus92_v1` (567 juicios: 96 centrales, 75 de apoyo, 396
+> negativos, todos revisados). Los titulares de abajo se han sincronizado con ella. Los cortes de
+> detalle por estilo y dificultad en *development* corresponden a la corrida de **selección de modelo**
+> y pueden diferir en ≤0,01 de las cifras re-puntuadas de la memoria; el análisis por estilo vigente y
+> con potencia es el de *dev*+*test* (n=81) del experimento central. Ante cualquier discrepancia,
+> prevalece la memoria.
+
 | Decisión | Opciones | Evidencia (nivel) | Estado y veredicto |
 |---|---|---|---|
-| Usar `e5-large-instruct` como modelo de embeddings | comparativa de tres: `e5-large-instruct`, `bge-m3`, `e5-base` | N1 sobre el banco de las 92 normas (n=53): métrica de recuperación con intervalo de confianza, contraste pareado, frontera de Pareto y cortes por tipo de pregunta | [Cerrada] (2026-06-24). 0.802 frente a 0.719 de `bge-m3` (diferencia pareada −0.083, significativa) y 0.627 de `e5-base` (−0.175, significativa). Es Pareto-óptimo: `bge-m3` queda dominado, con peor calidad y un 47 % más de latencia. Detalle más abajo |
-| Usar la instrucción de consulta orientada a lo jurídico | genérica / jurídica / ciudadana | N1 (la misma comparativa) | [Cerrada] La instrucción jurídica (0.802) empata con la ciudadana (0.796) y supera con claridad a la genérica (0.731, diferencia −0.070 significativa). La instrucción de consulta es, por sí sola, una palanca real de mejora |
+| Usar `e5-large-instruct` como modelo de embeddings | comparativa de tres: `e5-large-instruct`, `bge-m3`, `e5-base` | N1 sobre el banco de las 92 normas (n=53): métrica de recuperación con intervalo de confianza, contraste pareado, frontera de Pareto y cortes por tipo de pregunta | [Cerrada] (2026-06-24). 0.795 frente a 0.717 de `bge-m3` (diferencia pareada −0.078, significativa) y 0.622 de `e5-base` (−0.173, significativa). Es Pareto-óptimo: `bge-m3` queda dominado, con peor calidad y un 47 % más de latencia. Detalle más abajo |
+| Usar la instrucción de consulta orientada a lo jurídico | genérica / jurídica / ciudadana | N1 (la misma comparativa) | [Cerrada] La instrucción jurídica (0.795) no muestra diferencia detectable con la ciudadana (0.792) y supera con claridad a la genérica (0.738, diferencia −0.057 significativa). La instrucción de consulta es, por sí sola, una palanca real de mejora |
 | Descartar otros modelos con evidencia, no por intuición | `qwen3-0.6b`, `gte-multilingual-base`, `e5-large` | N3 documentado | [Cerrada] `qwen3` tiene un coste prohibitivo en CPU (un hallazgo en sí para un sistema sin GPU); `gte` es incompatible con la versión de la librería de transformers y queda aplazado; `e5-large` es redundante con su variante con instrucción |
 | Fijar la revisión exacta del modelo (su commit) | fijada / rama principal | N3: reproducibilidad; el sistema bloquea la publicación si no está fijada | [Cerrada] |
 | Reparar el texto que excede el límite de tokens, sin truncar en silencio | truncar / reparar | N3: corrección, para no perder texto | [Cerrada] |
@@ -127,13 +135,13 @@ El informe completo está en `data/processed/reports/dense/benchmarks/bench_2026
 
 | Modelo y perfil | Métrica | Intervalo de confianza | Frente a la referencia (pareado) |
 |---|---|---|---|
-| e5-large-instruct, instrucción jurídica | 0.802 | [0.710, 0.877] | referencia |
-| e5-large-instruct, instrucción ciudadana | 0.796 | [0.707, 0.872] | −0.006, no significativo |
-| e5-large-instruct, instrucción genérica | 0.731 | [0.639, 0.812] | −0.070, significativo |
-| bge-m3 | 0.719 | [0.629, 0.793] | −0.083, significativo |
-| e5-base | 0.627 | [0.524, 0.726] | −0.175, significativo |
+| e5-large-instruct, instrucción jurídica | 0.795 | [0.705, 0.873] | referencia |
+| e5-large-instruct, instrucción ciudadana | 0.792 | [0.704, 0.868] | −0.003, no significativo |
+| e5-large-instruct, instrucción genérica | 0.738 | [0.649, 0.814] | −0.057, significativo |
+| bge-m3 | 0.717 | [0.630, 0.793] | −0.078, significativo |
+| e5-base | 0.622 | [0.523, 0.720] | −0.173, significativo |
 
-En la frontera de calidad frente a latencia quedan `e5-large-instruct` (0.802, 274 ms por consulta) y `e5-base` (0.627, el más rápido con 133 ms); `bge-m3` queda fuera de la frontera, por ser peor y el más lento.
+En la frontera de calidad frente a latencia quedan `e5-large-instruct` (0.795, 274 ms por consulta) y `e5-base` (0.622, el más rápido con 133 ms); `bge-m3` queda fuera de la frontera, por ser peor y el más lento.
 
 El corte por tipo de pregunta explica por qué tenía sentido el experimento de recuperación de la Fase 4:
 
@@ -152,7 +160,7 @@ Por dificultad, el ganador obtiene 0.696 en las fáciles, 0.818 en las medias y 
 
 Sobre la abstención por confianza de recuperación (separar preguntas dentro del corpus de las que quedan fuera), el ganador separa razonablemente bien (área bajo la curva 0.970), mejor que `bge-m3` (0.856) y `e5-base` (0.798). Pero no es perfecto: al umbral elegido, alrededor del 7 % de las preguntas fuera de corpus se cuelan y un 8 % de las respondibles se abstienen de más. Es una señal complementaria, no un sustituto de la abstención en la generación.
 
-Conviene ser claro con los límites: la comparativa de modelos se hizo sobre el conjunto de desarrollo (n=53), que es el conjunto correcto para seleccionar modelo; la significación viene del contraste pareado pese a que los intervalos marginales se solapen. El modelo elegido (`e5-large-instruct` con instrucción jurídica) se valida después en el conjunto de prueba reservado dentro del experimento de recuperación de la Fase 4 (ParentnDCG@10 0.797, n=28); la comparativa a tres bandas no se re-ejecutó en prueba. Además, la comparativa se hizo sobre la vista de fragmento con contexto; comparar esa vista con la del texto crudo en el modelo ganador queda pendiente.
+Conviene ser claro con los límites: la comparativa de modelos se hizo sobre el conjunto de desarrollo (n=53), que es el conjunto correcto para seleccionar modelo; la significación viene del contraste pareado pese a que los intervalos marginales se solapen. El modelo elegido (`e5-large-instruct` con instrucción jurídica) se valida después en el conjunto de prueba reservado dentro del experimento de recuperación de la Fase 4 (ParentnDCG@10 0.806, n=28); la comparativa a tres bandas no se re-ejecutó en prueba. Además, la comparativa se hizo sobre la vista de fragmento con contexto; comparar esa vista con la del texto crudo en el modelo ganador queda pendiente.
 
 ---
 
@@ -160,7 +168,7 @@ Conviene ser claro con los límites: la comparativa de modelos se hizo sobre el 
 
 | Decisión | Opciones | Evidencia (nivel) | Estado y veredicto |
 |---|---|---|---|
-| Usar un generador local | `qwen2.5:7b-instruct` frente a otros | Local por requisito (software libre, sin coste); contraste con alternativas según el tiempo disponible | [Preliminar] elegido `qwen2.5:7b` |
+| Usar un generador local | `qwen2.5:7b-instruct` frente a otros | Local por requisito (modelo de pesos abiertos, sin coste); contraste con alternativas según el tiempo disponible | [Preliminar] elegido `qwen2.5:7b` |
 | Diseñar un prompt restrictivo, a prueba de fallos, con abstención automática cuando no hay evidencia | — | N3 (diseño anti-alucinación); el contraste de prompts depende del juez | [Cerrada] como diseño |
 | Elegir cómo se ensambla el contexto (estrategia, presupuesto y número de fragmentos) | — | N2, después confirmado en generación | [Cerrada] Detalle más abajo. Configuración fijada: expansión acotada, presupuesto de 4000 caracteres y tres fragmentos |
 | Tomar las citas y los enlaces del corpus, nunca del modelo, y validar los identificadores citados | — | N3 (corrección y trazabilidad) | [Cerrada] |
@@ -213,7 +221,7 @@ Se intentó calibrar el prompt del juez (una tercera versión). La corrección m
 | Decisión | Evidencia (nivel) | Estado |
 |---|---|---|
 | Gestionar el entorno con `uv`, usar los contratos Pydantic como fuente única de verdad y mantener la suite de tests cien por cien sin red | N3 (reproducibilidad y mantenibilidad) | [Cerrada] |
-| Ejecutar todo con software libre y en local (CPU), sin servicios de pago | N3 (requisito del trabajo) | [Cerrada] |
+| Ejecutar todo con software de código abierto y modelos de pesos abiertos, en local (CPU), sin servicios de pago | N3 (requisito del trabajo) | [Cerrada] |
 | Incluir un aviso jurídico estático: el sistema no sustituye a la publicación oficial | N3 (requisito del trabajo) | [Cerrada] |
 
 ---
