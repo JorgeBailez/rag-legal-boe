@@ -168,7 +168,7 @@ Conviene ser claro con los límites: la comparativa de modelos se hizo sobre el 
 
 | Decisión | Opciones | Evidencia (nivel) | Estado y veredicto |
 |---|---|---|---|
-| Usar un generador local | `qwen2.5:7b-instruct` frente a otros | Local por requisito (modelo de pesos abiertos, sin coste); contraste con alternativas según el tiempo disponible | [Preliminar] elegido `qwen2.5:7b` |
+| Usar un generador local | `qwen2.5:7b-instruct` frente a otros | Local por requisito (modelo de pesos abiertos, sin coste); efecto del tamaño evaluado (7B vs 14B) | [Cerrada] sistema operativo `qwen2.5:7b`; el 14B se explora en la evaluación (§tamaño del generador) y queda como candidato con *gate* de suficiencia |
 | Diseñar un prompt restrictivo, a prueba de fallos, con abstención automática cuando no hay evidencia | — | N3 (diseño anti-alucinación); el contraste de prompts depende del juez | [Cerrada] como diseño |
 | Elegir cómo se ensambla el contexto (estrategia, presupuesto y número de fragmentos) | — | N2, después confirmado en generación | [Cerrada] Detalle más abajo. Configuración fijada: expansión acotada, presupuesto de 4000 caracteres y tres fragmentos |
 | Tomar las citas y los enlaces del corpus, nunca del modelo, y validar los identificadores citados | — | N3 (corrección y trazabilidad) | [Cerrada] |
@@ -201,7 +201,7 @@ El análisis de errores de las respuestas (documento `analisis_errores_generacio
 | Tomar como métrica primaria de recuperación el nDCG@10, con controles | — | N3 y literatura (es la métrica estándar) | [Cerrada] |
 | Usar como juez automático un modelo de familia distinta a la del generador, para evitar el sesgo de auto-preferencia | misma familia / familia distinta | N3 y literatura sobre el sesgo de auto-preferencia en jueces basados en modelos de lenguaje | [Cerrada] la elección; su validez, más abajo |
 | Validar el juez contra anotación humana, con varios coeficientes de acuerdo | fiarse / validar | N1, un entregable comprometido del trabajo | [Cerrada] El juez se validó y se halló insuficiente. Detalle más abajo |
-| Construir un banco de relevancia graduado para las 92 normas, con evidencia por párrafo y revisión humana | — | El verdadero desbloqueo de la evaluación | [Pendiente] (camino crítico, a cargo del autor) |
+| Construir un banco de relevancia graduado para las 92 normas, con evidencia por párrafo y revisión humana | — | El verdadero desbloqueo de la evaluación | [Cerrada] banco `corpus92_v1`: 121 preguntas y 567 juicios (96 rel-2 / 75 rel-1 / 396 rel-0), todos revisados; párrafos exactos en los centrales |
 | Estratificar por tipo de pregunta y dificultad, con contraste pareado, frontera de Pareto y curva de abstención | — | N1 (maquinaria lista y probada) | [Cerrada] implementado |
 
 Referencias de literatura: el uso de modelos de lenguaje como juez y sus sesgos (Zheng et al., 2023); el coeficiente AC1 de Gwet (2008) y la paradoja de prevalencia del coeficiente kappa (Feinstein y Cicchetti, 1990); y los marcos de evaluación de RAG (RAGAS, ARES).
@@ -226,17 +226,28 @@ Se intentó calibrar el prompt del juez (una tercera versión). La corrección m
 
 ---
 
-## Qué queda por ejecutar
+## Estado final y trabajo futuro
 
-Lo prioritario es el banco de relevancia de las 92 normas (graduado, con evidencia por párrafo y revisión humana, con cuota de preguntas por número de artículo y comparativas entre leyes); sin él, varias de las medidas no separan bien.
+El alcance experimental del TFG está **cerrado**. Hecho: el banco de relevancia de las 92 normas
+(graduado, revisado uno a uno, con evidencia por párrafo en los centrales); el experimento de
+recuperación completo (denso vs BM25 vs híbrido, ablaciones de BM25 y de fusión, robustez n=81); la
+comparativa de modelos de *embeddings* y la ablación de representación (incluida la vista de fragmento
+enriquecida frente a la cruda, sin diferencia detectable); y la generación fundamentada con sus
+*baselines* (closed-book, oráculo), el efecto del tamaño del generador (7B vs 14B), el contraste de
+*prompts* y la validación del juez (resultado negativo, por baja sensibilidad).
 
-Del experimento de recuperación, todo lo central está hecho: la comparación densa frente a BM25 frente a híbrido, la ablación de BM25 y la de la fusión. Queda pendiente, con prioridad menor, la curva de la métrica por profundidad de recuperación.
+Queda como **trabajo futuro**, ya fuera del alcance de la entrega:
 
-De la parte con coste de cómputo, la comparativa de modelos de embeddings está hecha; queda comparar la vista de fragmento con contexto frente a la del texto crudo en el modelo ganador.
+- **Reordenador (*cross-encoder*)** sobre el candidato denso — previsto pero no implementado; se cita
+  como línea abierta (OE-03).
+- **Compuerta de suficiencia** para recortar la sobre-abstención sin perder seguridad, y su
+  combinación con un generador mayor (14B + *gate*).
+- **Ampliar la anotación humana** de fidelidad/corrección (un solo anotador, n pequeño) y, con ella,
+  un juez de mayor capacidad; curva de la métrica por profundidad de recuperación.
 
-De la generación y el juez, queda ampliar la anotación humana, repetir la generación con el juez sobre las 92 normas y el contraste de prompts.
-
-No se va a experimentar, por decisión de principio, con índices aproximados frente al exacto ni con embeddings cuantizados frente a exactos: se justifican por escala y se citan como trabajo futuro.
+No se experimentará, **por decisión de principio y justificado por escala (N3)**, con índices
+aproximados frente al exacto ni con *embeddings* cuantizados frente a exactos: a ~25k vectores el
+índice exacto es holgado y la ablación sería teatro.
 
 ## Cómo se mantiene este registro
 

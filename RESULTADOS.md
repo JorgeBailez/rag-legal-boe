@@ -58,7 +58,8 @@
   sobre-abstenciones; solo 3 eran fallos de *ranking*). Medir por capas separadas es lo que revela
   esta asimetría.
 - **Efecto del tamaño del generador (14B, *test*):** el 14B mejora contenido (hechos clave +0,13 sobre
-  las mismas preguntas, p=0,03) y reduce la sobre-abstención (17,9 %), y **no** confabula de memoria
+  las mismas preguntas; mejora **indicativa/borderline** —bootstrap p≈0,03 pero Wilcoxon exacto pareado
+  p≈0,07, no confirmada al 5 %) y reduce la sobre-abstención (17,9 %), y **no** confabula de memoria
   (*closed-book*: responde 1/28); pero **rompe la seguridad** (3/30 dominio lejano, **4/10 near-miss**).
   Camino natural: 14B + *gate* de suficiencia. El sistema operativo se mantiene en el **7B** por su
   garantía de seguridad sin *gate*.

@@ -63,15 +63,27 @@ uv run python scripts/benchmark_retrieval_strategies.py \
     --dataset-dir data/evaluation/corpus92_v1 --split test --query-profile-id I1_LEGAL \
     --gate-c-level checkpoint --strategies dense,bm25,hybrid_rrf,hybrid_weighted \
     --alpha 0.7 --bm25-heading-boost 3
-# Generacion: retrieval + generacion + juez (opcional)
+# Generacion (sistema RAG, 7B) sobre test, con los parametros del sistema explicitos.
 uv run python scripts/run_generation_eval.py \
     --bundle data/indexes/dense/e5-large-instruct__j1__c46c7042f563 \
-    --dataset-dir data/evaluation/corpus92_v1 --split test --query-profile-id I1_LEGAL
+    --dataset-dir data/evaluation/corpus92_v1 --split test --query-profile-id I1_LEGAL \
+    --mode rag --generator-model qwen2.5:7b-instruct --no-judge \
+    --top-k 3 --max-evidences 3 --context-strategy P_EXPAND_BOUNDED \
+    --context-budget-chars 4000 --max-total-context-chars 16000 \
+    --num-ctx 8192 --num-predict 1536
+# Baselines y tamano del generador: repetir cambiando
+#   --mode closed_book  o  --mode oracle          (descomposicion del error)
+#   --generator-model qwen2.5:14b-instruct         (efecto del tamano)
+# Contexto (capa L2): ablacion del ensamblado sobre development
+uv run python scripts/experiments/ablate_context.py \
+    --bundle data/indexes/dense/e5-large-instruct__j1__c46c7042f563 \
+    --dataset-dir data/evaluation/corpus92_v1 --split development \
+    --query-profile-id I1_LEGAL --gate-c-level checkpoint
 # Auditoria del banco de pruebas: grounding contra el corpus real
 uv run python scripts/audit_eval_dataset.py --dataset-dir data/evaluation/corpus92_v1 --strict   # "Sin flags"
 \end{lstlisting}
 
-Cada corrida deja un \textbf{informe inmutable}, identificado por \emph{run\_id}, en \texttt{data/processed/reports/}, con su configuración y sus huellas de reproducibilidad; esos informes se distribuyen en el paquete de evidencia (no en el árbol Git, por tamaño) y de ellos procede cada tabla del capítulo de experimentos.
+Cada corrida deja un \textbf{informe inmutable}, identificado por \emph{run\_id}, en \texttt{data/processed/reports/}, con su configuración y sus huellas de reproducibilidad; esos informes se distribuyen en el paquete de evidencia (no en el árbol Git, por tamaño) y de ellos procede cada tabla del capítulo de experimentos. Las tablas restantes se generan con la misma configuración autoritativa mediante \texttt{benchmark\_dense\_models.py} (bake-off de modelos), \texttt{benchmark\_retrieval\_strategies.py} (ablaciones de BM25 y de fusión) y \texttt{combine\_retrieval\_robustness.py} (robustez \emph{dev}+\emph{test}, $n=81$).
 
 \section{Ejecución real con modelos (opcional)}
 \label{sec:app-ollama}
