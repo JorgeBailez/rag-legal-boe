@@ -645,7 +645,7 @@ fonttitle=\normalfont,title=#1,breakable}
 % GLOSSARY
 % --------------------------------------------------------------------
 
-\usepackage[acronym]{glossaries}
+\usepackage[acronym,toc,nonumberlist]{glossaries}
 \makeglossaries
 \loadglsentries{glossary}
 
@@ -668,7 +668,7 @@ fonttitle=\normalfont,title=#1,breakable}
 \hypersetup{
     pdftoolbar=true,	% Muestra barra de herramientas en Adobe Acrobat
 	pdfmenubar=true,	% Muestra menú en Adobe Acrobat
-	pdftitle={Diseño y evaluación con evidencia de un sistema RAG para la consulta ciudadana de legislación consolidada del BOE},
+	pdftitle={Diseño y evaluación con evidencia de un sistema RAG para la consulta ciudadana de legislación consolidada del Boletín Oficial del Estado},
 	pdfauthor={Jorge Bailez Martínez},
 	pdfcreator={EIF, URJC},
 	pdfproducer={XeLaTeX},
@@ -739,16 +739,16 @@ CIENCIA E INGENIERÍA DE DATOS
 
 \vspace{2cm}
 
-\large Diseño y evaluación de una arquitectura RAG\\
-para un servicio de consulta ciudadana sobre legislación consolidada\\
+\large Diseño y evaluación con evidencia de un sistema RAG\\
+para la consulta ciudadana de legislación consolidada\\
 del Boletín Oficial del Estado
 
 \vspace{1.5cm}
 
 \large
-Autor/a : Jorge Bailez Martínez \\
+Autor: Jorge Bailez Martínez \\
 \vspace{0.5cm}
-Tutor/a : Dr. Felipe Ortega Soto
+Tutor: Dr. Felipe Ortega Soto
 
 \vspace{3cm}
 
@@ -793,21 +793,8 @@ Curso Académico 2025/2026
     
 
 %-------------------------------------------------------------------------------
-%%%--- Página de firmas (por motivos históricos)
 \clearpage
 \pagenumbering{gobble}
-\chapter*{}
-
-\vspace{-4cm}
-
-%-------------------------------------------------------------------------------
-%%%--- Dedicatoria
-
-\chapter*{}
-%\pagenumbering{Roman} % para comenzar la numeración de paginas en numeros romanos
-\begin{flushright}
-%\textit{Dedicatoria opcional (una línea).}
-\end{flushright}
 
 %-------------------------------------------------------------------------------
 %%%--- Agradecimientos
@@ -960,21 +947,22 @@ The results show that, for this corpus and this type of query, the dense retriev
 \input{appendices/app-doc.tex}
 
 %-------------------------------------------------------------------------------
+% GLOSARIO(S) %
+%-------------------------------------------------------------------------------
+
+% Incluye todas las entradas definidas, aunque el texto no use \gls explícitamente.
+% Debe ir ANTES de \backmatter para no generar una página con solo encabezado.
+\glsaddall
+
+%-------------------------------------------------------------------------------
 % KOMA-Script organization
 % Backmatter: glossary, bibliography, indexes, etc.
 \backmatter
 %-------------------------------------------------------------------------------
 
-%-------------------------------------------------------------------------------
-% GLOSARIO(S) %
-%-------------------------------------------------------------------------------
+\printglossary[type=\acronymtype, title={Siglas}]
 
-% Incluye todas las entradas definidas, aunque el texto no use \gls explícitamente.
-\glsaddall
-
-\printglossary[type=\acronymtype]
-
-\printglossary
+\printglossary[title={Glosario}]
 
 %-------------------------------------------------------------------------------
 % BIBLIOGRAFIA %

@@ -71,6 +71,6 @@
   minoría. La referencia humana (*dev*, n=31): **81 %** fieles, **58 %** correctas plenas (IC anchos).
   → resultado **negativo** honesto; L3/L5 se apoyan en anotación humana + señales deterministas.
 
-> **Trazabilidad.** Los identificadores de corrida (*run_id*) y los reports por pregunta se exportan en
-> el paquete de evidencia (no en el árbol Git, por tamaño); cada tabla de la memoria es reproducible con
-> los comandos del apéndice de documentación.
+> **Trazabilidad.** Los identificadores de corrida (*run_id*) y los informes por pregunta se generan
+> localmente al ejecutar los experimentos. No se versionan por su tamaño; los comandos y configuraciones
+> necesarios para regenerarlos están documentados en la memoria y en el repositorio.

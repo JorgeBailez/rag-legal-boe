@@ -22,6 +22,7 @@ La regla de fondo es que "justificado" no quiere decir "haber ablacionado todo".
 - **[Por principio]** — decidida por literatura o razonamiento (N3); no se va a experimentar, y se explica por qué.
 - **[Pendiente]** — experimento planificado, con su diseño, todavía sin ejecutar.
 - **[Preliminar]** — hay resultado, pero sobre el corpus de 10 normas o una muestra insuficiente; conviene re-medir.
+- **[Trabajo futuro]** — fuera del alcance final de la entrega; se documenta como línea abierta, no como tarea pendiente de completar.
 - **[Abierta]** — sin decidir.
 
 ---
@@ -88,8 +89,8 @@ Esta es la pregunta de investigación principal del trabajo: con un buen modelo 
 | Elegir la función de fusión: por rango (RRF) o convexa por puntuación normalizada | RRF / convexa / peso α | N1 | [Cerrada] En desarrollo y prueba, la convexa con peso alto al denso supera a la fusión por rango; el RRF es significativamente peor que la densa sola. La mejor fusión no mejora de forma detectable a la densa: la diferencia pareada denso−convexa es −0.028 con IC95 [−0.075, +0.019] (contiene el 0), así que la mejora de la fusión, de existir, está acotada por arriba a +0.019 nDCG. No es equivalencia demostrada, sino ausencia de mejora detectable con n=28 |
 | Ajustar BM25 (stopwords, lematización, conservación de cifras, parámetros k1 y b) | ablación de un factor cada vez | N1 | [Cerrada] (desarrollo, n=53, report `bm25abl_20260624T233009Z`). El único parámetro con efecto significativo es el refuerzo de cabecera (fila siguiente); la lematización ayuda (quitarla resta 0.056); stopwords, k1 y b son indiferentes |
 | Reforzar la cabecera del bloque en BM25 (repetir el título y la ley a la que pertenece) | sin refuerzo / con refuerzo | N1 | [Cerrada] El refuerzo aporta entre 0.029 y 0.048 según su intensidad, todos significativos. El efecto es grande en las preguntas por número de artículo, donde sube de 0.18 a 0.35: incluir la ley deshace la confusión entre artículos con el mismo número en normas distintas |
-| Fijar la profundidad de recuperación que pasa a la generación | 3 / 5 / 10 / 20 | N1 barato (curva de la métrica frente a la profundidad) | [Pendiente] |
-| Reordenar resultados con un modelo cruzado (reranking) | sin / con | N3 por ahora: un modelo cruzado en CPU es caro por consulta | [Abierta] (probablemente un piloto pequeño o trabajo futuro) |
+| Fijar la profundidad de recuperación que pasa a la generación | 3 / 5 / 10 / 20 | N1 barato (curva de la métrica frente a la profundidad) | [Trabajo futuro] (fuera del alcance final) |
+| Reordenar resultados con un modelo cruzado (reranking) | sin / con | N3: un modelo cruzado en CPU es caro por consulta, y el margen de recuperación vive en el ensamblado del contexto, no en el orden de artículos | [Trabajo futuro] (cross-encoder como línea abierta) |
 
 Referencias de literatura: BM25/Okapi; la fusión por rango RRF; la comparación entre recuperación densa y léxica del banco BEIR; y MTEB para la selección de modelo.
 

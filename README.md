@@ -1,5 +1,7 @@
 # RAG Legal BOE (TFG)
 
+**Diseño y evaluación con evidencia de un sistema RAG para la consulta ciudadana de legislación consolidada del Boletín Oficial del Estado.**
+
 Sistema de recuperación y generación (RAG) para consultar de forma informativa la legislación
 consolidada del BOE, pensado para ciudadanos no expertos. No es asesoramiento jurídico vinculante: los
 textos consolidados del BOE tienen carácter informativo y no valor jurídico oficial.
