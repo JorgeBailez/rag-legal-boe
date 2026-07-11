@@ -589,19 +589,26 @@ sorting=nty
 % Caja azul con título para información, explicaciones extra y detalles
 % Icons: \faInfoCircle \faBook \faBookmark
 \newtcolorbox{mybluebox}[1]{colback=darkblue!5!white,colframe=darkblue!75!black,
-fonttitle=\normalfont,title=#1}
+fonttitle=\normalfont,title=#1,breakable}
 
 % Caja verde para comentarios adicionales
 % Icons: \faComment \faCrosshairs
 \newtcolorbox{mygreenbox}[1]{colback=darkgreen!5!white,colframe=darkgreen!75!black,
-fonttitle=\normalfont,title=#1}
+fonttitle=\normalfont,title=#1,breakable}
 
 % TODO: Yellow box with title for warnings
 
 % Caja roja con título para posibles problemas explicaciones extra y detalles
 % Icons: \faExclamationCircle \faBomb
-\newtcolorbox{myredbox}[1]{colback=darkred!5!white,colframe=darkred!75!black,
-fonttitle=\normalfont,title=#1,breakable}
+\newtcolorbox{myredbox}[2][]{%
+	colback=darkred!5!white,
+	colframe=darkred!75!black,
+	fonttitle=\normalfont,
+	title={#2},
+	before skip=8pt,
+	after skip=8pt,
+	#1
+}
 
 % Coloured equations
 
@@ -618,7 +625,7 @@ fonttitle=\normalfont,title=#1,breakable}
 % TODO: INSERT AN EXAMPLE OF THIS USEFUL FEATURE
 
 % Source code listings
-\usepackage{listings}           % Source Code Listings. Usage: \begin{lstlisting}...\end{lstlisting}
+\usepackage{listings}           % Source Code Listings. Usage: \{begin\}{lstlisting}...\end{lstlisting}
 \lstset{
     basicstyle=\ttfamily,
     columns=fullflexible,
@@ -683,6 +690,8 @@ fonttitle=\normalfont,title=#1,breakable}
 %%%---------------------------------------------------------------------------
 
 \begin{document}
+
+\raggedbottom
 
 %---------------------------------------------------------------------
 
