@@ -70,7 +70,6 @@ src/        Código fuente (boe, preprocessing, indexing, retrieval,
             generation, evaluation, app, core, config)
 data/       Datos (raw, processed, evaluation, manifests). El contenido pesado no se versiona;
             sí se versionan el catálogo de normas, los manifests y los informes de verificación
-notebooks/  Cuadernos que narran el recorrido del pipeline
 prompts/    Plantillas de prompt
 tests/      Suite de pytest
 docs/       Documentación de diseño y análisis (el subconjunto público; ver docs/decisiones_de_diseno.md)
@@ -176,15 +175,6 @@ uv run python scripts/audit_corpus.py --strict
 El corpus se considera listo para los embeddings solo si no hay errores estructurales, ni divergencias
 de vigencia, la integridad del original es correcta, no se filtran notas editoriales y no queda
 contenido sustantivo fuera de la búsqueda.
-
-## Cuaderno de exploración
-
-`notebooks/01_exploracion_api_boe.ipynb` documenta el recorrido y las decisiones, de la API al corpus.
-Requiere las dependencias de desarrollo (`uv sync --group dev`) y se ejecuta a mano:
-
-```bash
-uv run jupyter notebook notebooks/01_exploracion_api_boe.ipynb
-```
 
 ## Índice denso y recuperación
 

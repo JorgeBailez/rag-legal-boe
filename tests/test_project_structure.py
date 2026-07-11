@@ -1,7 +1,8 @@
-"""Verifica que el scaffold del proyecto existe y que la configuración importa.
+"""Verifica que la estructura esperada del repositorio existe y que la configuración importa.
 
-No prueba lógica de negocio (aún no implementada): solo comprueba la base limpia
-del repositorio para detectar regresiones de estructura.
+Comprueba los directorios y ficheros clave del proyecto (código, esquemas, prompts y datos
+versionados) para detectar regresiones de estructura, y que ``Settings()`` arranca con sus
+valores por defecto. La lógica de dominio se cubre en el resto de la suite.
 """
 
 from pathlib import Path
@@ -30,7 +31,6 @@ EXPECTED_DIRS = [
     "data/manifests",
     "schemas",
     "docs",
-    "notebooks",
     "tests/fixtures/boe",
     "prompts",
 ]
@@ -102,12 +102,6 @@ EXPECTED_FILES = [
     "docs/analisis_errores_generacion.md",
     "docs/analisis/README.md",
     "docs/analisis/01_parser_flujo_completo.md",
-    "notebooks/README.md",
-    "notebooks/02_perfilado_tokenizacion.ipynb",
-    "notebooks/03_benchmark_modelos_densos.ipynb",
-    "notebooks/04_ablaciones_chunking_y_contexto.ipynb",
-    "notebooks/05_seleccion_baseline_dense.ipynb",
-    "notebooks/06_evaluacion_generacion.ipynb",
     "prompts/system_prompt.txt",
     "prompts/rag_prompt.txt",
     "prompts/judge_faithfulness.txt",

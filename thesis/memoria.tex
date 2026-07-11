@@ -579,6 +579,7 @@ sorting=nty
 
 % Colored boxes for information corners
 \usepackage{tcolorbox}% http://ctan.org/pkg/tcolorbox
+\tcbuselibrary{breakable}% permite que una caja larga se parta entre paginas (evita solapes)
 
 % Colores de las cajas (no vienen en el conjunto de xcolor cargado)
 \definecolor{darkred}{RGB}{139,0,0}
@@ -600,7 +601,7 @@ fonttitle=\normalfont,title=#1}
 % Caja roja con título para posibles problemas explicaciones extra y detalles
 % Icons: \faExclamationCircle \faBomb
 \newtcolorbox{myredbox}[1]{colback=darkred!5!white,colframe=darkred!75!black,
-fonttitle=\normalfont,title=#1}
+fonttitle=\normalfont,title=#1,breakable}
 
 % Coloured equations
 
@@ -875,9 +876,9 @@ The results show that, for this corpus and this type of query, the dense retriev
 \cleardoublepage
 \listoftables % indice de tablas
 
-%%-- Índice de fragmentos de código
-\cleardoublepage
-\listoflistings
+%%-- Índice de fragmentos de código: retirado (la lista no tiene entradas y generaba una página vacía)
+%\cleardoublepage
+%\listoflistings
 
 %-------------------------------------------------------------------------------
 

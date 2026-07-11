@@ -19,7 +19,7 @@
   (Δ −0,078, SIG) y bge-m3 queda **Pareto-dominado** (peor calidad y ~47 % más lento). La
   **instrucción de *query* es palanca**: I1 sobre I0 genérico Δ −0,057 (SIG); I1 e I2 sin diferencia
   detectable. → **OE-03 cerrada.**
-- **Representación/chunking (*dev*):** enriquecer el fragmento con el nombre de la norma **no mejora**;
+- **Representación/chunking (*dev*):** enriquecer el fragmento con el nombre de la norma **no muestra una mejora detectable**;
   el troceado clásico **no muestra diferencia detectable** con el *parent-child* por párrafos (la métrica premia acertar el artículo).
 - **Flagship denso vs BM25 vs híbrido (*test* held-out, n=28):** **denso 0,806** > híbrido ponderado
   α0.7 0,779 > híbrido RRF 0,691 > BM25 0,521. Pareados frente al denso (familia corregida por Holm):

@@ -1,7 +1,7 @@
-"""API FastAPI del sistema RAG.
+"""API FastAPI del sistema RAG (interfaz web).
 
-Responsabilidad: exponer la consulta del usuario sobre el pipeline RAG.
-Se implementará cuando el ciclo MVP esté validado (no en esta fase scaffold).
-
-Pendiente de implementación.
+La interfaz web/API queda **fuera del alcance evaluado** de este TFG y se documenta como
+trabajo futuro (ver conclusiones). El pipeline RAG es plenamente funcional por línea de comandos
+(``scripts/answer_question.py`` y ``scripts/run_generation_eval.py``); este módulo es el punto de
+entrada previsto para exponerlo por HTTP, todavía sin implementar.
 """
