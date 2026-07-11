@@ -20,7 +20,7 @@
   **instrucción de *query* es palanca**: I1 sobre I0 genérico Δ −0,057 (SIG); I1 e I2 sin diferencia
   detectable. → **OE-03 cerrada.**
 - **Representación/chunking (*dev*):** enriquecer el fragmento con el nombre de la norma **no mejora**;
-  el troceado clásico **iguala** al *parent-child* por párrafos (la métrica premia acertar el artículo).
+  el troceado clásico **no muestra diferencia detectable** con el *parent-child* por párrafos (la métrica premia acertar el artículo).
 - **Flagship denso vs BM25 vs híbrido (*test* held-out, n=28):** **denso 0,806** > híbrido ponderado
   α0.7 0,779 > híbrido RRF 0,691 > BM25 0,521. Pareados frente al denso (familia corregida por Holm):
   **BM25 −0,285 (SIG peor, p_Holm<0,001)**, **RRF −0,115 (SIG peor, p=0,006, p_Holm=0,012)**,
@@ -58,8 +58,8 @@
   sobre-abstenciones; solo 3 eran fallos de *ranking*). Medir por capas separadas es lo que revela
   esta asimetría.
 - **Efecto del tamaño del generador (14B, *test*):** el 14B mejora contenido (hechos clave +0,13 sobre
-  las mismas preguntas; mejora **indicativa/borderline** —bootstrap p≈0,03 pero Wilcoxon exacto pareado
-  p≈0,07, no confirmada al 5 %) y reduce la sobre-abstención (17,9 %), y **no** confabula de memoria
+  las mismas preguntas; mejora **indicativa/borderline** —bootstrap p≈0,03 pero Wilcoxon *signed-rank*
+  pareado (aproximación normal) p≈0,07, no confirmada al 5 %) y reduce la sobre-abstención (17,9 %), y **no** confabula de memoria
   (*closed-book*: responde 1/28); pero **rompe la seguridad** (3/30 dominio lejano, **4/10 near-miss**).
   Camino natural: 14B + *gate* de suficiencia. El sistema operativo se mantiene en el **7B** por su
   garantía de seguridad sin *gate*.
